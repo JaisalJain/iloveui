@@ -1,0 +1,291 @@
+@layer theme, base, clerk, components, utilities;
+@import "tailwindcss";
+
+/* The site stylesheet scans only site code. Catalog designs compile into the preview stylesheet. */
+@source not "../registry";
+@source not "../public";
+@source not "./(preview)";
+@source not "../.open-next";
+@source not "../.wrangler";
+@source not "../tests";
+@source not "../scripts";
+@source not "../drizzle";
+@source not "../assets";
+
+/* Explicit <html data-theme="dark|light"> wins; without it the site follows the operating system. */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not([data-theme="light"], [data-theme="light"] *)) {
+      @slot;
+    }
+  }
+}
+
+/* Hover styles only for devices that hover with a precise pointer. */
+@custom-variant hover {
+  @media ((hover: hover) and (pointer: fine)) {
+    &:hover {
+      @slot;
+    }
+  }
+}
+
+@theme {
+  --color-*: initial;
+  --color-white: oklch(100% 0 0);
+  --color-black: oklch(0% 0 0);
+  --color-transparent: transparent;
+
+  /* Light mode values; dark mode overrides live in the base layer below. */
+  --color-canvas: oklch(96.46% 0.0057 84.57);
+  --color-surface: oklch(100% 0 0);
+  --color-raised: oklch(93.47% 0.0087 84.57);
+  --color-fg: oklch(17.76% 0 0);
+  --color-muted: oklch(47.69% 0.0095 286.03);
+  --color-hairline: oklch(0% 0 0 / 0.08);
+  --color-control: oklch(0% 0 0 / 0.44);
+  --color-danger: oklch(50.03% 0.1821 29.51);
+
+  /* Accent: #FF4D1F (signal vermilion) in dark mode; a deeper shade of the same hue on light surfaces so
+     accent text and focus rings keep 4.5:1. Text-bearing fills use accent-fill, which keeps 4.6:1 with white. */
+  --color-accent: oklch(53.75% 0.19 34.59);
+  --color-accent-fill: oklch(58.5% 0.205 34.59);
+  --color-accent-fg: oklch(100% 0 0);
+  --color-heart: oklch(66.86% 0.2211 34.59);
+
+  --text-*: initial;
+  --text-12: 0.75rem;
+  --text-12--line-height: 1.5;
+  --text-14: 0.875rem;
+  --text-14--line-height: 1.55;
+  --text-16: 1rem;
+  --text-16--line-height: 1.55;
+  --text-20: 1.25rem;
+  --text-20--line-height: 1.4;
+  --text-28: 1.75rem;
+  --text-28--line-height: 1.15;
+  --text-28--letter-spacing: -0.03em;
+  --text-40: 2.5rem;
+  --text-40--line-height: 1.05;
+  --text-40--letter-spacing: -0.03em;
+  --text-64: 4rem;
+  --text-64--line-height: 1;
+  --text-64--letter-spacing: -0.03em;
+  --text-96: 6rem;
+  --text-96--line-height: 0.95;
+  --text-96--letter-spacing: -0.03em;
+  --leading-body: 1.55;
+  --tracking-headline: -0.03em;
+  --tracking-label: 0.06em;
+
+  --radius-*: initial;
+  --radius-control: 6px;
+  --radius-card: 10px;
+  --radius-frame: 16px;
+  --radius-full: 9999px;
+
+  --shadow-*: initial;
+  --shadow-sm: 0 1px 2px oklch(0% 0 0 / 0.06);
+  --shadow-lg: 0 8px 24px oklch(0% 0 0 / 0.12);
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+  --text-shadow-*: initial;
+
+  --ease-*: initial;
+  --ease-site: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --default-transition-duration: 200ms;
+  --default-transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --container-site: 90rem;
+
+  --animate-*: initial;
+  --animate-pop-in: pop-in 160ms var(--ease-site);
+  --animate-pop-out: pop-out 120ms var(--ease-site);
+  --animate-fade-in: fade-in 200ms var(--ease-site);
+  --animate-fade-out: fade-out 160ms var(--ease-site);
+  --animate-dialog-in: dialog-in 200ms var(--ease-site);
+  --animate-dialog-out: dialog-out 160ms var(--ease-site);
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+  @keyframes pop-out {
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes dialog-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 8px, 0) scale(0.98);
+    }
+  }
+  @keyframes dialog-out {
+    to {
+      opacity: 0;
+      transform: translate3d(0, 8px, 0) scale(0.98);
+    }
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --color-canvas: oklch(15% 0.0021 286.14);
+    --color-surface: oklch(18.31% 0.004 285.99);
+    --color-raised: oklch(21.03% 0.0059 285.89);
+    --color-fg: oklch(94.61% 0 0);
+    --color-muted: oklch(71.05% 0.0072 286.22);
+    --color-hairline: oklch(100% 0 0 / 0.08);
+    --color-control: oklch(100% 0 0 / 0.36);
+    --color-danger: oklch(70.86% 0.1699 26.47);
+    --color-accent: oklch(66.86% 0.2211 34.59);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --color-canvas: oklch(15% 0.0021 286.14);
+      --color-surface: oklch(18.31% 0.004 285.99);
+      --color-raised: oklch(21.03% 0.0059 285.89);
+      --color-fg: oklch(94.61% 0 0);
+      --color-muted: oklch(71.05% 0.0072 286.22);
+      --color-hairline: oklch(100% 0 0 / 0.08);
+      --color-control: oklch(100% 0 0 / 0.36);
+      --color-danger: oklch(70.86% 0.1699 26.47);
+      --color-accent: oklch(66.86% 0.2211 34.59);
+    }
+  }
+
+  html {
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* The gutter stays reserved even while a dialog locks scrolling, so Radix's own margin compensation is
+     switched off; together that keeps the page perfectly still when dialogs open. */
+  html {
+    scrollbar-gutter: stable;
+  }
+  html body[data-scroll-locked] {
+    margin-right: 0 !important;
+    --removed-body-scroll-bar-size: 0px !important;
+  }
+  body {
+    min-height: 100dvh;
+    font-size: var(--text-16);
+    line-height: var(--leading-body);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+  p,
+  li,
+  dd,
+  figcaption {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-fg) 18%, transparent);
+  }
+  * {
+    outline-color: var(--color-accent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  [hidden] {
+    display: none !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Interactive targets: 40px on touch, at least 24px with a precise pointer. */
+@utility tap-target {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  @variant pointer-fine {
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+  }
+}
+
+/* The page frame: 1440px content width with 16px (mobile) or 24px side padding. */
+@utility page-frame {
+  width: 100%;
+  max-width: calc(var(--container-site) + 3rem);
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @variant sm {
+    padding-inline: 1.5rem;
+  }
+}
+
+/* Metadata labels: JetBrains Mono, uppercase, tracked. */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-12);
+  line-height: var(--text-12--line-height);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+@layer components {
+  /* The logo heart swells once on hover or keyboard focus of its link. */
+  .logo-heart {
+    transform-box: fill-box;
+    transform-origin: 50% 60%;
+    transition: transform 240ms var(--ease-site);
+  }
+  a:focus-visible .logo-heart {
+    transform: scale(1.18);
+  }
+  @media (hover: hover) and (pointer: fine) {
+    a:hover .logo-heart {
+      transform: scale(1.18);
+    }
+  }
+}

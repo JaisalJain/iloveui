@@ -1,0 +1,12 @@
+pnpm-lock.yaml
+pnpm-workspace.yaml
+cloudflare-env.d.ts
+drizzle/
+public/
+registry/generated/
+.wrangler/
+.open-next/
+.next/
+test-results/
+playwright-report/
+CLAUDE.md

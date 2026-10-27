@@ -1,0 +1,15 @@
+{
+  "slug": "tarn-status-screens",
+  "name": "Tarn status screens",
+  "category": "states",
+  "styleFamily": "dark-technical",
+  "tier": "pro",
+  "description": "404, 500, maintenance, rate-limit and offline screens for a deploy platform: honest copy, one action each and a live request log beside it.",
+  "tags": ["404", "500", "maintenance", "rate-limit", "offline", "error-page", "devtools"],
+  "states": ["default", "error", "loading", "disabled", "empty"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

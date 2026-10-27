@@ -1,0 +1,960 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tarn status screens · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <!-- Five screens; show one with setTarnScreen("not-found" | "server-error" | "maintenance" | "rate-limited" | "offline"). -->
+    <!-- Classes the script adds: animate-spin motion-reduce:animate-none -->
+    <section
+      data-tarn-screen="not-found"
+      aria-labelledby="tarn-title-not-found"
+      class="@container flex min-h-[max(640px,100dvh)] flex-col bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <header
+        class="flex items-center justify-between gap-4 border-b border-dashed border-(--iu-border) px-6 py-4 sm:px-10"
+      >
+        <span class="flex items-center gap-2 text-sm font-semibold"
+          ><svg viewBox="0 0 20 20" aria-hidden="true" class="size-5">
+            <path
+              d="M2 16 10 3l8 13z"
+              class="fill-none stroke-(--iu-foreground)"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            ></path>
+            <path d="M6 16h8" class="stroke-(--iu-accent)" stroke-width="1.5" stroke-linecap="round"></path></svg
+          >Tarn</span
+        ><a
+          href="#status"
+          class="inline-flex items-center gap-2 rounded-[min(var(--iu-radius),8px)] px-2 py-1 font-mono text-xs text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+          ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-muted)"></span>All systems normal</a
+        >
+      </header>
+      <div
+        class="mx-auto grid w-full max-w-[1200px] flex-1 grid-cols-12 content-center gap-x-6 gap-y-10 px-6 py-12 sm:px-10"
+      >
+        <div class="col-span-12 lg:col-span-6">
+          <p class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">HTTP 404 · Not found</p>
+          <p
+            aria-hidden="true"
+            class="relative mt-4 inline-block font-mono text-[clamp(5rem,3rem+9vw,10rem)] leading-none font-medium tracking-[-0.06em] text-(--iu-foreground) tabular-nums"
+          >
+            404<span class="absolute -top-2 -left-3 size-3 border-t border-l border-(--iu-muted)"></span
+            ><span class="absolute -right-3 -bottom-2 size-3 border-r border-b border-(--iu-muted)"></span>
+          </p>
+          <h1
+            id="tarn-title-not-found"
+            class="mt-8 max-w-[22ch] text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
+          >
+            There is no project at this address.
+          </h1>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+            The slug in the URL doesn&#x27;t match any project in the Northwind Labs team. It is one edit away from a
+            project you do have.
+          </p>
+          <div class="mt-8">
+            <a
+              href="/northwind-labs/ingest-worker"
+              class="inline-flex h-10 min-w-[176px] items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-[filter,opacity] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-disabled:cursor-not-allowed aria-disabled:opacity-55 motion-reduce:transition-none pointer-fine:hover:not-aria-disabled:brightness-110"
+              >Open ingest-worker<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path></svg
+            ></a>
+          </div>
+          <p data-live aria-live="polite" class="sr-only"></p>
+        </div>
+        <div class="col-span-12 lg:col-span-6 lg:pt-8">
+          <div
+            class="relative rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) font-mono text-[13px] leading-relaxed"
+          >
+            <div
+              class="flex items-center justify-between border-b border-dashed border-(--iu-border) px-4 py-2.5 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+            >
+              <span>request.log</span
+              ><span class="inline-flex items-center gap-2"
+                ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-muted)"></span>404</span
+              >
+            </div>
+            <div class="p-[calc(16px*var(--iu-density))]">
+              <p><span class="text-(--iu-muted)">$ </span>GET /northwind-labs/ingest-wrker</p>
+              <p class="text-(--iu-muted)">→ 404 no project with slug “ingest-wrker”</p>
+              <div class="mt-4 rounded-[min(var(--iu-radius),6px)] border border-dashed border-(--iu-border) p-3">
+                <p class="text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">Closest match · 1 edit</p>
+                <p class="mt-2 text-base">
+                  ingest-w<span class="rounded-[2px] bg-(--iu-accent) px-px text-(--iu-accent-foreground)">o</span
+                  >rker<span class="sr-only"> (missing letter o)</span>
+                </p>
+              </div>
+              <dl class="mt-4">
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Team</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">northwind-labs</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Projects</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">ingest-worker, billing-api, edge-cache</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-dashed border-(--iu-border) px-6 py-3 font-mono text-[11px] text-(--iu-muted) sm:px-10"
+      >
+        <span>req_01JB7X4M2Q9TFA</span><span>fra1</span><span>2026-10-27 14:06:52 UTC</span>
+      </footer>
+    </section>
+    <section
+      data-tarn-screen="server-error"
+      hidden
+      aria-labelledby="tarn-title-server-error"
+      class="@container flex min-h-[max(640px,100dvh)] flex-col bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <header
+        class="flex items-center justify-between gap-4 border-b border-dashed border-(--iu-border) px-6 py-4 sm:px-10"
+      >
+        <span class="flex items-center gap-2 text-sm font-semibold"
+          ><svg viewBox="0 0 20 20" aria-hidden="true" class="size-5">
+            <path
+              d="M2 16 10 3l8 13z"
+              class="fill-none stroke-(--iu-foreground)"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            ></path>
+            <path d="M6 16h8" class="stroke-(--iu-accent)" stroke-width="1.5" stroke-linecap="round"></path></svg
+          >Tarn</span
+        ><a
+          href="#status"
+          class="inline-flex items-center gap-2 rounded-[min(var(--iu-radius),8px)] px-2 py-1 font-mono text-xs text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+          ><span aria-hidden="true" class="size-1.5 rounded-full bg-red-500 dark:bg-red-400"></span>Incident INC-2291</a
+        >
+      </header>
+      <div
+        class="mx-auto grid w-full max-w-[1200px] flex-1 grid-cols-12 content-center gap-x-6 gap-y-10 px-6 py-12 sm:px-10"
+      >
+        <div class="col-span-12 lg:col-span-6">
+          <p class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">HTTP 500 · Internal error</p>
+          <p
+            aria-hidden="true"
+            class="relative mt-4 inline-block font-mono text-[clamp(5rem,3rem+9vw,10rem)] leading-none font-medium tracking-[-0.06em] text-(--iu-foreground) tabular-nums"
+          >
+            500<span class="absolute -top-2 -left-3 size-3 border-t border-l border-(--iu-muted)"></span
+            ><span class="absolute -right-3 -bottom-2 size-3 border-r border-b border-(--iu-muted)"></span>
+          </p>
+          <h1
+            id="tarn-title-server-error"
+            class="mt-8 max-w-[22ch] text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
+          >
+            This one is on us.
+          </h1>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+            Your request reached Tarn, but the database behind it reset the connection. On-call has been paged and the
+            request was not applied, so retrying is safe.
+          </p>
+          <div class="mt-8">
+            <button
+              data-action
+              type="button"
+              class="inline-flex h-10 min-w-[176px] items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-[filter,opacity] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-disabled:cursor-not-allowed aria-disabled:opacity-55 motion-reduce:transition-none pointer-fine:hover:not-aria-disabled:brightness-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                <path d="M21 3v5h-5"></path></svg
+              ><span data-label>Retry request</span>
+            </button>
+          </div>
+          <p data-live aria-live="polite" class="sr-only"></p>
+        </div>
+        <div class="col-span-12 lg:col-span-6 lg:pt-8">
+          <div
+            class="relative rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) font-mono text-[13px] leading-relaxed"
+          >
+            <div
+              class="flex items-center justify-between border-b border-dashed border-(--iu-border) px-4 py-2.5 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+            >
+              <span>request.log</span
+              ><span class="inline-flex items-center gap-2"
+                ><span aria-hidden="true" class="size-1.5 rounded-full bg-red-500 dark:bg-red-400"></span>500</span
+              >
+            </div>
+            <div class="p-[calc(16px*var(--iu-density))]">
+              <dl>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Upstream</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">billing-api → pg-primary</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Error</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">ECONNRESET after 2,014 ms</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Applied</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">No. Safe to retry.</dd>
+                </div>
+              </dl>
+              <p class="mt-4 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">
+                INC-2291 · open <span data-incident-age class="text-(--iu-foreground) tabular-nums">04:12</span>
+              </p>
+              <ol class="mt-2">
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  ><span class="text-(--iu-foreground)"
+                    >14:02:40 detected by health check<span class="sr-only"> (done)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  ><span class="text-(--iu-foreground)"
+                    >14:03:05 paged Ines Duarte, on call<span class="sr-only"> (done)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-accent)"
+                    ><span class="size-1.5 rounded-full bg-(--iu-accent)"></span></span
+                  ><span class="text-(--iu-foreground)"
+                    >failing over to pg-replica-2<span class="sr-only"> (in progress)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-dashed border-(--iu-muted)"
+                  ></span
+                  ><span class="text-(--iu-muted)">post-incident note<span class="sr-only"> (pending)</span></span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-dashed border-(--iu-border) px-6 py-3 font-mono text-[11px] text-(--iu-muted) sm:px-10"
+      >
+        <span>req_01JB7X4M2Q9TFA</span><span>fra1</span><span>2026-10-27 14:06:52 UTC</span>
+      </footer>
+    </section>
+    <section
+      data-tarn-screen="maintenance"
+      hidden
+      aria-labelledby="tarn-title-maintenance"
+      class="@container flex min-h-[max(640px,100dvh)] flex-col bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <header
+        class="flex items-center justify-between gap-4 border-b border-dashed border-(--iu-border) px-6 py-4 sm:px-10"
+      >
+        <span class="flex items-center gap-2 text-sm font-semibold"
+          ><svg viewBox="0 0 20 20" aria-hidden="true" class="size-5">
+            <path
+              d="M2 16 10 3l8 13z"
+              class="fill-none stroke-(--iu-foreground)"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            ></path>
+            <path d="M6 16h8" class="stroke-(--iu-accent)" stroke-width="1.5" stroke-linecap="round"></path></svg
+          >Tarn</span
+        ><a
+          href="#status"
+          class="inline-flex items-center gap-2 rounded-[min(var(--iu-radius),8px)] px-2 py-1 font-mono text-xs text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+          ><span aria-hidden="true" class="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400"></span>Maintenance
+          02:00 to 02:40 UTC</a
+        >
+      </header>
+      <div
+        class="mx-auto grid w-full max-w-[1200px] flex-1 grid-cols-12 content-center gap-x-6 gap-y-10 px-6 py-12 sm:px-10"
+      >
+        <div class="col-span-12 lg:col-span-6">
+          <p class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">
+            HTTP 503 · Scheduled maintenance
+          </p>
+          <p
+            aria-hidden="true"
+            class="relative mt-4 inline-block font-mono text-[clamp(5rem,3rem+9vw,10rem)] leading-none font-medium tracking-[-0.06em] text-(--iu-foreground) tabular-nums"
+          >
+            503<span class="absolute -top-2 -left-3 size-3 border-t border-l border-(--iu-muted)"></span
+            ><span class="absolute -right-3 -bottom-2 size-3 border-r border-b border-(--iu-muted)"></span>
+          </p>
+          <h1
+            id="tarn-title-maintenance"
+            class="mt-8 max-w-[22ch] text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
+          >
+            Writes are paused while we upgrade Postgres.
+          </h1>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+            Deployments and dashboards stay readable. New deploys, env changes and team edits resume when the window
+            closes at 02:40 UTC.
+          </p>
+          <div class="mt-8">
+            <a
+              href="#status"
+              class="inline-flex h-10 min-w-[176px] items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-[filter,opacity] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-disabled:cursor-not-allowed aria-disabled:opacity-55 motion-reduce:transition-none pointer-fine:hover:not-aria-disabled:brightness-110"
+              >Follow on status page<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path></svg
+            ></a>
+          </div>
+          <p data-live aria-live="polite" class="sr-only"></p>
+        </div>
+        <div class="col-span-12 lg:col-span-6 lg:pt-8">
+          <div
+            class="relative rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) font-mono text-[13px] leading-relaxed"
+          >
+            <div
+              class="flex items-center justify-between border-b border-dashed border-(--iu-border) px-4 py-2.5 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+            >
+              <span>request.log</span
+              ><span class="inline-flex items-center gap-2"
+                ><span aria-hidden="true" class="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400"></span>503</span
+              >
+            </div>
+            <div class="p-[calc(16px*var(--iu-density))]">
+              <div
+                class="flex items-baseline justify-between text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+              >
+                <span>Window 02:00 – 02:40 UTC</span><span class="text-(--iu-foreground) tabular-nums">60%</span>
+              </div>
+              <div
+                role="progressbar"
+                aria-label="Maintenance progress"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="60"
+                class="mt-2 grid grid-cols-20 gap-0.5"
+              >
+                <span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-accent)"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span
+                ><span class="h-3 rounded-[1px] bg-(--iu-foreground)/12"></span>
+              </div>
+              <ol class="mt-4">
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  ><span class="text-(--iu-foreground)"
+                    >02:00 writes paused, snapshot taken<span class="sr-only"> (done)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="11"
+                      height="11"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  ><span class="text-(--iu-foreground)"
+                    >02:09 Postgres 16.4 → 17.2 upgraded<span class="sr-only"> (done)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-accent)"
+                    ><span class="size-1.5 rounded-full bg-(--iu-accent)"></span></span
+                  ><span class="text-(--iu-foreground)"
+                    >reindexing deployments (41 of 68 tables)<span class="sr-only"> (in progress)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-dashed border-(--iu-muted)"
+                  ></span
+                  ><span class="text-(--iu-muted)">02:40 writes resume<span class="sr-only"> (pending)</span></span>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-dashed border-(--iu-border) px-6 py-3 font-mono text-[11px] text-(--iu-muted) sm:px-10"
+      >
+        <span>req_01JB7X4M2Q9TFA</span><span>fra1</span><span>2026-10-27 14:06:52 UTC</span>
+      </footer>
+    </section>
+    <section
+      data-tarn-screen="rate-limited"
+      hidden
+      aria-labelledby="tarn-title-rate-limited"
+      class="@container flex min-h-[max(640px,100dvh)] flex-col bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <header
+        class="flex items-center justify-between gap-4 border-b border-dashed border-(--iu-border) px-6 py-4 sm:px-10"
+      >
+        <span class="flex items-center gap-2 text-sm font-semibold"
+          ><svg viewBox="0 0 20 20" aria-hidden="true" class="size-5">
+            <path
+              d="M2 16 10 3l8 13z"
+              class="fill-none stroke-(--iu-foreground)"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            ></path>
+            <path d="M6 16h8" class="stroke-(--iu-accent)" stroke-width="1.5" stroke-linecap="round"></path></svg
+          >Tarn</span
+        ><a
+          href="#status"
+          class="inline-flex items-center gap-2 rounded-[min(var(--iu-radius),8px)] px-2 py-1 font-mono text-xs text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+          ><span aria-hidden="true" class="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400"></span>All systems
+          normal</a
+        >
+      </header>
+      <div
+        class="mx-auto grid w-full max-w-[1200px] flex-1 grid-cols-12 content-center gap-x-6 gap-y-10 px-6 py-12 sm:px-10"
+      >
+        <div class="col-span-12 lg:col-span-6">
+          <p class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">
+            HTTP 429 · Too many requests
+          </p>
+          <p
+            aria-hidden="true"
+            class="relative mt-4 inline-block font-mono text-[clamp(5rem,3rem+9vw,10rem)] leading-none font-medium tracking-[-0.06em] text-(--iu-foreground) tabular-nums"
+          >
+            429<span class="absolute -top-2 -left-3 size-3 border-t border-l border-(--iu-muted)"></span
+            ><span class="absolute -right-3 -bottom-2 size-3 border-r border-b border-(--iu-muted)"></span>
+          </p>
+          <h1
+            id="tarn-title-rate-limited"
+            class="mt-8 max-w-[22ch] text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
+          >
+            This token hit its rate limit.
+          </h1>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+            Tokens can send 120 requests a minute. This one sent 143, most of them from one CI job polling the
+            deployments endpoint. The limit resets on its own.
+          </p>
+          <div class="mt-8">
+            <button
+              data-action
+              type="button"
+              aria-disabled="true"
+              class="inline-flex h-10 min-w-[176px] items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-[filter,opacity] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-disabled:cursor-not-allowed aria-disabled:opacity-55 motion-reduce:transition-none pointer-fine:hover:not-aria-disabled:brightness-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                <path d="M21 3v5h-5"></path></svg
+              ><span data-label>Retry in 27s</span>
+            </button>
+          </div>
+          <p data-live aria-live="polite" class="sr-only"></p>
+        </div>
+        <div class="col-span-12 lg:col-span-6 lg:pt-8">
+          <div
+            class="relative rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) font-mono text-[13px] leading-relaxed"
+          >
+            <div
+              class="flex items-center justify-between border-b border-dashed border-(--iu-border) px-4 py-2.5 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+            >
+              <span>request.log</span
+              ><span class="inline-flex items-center gap-2"
+                ><span aria-hidden="true" class="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400"></span>429</span
+              >
+            </div>
+            <div class="p-[calc(16px*var(--iu-density))]">
+              <div class="flex items-baseline justify-between">
+                <span class="text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">Resets in</span
+                ><span data-reset-clock class="text-3xl text-(--iu-foreground) tabular-nums">00:27</span>
+              </div>
+              <div aria-hidden="true" class="relative mt-4 flex h-16 items-end gap-px">
+                <span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 25%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-(--iu-foreground)/35"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 100%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 75%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span
+                ><span style="height: 50%" class="flex-1 rounded-t-[1px] bg-amber-500 dark:bg-amber-400"></span>
+              </div>
+              <p class="mt-2 flex justify-between text-[11px] text-(--iu-muted)">
+                <span>−60s</span
+                ><span
+                  ><span aria-hidden="true" class="mr-1 inline-block size-2 bg-amber-500 dark:bg-amber-400"></span>over
+                  limit</span
+                ><span>now</span>
+              </p>
+              <dl class="mt-4">
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Retry-After</dt>
+                  <dd data-retry-after class="min-w-0 break-words text-(--iu-foreground)">27</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Limit</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">120 / min</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Sent</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">143 in 60s</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Top caller</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">GET /v1/deployments · 118</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-dashed border-(--iu-border) px-6 py-3 font-mono text-[11px] text-(--iu-muted) sm:px-10"
+      >
+        <span>req_01JB7X4M2Q9TFA</span><span>fra1</span><span>2026-10-27 14:06:52 UTC</span>
+      </footer>
+    </section>
+    <section
+      data-tarn-screen="offline"
+      hidden
+      aria-labelledby="tarn-title-offline"
+      class="@container flex min-h-[max(640px,100dvh)] flex-col bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <header
+        class="flex items-center justify-between gap-4 border-b border-dashed border-(--iu-border) px-6 py-4 sm:px-10"
+      >
+        <span class="flex items-center gap-2 text-sm font-semibold"
+          ><svg viewBox="0 0 20 20" aria-hidden="true" class="size-5">
+            <path
+              d="M2 16 10 3l8 13z"
+              class="fill-none stroke-(--iu-foreground)"
+              stroke-width="1.5"
+              stroke-linejoin="round"
+            ></path>
+            <path d="M6 16h8" class="stroke-(--iu-accent)" stroke-width="1.5" stroke-linecap="round"></path></svg
+          >Tarn</span
+        ><a
+          href="#status"
+          class="inline-flex items-center gap-2 rounded-[min(var(--iu-radius),8px)] px-2 py-1 font-mono text-xs text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+          ><span aria-hidden="true" class="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400"></span>Status unknown
+          while offline</a
+        >
+      </header>
+      <div
+        class="mx-auto grid w-full max-w-[1200px] flex-1 grid-cols-12 content-center gap-x-6 gap-y-10 px-6 py-12 sm:px-10"
+      >
+        <div class="col-span-12 lg:col-span-6">
+          <p class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">Offline · No network</p>
+          <p
+            aria-hidden="true"
+            class="relative mt-4 inline-block font-mono text-[clamp(5rem,3rem+9vw,10rem)] leading-none font-medium tracking-[-0.06em] text-(--iu-foreground) tabular-nums"
+          >
+            OFF<span class="absolute -top-2 -left-3 size-3 border-t border-l border-(--iu-muted)"></span
+            ><span class="absolute -right-3 -bottom-2 size-3 border-r border-b border-(--iu-muted)"></span>
+          </p>
+          <h1
+            id="tarn-title-offline"
+            class="mt-8 max-w-[22ch] text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
+          >
+            You&#x27;re offline. Your edits are safe.
+          </h1>
+          <p class="mt-4 max-w-[52ch] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+            Tarn can&#x27;t reach the network from this device. Three changes are queued locally and will sync, in
+            order, as soon as the connection is back.
+          </p>
+          <div class="mt-8">
+            <button
+              data-action
+              type="button"
+              class="inline-flex h-10 min-w-[176px] items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-[filter,opacity] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-disabled:cursor-not-allowed aria-disabled:opacity-55 motion-reduce:transition-none pointer-fine:hover:not-aria-disabled:brightness-110"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 20h.01"></path>
+                <path d="M8.5 16.429a5 5 0 0 1 7 0"></path>
+                <path d="M5 12.859a10 10 0 0 1 5.17-2.69"></path>
+                <path d="M19 12.859a10 10 0 0 0-2.007-1.523"></path>
+                <path d="M2 8.82a15 15 0 0 1 4.177-2.643"></path>
+                <path d="M22 8.82a15 15 0 0 0-11.288-3.764"></path>
+                <path d="m2 2 20 20"></path></svg
+              ><span data-label>Reconnect now</span>
+            </button>
+          </div>
+          <p data-live aria-live="polite" class="sr-only"></p>
+        </div>
+        <div class="col-span-12 lg:col-span-6 lg:pt-8">
+          <div
+            class="relative rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) font-mono text-[13px] leading-relaxed"
+          >
+            <div
+              class="flex items-center justify-between border-b border-dashed border-(--iu-border) px-4 py-2.5 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+            >
+              <span>local.log</span
+              ><span class="inline-flex items-center gap-2"
+                ><span aria-hidden="true" class="size-1.5 rounded-full bg-amber-500 dark:bg-amber-400"></span
+                >offline</span
+              >
+            </div>
+            <div class="p-[calc(16px*var(--iu-density))]">
+              <dl>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Last sync</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">14:03:41 UTC</dd>
+                </div>
+                <div class="grid grid-cols-[112px_1fr] gap-3 py-1.5 @md:grid-cols-[140px_1fr]">
+                  <dt class="text-(--iu-muted)">Next try</dt>
+                  <dd class="min-w-0 break-words text-(--iu-foreground)">
+                    <span class="inline-flex items-center gap-2 tabular-nums"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg
+                      ><span data-attempt>attempt 4 in 8s</span></span
+                    >
+                  </dd>
+                </div>
+              </dl>
+              <p class="mt-4 text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">Queued locally · 3</p>
+              <ol class="mt-2">
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-dashed border-(--iu-muted)"
+                  ></span
+                  ><span class="text-(--iu-muted)"
+                    >env: set SENTRY_DSN on billing-api<span class="sr-only"> (pending)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-dashed border-(--iu-muted)"
+                  ></span
+                  ><span class="text-(--iu-muted)"
+                    >rename edge-cache → edge-cache-eu<span class="sr-only"> (pending)</span></span
+                  >
+                </li>
+                <li class="flex items-start gap-3 py-1.5">
+                  <span
+                    aria-hidden="true"
+                    class="mt-0.5 grid size-4 shrink-0 place-items-center rounded-[min(var(--iu-radius),4px)] border border-dashed border-(--iu-muted)"
+                  ></span
+                  ><span class="text-(--iu-muted)"
+                    >invite marta@northwind.dev<span class="sr-only"> (pending)</span></span
+                  >
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer
+        class="flex flex-wrap items-center gap-x-6 gap-y-1 border-t border-dashed border-(--iu-border) px-6 py-3 font-mono text-[11px] text-(--iu-muted) sm:px-10"
+      >
+        <span>req_01JB7X4M2Q9TFA</span><span>fra1</span><span>2026-10-27 14:06:52 UTC</span>
+      </footer>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var screens = Array.prototype.slice.call(document.querySelectorAll("[data-tarn-screen]"));
+        if (screens.length === 0) return;
+
+        // Show one screen: not-found, server-error, maintenance, rate-limited or offline.
+        window.setTarnScreen = function (kind) {
+          screens.forEach(function (screen) {
+            screen.hidden = screen.getAttribute("data-tarn-screen") !== kind;
+          });
+        };
+
+        function clock(seconds) {
+          var whole = Math.max(0, Math.floor(seconds));
+          return String(Math.floor(whole / 60)).padStart(2, "0") + ":" + String(whole % 60).padStart(2, "0");
+        }
+        function screen(kind) {
+          return document.querySelector('[data-tarn-screen="' + kind + '"]');
+        }
+
+        // 500: the incident timer counts up; Retry keeps its width and spins until the retry settles.
+        var failing = screen("server-error");
+        var incident = 252;
+        setInterval(function () {
+          if (failing.hidden) return;
+          incident += 1;
+          failing.querySelector("[data-incident-age]").textContent = clock(incident);
+        }, 1000);
+        var retry = failing.querySelector("[data-action]");
+        retry.addEventListener("click", function () {
+          if (retry.hasAttribute("aria-disabled")) return;
+          retry.setAttribute("aria-disabled", "true");
+          retry.querySelector("svg").classList.add("animate-spin", "motion-reduce:animate-none");
+          retry.querySelector("[data-label]").textContent = "Retrying";
+          failing.querySelector("[data-live]").textContent = "Retrying request";
+          failing.dispatchEvent(new CustomEvent("tarn:retry"));
+          setTimeout(function () {
+            retry.removeAttribute("aria-disabled");
+            retry.querySelector("svg").classList.remove("animate-spin", "motion-reduce:animate-none");
+            retry.querySelector("[data-label]").textContent = "Retry request";
+            failing.querySelector("[data-live]").textContent = "";
+          }, 1200);
+        });
+
+        // 429: the reset countdown ticks down and unlocks Retry now at zero.
+        var limited = screen("rate-limited");
+        var retryIn = 27;
+        var limitedButton = limited.querySelector("[data-action]");
+        setInterval(function () {
+          if (limited.hidden || retryIn === 0) return;
+          retryIn -= 1;
+          limited.querySelector("[data-reset-clock]").textContent = clock(retryIn);
+          limited.querySelector("[data-retry-after]").textContent = String(retryIn);
+          if (retryIn === 0) {
+            limitedButton.removeAttribute("aria-disabled");
+            limitedButton.querySelector("[data-label]").textContent = "Retry now";
+            limited.querySelector("[data-live]").textContent = "Rate limit reset. You can retry now.";
+          } else limitedButton.querySelector("[data-label]").textContent = "Retry in " + retryIn + "s";
+        }, 1000);
+        limitedButton.addEventListener("click", function () {
+          if (retryIn === 0) limited.dispatchEvent(new CustomEvent("tarn:retry"));
+        });
+
+        // Offline: count down to the next attempt with backoff, and reconnect as soon as the browser is online.
+        var offline = screen("offline");
+        var attempt = 3;
+        var wait = 8;
+        var next = wait;
+        function online() {
+          offline.querySelector("[data-live]").textContent = "Back online. Syncing 3 changes.";
+          offline.dispatchEvent(new CustomEvent("tarn:reconnect"));
+        }
+        function tryReconnect() {
+          if (navigator.onLine) return online();
+          attempt += 1;
+          wait = Math.min(64, wait * 2);
+          next = wait;
+          offline.querySelector("[data-live]").textContent = "Attempt " + attempt + " failed. Still offline.";
+          renderAttempt();
+        }
+        function renderAttempt() {
+          offline.querySelector("[data-attempt]").textContent = "attempt " + (attempt + 1) + " in " + next + "s";
+        }
+        setInterval(function () {
+          if (offline.hidden) return;
+          next = Math.max(0, next - 1);
+          renderAttempt();
+          if (next === 0) tryReconnect();
+        }, 1000);
+        offline.querySelector("[data-action]").addEventListener("click", tryReconnect);
+        window.addEventListener("online", function () {
+          if (!offline.hidden) online();
+        });
+      })();
+    </script>
+  </body>
+</html>

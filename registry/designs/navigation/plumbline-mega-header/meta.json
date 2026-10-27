@@ -1,0 +1,15 @@
+{
+  "slug": "plumbline-mega-header",
+  "name": "Plumbline mega header",
+  "category": "navigation",
+  "styleFamily": "swiss-minimal",
+  "tier": "free",
+  "description": "A strict-grid site header whose mega menu morphs its height between sections while a hairline marker slides to the open item. Numbered mobile sheet.",
+  "tags": ["navigation", "mega-menu", "header", "mobile-menu", "disclosure", "grid"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

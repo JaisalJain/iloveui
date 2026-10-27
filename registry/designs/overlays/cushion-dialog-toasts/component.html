@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cushion dialog and toasts · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-cushion
+      class="relative min-h-dvh bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--cd-line:color-mix(in_oklab,var(--iu-foreground)_42%,transparent)] [--cd-raised:var(--iu-surface)] [--cd-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_32%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_10%,transparent),0_1px_2px_color-mix(in_oklab,black_12%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_70%,transparent)] [--cd-sh-card:0_1px_1px_color-mix(in_oklab,black_4%,transparent),0_8px_20px_-10px_color-mix(in_oklab,black_14%,transparent)] [--cd-sh-panel:inset_0_1px_0_color-mix(in_oklab,white_70%,transparent),0_2px_4px_color-mix(in_oklab,black_5%,transparent),0_32px_72px_-24px_color-mix(in_oklab,black_32%,transparent)] [--cd-sh-pressed:inset_0_2px_5px_color-mix(in_oklab,black_28%,transparent),inset_0_1px_1px_color-mix(in_oklab,black_16%,transparent),0_0_0_0_transparent,0_0_0_0_transparent] [--cd-sh-thumb:0_1px_2px_color-mix(in_oklab,black_10%,transparent),0_4px_10px_-3px_color-mix(in_oklab,black_14%,transparent)] [--cd-sh-toast:0_1px_2px_color-mix(in_oklab,black_6%,transparent),0_14px_32px_-12px_color-mix(in_oklab,black_26%,transparent)] [--cd-sh-well:inset_0_1px_3px_color-mix(in_oklab,black_8%,transparent)] [--cd-tint:color-mix(in_oklab,var(--iu-accent)_10%,var(--iu-surface))] [--cd-well:color-mix(in_oklab,var(--iu-accent)_4%,color-mix(in_oklab,var(--iu-foreground)_3%,var(--iu-surface)))] dark:[--cd-line:color-mix(in_oklab,var(--iu-foreground)_38%,transparent)] dark:[--cd-raised:color-mix(in_oklab,var(--iu-foreground)_5%,var(--iu-surface))] dark:[--cd-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_26%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_14%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_35%,transparent)] dark:[--cd-sh-card:inset_0_1px_0_color-mix(in_oklab,white_4%,transparent),0_12px_28px_-16px_color-mix(in_oklab,black_70%,transparent)] dark:[--cd-sh-panel:inset_0_1px_0_color-mix(in_oklab,white_7%,transparent),0_32px_72px_-24px_color-mix(in_oklab,black_80%,transparent)] dark:[--cd-sh-pressed:inset_0_2px_6px_color-mix(in_oklab,black_45%,transparent),inset_0_1px_1px_color-mix(in_oklab,black_30%,transparent),0_0_0_0_transparent,0_0_0_0_transparent] dark:[--cd-sh-thumb:inset_0_1px_0_color-mix(in_oklab,white_9%,transparent),0_1px_2px_color-mix(in_oklab,black_45%,transparent),0_4px_10px_-3px_color-mix(in_oklab,black_50%,transparent)] dark:[--cd-sh-toast:inset_0_1px_0_color-mix(in_oklab,white_6%,transparent),0_16px_36px_-12px_color-mix(in_oklab,black_80%,transparent)] dark:[--cd-sh-well:inset_0_1px_2px_color-mix(in_oklab,black_45%,transparent)] dark:[--cd-tint:color-mix(in_oklab,var(--iu-accent)_16%,var(--iu-surface))] dark:[--cd-well:color-mix(in_oklab,var(--iu-accent)_3%,color-mix(in_oklab,var(--iu-background)_55%,var(--iu-surface)))]"
+    >
+      <div data-page inert class="mx-auto max-w-[880px] px-4 pt-6 pb-40 sm:px-8 sm:pt-10">
+        <header class="flex items-center justify-between gap-4">
+          <span class="inline-flex items-center gap-2.5 text-[15px] font-semibold tracking-[-0.01em]">
+            <svg aria-hidden="true" viewBox="0 0 24 24" class="size-7">
+              <rect width="24" height="24" rx="8" class="fill-(--iu-accent)" />
+              <path
+                d="M6.5 11.6 17.2 7l-3.4 10.4-2.6-4.1-4.7-1.7Z"
+                class="fill-(--iu-accent-foreground)"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Paperlane
+          </span>
+          <span class="inline-flex items-center gap-2 text-sm text-(--iu-muted)">
+            <span class="hidden sm:inline">Mara Lindgren</span>
+            <span
+              aria-hidden="true"
+              class="grid size-8 place-items-center rounded-full bg-(--cd-tint) text-[11px] font-semibold text-(--iu-foreground)"
+              >ML</span
+            >
+          </span>
+        </header>
+
+        <div class="mt-10 flex flex-wrap items-end justify-between gap-4 sm:mt-14">
+          <div>
+            <h1 class="text-[32px]/[1.1] font-semibold tracking-[-0.03em] text-balance sm:text-[40px]/[1.05]">
+              Drafts
+            </h1>
+            <p class="mt-2 text-[15px] text-pretty text-(--iu-muted)">
+              3 issues ready for a send slot · 12,847 subscribers
+            </p>
+          </div>
+        </div>
+
+        <ul class="mt-8 flex flex-col gap-[calc(12px*var(--iu-density))]">
+          <li
+            class="flex flex-col gap-4 rounded-[max(var(--iu-radius),20px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(16px*var(--iu-density))] shadow-(--cd-sh-card) sm:flex-row sm:items-center sm:p-[calc(20px*var(--iu-density))] dark:border-(--iu-foreground)/8"
+          >
+            <div class="flex min-w-0 flex-1 items-center gap-4">
+              <span
+                aria-hidden="true"
+                class="grid size-12 shrink-0 place-items-center rounded-[max(var(--iu-radius),14px)] bg-(--cd-well) font-mono text-sm font-semibold tabular-nums shadow-(--cd-sh-well)"
+                >#48</span
+              >
+              <div class="min-w-0">
+                <h2 class="truncate text-base font-semibold tracking-[-0.01em]">
+                  <span class="sr-only">Issue #48: </span>The slow web, part two
+                </h2>
+                <p class="mt-0.5 text-[13px] text-(--iu-muted) tabular-nums">1,284 words · Edited 12 min ago</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-3 sm:justify-end">
+              <span
+                data-chip="48"
+                class="inline-flex h-8 items-center rounded-full px-3 text-[13px] font-medium text-(--iu-muted) ring-1 ring-(--iu-border) ring-inset"
+                >Draft</span
+              >
+              <button
+                type="button"
+                data-trigger="48"
+                aria-haspopup="dialog"
+                class="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-(--cd-line) bg-(--cd-raised) px-4 text-sm font-medium text-(--iu-foreground) shadow-(--cd-sh-card) transition-[translate,scale,box-shadow,background-color] duration-200 ease-out active:translate-y-0 active:scale-[0.97] active:shadow-(--cd-sh-pressed) motion-reduce:transition-none pointer-fine:hover:-translate-y-px"
+              >
+                Schedule
+              </button>
+            </div>
+          </li>
+          <li
+            class="flex flex-col gap-4 rounded-[max(var(--iu-radius),20px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(16px*var(--iu-density))] shadow-(--cd-sh-card) sm:flex-row sm:items-center sm:p-[calc(20px*var(--iu-density))] dark:border-(--iu-foreground)/8"
+          >
+            <div class="flex min-w-0 flex-1 items-center gap-4">
+              <span
+                aria-hidden="true"
+                class="grid size-12 shrink-0 place-items-center rounded-[max(var(--iu-radius),14px)] bg-(--cd-well) font-mono text-sm font-semibold tabular-nums shadow-(--cd-sh-well)"
+                >#49</span
+              >
+              <div class="min-w-0">
+                <h2 class="truncate text-base font-semibold tracking-[-0.01em]">
+                  <span class="sr-only">Issue #49: </span>Notes from a 4 kB homepage
+                </h2>
+                <p class="mt-0.5 text-[13px] text-(--iu-muted) tabular-nums">932 words · Edited yesterday</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-3 sm:justify-end">
+              <span
+                data-chip="49"
+                class="inline-flex h-8 items-center rounded-full px-3 text-[13px] font-medium text-(--iu-muted) ring-1 ring-(--iu-border) ring-inset"
+                >Draft</span
+              >
+              <button
+                type="button"
+                data-trigger="49"
+                aria-haspopup="dialog"
+                class="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-(--cd-line) bg-(--cd-raised) px-4 text-sm font-medium text-(--iu-foreground) shadow-(--cd-sh-card) transition-[translate,scale,box-shadow,background-color] duration-200 ease-out active:translate-y-0 active:scale-[0.97] active:shadow-(--cd-sh-pressed) motion-reduce:transition-none pointer-fine:hover:-translate-y-px"
+              >
+                Schedule
+              </button>
+            </div>
+          </li>
+          <li
+            class="flex flex-col gap-4 rounded-[max(var(--iu-radius),20px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(16px*var(--iu-density))] shadow-(--cd-sh-card) sm:flex-row sm:items-center sm:p-[calc(20px*var(--iu-density))] dark:border-(--iu-foreground)/8"
+          >
+            <div class="flex min-w-0 flex-1 items-center gap-4">
+              <span
+                aria-hidden="true"
+                class="grid size-12 shrink-0 place-items-center rounded-[max(var(--iu-radius),14px)] bg-(--cd-well) font-mono text-sm font-semibold tabular-nums shadow-(--cd-sh-well)"
+                >#50</span
+              >
+              <div class="min-w-0">
+                <h2 class="truncate text-base font-semibold tracking-[-0.01em]">
+                  <span class="sr-only">Issue #50: </span>What we cut from the editor
+                </h2>
+                <p class="mt-0.5 text-[13px] text-(--iu-muted) tabular-nums">2,106 words · Edited 21 Oct</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-3 sm:justify-end">
+              <span
+                data-chip="50"
+                class="inline-flex h-8 items-center rounded-full px-3 text-[13px] font-medium text-(--iu-muted) ring-1 ring-(--iu-border) ring-inset"
+                >Draft</span
+              >
+              <button
+                type="button"
+                data-trigger="50"
+                aria-haspopup="dialog"
+                class="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-(--cd-line) bg-(--cd-raised) px-4 text-sm font-medium text-(--iu-foreground) shadow-(--cd-sh-card) transition-[translate,scale,box-shadow,background-color] duration-200 ease-out active:translate-y-0 active:scale-[0.97] active:shadow-(--cd-sh-pressed) motion-reduce:transition-none pointer-fine:hover:-translate-y-px"
+              >
+                Schedule
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        data-layer
+        data-state="open"
+        class="group/layer fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6"
+      >
+        <div
+          data-scrim
+          aria-hidden="true"
+          class="absolute inset-0 bg-black/35 transition-opacity duration-200 group-data-[state=closed]/layer:opacity-0 motion-reduce:transition-none dark:bg-black/65"
+        ></div>
+        <div
+          data-dialog
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cushion-title"
+          aria-describedby="cushion-description"
+          class="relative flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[max(var(--iu-radius),28px)] border border-(--iu-border) bg-(--iu-surface) shadow-(--cd-sh-panel) transition-[translate,scale,opacity] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[state=closed]/layer:translate-y-full motion-reduce:transition-none sm:max-h-[min(88dvh,760px)] sm:max-w-[480px] sm:rounded-[max(var(--iu-radius),28px)] sm:group-data-[state=closed]/layer:translate-y-3 sm:group-data-[state=closed]/layer:scale-[0.97] sm:group-data-[state=closed]/layer:opacity-0 dark:border-(--iu-foreground)/10 dark:bg-(--cd-raised)"
+        >
+          <div data-drag class="flex touch-none justify-center pt-3 pb-1 sm:hidden">
+            <span aria-hidden="true" class="h-1.5 w-10 rounded-full bg-(--iu-foreground)/20"></span>
+          </div>
+          <div data-drag class="flex items-start gap-4 px-5 pt-3 pb-5 sm:px-7 sm:pt-7">
+            <span
+              aria-hidden="true"
+              class="grid size-11 shrink-0 place-items-center rounded-[max(var(--iu-radius),14px)] bg-(--cd-tint) text-(--iu-foreground)"
+            >
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M16 14v2.2l1.6 1" />
+                <path d="M16 2v4" />
+                <path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5" />
+                <path d="M3 10h5" />
+                <path d="M8 2v4" />
+                <circle cx="16" cy="16" r="6" />
+              </svg>
+            </span>
+            <div class="min-w-0 flex-1 pt-0.5">
+              <h2 id="cushion-title" class="text-lg/6 font-semibold tracking-[-0.02em] text-balance">
+                Schedule issue #<span data-issue-number>48</span>
+              </h2>
+              <p id="cushion-description" class="mt-1 text-sm text-pretty text-(--iu-muted)">
+                “<span data-issue-title>The slow web, part two</span>” goes to 12,847 subscribers.
+              </p>
+            </div>
+            <button
+              type="button"
+              data-close
+              aria-label="Close"
+              class="-mt-1 -mr-2 grid size-10 shrink-0 place-items-center rounded-full text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+            >
+              <svg
+                aria-hidden="true"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="flex [scrollbar-gutter:stable] flex-col gap-[calc(20px*var(--iu-density))] overflow-y-auto px-5 pb-2 sm:px-7"
+          >
+            <fieldset data-fields>
+              <legend class="mb-2 text-[13px] font-semibold">Day</legend>
+              <div class="relative grid grid-cols-3 gap-1 rounded-full bg-(--cd-well) p-1 shadow-(--cd-sh-well)">
+                <span
+                  data-thumb
+                  aria-hidden="true"
+                  class="absolute top-1 bottom-1 left-1 w-[calc((100%-16px)/3)] rounded-full bg-(--cd-raised) shadow-(--cd-sh-thumb) transition-transform duration-300 ease-[cubic-bezier(0.3,1.25,0.5,1)] motion-reduce:transition-none dark:bg-(--iu-foreground)/12"
+                  style="transform: translateX(calc(100% + 4px))"
+                ></span>
+                <label
+                  class="relative flex h-12 cursor-pointer flex-col items-center justify-center rounded-full text-center has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent)"
+                >
+                  <input type="radio" name="cushion-day" value="tue" class="sr-only" />
+                  <span class="relative text-[13px]/4 font-semibold">Today</span>
+                  <span class="relative text-[12px]/4 text-(--iu-muted) tabular-nums">Tue 27</span>
+                </label>
+                <label
+                  class="relative flex h-12 cursor-pointer flex-col items-center justify-center rounded-full text-center has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent)"
+                >
+                  <input type="radio" name="cushion-day" value="wed" checked class="sr-only" />
+                  <span class="relative text-[13px]/4 font-semibold">Tomorrow</span>
+                  <span class="relative text-[12px]/4 text-(--iu-muted) tabular-nums">Wed 28</span>
+                </label>
+                <label
+                  class="relative flex h-12 cursor-pointer flex-col items-center justify-center rounded-full text-center has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent)"
+                >
+                  <input type="radio" name="cushion-day" value="thu" class="sr-only" />
+                  <span class="relative text-[13px]/4 font-semibold">Thursday</span>
+                  <span class="relative text-[12px]/4 text-(--iu-muted) tabular-nums">Thu 29</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset data-fields>
+              <legend class="mb-2 flex w-full items-baseline justify-between gap-3 text-[13px] font-semibold">
+                Send time
+                <span class="text-[12px] font-normal text-(--iu-muted)">Predicted opens</span>
+              </legend>
+              <div class="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <label
+                  data-slot
+                  data-passed-today
+                  class="group/slot relative flex cursor-pointer flex-col gap-2 rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) p-3 transition-[translate,box-shadow,border-color,background-color] duration-200 ease-out has-checked:border-(--iu-foreground)/60 has-checked:bg-(--cd-tint) has-checked:shadow-(--cd-sh-card) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) data-passed:cursor-not-allowed data-passed:border-dashed data-passed:bg-transparent motion-reduce:transition-none dark:border-(--iu-foreground)/12 dark:bg-transparent dark:has-checked:border-(--iu-foreground)/50 dark:has-checked:bg-(--cd-tint) pointer-fine:hover:-translate-y-px pointer-fine:data-passed:hover:translate-y-0"
+                >
+                  <input type="radio" name="cushion-time" value="07:30" class="sr-only" />
+                  <span class="flex items-center justify-between gap-2">
+                    <span data-time class="text-lg/6 font-semibold tracking-[-0.02em] tabular-nums">07:30</span>
+                  </span>
+                  <span data-passed-note hidden class="text-[12px]/4 text-(--iu-muted)">Passed today</span>
+                  <span data-bar class="flex items-center gap-2">
+                    <span aria-hidden="true" class="h-1.5 flex-1 rounded-full bg-(--iu-foreground)/10">
+                      <span
+                        class="block h-full rounded-full bg-(--iu-foreground)/55 group-has-checked/slot:bg-(--iu-accent)"
+                        style="width: 82.6087%"
+                      ></span>
+                    </span>
+                    <span class="text-[12px]/4 text-(--iu-muted) tabular-nums"
+                      ><span class="sr-only">Predicted opens </span>38%</span
+                    >
+                  </span>
+                </label>
+                <label
+                  data-slot
+                  data-passed-today
+                  class="group/slot relative flex cursor-pointer flex-col gap-2 rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) p-3 transition-[translate,box-shadow,border-color,background-color] duration-200 ease-out has-checked:border-(--iu-foreground)/60 has-checked:bg-(--cd-tint) has-checked:shadow-(--cd-sh-card) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) data-passed:cursor-not-allowed data-passed:border-dashed data-passed:bg-transparent motion-reduce:transition-none dark:border-(--iu-foreground)/12 dark:bg-transparent dark:has-checked:border-(--iu-foreground)/50 dark:has-checked:bg-(--cd-tint) pointer-fine:hover:-translate-y-px pointer-fine:data-passed:hover:translate-y-0"
+                >
+                  <input type="radio" name="cushion-time" value="09:00" checked class="sr-only" />
+                  <span class="flex items-center justify-between gap-2">
+                    <span data-time class="text-lg/6 font-semibold tracking-[-0.02em] tabular-nums">09:00</span>
+                    <span
+                      data-best
+                      class="rounded-full bg-(--iu-accent) px-1.5 py-px text-[11px] font-semibold text-(--iu-accent-foreground)"
+                      >Best</span
+                    >
+                  </span>
+                  <span data-passed-note hidden class="text-[12px]/4 text-(--iu-muted)">Passed today</span>
+                  <span data-bar class="flex items-center gap-2">
+                    <span aria-hidden="true" class="h-1.5 flex-1 rounded-full bg-(--iu-foreground)/10">
+                      <span
+                        class="block h-full rounded-full bg-(--iu-foreground)/55 group-has-checked/slot:bg-(--iu-accent)"
+                        style="width: 100%"
+                      ></span>
+                    </span>
+                    <span class="text-[12px]/4 text-(--iu-muted) tabular-nums"
+                      ><span class="sr-only">Predicted opens </span>46%</span
+                    >
+                  </span>
+                </label>
+                <label
+                  data-slot
+                  class="group/slot relative flex cursor-pointer flex-col gap-2 rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) p-3 transition-[translate,box-shadow,border-color,background-color] duration-200 ease-out has-checked:border-(--iu-foreground)/60 has-checked:bg-(--cd-tint) has-checked:shadow-(--cd-sh-card) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) data-passed:cursor-not-allowed data-passed:border-dashed data-passed:bg-transparent motion-reduce:transition-none dark:border-(--iu-foreground)/12 dark:bg-transparent dark:has-checked:border-(--iu-foreground)/50 dark:has-checked:bg-(--cd-tint) pointer-fine:hover:-translate-y-px pointer-fine:data-passed:hover:translate-y-0"
+                >
+                  <input type="radio" name="cushion-time" value="12:15" class="sr-only" />
+                  <span class="flex items-center justify-between gap-2">
+                    <span data-time class="text-lg/6 font-semibold tracking-[-0.02em] tabular-nums">12:15</span>
+                  </span>
+                  <span data-passed-note hidden class="text-[12px]/4 text-(--iu-muted)">Passed today</span>
+                  <span data-bar class="flex items-center gap-2">
+                    <span aria-hidden="true" class="h-1.5 flex-1 rounded-full bg-(--iu-foreground)/10">
+                      <span
+                        class="block h-full rounded-full bg-(--iu-foreground)/55 group-has-checked/slot:bg-(--iu-accent)"
+                        style="width: 67.3913%"
+                      ></span>
+                    </span>
+                    <span class="text-[12px]/4 text-(--iu-muted) tabular-nums"
+                      ><span class="sr-only">Predicted opens </span>31%</span
+                    >
+                  </span>
+                </label>
+                <label
+                  data-slot
+                  class="group/slot relative flex cursor-pointer flex-col gap-2 rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) p-3 transition-[translate,box-shadow,border-color,background-color] duration-200 ease-out has-checked:border-(--iu-foreground)/60 has-checked:bg-(--cd-tint) has-checked:shadow-(--cd-sh-card) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) data-passed:cursor-not-allowed data-passed:border-dashed data-passed:bg-transparent motion-reduce:transition-none dark:border-(--iu-foreground)/12 dark:bg-transparent dark:has-checked:border-(--iu-foreground)/50 dark:has-checked:bg-(--cd-tint) pointer-fine:hover:-translate-y-px pointer-fine:data-passed:hover:translate-y-0"
+                >
+                  <input type="radio" name="cushion-time" value="17:45" class="sr-only" />
+                  <span class="flex items-center justify-between gap-2">
+                    <span data-time class="text-lg/6 font-semibold tracking-[-0.02em] tabular-nums">17:45</span>
+                  </span>
+                  <span data-passed-note hidden class="text-[12px]/4 text-(--iu-muted)">Passed today</span>
+                  <span data-bar class="flex items-center gap-2">
+                    <span aria-hidden="true" class="h-1.5 flex-1 rounded-full bg-(--iu-foreground)/10">
+                      <span
+                        class="block h-full rounded-full bg-(--iu-foreground)/55 group-has-checked/slot:bg-(--iu-accent)"
+                        style="width: 58.6957%"
+                      ></span>
+                    </span>
+                    <span class="text-[12px]/4 text-(--iu-muted) tabular-nums"
+                      ><span class="sr-only">Predicted opens </span>27%</span
+                    >
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="flex items-center justify-between gap-4">
+              <div class="min-w-0">
+                <p id="cushion-zone" class="flex items-center gap-2 text-sm font-semibold">
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                    <path d="M2 12h20" />
+                  </svg>
+                  Deliver in each reader’s time zone
+                </p>
+                <p class="mt-0.5 text-[13px] text-pretty text-(--iu-muted)">
+                  <span data-zone-time>09:00</span> in Lisbon, Toronto and Pune alike.
+                </p>
+              </div>
+              <button
+                type="button"
+                role="switch"
+                aria-checked="true"
+                aria-labelledby="cushion-zone"
+                data-switch
+                data-on
+                class="group/switch relative h-8 w-[52px] shrink-0 rounded-full border border-(--cd-line) bg-(--cd-well) shadow-(--cd-sh-well) transition-colors duration-200 disabled:opacity-60 data-on:border-transparent data-on:bg-(--iu-accent) data-on:shadow-none motion-reduce:transition-none pointer-coarse:h-10 pointer-coarse:w-16"
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute top-[3px] left-[3px] size-6 rounded-full bg-(--iu-surface) shadow-(--cd-sh-thumb) transition-transform duration-300 ease-[cubic-bezier(0.3,1.35,0.5,1)] group-data-on/switch:translate-x-5 motion-reduce:transition-none pointer-coarse:top-[5px] pointer-coarse:left-[5px] pointer-coarse:size-7 pointer-coarse:group-data-on/switch:translate-x-6"
+                ></span>
+              </button>
+            </div>
+
+            <div
+              class="relative overflow-hidden rounded-[max(var(--iu-radius),18px)] bg-(--cd-well) px-4 py-3.5 shadow-(--cd-sh-well)"
+            >
+              <div data-summary>
+                <p data-summary-when class="text-[15px] font-semibold tabular-nums">Wed 28 Oct at 09:00</p>
+                <p data-summary-who class="mt-0.5 text-[13px] text-(--iu-muted) tabular-nums">
+                  12,847 readers · in their own time zone
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-2 flex flex-col-reverse gap-2 border-t border-(--iu-border) px-5 pt-4 pb-[max(20px,env(safe-area-inset-bottom))] sm:flex-row sm:justify-end sm:px-7 sm:pb-6 dark:border-(--iu-foreground)/8"
+          >
+            <button
+              type="button"
+              data-cancel
+              class="inline-flex h-11 items-center justify-center rounded-full px-5 text-sm font-medium text-(--iu-foreground) transition-[background-color,scale] duration-200 ease-out active:scale-[0.97] disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              data-submit
+              aria-describedby="cushion-status"
+              class="relative inline-grid h-11 items-center rounded-full bg-(--iu-accent) px-5 text-sm font-semibold text-(--iu-accent-foreground) shadow-(--cd-sh-btn) transition-[translate,scale,box-shadow,filter] duration-200 ease-out active:translate-y-0 active:scale-[0.97] active:shadow-(--cd-sh-pressed) disabled:cursor-progress disabled:active:scale-100 motion-reduce:transition-none pointer-fine:hover:-translate-y-px pointer-fine:hover:brightness-105"
+            >
+              <span
+                data-label-idle
+                class="col-start-1 row-start-1 transition-opacity duration-150 motion-reduce:transition-none"
+                >Schedule issue</span
+              >
+              <span
+                data-label-busy
+                aria-hidden="true"
+                class="col-start-1 row-start-1 inline-flex items-center justify-center gap-2 opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="animate-spin motion-reduce:animate-none"
+                >
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                </svg>
+                Scheduling
+              </span>
+            </button>
+            <span id="cushion-status" data-status-text class="sr-only"
+              >Wed 28 Oct at 09:00, 12,847 readers · in their own time zone</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <section
+        aria-label="Notifications"
+        data-toaster
+        inert
+        class="pointer-events-none fixed inset-x-4 bottom-4 z-[60] sm:right-6 sm:bottom-6 sm:left-auto sm:w-[384px]"
+      >
+        <div
+          data-toast-bar
+          hidden
+          class="pointer-events-auto absolute inset-x-0 flex h-10 items-center justify-between rounded-full border border-(--iu-border) bg-(--cd-raised) pr-1 pl-4 shadow-(--cd-sh-toast) dark:border-(--iu-foreground)/10"
+        >
+          <span
+            class="inline-flex items-center gap-2 font-mono text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+          >
+            <span aria-hidden="true" class="flex gap-0.5">
+              <span class="h-2.5 w-[3px] rounded-full bg-(--iu-muted)"></span>
+              <span class="h-2.5 w-[3px] rounded-full bg-(--iu-muted)"></span>
+            </span>
+            Paused · <span data-toast-count>0</span> notifications
+          </span>
+          <button
+            type="button"
+            data-clear
+            class="h-8 rounded-full px-3 text-[12px] font-semibold text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/8"
+          >
+            Clear all
+          </button>
+        </div>
+        <ol
+          data-toasts
+          tabindex="-1"
+          aria-label="Notifications, F8 to focus"
+          class="relative rounded-[max(var(--iu-radius),18px)] outline-none"
+          style="height: 0px"
+        ></ol>
+      </section>
+      <p data-announcer role="status" class="sr-only"></p>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-cushion]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var smallQuery = window.matchMedia("(max-width: 639px)");
+        var FOCUSABLE = 'button:not([disabled]), [href], input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        var TOAST_HEIGHT = 76,
+          TOAST_GAP = 10,
+          PEEK = 14;
+        var DAYS = {
+          tue: { long: "Tue 27 Oct", today: true },
+          wed: { long: "Wed 28 Oct" },
+          thu: { long: "Thu 29 Oct" },
+        };
+        var DAY_ORDER = ["tue", "wed", "thu"];
+        var ISSUES = {
+          48: { number: 48, title: "The slow web, part two" },
+          49: { number: 49, title: "Notes from a 4 kB homepage" },
+          50: { number: 50, title: "What we cut from the editor" },
+        };
+        var ICON_CHECK =
+          '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>';
+        var ICON_UNDO =
+          '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>';
+        var ICON_CAL =
+          '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 14v2.2l1.6 1"/><path d="M16 2v4"/><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M3 10h5"/><path d="M8 2v4"/><circle cx="16" cy="16" r="6"/></svg>';
+
+        var page = root.querySelector("[data-page]");
+        var layer = root.querySelector("[data-layer]");
+        var dialog = root.querySelector("[data-dialog]");
+        var toaster = root.querySelector("[data-toaster]");
+        var list = root.querySelector("[data-toasts]");
+        var bar = root.querySelector("[data-toast-bar]");
+        var announcer = root.querySelector("[data-announcer]");
+        var submitButton = root.querySelector("[data-submit]");
+        var switchButton = root.querySelector("[data-switch]");
+        var thumb = root.querySelector("[data-thumb]");
+
+        var state = { openId: "48", day: "wed", time: "09:00", zone: true, busy: false, scheduled: {} };
+        var returnTo = null;
+        var toasts = [];
+        var hovered = false,
+          focused = false,
+          hidden = false;
+
+        function announce(text) {
+          announcer.textContent = text;
+        }
+
+        /* ---------------- dialog */
+        function setOpen(open) {
+          page.inert = open;
+          toaster.inert = open;
+          document.body.style.overflow = open ? "hidden" : "";
+          if (open) {
+            layer.hidden = false;
+            void layer.offsetWidth;
+            layer.dataset.state = "open";
+          } else {
+            layer.dataset.state = "closed";
+            dialog.style.transform = "";
+            setTimeout(
+              function () {
+                if (layer.dataset.state === "closed") layer.hidden = true;
+              },
+              reduce ? 0 : 300,
+            );
+          }
+        }
+
+        function openDialog(issueId, trigger) {
+          var issue = ISSUES[issueId];
+          state.openId = issueId;
+          returnTo = trigger;
+          root.querySelector("[data-issue-number]").textContent = issue.number;
+          root.querySelector("[data-issue-title]").textContent = issue.title;
+          setOpen(true);
+          requestAnimationFrame(function () {
+            var checked = dialog.querySelector('input[name="cushion-day"]:checked');
+            if (checked) checked.focus();
+          });
+        }
+
+        function closeDialog() {
+          if (state.busy || !state.openId) return;
+          var target = returnTo || root.querySelector('[data-trigger="' + state.openId + '"]');
+          state.openId = null;
+          returnTo = null;
+          setOpen(false);
+          requestAnimationFrame(function () {
+            if (target) target.focus();
+          });
+        }
+
+        root.querySelector("[data-close]").addEventListener("click", closeDialog);
+        root.querySelector("[data-cancel]").addEventListener("click", closeDialog);
+        root.querySelector("[data-scrim]").addEventListener("click", closeDialog);
+        root.querySelectorAll("[data-trigger]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            openDialog(button.getAttribute("data-trigger"), button);
+          });
+        });
+
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "F8" && !state.openId) {
+            event.preventDefault();
+            list.focus();
+            return;
+          }
+          if (!state.openId) return;
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeDialog();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var nodes = Array.prototype.filter.call(dialog.querySelectorAll(FOCUSABLE), function (node) {
+            return !(node.type === "radio" && !node.checked);
+          });
+          var first = nodes[0],
+            last = nodes[nodes.length - 1];
+          var active = document.activeElement;
+          if (!dialog.contains(active)) {
+            event.preventDefault();
+            (event.shiftKey ? last : first).focus();
+          } else if (event.shiftKey && active === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && active === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+
+        /* Bottom sheet: drag the handle or header down to dismiss on small screens. */
+        root.querySelectorAll("[data-drag]").forEach(function (handle) {
+          handle.addEventListener("pointerdown", function (event) {
+            if (!smallQuery.matches || event.target.closest("button")) return;
+            var startY = event.clientY,
+              startT = performance.now(),
+              dy = 0;
+            dialog.style.transition = "none";
+            handle.setPointerCapture(event.pointerId);
+            function move(e) {
+              dy = e.clientY - startY;
+              dialog.style.transform = "translateY(" + (dy > 0 ? dy : dy * 0.04) + "px)";
+            }
+            function up() {
+              handle.removeEventListener("pointermove", move);
+              handle.removeEventListener("pointerup", up);
+              handle.removeEventListener("pointercancel", up);
+              dialog.style.transition = "";
+              var velocity = dy / Math.max(1, performance.now() - startT);
+              dialog.style.transform = "";
+              if (dy > 120 || velocity > 0.6) closeDialog();
+            }
+            handle.addEventListener("pointermove", move);
+            handle.addEventListener("pointerup", up);
+            handle.addEventListener("pointercancel", up);
+          });
+        });
+
+        /* ---------------- fields */
+        function render(fromChange) {
+          var day = DAYS[state.day];
+          thumb.style.transform = "translateX(calc(" + DAY_ORDER.indexOf(state.day) + " * (100% + 4px)))";
+          root.querySelectorAll("[data-slot]").forEach(function (label) {
+            var input = label.querySelector("input");
+            var passed = Boolean(day.today && label.hasAttribute("data-passed-today"));
+            input.disabled = passed;
+            input.checked = input.value === state.time;
+            label.toggleAttribute("data-passed", passed);
+            label.querySelector("[data-time]").classList.toggle("text-(--iu-muted)", passed);
+            label.querySelector("[data-time]").classList.toggle("line-through", passed);
+            label.querySelector("[data-time]").classList.toggle("decoration-1", passed);
+            label.querySelector("[data-bar]").hidden = passed;
+            label.querySelector("[data-passed-note]").hidden = !passed;
+            var best = label.querySelector("[data-best]");
+            if (best) best.hidden = passed;
+          });
+          switchButton.setAttribute("aria-checked", String(state.zone));
+          switchButton.toggleAttribute("data-on", state.zone);
+          var when = day.long + " at " + state.time;
+          var who = "12,847 readers · " + (state.zone ? "in their own time zone" : "Lisbon time (WET)");
+          root.querySelector("[data-summary-when]").textContent = when;
+          root.querySelector("[data-summary-who]").textContent = who;
+          root.querySelector("[data-zone-time]").textContent = state.time;
+          root.querySelector("[data-status-text]").textContent = when + ", " + who;
+          if (fromChange && !reduce) {
+            root.querySelector("[data-summary]").animate(
+              [
+                { opacity: 0, transform: "translateY(6px)" },
+                { opacity: 1, transform: "none" },
+              ],
+              { duration: 180, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+            );
+          }
+        }
+
+        root.querySelectorAll('input[name="cushion-day"]').forEach(function (input) {
+          input.addEventListener("change", function () {
+            state.day = input.value;
+            if (DAYS[state.day].today) {
+              var current = root.querySelector('[data-slot] input[value="' + state.time + '"]');
+              if (current && current.closest("[data-slot]").hasAttribute("data-passed-today")) {
+                var open = root.querySelector("[data-slot]:not([data-passed-today]) input");
+                announce(state.time + " has passed today. Moved to " + open.value + ".");
+                state.time = open.value;
+              }
+            }
+            render(true);
+          });
+        });
+        root.querySelectorAll('input[name="cushion-time"]').forEach(function (input) {
+          input.addEventListener("change", function () {
+            state.time = input.value;
+            render(true);
+          });
+        });
+        switchButton.addEventListener("click", function () {
+          state.zone = !state.zone;
+          render(true);
+        });
+
+        function setBusy(busy) {
+          state.busy = busy;
+          submitButton.disabled = busy;
+          root.querySelector("[data-close]").disabled = busy;
+          root.querySelector("[data-cancel]").disabled = busy;
+          switchButton.disabled = busy;
+          root.querySelectorAll("[data-fields]").forEach(function (fieldset) {
+            fieldset.disabled = busy;
+          });
+          var idle = root.querySelector("[data-label-idle]");
+          var spinning = root.querySelector("[data-label-busy]");
+          idle.classList.toggle("opacity-0", busy);
+          idle.setAttribute("aria-hidden", String(busy));
+          spinning.classList.toggle("opacity-0", !busy);
+          spinning.setAttribute("aria-hidden", String(!busy));
+        }
+
+        submitButton.addEventListener("click", function () {
+          if (state.busy || !state.openId) return;
+          var issueId = state.openId;
+          var schedule = { day: state.day, time: state.time, zone: state.zone };
+          setBusy(true);
+          setTimeout(function () {
+            setBusy(false);
+            state.scheduled[issueId] = schedule;
+            renderCard(issueId);
+            closeDialog();
+            pushToast({
+              id: "scheduled-" + issueId + "-" + Date.now(),
+              issueId: issueId,
+              title: "Issue #" + ISSUES[issueId].number + " scheduled",
+              description:
+                DAYS[schedule.day].long +
+                ", " +
+                schedule.time +
+                " · " +
+                (schedule.zone ? "each reader’s time zone" : "Lisbon time (WET)"),
+              tone: "success",
+              action: "Undo",
+              duration: 6000,
+            });
+          }, 1100);
+        });
+
+        function renderCard(issueId) {
+          var slot = state.scheduled[issueId];
+          var chip = root.querySelector('[data-chip="' + issueId + '"]');
+          var trigger = root.querySelector('[data-trigger="' + issueId + '"]');
+          chip.className = slot
+            ? "inline-flex h-8 items-center gap-1.5 rounded-full bg-(--cd-tint) px-3 text-[13px] font-medium tabular-nums"
+            : "inline-flex h-8 items-center rounded-full px-3 text-[13px] font-medium text-(--iu-muted) ring-1 ring-(--iu-border) ring-inset";
+          chip.innerHTML = slot ? ICON_CAL + DAYS[slot.day].long + ", " + slot.time : "Draft";
+          trigger.textContent = slot ? "Reschedule" : "Schedule";
+        }
+
+        /* ---------------- toasts */
+        function pushToast(toast) {
+          toast.remaining = toast.duration;
+          var li = document.createElement("li");
+          li.className =
+            "absolute inset-x-0 bottom-0 origin-bottom transition-[translate,scale,opacity] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none";
+          li.style.opacity = "0";
+          li.style.translate = "0 32px";
+          li.style.scale = "0.94";
+          var tone =
+            toast.tone === "info"
+              ? "bg-(--iu-foreground)/8 text-(--iu-foreground)"
+              : "bg-emerald-600/12 text-emerald-700 dark:bg-emerald-400/14 dark:text-emerald-300";
+          li.innerHTML =
+            '<div data-card class="flex h-[76px] items-center gap-3 rounded-[max(var(--iu-radius),18px)] border border-(--iu-border) bg-(--cd-raised) py-3 pr-3 pl-3.5 shadow-(--cd-sh-toast) dark:border-(--iu-foreground)/10">' +
+            '<span aria-hidden="true" class="grid size-9 shrink-0 place-items-center rounded-full ' +
+            tone +
+            '">' +
+            (toast.tone === "info" ? ICON_UNDO : ICON_CHECK) +
+            "</span>" +
+            '<div class="min-w-0 flex-1"><p class="truncate text-sm/5 font-semibold"></p><p class="truncate text-[13px]/5 text-(--iu-muted)"></p></div>' +
+            (toast.action
+              ? '<button type="button" data-action class="h-8 shrink-0 rounded-full bg-(--iu-foreground)/7 px-3 text-[13px] font-semibold transition-[background-color,scale] duration-150 active:scale-[0.96] motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/12 pointer-coarse:h-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"></button>'
+              : "") +
+            '<button type="button" data-dismiss class="relative grid size-8 shrink-0 place-items-center rounded-full text-(--iu-muted) transition-colors duration-150 motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground) pointer-coarse:size-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)">' +
+            '<svg aria-hidden="true" viewBox="0 0 32 32" class="absolute inset-0 size-full -rotate-90"><circle cx="16" cy="16" r="14" fill="none" stroke-width="2" class="stroke-(--iu-foreground)/10"/><circle data-ring cx="16" cy="16" r="14" fill="none" stroke-width="2" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="0" class="stroke-(--iu-accent)"/></svg>' +
+            '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>' +
+            "</button></div>";
+          var texts = li.querySelectorAll("p");
+          texts[0].textContent = toast.title;
+          texts[1].textContent = toast.description;
+          li.querySelector("[data-dismiss]").setAttribute("aria-label", "Dismiss: " + toast.title);
+          if (toast.action) {
+            var action = li.querySelector("[data-action]");
+            action.textContent = toast.action;
+            action.addEventListener("click", function () {
+              undo(toast);
+            });
+          }
+          li.querySelector("[data-dismiss]").addEventListener("click", function () {
+            dismiss(toast);
+          });
+          toast.el = li;
+          toast.ring = li.querySelector("[data-ring]");
+          list.insertBefore(li, list.firstChild);
+          toasts.unshift(toast);
+          while (toasts.length > 5) dismiss(toasts[toasts.length - 1]);
+          announce(toast.title + ". " + toast.description);
+          void li.offsetWidth;
+          layout();
+          startClock();
+        }
+
+        function dismiss(toast) {
+          var index = toasts.indexOf(toast);
+          if (index === -1) return;
+          toasts.splice(index, 1);
+          toast.el.style.opacity = "0";
+          toast.el.style.scale = "0.94";
+          setTimeout(
+            function () {
+              if (toast.el.parentNode) toast.el.parentNode.removeChild(toast.el);
+            },
+            reduce ? 0 : 200,
+          );
+          if (toasts.length === 0) {
+            hovered = false;
+            focused = false;
+          }
+          layout();
+        }
+
+        function undo(toast) {
+          dismiss(toast);
+          delete state.scheduled[toast.issueId];
+          renderCard(toast.issueId);
+          pushToast({
+            id: "undo-" + toast.issueId + "-" + Date.now(),
+            title: "Issue #" + ISSUES[toast.issueId].number + " is back in drafts",
+            description: "Its send slot is free again.",
+            tone: "info",
+            duration: 4000,
+          });
+        }
+
+        function expanded() {
+          return (hovered || focused) && toasts.length > 0;
+        }
+
+        function layout() {
+          var open = expanded();
+          var height = open
+            ? toasts.length * (TOAST_HEIGHT + TOAST_GAP) - TOAST_GAP
+            : toasts.length === 0
+              ? 0
+              : TOAST_HEIGHT + Math.min(toasts.length - 1, 2) * PEEK;
+          list.style.height = height + "px";
+          list.classList.toggle("pointer-events-auto", toasts.length > 0);
+          bar.hidden = !(open && toasts.length > 1);
+          bar.style.bottom = height + 8 + "px";
+          root.querySelector("[data-toast-count]").textContent = toasts.length;
+          toasts.forEach(function (toast, index) {
+            var y = open ? -index * (TOAST_HEIGHT + TOAST_GAP) : -index * PEEK;
+            toast.el.style.zIndex = String(toasts.length - index);
+            toast.el.style.translate = "0 " + y + "px";
+            toast.el.style.scale = String(open ? 1 : 1 - index * 0.05);
+            toast.el.style.opacity = index > 2 && !open ? "0" : "1";
+            Array.prototype.forEach.call(toast.el.querySelector("[data-card]").children, function (child) {
+              child.style.opacity = !open && index > 0 ? "0" : "";
+            });
+          });
+        }
+
+        list.addEventListener("pointerenter", function () {
+          hovered = true;
+          layout();
+        });
+        list.addEventListener("pointerleave", function () {
+          hovered = false;
+          layout();
+        });
+        bar.addEventListener("pointerenter", function () {
+          hovered = true;
+          layout();
+        });
+        bar.addEventListener("pointerleave", function () {
+          hovered = false;
+          layout();
+        });
+        list.addEventListener("focusin", function () {
+          focused = true;
+          layout();
+        });
+        list.addEventListener("focusout", function (event) {
+          if (!list.contains(event.relatedTarget)) {
+            focused = false;
+            layout();
+          }
+        });
+        root.querySelector("[data-clear]").addEventListener("click", function () {
+          toasts.slice().forEach(dismiss);
+        });
+        document.addEventListener("visibilitychange", function () {
+          hidden = document.visibilityState === "hidden";
+        });
+
+        /* One clock for every countdown ring; it stands still while the stack is hovered, focused or hidden. */
+        var last = 0;
+        var running = false;
+        function startClock() {
+          if (running) return;
+          running = true;
+          last = performance.now();
+          requestAnimationFrame(tick);
+        }
+        function tick(now) {
+          if (toasts.length === 0) {
+            running = false;
+            return;
+          }
+          var delta = now - last;
+          last = now;
+          if (!expanded() && !hidden) {
+            toasts.slice().forEach(function (toast) {
+              toast.remaining -= delta;
+              toast.ring.setAttribute("stroke-dashoffset", String(1 - Math.max(0, toast.remaining) / toast.duration));
+              if (toast.remaining <= 0) dismiss(toast);
+            });
+          }
+          requestAnimationFrame(tick);
+        }
+
+        render(false);
+      })();
+    </script>
+  </body>
+</html>

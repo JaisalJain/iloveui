@@ -1,0 +1,15 @@
+{
+  "slug": "boxcar-command-palette",
+  "name": "Boxcar command palette",
+  "category": "navigation",
+  "styleFamily": "neo-brutalist",
+  "tier": "free",
+  "description": "A loud, outlined command palette: a hard-shadowed block snaps between results, prefixes swap the scope sticker, and Enter stamps the row into its shadow.",
+  "tags": ["command-palette", "search", "combobox", "keyboard", "shortcuts", "recent-items"],
+  "states": ["default", "loading", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

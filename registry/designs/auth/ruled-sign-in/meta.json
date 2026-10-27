@@ -1,0 +1,15 @@
+{
+  "slug": "ruled-sign-in",
+  "name": "Ruled sign-in",
+  "category": "auth",
+  "styleFamily": "swiss-minimal",
+  "tier": "free",
+  "description": "Sign in and sign up on a strict grid: a 12-tick ruler fills as the password grows while indexed rules tick off one by one.",
+  "tags": ["auth", "sign-in", "sign-up", "password-strength", "social-login", "validation"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "ondine-otp-input",
+  "name": "Ondine OTP input",
+  "category": "micro-interactions",
+  "styleFamily": "luxury",
+  "tier": "pro",
+  "description": "A six-digit verification code in serif numerals with auto-advance and paste; on success the six hairlines join into one accent rule.",
+  "tags": ["otp", "verification-code", "2fa", "one-time-code", "pin-input", "auth"],
+  "states": ["default", "active", "loading", "error", "success", "disabled"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

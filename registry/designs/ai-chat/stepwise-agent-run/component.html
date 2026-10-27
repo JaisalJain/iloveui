@@ -1,0 +1,2020 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stepwise agent run · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto max-w-5xl px-4 py-10 sm:px-8 sm:py-16">
+      <!-- iloveui:component:start -->
+      <section
+        data-stepwise
+        aria-label="Agent run run_7Kq2Vx91"
+        class="@container w-full overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-[13px] leading-[1.4] text-(--iu-foreground) dark:border-(--iu-foreground)/12"
+      >
+        <header class="border-b border-(--iu-border) dark:border-(--iu-foreground)/10">
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5">
+            <span class="font-mono text-[12px] font-medium">payout-reconciler</span>
+            <span class="font-mono text-[11px] text-(--iu-muted)">run_7Kq2Vx91</span>
+            <span data-pill class="contents"
+              ><span
+                class="inline-flex h-6 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-emerald-700/40 px-2 text-[11px] font-medium text-emerald-800 dark:border-emerald-400/40 dark:text-emerald-300"
+                ><svg
+                  aria-hidden="true"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg
+                >Succeeded</span
+              ></span
+            >
+            <span class="ml-auto text-[11px] text-(--iu-muted)">Started by Dalia Brenner · 27 Oct 2026, 16:04</span>
+          </div>
+          <dl
+            data-stats
+            class="grid grid-cols-2 border-t border-(--iu-border) @lg:grid-cols-5 dark:border-(--iu-foreground)/8"
+          >
+            <div class="border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/8">
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Elapsed</dt>
+              <dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">14.21 s</dd>
+              <dd class="mt-1 text-[11px] text-(--iu-muted) tabular-nums">of 14.21 s</dd>
+            </div>
+            <div
+              class="border-l border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] @lg:border-l dark:border-(--iu-foreground)/8"
+            >
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Steps</dt>
+              <dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">9 / 9</dd>
+              <dd class="mt-1 text-[11px] text-(--iu-muted) tabular-nums">6 tool calls</dd>
+            </div>
+            <div
+              class="border-t border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] @lg:border-t-0 @lg:border-l dark:border-(--iu-foreground)/8"
+            >
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Tokens in</dt>
+              <dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">14,198</dd>
+              <dd class="mt-1 text-[11px] text-(--iu-muted) tabular-nums">prompt + context</dd>
+            </div>
+            <div
+              class="border-t border-l border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] @lg:border-t-0 @lg:border-l dark:border-(--iu-foreground)/8"
+            >
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Tokens out</dt>
+              <dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">2,618</dd>
+              <dd class="mt-1 text-[11px] text-(--iu-muted) tabular-nums">completion</dd>
+            </div>
+            <div
+              class="col-span-2 border-t border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] @lg:col-span-1 @lg:border-t-0 @lg:border-l dark:border-(--iu-foreground)/8"
+            >
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Cost</dt>
+              <dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">$0.0586</dd>
+              <dd class="mt-2">
+                <div
+                  role="meter"
+                  aria-label="Run budget"
+                  aria-valuemin="0"
+                  aria-valuemax="0.25"
+                  aria-valuenow="0.0586"
+                  aria-valuetext="$0.0586 of $0.2500 budget"
+                  class="flex items-center gap-2"
+                >
+                  <span aria-hidden="true" class="block h-1 flex-1 overflow-hidden rounded-full bg-(--iu-foreground)/10"
+                    ><span class="block h-full bg-(--iu-accent)" style="width: 23.44%"></span></span
+                  ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">23% of $0.25</span>
+                </div>
+              </dd>
+            </div>
+          </dl>
+        </header>
+        <div class="grid grid-cols-1 @4xl:grid-cols-[340px_minmax(0,1fr)]">
+          <div
+            class="flex min-w-0 flex-col border-b border-(--iu-border) @4xl:border-r @4xl:border-b-0 dark:border-(--iu-foreground)/10"
+          >
+            <div class="flex flex-1 flex-col gap-4 p-4">
+              <div>
+                <p class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+                  Task · Dalia Brenner
+                </p>
+                <p class="mt-1.5 text-[14px] leading-[1.5] text-pretty">
+                  Reconcile October Stripe payouts against the ledger and flag anything that does not match.
+                </p>
+              </div>
+              <div
+                data-answer
+                aria-busy="false"
+                class="border-t border-(--iu-border) pt-4 dark:border-(--iu-foreground)/8"
+              >
+                <p class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+                  Answer · payout-reconciler
+                </p>
+                <p class="mt-1.5 text-[14px] leading-[1.55] text-pretty">
+                  43 of 44 payouts reconcile. One mismatch: po_1Q8xR2 on 14 Oct is €1,204.50 in Stripe but €1,192.18 in
+                  the ledger, a €12.32 gap that matches booking it at the 13 Oct EUR/USD rate (1.0751) instead of 14 Oct
+                  (1.0862). The extra ledger row is a manual €40.00 bank fee with no payout. I posted the summary to
+                  #finance-close.
+                </p>
+                <div class="mt-2 -ml-2 flex items-center gap-1">
+                  <button
+                    type="button"
+                    data-copy
+                    class="inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[12px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg
+                    ><span data-copy-label>Copy</span></button
+                  ><button
+                    type="button"
+                    data-retry
+                    class="inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[12px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                      <path d="M3 3v5h5" /></svg
+                    >Retry run
+                  </button>
+                </div>
+              </div>
+            </div>
+            <form class="border-t border-(--iu-border) p-3 dark:border-(--iu-foreground)/10">
+              <div
+                class="rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-background) focus-within:border-(--iu-accent)"
+              >
+                <ul data-chips aria-label="Attachments" class="flex flex-wrap gap-1 px-2 pt-2">
+                  <li
+                    data-name="oct-close-checklist.md"
+                    class="inline-flex h-6 items-center gap-1 rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) pl-2 font-mono text-[11px] dark:border-(--iu-foreground)/12"
+                  >
+                    <span data-chip-name>oct-close-checklist.md</span
+                    ><span data-chip-size class="text-(--iu-muted)">3 KB</span
+                    ><button
+                      type="button"
+                      data-remove
+                      aria-label="Remove oct-close-checklist.md"
+                      class="inline-flex size-6 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:text-(--iu-foreground)"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                      </svg>
+                    </button>
+                  </li>
+                </ul>
+                <template data-chip-template
+                  ><li
+                    data-name="file"
+                    class="inline-flex h-6 items-center gap-1 rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) pl-2 font-mono text-[11px] dark:border-(--iu-foreground)/12"
+                  >
+                    <span data-chip-name>file</span><span data-chip-size class="text-(--iu-muted)"></span
+                    ><button
+                      type="button"
+                      data-remove
+                      aria-label="Remove file"
+                      class="inline-flex size-6 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:text-(--iu-foreground)"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M18 6 6 18" />
+                        <path d="m6 6 12 12" />
+                      </svg>
+                    </button></li
+                ></template>
+                <label for="stepwise-draft" class="sr-only">Message payout-reconciler</label>
+                <textarea
+                  id="stepwise-draft"
+                  rows="2"
+                  placeholder="Follow up or give the agent a new task"
+                  class="block w-full resize-none bg-transparent px-2.5 py-2 text-[13px] text-(--iu-foreground) outline-none placeholder:text-(--iu-muted)"
+                ></textarea>
+                <div class="flex items-center gap-1.5 px-2 pb-2">
+                  <input data-file type="file" multiple aria-label="Attach files" tabindex="-1" class="sr-only" />
+                  <button
+                    type="button"
+                    data-attach
+                    aria-label="Attach files"
+                    class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"
+                      />
+                    </svg>
+                  </button>
+                  <div class="relative">
+                    <button
+                      type="button"
+                      data-model-button
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                      aria-controls="stepwise-models"
+                      class="inline-flex h-7 cursor-pointer items-center gap-1 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 font-mono text-[11px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                    >
+                      <span data-model-name>Reason 2</span
+                      ><svg
+                        aria-hidden="true"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="text-(--iu-muted)"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    <ul
+                      id="stepwise-models"
+                      data-model-list
+                      role="listbox"
+                      tabindex="-1"
+                      aria-label="Model"
+                      hidden
+                      class="absolute bottom-full left-0 z-30 mb-1 w-[min(260px,calc(100vw-48px))] rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) p-1 shadow-[0_8px_24px_color-mix(in_oklab,black_14%,transparent)] outline-none dark:border-(--iu-foreground)/15"
+                    >
+                      <li
+                        id="stepwise-models-0"
+                        role="option"
+                        data-name="Reason 2"
+                        aria-selected="true"
+                        class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/6 px-2 py-1.5 text-[12px]"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="flex-1 font-mono">Reason 2</span
+                        ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">$3 / $15 per M</span>
+                      </li>
+                      <li
+                        id="stepwise-models-1"
+                        role="option"
+                        data-name="Fast 2"
+                        aria-selected="false"
+                        class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),6px)] px-2 py-1.5 text-[12px]"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 opacity-0"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="flex-1 font-mono">Fast 2</span
+                        ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">$0.25 / $1.25 per M</span>
+                      </li>
+                      <li
+                        id="stepwise-models-2"
+                        role="option"
+                        data-name="Reason 2 · 1M ctx"
+                        aria-selected="false"
+                        class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),6px)] px-2 py-1.5 text-[12px]"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 opacity-0"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="flex-1 font-mono">Reason 2 · 1M ctx</span
+                        ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">$6 / $22.50 per M</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <span data-hint class="ml-auto hidden font-mono text-[11px] text-(--iu-muted) @sm:inline"
+                    >⌘ Enter runs</span
+                  >
+                  <button
+                    type="button"
+                    data-stop
+                    hidden
+                    class="ml-auto inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/40 px-2.5 text-[12px] font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @sm:ml-0 pointer-coarse:h-10"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="10"
+                      height="10"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="fill-current"
+                    >
+                      <rect width="18" height="18" x="3" y="3" rx="2" /></svg
+                    >Stop run
+                  </button>
+                  <button
+                    type="submit"
+                    data-run
+                    disabled
+                    class="ml-auto inline-flex h-7 cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent) px-2.5 text-[12px] font-medium text-(--iu-accent-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) @sm:ml-0 pointer-coarse:h-10"
+                  >
+                    Run<svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m5 12 7-7 7 7" />
+                      <path d="M12 19V5" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="min-w-0">
+            <div
+              class="flex items-center justify-between gap-3 border-b border-(--iu-border) px-4 py-2 dark:border-(--iu-foreground)/10"
+            >
+              <h3 class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Trace</h3>
+              <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">3 model calls · 6 tool calls</span>
+            </div>
+            <div class="[scrollbar-gutter:stable] overflow-x-auto">
+              <table class="w-full min-w-0 table-fixed border-collapse text-left">
+                <caption class="sr-only">
+                  Steps of run run_7Kq2Vx91 with timing, tokens and cost
+                </caption>
+                <colgroup>
+                  <col class="w-[44%] @2xl:w-[180px]" />
+                  <col />
+                  <col class="w-[60px]" />
+                  <col class="w-0 @2xl:w-[68px]" />
+                  <col class="w-0 @2xl:w-[72px]" />
+                </colgroup>
+                <thead class="sticky top-0 z-10 bg-(--iu-surface)">
+                  <tr
+                    class="border-b border-(--iu-border) text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase dark:border-(--iu-foreground)/10"
+                  >
+                    <th scope="col" class="px-3 py-2 font-medium">Step</th>
+                    <th scope="col" class="px-3 py-2 font-medium">
+                      <span class="sr-only">Timeline</span
+                      ><span
+                        aria-hidden="true"
+                        class="block font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums @md:hidden"
+                        >0 – 14.2 s</span
+                      ><span aria-hidden="true" class="relative hidden h-3 @md:block"
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 0%"
+                          >0s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 14.075%"
+                          >2s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 28.149%"
+                          >4s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 42.224%"
+                          >6s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 56.298%"
+                          >8s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 70.373%"
+                          >10s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 84.448%"
+                          >12s</span
+                        ><span
+                          class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0"
+                          style="left: 98.522%"
+                          >14s</span
+                        ></span
+                      >
+                    </th>
+                    <th scope="col" class="px-3 py-2 text-right font-medium">Time</th>
+                    <th scope="col" class="hidden px-2 py-2 text-right font-medium @2xl:table-cell">Tokens</th>
+                    <th scope="col" class="hidden px-3 py-2 text-right font-medium @2xl:table-cell">Cost</th>
+                  </tr>
+                </thead>
+                <tbody data-rows>
+                  <tr class="border-b border-(--iu-border) dark:border-(--iu-foreground)/8">
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s1"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s1"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path d="M12 20v2" />
+                          <path d="M12 2v2" />
+                          <path d="M17 20v2" />
+                          <path d="M17 2v2" />
+                          <path d="M2 12h2" />
+                          <path d="M2 17h2" />
+                          <path d="M2 7h2" />
+                          <path d="M20 12h2" />
+                          <path d="M20 17h2" />
+                          <path d="M20 7h2" />
+                          <path d="M7 20v2" />
+                          <path d="M7 2v2" />
+                          <rect x="4" y="4" width="16" height="16" rx="2" />
+                          <rect x="8" y="8" width="8" height="8" rx="1" /></svg
+                        ><span class="truncate font-mono text-[12px]">plan</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/70"
+                          style="left: 0%; width: max(2px, 8.304%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">1.18</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      2,416
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      $0.0061
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] dark:border-(--iu-foreground)/8"
+                  >
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s2"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s2"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                          /></svg
+                        ><span class="truncate font-mono text-[12px]">stripe.list_payouts</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                          style="left: 8.304%; width: max(2px, 10.274%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">1.46</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      –
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      <span class="text-(--iu-muted)">–</span>
+                    </td>
+                  </tr>
+                  <tr class="border-b border-(--iu-border) dark:border-(--iu-foreground)/8">
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s3"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s3"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                          /></svg
+                        ><span class="truncate font-mono text-[12px]">ledger.query</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                          style="left: 8.726%; width: max(2px, 18.86%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">2.68</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      –
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      <span class="text-(--iu-muted)">–</span>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] dark:border-(--iu-foreground)/8"
+                  >
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s4"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s4"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path d="M12 20v2" />
+                          <path d="M12 2v2" />
+                          <path d="M17 20v2" />
+                          <path d="M17 2v2" />
+                          <path d="M2 12h2" />
+                          <path d="M2 17h2" />
+                          <path d="M2 7h2" />
+                          <path d="M20 12h2" />
+                          <path d="M20 17h2" />
+                          <path d="M20 7h2" />
+                          <path d="M7 20v2" />
+                          <path d="M7 2v2" />
+                          <rect x="4" y="4" width="16" height="16" rx="2" />
+                          <rect x="8" y="8" width="8" height="8" rx="1" /></svg
+                        ><span class="truncate font-mono text-[12px]">compare</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/70"
+                          style="left: 27.586%; width: max(2px, 20.338%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">2.89</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      7,784
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      $0.0188
+                    </td>
+                  </tr>
+                  <tr class="border-b border-(--iu-border) dark:border-(--iu-foreground)/8">
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s5"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s5"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                          /></svg
+                        ><span class="truncate font-mono text-[12px]">stripe.get_payout</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                          style="left: 48.276%; width: max(2px, 3.871%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">0.55</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      –
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      <span class="text-(--iu-muted)">–</span>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] dark:border-(--iu-foreground)/8"
+                  >
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s6"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s6"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                          /></svg
+                        ><span class="truncate font-mono text-[12px]">ledger.get_entry</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                          style="left: 48.417%; width: max(2px, 8.374%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">1.19</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      –
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      <span class="text-(--iu-muted)">–</span>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-(--iu-border) bg-(--iu-foreground)/5 shadow-[inset_2px_0_0_var(--iu-accent)] dark:border-(--iu-foreground)/8"
+                  >
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s7"
+                        aria-expanded="true"
+                        aria-controls="stepwise-s7"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 rotate-90 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                          /></svg
+                        ><span class="truncate font-mono text-[12px]">fx.rate</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                          style="left: 56.791%; width: max(2px, 2.252%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">0.32</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      –
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      <span class="text-(--iu-muted)">–</span>
+                    </td>
+                  </tr>
+                  <tr
+                    id="stepwise-s7"
+                    class="border-b border-(--iu-border) bg-(--iu-background) dark:border-(--iu-foreground)/8"
+                  >
+                    <td colspan="5" class="p-0">
+                      <div
+                        class="grid grid-cols-1 gap-px bg-(--iu-border) @2xl:grid-cols-2 dark:bg-(--iu-foreground)/8"
+                      >
+                        <div class="bg-(--iu-background) p-3">
+                          <p class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+                            Input · arguments
+                          </p>
+                          <pre class="mt-1.5 overflow-x-auto font-mono text-[11px] leading-[1.5] whitespace-pre-wrap">
+{ "pair": "EUR/USD", "dates": ["2026-10-13", "2026-10-14"] }</pre>
+                        </div>
+                        <div class="bg-(--iu-background) p-3">
+                          <p class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+                            Output · 8.07 s → 8.39 s
+                          </p>
+                          <pre class="mt-1.5 overflow-x-auto font-mono text-[11px] leading-[1.5] whitespace-pre-wrap">
+{ "2026-10-13": 1.0751, "2026-10-14": 1.0862 }</pre>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] dark:border-(--iu-foreground)/8"
+                  >
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s8"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s8"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path d="M12 20v2" />
+                          <path d="M12 2v2" />
+                          <path d="M17 20v2" />
+                          <path d="M17 2v2" />
+                          <path d="M2 12h2" />
+                          <path d="M2 17h2" />
+                          <path d="M2 7h2" />
+                          <path d="M20 12h2" />
+                          <path d="M20 17h2" />
+                          <path d="M20 7h2" />
+                          <path d="M7 20v2" />
+                          <path d="M7 2v2" />
+                          <rect x="4" y="4" width="16" height="16" rx="2" />
+                          <rect x="8" y="8" width="8" height="8" rx="1" /></svg
+                        ><span class="truncate font-mono text-[12px]">draft_report</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/70"
+                          style="left: 59.043%; width: max(2px, 31.457%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">4.47</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      6,616
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      $0.0337
+                    </td>
+                  </tr>
+                  <tr class="border-b border-(--iu-border) dark:border-(--iu-foreground)/8">
+                    <th scope="row" class="px-1 py-0 font-normal">
+                      <button
+                        type="button"
+                        data-step="s9"
+                        aria-expanded="false"
+                        aria-controls="stepwise-s9"
+                        class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:min-h-10"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none"
+                        >
+                          <path d="m9 18 6-6-6-6" /></svg
+                        ><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-foreground)"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        ><span class="sr-only">Done: </span
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="hidden shrink-0 text-(--iu-muted) @md:block"
+                        >
+                          <path
+                            d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"
+                          /></svg
+                        ><span class="truncate font-mono text-[12px]">slack.post</span>
+                      </button>
+                    </th>
+                    <td class="px-3 py-1.5">
+                      <span aria-hidden="true" class="relative block h-3.5"
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 14.075%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 28.149%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 42.224%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 56.298%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 70.373%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 84.448%"></span
+                        ><span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: 98.522%"></span
+                        ><span
+                          class="absolute inset-y-0.5 block rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                          style="left: 90.781%; width: max(2px, 9.219%)"
+                        ></span
+                      ></span>
+                    </td>
+                    <td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">1.31</td>
+                    <td
+                      class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell"
+                    >
+                      –
+                    </td>
+                    <td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">
+                      <span class="text-(--iu-muted)">–</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="flex flex-wrap items-center gap-x-4 gap-y-1 px-4 py-2.5 text-[11px] text-(--iu-muted)">
+              <span class="inline-flex items-center gap-1.5"
+                ><span
+                  aria-hidden="true"
+                  class="inline-block h-2 w-4 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/70"
+                ></span
+                >Model call</span
+              >
+              <span class="inline-flex items-center gap-1.5"
+                ><span
+                  aria-hidden="true"
+                  class="inline-block h-2 w-4 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/30"
+                ></span
+                >Tool call</span
+              >
+              <span class="inline-flex items-center gap-1.5"
+                ><span
+                  aria-hidden="true"
+                  class="inline-block h-2 w-4 rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent)"
+                ></span
+                >Running</span
+              >
+              <span class="ml-auto font-mono tabular-nums">Parallel calls overlap on the same seconds.</span>
+            </p>
+          </div>
+        </div>
+        <p data-announcer aria-live="polite" class="sr-only"></p>
+      </section>
+      <!-- iloveui:component:end -->
+    </div>
+    <script>
+      var STEPWISE = (function () {
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var R = "rounded-[min(var(--iu-radius),6px)]";
+        var LABEL = "text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase";
+        var ICON_BUTTON =
+          "inline-flex h-7 cursor-pointer items-center gap-1.5 px-2 text-[12px] text-(--iu-muted) transition-colors duration-100 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground) " +
+          R +
+          " " +
+          FOCUS;
+        var ICONS = {
+          check: '<path d="M20 6 9 17l-5-5"/>',
+          loader: '<path d="M21 12a9 9 0 1 1-6.219-8.56"/>',
+          alert:
+            '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+          ban: '<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
+          circle: '<circle cx="12" cy="12" r="10"/>',
+          square: '<rect width="18" height="18" x="3" y="3" rx="2"/>',
+          chevron: '<path d="m9 18 6-6-6-6"/>',
+          cpu: '<path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/><path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/><path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/><path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/>',
+          wrench:
+            '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z"/>',
+          copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+          retry: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+        };
+        function icon(name, size, stroke, cls) {
+          return (
+            '<svg aria-hidden="true" width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round"' +
+            (cls ? ' class="' + cls + '"' : "") +
+            ">" +
+            ICONS[name] +
+            "</svg>"
+          );
+        }
+        function esc(text) {
+          return String(text).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+        // id, kind, name, start, end, tokensIn, tokensOut, cost, input, output
+        var STEPS = [
+          [
+            "s1",
+            "llm",
+            "plan",
+            0,
+            1.18,
+            2104,
+            312,
+            0.0061,
+            "system + task · 2,104 tokens\nTools: stripe.*, ledger.*, fx.rate, slack.post",
+            "1. Pull October payouts from Stripe\n2. Pull payout entries from the ledger\n3. Match by payout id, then amount\n4. Explain any gap, post to #finance-close",
+          ],
+          [
+            "s2",
+            "tool",
+            "stripe.list_payouts",
+            1.18,
+            2.64,
+            0,
+            0,
+            0,
+            '{\n  "created_gte": "2026-10-01",\n  "created_lt": "2026-11-01",\n  "limit": 100\n}',
+            '{\n  "count": 43,\n  "total": "€182,406.12",\n  "currency": "eur"\n}',
+          ],
+          [
+            "s3",
+            "tool",
+            "ledger.query",
+            1.24,
+            3.92,
+            0,
+            0,
+            0,
+            "select payout_id, amount, booked_at\nfrom journal\nwhere account = '1210'\n  and booked_at >= '2026-10-01'",
+            '{\n  "rows": 44,\n  "total": "€182,393.80",\n  "scanned": "1.8 MB"\n}',
+          ],
+          [
+            "s4",
+            "llm",
+            "compare",
+            3.92,
+            6.81,
+            6880,
+            904,
+            0.0188,
+            "43 payouts + 44 ledger rows · 6,880 tokens",
+            "42 match exactly. po_1Q8xR2 differs by €12.32. One ledger row (manual fee) has no payout.",
+          ],
+          [
+            "s5",
+            "tool",
+            "stripe.get_payout",
+            6.86,
+            7.41,
+            0,
+            0,
+            0,
+            '{ "id": "po_1Q8xR2" }',
+            '{\n  "amount": "€1,204.50",\n  "arrival_date": "2026-10-14",\n  "fee": "€0.00"\n}',
+          ],
+          [
+            "s6",
+            "tool",
+            "ledger.get_entry",
+            6.88,
+            8.07,
+            0,
+            0,
+            0,
+            '{ "payout_id": "po_1Q8xR2" }',
+            '{\n  "amount": "€1,192.18",\n  "booked_at": "2026-10-13",\n  "fx_source": "USD"\n}',
+          ],
+          [
+            "s7",
+            "tool",
+            "fx.rate",
+            8.07,
+            8.39,
+            0,
+            0,
+            0,
+            '{ "pair": "EUR/USD", "dates": ["2026-10-13", "2026-10-14"] }',
+            '{ "2026-10-13": 1.0751, "2026-10-14": 1.0862 }',
+          ],
+          [
+            "s8",
+            "llm",
+            "draft_report",
+            8.39,
+            12.86,
+            5214,
+            1402,
+            0.0337,
+            "findings + fx rates · 5,214 tokens",
+            "Report drafted: 1 mismatch explained, 1 manual fee flagged.",
+          ],
+          [
+            "s9",
+            "tool",
+            "slack.post",
+            12.9,
+            14.21,
+            0,
+            0,
+            0,
+            '{ "channel": "#finance-close", "blocks": 4 }',
+            '{ "ok": true, "ts": "1792055821.004" }',
+          ],
+        ];
+        var ANSWER =
+          "43 of 44 payouts reconcile. One mismatch: po_1Q8xR2 on 14 Oct is €1,204.50 in Stripe but €1,192.18 in the ledger, a €12.32 gap that matches booking it at the 13 Oct EUR/USD rate (1.0751) instead of 14 Oct (1.0862). The extra ledger row is a manual €40.00 bank fee with no payout. I posted the summary to #finance-close.";
+        var DURATION = 14.21;
+        var BUDGET = 0.25;
+        function fraction(s, t) {
+          if (t <= s[3]) return 0;
+          if (t >= s[4]) return 1;
+          return (t - s[3]) / (s[4] - s[3]);
+        }
+        function state(s, t, phase) {
+          if (t >= s[4]) return "done";
+          if (phase === "running") return t >= s[3] ? "running" : "queued";
+          if (phase === "done") return "done";
+          return "cancelled";
+        }
+        var LABELS = { queued: "Queued", running: "Running", done: "Done", failed: "Failed", cancelled: "Cancelled" };
+        function stateIcon(st) {
+          if (st === "done") return icon("check", 14, 2, "text-(--iu-foreground)");
+          if (st === "running")
+            return icon("loader", 14, 2, "animate-spin text-(--iu-accent) motion-reduce:animate-none");
+          if (st === "cancelled") return icon("ban", 14, 1.75, "text-(--iu-muted)");
+          return icon("circle", 12, 1.75, "text-(--iu-muted)");
+        }
+        function usd(v) {
+          return "$" + v.toFixed(4);
+        }
+        function header(t, phase) {
+          var tin = 0,
+            tout = 0,
+            cost = 0,
+            done = 0;
+          STEPS.forEach(function (s) {
+            var f = fraction(s, t);
+            tin += Math.round(s[5] * f);
+            tout += Math.round(s[6] * f);
+            cost += s[7] * f;
+            if (state(s, t, phase) === "done") done++;
+          });
+          var pill =
+            phase === "running"
+              ? [
+                  "Running",
+                  icon("loader", 12, 2, "animate-spin motion-reduce:animate-none"),
+                  "border-(--iu-accent) text-(--iu-foreground)",
+                ]
+              : phase === "stopped"
+                ? ["Stopped", icon("square", 10, 2, "fill-current"), "border-(--iu-foreground)/30 text-(--iu-muted)"]
+                : [
+                    "Succeeded",
+                    icon("check", 12, 2),
+                    "border-emerald-700/40 text-emerald-800 dark:border-emerald-400/40 dark:text-emerald-300",
+                  ];
+          var cells = [
+            ["Elapsed", t.toFixed(2) + " s", "of " + DURATION.toFixed(2) + " s"],
+            ["Steps", done + " / " + STEPS.length, "6 tool calls"],
+            ["Tokens in", tin.toLocaleString("en-US"), "prompt + context"],
+            ["Tokens out", tout.toLocaleString("en-US"), "completion"],
+          ];
+          return {
+            pill:
+              '<span class="inline-flex h-6 items-center gap-1.5 border px-2 text-[11px] font-medium ' +
+              R +
+              " " +
+              pill[2] +
+              '">' +
+              pill[1] +
+              pill[0] +
+              "</span>",
+            stats:
+              cells
+                .map(function (c, i) {
+                  return (
+                    '<div class="border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/8' +
+                    (i % 2 === 1 ? " border-l" : "") +
+                    (i >= 2 ? " border-t @lg:border-t-0" : "") +
+                    (i > 0 ? " @lg:border-l" : "") +
+                    '"><dt class="' +
+                    LABEL +
+                    '">' +
+                    c[0] +
+                    '</dt><dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">' +
+                    c[1] +
+                    '</dd><dd class="mt-1 text-[11px] text-(--iu-muted) tabular-nums">' +
+                    c[2] +
+                    "</dd></div>"
+                  );
+                })
+                .join("") +
+              '<div class="col-span-2 border-t border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))] @lg:col-span-1 @lg:border-t-0 @lg:border-l dark:border-(--iu-foreground)/8"><dt class="' +
+              LABEL +
+              '">Cost</dt><dd class="mt-1 font-mono text-[18px] leading-none font-medium tabular-nums">' +
+              usd(cost) +
+              '</dd><dd class="mt-2"><div role="meter" aria-label="Run budget" aria-valuemin="0" aria-valuemax="' +
+              BUDGET +
+              '" aria-valuenow="' +
+              cost.toFixed(4) +
+              '" aria-valuetext="' +
+              usd(cost) +
+              " of " +
+              usd(BUDGET) +
+              ' budget" class="flex items-center gap-2"><span aria-hidden="true" class="block h-1 flex-1 overflow-hidden rounded-full bg-(--iu-foreground)/10"><span class="block h-full bg-(--iu-accent)" style="width: ' +
+              Math.min(100, (cost / BUDGET) * 100).toFixed(2) +
+              '%"></span></span><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+              Math.round((cost / BUDGET) * 100) +
+              "% of $" +
+              BUDGET.toFixed(2) +
+              "</span></div></dd></div>",
+          };
+        }
+        function answer(t, phase) {
+          var shown = Math.round(ANSWER.length * fraction(STEPS[7], t));
+          var html = '<p class="' + LABEL + '">Answer · payout-reconciler</p>';
+          if (shown === 0 && phase === "running") {
+            html +=
+              '<div aria-hidden="true" class="mt-2 space-y-2"><span class="block h-3 w-full bg-(--iu-foreground)/8 ' +
+              R +
+              '"></span><span class="block h-3 w-11/12 bg-(--iu-foreground)/8 ' +
+              R +
+              '"></span><span class="block h-3 w-2/3 bg-(--iu-foreground)/8 ' +
+              R +
+              '"></span></div>';
+          } else if (shown === 0) {
+            html += '<p class="mt-1.5 text-[13px] text-(--iu-muted)">No answer was written before the run ended.</p>';
+          } else {
+            html +=
+              '<p class="mt-1.5 text-[14px] leading-[1.55] text-pretty">' +
+              esc(ANSWER.slice(0, shown)) +
+              (phase === "running" && shown < ANSWER.length
+                ? '<span aria-hidden="true" class="ml-0.5 inline-block h-[1em] w-1.5 translate-y-[0.15em] bg-(--iu-accent)"></span>'
+                : "") +
+              "</p>";
+          }
+          if (phase !== "running" && shown > 0) {
+            html +=
+              '<div class="mt-2 -ml-2 flex items-center gap-1"><button type="button" data-copy class="' +
+              ICON_BUTTON +
+              '">' +
+              icon("copy", 14, 1.75) +
+              '<span data-copy-label>Copy</span></button><button type="button" data-retry class="' +
+              ICON_BUTTON +
+              '">' +
+              icon("retry", 14, 1.75) +
+              "Retry run</button></div>";
+          }
+          return html;
+        }
+        function ticks() {
+          var list = [];
+          for (var i = 0; i <= DURATION; i += 2) list.push(i);
+          return list;
+        }
+        function rows(t, phase, expanded) {
+          var live = phase === "running" && t < DURATION;
+          return STEPS.map(function (s, index) {
+            var st = state(s, t, phase);
+            var open = expanded === s[0];
+            var f = fraction(s, t);
+            var shownEnd = st === "running" ? Math.min(t, s[4]) : s[4];
+            var barTone =
+              st === "running"
+                ? "bg-(--iu-accent)"
+                : st === "cancelled" || st === "queued"
+                  ? "border border-dashed border-(--iu-foreground)/40"
+                  : s[1] === "llm"
+                    ? "bg-(--iu-foreground)/70"
+                    : "bg-(--iu-foreground)/30";
+            var width = ((st === "cancelled" ? s[4] - s[3] : Math.max(0, shownEnd - s[3])) / DURATION) * 100;
+            var html =
+              '<tr class="border-b border-(--iu-border) dark:border-(--iu-foreground)/8' +
+              (index % 2 === 1 ? " bg-(--iu-foreground)/[0.025]" : "") +
+              (open ? " bg-(--iu-foreground)/5 shadow-[inset_2px_0_0_var(--iu-accent)]" : "") +
+              '"><th scope="row" class="px-1 py-0 font-normal"><button type="button" data-step="' +
+              s[0] +
+              '" aria-expanded="' +
+              open +
+              '" aria-controls="stepwise-' +
+              s[0] +
+              '" class="flex min-h-[calc(32px*var(--iu-density))] w-full cursor-pointer items-center gap-1.5 px-2 text-left pointer-coarse:min-h-10 ' +
+              R +
+              " " +
+              FOCUS +
+              '">' +
+              icon(
+                "chevron",
+                12,
+                2,
+                "shrink-0 text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none" +
+                  (open ? " rotate-90" : ""),
+              ) +
+              stateIcon(st) +
+              '<span class="sr-only">' +
+              LABELS[st] +
+              ": </span>" +
+              icon(s[1] === "llm" ? "cpu" : "wrench", 12, 1.75, "hidden shrink-0 text-(--iu-muted) @md:block") +
+              '<span class="truncate font-mono text-[12px]' +
+              (st === "queued" ? " text-(--iu-muted)" : "") +
+              '">' +
+              s[2] +
+              "</span></button></th>" +
+              '<td class="px-3 py-1.5"><span aria-hidden="true" class="relative block h-3.5">' +
+              ticks()
+                .slice(1)
+                .map(function (tick) {
+                  return (
+                    '<span class="absolute inset-y-0 w-px bg-(--iu-foreground)/6" style="left: ' +
+                    ((tick / DURATION) * 100).toFixed(3) +
+                    '%"></span>'
+                  );
+                })
+                .join("") +
+              '<span class="absolute inset-y-0.5 block ' +
+              R +
+              " " +
+              barTone +
+              '" style="left: ' +
+              ((s[3] / DURATION) * 100).toFixed(3) +
+              "%; width: max(2px, " +
+              width.toFixed(3) +
+              '%)"></span>' +
+              (live
+                ? '<span class="absolute -inset-y-1.5 w-px bg-(--iu-accent)" style="left: ' +
+                  ((t / DURATION) * 100).toFixed(3) +
+                  '%"></span>'
+                : "") +
+              "</span></td>" +
+              '<td class="px-3 py-1.5 text-right font-mono text-[12px] tabular-nums">' +
+              (st === "queued" ? '<span class="text-(--iu-muted)">–</span>' : (shownEnd - s[3]).toFixed(2)) +
+              "</td>" +
+              '<td class="hidden px-2 py-1.5 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums @2xl:table-cell">' +
+              (s[1] === "llm" ? Math.round((s[5] + s[6]) * f).toLocaleString("en-US") : "–") +
+              "</td>" +
+              '<td class="hidden px-3 py-1.5 text-right font-mono text-[12px] tabular-nums @2xl:table-cell">' +
+              (s[7] > 0 ? usd(s[7] * f) : '<span class="text-(--iu-muted)">–</span>') +
+              "</td></tr>";
+            if (open) {
+              html +=
+                '<tr id="stepwise-' +
+                s[0] +
+                '" class="border-b border-(--iu-border) bg-(--iu-background) dark:border-(--iu-foreground)/8"><td colspan="5" class="p-0"><div class="grid grid-cols-1 gap-px bg-(--iu-border) @2xl:grid-cols-2 dark:bg-(--iu-foreground)/8"><div class="bg-(--iu-background) p-3"><p class="' +
+                LABEL +
+                '">Input · ' +
+                (s[1] === "llm" ? "prompt" : "arguments") +
+                '</p><pre class="mt-1.5 overflow-x-auto font-mono text-[11px] leading-[1.5] whitespace-pre-wrap">' +
+                esc(s[8]) +
+                '</pre></div><div class="bg-(--iu-background) p-3"><p class="' +
+                LABEL +
+                '">Output · ' +
+                s[3].toFixed(2) +
+                " s → " +
+                s[4].toFixed(2) +
+                " s</p>" +
+                (st === "done"
+                  ? '<pre class="mt-1.5 overflow-x-auto font-mono text-[11px] leading-[1.5] whitespace-pre-wrap">' +
+                    esc(s[9]) +
+                    "</pre>"
+                  : '<p class="mt-1.5 font-mono text-[11px] text-(--iu-muted)">' +
+                    (st === "running"
+                      ? "Waiting for output…"
+                      : st === "cancelled"
+                        ? "Cancelled before it returned."
+                        : "Not started.") +
+                    "</p>") +
+                "</div></div></td></tr>";
+            }
+            return html;
+          }).join("");
+        }
+        function tickLabels() {
+          return ticks()
+            .map(function (tick) {
+              return (
+                '<span class="absolute top-0 -translate-x-1/2 font-mono text-[10px] font-normal tracking-normal normal-case tabular-nums first:translate-x-0" style="left: ' +
+                ((tick / DURATION) * 100).toFixed(3) +
+                '%">' +
+                tick +
+                "s</span>"
+              );
+            })
+            .join("");
+        }
+        return {
+          DURATION: DURATION,
+          ANSWER: ANSWER,
+          STEPS: STEPS,
+          header: header,
+          answer: answer,
+          rows: rows,
+          tickLabels: tickLabels,
+          state: state,
+        };
+      })();
+
+      (function () {
+        var root = document.querySelector("[data-stepwise]");
+        if (!root) return;
+        var pill = root.querySelector("[data-pill]");
+        var stats = root.querySelector("[data-stats]");
+        var answerEl = root.querySelector("[data-answer]");
+        var tbody = root.querySelector("[data-rows]");
+        var form = root.querySelector("form");
+        var input = root.querySelector("textarea");
+        var runButton = root.querySelector("[data-run]");
+        var stopButton = root.querySelector("[data-stop]");
+        var hint = root.querySelector("[data-hint]");
+        var announcer = root.querySelector("[data-announcer]");
+        var fileInput = root.querySelector("[data-file]");
+        var chips = root.querySelector("[data-chips]");
+        var modelButton = root.querySelector("[data-model-button]");
+        var modelList = root.querySelector("[data-model-list]");
+        var modelName = root.querySelector("[data-model-name]");
+        var options = Array.prototype.slice.call(modelList.querySelectorAll('[role="option"]'));
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var t = STEPWISE.DURATION;
+        var phase = "done";
+        var expanded = "s7";
+        var timer = 0;
+        var visible = true;
+        var lastRunning = "";
+
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        new IntersectionObserver(function (entries) {
+          visible = entries[0] ? entries[0].isIntersecting : true;
+        }).observe(root);
+
+        function render() {
+          var focused = document.activeElement && document.activeElement.getAttribute("data-step");
+          var head = STEPWISE.header(t, phase);
+          pill.innerHTML = head.pill;
+          stats.innerHTML = head.stats;
+          answerEl.innerHTML = STEPWISE.answer(t, phase);
+          answerEl.setAttribute("aria-busy", String(phase === "running"));
+          tbody.innerHTML = STEPWISE.rows(t, phase, expanded);
+          if (focused) {
+            var again = tbody.querySelector('[data-step="' + focused + '"]');
+            if (again) again.focus();
+          }
+          if (phase === "running") {
+            var current = STEPWISE.STEPS.filter(function (s) {
+              return STEPWISE.state(s, t, phase) === "running";
+            }).map(function (s) {
+              return s[2];
+            })[0];
+            if (current && current !== lastRunning) announce("Running " + current);
+            lastRunning = current || lastRunning;
+          }
+        }
+
+        function setRunning(on) {
+          runButton.hidden = on;
+          stopButton.hidden = !on;
+          modelButton.disabled = on;
+          hint.textContent = on ? "Esc stops" : "⌘ Enter runs";
+        }
+
+        function finish(stopped) {
+          clearInterval(timer);
+          timer = 0;
+          phase = stopped ? "stopped" : "done";
+          setRunning(false);
+          render();
+          announce(stopped ? "Run stopped at " + t.toFixed(2) + " s" : "Run succeeded");
+        }
+
+        function start() {
+          if (timer) return;
+          t = 0;
+          phase = "running";
+          lastRunning = "";
+          setRunning(true);
+          if (reduce) {
+            t = STEPWISE.DURATION;
+            finish(false);
+            return;
+          }
+          render();
+          timer = setInterval(function () {
+            if (!visible) return;
+            t = Math.min(STEPWISE.DURATION, t + 0.05 * 1.6);
+            render();
+            if (t >= STEPWISE.DURATION) finish(false);
+          }, 50);
+        }
+
+        function stop() {
+          if (!timer) return;
+          finish(true);
+          input.focus();
+        }
+
+        root.addEventListener("click", function (event) {
+          var button = event.target.closest("button");
+          if (!button || !root.contains(button)) return;
+          if (button.hasAttribute("data-step")) {
+            var id = button.getAttribute("data-step");
+            expanded = expanded === id ? null : id;
+            render();
+            tbody.querySelector('[data-step="' + id + '"]').focus();
+          } else if (button.hasAttribute("data-retry")) {
+            start();
+          } else if (button.hasAttribute("data-copy") && navigator.clipboard) {
+            navigator.clipboard.writeText(STEPWISE.ANSWER).then(
+              function () {
+                button.querySelector("[data-copy-label]").textContent = "Copied";
+                announce("Answer copied");
+                setTimeout(function () {
+                  var label = answerEl.querySelector("[data-copy-label]");
+                  if (label) label.textContent = "Copy";
+                }, 1500);
+              },
+              function () {},
+            );
+          } else if (button === stopButton) {
+            stop();
+          } else if (button.hasAttribute("data-attach")) {
+            fileInput.click();
+          } else if (button.hasAttribute("data-remove")) {
+            var item = button.closest("li");
+            announce("Removed " + item.getAttribute("data-name"));
+            item.remove();
+            chips.hidden = chips.children.length === 0;
+            input.focus();
+          }
+        });
+        root.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && timer) stop();
+        });
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (!input.value.trim() || timer) return;
+          input.value = "";
+          runButton.disabled = true;
+          chips.innerHTML = "";
+          chips.hidden = true;
+          start();
+        });
+        input.addEventListener("input", function () {
+          runButton.disabled = input.value.trim().length === 0;
+        });
+        input.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+            event.preventDefault();
+            form.requestSubmit();
+          }
+        });
+        fileInput.addEventListener("change", function () {
+          var picked = Array.prototype.slice.call(fileInput.files || []);
+          var template = root.querySelector("[data-chip-template]");
+          picked.forEach(function (file) {
+            var node = template.content.firstElementChild.cloneNode(true);
+            var size =
+              file.size < 1048576
+                ? Math.max(1, Math.round(file.size / 1024)) + " KB"
+                : (file.size / 1048576).toFixed(1) + " MB";
+            node.setAttribute("data-name", file.name);
+            node.querySelector("[data-chip-name]").textContent = file.name;
+            node.querySelector("[data-chip-size]").textContent = size;
+            node.querySelector("[data-remove]").setAttribute("aria-label", "Remove " + file.name);
+            chips.appendChild(node);
+          });
+          chips.hidden = chips.children.length === 0;
+          if (picked.length)
+            announce(
+              "Attached " +
+                picked
+                  .map(function (f) {
+                    return f.name;
+                  })
+                  .join(", "),
+            );
+          fileInput.value = "";
+        });
+
+        var current = 0;
+        var selected = 0;
+        function paint() {
+          options.forEach(function (option, index) {
+            option.classList.toggle("bg-(--iu-foreground)/6", index === current);
+            option.setAttribute("aria-selected", String(index === selected));
+            option.querySelector("svg").classList.toggle("opacity-0", index !== selected);
+          });
+          modelList.setAttribute("aria-activedescendant", options[current].id);
+        }
+        function openList() {
+          current = selected;
+          paint();
+          modelList.hidden = false;
+          modelButton.setAttribute("aria-expanded", "true");
+          modelList.focus();
+        }
+        function closeList(focus) {
+          modelList.hidden = true;
+          modelButton.setAttribute("aria-expanded", "false");
+          if (focus) modelButton.focus();
+        }
+        function choose(index) {
+          selected = index;
+          modelName.textContent = options[index].getAttribute("data-name");
+          paint();
+          closeList(true);
+        }
+        modelButton.addEventListener("click", function () {
+          if (modelList.hidden) openList();
+          else closeList(false);
+        });
+        modelButton.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            openList();
+          }
+        });
+        modelList.addEventListener("keydown", function (event) {
+          var key = event.key;
+          if (key === "ArrowDown") current = Math.min(options.length - 1, current + 1);
+          else if (key === "ArrowUp") current = Math.max(0, current - 1);
+          else if (key === "Home") current = 0;
+          else if (key === "End") current = options.length - 1;
+          else if (key === "Enter" || key === " ")
+            return (event.preventDefault(), event.stopPropagation(), choose(current));
+          else if (key === "Escape") return (event.preventDefault(), event.stopPropagation(), closeList(true));
+          else if (key === "Tab") return choose(current);
+          else return;
+          event.preventDefault();
+          paint();
+        });
+        options.forEach(function (option, index) {
+          option.addEventListener("click", function () {
+            choose(index);
+          });
+          option.addEventListener("pointerenter", function () {
+            current = index;
+            paint();
+          });
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (!modelList.hidden && !modelButton.parentNode.contains(event.target)) closeList(false);
+        });
+      })();
+    </script>
+  </body>
+</html>

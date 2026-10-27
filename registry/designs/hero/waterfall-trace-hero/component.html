@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Waterfall trace hero · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-waterfall-hero
+      aria-labelledby="waterfall-hero-title"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1240px] px-6 pt-12 pb-16 sm:px-10 sm:pt-16 sm:pb-24">
+        <div class="grid grid-cols-12 gap-x-6 gap-y-8">
+          <div class="col-span-12 lg:col-span-7">
+            <p class="flex items-center gap-2 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">
+              <span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span>
+              Spanline · distributed tracing
+            </p>
+            <h1
+              id="waterfall-hero-title"
+              class="mt-5 text-[clamp(2.75rem,1.7rem+4.4vw,5.25rem)] leading-[0.98] font-semibold tracking-[-0.04em] text-balance"
+            >
+              See where every millisecond went.
+            </h1>
+          </div>
+          <div class="col-span-12 flex flex-col justify-end lg:col-span-5">
+            <p class="max-w-[34rem] text-base leading-relaxed text-pretty text-(--iu-muted) sm:text-[17px]">
+              Spanline stitches each request across your services into one waterfall, then points at the span that cost
+              you the most. OpenTelemetry in, answers out.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-4">
+              <a
+                href="#start"
+                class="group inline-flex h-11 items-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-5 text-sm font-medium text-(--iu-accent-foreground) transition-[filter] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:brightness-110"
+              >
+                Instrument your first service
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-150 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+              <code class="font-mono text-[13px] text-(--iu-muted)"
+                ><span aria-hidden="true" class="text-(--iu-foreground)/40">$ </span>npm i @spanline/otel</code
+              >
+            </div>
+          </div>
+        </div>
+
+        <figure
+          data-trace
+          aria-label="Trace of POST /api/checkout"
+          class="@container mt-14 overflow-hidden rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) sm:mt-20 dark:border-(--iu-foreground)/12"
+        >
+          <div
+            class="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-dashed border-(--iu-foreground)/15 px-4 py-[calc(12px*var(--iu-density))]"
+          >
+            <span
+              class="rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/25 px-1.5 py-0.5 font-mono text-[11px] font-medium"
+              >POST</span
+            >
+            <span class="min-w-0 truncate font-mono text-[13px]">/api/checkout</span>
+            <span class="hidden font-mono text-[11px] text-(--iu-muted) @lg:inline"
+              >trace 7f3a0e9c…c912 · prod · eu-west-1</span
+            >
+            <span class="ml-auto flex items-center gap-4 font-mono text-[12px] tabular-nums">
+              <span class="inline-flex items-center gap-1.5">
+                <span aria-hidden="true" class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>
+                200 OK
+              </span>
+              <span data-elapsed class="min-w-[4.5rem] text-right">842 ms</span>
+              <button
+                type="button"
+                data-replay
+                aria-label="Replay trace"
+                class="inline-flex size-8 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/8 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" />
+                </svg>
+              </button>
+            </span>
+          </div>
+
+          <div class="grid @4xl:grid-cols-[minmax(0,1fr)_300px]">
+            <div class="relative [--dur-col:56px] [--name-col:42%] @2xl:[--name-col:34%]">
+              <div
+                class="grid grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] border-b border-(--iu-border) font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase"
+              >
+                <span class="px-4 py-2">Span</span>
+                <span class="relative mx-3 py-2" aria-hidden="true">
+                  <span class="absolute top-2 tracking-normal tabular-nums" style="left: 0%">0</span>
+                  <span
+                    class="absolute top-2 hidden -translate-x-1/2 tracking-normal tabular-nums @lg:inline"
+                    style="left: 23.753%"
+                    >200</span
+                  >
+                  <span class="absolute top-2 -translate-x-1/2 tracking-normal tabular-nums" style="left: 47.5059%"
+                    >400</span
+                  >
+                  <span
+                    class="absolute top-2 hidden -translate-x-1/2 tracking-normal tabular-nums @lg:inline"
+                    style="left: 71.2589%"
+                    >600</span
+                  >
+                  <span class="absolute top-2 -translate-x-1/2 tracking-normal tabular-nums" style="left: 95.0119%"
+                    >800</span
+                  >
+                </span>
+                <span class="px-3 py-2 text-right">ms</span>
+              </div>
+              <div class="relative">
+                <div
+                  aria-hidden="true"
+                  class="pointer-events-none absolute inset-y-0 right-[calc(var(--dur-col)+12px)] left-[calc(var(--name-col)+12px)]"
+                >
+                  <span
+                    class="absolute inset-y-0 border-l border-dashed border-(--iu-foreground)/10"
+                    style="left: 0%"
+                  ></span>
+                  <span
+                    class="absolute inset-y-0 border-l border-dashed border-(--iu-foreground)/10"
+                    style="left: 23.753%"
+                  ></span>
+                  <span
+                    class="absolute inset-y-0 border-l border-dashed border-(--iu-foreground)/10"
+                    style="left: 47.5059%"
+                  ></span>
+                  <span
+                    class="absolute inset-y-0 border-l border-dashed border-(--iu-foreground)/10"
+                    style="left: 71.2589%"
+                  ></span>
+                  <span
+                    class="absolute inset-y-0 border-l border-dashed border-(--iu-foreground)/10"
+                    style="left: 95.0119%"
+                  ></span>
+                  <span
+                    data-playhead
+                    hidden
+                    class="absolute inset-y-0 z-10 w-px bg-(--iu-accent)"
+                    style="left: 100%"
+                  ></span>
+                </div>
+                <div role="listbox" aria-label="Spans in this trace" class="relative">
+                  <div
+                    role="option"
+                    data-span="s1"
+                    aria-selected="false"
+                    tabindex="-1"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                      hidden
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 16px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">gateway</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">POST /api/checkout</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-foreground)/45"
+                        style="left: 0%; width: max(2px, 100%)"
+                      ></span>
+                    </span>
+                    <span data-duration class="px-3 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                      >842</span
+                    >
+                  </div>
+                  <div
+                    role="option"
+                    data-span="s2"
+                    aria-selected="false"
+                    tabindex="-1"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                      hidden
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 28px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">auth</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">verify-session</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-foreground)/25"
+                        style="left: 0.7126%; width: max(2px, 3.8005%)"
+                      ></span>
+                    </span>
+                    <span data-duration class="px-3 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                      >32</span
+                    >
+                  </div>
+                  <div
+                    role="option"
+                    data-span="s3"
+                    aria-selected="false"
+                    tabindex="-1"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                      hidden
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 28px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">cart</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">load-cart</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-foreground)/25"
+                        style="left: 4.7506%; width: max(2px, 9.7387%)"
+                      ></span>
+                    </span>
+                    <span data-duration class="px-3 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                      >82</span
+                    >
+                  </div>
+                  <div
+                    role="option"
+                    data-span="s4"
+                    aria-selected="false"
+                    tabindex="-1"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                      hidden
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 28px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">pricing</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">compute-tax</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-foreground)/25"
+                        style="left: 14.7268%; width: max(2px, 8.5511%)"
+                      ></span>
+                    </span>
+                    <span data-duration class="px-3 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                      >72</span
+                    >
+                  </div>
+                  <div
+                    role="option"
+                    data-span="s5"
+                    aria-selected="true"
+                    tabindex="0"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 40px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">postgres</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">SELECT inventory</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-accent)"
+                        style="left: 23.5154%; width: max(2px, 49.0499%)"
+                      ></span>
+                    </span>
+                    <span
+                      data-duration
+                      class="px-3 text-right font-mono text-[12px] font-semibold text-(--iu-foreground) tabular-nums"
+                      >413</span
+                    >
+                  </div>
+                  <div
+                    role="option"
+                    data-span="s6"
+                    aria-selected="false"
+                    tabindex="-1"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                      hidden
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 28px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">payments</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">charge-card</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-foreground)/25"
+                        style="left: 72.9216%; width: max(2px, 20.9026%)"
+                      ></span>
+                    </span>
+                    <span data-duration class="px-3 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                      >176</span
+                    >
+                  </div>
+                  <div
+                    role="option"
+                    data-span="s7"
+                    aria-selected="false"
+                    tabindex="-1"
+                    class="relative grid cursor-default grid-cols-[var(--name-col)_minmax(0,1fr)_var(--dur-col)] items-center border-b border-(--iu-border) last:border-b-0 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:bg-(--iu-foreground)/[0.06] pointer-fine:hover:bg-(--iu-foreground)/[0.03]"
+                  >
+                    <span
+                      data-marker
+                      aria-hidden="true"
+                      class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+                      hidden
+                    ></span>
+                    <span
+                      class="flex min-w-0 flex-col py-[calc(8px*var(--iu-density))] pr-2 pl-4"
+                      style="padding-left: 28px"
+                    >
+                      <span class="font-mono text-[10px] tracking-[0.04em] text-(--iu-muted)">queue</span>
+                      <span class="truncate font-mono text-[12px] leading-tight">publish order.created</span>
+                    </span>
+                    <span class="relative mx-3 h-7">
+                      <span
+                        data-bar
+                        aria-hidden="true"
+                        class="absolute top-1/2 h-2 origin-left -translate-y-1/2 rounded-[2px] bg-(--iu-foreground)/25"
+                        style="left: 94.0618%; width: max(2px, 4.5131%)"
+                      ></span>
+                    </span>
+                    <span data-duration class="px-3 text-right font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                      >38</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside
+              data-detail
+              aria-label="Selected span"
+              class="border-t border-(--iu-border) bg-(--iu-foreground)/[0.02] p-4 @4xl:border-t-0 @4xl:border-l dark:bg-(--iu-background)/40"
+            >
+              <p data-detail-service class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">
+                postgres
+              </p>
+              <p data-detail-name class="mt-1 font-mono text-[13px] font-medium break-words">SELECT inventory</p>
+              <dl
+                class="mt-4 grid grid-cols-3 gap-px overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-border) font-mono"
+              >
+                <div class="bg-(--iu-surface) px-2.5 py-2">
+                  <dt class="text-[10px] tracking-[0.06em] text-(--iu-muted) uppercase">Start</dt>
+                  <dd data-detail-start class="mt-0.5 text-[12px] tabular-nums">+198 ms</dd>
+                </div>
+                <div class="bg-(--iu-surface) px-2.5 py-2">
+                  <dt class="text-[10px] tracking-[0.06em] text-(--iu-muted) uppercase">Duration</dt>
+                  <dd data-detail-duration class="mt-0.5 text-[12px] tabular-nums">413 ms</dd>
+                </div>
+                <div class="bg-(--iu-surface) px-2.5 py-2">
+                  <dt class="text-[10px] tracking-[0.06em] text-(--iu-muted) uppercase">Share</dt>
+                  <dd data-detail-share class="mt-0.5 text-[12px] tabular-nums">49%</dd>
+                </div>
+              </dl>
+              <dl
+                data-detail-attributes
+                class="mt-4 space-y-2 border-t border-dashed border-(--iu-foreground)/15 pt-3 font-mono text-[11px]"
+              >
+                <div class="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] gap-3">
+                  <dt class="truncate text-(--iu-muted)">db.system</dt>
+                  <dd class="break-words">postgresql</dd>
+                </div>
+                <div class="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] gap-3">
+                  <dt class="truncate text-(--iu-muted)">db.statement</dt>
+                  <dd class="break-words">SELECT sku, qty FROM inventory WHERE sku = ANY($1)</dd>
+                </div>
+                <div class="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] gap-3">
+                  <dt class="truncate text-(--iu-muted)">db.rows_scanned</dt>
+                  <dd class="break-words">12,482</dd>
+                </div>
+                <div class="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] gap-3">
+                  <dt class="truncate text-(--iu-muted)">net.peer.name</dt>
+                  <dd class="break-words">pg-primary-2</dd>
+                </div>
+              </dl>
+              <p
+                data-detail-insight
+                class="mt-4 flex gap-2 rounded-[min(var(--iu-radius),6px)] border border-amber-600/40 bg-amber-500/8 p-2.5 text-[12px] leading-snug dark:border-amber-400/30"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-px shrink-0 text-amber-700 dark:text-amber-300"
+                >
+                  <path
+                    d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"
+                  />
+                  <path d="M9 18h6" />
+                  <path d="M10 22h4" />
+                </svg>
+                <span
+                  ><span class="font-medium">Suggestion. </span
+                  ><span data-detail-insight-text
+                    >Sequential scan over 12,482 rows. An index on inventory.sku brings this to about 9 ms.</span
+                  ></span
+                >
+              </p>
+            </aside>
+          </div>
+
+          <div
+            class="flex min-h-11 flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-(--iu-foreground)/15 px-4 py-2.5 font-mono text-[12px]"
+          >
+            <span
+              data-verdict
+              class="inline-flex flex-wrap items-center gap-x-3 gap-y-1 transition-opacity duration-150 motion-reduce:transition-none"
+            >
+              <span aria-hidden="true" class="h-2 w-4 rounded-[2px] bg-(--iu-accent)"></span>
+              <span>Slowest span: <span class="font-semibold">SELECT inventory</span></span>
+              <span class="text-(--iu-muted) tabular-nums">413 ms · 49% of the request</span>
+            </span>
+            <span data-reading hidden class="text-(--iu-muted)">Reading 7 spans…</span>
+            <span data-live aria-live="polite" class="sr-only"></span>
+          </div>
+        </figure>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-waterfall-hero]");
+        if (!root) return;
+        var SPANS = [
+          {
+            id: "s1",
+            service: "gateway",
+            name: "POST /api/checkout",
+            depth: 0,
+            start: 0,
+            duration: 842,
+            attributes: [
+              ["http.method", "POST"],
+              ["http.status_code", "200"],
+              ["client.region", "eu-west-1"],
+              ["user.plan", "growth"],
+            ],
+          },
+          {
+            id: "s2",
+            service: "auth",
+            name: "verify-session",
+            depth: 1,
+            start: 6,
+            duration: 32,
+            attributes: [
+              ["auth.method", "jwt"],
+              ["cache.hit", "true"],
+            ],
+          },
+          {
+            id: "s3",
+            service: "cart",
+            name: "load-cart",
+            depth: 1,
+            start: 40,
+            duration: 82,
+            attributes: [
+              ["cart.items", "4"],
+              ["redis.command", "HGETALL"],
+            ],
+          },
+          {
+            id: "s4",
+            service: "pricing",
+            name: "compute-tax",
+            depth: 1,
+            start: 124,
+            duration: 72,
+            attributes: [
+              ["tax.country", "DE"],
+              ["tax.rate", "0.19"],
+            ],
+          },
+          {
+            id: "s5",
+            service: "postgres",
+            name: "SELECT inventory",
+            depth: 2,
+            start: 198,
+            duration: 413,
+            attributes: [
+              ["db.system", "postgresql"],
+              ["db.statement", "SELECT sku, qty FROM inventory WHERE sku = ANY($1)"],
+              ["db.rows_scanned", "12,482"],
+              ["net.peer.name", "pg-primary-2"],
+            ],
+            insight: "Sequential scan over 12,482 rows. An index on inventory.sku brings this to about 9 ms.",
+          },
+          {
+            id: "s6",
+            service: "payments",
+            name: "charge-card",
+            depth: 1,
+            start: 614,
+            duration: 176,
+            attributes: [
+              ["payment.provider", "card"],
+              ["payment.amount", "€184.20"],
+              ["retry.count", "0"],
+            ],
+          },
+          {
+            id: "s7",
+            service: "queue",
+            name: "publish order.created",
+            depth: 1,
+            start: 792,
+            duration: 38,
+            attributes: [
+              ["messaging.system", "nats"],
+              ["messaging.destination", "orders"],
+            ],
+          },
+        ];
+        var TOTAL = 842;
+        var CRITICAL = "s5";
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var options = Array.prototype.slice.call(root.querySelectorAll('[role="option"]'));
+        var elapsed = root.querySelector("[data-elapsed]");
+        var playhead = root.querySelector("[data-playhead]");
+        var verdict = root.querySelector("[data-verdict]");
+        var reading = root.querySelector("[data-reading]");
+        var live = root.querySelector("[data-live]");
+        var touched = false;
+        var frame = null;
+        var paused = false;
+        var clock = TOTAL;
+        var last = null;
+        var delay = 0;
+
+        function byId(id) {
+          return SPANS.filter(function (span) {
+            return span.id === id;
+          })[0];
+        }
+
+        function renderDetail(span) {
+          root.querySelector("[data-detail-service]").textContent = span.service;
+          root.querySelector("[data-detail-name]").textContent = span.name;
+          root.querySelector("[data-detail-start]").textContent = "+" + span.start + " ms";
+          root.querySelector("[data-detail-duration]").textContent = span.duration + " ms";
+          root.querySelector("[data-detail-share]").textContent = Math.round((span.duration / TOTAL) * 100) + "%";
+          var list = root.querySelector("[data-detail-attributes]");
+          while (list.firstChild) list.removeChild(list.firstChild);
+          span.attributes.forEach(function (pair) {
+            var row = document.createElement("div");
+            row.className = "grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)] gap-3";
+            var dt = document.createElement("dt");
+            dt.className = "truncate text-(--iu-muted)";
+            dt.textContent = pair[0];
+            var dd = document.createElement("dd");
+            dd.className = "break-words";
+            dd.textContent = pair[1];
+            row.appendChild(dt);
+            row.appendChild(dd);
+            list.appendChild(row);
+          });
+          var insight = root.querySelector("[data-detail-insight]");
+          insight.hidden = !span.insight;
+          if (span.insight) root.querySelector("[data-detail-insight-text]").textContent = span.insight;
+        }
+
+        function select(index, focus) {
+          var option = options[index];
+          if (!option) return;
+          options.forEach(function (other) {
+            var selected = other === option;
+            other.setAttribute("aria-selected", String(selected));
+            other.tabIndex = selected ? 0 : -1;
+            other.querySelector("[data-marker]").hidden = !selected;
+          });
+          renderDetail(byId(option.dataset.span));
+          if (focus) option.focus();
+        }
+
+        function setCritical(on) {
+          options.forEach(function (option) {
+            var span = byId(option.dataset.span);
+            var bar = option.querySelector("[data-bar]");
+            var duration = option.querySelector("[data-duration]");
+            var isCritical = on && span.id === CRITICAL;
+            bar.classList.toggle("bg-(--iu-accent)", isCritical);
+            bar.classList.toggle("bg-(--iu-foreground)/45", !isCritical && span.depth === 0);
+            bar.classList.toggle("bg-(--iu-foreground)/25", !isCritical && span.depth !== 0);
+            duration.classList.toggle("font-semibold", isCritical);
+            duration.classList.toggle("text-(--iu-foreground)", isCritical);
+            duration.classList.toggle("text-(--iu-muted)", !isCritical);
+          });
+        }
+
+        function render(now) {
+          elapsed.textContent = Math.round(now) + " ms";
+          playhead.style.left = (now / TOTAL) * 100 + "%";
+          options.forEach(function (option) {
+            var span = byId(option.dataset.span);
+            var scale = Math.min(1, Math.max(0, (now - span.start) / span.duration));
+            option.querySelector("[data-bar]").style.scale = scale + " 1";
+          });
+        }
+
+        function finish() {
+          frame = null;
+          render(TOTAL);
+          playhead.hidden = true;
+          verdict.hidden = false;
+          reading.hidden = true;
+          setCritical(true);
+          if (!touched)
+            select(
+              options
+                .map(function (o) {
+                  return o.dataset.span;
+                })
+                .indexOf(CRITICAL),
+              false,
+            );
+          live.textContent = "Slowest span is SELECT inventory, 413 milliseconds.";
+        }
+
+        function tick(time) {
+          if (last === null) last = time;
+          var step = time - last;
+          last = time;
+          if (!paused) {
+            if (delay > 0) delay -= step;
+            else clock = Math.min(TOTAL, clock + (step / 2400) * TOTAL);
+          }
+          render(clock);
+          if (clock >= TOTAL) finish();
+          else frame = requestAnimationFrame(tick);
+        }
+
+        function play() {
+          if (frame !== null) cancelAnimationFrame(frame);
+          if (reduce.matches) {
+            finish();
+            return;
+          }
+          clock = 0;
+          last = null;
+          delay = 300;
+          playhead.hidden = false;
+          verdict.hidden = true;
+          reading.hidden = false;
+          live.textContent = "";
+          setCritical(false);
+          if (!touched) select(0, false);
+          render(0);
+          frame = requestAnimationFrame(tick);
+        }
+
+        options.forEach(function (option, index) {
+          option.addEventListener("click", function () {
+            touched = true;
+            select(index, false);
+          });
+          option.addEventListener("keydown", function (event) {
+            var lastIndex = options.length - 1;
+            var next = null;
+            if (event.key === "ArrowDown") next = Math.min(lastIndex, index + 1);
+            else if (event.key === "ArrowUp") next = Math.max(0, index - 1);
+            else if (event.key === "Home") next = 0;
+            else if (event.key === "End") next = lastIndex;
+            if (next === null) return;
+            event.preventDefault();
+            touched = true;
+            select(next, true);
+          });
+        });
+
+        root.querySelector("[data-replay]").addEventListener("click", function () {
+          touched = false;
+          play();
+        });
+
+        // Replay once the trace scrolls into view; pause while it is offscreen.
+        var started = false;
+        var observer = new IntersectionObserver(function (entries) {
+          var entry = entries[0];
+          if (!entry) return;
+          paused = !entry.isIntersecting;
+          if (entry.isIntersecting && !started) {
+            started = true;
+            play();
+          }
+        });
+        observer.observe(root.querySelector("[data-trace]"));
+      })();
+    </script>
+  </body>
+</html>

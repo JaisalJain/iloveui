@@ -1,0 +1,15 @@
+{
+  "slug": "waterfall-trace-hero",
+  "name": "Waterfall trace hero",
+  "category": "hero",
+  "styleFamily": "dark-technical",
+  "tier": "pro",
+  "description": "A tracing-platform hero over a live request waterfall: a playhead sweeps the spans in, then the slowest one lights up with its fix.",
+  "tags": ["hero", "observability", "tracing", "waterfall", "devtools", "landing"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

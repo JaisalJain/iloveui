@@ -1,0 +1,15 @@
+{
+  "slug": "kettle-cta-footer",
+  "name": "Kettle CTA and footer",
+  "category": "cta-footers",
+  "styleFamily": "playful",
+  "tier": "free",
+  "description": "A sticker-bright call to action with a week-of-dinners card, over a footer whose newsletter field shakes, spins and draws a check.",
+  "tags": ["cta", "footer", "newsletter", "playful", "validation", "food"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

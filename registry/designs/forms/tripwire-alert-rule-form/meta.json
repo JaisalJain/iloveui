@@ -1,0 +1,24 @@
+{
+  "slug": "tripwire-alert-rule-form",
+  "name": "Tripwire alert rule form",
+  "category": "forms",
+  "styleFamily": "data-dense",
+  "tier": "pro",
+  "description": "A dense alert-rule editor with a live 24-hour backtest: drag the threshold or change the window and see every time the rule would have fired.",
+  "tags": [
+    "form",
+    "alerting",
+    "multi-select",
+    "combobox",
+    "date-range",
+    "conditional-fields",
+    "validation",
+    "devtools"
+  ],
+  "states": ["default", "error", "disabled", "loading", "success"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "hopscotch-onboarding",
+  "name": "Hopscotch onboarding",
+  "category": "auth",
+  "styleFamily": "playful",
+  "tier": "free",
+  "description": "A four-step sign-up and onboarding (account, workspace, team, preferences) where an accent token hops tile to tile and the finish draws a check.",
+  "tags": ["onboarding", "sign-up", "multi-step", "stepper", "invite", "social-login", "wizard"],
+  "states": ["default", "empty", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

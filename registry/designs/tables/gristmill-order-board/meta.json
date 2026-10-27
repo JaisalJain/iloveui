@@ -1,0 +1,15 @@
+{
+  "slug": "gristmill-order-board",
+  "name": "Gristmill order board",
+  "category": "tables",
+  "styleFamily": "neo-brutalist",
+  "tier": "pro",
+  "description": "A wholesale order board in thick outlines: each row's four-block stage rail is the control, stamping a new sticker as it fills.",
+  "tags": ["orders", "inventory", "data-table", "bulk-actions", "inline-edit", "fulfilment", "brutalist"],
+  "states": ["default", "loading", "empty", "error"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

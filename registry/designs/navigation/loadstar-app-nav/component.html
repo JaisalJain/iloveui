@@ -1,0 +1,2123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loadstar app navigation · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-loadstar
+      class="relative flex h-dvh min-h-[560px] overflow-hidden bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div
+        data-side-wrap
+        class="relative hidden w-60 shrink-0 transition-[width] duration-150 ease-out motion-reduce:transition-none lg:block"
+      >
+        <aside
+          data-aside
+          id="loadstar-sidebar"
+          aria-label="Sidebar"
+          class="absolute inset-y-0 left-0 z-30 w-60 border-r border-(--iu-border) bg-(--iu-surface) shadow-black/15 transition-[translate,box-shadow] duration-150 ease-out motion-reduce:transition-none dark:bg-(--iu-background)"
+        >
+          <div data-sidebar-body="side" class="h-full">
+            <div class="flex h-full flex-col">
+              <div class="flex h-12 shrink-0 items-center gap-2.5 border-b border-(--iu-border) px-3">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-6 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-(--iu-background)"
+                  ><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 10.5h10M3.5 10.5V5l3.5-2.5L10.5 5v5.5" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M5.5 10.5V7.5h3v3" stroke="currentColor" stroke-width="1.5" /></svg></span
+                ><span class="min-w-0 leading-tight"
+                  ><span class="block truncate text-[13px] font-semibold">Loadstar · EU Freight</span
+                  ><span class="block font-mono text-[11px] text-(--iu-muted)">eu-west · 4 depots</span></span
+                >
+              </div>
+              <nav aria-label="Workspace" class="min-h-0 flex-1 [scrollbar-gutter:stable] overflow-y-auto px-2 py-2">
+                <div class="mb-2">
+                  <button
+                    type="button"
+                    data-section
+                    aria-expanded="true"
+                    aria-controls="loadstar-side-operations"
+                    class="group flex h-[calc(30px*var(--iu-density))] w-full items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="rotate-90 transition-transform duration-150 motion-reduce:transition-none"
+                    >
+                      <path d="m9 18 6-6-6-6" /></svg
+                    >Operations
+                  </button>
+                  <ul id="loadstar-side-operations" class="mt-0.5">
+                    <li class="relative">
+                      <a
+                        href="#inbox"
+                        data-nav="inbox"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                          <path
+                            d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                          /></svg
+                        ><span class="min-w-0 flex-1 truncate">Inbox</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">12</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <span
+                        data-marker
+                        aria-hidden="true"
+                        class="absolute inset-0 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/[0.07] dark:bg-(--iu-foreground)/10"
+                        ><span class="absolute inset-y-1.5 left-0 w-0.5 rounded-full bg-(--iu-accent)"></span></span
+                      ><a
+                        href="#shipments"
+                        data-nav="shipments"
+                        aria-current="page"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path
+                            d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
+                          />
+                          <path d="M12 22V12" />
+                          <polyline points="3.29 7 12 12 20.71 7" />
+                          <path d="m7.5 4.27 9 5.15" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Shipments</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">1,284</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#exceptions"
+                        data-nav="exceptions"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                          <path d="M12 9v4" />
+                          <path d="M12 17h.01" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Exceptions</span
+                        ><span
+                          class="inline-flex items-center gap-1 font-mono text-[11px] text-amber-700 tabular-nums dark:text-amber-400"
+                          ><span class="sr-only">needs attention,</span>7</span
+                        ></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#docks"
+                        data-nav="docks"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M18 21V10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v11" />
+                          <path
+                            d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35a2 2 0 0 1 1.26-1.86l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z"
+                          />
+                          <path d="M6 13h12" />
+                          <path d="M6 17h12" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Dock schedule</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">18</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#carriers"
+                        data-nav="carriers"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+                          <path d="M15 18H9" />
+                          <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+                          <circle cx="17" cy="18" r="2" />
+                          <circle cx="7" cy="18" r="2" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Carriers</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">342</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="mb-2">
+                  <button
+                    type="button"
+                    data-section
+                    aria-expanded="true"
+                    aria-controls="loadstar-side-planning"
+                    class="group flex h-[calc(30px*var(--iu-density))] w-full items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="rotate-90 transition-transform duration-150 motion-reduce:transition-none"
+                    >
+                      <path d="m9 18 6-6-6-6" /></svg
+                    >Planning
+                  </button>
+                  <ul id="loadstar-side-planning" class="mt-0.5">
+                    <li class="relative">
+                      <a
+                        href="#lanes"
+                        data-nav="lanes"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <circle cx="6" cy="19" r="3" />
+                          <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+                          <circle cx="18" cy="5" r="3" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Lanes</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">96</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#rates"
+                        data-nav="rates"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                          <path d="M10 9H8" />
+                          <path d="M16 13H8" />
+                          <path d="M16 17H8" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Rate cards</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">14</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#forecasts"
+                        data-nav="forecasts"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+                          <path d="M7 16h8" />
+                          <path d="M7 11h12" />
+                          <path d="M7 6h3" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Forecasts</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="mb-2">
+                  <button
+                    type="button"
+                    data-section
+                    aria-expanded="true"
+                    aria-controls="loadstar-side-views"
+                    class="group flex h-[calc(30px*var(--iu-density))] w-full items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="rotate-90 transition-transform duration-150 motion-reduce:transition-none"
+                    >
+                      <path d="m9 18 6-6-6-6" /></svg
+                    >Saved views<span class="ml-auto font-mono tabular-nums">3</span>
+                  </button>
+                  <ul id="loadstar-side-views" class="mt-0.5">
+                    <li class="relative">
+                      <a
+                        href="#eu-uk-late"
+                        data-nav="eu-uk-late"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"
+                          ><span class="size-1.5 rounded-[1px] border border-current"></span></span
+                        ><span class="min-w-0 flex-1 truncate">EU → UK, running late</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">23</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#reefer"
+                        data-nav="reefer"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"
+                          ><span class="size-1.5 rounded-[1px] border border-current"></span></span
+                        ><span class="min-w-0 flex-1 truncate">Reefer over 48h</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">5</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#awaiting-pod"
+                        data-nav="awaiting-pod"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"
+                          ><span class="size-1.5 rounded-[1px] border border-current"></span></span
+                        ><span class="min-w-0 flex-1 truncate">Awaiting POD</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">41</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="shrink-0 border-t border-(--iu-border) px-2 py-2">
+                <a
+                  href="#settings"
+                  data-nav="settings"
+                  class="flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    aria-hidden="true"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                    />
+                    <circle cx="12" cy="12" r="3" /></svg
+                  >Settings</a
+                >
+                <p class="mt-1 flex items-center gap-2 px-2 font-mono text-[11px] text-(--iu-muted)">
+                  <span aria-hidden="true" class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span
+                  >Synced 12s ago
+                </p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+      <div data-peek-zone aria-hidden="true" hidden class="absolute inset-y-0 left-0 z-20 hidden w-2 lg:block"></div>
+      <div class="flex min-w-0 flex-1 flex-col">
+        <header class="relative flex h-12 shrink-0 items-center gap-2 border-b border-(--iu-border) px-2 sm:px-3">
+          <button
+            type="button"
+            data-menu-button
+            aria-label="Open navigation"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            class="inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid lg:hidden"
+          >
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 12h16" />
+              <path d="M4 18h16" />
+              <path d="M4 6h16" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            data-collapse
+            aria-label="Collapse sidebar"
+            title="Collapse sidebar ( [ )"
+            aria-expanded="true"
+            aria-controls="loadstar-sidebar"
+            class="hidden size-8 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid lg:inline-flex pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+          >
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+              <path d="M9 3v18" />
+            </svg>
+          </button>
+          <nav data-crumb-nav aria-label="Breadcrumb" class="relative min-w-0 flex-1">
+            <ol data-crumbs class="flex min-w-0 items-center gap-1.5 text-[13px]">
+              <li
+                data-crumb-item
+                class="flex min-w-0 items-center gap-1.5 transition-[opacity,translate] duration-150 ease-out motion-reduce:transition-none max-sm:hidden"
+              >
+                <span class="truncate text-(--iu-muted)">EU Freight</span>
+              </li>
+              <li
+                data-crumb-item
+                class="flex min-w-0 items-center gap-1.5 transition-[opacity,translate] duration-150 ease-out motion-reduce:transition-none"
+              >
+                <span aria-hidden="true" class="text-(--iu-foreground)/25 max-sm:hidden">/</span
+                ><span class="text-(--iu-muted)">Operations</span>
+              </li>
+              <li
+                data-crumb-item
+                class="flex min-w-0 items-center gap-1.5 transition-[opacity,translate] duration-150 ease-out motion-reduce:transition-none"
+              >
+                <span aria-hidden="true" class="text-(--iu-foreground)/25">/</span
+                ><span class="relative"
+                  ><button
+                    type="button"
+                    data-crumb
+                    aria-haspopup="menu"
+                    aria-expanded="false"
+                    aria-current="page"
+                    class="-mx-1.5 inline-flex h-7 items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-1.5 font-medium text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    Shipments<svg
+                      aria-hidden="true"
+                      width="13"
+                      height="13"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg></button
+                ></span>
+              </li>
+            </ol>
+            <div
+              data-crumb-menu
+              id="loadstar-crumb-menu"
+              role="menu"
+              hidden
+              class="absolute top-full z-40 mt-1.5 w-56 origin-top-left rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) p-1 shadow-lg shadow-black/10 dark:border-(--iu-foreground)/15 dark:shadow-black/40"
+            ></div>
+          </nav>
+          <div data-toolbar class="ml-auto flex items-center gap-1.5">
+            <div data-switcher class="relative hidden md:block">
+              <svg
+                aria-hidden="true"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2 text-(--iu-muted)"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              <input
+                data-switcher-input
+                type="text"
+                role="combobox"
+                aria-label="Quick switcher: jump to a page or shipment"
+                aria-expanded="false"
+                aria-controls="loadstar-switcher"
+                aria-autocomplete="list"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Jump to page or SHP-…"
+                class="h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 bg-(--iu-background) pr-12 pl-8 text-[13px] outline-none placeholder:text-(--iu-muted) focus-visible:border-(--iu-accent) focus-visible:outline-2 focus-visible:-outline-offset-1 focus-visible:outline-(--iu-accent) focus-visible:outline-solid md:w-72 pointer-coarse:h-10"
+              />
+              <kbd
+                class="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 rounded-[3px] border border-(--iu-border) px-1 font-mono text-[10px] text-(--iu-muted)"
+                >⌘J</kbd
+              >
+              <div
+                data-switcher-list
+                id="loadstar-switcher"
+                role="listbox"
+                aria-label="Jump to"
+                hidden
+                class="absolute top-full right-0 left-0 z-40 mt-1.5 max-h-[360px] overflow-y-auto rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) p-1 shadow-lg shadow-black/10 md:left-auto md:w-[400px] dark:border-(--iu-foreground)/15 dark:shadow-black/40"
+              ></div>
+            </div>
+            <button
+              type="button"
+              data-mobile-search
+              aria-label="Quick switcher"
+              class="inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid md:hidden"
+            >
+              <svg
+                aria-hidden="true"
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Notifications, 3 unread"
+              class="relative inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid md:size-8 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+            >
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+                <path
+                  d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"
+                /></svg
+              ><span
+                aria-hidden="true"
+                class="absolute top-1.5 right-1.5 min-w-3.5 rounded-full bg-(--iu-accent) px-0.5 font-mono text-[9px] leading-3.5 text-(--iu-accent-foreground) tabular-nums md:top-0.5 md:right-0.5"
+                >3</span
+              >
+            </button>
+            <span
+              title="Rosa Lindqvist"
+              class="ml-1 hidden size-7 items-center justify-center rounded-full bg-(--iu-foreground)/10 text-[11px] font-semibold sm:inline-flex"
+              ><span aria-hidden="true">RL</span><span class="sr-only">Signed in as Rosa Lindqvist</span></span
+            >
+          </div>
+        </header>
+        <main class="min-h-0 flex-1 [scrollbar-gutter:stable] overflow-y-auto">
+          <div data-main class="px-3 py-4 sm:px-5">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h1 class="text-[17px] font-semibold tracking-[-0.01em]">Shipments</h1>
+              <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">1,284 total · showing 8</span>
+            </div>
+            <table class="mt-4 w-full table-fixed border-t border-(--iu-border) text-left text-[13px]">
+              <caption class="sr-only">
+                Shipments: latest shipments
+              </caption>
+              <thead class="sticky top-0 bg-(--iu-background)">
+                <tr class="text-[11px] tracking-[0.06em] text-(--iu-muted) uppercase">
+                  <th scope="col" class="w-[30%] py-2 pr-3 font-medium sm:w-[16%]">Shipment</th>
+                  <th scope="col" class="py-2 pr-3 font-medium">Lane</th>
+                  <th scope="col" class="hidden py-2 pr-3 font-medium xl:table-cell">Carrier</th>
+                  <th scope="col" class="hidden w-[16%] py-2 pr-3 font-medium md:table-cell">ETA</th>
+                  <th scope="col" class="w-[30%] py-2 pr-3 font-medium sm:w-[16%]">Status</th>
+                  <th scope="col" class="hidden w-[10%] py-2 text-right font-medium sm:table-cell">Weight</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border)">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48213"
+                      data-shipment="SHP-48213"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48213</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Rotterdam <span class="text-(--iu-muted)">→</span> Leeds</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Norlake Haulage</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 28, 14:20
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-amber-700 dark:text-amber-400"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" /></svg
+                      >Delayed</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">18.4 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border) bg-(--iu-foreground)/[0.025]">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48207"
+                      data-shipment="SHP-48207"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48207</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Antwerp <span class="text-(--iu-muted)">→</span> Lyon</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Brisa Transportes</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 27, 21:05
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-(--iu-muted)"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg
+                      >On time</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">22.1 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border)">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48199"
+                      data-shipment="SHP-48199"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48199</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Hamburg <span class="text-(--iu-muted)">→</span> Gdańsk</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Vistula Freight</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 28, 06:40
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-red-700 dark:text-red-400"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                        <path d="M12 9v4" />
+                        <path d="M12 17h.01" /></svg
+                      >Exception</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">9.7 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border) bg-(--iu-foreground)/[0.025]">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48188"
+                      data-shipment="SHP-48188"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48188</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Le Havre <span class="text-(--iu-muted)">→</span> Madrid</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Brisa Transportes</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 29, 11:15
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-(--iu-muted)"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg
+                      >On time</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">24.0 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border)">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48176"
+                      data-shipment="SHP-48176"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48176</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Felixstowe <span class="text-(--iu-muted)">→</span> Dublin</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Norlake Haulage</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 27, 18:30
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-amber-700 dark:text-amber-400"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" /></svg
+                      >Delayed</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">12.2 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border) bg-(--iu-foreground)/[0.025]">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48164"
+                      data-shipment="SHP-48164"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48164</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Genoa <span class="text-(--iu-muted)">→</span> Munich</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Alpenroute</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 28, 09:50
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-(--iu-muted)"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg
+                      >On time</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">16.8 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border)">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48151"
+                      data-shipment="SHP-48151"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48151</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Valencia <span class="text-(--iu-muted)">→</span> Bordeaux</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Brisa Transportes</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 28, 17:35
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-red-700 dark:text-red-400"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                        <path d="M12 9v4" />
+                        <path d="M12 17h.01" /></svg
+                      >Exception</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">7.3 t</td>
+                </tr>
+                <tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border) bg-(--iu-foreground)/[0.025]">
+                  <td class="pr-3">
+                    <a
+                      href="#SHP-48142"
+                      data-shipment="SHP-48142"
+                      class="rounded-[min(var(--iu-radius),6px)] font-mono text-[12px] tabular-nums underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:underline"
+                      >SHP-48142</a
+                    >
+                  </td>
+                  <td class="truncate pr-3">Gdynia <span class="text-(--iu-muted)">→</span> Aarhus</td>
+                  <td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">Vistula Freight</td>
+                  <td
+                    class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell"
+                  >
+                    Oct 29, 08:00
+                  </td>
+                  <td class="pr-3 text-[12px] whitespace-nowrap">
+                    <span class="inline-flex items-center gap-1.5 text-(--iu-muted)"
+                      ><svg
+                        aria-hidden="true"
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M20 6 9 17l-5-5" /></svg
+                      >On time</span
+                    >
+                  </td>
+                  <td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">19.5 t</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+      <div data-drawer hidden class="fixed inset-0 z-50 lg:hidden">
+        <div data-drawer-backdrop aria-hidden="true" class="absolute inset-0 bg-black/30 dark:bg-black/60"></div>
+        <div
+          data-drawer-panel
+          role="dialog"
+          aria-modal="true"
+          aria-label="Navigation"
+          class="absolute inset-y-0 left-0 w-[min(300px,86vw)] border-r border-(--iu-border) bg-(--iu-surface) shadow-lg shadow-black/20 transition-[translate] duration-200 ease-out motion-reduce:transition-none dark:border-(--iu-foreground)/15"
+        >
+          <button
+            type="button"
+            data-drawer-close
+            aria-label="Close navigation"
+            class="absolute top-1 right-1 z-10 inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+          >
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+          <div data-sidebar-body="drawer" class="h-full">
+            <div class="flex h-full flex-col">
+              <div class="flex h-12 shrink-0 items-center gap-2.5 border-b border-(--iu-border) px-3">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-6 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-(--iu-background)"
+                  ><svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M2 10.5h10M3.5 10.5V5l3.5-2.5L10.5 5v5.5" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M5.5 10.5V7.5h3v3" stroke="currentColor" stroke-width="1.5" /></svg></span
+                ><span class="min-w-0 leading-tight"
+                  ><span class="block truncate text-[13px] font-semibold">Loadstar · EU Freight</span
+                  ><span class="block font-mono text-[11px] text-(--iu-muted)">eu-west · 4 depots</span></span
+                >
+              </div>
+              <nav aria-label="Workspace" class="min-h-0 flex-1 [scrollbar-gutter:stable] overflow-y-auto px-2 py-2">
+                <div class="mb-2">
+                  <button
+                    type="button"
+                    data-section
+                    aria-expanded="true"
+                    aria-controls="loadstar-drawer-operations"
+                    class="group flex h-[calc(30px*var(--iu-density))] w-full items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="rotate-90 transition-transform duration-150 motion-reduce:transition-none"
+                    >
+                      <path d="m9 18 6-6-6-6" /></svg
+                    >Operations
+                  </button>
+                  <ul id="loadstar-drawer-operations" class="mt-0.5">
+                    <li class="relative">
+                      <a
+                        href="#inbox"
+                        data-nav="inbox"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+                          <path
+                            d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"
+                          /></svg
+                        ><span class="min-w-0 flex-1 truncate">Inbox</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">12</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <span
+                        data-marker
+                        aria-hidden="true"
+                        class="absolute inset-0 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/[0.07] dark:bg-(--iu-foreground)/10"
+                        ><span class="absolute inset-y-1.5 left-0 w-0.5 rounded-full bg-(--iu-accent)"></span></span
+                      ><a
+                        href="#shipments"
+                        data-nav="shipments"
+                        aria-current="page"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path
+                            d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
+                          />
+                          <path d="M12 22V12" />
+                          <polyline points="3.29 7 12 12 20.71 7" />
+                          <path d="m7.5 4.27 9 5.15" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Shipments</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">1,284</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#exceptions"
+                        data-nav="exceptions"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                          <path d="M12 9v4" />
+                          <path d="M12 17h.01" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Exceptions</span
+                        ><span
+                          class="inline-flex items-center gap-1 font-mono text-[11px] text-amber-700 tabular-nums dark:text-amber-400"
+                          ><span class="sr-only">needs attention,</span>7</span
+                        ></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#docks"
+                        data-nav="docks"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M18 21V10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v11" />
+                          <path
+                            d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35a2 2 0 0 1 1.26-1.86l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z"
+                          />
+                          <path d="M6 13h12" />
+                          <path d="M6 17h12" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Dock schedule</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">18</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#carriers"
+                        data-nav="carriers"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+                          <path d="M15 18H9" />
+                          <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+                          <circle cx="17" cy="18" r="2" />
+                          <circle cx="7" cy="18" r="2" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Carriers</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">342</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="mb-2">
+                  <button
+                    type="button"
+                    data-section
+                    aria-expanded="true"
+                    aria-controls="loadstar-drawer-planning"
+                    class="group flex h-[calc(30px*var(--iu-density))] w-full items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="rotate-90 transition-transform duration-150 motion-reduce:transition-none"
+                    >
+                      <path d="m9 18 6-6-6-6" /></svg
+                    >Planning
+                  </button>
+                  <ul id="loadstar-drawer-planning" class="mt-0.5">
+                    <li class="relative">
+                      <a
+                        href="#lanes"
+                        data-nav="lanes"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <circle cx="6" cy="19" r="3" />
+                          <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+                          <circle cx="18" cy="5" r="3" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Lanes</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">96</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#rates"
+                        data-nav="rates"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                          <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                          <path d="M10 9H8" />
+                          <path d="M16 13H8" />
+                          <path d="M16 17H8" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Rate cards</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">14</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#forecasts"
+                        data-nav="forecasts"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="shrink-0"
+                        >
+                          <path d="M3 3v16a2 2 0 0 0 2 2h16" />
+                          <path d="M7 16h8" />
+                          <path d="M7 11h12" />
+                          <path d="M7 6h3" /></svg
+                        ><span class="min-w-0 flex-1 truncate">Forecasts</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="mb-2">
+                  <button
+                    type="button"
+                    data-section
+                    aria-expanded="true"
+                    aria-controls="loadstar-drawer-views"
+                    class="group flex h-[calc(30px*var(--iu-density))] w-full items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="rotate-90 transition-transform duration-150 motion-reduce:transition-none"
+                    >
+                      <path d="m9 18 6-6-6-6" /></svg
+                    >Saved views<span class="ml-auto font-mono tabular-nums">3</span>
+                  </button>
+                  <ul id="loadstar-drawer-views" class="mt-0.5">
+                    <li class="relative">
+                      <a
+                        href="#eu-uk-late"
+                        data-nav="eu-uk-late"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"
+                          ><span class="size-1.5 rounded-[1px] border border-current"></span></span
+                        ><span class="min-w-0 flex-1 truncate">EU → UK, running late</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">23</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#reefer"
+                        data-nav="reefer"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"
+                          ><span class="size-1.5 rounded-[1px] border border-current"></span></span
+                        ><span class="min-w-0 flex-1 truncate">Reefer over 48h</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">5</span></a
+                      >
+                    </li>
+                    <li class="relative">
+                      <a
+                        href="#awaiting-pod"
+                        data-nav="awaiting-pod"
+                        class="relative flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                        ><span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"
+                          ><span class="size-1.5 rounded-[1px] border border-current"></span></span
+                        ><span class="min-w-0 flex-1 truncate">Awaiting POD</span
+                        ><span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums">41</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+              <div class="shrink-0 border-t border-(--iu-border) px-2 py-2">
+                <a
+                  href="#settings"
+                  data-nav="settings"
+                  class="flex h-[calc(30px*var(--iu-density))] items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    aria-hidden="true"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                    />
+                    <circle cx="12" cy="12" r="3" /></svg
+                  >Settings</a
+                >
+                <p class="mt-1 flex items-center gap-2 px-2 font-mono text-[11px] text-(--iu-muted)">
+                  <span aria-hidden="true" class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span
+                  >Synced 12s ago
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var FOCUS =
+          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid";
+        var FOCUS_INSET =
+          "focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid";
+        var ROW = "h-[calc(30px*var(--iu-density))] pointer-coarse:min-h-10";
+        var RADIUS = "rounded-[min(var(--iu-radius),6px)]";
+        function svg(paths, size, stroke, cls) {
+          return (
+            '<svg aria-hidden="true" width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round"' +
+            (cls ? ' class="' + cls + '"' : "") +
+            ">" +
+            paths +
+            "</svg>"
+          );
+        }
+        var ICON = {
+          inbox:
+            '<polyline points="22 12 16 12 14 15 10 15 8 12 2 12" /><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />',
+          package:
+            '<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /><path d="M12 22V12" /><polyline points="3.29 7 12 12 20.71 7" /><path d="m7.5 4.27 9 5.15" />',
+          alert:
+            '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /><path d="M12 9v4" /><path d="M12 17h.01" />',
+          warehouse:
+            '<path d="M18 21V10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v11" /><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35a2 2 0 0 1 1.26-1.86l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z" /><path d="M6 13h12" /><path d="M6 17h12" />',
+          truck:
+            '<path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /><path d="M15 18H9" /><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /><circle cx="17" cy="18" r="2" /><circle cx="7" cy="18" r="2" />',
+          route:
+            '<circle cx="6" cy="19" r="3" /><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" /><circle cx="18" cy="5" r="3" />',
+          file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /><path d="M14 2v4a2 2 0 0 0 2 2h4" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" />',
+          chart: '<path d="M3 3v16a2 2 0 0 0 2 2h16" /><path d="M7 16h8" /><path d="M7 11h12" /><path d="M7 6h3" />',
+          settings:
+            '<path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /><circle cx="12" cy="12" r="3" />',
+          clock: '<circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />',
+          check: '<path d="M20 6 9 17l-5-5" />',
+          chevronRight: '<path d="m9 18 6-6-6-6" />',
+          chevronDown: '<path d="m6 9 6 6 6-6" />',
+          plus: '<path d="M5 12h14" /><path d="M12 5v14" />',
+        };
+        var SECTIONS = [
+          {
+            id: "operations",
+            label: "Operations",
+            items: [
+              { id: "inbox", label: "Inbox", count: 12, icon: "inbox" },
+              { id: "shipments", label: "Shipments", count: 1284, icon: "package" },
+              {
+                id: "exceptions",
+                label: "Exceptions",
+                count: 7,
+                tone: "warning",
+                icon: "alert",
+                filter: ["exception"],
+              },
+              { id: "docks", label: "Dock schedule", count: 18, icon: "warehouse" },
+              { id: "carriers", label: "Carriers", count: 342, icon: "truck" },
+            ],
+          },
+          {
+            id: "planning",
+            label: "Planning",
+            items: [
+              { id: "lanes", label: "Lanes", count: 96, icon: "route" },
+              { id: "rates", label: "Rate cards", count: 14, icon: "file" },
+              { id: "forecasts", label: "Forecasts", icon: "chart" },
+            ],
+          },
+          {
+            id: "views",
+            label: "Saved views",
+            items: [
+              { id: "eu-uk-late", label: "EU → UK, running late", count: 23, filter: ["delayed"] },
+              { id: "reefer", label: "Reefer over 48h", count: 5, filter: ["exception", "delayed"] },
+              { id: "awaiting-pod", label: "Awaiting POD", count: 41, filter: ["on-time"] },
+            ],
+          },
+        ];
+        var SHIPMENTS = [
+          ["SHP-48213", "Rotterdam", "Leeds", "Norlake Haulage", "Oct 28, 14:20", "delayed", "18.4 t"],
+          ["SHP-48207", "Antwerp", "Lyon", "Brisa Transportes", "Oct 27, 21:05", "on-time", "22.1 t"],
+          ["SHP-48199", "Hamburg", "Gdańsk", "Vistula Freight", "Oct 28, 06:40", "exception", "9.7 t"],
+          ["SHP-48188", "Le Havre", "Madrid", "Brisa Transportes", "Oct 29, 11:15", "on-time", "24.0 t"],
+          ["SHP-48176", "Felixstowe", "Dublin", "Norlake Haulage", "Oct 27, 18:30", "delayed", "12.2 t"],
+          ["SHP-48164", "Genoa", "Munich", "Alpenroute", "Oct 28, 09:50", "on-time", "16.8 t"],
+          ["SHP-48151", "Valencia", "Bordeaux", "Brisa Transportes", "Oct 28, 17:35", "exception", "7.3 t"],
+          ["SHP-48142", "Gdynia", "Aarhus", "Vistula Freight", "Oct 29, 08:00", "on-time", "19.5 t"],
+        ].map(function (r) {
+          return { id: r[0], origin: r[1], destination: r[2], carrier: r[3], eta: r[4], status: r[5], weight: r[6] };
+        });
+        var FLAT = [];
+        SECTIONS.forEach(function (s) {
+          s.items.forEach(function (i) {
+            FLAT.push(Object.assign({ sectionLabel: s.label }, i));
+          });
+        });
+        FLAT.push({ id: "settings", label: "Settings", icon: "settings", sectionLabel: "Workspace" });
+        function find(id) {
+          return (
+            FLAT.filter(function (i) {
+              return i.id === id;
+            })[0] || FLAT[0]
+          );
+        }
+        function fmt(n) {
+          return n.toLocaleString("en-US");
+        }
+        function esc(v) {
+          return String(v).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+        function statusHtml(status) {
+          if (status === "exception")
+            return (
+              '<span class="inline-flex items-center gap-1.5 text-red-700 dark:text-red-400">' +
+              svg(ICON.alert, 13, "1.75") +
+              "Exception</span>"
+            );
+          if (status === "delayed")
+            return (
+              '<span class="inline-flex items-center gap-1.5 text-amber-700 dark:text-amber-400">' +
+              svg(ICON.clock, 13, "1.75") +
+              "Delayed</span>"
+            );
+          return (
+            '<span class="inline-flex items-center gap-1.5 text-(--iu-muted)">' +
+            svg(ICON.check, 13, "1.75") +
+            "On time</span>"
+          );
+        }
+
+        function navItemHtml(item, current) {
+          var marker = current
+            ? '<span data-marker aria-hidden="true" class="absolute inset-0 bg-(--iu-foreground)/[0.07] dark:bg-(--iu-foreground)/10 ' +
+              RADIUS +
+              '"><span class="absolute inset-y-1.5 left-0 w-0.5 rounded-full bg-(--iu-accent)"></span></span>'
+            : "";
+          var icon = item.icon
+            ? svg(ICON[item.icon], 15, "1.5", "shrink-0")
+            : '<span aria-hidden="true" class="flex size-[15px] shrink-0 items-center justify-center"><span class="size-1.5 rounded-[1px] border border-current"></span></span>';
+          var count =
+            item.count !== undefined
+              ? '<span class="inline-flex items-center gap-1 font-mono text-[11px] tabular-nums' +
+                (item.tone === "warning" ? " text-amber-700 dark:text-amber-400" : "") +
+                '">' +
+                (item.tone === "warning" ? '<span class="sr-only">needs attention,</span>' : "") +
+                fmt(item.count) +
+                "</span>"
+              : "";
+          return (
+            '<li class="relative">' +
+            marker +
+            '<a href="#' +
+            item.id +
+            '" data-nav="' +
+            item.id +
+            '"' +
+            (current ? ' aria-current="page"' : "") +
+            ' class="relative flex items-center gap-2.5 px-2 ' +
+            ROW +
+            " text-[13px] " +
+            (current ? "font-medium text-(--iu-foreground)" : "text-(--iu-muted)") +
+            " " +
+            RADIUS +
+            " transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground) " +
+            FOCUS_INSET +
+            '">' +
+            icon +
+            '<span class="min-w-0 flex-1 truncate">' +
+            esc(item.label) +
+            "</span>" +
+            count +
+            "</a></li>"
+          );
+        }
+
+        function sidebarHtml(currentId, suffix) {
+          var sections = SECTIONS.map(function (s) {
+            return (
+              '<div class="mb-2"><button type="button" data-section aria-expanded="true" aria-controls="loadstar-' +
+              suffix +
+              "-" +
+              s.id +
+              '" class="group flex w-full items-center gap-1 px-2 ' +
+              ROW +
+              " text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase " +
+              RADIUS +
+              " pointer-fine:hover:text-(--iu-foreground) " +
+              FOCUS_INSET +
+              '">' +
+              svg(
+                ICON.chevronRight,
+                12,
+                "2",
+                "rotate-90 transition-transform duration-150 motion-reduce:transition-none",
+              ) +
+              s.label +
+              (s.id === "views" ? '<span class="ml-auto font-mono tabular-nums">' + s.items.length + "</span>" : "") +
+              '</button><ul id="loadstar-' +
+              suffix +
+              "-" +
+              s.id +
+              '" class="mt-0.5">' +
+              s.items
+                .map(function (i) {
+                  return navItemHtml(i, i.id === currentId);
+                })
+                .join("") +
+              "</ul></div>"
+            );
+          }).join("");
+          return (
+            '<div class="flex h-full flex-col"><div class="flex h-12 shrink-0 items-center gap-2.5 border-b border-(--iu-border) px-3"><span aria-hidden="true" class="inline-flex size-6 items-center justify-center bg-(--iu-foreground) text-(--iu-background) ' +
+            RADIUS +
+            '"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10.5h10M3.5 10.5V5l3.5-2.5L10.5 5v5.5" stroke="currentColor" stroke-width="1.5" /><path d="M5.5 10.5V7.5h3v3" stroke="currentColor" stroke-width="1.5" /></svg></span><span class="min-w-0 leading-tight"><span class="block truncate text-[13px] font-semibold">Loadstar · EU Freight</span><span class="block font-mono text-[11px] text-(--iu-muted)">eu-west · 4 depots</span></span></div>' +
+            '<nav aria-label="Workspace" class="min-h-0 flex-1 overflow-y-auto px-2 py-2 [scrollbar-gutter:stable]">' +
+            sections +
+            "</nav>" +
+            '<div class="shrink-0 border-t border-(--iu-border) px-2 py-2"><a href="#settings" data-nav="settings" class="flex items-center gap-2.5 px-2 ' +
+            ROW +
+            " text-[13px] text-(--iu-muted) " +
+            RADIUS +
+            " pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground) " +
+            FOCUS_INSET +
+            '">' +
+            svg(ICON.settings, 15, "1.5") +
+            'Settings</a><p class="mt-1 flex items-center gap-2 px-2 font-mono text-[11px] text-(--iu-muted)"><span aria-hidden="true" class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>Synced 12s ago</p></div></div>'
+          );
+        }
+
+        function crumbsHtml(loc) {
+          var item = find(loc.itemId);
+          var parts = [
+            '<span class="truncate text-(--iu-muted)">EU Freight</span>',
+            '<span class="text-(--iu-muted)">' + esc(item.sectionLabel) + "</span>",
+            '<span class="relative"><button type="button" data-crumb aria-haspopup="menu" aria-expanded="false"' +
+              (loc.detail ? "" : ' aria-current="page"') +
+              ' class="-mx-1.5 inline-flex h-7 items-center gap-1 px-1.5 ' +
+              (loc.detail ? "text-(--iu-muted)" : "font-medium text-(--iu-foreground)") +
+              " " +
+              RADIUS +
+              " pointer-coarse:min-h-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground) " +
+              FOCUS +
+              '">' +
+              esc(item.label) +
+              svg(ICON.chevronDown, 13, "1.75") +
+              "</button></span>",
+          ];
+          if (loc.detail)
+            parts.push(
+              '<span aria-current="page" class="font-mono text-[12px] font-medium text-(--iu-foreground)">' +
+                esc(loc.detail) +
+                "</span>",
+            );
+          return parts
+            .map(function (p, i) {
+              var sep =
+                i > 0
+                  ? '<span aria-hidden="true" class="text-(--iu-foreground)/25' +
+                    (i === parts.length - 2 ? " max-sm:hidden" : "") +
+                    '">/</span>'
+                  : "";
+              return (
+                '<li data-crumb-item class="flex min-w-0 items-center gap-1.5 transition-[opacity,translate] duration-150 ease-out motion-reduce:transition-none' +
+                (i < parts.length - 2 ? " max-sm:hidden" : "") +
+                '">' +
+                sep +
+                p +
+                "</li>"
+              );
+            })
+            .join("");
+        }
+
+        function mainHtml(loc) {
+          var item = find(loc.itemId);
+          var detail = loc.detail
+            ? SHIPMENTS.filter(function (s) {
+                return s.id === loc.detail;
+              })[0]
+            : null;
+          var rows = item.filter
+            ? SHIPMENTS.filter(function (s) {
+                return item.filter.indexOf(s.status) >= 0;
+              })
+            : SHIPMENTS;
+          var html =
+            '<div class="flex flex-wrap items-baseline gap-x-3 gap-y-1"><h1 class="text-[17px] font-semibold tracking-[-0.01em]">' +
+            esc(detail ? detail.id + " · " + detail.origin + " → " + detail.destination : item.label) +
+            "</h1>";
+          if (!detail && item.count !== undefined && rows.length)
+            html +=
+              '<span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">' +
+              fmt(item.count) +
+              " total · showing " +
+              rows.length +
+              "</span>";
+          html += "</div>";
+          if (detail) {
+            html +=
+              '<dl class="mt-4 grid grid-cols-2 border-t border-l border-(--iu-border) text-[13px] sm:grid-cols-4">' +
+              [
+                ["Carrier", detail.carrier],
+                ["ETA", detail.eta],
+                ["Weight", detail.weight],
+              ]
+                .map(function (p) {
+                  return (
+                    '<div class="border-r border-b border-(--iu-border) px-3 py-2.5"><dt class="text-[11px] tracking-[0.06em] text-(--iu-muted) uppercase">' +
+                    p[0] +
+                    '</dt><dd class="mt-1 font-mono tabular-nums">' +
+                    esc(p[1]) +
+                    "</dd></div>"
+                  );
+                })
+                .join("") +
+              '<div class="border-r border-b border-(--iu-border) px-3 py-2.5"><dt class="text-[11px] tracking-[0.06em] text-(--iu-muted) uppercase">Status</dt><dd class="mt-1">' +
+              statusHtml(detail.status) +
+              "</dd></div></dl>";
+            return html;
+          }
+          html +=
+            '<table class="mt-4 w-full table-fixed border-t border-(--iu-border) text-left text-[13px]"><caption class="sr-only">' +
+            esc(item.label) +
+            ': latest shipments</caption><thead class="sticky top-0 bg-(--iu-background)"><tr class="text-[11px] tracking-[0.06em] text-(--iu-muted) uppercase"><th scope="col" class="w-[30%] py-2 pr-3 font-medium sm:w-[16%]">Shipment</th><th scope="col" class="py-2 pr-3 font-medium">Lane</th><th scope="col" class="hidden py-2 pr-3 font-medium xl:table-cell">Carrier</th><th scope="col" class="hidden w-[16%] py-2 pr-3 font-medium md:table-cell">ETA</th><th scope="col" class="w-[30%] py-2 pr-3 font-medium sm:w-[16%]">Status</th><th scope="col" class="hidden w-[10%] py-2 text-right font-medium sm:table-cell">Weight</th></tr></thead><tbody>';
+          html += rows
+            .map(function (s, i) {
+              return (
+                '<tr class="h-[calc(36px*var(--iu-density))] border-t border-(--iu-border)' +
+                (i % 2 === 1 ? " bg-(--iu-foreground)/[0.025]" : "") +
+                '"><td class="pr-3"><a href="#' +
+                s.id +
+                '" data-shipment="' +
+                s.id +
+                '" class="font-mono text-[12px] tabular-nums underline-offset-2 ' +
+                RADIUS +
+                " pointer-fine:hover:underline " +
+                FOCUS +
+                '">' +
+                s.id +
+                '</a></td><td class="truncate pr-3">' +
+                esc(s.origin) +
+                ' <span class="text-(--iu-muted)">→</span> ' +
+                esc(s.destination) +
+                '</td><td class="hidden truncate pr-3 text-(--iu-muted) xl:table-cell">' +
+                esc(s.carrier) +
+                '</td><td class="hidden pr-3 font-mono text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums md:table-cell">' +
+                s.eta +
+                '</td><td class="pr-3 text-[12px] whitespace-nowrap">' +
+                statusHtml(s.status) +
+                '</td><td class="hidden text-right font-mono text-[12px] tabular-nums sm:table-cell">' +
+                s.weight +
+                "</td></tr>"
+              );
+            })
+            .join("");
+          return html + "</tbody></table>";
+        }
+
+        var root = document.querySelector("[data-loadstar]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var state = { loc: { itemId: "shipments" }, collapsed: false, peek: false, query: "", active: 0, results: [] };
+        var sideWrap = root.querySelector("[data-side-wrap]");
+        var aside = root.querySelector("[data-aside]");
+        var zone = root.querySelector("[data-peek-zone]");
+        var crumbs = root.querySelector("[data-crumbs]");
+        var crumbNav = root.querySelector("[data-crumb-nav]");
+        var main = root.querySelector("[data-main]");
+        var menu = root.querySelector("[data-crumb-menu]");
+        var input = root.querySelector("[data-switcher-input]");
+        var switcherBox = root.querySelector("[data-switcher]");
+        var list = root.querySelector("[data-switcher-list]");
+        var mobileSearchButton = root.querySelector("[data-mobile-search]");
+        var toolbar = root.querySelector("[data-toolbar]");
+        var drawer = root.querySelector("[data-drawer]");
+        var drawerPanel = root.querySelector("[data-drawer-panel]");
+        var menuButton = root.querySelector("[data-menu-button]");
+
+        function renderSidebars() {
+          root.querySelectorAll("[data-sidebar-body]").forEach(function (body) {
+            var closed = Array.prototype.slice
+              .call(body.querySelectorAll('[data-section][aria-expanded="false"]'))
+              .map(function (b) {
+                return b.getAttribute("aria-controls");
+              });
+            body.innerHTML = sidebarHtml(state.loc.itemId, body.getAttribute("data-sidebar-body"));
+            closed.forEach(function (id) {
+              toggleSection(body.querySelector('[aria-controls="' + id + '"]'), false);
+            });
+          });
+        }
+        function toggleSection(button, open) {
+          if (!button) return;
+          button.setAttribute("aria-expanded", String(open));
+          button.querySelector("svg").classList.toggle("rotate-90", open);
+          document.getElementById(button.getAttribute("aria-controls")).hidden = !open;
+        }
+        function navigate(loc, focusCrumb) {
+          state.loc = loc;
+          closeMenu(false);
+          renderSidebars();
+          main.innerHTML = mainHtml(loc);
+          crumbs.innerHTML = crumbsHtml(loc);
+          // The trail rebuilds segment by segment.
+          if (!reduce) {
+            crumbs.querySelectorAll("[data-crumb-item]").forEach(function (li, i) {
+              li.style.transition = "none";
+              li.style.opacity = "0";
+              li.style.translate = "-4px 0";
+              li.getBoundingClientRect();
+              li.style.transition = "";
+              li.style.transitionDelay = i * 40 + "ms";
+              li.style.opacity = "1";
+              li.style.translate = "0 0";
+            });
+          }
+          if (focusCrumb) crumbs.querySelector("[data-crumb]").focus();
+          if (!drawer.hidden) closeDrawer();
+        }
+
+        function setCollapsed(value) {
+          state.collapsed = value;
+          state.peek = false;
+          paintSidebar();
+        }
+        function paintSidebar() {
+          sideWrap.classList.toggle("w-60", !state.collapsed);
+          sideWrap.classList.toggle("w-0", state.collapsed);
+          aside.classList.toggle("invisible", state.collapsed && !state.peek);
+          aside.classList.toggle("-translate-x-full", state.collapsed && !state.peek);
+          aside.classList.toggle("shadow-lg", state.collapsed && state.peek);
+          zone.hidden = !state.collapsed || state.peek;
+          var toggle = root.querySelector("[data-collapse]");
+          toggle.setAttribute("aria-expanded", String(!state.collapsed));
+          toggle.setAttribute("aria-label", state.collapsed ? "Expand sidebar" : "Collapse sidebar");
+          toggle.title = (state.collapsed ? "Expand" : "Collapse") + " sidebar ( [ )";
+        }
+
+        // Breadcrumb switcher menu (WAI-ARIA menu with radio items).
+        function openMenu() {
+          var item = find(state.loc.itemId);
+          var siblings = FLAT.filter(function (i) {
+            return i.sectionLabel === item.sectionLabel;
+          });
+          menu.setAttribute("aria-label", "Switch within " + item.sectionLabel);
+          menu.innerHTML = siblings
+            .map(function (i) {
+              var checked = i.id === item.id;
+              return (
+                '<button type="button" role="menuitemradio" tabindex="-1" data-nav="' +
+                i.id +
+                '" aria-checked="' +
+                checked +
+                '" class="flex w-full items-center gap-2.5 px-2 ' +
+                ROW +
+                " text-left text-[13px] " +
+                RADIUS +
+                ' pointer-fine:hover:bg-(--iu-foreground)/5 focus-visible:bg-(--iu-foreground)/5 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid">' +
+                (i.icon ? svg(ICON[i.icon], 14, "1.5", "text-(--iu-muted)") : "") +
+                '<span class="flex-1 truncate">' +
+                esc(i.label) +
+                "</span>" +
+                (i.count !== undefined
+                  ? '<span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">' + fmt(i.count) + "</span>"
+                  : "") +
+                svg(ICON.check, 13, "2", checked ? "text-(--iu-foreground)" : "invisible") +
+                "</button>"
+              );
+            })
+            .join("");
+          var button = crumbs.querySelector("[data-crumb]");
+          var navBox = crumbNav.getBoundingClientRect();
+          var box = button.getBoundingClientRect();
+          menu.style.left = box.left - navBox.left + "px";
+          menu.hidden = false;
+          button.setAttribute("aria-expanded", "true");
+          button.setAttribute("aria-controls", "loadstar-crumb-menu");
+          (menu.querySelector('[aria-checked="true"]') || menu.querySelector("button")).focus();
+        }
+        function closeMenu(returnFocus) {
+          if (menu.hidden) return;
+          menu.hidden = true;
+          var button = crumbs.querySelector("[data-crumb]");
+          button.setAttribute("aria-expanded", "false");
+          button.removeAttribute("aria-controls");
+          if (returnFocus) button.focus();
+        }
+        crumbs.addEventListener("click", function (event) {
+          if (event.target.closest("[data-crumb]")) menu.hidden ? openMenu() : closeMenu(false);
+        });
+        crumbs.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowDown" && event.target.closest("[data-crumb]")) {
+            event.preventDefault();
+            openMenu();
+          }
+        });
+        menu.addEventListener("keydown", function (event) {
+          var items = Array.prototype.slice.call(menu.querySelectorAll("[role=menuitemradio]"));
+          var index = items.indexOf(document.activeElement);
+          function at(i) {
+            items[(i + items.length) % items.length].focus();
+          }
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            at(index + 1);
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            at(index - 1);
+          } else if (event.key === "Home") {
+            event.preventDefault();
+            at(0);
+          } else if (event.key === "End") {
+            event.preventDefault();
+            at(items.length - 1);
+          } else if (event.key === "Escape") {
+            event.preventDefault();
+            closeMenu(true);
+          } else if (event.key === "Tab") closeMenu(false);
+        });
+        menu.addEventListener("click", function (event) {
+          var target = event.target.closest("[data-nav]");
+          if (target) navigate({ itemId: target.getAttribute("data-nav") }, true);
+        });
+
+        // Quick switcher (WAI-ARIA combobox with a grouped listbox).
+        function buildResults() {
+          var needle = state.query.trim().toLowerCase();
+          var pages = FLAT.filter(function (i) {
+            return !needle || i.label.toLowerCase().indexOf(needle) >= 0;
+          }).slice(0, needle ? 4 : 5);
+          var ships = needle
+            ? SHIPMENTS.filter(function (s) {
+                return (
+                  (s.id + " " + s.origin + " " + s.destination + " " + s.carrier).toLowerCase().indexOf(needle) >= 0
+                );
+              }).slice(0, 4)
+            : SHIPMENTS.slice(0, 3);
+          state.results = pages
+            .map(function (i) {
+              return { key: "page-" + i.id, kind: "page", item: i };
+            })
+            .concat(
+              ships.map(function (s) {
+                return { key: "shp-" + s.id, kind: "shipment", shipment: s };
+              }),
+            );
+        }
+        function renderSwitcher() {
+          buildResults();
+          state.active = Math.min(state.active, Math.max(0, state.results.length - 1));
+          var html = state.results.length
+            ? ""
+            : '<p class="px-2 py-3 text-[13px] text-(--iu-muted)">No page or shipment matches “' +
+              esc(state.query) +
+              "”.</p>";
+          ["page", "shipment"].forEach(function (kind) {
+            var group = state.results.filter(function (r) {
+              return r.kind === kind;
+            });
+            if (!group.length) return;
+            html +=
+              '<div role="group" aria-labelledby="loadstar-switcher-' +
+              kind +
+              '"><div id="loadstar-switcher-' +
+              kind +
+              '" class="px-2 pt-2 pb-1 text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">' +
+              (kind === "page" ? "Pages" : "Shipments") +
+              "</div>";
+            group.forEach(function (r) {
+              var index = state.results.indexOf(r);
+              var on = index === state.active;
+              var inner =
+                r.kind === "page"
+                  ? '<span class="flex-1 truncate">' +
+                    esc(r.item.label) +
+                    '</span><span class="text-[12px] text-(--iu-muted)">' +
+                    esc(r.item.sectionLabel) +
+                    "</span>"
+                  : '<span class="font-mono text-[12px] tabular-nums">' +
+                    r.shipment.id +
+                    '</span><span class="min-w-0 flex-1 truncate text-(--iu-muted)">' +
+                    esc(r.shipment.origin) +
+                    " → " +
+                    esc(r.shipment.destination) +
+                    '</span><span class="hidden text-[12px] sm:inline">' +
+                    statusHtml(r.shipment.status) +
+                    "</span>";
+              html +=
+                '<div id="loadstar-result-' +
+                r.key +
+                '" role="option" data-result="' +
+                index +
+                '" aria-selected="' +
+                on +
+                '" class="flex cursor-default items-center gap-2.5 px-2 ' +
+                ROW +
+                " text-[13px] " +
+                RADIUS +
+                (on ? " bg-(--iu-foreground)/[0.07] dark:bg-(--iu-foreground)/10" : "") +
+                '">' +
+                inner +
+                (on ? '<span class="sr-only">, press Enter to open</span>' : "") +
+                "</div>";
+            });
+            html += "</div>";
+          });
+          list.innerHTML = html;
+          var active = state.results[state.active];
+          if (active) input.setAttribute("aria-activedescendant", "loadstar-result-" + active.key);
+          else input.removeAttribute("aria-activedescendant");
+        }
+        function openSwitcher() {
+          list.hidden = false;
+          input.setAttribute("aria-expanded", "true");
+          renderSwitcher();
+        }
+        function closeSwitcher() {
+          list.hidden = true;
+          input.setAttribute("aria-expanded", "false");
+          input.removeAttribute("aria-activedescendant");
+          setMobileSearch(false);
+        }
+        function setMobileSearch(on) {
+          switcherBox.classList.toggle("hidden", !on);
+          switcherBox.classList.toggle("flex-1", on);
+          crumbNav.hidden = on;
+          mobileSearchButton.hidden = on;
+          toolbar.classList.toggle("flex-1", on);
+          toolbar.classList.toggle("ml-auto", !on);
+        }
+        function choose(result) {
+          if (!result) return;
+          if (result.kind === "page") navigate({ itemId: result.item.id });
+          else navigate({ itemId: "shipments", detail: result.shipment.id });
+          input.value = "";
+          state.query = "";
+          input.blur();
+        }
+        input.addEventListener("focus", openSwitcher);
+        input.addEventListener("blur", closeSwitcher);
+        input.addEventListener("input", function () {
+          state.query = input.value;
+          state.active = 0;
+          openSwitcher();
+        });
+        input.addEventListener("keydown", function (event) {
+          var count = state.results.length;
+          if (event.key === "ArrowDown" && count) {
+            event.preventDefault();
+            state.active = (state.active + 1) % count;
+            renderSwitcher();
+          } else if (event.key === "ArrowUp" && count) {
+            event.preventDefault();
+            state.active = (state.active - 1 + count) % count;
+            renderSwitcher();
+          } else if (event.key === "Enter") {
+            event.preventDefault();
+            choose(state.results[state.active]);
+          } else if (event.key === "Escape") {
+            event.preventDefault();
+            if (input.value) {
+              input.value = "";
+              state.query = "";
+              renderSwitcher();
+            } else input.blur();
+          }
+        });
+        list.addEventListener("pointerdown", function (event) {
+          event.preventDefault();
+        });
+        list.addEventListener("pointermove", function (event) {
+          var option = event.target.closest("[data-result]");
+          if (option && Number(option.getAttribute("data-result")) !== state.active) {
+            state.active = Number(option.getAttribute("data-result"));
+            renderSwitcher();
+          }
+        });
+        list.addEventListener("click", function (event) {
+          var option = event.target.closest("[data-result]");
+          if (option) choose(state.results[Number(option.getAttribute("data-result"))]);
+        });
+        function focusSwitcher() {
+          if (window.matchMedia("(max-width: 767px)").matches) setMobileSearch(true);
+          requestAnimationFrame(function () {
+            input.focus();
+          });
+        }
+        mobileSearchButton.addEventListener("click", focusSwitcher);
+
+        // Drawer (below 1024px): a modal dialog holding the same sidebar.
+        function openDrawer() {
+          drawer.hidden = false;
+          menuButton.setAttribute("aria-expanded", "true");
+          if (!reduce) {
+            drawerPanel.style.transition = "none";
+            drawerPanel.style.translate = "-100% 0";
+            drawerPanel.getBoundingClientRect();
+            drawerPanel.style.transition = "";
+            drawerPanel.style.translate = "0 0";
+          }
+          var current = drawerPanel.querySelector('[aria-current="page"]');
+          if (current) current.focus();
+        }
+        function closeDrawer() {
+          drawer.hidden = true;
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.focus();
+        }
+        menuButton.addEventListener("click", openDrawer);
+        root.querySelector("[data-drawer-close]").addEventListener("click", closeDrawer);
+        root.querySelector("[data-drawer-backdrop]").addEventListener("click", closeDrawer);
+        drawerPanel.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeDrawer();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var items = Array.prototype.slice.call(drawerPanel.querySelectorAll("a[href], button")).filter(function (el) {
+            return !el.closest("[hidden]");
+          });
+          var first = items[0];
+          var last = items[items.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+
+        root.addEventListener("click", function (event) {
+          var section = event.target.closest("[data-section]");
+          if (section) toggleSection(section, section.getAttribute("aria-expanded") !== "true");
+          var nav = event.target.closest("[data-sidebar-body] [data-nav]");
+          if (nav) {
+            event.preventDefault();
+            navigate({ itemId: nav.getAttribute("data-nav") });
+          }
+          var ship = event.target.closest("[data-shipment]");
+          if (ship) {
+            event.preventDefault();
+            navigate({ itemId: "shipments", detail: ship.getAttribute("data-shipment") });
+          }
+        });
+        root.querySelector("[data-collapse]").addEventListener("click", function () {
+          setCollapsed(!state.collapsed);
+        });
+        zone.addEventListener("pointerenter", function (event) {
+          if (event.pointerType !== "mouse") return;
+          state.peek = true;
+          paintSidebar();
+        });
+        aside.addEventListener("pointerleave", function () {
+          if (!state.peek) return;
+          state.peek = false;
+          paintSidebar();
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (!menu.hidden && !menu.contains(event.target) && !event.target.closest("[data-crumb]")) closeMenu(false);
+        });
+        window.addEventListener("keydown", function (event) {
+          var t = event.target;
+          var typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName));
+          if (((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "j") || (event.key === "/" && !typing)) {
+            event.preventDefault();
+            focusSwitcher();
+          } else if (event.key === "[" && !typing && !event.metaKey && !event.ctrlKey) {
+            setCollapsed(!state.collapsed);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

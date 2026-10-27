@@ -17,21 +17,54 @@ export const COLLECTIONS: Collection[] = [
     title: "SaaS landing",
     description:
       "The sections a product launch page is made of: a hero that shows the product working, proof in customers' own words, and pricing a buyer can compare in one look.",
-    designs: ["gridline-hero", "margin-notes-testimonials", "slab-pricing", "gumdrop-buttons"],
+    designs: [
+      "plumbline-mega-header",
+      "gridline-hero",
+      "waterfall-trace-hero",
+      "typeset-hero",
+      "meridian-bento",
+      "kestrel-signal-bento",
+      "casefile-testimonials",
+      "margin-notes-testimonials",
+      "hairline-pricing",
+      "slab-pricing",
+      "kettle-cta-footer",
+      "shunt-landing-template",
+    ],
   },
   {
     slug: "ai-app",
     title: "AI app",
     description:
       "Screens for products built around a model: agent consoles that stream answers and show their tool calls, and the onboarding that gets a team to its first result.",
-    designs: ["relay-agent-console", "pillow-workspace-form"],
+    designs: [
+      "wren-assistant-chat",
+      "relay-agent-console",
+      "quire-research-assistant",
+      "stepwise-agent-run",
+      "boxcar-command-palette",
+      "hopscotch-onboarding",
+      "pillow-workspace-form",
+    ],
   },
   {
     slug: "dashboard",
     title: "Dashboard",
     description:
       "The inside of the product, where people spend their day: app shells, KPI cards with sparklines, and consoles that make a running system easy to read.",
-    designs: ["tally-ops-dashboard", "relay-agent-console"],
+    designs: [
+      "loadstar-app-nav",
+      "tally-ops-dashboard",
+      "bigtop-analytics-shell",
+      "quillby-creator-dashboard",
+      "aldermoor-wealth-dashboard",
+      "tessera-invoice-table",
+      "gristmill-order-board",
+      "tripwire-alert-rule-form",
+      "swipe-triage-alerts",
+      "quorum-workspace-settings",
+      "index-account-settings",
+    ],
   },
 ];
 

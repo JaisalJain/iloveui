@@ -1,0 +1,1574 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Swipe triage alerts · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <main class="flex min-h-dvh w-full items-center justify-center px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full max-w-xl">
+        <!-- iloveui:component:start -->
+        <section
+          data-swipe-triage
+          aria-labelledby="sta-title"
+          class="relative w-full font-(family-name:--iu-font) text-(--iu-foreground)"
+        >
+          <div
+            class="relative overflow-hidden rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/14"
+          >
+            <header class="flex items-end justify-between gap-4 border-b border-(--iu-border) px-4 pt-4 pb-3">
+              <div class="min-w-0">
+                <p class="font-mono text-[10px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+                  Nightjar on-call
+                </p>
+                <h2 id="sta-title" class="mt-1 text-lg font-semibold tracking-[-0.02em] text-balance">Open alerts</h2>
+              </div>
+              <p class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">
+                <span data-count class="text-(--iu-foreground)">5</span> open · production
+              </p>
+            </header>
+
+            <div data-empty hidden class="flex flex-col items-start gap-4 px-4 py-10 sm:px-6">
+              <svg
+                aria-hidden="true"
+                width="120"
+                height="56"
+                viewBox="0 0 120 56"
+                fill="none"
+                class="text-(--iu-muted)"
+              >
+                <path d="M1 44h22l6-14 8 24 8-40 7 30h68" stroke="currentColor" stroke-width="1.25" opacity="0.5" />
+                <path d="M1 44h118" stroke="currentColor" stroke-dasharray="2 4" stroke-width="1" opacity="0.4" />
+                <rect x="78" y="22" width="22" height="22" rx="2" class="fill-(--iu-accent)" />
+                <path d="m84 33 4 4 7-8" class="stroke-(--iu-accent-foreground)" stroke-width="1.75" />
+              </svg>
+              <div>
+                <p class="text-base font-semibold tracking-[-0.01em]">Nothing is paging production.</p>
+                <p class="mt-1 max-w-[36ch] text-sm text-pretty text-(--iu-muted)">
+                  Every alert is triaged. New ones land here as they fire.
+                </p>
+              </div>
+              <button
+                type="button"
+                class="inline-flex h-9 items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M10.268 21a2 2 0 0 0 3.464 0" />
+                  <path d="m15 8 2 2 4-4" />
+                  <path d="M16.8607 4.4824A6 6 0 0 0 6 8C6 12.499 4.589 13.956 3.262 15.326" />
+                  <path
+                    d="M3.262 15.326A1 1 0 0 0 4 17H20A1 1 0 0 0 20.74 15.327C20.209 14.779 19.665 14.218 19.203 13.454"
+                  />
+                </svg>
+                View archived alerts
+              </button>
+            </div>
+
+            <ul data-list aria-labelledby="sta-title" class="relative">
+              <li
+                data-row="al-4821"
+                data-service="checkout-api"
+                data-title="p95 latency above 900 ms"
+                tabindex="0"
+                aria-describedby="sta-hint"
+                class="relative overflow-hidden border-b border-dashed border-(--iu-border) outline-offset-[-2px] last:border-b-0 focus-visible:outline-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <div
+                  data-panel="archive"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center bg-(--iu-accent) text-(--iu-accent-foreground)"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="archive"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-start justify-center gap-1.5 pl-4 text-left font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-(--iu-accent-foreground) focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="20" height="5" x="2" y="3" rx="1" />
+                          <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+                          <path d="M10 12h4" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                      <span data-label>Archive</span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-left bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-panel="delete"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center justify-end bg-red-600 text-white dark:bg-red-700"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="delete"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-end justify-center gap-1.5 pr-4 text-right font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span data-label>Delete</span>
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M10 11v6" />
+                          <path d="M14 11v6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-right bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-fg
+                  style="touch-action: pan-y"
+                  class="relative cursor-grab bg-(--iu-surface) active:cursor-grabbing data-dragging:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] data-dragging:ring-1 data-dragging:ring-(--iu-foreground)/20 data-dragging:ring-inset"
+                >
+                  <div
+                    class="grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-3 px-4 py-[calc(14px*var(--iu-density))] select-none"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold tracking-[0.08em] text-red-700 uppercase dark:text-red-400"
+                    >
+                      <span aria-hidden="true" class="size-1.5 rounded-[1px] bg-red-600 dark:bg-red-500"></span>
+                      Crit
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                        >checkout-api<span> · fra1</span></span
+                      >
+                      <span class="mt-1 block truncate text-sm font-medium text-(--iu-foreground)"
+                        >p95 latency above 900 ms</span
+                      >
+                      <span class="mt-1 block truncate font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                        >p95 1,284 ms · limit 900 ms</span
+                      >
+                    </span>
+                    <span class="mt-0.5 font-mono text-[11px] text-(--iu-muted) tabular-nums">4m</span>
+                  </div>
+                  <div
+                    data-error
+                    hidden
+                    class="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-red-600/40 px-4 py-2 pl-[4.75rem] text-xs text-red-700 dark:border-red-400/40 dark:text-red-300"
+                  >
+                    <span class="inline-flex min-w-0 items-center gap-1.5">
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" x2="12" y1="8" y2="12" />
+                        <line x1="12" x2="12.01" y1="16" y2="16" />
+                      </svg>
+                      <span data-error-text class="text-pretty"></span>
+                    </span>
+                    <button
+                      type="button"
+                      data-retry
+                      class="-my-1 inline-flex h-7 items-center rounded-[min(var(--iu-radius),4px)] px-1.5 font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li
+                data-row="al-4817"
+                data-service="ledger-worker"
+                data-title="Job queue backing up"
+                tabindex="-1"
+                aria-describedby="sta-hint"
+                class="relative overflow-hidden border-b border-dashed border-(--iu-border) outline-offset-[-2px] last:border-b-0 focus-visible:outline-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <div
+                  data-panel="archive"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center bg-(--iu-accent) text-(--iu-accent-foreground)"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="archive"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-start justify-center gap-1.5 pl-4 text-left font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-(--iu-accent-foreground) focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="20" height="5" x="2" y="3" rx="1" />
+                          <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+                          <path d="M10 12h4" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                      <span data-label>Archive</span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-left bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-panel="delete"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center justify-end bg-red-600 text-white dark:bg-red-700"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="delete"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-end justify-center gap-1.5 pr-4 text-right font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span data-label>Delete</span>
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M10 11v6" />
+                          <path d="M14 11v6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-right bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-fg
+                  style="touch-action: pan-y"
+                  class="relative cursor-grab bg-(--iu-surface) active:cursor-grabbing data-dragging:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] data-dragging:ring-1 data-dragging:ring-(--iu-foreground)/20 data-dragging:ring-inset"
+                >
+                  <div
+                    class="grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-3 px-4 py-[calc(14px*var(--iu-density))] select-none"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold tracking-[0.08em] text-red-700 uppercase dark:text-red-400"
+                    >
+                      <span aria-hidden="true" class="size-1.5 rounded-[1px] bg-red-600 dark:bg-red-500"></span>
+                      Crit
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                        >ledger-worker<span> · iad2</span></span
+                      >
+                      <span class="mt-1 block truncate text-sm font-medium text-(--iu-foreground)"
+                        >Job queue backing up</span
+                      >
+                      <span class="mt-1 block truncate font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                        >queue 18,402 · consumers 3 of 8</span
+                      >
+                    </span>
+                    <span class="mt-0.5 font-mono text-[11px] text-(--iu-muted) tabular-nums">17m</span>
+                  </div>
+                  <div
+                    data-error
+                    hidden
+                    class="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-red-600/40 px-4 py-2 pl-[4.75rem] text-xs text-red-700 dark:border-red-400/40 dark:text-red-300"
+                  >
+                    <span class="inline-flex min-w-0 items-center gap-1.5">
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" x2="12" y1="8" y2="12" />
+                        <line x1="12" x2="12.01" y1="16" y2="16" />
+                      </svg>
+                      <span data-error-text class="text-pretty"></span>
+                    </span>
+                    <button
+                      type="button"
+                      data-retry
+                      class="-my-1 inline-flex h-7 items-center rounded-[min(var(--iu-radius),4px)] px-1.5 font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li
+                data-row="al-4809"
+                data-service="pg-replica-2"
+                data-title="Replication lag climbing"
+                tabindex="-1"
+                aria-describedby="sta-hint"
+                class="relative overflow-hidden border-b border-dashed border-(--iu-border) outline-offset-[-2px] last:border-b-0 focus-visible:outline-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <div
+                  data-panel="archive"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center bg-(--iu-accent) text-(--iu-accent-foreground)"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="archive"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-start justify-center gap-1.5 pl-4 text-left font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-(--iu-accent-foreground) focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="20" height="5" x="2" y="3" rx="1" />
+                          <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+                          <path d="M10 12h4" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                      <span data-label>Archive</span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-left bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-panel="delete"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center justify-end bg-red-600 text-white dark:bg-red-700"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="delete"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-end justify-center gap-1.5 pr-4 text-right font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span data-label>Delete</span>
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M10 11v6" />
+                          <path d="M14 11v6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-right bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-fg
+                  style="touch-action: pan-y"
+                  class="relative cursor-grab bg-(--iu-surface) active:cursor-grabbing data-dragging:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] data-dragging:ring-1 data-dragging:ring-(--iu-foreground)/20 data-dragging:ring-inset"
+                >
+                  <div
+                    class="grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-3 px-4 py-[calc(14px*var(--iu-density))] select-none"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold tracking-[0.08em] text-amber-700 uppercase dark:text-amber-300"
+                    >
+                      <span aria-hidden="true" class="size-1.5 rounded-[1px] bg-amber-500 dark:bg-amber-400"></span>
+                      Warn
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                        >pg-replica-2<span> · fra1</span></span
+                      >
+                      <span class="mt-1 block truncate text-sm font-medium text-(--iu-foreground)"
+                        >Replication lag climbing</span
+                      >
+                      <span class="mt-1 block truncate font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                        >lag 41.6 s · limit 30 s</span
+                      >
+                    </span>
+                    <span class="mt-0.5 font-mono text-[11px] text-(--iu-muted) tabular-nums">26m</span>
+                  </div>
+                  <div
+                    data-error
+                    hidden
+                    class="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-red-600/40 px-4 py-2 pl-[4.75rem] text-xs text-red-700 dark:border-red-400/40 dark:text-red-300"
+                  >
+                    <span class="inline-flex min-w-0 items-center gap-1.5">
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" x2="12" y1="8" y2="12" />
+                        <line x1="12" x2="12.01" y1="16" y2="16" />
+                      </svg>
+                      <span data-error-text class="text-pretty"></span>
+                    </span>
+                    <button
+                      type="button"
+                      data-retry
+                      class="-my-1 inline-flex h-7 items-center rounded-[min(var(--iu-radius),4px)] px-1.5 font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li
+                data-row="al-4796"
+                data-service="edge-gw"
+                data-title="TLS certificate renewal failed"
+                tabindex="-1"
+                aria-describedby="sta-hint"
+                class="relative overflow-hidden border-b border-dashed border-(--iu-border) outline-offset-[-2px] last:border-b-0 focus-visible:outline-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <div
+                  data-panel="archive"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center bg-(--iu-accent) text-(--iu-accent-foreground)"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="archive"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-start justify-center gap-1.5 pl-4 text-left font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-(--iu-accent-foreground) focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="20" height="5" x="2" y="3" rx="1" />
+                          <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+                          <path d="M10 12h4" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                      <span data-label>Archive</span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-left bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-panel="delete"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center justify-end bg-red-600 text-white dark:bg-red-700"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="delete"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-end justify-center gap-1.5 pr-4 text-right font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span data-label>Delete</span>
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M10 11v6" />
+                          <path d="M14 11v6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-right bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-fg
+                  style="touch-action: pan-y"
+                  class="relative cursor-grab bg-(--iu-surface) active:cursor-grabbing data-dragging:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] data-dragging:ring-1 data-dragging:ring-(--iu-foreground)/20 data-dragging:ring-inset"
+                >
+                  <div
+                    class="grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-3 px-4 py-[calc(14px*var(--iu-density))] select-none"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold tracking-[0.08em] text-amber-700 uppercase dark:text-amber-300"
+                    >
+                      <span aria-hidden="true" class="size-1.5 rounded-[1px] bg-amber-500 dark:bg-amber-400"></span>
+                      Warn
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                        >edge-gw<span> · sin1</span></span
+                      >
+                      <span class="mt-1 block truncate text-sm font-medium text-(--iu-foreground)"
+                        >TLS certificate renewal failed</span
+                      >
+                      <span class="mt-1 block truncate font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                        >expires 2 Nov 2026 · 6 days left</span
+                      >
+                    </span>
+                    <span class="mt-0.5 font-mono text-[11px] text-(--iu-muted) tabular-nums">1h</span>
+                  </div>
+                  <div
+                    data-error
+                    hidden
+                    class="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-red-600/40 px-4 py-2 pl-[4.75rem] text-xs text-red-700 dark:border-red-400/40 dark:text-red-300"
+                  >
+                    <span class="inline-flex min-w-0 items-center gap-1.5">
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" x2="12" y1="8" y2="12" />
+                        <line x1="12" x2="12.01" y1="16" y2="16" />
+                      </svg>
+                      <span data-error-text class="text-pretty"></span>
+                    </span>
+                    <button
+                      type="button"
+                      data-retry
+                      class="-my-1 inline-flex h-7 items-center rounded-[min(var(--iu-radius),4px)] px-1.5 font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                </div>
+              </li>
+              <li
+                data-row="al-4788"
+                data-service="search-indexer"
+                data-title="Reindex finished with skips"
+                tabindex="-1"
+                aria-describedby="sta-hint"
+                class="relative overflow-hidden border-b border-dashed border-(--iu-border) outline-offset-[-2px] last:border-b-0 focus-visible:outline-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <div
+                  data-panel="archive"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center bg-(--iu-accent) text-(--iu-accent-foreground)"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="archive"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-start justify-center gap-1.5 pl-4 text-left font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-(--iu-accent-foreground) focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="20" height="5" x="2" y="3" rx="1" />
+                          <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+                          <path d="M10 12h4" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                      <span data-label>Archive</span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-left bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-panel="delete"
+                  hidden
+                  aria-hidden="true"
+                  class="absolute inset-0 flex items-center justify-end bg-red-600 text-white dark:bg-red-700"
+                >
+                  <button
+                    type="button"
+                    tabindex="-1"
+                    data-commit="delete"
+                    style="width: 96px"
+                    class="flex h-full flex-col items-end justify-center gap-1.5 pr-4 text-right font-mono text-[11px] font-medium tracking-[0.08em] uppercase outline-offset-[-4px] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-solid"
+                  >
+                    <span class="flex items-center gap-2 whitespace-nowrap">
+                      <span data-label>Delete</span>
+                      <span
+                        data-icon
+                        class="inline-flex transition-transform duration-150 motion-reduce:transition-none"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M10 11v6" />
+                          <path d="M14 11v6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                          <path d="M3 6h18" />
+                          <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg
+                      ></span>
+                      <span data-spinner hidden class="inline-flex"
+                        ><svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="animate-spin motion-reduce:animate-none"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+                      ></span>
+                    </span>
+                    <span data-gauge aria-hidden="true" class="relative block h-0.5 w-12 overflow-hidden bg-current/30"
+                      ><span
+                        data-gauge-fill
+                        class="absolute inset-0 origin-right bg-current"
+                        style="transform: scaleX(0)"
+                      ></span
+                    ></span>
+                  </button>
+                </div>
+                <div
+                  data-fg
+                  style="touch-action: pan-y"
+                  class="relative cursor-grab bg-(--iu-surface) active:cursor-grabbing data-dragging:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] data-dragging:ring-1 data-dragging:ring-(--iu-foreground)/20 data-dragging:ring-inset"
+                >
+                  <div
+                    class="grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-3 px-4 py-[calc(14px*var(--iu-density))] select-none"
+                  >
+                    <span
+                      class="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] font-semibold tracking-[0.08em] text-(--iu-muted) uppercase"
+                    >
+                      <span aria-hidden="true" class="size-1.5 rounded-[1px] bg-(--iu-muted)"></span>
+                      Info
+                    </span>
+                    <span class="min-w-0">
+                      <span class="block truncate font-mono text-[11px] text-(--iu-muted)">search-indexer</span>
+                      <span class="mt-1 block truncate text-sm font-medium text-(--iu-foreground)"
+                        >Reindex finished with skips</span
+                      >
+                      <span class="mt-1 block truncate font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                        >skipped 214 of 96,881 docs</span
+                      >
+                    </span>
+                    <span class="mt-0.5 font-mono text-[11px] text-(--iu-muted) tabular-nums">2h</span>
+                  </div>
+                  <div
+                    data-error
+                    hidden
+                    class="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-dashed border-red-600/40 px-4 py-2 pl-[4.75rem] text-xs text-red-700 dark:border-red-400/40 dark:text-red-300"
+                  >
+                    <span class="inline-flex min-w-0 items-center gap-1.5">
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0"
+                      >
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="12" x2="12" y1="8" y2="12" />
+                        <line x1="12" x2="12.01" y1="16" y2="16" />
+                      </svg>
+                      <span data-error-text class="text-pretty"></span>
+                    </span>
+                    <button
+                      type="button"
+                      data-retry
+                      class="-my-1 inline-flex h-7 items-center rounded-[min(var(--iu-radius),4px)] px-1.5 font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10"
+                    >
+                      Retry
+                    </button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <div
+              data-undo
+              hidden
+              class="relative flex items-center justify-between gap-3 border-t border-(--iu-border) bg-(--iu-background) px-4 py-2.5"
+            >
+              <span aria-hidden="true" class="absolute inset-x-0 top-0 h-px bg-(--iu-foreground)/10">
+                <span
+                  data-undo-bar
+                  class="block h-px origin-left bg-(--iu-accent) transition-transform duration-100 ease-linear motion-reduce:transition-none"
+                ></span>
+              </span>
+              <span class="flex min-w-0 items-center gap-2 text-sm">
+                <span data-undo-icon="delete" class="inline-flex shrink-0 text-(--iu-muted)"
+                  ><svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M10 11v6" />
+                    <path d="M14 11v6" />
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                    <path d="M3 6h18" />
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></svg
+                ></span>
+                <span data-undo-icon="archive" hidden class="inline-flex shrink-0 text-(--iu-muted)"
+                  ><svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="20" height="5" x="2" y="3" rx="1" />
+                    <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+                    <path d="M10 12h4" /></svg
+                ></span>
+                <span data-undo-word class="shrink-0 font-medium">Deleted</span>
+                <span data-undo-service class="truncate font-mono text-[11px] text-(--iu-muted)"></span>
+              </span>
+              <span class="flex shrink-0 items-center gap-3">
+                <span data-undo-seconds class="font-mono text-[11px] text-(--iu-muted) tabular-nums">5s</span>
+                <button
+                  type="button"
+                  data-undo-button
+                  aria-keyshortcuts="Z"
+                  class="inline-flex h-8 items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) pr-1.5 pl-2.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:h-10 pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_6%,var(--iu-surface))]"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M9 14 4 9l5-5" />
+                    <path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11" />
+                  </svg>
+                  Undo
+                  <kbd
+                    class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                    >Z</kbd
+                  >
+                </button>
+              </span>
+            </div>
+          </div>
+
+          <p id="sta-hint" class="sr-only">
+            Swipe left to delete, right to archive. Or press the left or right arrow twice, E to archive, Delete to
+            delete, Z to undo.
+          </p>
+          <div
+            data-hints
+            aria-hidden="true"
+            class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 px-1 font-mono text-[10px] tracking-[0.04em] text-(--iu-muted) uppercase"
+          >
+            <span class="inline-flex items-center gap-1.5"
+              ><kbd
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                >↑</kbd
+              ><kbd
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                >↓</kbd
+              >
+              Move</span
+            >
+            <span class="inline-flex items-center gap-1.5"
+              ><kbd
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                >←</kbd
+              ><kbd
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                >→</kbd
+              >
+              Reveal, again to commit</span
+            >
+            <span class="inline-flex items-center gap-1.5"
+              ><kbd
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                >E</kbd
+              >
+              Archive</span
+            >
+            <span class="inline-flex items-center gap-1.5"
+              ><kbd
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) bg-(--iu-background) px-1 font-mono text-[10px] text-(--iu-foreground)"
+                >⌫</kbd
+              >
+              Delete</span
+            >
+          </div>
+
+          <p data-announce aria-live="polite" class="sr-only"></p>
+        </section>
+        <!-- iloveui:component:end -->
+      </div>
+    </main>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-swipe-triage]");
+        if (!root) return;
+        var list = root.querySelector("[data-list]");
+        var empty = root.querySelector("[data-empty]");
+        var hints = root.querySelector("[data-hints]");
+        var count = root.querySelector("[data-count]");
+        var announcer = root.querySelector("[data-announce]");
+        var undoBox = root.querySelector("[data-undo]");
+        var undoBar = root.querySelector("[data-undo-bar]");
+        var undoSeconds = root.querySelector("[data-undo-seconds]");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        var COMMIT_THRESHOLD = 0.45; // fraction of the row width
+        var VELOCITY_THRESHOLD = 650; // px/s
+        var REVEAL = 96; // px
+        var UNDO_MS = 5000;
+        var PAST = { archive: "Archived", delete: "Deleted" };
+
+        var busy = false;
+        var undo = null; // { row, index, action, remaining, timer, paused }
+
+        function rows() {
+          return Array.prototype.slice.call(list.querySelectorAll("[data-row]"));
+        }
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        function buzz(ms) {
+          if (typeof navigator.vibrate === "function") navigator.vibrate(ms);
+        }
+        function thresholdOf(row) {
+          return Math.max(REVEAL + 24, row.offsetWidth * COMMIT_THRESHOLD);
+        }
+
+        // Paint one row at offset x: which panel shows, how full its gauge is, whether release commits.
+        function paint(row, x) {
+          row._x = x;
+          row.querySelector("[data-fg]").style.transform = x ? "translateX(" + x + "px)" : "";
+          var limit = thresholdOf(row);
+          ["archive", "delete"].forEach(function (side) {
+            var panel = row.querySelector('[data-panel="' + side + '"]');
+            var active = side === "archive" ? x > 0.5 : x < -0.5;
+            panel.hidden = !active;
+            if (!active) return;
+            var amount = Math.min(1, Math.abs(x) / limit);
+            panel.querySelector("[data-gauge-fill]").style.transform = "scaleX(" + amount + ")";
+            var armed = amount >= 1;
+            if (row._pending) return;
+            if (armed !== row["_armed" + side] && armed && row._dragging) buzz(8);
+            row["_armed" + side] = armed;
+            panel.querySelector("[data-icon]").style.transform = armed ? "scale(1.15)" : "";
+            var word = side === "archive" ? "Archive" : "Delete";
+            panel.querySelector("[data-label]").textContent = armed ? "Release to " + word.toLowerCase() : word;
+          });
+        }
+
+        // A damped spring that starts from the release velocity; a new drag or target stops it.
+        function springTo(row, target, velocity, done) {
+          if (row._raf) cancelAnimationFrame(row._raf);
+          if (reduce.matches) {
+            paint(row, target);
+            if (done) done();
+            return;
+          }
+          var x = row._x || 0;
+          var v = velocity || 0;
+          var last = null;
+          function step(now) {
+            var dt = last === null ? 1 / 60 : Math.min(0.032, (now - last) / 1000);
+            last = now;
+            var force = -420 * (x - target) - 38 * v;
+            v += force * dt;
+            x += v * dt;
+            if (Math.abs(v) < 4 && Math.abs(x - target) < 0.5) {
+              row._raf = 0;
+              paint(row, target);
+              if (done) done();
+              return;
+            }
+            paint(row, x);
+            row._raf = requestAnimationFrame(step);
+          }
+          row._raf = requestAnimationFrame(step);
+        }
+
+        function setOpen(row, side) {
+          rows().forEach(function (other) {
+            if (other !== row && other._open) setOpen(other, null);
+          });
+          row._open = side;
+          ["archive", "delete"].forEach(function (name) {
+            var panel = row.querySelector('[data-panel="' + name + '"]');
+            panel.setAttribute("aria-hidden", side === name ? "false" : "true");
+            panel.querySelector("button").tabIndex = side === name ? 0 : -1;
+          });
+          springTo(row, side === "archive" ? REVEAL : side === "delete" ? -REVEAL : 0, row._releaseV || 0);
+          row._releaseV = 0;
+        }
+
+        function setError(row, message) {
+          var box = row.querySelector("[data-error]");
+          box.hidden = !message;
+          row.querySelector("[data-error-text]").textContent = message || "";
+        }
+
+        function updateCount() {
+          var n = rows().length;
+          count.textContent = String(n);
+          empty.hidden = n > 0;
+          list.hidden = n === 0;
+          hints.hidden = n === 0;
+        }
+
+        function roving(target) {
+          rows().forEach(function (row) {
+            row.tabIndex = row === target ? 0 : -1;
+          });
+        }
+
+        // Siblings glide into the gap with a FLIP transform instead of jumping.
+        function flip(mutate) {
+          var before = new Map();
+          rows().forEach(function (row) {
+            before.set(row, row.getBoundingClientRect().top);
+          });
+          mutate();
+          if (reduce.matches) return;
+          rows().forEach(function (row) {
+            if (!before.has(row)) return;
+            var delta = before.get(row) - row.getBoundingClientRect().top;
+            if (!delta) return;
+            row.style.transition = "none";
+            row.style.transform = "translateY(" + delta + "px)";
+            requestAnimationFrame(function () {
+              row.style.transition = "transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+              row.style.transform = "";
+            });
+          });
+        }
+
+        function finalizeUndo() {
+          if (!undo) return;
+          clearInterval(undo.timer);
+          undo = null;
+          undoBox.hidden = true;
+        }
+
+        function showUndo(entry) {
+          undo = entry;
+          undo.remaining = UNDO_MS;
+          undoBox.hidden = false;
+          undoBox.querySelector('[data-undo-icon="delete"]').hidden = entry.action !== "delete";
+          undoBox.querySelector('[data-undo-icon="archive"]').hidden = entry.action !== "archive";
+          undoBox.querySelector("[data-undo-word]").textContent = PAST[entry.action];
+          undoBox.querySelector("[data-undo-service]").textContent = entry.row.dataset.service;
+          function render() {
+            undoBar.style.transform = "scaleX(" + Math.max(0, undo.remaining / UNDO_MS) + ")";
+            undoSeconds.textContent = Math.max(0, Math.ceil(undo.remaining / 1000)) + "s";
+          }
+          render();
+          undo.timer = setInterval(function () {
+            if (undo.paused) return;
+            undo.remaining -= 100;
+            render();
+            if (undo.remaining <= 0) finalizeUndo();
+          }, 100);
+        }
+
+        function restore() {
+          if (!undo) return;
+          var entry = undo;
+          finalizeUndo();
+          var current = rows();
+          flip(function () {
+            list.insertBefore(entry.row, current[entry.index] || null);
+            updateCount();
+          });
+          paint(entry.row, 0);
+          entry.row._pending = false;
+          roving(entry.row);
+          entry.row.focus();
+          announce("Restored " + entry.row.dataset.title + ".");
+        }
+
+        // Demo backend: the ledger-worker alert cannot be deleted while its incident is open.
+        function send(row, action) {
+          return new Promise(function (resolve, reject) {
+            setTimeout(
+              function () {
+                if (action === "delete" && row.dataset.service === "ledger-worker") {
+                  reject(new Error("Couldn't delete: ledger-worker is linked to open incident INC-2291."));
+                } else resolve();
+              },
+              action === "delete" ? 700 : 500,
+            );
+          });
+        }
+
+        function setBusy(row, action, on) {
+          row._pending = on;
+          row.setAttribute("aria-busy", on ? "true" : "false");
+          var panel = row.querySelector('[data-panel="' + action + '"]');
+          panel.querySelector("[data-icon]").hidden = on;
+          panel.querySelector("[data-spinner]").hidden = !on;
+          panel.querySelector("[data-gauge]").hidden = on;
+          panel.querySelector("button").disabled = on;
+          if (on) panel.querySelector("[data-label]").textContent = action === "delete" ? "Deleting…" : "Archiving…";
+        }
+
+        function commit(row, action) {
+          if (busy) return;
+          busy = true;
+          finalizeUndo();
+          setError(row, "");
+          row._open = null;
+          var hadFocus = row.contains(document.activeElement);
+          var title = row.dataset.title;
+          setBusy(row, action, true);
+          var width = row.offsetWidth + 24;
+          springTo(row, action === "delete" ? -width : width, row._releaseV || 0);
+          row._releaseV = 0;
+          announce((action === "delete" ? "Deleting " : "Archiving ") + title);
+          send(row, action).then(
+            function () {
+              busy = false;
+              var all = rows();
+              var index = all.indexOf(row);
+              var neighbour = all[index + 1] || all[index - 1];
+              setBusy(row, action, false);
+              flip(function () {
+                list.removeChild(row);
+                updateCount();
+              });
+              if (neighbour) {
+                roving(neighbour);
+                if (hadFocus) neighbour.focus();
+              }
+              showUndo({ row: row, index: index, action: action });
+              announce(PAST[action] + " " + title + ". Press Z to undo.");
+              buzz(14);
+            },
+            function (error) {
+              busy = false;
+              setBusy(row, action, false);
+              springTo(row, 0, 0);
+              setError(row, error.message);
+              announce(error.message + " " + title + " is back in the list.");
+            },
+          );
+        }
+
+        rows().forEach(function (row) {
+          var fg = row.querySelector("[data-fg]");
+          var start = null;
+          var samples = [];
+          row._x = 0;
+
+          fg.addEventListener("pointerdown", function (event) {
+            if (busy || row._pending || event.button !== 0) return;
+            if (row._raf) cancelAnimationFrame(row._raf);
+            start = { x: event.clientX, y: event.clientY, offset: row._x || 0, axis: null, id: event.pointerId };
+            samples = [{ t: event.timeStamp, x: event.clientX }];
+            row._moved = false;
+          });
+          fg.addEventListener("pointermove", function (event) {
+            if (!start || event.pointerId !== start.id) return;
+            var dx = event.clientX - start.x;
+            var dy = event.clientY - start.y;
+            if (!start.axis) {
+              if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+              start.axis = Math.abs(dx) > Math.abs(dy) ? "x" : "y";
+              if (start.axis === "y") {
+                start = null;
+                return;
+              }
+              fg.setPointerCapture(event.pointerId);
+              row._dragging = true;
+              row._moved = true;
+              fg.setAttribute("data-dragging", "true");
+            }
+            paint(row, start.offset + dx);
+            samples.push({ t: event.timeStamp, x: event.clientX });
+            if (samples.length > 6) samples.shift();
+          });
+          function release(event) {
+            if (!start || event.pointerId !== start.id) return;
+            var wasDragging = start.axis === "x";
+            start = null;
+            if (!wasDragging) return;
+            row._dragging = false;
+            fg.removeAttribute("data-dragging");
+            var first = samples[0];
+            var lastSample = samples[samples.length - 1];
+            var dt = (lastSample.t - first.t) / 1000;
+            var velocity = dt > 0 ? (lastSample.x - first.x) / dt : 0;
+            var x = row._x;
+            var sign = x < 0 ? -1 : 1;
+            var side = x < 0 ? "delete" : "archive";
+            var flung = Math.abs(velocity) > VELOCITY_THRESHOLD && Math.sign(velocity) === sign && Math.abs(x) > 24;
+            var projected = x + velocity * 0.18;
+            row._releaseV = velocity;
+            if (Math.abs(x) >= thresholdOf(row) || flung) commit(row, side);
+            else if (Math.sign(projected) === sign && Math.abs(projected) > REVEAL * 0.6) setOpen(row, side);
+            else setOpen(row, null);
+          }
+          fg.addEventListener("pointerup", release);
+          fg.addEventListener("pointercancel", release);
+          fg.addEventListener("click", function () {
+            if (row._moved) return;
+            if (row._open) setOpen(row, null);
+          });
+
+          row.querySelectorAll("[data-commit]").forEach(function (button) {
+            button.addEventListener("click", function () {
+              commit(row, button.getAttribute("data-commit"));
+            });
+          });
+          row.querySelector("[data-retry]").addEventListener("click", function () {
+            commit(row, "delete");
+          });
+          row.addEventListener("focus", function () {
+            roving(row);
+          });
+
+          row.addEventListener("keydown", function (event) {
+            var all = rows();
+            var index = all.indexOf(row);
+            function move(to) {
+              var next = all[Math.max(0, Math.min(all.length - 1, to))];
+              if (!next) return;
+              event.preventDefault();
+              if (row._open) setOpen(row, null);
+              roving(next);
+              next.focus();
+            }
+            switch (event.key) {
+              case "ArrowDown":
+                return move(index + 1);
+              case "ArrowUp":
+                return move(index - 1);
+              case "Home":
+                return move(0);
+              case "End":
+                return move(all.length - 1);
+              case "Escape":
+                if (row._open) {
+                  event.preventDefault();
+                  setOpen(row, null);
+                  row.focus();
+                }
+                return;
+              case "ArrowLeft":
+              case "ArrowRight": {
+                event.preventDefault();
+                if (busy) return;
+                var toward = event.key === "ArrowLeft" ? "delete" : "archive";
+                if (row._open === toward) commit(row, toward);
+                else if (row._open) setOpen(row, null);
+                else setOpen(row, toward);
+                return;
+              }
+            }
+            if (event.target !== row) return;
+            if (event.key === "Enter" && row._open) {
+              event.preventDefault();
+              commit(row, row._open);
+            } else if (event.key === "e" || event.key === "E") {
+              event.preventDefault();
+              commit(row, "archive");
+            } else if (event.key === "Delete" || event.key === "Backspace") {
+              event.preventDefault();
+              commit(row, "delete");
+            }
+          });
+        });
+
+        root.addEventListener("keydown", function (event) {
+          if ((event.key === "z" || event.key === "Z") && !event.altKey && !event.shiftKey && undo) {
+            event.preventDefault();
+            restore();
+          }
+        });
+        root.querySelector("[data-undo-button]").addEventListener("click", restore);
+        ["pointerenter", "focusin"].forEach(function (type) {
+          undoBox.addEventListener(type, function () {
+            if (undo) undo.paused = true;
+          });
+        });
+        ["pointerleave", "focusout"].forEach(function (type) {
+          undoBox.addEventListener(type, function () {
+            if (undo) undo.paused = false;
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

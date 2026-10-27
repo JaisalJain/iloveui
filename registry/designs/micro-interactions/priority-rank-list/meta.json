@@ -1,0 +1,15 @@
+{
+  "slug": "priority-rank-list",
+  "name": "Priority rank list",
+  "category": "micro-interactions",
+  "styleFamily": "playful",
+  "tier": "pro",
+  "description": "A roadmap stack rank you drag or move by keyboard: cards lean with the throw, ranks roll, and the top-three capacity meter refills live.",
+  "tags": ["drag-to-reorder", "sortable", "drag-and-drop", "roadmap", "priorities", "keyboard-reorder"],
+  "states": ["default", "active", "loading", "error", "success", "empty", "disabled"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

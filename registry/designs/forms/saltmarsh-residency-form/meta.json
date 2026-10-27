@@ -1,0 +1,15 @@
+{
+  "slug": "saltmarsh-residency-form",
+  "name": "Saltmarsh residency form",
+  "category": "forms",
+  "styleFamily": "editorial",
+  "tier": "free",
+  "description": "An editorial residency application that composes your cover letter as you type; the clause you are editing is underlined in the letter.",
+  "tags": ["form", "application", "select", "combobox", "validation", "letter-preview", "editorial", "textarea"],
+  "states": ["default", "focus", "error", "disabled", "loading", "success"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

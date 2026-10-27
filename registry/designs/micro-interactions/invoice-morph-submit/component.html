@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoice morph submit · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div class="flex min-h-dvh w-full items-center justify-center px-4 py-10 sm:px-8 sm:py-16">
+      <form
+        data-invoice-form
+        aria-labelledby="invoice-title"
+        novalidate
+        class="w-full max-w-xl border-t border-(--iu-foreground) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground)"
+      >
+        <div
+          class="flex items-baseline justify-between gap-4 border-b border-(--iu-border) py-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+        >
+          <span>Quillmark</span>
+          <span class="tabular-nums">Due 14 Nov 2026</span>
+        </div>
+        <div
+          class="px-[calc(20px*var(--iu-density))] pt-[calc(24px*var(--iu-density))] pb-[calc(24px*var(--iu-density))] sm:px-[calc(32px*var(--iu-density))]"
+        >
+          <h2 id="invoice-title" class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+            Invoice <span class="font-mono tracking-normal normal-case tabular-nums">INV-2026-0418</span>
+          </h2>
+          <p class="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span class="text-[44px] leading-none font-semibold tracking-[-0.035em] tabular-nums sm:text-[56px]"
+              >€<span data-amount-display>4,860.00</span></span
+            >
+            <span class="text-sm text-(--iu-muted)">to Marlowe &amp; Daughters</span>
+          </p>
+          <div class="mt-8 grid gap-x-6 gap-y-5 border-t border-(--iu-border) pt-6 sm:grid-cols-12">
+            <div class="sm:col-span-7">
+              <label
+                for="invoice-email"
+                class="flex items-baseline gap-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                ><span class="font-mono tabular-nums">01</span> Bill to</label
+              >
+              <input
+                id="invoice-email"
+                data-field
+                type="email"
+                autocomplete="email"
+                value="accounts@marlowe-daughters.co.uk"
+                class="mt-2 h-11 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 text-[15px] text-(--iu-foreground) placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-background) aria-invalid:border-red-700 dark:aria-invalid:border-red-400"
+              />
+              <p
+                id="invoice-email-error"
+                data-email-error
+                hidden
+                class="mt-2 flex items-center gap-1.5 text-sm text-red-700 dark:text-red-300"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+                Enter an email address like name@company.com.
+              </p>
+            </div>
+            <div class="sm:col-span-5">
+              <label
+                for="invoice-amount"
+                class="flex items-baseline gap-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                ><span class="font-mono tabular-nums">02</span> Amount</label
+              >
+              <div class="relative mt-2">
+                <span
+                  aria-hidden="true"
+                  class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-[15px] text-(--iu-muted)"
+                  >€</span
+                >
+                <input
+                  id="invoice-amount"
+                  data-field
+                  inputmode="decimal"
+                  value="4,860.00"
+                  class="h-11 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 pl-7 text-right font-mono text-[15px] text-(--iu-foreground) tabular-nums placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-background) aria-invalid:border-red-700 dark:aria-invalid:border-red-400"
+                />
+              </div>
+            </div>
+            <div class="sm:col-span-12">
+              <label
+                for="invoice-memo"
+                class="flex items-baseline gap-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                ><span class="font-mono tabular-nums">03</span> Memo</label
+              >
+              <input
+                id="invoice-memo"
+                data-field
+                value="Brand refresh, phase 2: packaging system and launch assets"
+                class="mt-2 h-11 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 text-[15px] text-(--iu-foreground) placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-background) aria-invalid:border-red-700 dark:aria-invalid:border-red-400"
+              />
+            </div>
+          </div>
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p class="text-sm text-(--iu-muted)">Net 30 · Paid by bank transfer or card</p>
+            <button
+              type="submit"
+              data-submit
+              class="relative inline-flex h-12 shrink-0 items-center justify-center overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-transparent bg-(--iu-foreground) px-5 text-[15px] font-medium text-(--iu-background) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))]"
+            >
+              <span class="grid items-center">
+                <span
+                  aria-hidden="true"
+                  class="invisible col-start-1 row-start-1 flex items-center gap-2 pr-7 whitespace-nowrap"
+                  >Send invoice</span
+                >
+                <span
+                  aria-hidden="true"
+                  class="invisible col-start-1 row-start-1 flex items-center gap-2 pr-7 whitespace-nowrap"
+                  >Sending</span
+                >
+                <span
+                  aria-hidden="true"
+                  class="invisible col-start-1 row-start-1 flex items-center gap-2 pr-7 whitespace-nowrap"
+                  >Sent</span
+                >
+                <span
+                  aria-hidden="true"
+                  class="invisible col-start-1 row-start-1 flex items-center gap-2 pr-7 whitespace-nowrap"
+                  >Try again</span
+                >
+                <span
+                  data-face
+                  class="col-start-1 row-start-1 flex items-center justify-between gap-2 whitespace-nowrap transition-[opacity,translate] duration-200 ease-out motion-reduce:duration-100"
+                >
+                  <span data-face-text>Send invoice</span>
+                  <span aria-hidden="true" class="flex h-4 w-5 items-center justify-end">
+                    <span data-glyph="idle" class="flex"
+                      ><svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg
+                    ></span>
+                    <span data-glyph="loading" hidden class="font-mono text-[11px] tabular-nums" data-dots>•••</span>
+                    <span data-glyph="success" hidden class="flex">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path
+                          data-check
+                          d="M20 6 9 17l-5-5"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          pathLength="1"
+                          stroke-dasharray="1"
+                          stroke-dashoffset="0"
+                          class="transition-[stroke-dashoffset] delay-50 duration-240 ease-out motion-reduce:transition-none"
+                        />
+                      </svg>
+                    </span>
+                    <span data-glyph="error" hidden class="flex"
+                      ><svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" /></svg
+                    ></span>
+                  </span>
+                </span>
+              </span>
+              <span data-sr-suffix class="sr-only"> invoice INV-2026-0418</span>
+              <span
+                data-bar
+                aria-hidden="true"
+                hidden
+                style="transform: scaleX(0)"
+                class="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-(--iu-accent)"
+              ></span>
+            </button>
+          </div>
+          <div class="mt-4 min-h-6 text-sm">
+            <p
+              id="invoice-error"
+              data-message="error"
+              hidden
+              class="flex items-start gap-1.5 text-red-700 sm:justify-end dark:text-red-300"
+            >
+              <svg
+                aria-hidden="true"
+                class="mt-0.5 shrink-0"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" x2="12" y1="8" y2="12" />
+                <line x1="12" x2="12.01" y1="16" y2="16" />
+              </svg>
+              <span>The mail server did not answer. Your invoice is saved as a draft.</span>
+            </p>
+            <p id="invoice-success" data-message="success" hidden class="text-(--iu-muted) sm:text-right">
+              Delivered. You will see it in Sent once Marlowe &amp; Daughters opens it.
+            </p>
+          </div>
+          <div data-live aria-live="polite" class="sr-only"></div>
+        </div>
+      </form>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var form = document.querySelector("[data-invoice-form]");
+        if (!form) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var button = form.querySelector("[data-submit]");
+        var face = form.querySelector("[data-face]");
+        var faceText = form.querySelector("[data-face-text]");
+        var bar = form.querySelector("[data-bar]");
+        var check = form.querySelector("[data-check]");
+        var dots = form.querySelector("[data-dots]");
+        var live = form.querySelector("[data-live]");
+        var email = form.querySelector("#invoice-email");
+        var emailError = form.querySelector("[data-email-error]");
+        var amount = form.querySelector("#invoice-amount");
+        var amountDisplay = form.querySelector("[data-amount-display]");
+        var fields = form.querySelectorAll("[data-field]");
+        var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var LABELS = { idle: "Send invoice", loading: "Sending", success: "Sent", error: "Try again" };
+        var SOLID =
+          "border border-transparent bg-(--iu-foreground) text-(--iu-background) pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))]".split(
+            " ",
+          );
+        var OUTLINE =
+          "border border-(--iu-foreground) bg-(--iu-surface) text-(--iu-foreground) pointer-fine:hover:bg-(--iu-foreground)/5".split(
+            " ",
+          );
+        var EXPECTED_MS = 1600;
+        var MIN_LOADING_MS = 600;
+        var status = "idle";
+        var dotsTimer = 0;
+        var barFrame = 0;
+
+        // Replace with your send call; resolve for success, reject for an error.
+        function sendInvoice() {
+          return new Promise(function (resolve) {
+            setTimeout(resolve, 1500);
+          });
+        }
+
+        function setBar(value) {
+          bar.style.transform = "scaleX(" + value + ")";
+        }
+
+        // The hairline eases toward 90% while sending and completes when the send resolves.
+        function runBar() {
+          cancelAnimationFrame(barFrame);
+          if (reduce.matches) {
+            setBar(0.9);
+            return;
+          }
+          var start = performance.now();
+          function step(now) {
+            var t = Math.min(1, (now - start) / EXPECTED_MS);
+            setBar(0.9 * (1 - Math.pow(1 - t, 3)));
+            if (t < 1 && status === "loading") barFrame = requestAnimationFrame(step);
+          }
+          barFrame = requestAnimationFrame(step);
+        }
+
+        function setStatus(next) {
+          status = next;
+          form.setAttribute("data-status", next);
+          clearInterval(dotsTimer);
+          cancelAnimationFrame(barFrame);
+          // Cross-fade the button face: out with a 4px lift, swap, back in.
+          if (!reduce.matches) {
+            face.style.opacity = "0";
+            face.style.translate = "0 -4px";
+          }
+          window.setTimeout(
+            function () {
+              faceText.textContent = LABELS[next];
+              form.querySelectorAll("[data-glyph]").forEach(function (glyph) {
+                glyph.hidden = glyph.getAttribute("data-glyph") !== next;
+              });
+              face.style.opacity = "1";
+              face.style.translate = "0 0";
+              if (next === "success") {
+                check.style.transitionDuration = "0s";
+                check.setAttribute("stroke-dashoffset", reduce.matches ? "0" : "1");
+                check.getBoundingClientRect();
+                check.style.transitionDuration = "";
+                check.setAttribute("stroke-dashoffset", "0");
+              }
+            },
+            reduce.matches ? 0 : 120,
+          );
+          var outline = next === "error";
+          SOLID.forEach(function (name) {
+            button.classList.toggle(name, !outline);
+          });
+          OUTLINE.forEach(function (name) {
+            button.classList.toggle(name, outline);
+          });
+          button.classList.toggle("cursor-progress", next === "loading");
+          if (next === "loading") button.setAttribute("aria-disabled", "true");
+          else button.removeAttribute("aria-disabled");
+          form.querySelector("[data-sr-suffix]").hidden = next !== "idle";
+          fields.forEach(function (field) {
+            field.disabled = next === "loading";
+          });
+          bar.hidden = next === "idle" || next === "error";
+          if (next === "loading") {
+            runBar();
+            if (!reduce.matches) {
+              var count = 3;
+              dotsTimer = setInterval(function () {
+                count = (count % 3) + 1;
+                dots.textContent = "•••".slice(0, count).padEnd(3, "\u00a0");
+              }, 320);
+            }
+          }
+          if (next === "success") setBar(1);
+          if (next === "idle" || next === "error") setBar(0);
+          form.querySelectorAll("[data-message]").forEach(function (message) {
+            message.hidden = message.getAttribute("data-message") !== next;
+          });
+          if (next === "error") button.setAttribute("aria-describedby", "invoice-error");
+          else if (next === "success") button.setAttribute("aria-describedby", "invoice-success");
+          else button.removeAttribute("aria-describedby");
+          live.textContent =
+            next === "loading"
+              ? "Sending invoice INV-2026-0418."
+              : next === "success"
+                ? "Sent. Delivered. You will see it in Sent once Marlowe & Daughters opens it."
+                : next === "error"
+                  ? "The mail server did not answer. Your invoice is saved as a draft."
+                  : "";
+        }
+
+        fields.forEach(function (field) {
+          field.addEventListener("input", function () {
+            if (field === amount) amountDisplay.textContent = amount.value || "0.00";
+            if (field === email && !emailError.hidden && EMAIL.test(email.value)) {
+              emailError.hidden = true;
+              email.removeAttribute("aria-invalid");
+              email.removeAttribute("aria-describedby");
+            }
+            if (status === "error" || status === "success") setStatus("idle");
+          });
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (status === "loading") return;
+          if (!EMAIL.test(email.value)) {
+            emailError.hidden = false;
+            email.setAttribute("aria-invalid", "true");
+            email.setAttribute("aria-describedby", "invoice-email-error");
+            email.focus();
+            return;
+          }
+          setStatus("loading");
+          Promise.all([
+            sendInvoice(),
+            new Promise(function (resolve) {
+              setTimeout(resolve, MIN_LOADING_MS);
+            }),
+          ]).then(
+            function () {
+              setStatus("success");
+              if ("vibrate" in navigator) navigator.vibrate(10);
+            },
+            function () {
+              setStatus("error");
+            },
+          );
+        });
+      })();
+    </script>
+  </body>
+</html>

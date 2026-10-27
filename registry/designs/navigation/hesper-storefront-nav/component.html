@@ -1,0 +1,1501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hesper storefront navigation · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <header data-hesper class="relative z-40 bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+      <p
+        class="border-b border-(--iu-border) px-5 py-2.5 text-center text-[11px] tracking-[0.16em] text-(--iu-muted) uppercase"
+      >
+        Complimentary delivery over €250 · Engraving on every flacon
+      </p>
+      <div class="mx-auto grid h-20 max-w-[1320px] grid-cols-[1fr_auto_1fr] items-center gap-4 px-5 sm:px-10">
+        <div class="flex items-center">
+          <button
+            type="button"
+            data-menu-button
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            class="-ml-2 inline-flex min-h-10 items-center gap-2 rounded-full px-2 text-[11px] font-medium tracking-[0.2em] uppercase focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid lg:hidden"
+          >
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 12h16" />
+              <path d="M4 18h16" />
+              <path d="M4 6h16" /></svg
+            ><span class="max-sm:sr-only">Menu</span>
+          </button>
+          <nav aria-label="Main" class="hidden lg:block">
+            <ul class="flex items-center gap-8">
+              <li>
+                <a
+                  href="#new"
+                  data-top-item
+                  class="relative inline-flex h-10 items-center text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >New</a
+                >
+              </li>
+              <li>
+                <button
+                  type="button"
+                  data-top-item
+                  data-menu-id="fragrance"
+                  aria-expanded="false"
+                  class="relative inline-flex h-10 items-center text-[11px] font-medium tracking-[0.2em] text-(--iu-foreground) uppercase transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                >
+                  Fragrance<span
+                    data-top-mark
+                    aria-hidden="true"
+                    class="absolute -bottom-0.5 left-0 h-px w-3 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                  ></span>
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  data-top-item
+                  data-menu-id="leather"
+                  aria-expanded="false"
+                  class="relative inline-flex h-10 items-center text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                >
+                  Leather<span
+                    data-top-mark
+                    aria-hidden="true"
+                    hidden
+                    class="absolute -bottom-0.5 left-0 h-px w-3 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                  ></span>
+                </button>
+              </li>
+              <li>
+                <a
+                  href="#home-objects"
+                  data-top-item
+                  class="relative inline-flex h-10 items-center text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#journal"
+                  data-top-item
+                  class="relative inline-flex h-10 items-center text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >Journal</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <a
+          href="#maison"
+          aria-label="Hesper, home"
+          class="justify-self-center px-1 font-serif text-[22px] leading-none font-normal tracking-[0.28em] uppercase focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid sm:text-[30px] sm:tracking-[0.32em]"
+          ><span class="mr-[-0.28em] sm:mr-[-0.32em]">Hesper</span></a
+        >
+        <div class="flex items-center justify-end gap-1 sm:gap-5">
+          <div class="hidden lg:block">
+            <div data-search class="relative">
+              <svg
+                aria-hidden="true"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-(--iu-muted)"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" /></svg
+              ><input
+                data-search-input
+                type="search"
+                role="combobox"
+                aria-label="Search Hesper"
+                aria-expanded="false"
+                aria-controls="hesper-search-results"
+                aria-autocomplete="list"
+                autocomplete="off"
+                placeholder="Search"
+                class="h-10 w-40 rounded-full border border-(--iu-foreground)/35 bg-transparent pr-4 pl-10 text-[13px] tracking-[0.02em] transition-[width] duration-300 ease-out outline-none placeholder:text-(--iu-muted) focus:w-64 focus-visible:border-(--iu-foreground) focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none [&::-webkit-search-cancel-button]:hidden"
+              />
+              <div
+                data-search-results
+                id="hesper-search-results"
+                role="listbox"
+                aria-label="Suggested pieces"
+                hidden
+                class="absolute top-full right-0 z-50 mt-3 w-80 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-background) p-2"
+              ></div>
+            </div>
+          </div>
+          <button
+            type="button"
+            data-mobile-search
+            aria-label="Search"
+            class="inline-flex size-10 items-center justify-center rounded-full focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid lg:hidden"
+          >
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            aria-label="Account"
+            class="hidden size-10 items-center justify-center rounded-full focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid sm:inline-flex"
+          >
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="-mr-2 min-h-10 rounded-full px-2 text-[11px] font-medium tracking-[0.2em] whitespace-nowrap uppercase tabular-nums focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+          >
+            Bag (2)
+          </button>
+        </div>
+      </div>
+      <div
+        data-panel-root
+        id="hesper-panel"
+        hidden
+        class="absolute inset-x-0 top-full hidden border-y border-(--iu-border) bg-(--iu-background) transition-opacity duration-300 ease-out motion-reduce:transition-none lg:block"
+      >
+        <div data-panel="fragrance" hidden class="mx-auto grid max-w-[1320px] grid-cols-12 gap-x-8 px-10 pt-12 pb-14">
+          <div class="col-span-7 grid grid-cols-3 gap-x-8">
+            <div>
+              <p
+                class="border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+              >
+                Eaux de parfum
+              </p>
+              <ul class="mt-4 space-y-[calc(6px*var(--iu-density))]">
+                <li>
+                  <a
+                    href="#vetiver-nocturne"
+                    data-piece="#vetiver-nocturne"
+                    aria-current="page"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Vetiver Nocturne<span class="sr-only">(current page)</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#fig-cedar"
+                    data-piece="#fig-cedar"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Fig &amp; Cedar</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#salt-orris"
+                    data-piece="#salt-orris"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Salt Orris</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#ambre-lent"
+                    data-piece="#ambre-lent"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Ambre Lent</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p
+                class="border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+              >
+                For the home
+              </p>
+              <ul class="mt-4 space-y-[calc(6px*var(--iu-density))]">
+                <li>
+                  <a
+                    href="#candles"
+                    data-piece="#candles"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Candles</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#diffusers"
+                    data-piece="#diffusers"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Diffusers</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#refills"
+                    data-piece="#refills"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Refills</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p
+                class="border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+              >
+                Discover
+              </p>
+              <ul class="mt-4 space-y-[calc(6px*var(--iu-density))]">
+                <li>
+                  <a
+                    href="#discovery-set"
+                    data-piece="#discovery-set"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Discovery set</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#engraving"
+                    data-piece="#engraving"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Engraved flacons</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 border-l border-(--iu-border) pl-8">
+            <a
+              href="#vetiver-nocturne"
+              data-subject-link
+              class="block focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              ><figure data-subject class="flex h-full flex-col">
+                <div
+                  class="relative grid h-[300px] place-items-center overflow-hidden rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface)"
+                >
+                  <div
+                    data-subject-art
+                    class="text-(--iu-foreground) transition-[opacity,scale] duration-400 ease-out motion-reduce:transition-none"
+                  >
+                    <svg viewBox="0 0 200 240" aria-hidden="true" class="h-64 w-auto">
+                      <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+                        <rect x="82" y="28" width="36" height="30" />
+                        <path d="M82 40h36" />
+                        <rect x="92" y="58" width="16" height="12" />
+                        <rect x="52" y="70" width="96" height="140" rx="3" />
+                        <rect x="58" y="76" width="84" height="128" rx="2" />
+                        <path d="M58 112h84" class="stroke-(--iu-accent)" />
+                        <rect x="74" y="140" width="52" height="36" />
+                        <path d="M86 152h28M90 162h20" />
+                      </g>
+                    </svg>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="absolute top-3 left-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                    >In focus</span
+                  >
+                </div>
+                <figcaption class="mt-4 flex items-baseline justify-between gap-4">
+                  <span class="min-w-0"
+                    ><span data-subject-name class="block font-serif text-2xl leading-tight font-normal"
+                      >Vetiver Nocturne</span
+                    ><span data-subject-detail class="mt-1 block text-[13px] text-(--iu-muted)"
+                      >Eau de parfum · 100 ml</span
+                    ></span
+                  ><span data-subject-price class="shrink-0 font-serif text-xl tabular-nums">€215</span>
+                </figcaption>
+              </figure></a
+            >
+          </div>
+        </div>
+        <div data-panel="leather" hidden class="mx-auto grid max-w-[1320px] grid-cols-12 gap-x-8 px-10 pt-12 pb-14">
+          <div class="col-span-7 grid grid-cols-3 gap-x-8">
+            <div>
+              <p
+                class="border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+              >
+                Bags
+              </p>
+              <ul class="mt-4 space-y-[calc(6px*var(--iu-density))]">
+                <li>
+                  <a
+                    href="#market-tote"
+                    data-piece="#market-tote"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >The Market Tote</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#crossbody"
+                    data-piece="#crossbody"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Crossbody 22</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#weekender"
+                    data-piece="#weekender"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Weekender</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p
+                class="border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+              >
+                Small leather goods
+              </p>
+              <ul class="mt-4 space-y-[calc(6px*var(--iu-density))]">
+                <li>
+                  <a
+                    href="#card-case"
+                    data-piece="#card-case"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Card case</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#zip-wallet"
+                    data-piece="#zip-wallet"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Zip wallet</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#key-ring"
+                    data-piece="#key-ring"
+                    class="group inline-flex min-h-8 items-center gap-2 text-[15px] text-(--iu-muted) transition-colors duration-300 focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                    ><span
+                      data-dash
+                      aria-hidden="true"
+                      class="h-px w-0 bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                    ></span
+                    >Key ring</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-span-5 border-l border-(--iu-border) pl-8">
+            <a
+              href="#market-tote"
+              data-subject-link
+              class="block focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              ><figure data-subject class="flex h-full flex-col">
+                <div
+                  class="relative grid h-[300px] place-items-center overflow-hidden rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface)"
+                >
+                  <div
+                    data-subject-art
+                    class="text-(--iu-foreground) transition-[opacity,scale] duration-400 ease-out motion-reduce:transition-none"
+                  >
+                    <svg viewBox="0 0 200 240" aria-hidden="true" class="h-64 w-auto">
+                      <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+                        <path d="M70 104c0-58 60-58 60 0" />
+                        <path d="M78 104c0-46 44-46 44 0" />
+                        <path d="M40 104h120l12 106H28Z" />
+                        <path d="M44 114h112" class="stroke-(--iu-accent)" stroke-dasharray="3 3" />
+                        <path d="M100 104v12" />
+                        <rect x="88" y="150" width="24" height="14" />
+                      </g>
+                    </svg>
+                  </div>
+                  <span
+                    aria-hidden="true"
+                    class="absolute top-3 left-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                    >In focus</span
+                  >
+                </div>
+                <figcaption class="mt-4 flex items-baseline justify-between gap-4">
+                  <span class="min-w-0"
+                    ><span data-subject-name class="block font-serif text-2xl leading-tight font-normal"
+                      >The Market Tote</span
+                    ><span data-subject-detail class="mt-1 block text-[13px] text-(--iu-muted)"
+                      >Vegetable-tanned calf</span
+                    ></span
+                  ><span data-subject-price class="shrink-0 font-serif text-xl tabular-nums">€640</span>
+                </figcaption>
+              </figure></a
+            >
+          </div>
+        </div>
+      </div>
+      <div data-drawer hidden class="fixed inset-0 z-50 lg:hidden">
+        <div data-drawer-backdrop aria-hidden="true" class="absolute inset-0 bg-black/40 dark:bg-black/60"></div>
+        <div
+          data-drawer-panel
+          role="dialog"
+          aria-modal="true"
+          aria-label="Hesper menu"
+          class="absolute inset-y-0 left-0 flex w-full max-w-[420px] flex-col overflow-hidden bg-(--iu-background) transition-[translate] duration-400 ease-out motion-reduce:transition-none"
+        >
+          <div class="flex h-16 shrink-0 items-center justify-between border-b border-(--iu-border) px-5">
+            <span class="font-serif text-xl tracking-[0.32em] uppercase">Hesper</span>
+            <button
+              type="button"
+              data-drawer-close
+              aria-label="Close menu"
+              class="-mr-2 inline-flex size-10 items-center justify-center rounded-full focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+            >
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="shrink-0 px-5 pt-5">
+            <div data-search class="relative w-full">
+              <svg
+                aria-hidden="true"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-(--iu-muted)"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" /></svg
+              ><input
+                data-search-input
+                type="search"
+                role="combobox"
+                aria-label="Search Hesper"
+                aria-expanded="false"
+                aria-controls="hesper-drawer-search-results"
+                aria-autocomplete="list"
+                autocomplete="off"
+                placeholder="Search"
+                class="h-10 w-full rounded-full border border-(--iu-foreground)/35 bg-transparent pr-4 pl-10 text-[13px] tracking-[0.02em] outline-none placeholder:text-(--iu-muted) focus-visible:border-(--iu-foreground) focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid [&::-webkit-search-cancel-button]:hidden"
+              />
+              <div
+                data-search-results
+                id="hesper-drawer-search-results"
+                role="listbox"
+                aria-label="Suggested pieces"
+                hidden
+                class="absolute inset-x-0 top-full z-50 mt-3 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-background) p-2"
+              ></div>
+            </div>
+          </div>
+          <div class="relative min-h-0 flex-1 overflow-x-hidden overflow-y-auto">
+            <nav
+              data-root-level
+              aria-label="Main"
+              class="px-5 pt-4 pb-8 transition-[translate,opacity] duration-400 ease-out motion-reduce:transition-none"
+            >
+              <ul>
+                <li class="border-b border-(--iu-border)">
+                  <a
+                    href="#new"
+                    data-drawer-item
+                    class="flex min-h-14 w-full items-center justify-between py-2 text-left font-serif text-[30px] leading-tight font-normal focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                    >New</a
+                  >
+                </li>
+                <li class="border-b border-(--iu-border)">
+                  <button
+                    type="button"
+                    data-drawer-item
+                    data-level="fragrance"
+                    class="flex min-h-14 w-full items-center justify-between py-2 text-left font-serif text-[30px] leading-tight font-normal focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                  >
+                    Fragrance<svg
+                      aria-hidden="true"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-(--iu-muted)"
+                    >
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                  </button>
+                </li>
+                <li class="border-b border-(--iu-border)">
+                  <button
+                    type="button"
+                    data-drawer-item
+                    data-level="leather"
+                    class="flex min-h-14 w-full items-center justify-between py-2 text-left font-serif text-[30px] leading-tight font-normal focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                  >
+                    Leather<svg
+                      aria-hidden="true"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-(--iu-muted)"
+                    >
+                      <path d="m9 18 6-6-6-6" />
+                    </svg>
+                  </button>
+                </li>
+                <li class="border-b border-(--iu-border)">
+                  <a
+                    href="#home-objects"
+                    data-drawer-item
+                    class="flex min-h-14 w-full items-center justify-between py-2 text-left font-serif text-[30px] leading-tight font-normal focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                    >Home</a
+                  >
+                </li>
+                <li class="border-b border-(--iu-border)">
+                  <a
+                    href="#journal"
+                    data-drawer-item
+                    class="flex min-h-14 w-full items-center justify-between py-2 text-left font-serif text-[30px] leading-tight font-normal focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                    >Journal</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <nav
+              data-sub="fragrance"
+              aria-label="Fragrance"
+              hidden
+              class="px-5 pt-4 pb-8 transition-[translate] duration-400 ease-out motion-reduce:transition-none"
+            >
+              <button
+                type="button"
+                data-back
+                class="-ml-1 inline-flex min-h-10 items-center gap-1 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" /></svg
+                >All
+              </button>
+              <h2 class="mt-2 font-serif text-[40px] leading-none font-normal">Fragrance</h2>
+              <div class="mt-8">
+                <p
+                  class="border-b border-(--iu-border) pb-2 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                >
+                  Eaux de parfum
+                </p>
+                <ul class="mt-1">
+                  <li>
+                    <a
+                      href="#vetiver-nocturne"
+                      aria-current="page"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2"
+                        ><span aria-hidden="true" class="h-px w-3 bg-(--iu-accent)"></span>Vetiver Nocturne</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€215</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#fig-cedar"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Fig &amp; Cedar</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€215</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#salt-orris"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Salt Orris</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€165</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#ambre-lent"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Ambre Lent</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€240</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-8">
+                <p
+                  class="border-b border-(--iu-border) pb-2 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                >
+                  For the home
+                </p>
+                <ul class="mt-1">
+                  <li>
+                    <a
+                      href="#candles"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Candles</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">from €78</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#diffusers"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Diffusers</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€96</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#refills"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Refills</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">from €54</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-8">
+                <p
+                  class="border-b border-(--iu-border) pb-2 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                >
+                  Discover
+                </p>
+                <ul class="mt-1">
+                  <li>
+                    <a
+                      href="#discovery-set"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Discovery set</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€38</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#engraving"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Engraved flacons</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€25</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-10">
+                <figure data-subject class="flex h-full flex-col">
+                  <div
+                    class="relative grid h-44 place-items-center overflow-hidden rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface)"
+                  >
+                    <div
+                      data-subject-art
+                      class="text-(--iu-foreground) transition-[opacity,scale] duration-400 ease-out motion-reduce:transition-none"
+                    >
+                      <svg viewBox="0 0 200 240" aria-hidden="true" class="h-40 w-auto">
+                        <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+                          <rect x="82" y="28" width="36" height="30" />
+                          <path d="M82 40h36" />
+                          <rect x="92" y="58" width="16" height="12" />
+                          <rect x="52" y="70" width="96" height="140" rx="3" />
+                          <rect x="58" y="76" width="84" height="128" rx="2" />
+                          <path d="M58 112h84" class="stroke-(--iu-accent)" />
+                          <rect x="74" y="140" width="52" height="36" />
+                          <path d="M86 152h28M90 162h20" />
+                        </g>
+                      </svg>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="absolute top-3 left-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                      >In focus</span
+                    >
+                  </div>
+                  <figcaption class="mt-4 flex items-baseline justify-between gap-4">
+                    <span class="min-w-0"
+                      ><span data-subject-name class="block font-serif text-2xl leading-tight font-normal"
+                        >Vetiver Nocturne</span
+                      ><span data-subject-detail class="mt-1 block text-[13px] text-(--iu-muted)"
+                        >Eau de parfum · 100 ml</span
+                      ></span
+                    ><span data-subject-price class="shrink-0 font-serif text-xl tabular-nums">€215</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </nav>
+            <nav
+              data-sub="leather"
+              aria-label="Leather"
+              hidden
+              class="px-5 pt-4 pb-8 transition-[translate] duration-400 ease-out motion-reduce:transition-none"
+            >
+              <button
+                type="button"
+                data-back
+                class="-ml-1 inline-flex min-h-10 items-center gap-1 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="m15 18-6-6 6-6" /></svg
+                >All
+              </button>
+              <h2 class="mt-2 font-serif text-[40px] leading-none font-normal">Leather</h2>
+              <div class="mt-8">
+                <p
+                  class="border-b border-(--iu-border) pb-2 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                >
+                  Bags
+                </p>
+                <ul class="mt-1">
+                  <li>
+                    <a
+                      href="#market-tote"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">The Market Tote</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€640</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#crossbody"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Crossbody 22</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€520</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#weekender"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Weekender</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€980</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-8">
+                <p
+                  class="border-b border-(--iu-border) pb-2 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                >
+                  Small leather goods
+                </p>
+                <ul class="mt-1">
+                  <li>
+                    <a
+                      href="#card-case"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Card case</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€145</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#zip-wallet"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Zip wallet</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€260</span></a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="#key-ring"
+                      class="flex min-h-11 items-center justify-between gap-4 text-[15px] focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                      ><span class="flex items-center gap-2">Key ring</span
+                      ><span class="font-serif text-[15px] text-(--iu-muted) tabular-nums">€70</span></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-10">
+                <figure data-subject class="flex h-full flex-col">
+                  <div
+                    class="relative grid h-44 place-items-center overflow-hidden rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface)"
+                  >
+                    <div
+                      data-subject-art
+                      class="text-(--iu-foreground) transition-[opacity,scale] duration-400 ease-out motion-reduce:transition-none"
+                    >
+                      <svg viewBox="0 0 200 240" aria-hidden="true" class="h-40 w-auto">
+                        <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+                          <path d="M70 104c0-58 60-58 60 0" />
+                          <path d="M78 104c0-46 44-46 44 0" />
+                          <path d="M40 104h120l12 106H28Z" />
+                          <path d="M44 114h112" class="stroke-(--iu-accent)" stroke-dasharray="3 3" />
+                          <path d="M100 104v12" />
+                          <rect x="88" y="150" width="24" height="14" />
+                        </g>
+                      </svg>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="absolute top-3 left-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                      >In focus</span
+                    >
+                  </div>
+                  <figcaption class="mt-4 flex items-baseline justify-between gap-4">
+                    <span class="min-w-0"
+                      ><span data-subject-name class="block font-serif text-2xl leading-tight font-normal"
+                        >The Market Tote</span
+                      ><span data-subject-detail class="mt-1 block text-[13px] text-(--iu-muted)"
+                        >Vegetable-tanned calf</span
+                      ></span
+                    ><span data-subject-price class="shrink-0 font-serif text-xl tabular-nums">€640</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </nav>
+          </div>
+          <div
+            class="flex shrink-0 items-center justify-between gap-4 border-t border-(--iu-border) px-5 py-4 text-[13px]"
+          >
+            <span class="text-(--iu-muted)">Client care · +33 1 84 88 20 40</span>
+            <span class="flex items-center gap-1"
+              ><button
+                type="button"
+                aria-label="Account"
+                class="inline-flex size-10 items-center justify-center rounded-full focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="8" r="5" />
+                  <path d="M20 21a8 8 0 0 0-16 0" />
+                </svg></button
+              ><button
+                type="button"
+                class="min-h-10 px-2 text-[11px] font-medium tracking-[0.2em] uppercase focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                Bag (2)
+              </button></span
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var header = document.querySelector("[data-hesper]");
+        if (!header) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var PIECES = [
+          {
+            name: "Vetiver Nocturne",
+            href: "#vetiver-nocturne",
+            detail: "Eau de parfum · 100 ml",
+            price: "€215",
+            art: "bottle",
+          },
+          { name: "Fig & Cedar", href: "#fig-cedar", detail: "Eau de parfum · 100 ml", price: "€215", art: "bottle" },
+          { name: "Salt Orris", href: "#salt-orris", detail: "Eau de parfum · 50 ml", price: "€165", art: "bottle" },
+          { name: "Ambre Lent", href: "#ambre-lent", detail: "Extrait · 50 ml", price: "€240", art: "bottle" },
+          { name: "Candles", href: "#candles", detail: "Hand-poured · 60 hours", price: "from €78", art: "candle" },
+          { name: "Diffusers", href: "#diffusers", detail: "Rattan reeds · 200 ml", price: "€96", art: "diffuser" },
+          {
+            name: "Refills",
+            href: "#refills",
+            detail: "Glass, returned and refilled",
+            price: "from €54",
+            art: "diffuser",
+          },
+          {
+            name: "Discovery set",
+            href: "#discovery-set",
+            detail: "Six eaux de parfum · 6 × 2 ml",
+            price: "€38",
+            art: "set",
+          },
+          {
+            name: "Engraved flacons",
+            href: "#engraving",
+            detail: "Initials, in store or online",
+            price: "€25",
+            art: "bottle",
+          },
+          {
+            name: "The Market Tote",
+            href: "#market-tote",
+            detail: "Vegetable-tanned calf",
+            price: "€640",
+            art: "tote",
+          },
+          { name: "Crossbody 22", href: "#crossbody", detail: "Pebbled calf · 22 cm", price: "€520", art: "tote" },
+          { name: "Weekender", href: "#weekender", detail: "Calf and waxed canvas", price: "€980", art: "tote" },
+          {
+            name: "Card case",
+            href: "#card-case",
+            detail: "Saddle-stitched · 4 slots",
+            price: "€145",
+            art: "cardcase",
+          },
+          { name: "Zip wallet", href: "#zip-wallet", detail: "Calf · brass zip", price: "€260", art: "cardcase" },
+          { name: "Key ring", href: "#key-ring", detail: "Bridle leather", price: "€70", art: "cardcase" },
+        ];
+        var ART = {
+          bottle:
+            '<rect x="82" y="28" width="36" height="30" /><path d="M82 40h36" /><rect x="92" y="58" width="16" height="12" /><rect x="52" y="70" width="96" height="140" rx="3" /><rect x="58" y="76" width="84" height="128" rx="2" /><path d="M58 112h84" class="stroke-(--iu-accent)" /><rect x="74" y="140" width="52" height="36" /><path d="M86 152h28M90 162h20" />',
+          candle:
+            '<path d="M100 74c-5-6-5-12 0-20 5 8 5 14 0 20Z" class="stroke-(--iu-accent)" /><path d="M100 74v14" /><path d="M54 92h92v108a10 10 0 0 1-10 10H64a10 10 0 0 1-10-10Z" /><ellipse cx="100" cy="92" rx="46" ry="6" /><rect x="70" y="132" width="60" height="40" /><path d="M82 146h36M88 156h24" />',
+          diffuser:
+            '<path d="M96 112 72 26M100 112V20M104 112l26-82" /><path d="M98 112 88 30" class="stroke-(--iu-accent)" /><rect x="88" y="112" width="24" height="14" /><rect x="58" y="126" width="84" height="84" rx="8" /><path d="M58 168h84" /><path d="M84 186h32" />',
+          set: '<g><rect x="52" y="66" width="12" height="14" /><rect x="44" y="80" width="28" height="96" rx="2" /><path d="M44 120h28" /></g><g><rect x="94" y="66" width="12" height="14" /><rect x="86" y="80" width="28" height="96" rx="2" /><path d="M86 120h28" /></g><g><rect x="136" y="66" width="12" height="14" /><rect x="128" y="80" width="28" height="96" rx="2" /><path d="M128 120h28" /></g><rect x="28" y="176" width="144" height="26" /><path d="M36 189h128" class="stroke-(--iu-accent)" />',
+          tote: '<path d="M70 104c0-58 60-58 60 0" /><path d="M78 104c0-46 44-46 44 0" /><path d="M40 104h120l12 106H28Z" /><path d="M44 114h112" class="stroke-(--iu-accent)" stroke-dasharray="3 3" /><path d="M100 104v12" /><rect x="88" y="150" width="24" height="14" />',
+          cardcase:
+            '<rect x="56" y="70" width="88" height="56" rx="2" /><path d="M64 84h40M64 94h24" /><rect x="40" y="96" width="120" height="84" rx="4" /><rect x="46" y="102" width="108" height="72" rx="2" class="stroke-(--iu-accent)" stroke-dasharray="3 3" /><path d="M40 138h120" />',
+        };
+        var SUGGESTIONS = ["#vetiver-nocturne", "#market-tote", "#discovery-set"];
+        var CURRENT_MENU = "fragrance";
+        var panelRoot = header.querySelector("[data-panel-root]");
+        var tops = Array.prototype.slice.call(header.querySelectorAll("[data-top-item]"));
+        var openId = null;
+        var timer = null;
+
+        function byHref(href) {
+          return PIECES.filter(function (p) {
+            return p.href === href;
+          })[0];
+        }
+        function artSvg(kind, cls) {
+          return (
+            '<svg viewBox="0 0 200 240" aria-hidden="true" class="' +
+            cls +
+            '"><g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">' +
+            ART[kind] +
+            "</g></svg>"
+          );
+        }
+        function esc(v) {
+          return String(v).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+
+        // The subject: the piece under the cursor or focus is drawn large and cross-fades in.
+        function setSubject(panel, item) {
+          var link = panel.querySelector("[data-subject-link]");
+          if (link.getAttribute("href") === item.href) return paintDash(panel, item.href);
+          link.setAttribute("href", item.href);
+          panel.querySelector("[data-subject-name]").textContent = item.name;
+          panel.querySelector("[data-subject-detail]").textContent = item.detail;
+          panel.querySelector("[data-subject-price]").textContent = item.price;
+          var holder = panel.querySelector("[data-subject-art]");
+          holder.innerHTML = artSvg(item.art, "h-64 w-auto");
+          if (!reduce) {
+            holder.style.transition = "none";
+            holder.style.opacity = "0";
+            holder.style.scale = "1.02";
+            holder.getBoundingClientRect();
+            holder.style.transition = "";
+            holder.style.opacity = "1";
+            holder.style.scale = "1";
+          }
+          paintDash(panel, item.href);
+        }
+        function paintDash(panel, href) {
+          panel.querySelectorAll("[data-piece]").forEach(function (a) {
+            var on = a.getAttribute("data-piece") === href;
+            a.querySelector("[data-dash]").classList.toggle("w-4", on);
+            a.querySelector("[data-dash]").classList.toggle("w-0", !on);
+            a.classList.toggle("text-(--iu-foreground)", on);
+            a.classList.toggle("text-(--iu-muted)", !on);
+          });
+        }
+        function panelFor(id) {
+          return panelRoot.querySelector('[data-panel="' + id + '"]');
+        }
+        function show(id) {
+          clearTimeout(timer);
+          if (id === openId) return;
+          openId = id;
+          tops.forEach(function (el) {
+            var mid = el.getAttribute("data-menu-id");
+            if (!mid) return;
+            var open = mid === id;
+            el.setAttribute("aria-expanded", String(open));
+            if (open) el.setAttribute("aria-controls", "hesper-panel");
+            else el.removeAttribute("aria-controls");
+            var active = open || mid === CURRENT_MENU;
+            el.classList.toggle("text-(--iu-foreground)", active);
+            el.classList.toggle("text-(--iu-muted)", !active);
+            var mark = el.querySelector("[data-top-mark]");
+            mark.hidden = !active;
+            mark.classList.toggle("w-full", open);
+            mark.classList.toggle("w-3", !open);
+          });
+          panelRoot.querySelectorAll("[data-panel]").forEach(function (p) {
+            p.hidden = p.getAttribute("data-panel") !== id;
+          });
+          panelRoot.hidden = !id;
+          if (!id) return;
+          var panel = panelFor(id);
+          var featured = byHref(
+            panel.getAttribute("data-featured") || panel.querySelector("[data-subject-link]").getAttribute("href"),
+          );
+          if (!panel.getAttribute("data-featured")) panel.setAttribute("data-featured", featured.href);
+          setSubject(panel, featured);
+          if (!reduce) {
+            panelRoot.style.transition = "none";
+            panelRoot.style.opacity = "0";
+            panelRoot.getBoundingClientRect();
+            panelRoot.style.transition = "";
+            panelRoot.style.opacity = "1";
+          }
+        }
+        function intend(id, delay) {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            show(id);
+          }, delay);
+        }
+        function panelLinks() {
+          return openId ? Array.prototype.slice.call(panelFor(openId).querySelectorAll("a[href]")) : [];
+        }
+
+        tops.forEach(function (el, index) {
+          var id = el.getAttribute("data-menu-id");
+          el.addEventListener("pointerenter", function (event) {
+            if (event.pointerType !== "mouse") return;
+            if (id) intend(id, openId ? 0 : 120);
+            else if (openId) intend(null, 160);
+          });
+          if (id)
+            el.addEventListener("click", function () {
+              show(openId === id ? null : id);
+            });
+          el.addEventListener("keydown", function (event) {
+            function move(next) {
+              event.preventDefault();
+              next.focus();
+              if (openId) show(next.getAttribute("data-menu-id"));
+            }
+            if (event.key === "ArrowRight") move(tops[(index + 1) % tops.length]);
+            else if (event.key === "ArrowLeft") move(tops[(index - 1 + tops.length) % tops.length]);
+            else if (event.key === "Home") move(tops[0]);
+            else if (event.key === "End") move(tops[tops.length - 1]);
+            else if (event.key === "Escape" && openId) {
+              event.preventDefault();
+              show(null);
+            } else if (id && (event.key === "ArrowDown" || (event.key === "Tab" && !event.shiftKey && openId === id))) {
+              event.preventDefault();
+              show(id);
+              panelLinks()[0].focus();
+            }
+          });
+        });
+        panelRoot.addEventListener("pointerover", function (event) {
+          var a = event.target.closest("[data-piece]");
+          if (a) setSubject(panelFor(openId), byHref(a.getAttribute("data-piece")));
+        });
+        panelRoot.addEventListener("focusin", function (event) {
+          var a = event.target.closest("[data-piece]");
+          if (a) setSubject(panelFor(openId), byHref(a.getAttribute("data-piece")));
+        });
+        panelRoot.addEventListener("pointerenter", function () {
+          clearTimeout(timer);
+        });
+        panelRoot.addEventListener("keydown", function (event) {
+          var items = panelLinks();
+          var index = items.indexOf(document.activeElement);
+          var trigger = header.querySelector('[data-menu-id="' + openId + '"]');
+          if (event.key === "Escape") {
+            event.preventDefault();
+            show(null);
+            trigger.focus();
+          } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            items[(index + (event.key === "ArrowDown" ? 1 : -1) + items.length) % items.length].focus();
+          } else if (event.key === "Tab" && event.shiftKey && index === 0) {
+            event.preventDefault();
+            trigger.focus();
+          } else if (event.key === "Tab" && !event.shiftKey && index === items.length - 1) {
+            var next = tops[tops.indexOf(trigger) + 1];
+            if (next) {
+              event.preventDefault();
+              show(null);
+              next.focus();
+            }
+          }
+        });
+        header.addEventListener("pointerleave", function (event) {
+          if (event.pointerType === "mouse" && openId) intend(null, 220);
+        });
+        header.addEventListener("focusout", function (event) {
+          if (openId && !header.contains(event.relatedTarget)) show(null);
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (openId && !header.contains(event.target)) show(null);
+        });
+
+        // Search: a combobox that suggests pieces while empty and matches names as you type.
+        header.querySelectorAll("[data-search]").forEach(function (box) {
+          var input = box.querySelector("[data-search-input]");
+          var list = box.querySelector("[data-search-results]");
+          var active = 0;
+          var results = [];
+          function render() {
+            var needle = input.value.trim().toLowerCase();
+            results = needle
+              ? PIECES.filter(function (p) {
+                  return (p.name + " " + p.detail).toLowerCase().indexOf(needle) >= 0;
+                }).slice(0, 5)
+              : SUGGESTIONS.map(byHref);
+            active = Math.min(active, Math.max(0, results.length - 1));
+            list.setAttribute("aria-label", needle ? "Pieces" : "Suggested pieces");
+            var head = needle ? results.length + (results.length === 1 ? " piece" : " pieces") : "Often searched";
+            var html =
+              '<p aria-hidden="true" class="px-3 pt-2 pb-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">' +
+              head +
+              "</p>";
+            if (!results.length)
+              html +=
+                '<p class="px-3 pb-3 text-[13px] leading-relaxed text-pretty text-(--iu-muted)">Nothing by that name. Try vetiver, tote or candle, or write to our client care.</p>';
+            results.forEach(function (p, i) {
+              var on = i === active;
+              html +=
+                '<div id="' +
+                list.id +
+                "-" +
+                i +
+                '" role="option" data-index="' +
+                i +
+                '" aria-selected="' +
+                on +
+                '" class="flex cursor-default items-center gap-3 px-3 py-2' +
+                (on ? " bg-(--iu-foreground)/5" : "") +
+                '"><span class="grid size-10 shrink-0 place-items-center border border-(--iu-border)">' +
+                artSvg(p.art, "h-9 w-auto") +
+                '</span><span class="min-w-0 flex-1"><span class="block truncate font-serif text-[17px] leading-tight">' +
+                esc(p.name) +
+                '</span><span class="block truncate text-[12px] text-(--iu-muted)">' +
+                esc(p.detail) +
+                '</span></span><span class="font-serif text-[15px] tabular-nums">' +
+                esc(p.price) +
+                "</span></div>";
+            });
+            list.innerHTML = html;
+            if (results[active]) input.setAttribute("aria-activedescendant", list.id + "-" + active);
+            else input.removeAttribute("aria-activedescendant");
+          }
+          function open() {
+            list.hidden = false;
+            input.setAttribute("aria-expanded", "true");
+            render();
+          }
+          function close() {
+            list.hidden = true;
+            input.setAttribute("aria-expanded", "false");
+            input.removeAttribute("aria-activedescendant");
+          }
+          function go(p) {
+            if (p) {
+              close();
+              window.location.hash = p.href.slice(1);
+            }
+          }
+          input.addEventListener("focus", open);
+          input.addEventListener("blur", close);
+          input.addEventListener("input", function () {
+            active = 0;
+            open();
+          });
+          input.addEventListener("keydown", function (event) {
+            if (event.key === "ArrowDown" && results.length) {
+              event.preventDefault();
+              if (list.hidden) open();
+              active = (active + 1) % results.length;
+              render();
+            } else if (event.key === "ArrowUp" && results.length) {
+              event.preventDefault();
+              active = (active - 1 + results.length) % results.length;
+              render();
+            } else if (event.key === "Enter") {
+              event.preventDefault();
+              if (!list.hidden) go(results[active]);
+            } else if (event.key === "Escape") {
+              if (input.value) {
+                input.value = "";
+                render();
+              } else close();
+            }
+          });
+          list.addEventListener("pointerdown", function (event) {
+            event.preventDefault();
+          });
+          list.addEventListener("pointermove", function (event) {
+            var o = event.target.closest("[data-index]");
+            if (o && Number(o.getAttribute("data-index")) !== active) {
+              active = Number(o.getAttribute("data-index"));
+              render();
+            }
+          });
+          list.addEventListener("click", function (event) {
+            var o = event.target.closest("[data-index]");
+            if (o) go(results[Number(o.getAttribute("data-index"))]);
+          });
+        });
+
+        // Mobile drawer with a drill-down second level.
+        var drawer = header.querySelector("[data-drawer]");
+        var drawerPanel = header.querySelector("[data-drawer-panel]");
+        var rootLevel = header.querySelector("[data-root-level]");
+        var menuButton = header.querySelector("[data-menu-button]");
+        var previousOverflow = "";
+        function slide(el, from) {
+          if (reduce) return;
+          el.style.transition = "none";
+          el.style.translate = from;
+          el.getBoundingClientRect();
+          el.style.transition = "";
+          el.style.translate = "0 0";
+        }
+        function openDrawer(focusSearch) {
+          drawer.hidden = false;
+          menuButton.setAttribute("aria-expanded", "true");
+          previousOverflow = document.body.style.overflow;
+          document.body.style.overflow = "hidden";
+          setLevel(null, true);
+          slide(drawerPanel, "-100% 0");
+          if (focusSearch) drawerPanel.querySelector("[data-search-input]").focus();
+          else drawerPanel.querySelector("[data-drawer-item]").focus();
+        }
+        function closeDrawer() {
+          drawer.hidden = true;
+          menuButton.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = previousOverflow;
+          menuButton.focus();
+        }
+        function setLevel(id, quiet) {
+          var from = null;
+          drawerPanel.querySelectorAll("[data-sub]").forEach(function (sub) {
+            if (!sub.hidden) from = sub.getAttribute("data-sub");
+            sub.hidden = sub.getAttribute("data-sub") !== id;
+          });
+          rootLevel.hidden = !!id;
+          if (quiet) return;
+          if (id) {
+            var sub = drawerPanel.querySelector('[data-sub="' + id + '"]');
+            slide(sub, "100% 0");
+            sub.querySelector("[data-back]").focus();
+          } else {
+            slide(rootLevel, "-30% 0");
+            var back = from && rootLevel.querySelector('[data-level="' + from + '"]');
+            if (back) back.focus();
+          }
+        }
+        menuButton.addEventListener("click", function () {
+          openDrawer(false);
+        });
+        header.querySelector("[data-mobile-search]").addEventListener("click", function () {
+          openDrawer(true);
+        });
+        header.querySelector("[data-drawer-close]").addEventListener("click", closeDrawer);
+        header.querySelector("[data-drawer-backdrop]").addEventListener("click", closeDrawer);
+        drawerPanel.addEventListener("click", function (event) {
+          var lvl = event.target.closest("[data-level]");
+          if (lvl) setLevel(lvl.getAttribute("data-level"));
+          if (event.target.closest("[data-back]")) setLevel(null);
+          if (event.target.closest("a[href]")) closeDrawer();
+        });
+        drawerPanel.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            if (rootLevel.hidden) setLevel(null);
+            else closeDrawer();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var items = Array.prototype.slice
+            .call(drawerPanel.querySelectorAll("a[href], button, input"))
+            .filter(function (el) {
+              return !el.closest("[hidden]");
+            });
+          var first = items[0];
+          var last = items[items.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

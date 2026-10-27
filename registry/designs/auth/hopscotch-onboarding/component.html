@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hopscotch onboarding · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div class="flex min-h-dvh w-full items-center justify-center bg-(--iu-background) px-4 py-10 sm:px-8 sm:py-16">
+      <div
+        data-hopscotch
+        class="@container mx-auto w-full max-w-xl font-(family-name:--iu-font) text-(--iu-foreground)"
+      >
+        <div
+          class="relative rounded-[max(var(--iu-radius),24px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[8px_8px_0_color-mix(in_oklab,var(--iu-accent)_32%,transparent)] dark:shadow-[8px_8px_0_color-mix(in_oklab,var(--iu-accent)_45%,transparent)]"
+        >
+          <nav aria-label="Setup progress" class="border-b-2 border-(--iu-foreground) px-5 pt-5 pb-4 @md:px-8 @md:pt-7">
+            <div class="flex items-center justify-between gap-3">
+              <span class="text-[15px] font-extrabold tracking-[-0.02em]">Hopscotch</span>
+              <span
+                data-sticker
+                class="inline-block -rotate-3 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_18%,var(--iu-surface))] px-3 py-1 text-xs font-bold whitespace-nowrap tabular-nums"
+                >about 2 min left</span
+              >
+            </div>
+            <ol class="relative mt-5 grid grid-cols-4">
+              <span
+                aria-hidden="true"
+                class="absolute top-5 right-[12.5%] left-[12.5%] border-t-2 border-dashed border-(--iu-foreground)/35"
+              ></span>
+              <span
+                data-token
+                aria-hidden="true"
+                class="pointer-events-none absolute top-0 left-0 flex h-10 w-1/4 justify-center transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+              >
+                <span
+                  data-token-tile
+                  class="size-10 rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground) bg-(--iu-accent) shadow-[0_3px_0_var(--iu-foreground)]"
+                ></span>
+              </span>
+              <li class="relative flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  data-tile="0"
+                  disabled
+                  aria-current="step"
+                  aria-label="Step 1, Account, current"
+                  class="relative flex size-10 items-center justify-center rounded-[max(var(--iu-radius),14px)] text-sm font-extrabold text-(--iu-accent-foreground) tabular-nums transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-default motion-reduce:transition-none"
+                >
+                  1
+                </button>
+                <span
+                  aria-hidden="true"
+                  data-tile-label
+                  class="hidden text-xs font-bold text-(--iu-foreground) @sm:block"
+                  >Account</span
+                >
+              </li>
+              <li class="relative flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  data-tile="1"
+                  disabled
+                  aria-label="Step 2, Workspace"
+                  class="relative flex size-10 items-center justify-center rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/35 bg-(--iu-surface) text-sm font-extrabold text-(--iu-muted) tabular-nums transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-default motion-reduce:transition-none"
+                >
+                  2
+                </button>
+                <span aria-hidden="true" data-tile-label class="hidden text-xs font-bold text-(--iu-muted) @sm:block"
+                  >Workspace</span
+                >
+              </li>
+              <li class="relative flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  data-tile="2"
+                  disabled
+                  aria-label="Step 3, Team"
+                  class="relative flex size-10 items-center justify-center rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/35 bg-(--iu-surface) text-sm font-extrabold text-(--iu-muted) tabular-nums transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-default motion-reduce:transition-none"
+                >
+                  3
+                </button>
+                <span aria-hidden="true" data-tile-label class="hidden text-xs font-bold text-(--iu-muted) @sm:block"
+                  >Team</span
+                >
+              </li>
+              <li class="relative flex flex-col items-center gap-2">
+                <button
+                  type="button"
+                  data-tile="3"
+                  disabled
+                  aria-label="Step 4, Preferences"
+                  class="relative flex size-10 items-center justify-center rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/35 bg-(--iu-surface) text-sm font-extrabold text-(--iu-muted) tabular-nums transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-default motion-reduce:transition-none"
+                >
+                  4
+                </button>
+                <span aria-hidden="true" data-tile-label class="hidden text-xs font-bold text-(--iu-muted) @sm:block"
+                  >Preferences</span
+                >
+              </li>
+            </ol>
+            <p data-step-text class="mt-3 text-center text-xs font-bold text-(--iu-muted) tabular-nums @sm:sr-only">
+              Step 1 of 4 · Account
+            </p>
+          </nav>
+
+          <div
+            class="overflow-hidden px-5 py-[calc(24px*var(--iu-density))] @md:px-8 @md:py-[calc(32px*var(--iu-density))]"
+          >
+            <form
+              data-form
+              novalidate
+              aria-labelledby="hop-heading"
+              class="transition-[opacity,transform] duration-200 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+            >
+              <h2
+                id="hop-heading"
+                tabindex="-1"
+                class="text-[28px] leading-[1.1] font-extrabold tracking-[-0.03em] text-balance outline-none @md:text-[32px]"
+              >
+                First, who's hopping in?
+              </h2>
+              <p data-body class="mt-2 text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+                Make your Hopscotch account. Takes about as long as a coffee order.
+              </p>
+
+              <fieldset data-fieldset class="mt-6 grid gap-[calc(16px*var(--iu-density))]">
+                <legend class="sr-only" data-legend>Account</legend>
+
+                <div data-step="0" class="grid gap-[calc(16px*var(--iu-density))]">
+                  <div class="grid grid-cols-2 gap-3">
+                    <button
+                      type="button"
+                      data-social="google"
+                      class="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) text-[15px] font-bold shadow-[0_3px_0_var(--iu-foreground)] transition-[transform,box-shadow] duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-y-[3px] active:shadow-[0_0_0_var(--iu-foreground)] motion-reduce:transition-none"
+                    >
+                      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.19-1.79 4.13-1.15 1.15-2.93 2.4-6.05 2.4-4.83 0-8.6-3.89-8.6-8.72s3.77-8.72 8.6-8.72c2.6 0 4.51 1.03 5.91 2.35l2.31-2.31C18.75 1.44 16.13 0 12.48 0 5.87 0 .31 5.39.31 12s5.56 12 12.17 12c3.57 0 6.27-1.17 8.37-3.36 2.16-2.16 2.84-5.21 2.84-7.67 0-.76-.05-1.47-.17-2.05H12.48z"
+                        />
+                      </svg>
+                      <span><span class="sr-only">Continue with </span>Google</span>
+                    </button>
+                    <button
+                      type="button"
+                      data-social="github"
+                      class="inline-flex h-12 items-center justify-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) text-[15px] font-bold shadow-[0_3px_0_var(--iu-foreground)] transition-[transform,box-shadow] duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-y-[3px] active:shadow-[0_0_0_var(--iu-foreground)] motion-reduce:transition-none"
+                    >
+                      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57l-.02-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"
+                        />
+                      </svg>
+                      <span><span class="sr-only">Continue with </span>GitHub</span>
+                    </button>
+                  </div>
+                  <div aria-hidden="true" class="flex items-center gap-3 text-xs font-bold text-(--iu-muted)">
+                    <span class="h-0.5 flex-1 rounded-full bg-(--iu-foreground)/15"></span>
+                    or use email
+                    <span class="h-0.5 flex-1 rounded-full bg-(--iu-foreground)/15"></span>
+                  </div>
+                  <div>
+                    <label for="hop-name" class="mb-2 block text-sm font-bold">Your name</label>
+                    <input
+                      id="hop-name"
+                      data-field="name"
+                      type="text"
+                      autocomplete="name"
+                      placeholder="Dana Okoye"
+                      class="h-12 w-full rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/40 bg-(--iu-surface) px-4 text-[15px] font-medium text-(--iu-foreground) transition-colors duration-150 placeholder:font-normal placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-600 motion-reduce:transition-none dark:aria-invalid:border-red-400 pointer-fine:hover:border-(--iu-foreground)/70"
+                    />
+                    <p
+                      id="hop-name-error"
+                      data-error-for="name"
+                      hidden
+                      class="mt-2 text-[13px] font-medium text-red-700 dark:text-red-300"
+                    ></p>
+                  </div>
+                  <div>
+                    <label for="hop-email" class="mb-2 block text-sm font-bold">Email</label>
+                    <input
+                      id="hop-email"
+                      data-field="email"
+                      type="email"
+                      inputmode="email"
+                      autocomplete="email"
+                      placeholder="dana@fieldnote.studio"
+                      class="h-12 w-full rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/40 bg-(--iu-surface) px-4 text-[15px] font-medium text-(--iu-foreground) transition-colors duration-150 placeholder:font-normal placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-600 motion-reduce:transition-none dark:aria-invalid:border-red-400 pointer-fine:hover:border-(--iu-foreground)/70"
+                    />
+                    <p
+                      id="hop-email-error"
+                      data-error-for="email"
+                      hidden
+                      class="mt-2 text-[13px] font-medium text-red-700 dark:text-red-300"
+                    ></p>
+                  </div>
+                  <div>
+                    <label for="hop-password" class="mb-2 block text-sm font-bold"
+                      >Password <span class="font-medium text-(--iu-muted)">(8+ characters)</span></label
+                    >
+                    <div class="relative">
+                      <input
+                        id="hop-password"
+                        data-field="password"
+                        type="password"
+                        autocomplete="new-password"
+                        class="h-12 w-full rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/40 bg-(--iu-surface) px-4 pr-14 text-[15px] font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-600 motion-reduce:transition-none dark:aria-invalid:border-red-400 pointer-fine:hover:border-(--iu-foreground)/70"
+                      />
+                      <button
+                        type="button"
+                        data-reveal
+                        aria-label="Show password"
+                        aria-pressed="false"
+                        aria-controls="hop-password"
+                        class="absolute top-1/2 right-1.5 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                      >
+                        <svg
+                          data-icon="show"
+                          aria-hidden="true"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        <svg
+                          data-icon="hide"
+                          hidden
+                          aria-hidden="true"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"
+                          />
+                          <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+                          <path
+                            d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"
+                          />
+                          <path d="m2 2 20 20" />
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      id="hop-password-error"
+                      data-error-for="password"
+                      hidden
+                      class="mt-2 text-[13px] font-medium text-red-700 dark:text-red-300"
+                    ></p>
+                  </div>
+                </div>
+
+                <div data-step="1" hidden class="grid gap-[calc(16px*var(--iu-density))]">
+                  <div>
+                    <label for="hop-workspace" class="mb-2 block text-sm font-bold">Workspace name</label>
+                    <input
+                      id="hop-workspace"
+                      data-field="workspace"
+                      type="text"
+                      autocomplete="organization"
+                      placeholder="Fieldnote Studio"
+                      class="h-12 w-full rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/40 bg-(--iu-surface) px-4 text-[15px] font-medium text-(--iu-foreground) transition-colors duration-150 placeholder:font-normal placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-600 motion-reduce:transition-none dark:aria-invalid:border-red-400 pointer-fine:hover:border-(--iu-foreground)/70"
+                    />
+                    <p
+                      id="hop-workspace-error"
+                      data-error-for="workspace"
+                      hidden
+                      class="mt-2 text-[13px] font-medium text-red-700 dark:text-red-300"
+                    ></p>
+                    <p data-url class="mt-2 truncate font-mono text-[13px] text-(--iu-muted)">
+                      hopscotch.so/<span data-slug class="font-semibold text-(--iu-foreground)">your-team</span>
+                    </p>
+                  </div>
+                  <div role="radiogroup" aria-labelledby="hop-team-label">
+                    <span id="hop-team-label" class="mb-2 block text-sm font-bold">What kind of team?</span>
+                    <div class="flex flex-wrap gap-2" data-teams></div>
+                    <p
+                      id="hop-team-error"
+                      data-error-for="team"
+                      hidden
+                      class="mt-2 text-[13px] font-medium text-red-700 dark:text-red-300"
+                    ></p>
+                  </div>
+                </div>
+
+                <div data-step="2" hidden class="grid gap-[calc(16px*var(--iu-density))]">
+                  <div>
+                    <label for="hop-invite" class="mb-2 block text-sm font-bold">Teammate emails</label>
+                    <div class="flex gap-2">
+                      <input
+                        id="hop-invite"
+                        type="email"
+                        inputmode="email"
+                        placeholder="theo@fieldnote.studio"
+                        aria-describedby="hop-invite-hint"
+                        class="h-12 w-full min-w-0 flex-1 rounded-[max(var(--iu-radius),14px)] border-2 border-(--iu-foreground)/40 bg-(--iu-surface) px-4 text-[15px] font-medium text-(--iu-foreground) transition-colors duration-150 placeholder:font-normal placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-600 motion-reduce:transition-none dark:aria-invalid:border-red-400 pointer-fine:hover:border-(--iu-foreground)/70"
+                      />
+                      <button
+                        type="button"
+                        data-add
+                        aria-label="Add teammate"
+                        class="inline-flex size-12 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[0_3px_0_var(--iu-foreground)] transition-[transform,box-shadow] duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-y-[3px] active:shadow-[0_0_0_var(--iu-foreground)] motion-reduce:transition-none"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="M12 5v14" />
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      id="hop-invite-error"
+                      data-error-for="invite"
+                      hidden
+                      class="mt-2 text-[13px] font-medium text-red-700 dark:text-red-300"
+                    ></p>
+                    <p id="hop-invite-hint" data-invite-hint class="mt-2 text-[13px] text-(--iu-muted)">
+                      Press Enter or comma to add. Up to eight for now.
+                    </p>
+                  </div>
+                  <ul aria-label="Invited teammates" data-invites hidden class="flex flex-wrap gap-2"></ul>
+                  <div
+                    data-invites-empty
+                    class="flex items-center gap-4 rounded-[max(var(--iu-radius),16px)] border-2 border-dashed border-(--iu-foreground)/30 p-4"
+                  >
+                    <svg aria-hidden="true" viewBox="0 0 48 48" class="size-12 shrink-0">
+                      <circle
+                        cx="18"
+                        cy="20"
+                        r="9"
+                        fill="var(--iu-accent)"
+                        stroke="var(--iu-foreground)"
+                        stroke-width="2"
+                      />
+                      <rect
+                        x="24"
+                        y="22"
+                        width="18"
+                        height="18"
+                        rx="6"
+                        fill="var(--iu-surface)"
+                        stroke="var(--iu-foreground)"
+                        stroke-width="2"
+                      />
+                      <path
+                        d="M33 27v8M29 31h8"
+                        stroke="var(--iu-foreground)"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    <p class="text-sm text-pretty text-(--iu-muted)">
+                      No one yet. Solo is fine too: skip this and invite people from any board.
+                    </p>
+                  </div>
+                  <p aria-live="polite" class="sr-only" data-invite-count></p>
+                </div>
+
+                <div data-step="3" hidden class="grid gap-[calc(16px*var(--iu-density))]">
+                  <div role="radiogroup" aria-labelledby="hop-template-label">
+                    <span id="hop-template-label" class="mb-2 block text-sm font-bold">Your first board</span>
+                    <div class="grid grid-cols-1 gap-3 @sm:grid-cols-3" data-templates></div>
+                  </div>
+                  <label
+                    class="flex cursor-pointer items-center justify-between gap-4 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground)/30 px-4 py-3"
+                  >
+                    <span>
+                      <span class="block text-sm font-bold">Monday morning digest</span>
+                      <span class="block text-[13px] text-(--iu-muted)">One email with what moved last week.</span>
+                    </span>
+                    <input type="checkbox" role="switch" checked data-digest class="peer sr-only" />
+                    <span
+                      aria-hidden="true"
+                      class="relative inline-flex h-8 w-14 shrink-0 items-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-foreground)/10 transition-colors duration-150 peer-checked:bg-(--iu-accent) peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none [&>span]:translate-x-[2px] peer-checked:[&>span]:translate-x-[26px]"
+                    >
+                      <span
+                        class="size-6 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+                      ></span>
+                    </span>
+                  </label>
+                  <div
+                    role="alert"
+                    data-alert
+                    hidden
+                    class="flex items-start gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-red-700 bg-red-50 px-4 py-3 text-sm font-medium text-red-800 dark:border-red-400 dark:bg-red-950 dark:text-red-200"
+                  >
+                    <p class="text-pretty">We couldn't save your workspace. Your answers are kept; try again.</p>
+                  </div>
+                </div>
+
+                <div class="mt-2 flex items-center justify-between gap-3">
+                  <button
+                    type="button"
+                    data-back
+                    hidden
+                    class="inline-flex h-12 items-center justify-center gap-2 rounded-full px-4 text-[15px] font-semibold text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m12 19-7-7 7-7" />
+                      <path d="M19 12H5" />
+                    </svg>
+                    Back
+                  </button>
+                  <span data-free class="text-[13px] text-(--iu-muted)">Free for teams of five.</span>
+                  <div class="flex items-center gap-1">
+                    <button
+                      type="button"
+                      data-skip
+                      hidden
+                      class="inline-flex h-12 items-center justify-center gap-2 rounded-full px-4 text-[15px] font-semibold text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                    >
+                      Skip
+                    </button>
+                    <button
+                      type="submit"
+                      data-submit
+                      class="inline-flex h-12 min-w-36 items-center justify-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-6 text-[15px] font-bold text-(--iu-accent-foreground) shadow-[0_4px_0_var(--iu-foreground)] transition-[transform,box-shadow] duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-y-1 active:shadow-[0_0_0_var(--iu-foreground)] disabled:cursor-progress motion-reduce:transition-none"
+                    >
+                      <span data-submit-label>Continue</span>
+                      <svg
+                        data-submit-arrow
+                        aria-hidden="true"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                      <span data-dots hidden aria-hidden="true" class="flex items-center gap-1.5">
+                        <span
+                          class="size-2 animate-bounce rounded-full bg-(--iu-accent-foreground) motion-reduce:animate-none"
+                        ></span>
+                        <span
+                          class="size-2 animate-bounce rounded-full bg-(--iu-accent-foreground) [animation-delay:120ms] motion-reduce:animate-none"
+                        ></span>
+                        <span
+                          class="size-2 animate-bounce rounded-full bg-(--iu-accent-foreground) [animation-delay:240ms] motion-reduce:animate-none"
+                        ></span>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+
+            <div
+              data-done
+              hidden
+              role="status"
+              aria-labelledby="hop-done"
+              class="flex flex-col items-center py-2 text-center"
+            >
+              <div class="relative flex size-36 items-center justify-center">
+                <span
+                  data-piece="-62,-30,-20"
+                  aria-hidden="true"
+                  class="absolute size-4 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+                ></span>
+                <span
+                  data-piece="64,-36,25"
+                  aria-hidden="true"
+                  class="absolute size-4 rounded-[4px] border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+                ></span>
+                <span
+                  data-piece="-54,34,15"
+                  aria-hidden="true"
+                  class="absolute size-4 rounded-[4px] border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))] transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+                ></span>
+                <span
+                  data-piece="60,30,-30"
+                  aria-hidden="true"
+                  class="absolute size-4 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+                ></span>
+                <svg aria-hidden="true" viewBox="0 0 88 88" class="size-22">
+                  <circle cx="44" cy="47" r="38" fill="var(--iu-foreground)" />
+                  <circle
+                    cx="44"
+                    cy="42"
+                    r="38"
+                    fill="var(--iu-accent)"
+                    stroke="var(--iu-foreground)"
+                    stroke-width="3"
+                  />
+                  <path
+                    data-check
+                    d="M27 43l11 11 23-24"
+                    fill="none"
+                    stroke="var(--iu-accent-foreground)"
+                    stroke-width="6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    pathLength="1"
+                    stroke-dasharray="1"
+                    stroke-dashoffset="0"
+                  />
+                </svg>
+              </div>
+              <h2
+                id="hop-done"
+                tabindex="-1"
+                data-done-title
+                class="mt-2 text-[28px] leading-[1.1] font-extrabold tracking-[-0.03em] text-balance outline-none @md:text-[32px]"
+              >
+                You're in.
+              </h2>
+              <p data-done-text class="mt-2 max-w-sm text-[15px] leading-relaxed text-pretty text-(--iu-muted)"></p>
+              <ul data-summary class="mt-6 flex flex-wrap justify-center gap-2 text-sm font-bold"></ul>
+              <button
+                type="button"
+                data-open
+                class="mt-8 inline-flex h-12 min-w-36 items-center justify-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-6 text-[15px] font-bold text-(--iu-accent-foreground) shadow-[0_4px_0_var(--iu-foreground)] transition-[transform,box-shadow] duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-y-1 active:shadow-[0_0_0_var(--iu-foreground)] motion-reduce:transition-none"
+              >
+                Open your first board
+                <svg
+                  aria-hidden="true"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-hopscotch]");
+        if (!root) return;
+        var q = function (sel) {
+          return root.querySelector(sel);
+        };
+        var qa = function (sel) {
+          return Array.prototype.slice.call(root.querySelectorAll(sel));
+        };
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        var STEPS = [
+          {
+            label: "Account",
+            left: "about 2 min left",
+            title: "First, who's hopping in?",
+            body: "Make your Hopscotch account. Takes about as long as a coffee order.",
+          },
+          {
+            label: "Workspace",
+            left: "about 90 sec left",
+            title: "Name your workspace.",
+            body: "This is where your boards, docs and people live. You can rename it any time.",
+          },
+          {
+            label: "Team",
+            left: "about 1 min left",
+            title: "Bring a few friends.",
+            body: "Boards are better with company. Invites go out when you finish.",
+          },
+          {
+            label: "Preferences",
+            left: "last one",
+            title: "Make it yours.",
+            body: "Pick a first board and how loud we should be. Everything here can change later.",
+          },
+        ];
+        var TEAMS = ["Product", "Design", "Engineering", "Agency"];
+        var TEMPLATES = [
+          { value: "blank", label: "Blank board", hint: "Start from a clean grid" },
+          { value: "sprint", label: "Sprint plan", hint: "Three lanes, two weeks" },
+          { value: "launch", label: "Launch checklist", hint: "24 tasks, pre-sorted" },
+        ];
+        var CHECK =
+          '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+        var TILE =
+          "relative flex size-10 items-center justify-center rounded-[max(var(--iu-radius),14px)] text-sm font-extrabold tabular-nums transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-default motion-reduce:transition-none ";
+        var step = 0;
+        var done = false;
+        var team = "";
+        var template = "sprint";
+        var invites = [];
+
+        var field = function (name) {
+          return q('[data-field="' + name + '"]');
+        };
+        function setError(name, message) {
+          var p = q('[data-error-for="' + name + '"]');
+          p.textContent = message || "";
+          p.hidden = !message;
+          var input = name === "invite" ? q("#hop-invite") : name === "team" ? null : field(name);
+          if (input) {
+            if (message) {
+              input.setAttribute("aria-invalid", "true");
+              input.setAttribute("aria-describedby", "hop-" + name + "-error");
+            } else {
+              input.removeAttribute("aria-invalid");
+              if (name === "invite") input.setAttribute("aria-describedby", "hop-invite-hint");
+              else input.removeAttribute("aria-describedby");
+            }
+          }
+          if (name === "invite") q("[data-invite-hint]").hidden = !!message;
+          if (name === "workspace") q("[data-url]").hidden = !!message;
+        }
+        function check(name) {
+          var value = name === "team" ? team : field(name).value;
+          if (name === "name") return value.trim() ? "" : "What should your teammates call you?";
+          if (name === "email")
+            return !value.trim()
+              ? "We need an email to save your progress."
+              : EMAIL.test(value.trim())
+                ? ""
+                : "Almost: that email is missing a part. Try dana@studio.com.";
+          if (name === "password") {
+            var left = 8 - value.length;
+            return left <= 0 ? "" : left + " more character" + (left === 1 ? "" : "s") + " to go.";
+          }
+          if (name === "workspace")
+            return value.trim().length >= 2 ? "" : "Give your workspace a name, two letters or more.";
+          if (name === "team") return value ? "" : "Pick the closest fit; you can change it later.";
+          return "";
+        }
+
+        ["name", "email", "password", "workspace"].forEach(function (name) {
+          field(name).addEventListener("blur", function () {
+            if (field(name).value) setError(name, check(name));
+          });
+          field(name).addEventListener("input", function () {
+            if (!q('[data-error-for="' + name + '"]').hidden && !check(name)) setError(name, "");
+            if (name === "workspace") {
+              var slug = field(name)
+                .value.toLowerCase()
+                .trim()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-+|-+$/g, "")
+                .slice(0, 32);
+              q("[data-slug]").textContent = slug || "your-team";
+            }
+          });
+        });
+
+        // Team pills and template cards.
+        TEAMS.forEach(function (label, index) {
+          var wrap = document.createElement("label");
+          wrap.className = "relative";
+          wrap.innerHTML =
+            '<input type="radio" name="hop-team" value="' +
+            label.toLowerCase() +
+            '" class="peer sr-only"' +
+            (index === 0 ? ' id="hop-team"' : "") +
+            ' /><span data-pill class="inline-flex h-11 cursor-pointer items-center gap-1.5 rounded-full border-2 border-(--iu-foreground)/40 px-4 text-sm font-bold transition-[transform,background-color] duration-150 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none peer-checked:-rotate-2 peer-checked:border-(--iu-foreground) peer-checked:bg-(--iu-foreground) peer-checked:text-(--iu-background) pointer-fine:hover:border-(--iu-foreground)">' +
+            label +
+            "</span>";
+          wrap.querySelector("input").addEventListener("change", function (event) {
+            team = event.target.value;
+            setError("team", "");
+          });
+          q("[data-teams]").appendChild(wrap);
+        });
+        var ART = {
+          blank: (function () {
+            var dots = "";
+            for (var r = 0; r < 4; r++)
+              for (var c = 0; c < 7; c++)
+                dots +=
+                  '<circle cx="' +
+                  (18 + c * 10) +
+                  '" cy="' +
+                  (14 + r * 9) +
+                  '" r="1.4" fill="var(--iu-foreground)" opacity="0.35"/>';
+            return dots;
+          })(),
+          sprint: [0, 1, 2]
+            .map(function (lane) {
+              var out =
+                '<rect x="' +
+                (10 + lane * 27) +
+                '" y="10" width="22" height="6" rx="3" fill="var(--iu-foreground)" opacity="0.8"/>';
+              for (var card = 0; card < 3 - lane; card++) {
+                var first = lane === 0 && card === 0;
+                out +=
+                  '<rect x="' +
+                  (10 + lane * 27) +
+                  '" y="' +
+                  (20 + card * 10) +
+                  '" width="22" height="7" rx="3" fill="' +
+                  (first ? "var(--iu-accent)" : "var(--iu-foreground)") +
+                  '" opacity="' +
+                  (first ? 1 : 0.25) +
+                  '"/>';
+              }
+              return out;
+            })
+            .join(""),
+          launch: [0, 1, 2]
+            .map(function (row) {
+              return (
+                '<rect x="12" y="' +
+                (11 + row * 12) +
+                '" width="8" height="8" rx="2.5" fill="' +
+                (row === 0 ? "var(--iu-accent)" : "none") +
+                '" stroke="var(--iu-foreground)" stroke-width="1.5"/><rect x="26" y="' +
+                (13 + row * 12) +
+                '" width="' +
+                (row === 1 ? 44 : 56) +
+                '" height="4" rx="2" fill="var(--iu-foreground)" opacity="0.3"/>'
+              );
+            })
+            .join(""),
+        };
+        TEMPLATES.forEach(function (item) {
+          var wrap = document.createElement("label");
+          wrap.className = "relative block";
+          wrap.innerHTML =
+            '<input type="radio" name="hop-template" value="' +
+            item.value +
+            '"' +
+            (item.value === template ? " checked" : "") +
+            ' class="peer sr-only" /><span class="flex cursor-pointer items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground)/30 p-3 transition-[transform,box-shadow,border-color] duration-150 peer-checked:border-(--iu-foreground) peer-checked:shadow-[0_4px_0_var(--iu-foreground)] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none @sm:flex-col @sm:items-stretch @sm:peer-checked:-translate-y-1 pointer-fine:hover:border-(--iu-foreground)"><span class="block w-24 shrink-0 @sm:w-full"><svg aria-hidden="true" viewBox="0 0 96 56" class="h-14 w-full"><rect x="1" y="1" width="94" height="54" rx="10" fill="var(--iu-background)" stroke="var(--iu-foreground)" stroke-width="2"/>' +
+            ART[item.value] +
+            '</svg></span><span class="block"><span class="block text-sm font-bold">' +
+            item.label +
+            '</span><span class="mt-0.5 block text-xs text-(--iu-muted)">' +
+            item.hint +
+            "</span></span></span>";
+          wrap.querySelector("input").addEventListener("change", function (event) {
+            template = event.target.value;
+          });
+          q("[data-templates]").appendChild(wrap);
+        });
+
+        // Invites.
+        var inviteInput = q("#hop-invite");
+        function renderInvites(added) {
+          var list = q("[data-invites]");
+          list.textContent = "";
+          invites.forEach(function (email) {
+            var parts = email
+              .split("@")[0]
+              .split(/[._-]+/)
+              .filter(Boolean);
+            var mono = ((parts[0] || "")[0] || "") + ((parts[1] || "")[0] || (parts[0] || "")[1] || "");
+            var li = document.createElement("li");
+            li.className =
+              "inline-flex max-w-full items-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] py-1 pr-1 pl-1";
+            li.innerHTML =
+              '<span aria-hidden="true" class="inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground) text-[11px] font-extrabold text-(--iu-background)">' +
+              mono.toUpperCase() +
+              '</span><span class="truncate text-sm font-semibold"></span><button type="button" class="inline-flex size-7 shrink-0 items-center justify-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/10"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>';
+            li.children[1].textContent = email;
+            var remove = li.querySelector("button");
+            remove.setAttribute("aria-label", "Remove " + email);
+            remove.addEventListener("click", function () {
+              invites = invites.filter(function (item) {
+                return item !== email;
+              });
+              renderInvites();
+              inviteInput.focus();
+            });
+            list.appendChild(li);
+            if (email === added && !reduce) {
+              li.animate(
+                [
+                  { transform: "scale(0.6)", opacity: 0 },
+                  { transform: "scale(1)", opacity: 1 },
+                ],
+                { duration: 360, easing: "cubic-bezier(0.34,1.56,0.64,1)" },
+              );
+            }
+          });
+          list.hidden = invites.length === 0;
+          q("[data-invites-empty]").hidden = invites.length > 0;
+          q("[data-invite-count]").textContent =
+            invites.length + " teammate" + (invites.length === 1 ? "" : "s") + " on the list";
+          updateFooter();
+        }
+        function addInvite() {
+          var email = inviteInput.value.trim().toLowerCase();
+          if (!email) return;
+          if (!EMAIL.test(email)) return setError("invite", '"' + email + "\" isn't a full email address.");
+          if (invites.indexOf(email) >= 0) return setError("invite", email + " is already on the list.");
+          if (invites.length >= 8) return setError("invite", "Eight at a time; add more later.");
+          invites.push(email);
+          inviteInput.value = "";
+          setError("invite", "");
+          renderInvites(email);
+        }
+        q("[data-add]").addEventListener("click", addInvite);
+        inviteInput.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === ",") {
+            event.preventDefault();
+            addInvite();
+          }
+        });
+        inviteInput.addEventListener("input", function () {
+          setError("invite", "");
+        });
+
+        // Password visibility.
+        var reveal = q("[data-reveal]");
+        reveal.addEventListener("click", function () {
+          var show = field("password").type === "password";
+          field("password").type = show ? "text" : "password";
+          reveal.setAttribute("aria-label", show ? "Hide password" : "Show password");
+          reveal.setAttribute("aria-pressed", String(show));
+          reveal.querySelector('[data-icon="show"]').hidden = show;
+          reveal.querySelector('[data-icon="hide"]').hidden = !show;
+        });
+
+        function updateFooter() {
+          q("[data-back]").hidden = step === 0;
+          q("[data-free]").hidden = step !== 0;
+          q("[data-skip]").hidden = !(step === 2 && invites.length === 0);
+          q("[data-submit-label]").textContent =
+            step === 3 ? "Finish setup" : step === 2 && invites.length ? "Invite " + invites.length : "Continue";
+          q("[data-submit-arrow]").hidden = step === 3;
+        }
+
+        function renderProgress(hop) {
+          var at = done ? 3 : step;
+          q("[data-token]").style.transform = "translateX(" + at * 100 + "%)";
+          if (hop && !reduce) {
+            q("[data-token-tile]").animate([{ transform: "translateY(-14px) scale(0.9)" }, { transform: "none" }], {
+              duration: 480,
+              easing: "cubic-bezier(0.34,1.56,0.64,1)",
+            });
+          }
+          qa("[data-tile]").forEach(function (tile, index) {
+            var complete = done || index < step;
+            var active = !done && index === step;
+            tile.className =
+              TILE +
+              (active
+                ? "text-(--iu-accent-foreground)"
+                : complete
+                  ? "border-2 border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)" +
+                    (done ? "" : " pointer-fine:hover:-rotate-6")
+                  : "border-2 border-(--iu-foreground)/35 bg-(--iu-surface) text-(--iu-muted)");
+            tile.innerHTML = complete && !active ? CHECK : String(index + 1);
+            tile.disabled = !complete || done;
+            if (active) tile.setAttribute("aria-current", "step");
+            else tile.removeAttribute("aria-current");
+            tile.setAttribute(
+              "aria-label",
+              "Step " + (index + 1) + ", " + STEPS[index].label + (complete ? ", done" : active ? ", current" : ""),
+            );
+            tile.parentNode.querySelector("[data-tile-label]").className =
+              "hidden text-xs font-bold @sm:block " +
+              (active || complete ? "text-(--iu-foreground)" : "text-(--iu-muted)");
+          });
+          q("[data-sticker]").textContent = done ? "all done" : STEPS[step].left;
+          q("[data-step-text]").textContent = done
+            ? "Setup complete"
+            : "Step " + (step + 1) + " of 4 · " + STEPS[step].label;
+        }
+
+        function go(next) {
+          if (next < 0 || next > 3) return;
+          var forward = next > step;
+          var form = q("[data-form]");
+          var swap = function () {
+            step = next;
+            qa("[data-step]").forEach(function (section) {
+              section.hidden = Number(section.getAttribute("data-step")) !== step;
+            });
+            q("#hop-heading").textContent = STEPS[step].title;
+            q("[data-body]").textContent = STEPS[step].body;
+            q("[data-legend]").textContent = STEPS[step].label;
+            updateFooter();
+            renderProgress(true);
+            form.style.transition = "none";
+            form.style.opacity = "0";
+            form.style.transform = "translateX(" + (forward ? 24 : -24) + "px)";
+            void form.offsetWidth;
+            form.style.transition = "";
+            form.style.opacity = "";
+            form.style.transform = "";
+            q("#hop-heading").focus();
+          };
+          if (reduce) return swap();
+          form.style.opacity = "0";
+          form.style.transform = "translateX(" + (forward ? -24 : 24) + "px)";
+          setTimeout(swap, 160);
+        }
+
+        qa("[data-tile]").forEach(function (tile, index) {
+          tile.addEventListener("click", function () {
+            go(index);
+          });
+        });
+        q("[data-back]").addEventListener("click", function () {
+          go(step - 1);
+        });
+        q("[data-skip]").addEventListener("click", function () {
+          go(3);
+        });
+        qa("[data-social]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            go(1);
+          });
+        });
+
+        function finish() {
+          done = true;
+          q("[data-form]").hidden = true;
+          var panel = q("[data-done]");
+          panel.hidden = false;
+          var first = field("name").value.trim().split(/\s+/)[0] || "friend";
+          q("[data-done-title]").textContent = "You're in, " + first + ".";
+          q("[data-done-text]").textContent =
+            (field("workspace").value.trim() || "Your workspace") + " is ready on Hopscotch.";
+          var summary = q("[data-summary]");
+          summary.textContent = "";
+          [
+            invites.length + " invite" + (invites.length === 1 ? "" : "s") + " sent",
+            TEMPLATES.filter(function (t) {
+              return t.value === template;
+            })[0].label,
+            "Digest " + (q("[data-digest]").checked ? "on" : "off"),
+          ].forEach(function (text) {
+            var li = document.createElement("li");
+            li.className = "rounded-full border-2 border-(--iu-foreground) px-3 py-1 tabular-nums";
+            li.textContent = text;
+            summary.appendChild(li);
+          });
+          renderProgress(true);
+          qa("[data-piece]").forEach(function (piece, index) {
+            var p = piece.getAttribute("data-piece").split(",");
+            var to = "translate(" + p[0] + "px," + p[1] + "px) rotate(" + p[2] + "deg)";
+            if (reduce) {
+              piece.style.transform = to;
+              return;
+            }
+            piece.style.transform = "scale(0)";
+            setTimeout(
+              function () {
+                piece.style.transform = to;
+              },
+              250 + index * 40,
+            );
+          });
+          if (!reduce) {
+            q("[data-check]").animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], {
+              duration: 400,
+              delay: 150,
+              easing: "cubic-bezier(0.2,0.8,0.2,1)",
+              fill: "backwards",
+            });
+          }
+          q("[data-done-title]").focus();
+        }
+
+        q("[data-form]").addEventListener("submit", function (event) {
+          event.preventDefault();
+          var fields = [["name", "email", "password"], ["workspace", "team"], [], []][step];
+          var firstBad = null;
+          fields.forEach(function (name) {
+            var message = check(name);
+            setError(name, message);
+            if (message && !firstBad) firstBad = name;
+          });
+          if (firstBad) return (firstBad === "team" ? q("#hop-team") : field(firstBad)).focus();
+          if (step < 3) return go(step + 1);
+
+          q("[data-alert]").hidden = true;
+          q("[data-fieldset]").disabled = true;
+          var submit = q("[data-submit]");
+          submit.setAttribute("aria-busy", "true");
+          q("[data-submit-label]").textContent = "Setting up";
+          q("[data-submit-label]").className = "sr-only";
+          q("[data-dots]").hidden = false;
+          // Replace this timeout with your API call; on failure, un-hide [data-alert] and re-enable the fieldset.
+          setTimeout(finish, 1500);
+        });
+
+        renderInvites();
+        renderProgress(false);
+      })();
+    </script>
+  </body>
+</html>

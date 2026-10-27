@@ -1,8 +1,74 @@
 {
+  "aldermoor-wealth-dashboard": {
+    "hash": "ae323288058f763a",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
   "atelier-product-page": {
     "hash": "ff784d8c081a59ef",
     "violations": 0,
     "snapshots": 30,
+    "auditedAt": "2026-10-27"
+  },
+  "bigtop-analytics-shell": {
+    "hash": "6632855666530b79",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "boxcar-command-palette": {
+    "hash": "95956e90568bd573",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "casefile-testimonials": {
+    "hash": "8fb036a73c7dcf13",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "commonplace-editorial-bento": {
+    "hash": "a882434fa170d7ee",
+    "violations": 0,
+    "snapshots": 12,
+    "auditedAt": "2026-10-27"
+  },
+  "cushion-checkout": {
+    "hash": "c33fd2790ced686c",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "cushion-dialog-toasts": {
+    "hash": "03ba9a3ac4ef37af",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "diff-inspector-sheet": {
+    "hash": "1471b2f4d2d4be79",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "edge-traffic-canvas": {
+    "hash": "7cfc2aa8011e602c",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "fare-slide-to-pay": {
+    "hash": "4af264be43b80949",
+    "violations": 0,
+    "snapshots": 36,
+    "auditedAt": "2026-10-27"
+  },
+  "forgeline-button-system": {
+    "hash": "b68f30605bd1896b",
+    "violations": 0,
+    "snapshots": 42,
     "auditedAt": "2026-10-27"
   },
   "gridline-hero": {
@@ -11,10 +77,88 @@
     "snapshots": 6,
     "auditedAt": "2026-10-27"
   },
+  "gristmill-order-board": {
+    "hash": "97ef0339d0d5e25a",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
   "gumdrop-buttons": {
     "hash": "6c44ea5a3027964e",
     "violations": 0,
     "snapshots": 42,
+    "auditedAt": "2026-10-27"
+  },
+  "hairline-pricing": {
+    "hash": "d4f2bc89b3ae8970",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "hearth-studio-bento": {
+    "hash": "c1e33f97323b01de",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "hesper-storefront-nav": {
+    "hash": "a96429be84c66b23",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "hopscotch-onboarding": {
+    "hash": "cfbbd2ca690b91ad",
+    "violations": 0,
+    "snapshots": 30,
+    "auditedAt": "2026-10-27"
+  },
+  "index-account-settings": {
+    "hash": "bbefe687a4e76319",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "invoice-morph-submit": {
+    "hash": "b105a7ad4fbaf7ae",
+    "violations": 0,
+    "snapshots": 36,
+    "auditedAt": "2026-10-27"
+  },
+  "kestrel-signal-bento": {
+    "hash": "14b2ffbdb7ebad2b",
+    "violations": 0,
+    "snapshots": 12,
+    "auditedAt": "2026-10-27"
+  },
+  "kettle-cta-footer": {
+    "hash": "b317e16cd9b28402",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "kite-share-dialog": {
+    "hash": "661f79e293c42437",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "layer-peel-card": {
+    "hash": "240e039ff2db749b",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "loadstar-app-nav": {
+    "hash": "2b5c439d20d07688",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "longhand-reading-onboarding": {
+    "hash": "b31eed75ec60c1bb",
+    "violations": 0,
+    "snapshots": 30,
     "auditedAt": "2026-10-27"
   },
   "margin-notes-testimonials": {
@@ -23,14 +167,98 @@
     "snapshots": 6,
     "auditedAt": "2026-10-27"
   },
+  "meridian-bento": {
+    "hash": "ee5baa92b065ad61",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "ondine-otp-input": {
+    "hash": "844dfd19d7e3bc0d",
+    "violations": 0,
+    "snapshots": 36,
+    "auditedAt": "2026-10-27"
+  },
+  "orsolo-membership": {
+    "hash": "7d130c2ec80342e1",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
   "pillow-workspace-form": {
     "hash": "5dd656bff5668bcb",
     "violations": 0,
     "snapshots": 36,
     "auditedAt": "2026-10-27"
   },
+  "plumbline-mega-header": {
+    "hash": "b0bfdf66812f5a08",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "priority-rank-list": {
+    "hash": "66185d952f61d571",
+    "violations": 0,
+    "snapshots": 42,
+    "auditedAt": "2026-10-27"
+  },
+  "private-office-hero": {
+    "hash": "356d05ccc146bee8",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "quillby-creator-dashboard": {
+    "hash": "ef2082fcbde51300",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "quire-research-assistant": {
+    "hash": "83460723cb2dba84",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "quorum-workspace-settings": {
+    "hash": "c898e24553d49b9d",
+    "violations": 0,
+    "snapshots": 30,
+    "auditedAt": "2026-10-27"
+  },
+  "redaction-reveal-headline": {
+    "hash": "9998a39dafc6598c",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
   "relay-agent-console": {
     "hash": "54e6b46b9847cd80",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "ruled-sign-in": {
+    "hash": "b00748cc2a3373a6",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "saltmarsh-residency-form": {
+    "hash": "48d22e381b1880ad",
+    "violations": 0,
+    "snapshots": 36,
+    "auditedAt": "2026-10-27"
+  },
+  "shelfie-library-states": {
+    "hash": "5bb91f5e5125149a",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "shunt-landing-template": {
+    "hash": "92ad377d7d52ff6e",
     "violations": 0,
     "snapshots": 24,
     "auditedAt": "2026-10-27"
@@ -41,10 +269,94 @@
     "snapshots": 24,
     "auditedAt": "2026-10-27"
   },
+  "sockpop-shop-grid": {
+    "hash": "2433c33577a9e051",
+    "violations": 0,
+    "snapshots": 30,
+    "auditedAt": "2026-10-27"
+  },
+  "stepwise-agent-run": {
+    "hash": "c87e30316d3a14fd",
+    "violations": 0,
+    "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "swipe-triage-alerts": {
+    "hash": "bb3474c79e059939",
+    "violations": 0,
+    "snapshots": 42,
+    "auditedAt": "2026-10-27"
+  },
   "tally-ops-dashboard": {
     "hash": "72d43824751c62a7",
     "violations": 0,
     "snapshots": 18,
+    "auditedAt": "2026-10-27"
+  },
+  "tarn-status-screens": {
+    "hash": "09750e1812e10c65",
+    "violations": 0,
+    "snapshots": 30,
+    "auditedAt": "2026-10-27"
+  },
+  "tessera-invoice-table": {
+    "hash": "3366a5843d7f729b",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "tidewater-submissions": {
+    "hash": "bf251db726ca5088",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "tripwire-alert-rule-form": {
+    "hash": "8bfcdaa72c9b1257",
+    "violations": 0,
+    "snapshots": 30,
+    "auditedAt": "2026-10-27"
+  },
+  "typeset-hero": {
+    "hash": "6f0805e36ea04f45",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "vaultline-two-factor": {
+    "hash": "75ad83cec40ea40c",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "vaurel-pen-house": {
+    "hash": "5f36acb1bb221253",
+    "violations": 0,
+    "snapshots": 24,
+    "auditedAt": "2026-10-27"
+  },
+  "verelle-cards": {
+    "hash": "e023a13aa3dd67f3",
+    "violations": 0,
+    "snapshots": 42,
+    "auditedAt": "2026-10-27"
+  },
+  "waterfall-trace-hero": {
+    "hash": "1f2c5201add7bdd4",
+    "violations": 0,
+    "snapshots": 6,
+    "auditedAt": "2026-10-27"
+  },
+  "wipe-hold-confirm": {
+    "hash": "2c7891bf8445f922",
+    "violations": 0,
+    "snapshots": 36,
+    "auditedAt": "2026-10-27"
+  },
+  "wren-assistant-chat": {
+    "hash": "10d2692b2b2e188e",
+    "violations": 0,
+    "snapshots": 24,
     "auditedAt": "2026-10-27"
   }
 }

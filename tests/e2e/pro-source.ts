@@ -11,13 +11,16 @@ const PUBLIC_MARKUP = /^<(title|path|circle|rect|line|polyline|polygon|ellipse)[
 // A line that is only a string of class names (`"flex items-center gap-3",`) is shared vocabulary: the site and
 // other designs use the same strings, and nobody can rebuild a design from one.
 const CLASS_LIST = /^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/;
+// So is a tag that carries only a class list (`<div class="ml-auto flex gap-2">`, `class="lucide lucide-search"`): the
+// site's own layout and icons render the same markup.
+const CLASS_MARKUP = /^(<[a-z][\w-]*\s+)?class(Name)?=(["'])[\w:\[\]()\/.%#&>~=+!@,* -]+\3\s*\/?>?$/;
 
 function distinctiveLines(source: string): string[] {
   return source
     .split("\n")
     .map((line) => line.trim())
     .filter((line) => line.length >= 28 && !/^(import |export |\/\/|\*|<\/|\)|\}|"use client")/.test(line))
-    .filter((line) => !PUBLIC_MARKUP.test(line) && !CLASS_LIST.test(line));
+    .filter((line) => !PUBLIC_MARKUP.test(line) && !CLASS_LIST.test(line) && !CLASS_MARKUP.test(line));
 }
 
 function tierOf(folder: DesignFolder): string {
@@ -41,6 +44,17 @@ export function proDesigns(): { slug: string; category: string; lines: string[] 
     }));
 }
 
+let freeSourceText: string | undefined;
+
+/** Every free design's source in one string: text found inside it is public, even when it is part of a longer line. */
+function freeSource(): string {
+  freeSourceText ??= listDesignFolders()
+    .filter((folder) => tierOf(folder) === "free")
+    .flatMap((folder) => SOURCE_FILES.map((file) => readDesignFile(folder, file)))
+    .join("\n");
+  return freeSourceText;
+}
+
 export function freeDesigns(): { slug: string; category: string }[] {
   return listDesignFolders()
     .filter((folder) => tierOf(folder) === "free")
@@ -57,5 +71,5 @@ export function leakedLines(body: string, lines: readonly string[]): string[] {
     .replace(/&quot;/g, '"')
     .replace(/&#x27;|&#39;/g, "'")
     .replace(/&amp;/g, "&");
-  return lines.filter((line) => [body, json, html].some((text) => text.includes(line)));
+  return lines.filter((line) => [body, json, html].some((text) => text.includes(line)) && !freeSource().includes(line));
 }

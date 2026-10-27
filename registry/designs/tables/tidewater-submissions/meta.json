@@ -1,0 +1,15 @@
+{
+  "slug": "tidewater-submissions",
+  "name": "Tidewater submissions",
+  "category": "tables",
+  "styleFamily": "editorial",
+  "tier": "pro",
+  "description": "A literary review queue set like a magazine page: numerals become checkboxes, entries glide into a new order, and the selection is summed in prose.",
+  "tags": ["list", "review-queue", "editorial", "sorting", "bulk-actions", "publishing", "pagination"],
+  "states": ["default", "loading", "empty", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

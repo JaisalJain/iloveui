@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hairline pricing · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      aria-labelledby="hairline-pricing-id0"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1200px] px-6 pt-12 pb-16 sm:px-10 sm:pt-16 sm:pb-24">
+        <div
+          class="flex items-baseline justify-between border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+        >
+          <span>Lintel · Pricing</span><span class="tabular-nums">02 / Plans</span>
+        </div>
+        <div class="mt-12 grid grid-cols-12 sm:mt-16">
+          <div class="col-span-12 pb-10 lg:col-span-4 lg:row-start-1 lg:pr-10 lg:pb-0">
+            <h2
+              id="hairline-pricing-id0"
+              class="max-w-[18ch] text-[clamp(2.5rem,1.9rem+2.4vw,3.5rem)] leading-[1] font-semibold tracking-[-0.035em] text-balance"
+            >
+              Pay for the reviews you run.
+            </h2>
+            <p class="mt-6 max-w-[34rem] text-base leading-relaxed text-pretty text-(--iu-muted)">
+              Every plan includes unlimited viewers and comments. You pay per editor, the people who open and approve
+              review rooms.
+            </p>
+          </div>
+          <div
+            class="col-span-12 pb-10 md:col-span-4 md:pr-8 lg:col-start-1 lg:row-start-2 lg:self-end lg:pt-10 lg:pr-10 lg:pb-6"
+          >
+            <fieldset>
+              <legend class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+                Billing period
+              </legend>
+              <div
+                class="mt-3 grid grid-cols-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 p-0.5"
+              >
+                <label
+                  data-billing-option="monthly"
+                  class="relative flex h-10 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),5px)] text-sm font-medium has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-(--iu-accent)"
+                  ><input type="radio" class="sr-only" name="hairline-pricing-id1" value="monthly" /><span
+                    data-option-text="true"
+                    class="relative text-(--iu-foreground) transition-colors duration-150 motion-reduce:transition-none"
+                    >Monthly</span
+                  ></label
+                ><label
+                  data-billing-option="yearly"
+                  class="relative flex h-10 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),5px)] text-sm font-medium has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-(--iu-accent)"
+                  ><input type="radio" class="sr-only" name="hairline-pricing-id1" checked="" value="yearly" /><span
+                    data-thumb="true"
+                    aria-hidden="true"
+                    class="absolute inset-0 rounded-[min(var(--iu-radius),5px)] bg-(--iu-foreground)"
+                  ></span
+                  ><span
+                    data-option-text="true"
+                    class="relative text-(--iu-background) transition-colors duration-150 motion-reduce:transition-none"
+                    >Yearly</span
+                  ><span
+                    data-option-text="true"
+                    class="relative font-mono text-[11px] text-(--iu-background) tabular-nums transition-colors duration-150 motion-reduce:transition-none"
+                    >−17%</span
+                  ></label
+                >
+              </div>
+            </fieldset>
+            <p class="mt-3 text-[13px] leading-snug text-pretty text-(--iu-muted)">
+              Yearly billing saves 17% on every plan, two months free.
+            </p>
+          </div>
+          <ul
+            aria-label="Plans"
+            class="col-span-12 grid border-b border-(--iu-border) md:col-span-8 md:col-start-5 md:grid-cols-3 lg:row-span-2 lg:row-start-1"
+          >
+            <li data-plan="solo" class="flex flex-col border-t border-t-(--iu-border) px-0 pt-5 pb-6 md:px-5">
+              <div
+                class="flex items-baseline justify-between gap-3 text-[11px] font-medium tracking-[0.08em] uppercase"
+              >
+                <span class="text-(--iu-muted) tabular-nums">01</span>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold tracking-[-0.02em]">Solo</h3>
+              <p class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted) md:min-h-[4lh] xl:min-h-[2lh]">
+                One reviewer, side projects and client handoffs.
+              </p>
+              <p
+                class="mt-8 flex items-baseline gap-2 md:flex-col md:items-start md:gap-1 xl:flex-row xl:items-baseline xl:gap-2"
+              >
+                <span class="text-[56px] font-semibold tracking-[-0.04em] md:text-[clamp(2.75rem,1.6rem+2.4vw,4rem)]"
+                  ><span
+                    data-price="true"
+                    class="relative inline-flex h-[1em] items-baseline overflow-hidden leading-none"
+                    ><span class="inline-block tabular-nums">$10</span></span
+                  ></span
+                ><span class="sr-only">per editor / month, billed yearly</span
+                ><span
+                  aria-hidden="true"
+                  class="max-w-[6rem] text-xs leading-tight text-(--iu-muted) md:max-w-none xl:max-w-[6rem]"
+                  >per editor / month</span
+                >
+              </p>
+              <span
+                data-fade="true"
+                class="relative mt-2 block min-h-[2lh] text-[13px] leading-snug text-(--iu-muted) tabular-nums"
+                ><span class="block">Billed $120 yearly, you save $24</span></span
+              >
+              <div class="mt-auto pt-6">
+                <button
+                  type="button"
+                  data-checkout="solo"
+                  aria-label="Choose Solo"
+                  class="group relative flex h-11 w-full items-center justify-between gap-2 overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-4 text-sm font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none md:max-lg:px-3 pointer-fine:hover:border-(--iu-foreground)"
+                >
+                  <span data-label="true" class="md:max-lg:hidden">Choose Solo</span
+                  ><span data-short-label="true" aria-hidden="true" class="hidden md:max-lg:inline">Solo</span
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right shrink-0 transition-transform duration-150 motion-reduce:transition-none md:max-lg:hidden pointer-fine:group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-plan="studio"
+              class="flex flex-col border-t-2 border-t-(--iu-foreground) px-0 pt-[19px] pb-6 md:border-l md:border-l-(--iu-border) md:bg-(--iu-foreground)/[0.035] md:px-5 dark:md:bg-(--iu-foreground)/[0.05]"
+            >
+              <div
+                class="flex items-baseline justify-between gap-3 text-[11px] font-medium tracking-[0.08em] uppercase"
+              >
+                <span class="text-(--iu-muted) tabular-nums">02</span
+                ><span class="text-(--iu-foreground)">Most teams</span>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold tracking-[-0.02em]">Studio</h3>
+              <p class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted) md:min-h-[4lh] xl:min-h-[2lh]">
+                Product teams that ship and review every week.
+              </p>
+              <p
+                class="mt-8 flex items-baseline gap-2 md:flex-col md:items-start md:gap-1 xl:flex-row xl:items-baseline xl:gap-2"
+              >
+                <span class="text-[56px] font-semibold tracking-[-0.04em] md:text-[clamp(2.75rem,1.6rem+2.4vw,4rem)]"
+                  ><span
+                    data-price="true"
+                    class="relative inline-flex h-[1em] items-baseline overflow-hidden leading-none"
+                    ><span class="inline-block tabular-nums">$24</span></span
+                  ></span
+                ><span class="sr-only">per editor / month, billed yearly</span
+                ><span
+                  aria-hidden="true"
+                  class="max-w-[6rem] text-xs leading-tight text-(--iu-muted) md:max-w-none xl:max-w-[6rem]"
+                  >per editor / month</span
+                >
+              </p>
+              <span
+                data-fade="true"
+                class="relative mt-2 block min-h-[2lh] text-[13px] leading-snug text-(--iu-muted) tabular-nums"
+                ><span class="block">Billed $288 yearly, you save $60</span></span
+              >
+              <div class="mt-auto pt-6">
+                <button
+                  type="button"
+                  data-checkout="studio"
+                  aria-label="Choose Studio"
+                  class="group relative flex h-11 w-full items-center justify-between gap-2 overflow-hidden rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent) px-4 text-sm font-medium whitespace-nowrap text-(--iu-accent-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none md:max-lg:px-3 pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))]"
+                >
+                  <span data-label="true" class="md:max-lg:hidden">Choose Studio</span
+                  ><span data-short-label="true" aria-hidden="true" class="hidden md:max-lg:inline">Studio</span
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right shrink-0 transition-transform duration-150 motion-reduce:transition-none md:max-lg:hidden pointer-fine:group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-plan="company"
+              class="flex flex-col border-t border-t-(--iu-border) px-0 pt-5 pb-6 md:border-l md:border-l-(--iu-border) md:px-5"
+            >
+              <div
+                class="flex items-baseline justify-between gap-3 text-[11px] font-medium tracking-[0.08em] uppercase"
+              >
+                <span class="text-(--iu-muted) tabular-nums">03</span>
+              </div>
+              <h3 class="mt-6 text-xl font-semibold tracking-[-0.02em]">Company</h3>
+              <p class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted) md:min-h-[4lh] xl:min-h-[2lh]">
+                Several teams, security reviews and audit trails.
+              </p>
+              <p
+                class="mt-8 flex items-baseline gap-2 md:flex-col md:items-start md:gap-1 xl:flex-row xl:items-baseline xl:gap-2"
+              >
+                <span class="text-[56px] font-semibold tracking-[-0.04em] md:text-[clamp(2.75rem,1.6rem+2.4vw,4rem)]"
+                  ><span
+                    data-price="true"
+                    class="relative inline-flex h-[1em] items-baseline overflow-hidden leading-none"
+                    ><span class="inline-block tabular-nums">$49</span></span
+                  ></span
+                ><span class="sr-only">per editor / month, billed yearly</span
+                ><span
+                  aria-hidden="true"
+                  class="max-w-[6rem] text-xs leading-tight text-(--iu-muted) md:max-w-none xl:max-w-[6rem]"
+                  >per editor / month</span
+                >
+              </p>
+              <span
+                data-fade="true"
+                class="relative mt-2 block min-h-[2lh] text-[13px] leading-snug text-(--iu-muted) tabular-nums"
+                ><span class="block">Billed $588 yearly, you save $120</span></span
+              >
+              <div class="mt-auto pt-6">
+                <button
+                  type="button"
+                  data-checkout="company"
+                  aria-label="Choose Company"
+                  class="group relative flex h-11 w-full items-center justify-between gap-2 overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-4 text-sm font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none md:max-lg:px-3 pointer-fine:hover:border-(--iu-foreground)"
+                >
+                  <span data-label="true" class="md:max-lg:hidden">Choose Company</span
+                  ><span data-short-label="true" aria-hidden="true" class="hidden md:max-lg:inline">Company</span
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right shrink-0 transition-transform duration-150 motion-reduce:transition-none md:max-lg:hidden pointer-fine:group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <span data-announce="true" aria-live="polite" class="sr-only"></span>
+        <table class="mt-14 w-full table-fixed border-collapse text-left text-sm sm:mt-20">
+          <caption class="pb-4 text-left text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+            Compare plans
+          </caption>
+          <colgroup>
+            <col class="w-[40%] md:w-[33.333%]" />
+            <col class="w-[20%] md:w-[22.222%]" />
+            <col class="w-[20%] md:w-[22.222%]" />
+            <col class="w-[20%] md:w-[22.222%]" />
+          </colgroup>
+          <thead>
+            <tr class="border-b border-(--iu-foreground)/80">
+              <th scope="col" class="pb-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+                <span class="sr-only">Feature</span>
+              </th>
+              <th
+                scope="col"
+                class="px-1 pb-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase md:px-5"
+              >
+                <span class="md:hidden" aria-hidden="true">Solo</span><span class="sr-only md:not-sr-only">Solo</span>
+              </th>
+              <th
+                scope="col"
+                class="bg-(--iu-foreground)/[0.035] px-1 pb-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-foreground) uppercase md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <span class="md:hidden" aria-hidden="true">Studio</span
+                ><span class="sr-only md:not-sr-only">Studio</span>
+              </th>
+              <th
+                scope="col"
+                class="px-1 pb-2 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase md:px-5"
+              >
+                <span class="md:hidden" aria-hidden="true">Co.</span><span class="sr-only md:not-sr-only">Company</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Review rooms
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">3</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <span class="tabular-nums">Unlimited</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">Unlimited</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Guests per room
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">5</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <span class="tabular-nums">25</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">Unlimited</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Version history
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">30 days</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <span class="tabular-nums">1 year</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">Forever</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Figma and Git sync
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Approval workflows
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus text-(--iu-muted)"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path></svg
+                ><span class="sr-only">Not included</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                SSO and SCIM
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus text-(--iu-muted)"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path></svg
+                ><span class="sr-only">Not included</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus text-(--iu-muted)"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path></svg
+                ><span class="sr-only">Not included</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Audit log export
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus text-(--iu-muted)"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path></svg
+                ><span class="sr-only">Not included</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus text-(--iu-muted)"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path></svg
+                ><span class="sr-only">Not included</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-check text-(--iu-foreground)"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                ><span class="sr-only">Included</span>
+              </td>
+            </tr>
+            <tr class="border-b border-(--iu-border)">
+              <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-3 align-top font-normal text-(--iu-muted)">
+                Support
+              </th>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">Email</span>
+              </td>
+              <td
+                class="bg-(--iu-foreground)/[0.035] px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5 dark:bg-(--iu-foreground)/[0.05]"
+              >
+                <span class="tabular-nums">Priority</span>
+              </td>
+              <td class="px-1 py-[calc(12px*var(--iu-density))] align-top md:px-5">
+                <span class="tabular-nums">Dedicated</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="mt-6 max-w-[60ch] text-[13px] leading-relaxed text-pretty text-(--iu-muted)">
+          Prices in USD per editor. VAT or GST is added at checkout where it applies. Cancel anytime, and get a full
+          refund within 30 days of any charge.
+        </p>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-plan]").closest("section");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+        var symbol = "$";
+        var plans = {
+          solo: { name: "Solo", monthly: 12, yearly: 10 },
+          studio: { name: "Studio", monthly: 29, yearly: 24 },
+          company: { name: "Company", monthly: 59, yearly: 49 },
+        };
+        var announce = root.querySelector("[data-announce]");
+        var thumb = root.querySelector("[data-thumb]");
+        var busy = false;
+
+        // Changing numbers cross-fade: out 4px up, in from 4px below.
+        function swap(el, text) {
+          if (!el || el.textContent === text) return;
+          if (reduce) {
+            el.textContent = text;
+            return;
+          }
+          var out = el.animate(
+            [
+              { opacity: 1, transform: "none" },
+              { opacity: 0, transform: "translateY(-4px)" },
+            ],
+            { duration: 90, easing: "ease-out" },
+          );
+          out.onfinish = function () {
+            el.textContent = text;
+            el.animate(
+              [
+                { opacity: 0, transform: "translateY(4px)" },
+                { opacity: 1, transform: "none" },
+              ],
+              { duration: 180, easing: EASE },
+            );
+          };
+        }
+
+        function setBilling(billing) {
+          var before = thumb.getBoundingClientRect();
+          root.querySelectorAll("[data-billing-option]").forEach(function (label) {
+            var on = label.getAttribute("data-billing-option") === billing;
+            label.querySelectorAll("[data-option-text]").forEach(function (text) {
+              var off = text.classList.contains("font-mono") ? "text-(--iu-muted)" : "text-(--iu-foreground)";
+              text.classList.toggle("text-(--iu-background)", on);
+              text.classList.toggle(off, !on);
+            });
+            if (on) label.insertBefore(thumb, label.querySelector("input").nextSibling);
+          });
+          if (!reduce) {
+            var after = thumb.getBoundingClientRect();
+            thumb.animate([{ transform: "translateX(" + (before.left - after.left) + "px)" }, { transform: "none" }], {
+              duration: 180,
+              easing: EASE,
+            });
+          }
+          Object.keys(plans).forEach(function (id) {
+            var plan = plans[id];
+            var item = root.querySelector('[data-plan="' + id + '"]');
+            var yearly = plan.yearly * 12;
+            var monthly = plan.monthly * 12;
+            swap(item.querySelector("[data-price] span"), symbol + plan[billing]);
+            swap(
+              item.querySelector("[data-fade] span"),
+              billing === "yearly"
+                ? "Billed " + symbol + yearly + " yearly, you save " + symbol + (monthly - yearly)
+                : "Billed monthly, " + symbol + monthly + " a year",
+            );
+            item.querySelector("p .sr-only").textContent =
+              "per editor / month, " + (billing === "yearly" ? "billed yearly" : "billed monthly");
+          });
+        }
+
+        root.querySelectorAll("[data-billing-option] input").forEach(function (input) {
+          input.addEventListener("change", function () {
+            setBilling(input.value);
+          });
+        });
+
+        function confirm(button, plan) {
+          var slot = button.parentNode;
+          var note = document.createElement("p");
+          note.tabIndex = -1;
+          note.className =
+            "flex min-h-11 items-start gap-2 text-sm leading-snug font-medium outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+          note.innerHTML =
+            '<span aria-hidden="true" class="mt-px inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground) text-(--iu-background)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5" /></svg></span><span>' +
+            plan.name +
+            ' is active<span class="mt-1 block font-normal text-(--iu-muted)">Your workspace is upgraded. The receipt is on its way to your billing email.</span></span>';
+          slot.replaceChild(note, button);
+          note.focus();
+          announce.textContent = plan.name + " is active. Your workspace is upgraded.";
+        }
+
+        root.querySelectorAll("[data-checkout]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            if (busy) return;
+            busy = true;
+            var plan = plans[button.getAttribute("data-checkout")];
+            var highlighted = button.classList.contains("bg-(--iu-accent)");
+            button.setAttribute("aria-disabled", "true");
+            button.classList.add("cursor-progress");
+            button.querySelector("[data-label]").textContent = "Opening checkout";
+            button.querySelector("[data-short-label]").textContent = "Opening";
+            button.setAttribute("aria-label", "Opening checkout");
+            button.querySelector("svg").classList.add("opacity-0");
+            var bar = document.createElement("span");
+            bar.setAttribute("aria-hidden", "true");
+            bar.className =
+              "absolute inset-x-0 bottom-0 block h-0.5 origin-left " +
+              (highlighted ? "bg-(--iu-accent-foreground)" : "bg-(--iu-foreground)");
+            bar.style.transform = "scaleX(" + (reduce ? 0.5 : 0.08) + ")";
+            button.appendChild(bar);
+            if (!reduce) {
+              bar.animate([{ transform: "scaleX(0.08)" }, { transform: "scaleX(0.92)" }], {
+                duration: 2400,
+                easing: "cubic-bezier(0.1, 0.7, 0.3, 1)",
+                fill: "forwards",
+              });
+            }
+            announce.textContent = "Opening checkout for " + plan.name;
+            // Demo checkout: replace with your payment call.
+            setTimeout(function () {
+              confirm(button, plan);
+            }, 1200);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

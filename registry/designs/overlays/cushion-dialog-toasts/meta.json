@@ -1,0 +1,15 @@
+{
+  "slug": "cushion-dialog-toasts",
+  "name": "Cushion dialog and toasts",
+  "category": "overlays",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "A soft scheduling dialog that becomes a draggable bottom sheet on phones, plus a toast deck that fans out and freezes its countdown rings on hover.",
+  "tags": ["modal", "dialog", "toast", "bottom-sheet", "focus-trap", "scheduling", "newsletter"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

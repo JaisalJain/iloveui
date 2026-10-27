@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Private office hero · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-private-office
+      aria-labelledby="private-office-title"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1240px] px-6 py-14 sm:px-10 sm:py-20 lg:py-28">
+        <div class="grid grid-cols-12 gap-x-6 gap-y-16 lg:items-center lg:gap-x-16">
+          <div class="col-span-12 lg:order-2 lg:col-span-7">
+            <p
+              class="flex flex-wrap gap-x-4 gap-y-1 text-[10px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+            >
+              <span class="text-(--iu-foreground)">Corven &amp; Hale</span>
+              <span>Private office · Zürich · London</span>
+            </p>
+            <div aria-hidden="true" class="mt-4 h-px w-12 bg-(--iu-accent)"></div>
+            <h1
+              id="private-office-title"
+              class="mt-10 font-serif text-[clamp(3.25rem,2rem+5vw,6.5rem)] leading-[0.95] font-normal tracking-[-0.02em] text-balance"
+            >
+              Wealth, kept <em class="italic">quietly.</em>
+            </h1>
+            <p class="mt-8 max-w-[30rem] text-[15px] leading-[1.7] text-pretty text-(--iu-muted)">
+              One banker, one statement and every holding in view, for families who would rather think about their
+              wealth four times a year than every day.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a
+                href="#introduction"
+                class="group inline-flex h-12 items-center gap-3 rounded-full border border-(--iu-foreground) bg-(--iu-foreground) pr-5 pl-7 text-[13px] font-medium tracking-[0.04em] text-(--iu-background) transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-transparent pointer-fine:hover:text-(--iu-foreground)"
+              >
+                Request an introduction
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-300 motion-reduce:transition-none pointer-fine:group-hover:translate-x-px pointer-fine:group-hover:-translate-y-px"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </a>
+              <span class="text-[13px] text-(--iu-muted)">Relationships begin at €5 million.</span>
+            </div>
+            <dl class="mt-16 grid max-w-[34rem] grid-cols-3 border-t border-(--iu-border)">
+              <div class="pt-5 pr-5">
+                <dt class="sr-only">banker for every family</dt>
+                <dd>
+                  <span class="block font-serif text-[30px] leading-none tabular-nums">One</span>
+                  <span class="mt-2 block text-[12px] leading-snug text-(--iu-muted)">banker for every family</span>
+                </dd>
+              </div>
+              <div class="border-l border-(--iu-border) pt-5 pl-5">
+                <dt class="sr-only">to any answer</dt>
+                <dd>
+                  <span class="block font-serif text-[30px] leading-none tabular-nums">24h</span>
+                  <span class="mt-2 block text-[12px] leading-snug text-(--iu-muted)">to any answer</span>
+                </dd>
+              </div>
+              <div class="border-l border-(--iu-border) pt-5 pl-5">
+                <dt class="sr-only">independent since</dt>
+                <dd>
+                  <span class="block font-serif text-[30px] leading-none tabular-nums">1911</span>
+                  <span class="mt-2 block text-[12px] leading-snug text-(--iu-muted)">independent since</span>
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure class="col-span-12 lg:order-1 lg:col-span-5">
+            <div
+              class="relative mx-auto max-w-[440px] rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) p-2 text-(--iu-background) dark:border dark:border-(--iu-border) dark:bg-(--iu-surface) dark:text-(--iu-foreground)"
+            >
+              <div class="border border-(--iu-background)/20 px-6 pt-7 pb-6 sm:px-8 dark:border-(--iu-foreground)/10">
+                <figcaption class="text-center">
+                  <span
+                    class="block text-[10px] font-medium tracking-[0.2em] text-(--iu-background)/65 uppercase dark:text-(--iu-muted)"
+                    >Private statement</span
+                  >
+                  <span class="mt-2 block font-serif text-[17px] italic">The Valdés-Hartmann family</span>
+                </figcaption>
+                <div
+                  aria-hidden="true"
+                  class="mx-auto mt-5 h-px w-full bg-(--iu-background)/20 dark:bg-(--iu-foreground)/10"
+                ></div>
+                <p class="mt-7 text-center">
+                  <span
+                    class="block text-[10px] font-medium tracking-[0.2em] text-(--iu-background)/65 uppercase dark:text-(--iu-muted)"
+                    >Net worth</span
+                  >
+                  <span
+                    class="mt-3 block font-serif text-[clamp(2.5rem,1.9rem+2.6vw,3.5rem)] leading-none tracking-[-0.01em] tabular-nums"
+                    >€48,216,904</span
+                  >
+                  <span class="mt-3 block text-[13px] tabular-nums">
+                    <span data-change>+€4,906,112</span
+                    ><span class="text-(--iu-background)/65 dark:text-(--iu-muted)">
+                      · <span data-percent>11.3% this year</span></span
+                    >
+                  </span>
+                </p>
+                <div class="relative mt-6 h-24">
+                  <svg
+                    viewBox="0 0 320 96"
+                    preserveAspectRatio="none"
+                    aria-hidden="true"
+                    class="h-full w-full overflow-visible"
+                  >
+                    <line
+                      x1="0"
+                      y1="95.5"
+                      x2="320"
+                      y2="95.5"
+                      stroke="currentColor"
+                      stroke-opacity="0.2"
+                      stroke-width="1"
+                      vector-effect="non-scaling-stroke"
+                    />
+                    <path
+                      data-line
+                      d="M0.0 92.0 L26.7 81.4 L53.3 88.2 L80.0 71.0 L106.7 59.9 L133.3 66.9 L160.0 50.6 L186.7 38.4 L213.3 43.1 L240.0 27.1 L266.7 17.1 L293.3 11.0 L320.0 4.0"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.25"
+                      pathLength="1"
+                    />
+                  </svg>
+                  <span
+                    data-dot
+                    aria-hidden="true"
+                    class="absolute -right-1 size-2 rounded-full bg-(--iu-accent) transition-[top] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+                    style="top: 0px"
+                  ></span>
+                </div>
+                <p data-live class="sr-only" aria-live="polite"></p>
+                <div role="radiogroup" aria-label="Statement period" class="mt-6 flex justify-center gap-1">
+                  <button
+                    type="button"
+                    role="radio"
+                    data-period="quarter"
+                    aria-checked="false"
+                    tabindex="-1"
+                    class="relative h-10 rounded-full px-4 text-[12px] tracking-[0.06em] text-(--iu-background)/65 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-checked:text-(--iu-background) motion-reduce:transition-none dark:text-(--iu-muted) dark:aria-checked:text-(--iu-foreground) pointer-fine:hover:text-(--iu-background) dark:pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <span
+                      data-ring
+                      aria-hidden="true"
+                      class="absolute inset-0 rounded-full border border-(--iu-background)/45 dark:border-(--iu-foreground)/35"
+                      hidden
+                    ></span>
+                    <span class="relative">Quarter</span>
+                  </button>
+                  <button
+                    type="button"
+                    role="radio"
+                    data-period="year"
+                    aria-checked="true"
+                    tabindex="0"
+                    class="relative h-10 rounded-full px-4 text-[12px] tracking-[0.06em] text-(--iu-background)/65 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-checked:text-(--iu-background) motion-reduce:transition-none dark:text-(--iu-muted) dark:aria-checked:text-(--iu-foreground) pointer-fine:hover:text-(--iu-background) dark:pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <span
+                      data-ring
+                      aria-hidden="true"
+                      class="absolute inset-0 rounded-full border border-(--iu-background)/45 dark:border-(--iu-foreground)/35"
+                    ></span>
+                    <span class="relative">Year</span>
+                  </button>
+                  <button
+                    type="button"
+                    role="radio"
+                    data-period="five"
+                    aria-checked="false"
+                    tabindex="-1"
+                    class="relative h-10 rounded-full px-4 text-[12px] tracking-[0.06em] text-(--iu-background)/65 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-checked:text-(--iu-background) motion-reduce:transition-none dark:text-(--iu-muted) dark:aria-checked:text-(--iu-foreground) pointer-fine:hover:text-(--iu-background) dark:pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    <span
+                      data-ring
+                      aria-hidden="true"
+                      class="absolute inset-0 rounded-full border border-(--iu-background)/45 dark:border-(--iu-foreground)/35"
+                      hidden
+                    ></span>
+                    <span class="relative">Five years</span>
+                  </button>
+                </div>
+                <div class="mt-7 border-t border-(--iu-background)/20 pt-5 dark:border-(--iu-foreground)/10">
+                  <p
+                    class="text-[10px] font-medium tracking-[0.2em] text-(--iu-background)/65 uppercase dark:text-(--iu-muted)"
+                  >
+                    Allocation
+                  </p>
+                  <div aria-hidden="true" class="mt-3 flex h-1 gap-0.5">
+                    <span class="bg-(--iu-background) dark:bg-(--iu-foreground)" style="width: 42%"></span>
+                    <span class="bg-(--iu-background)/35 dark:bg-(--iu-foreground)/30" style="width: 28%"></span>
+                    <span class="bg-(--iu-background)/35 dark:bg-(--iu-foreground)/30" style="width: 18%"></span>
+                    <span class="bg-(--iu-background)/35 dark:bg-(--iu-foreground)/30" style="width: 12%"></span>
+                  </div>
+                  <dl class="mt-4 grid grid-cols-2 gap-x-6 gap-y-[calc(8px*var(--iu-density))] text-[12px]">
+                    <div class="flex items-baseline justify-between gap-3">
+                      <dt class="text-(--iu-background)/65 dark:text-(--iu-muted)">Equities</dt>
+                      <dd class="tabular-nums">42%</dd>
+                    </div>
+                    <div class="flex items-baseline justify-between gap-3">
+                      <dt class="text-(--iu-background)/65 dark:text-(--iu-muted)">Fixed income</dt>
+                      <dd class="tabular-nums">28%</dd>
+                    </div>
+                    <div class="flex items-baseline justify-between gap-3">
+                      <dt class="text-(--iu-background)/65 dark:text-(--iu-muted)">Private markets</dt>
+                      <dd class="tabular-nums">18%</dd>
+                    </div>
+                    <div class="flex items-baseline justify-between gap-3">
+                      <dt class="text-(--iu-background)/65 dark:text-(--iu-muted)">Cash</dt>
+                      <dd class="tabular-nums">12%</dd>
+                    </div>
+                  </dl>
+                </div>
+                <div
+                  class="mt-6 flex items-center gap-3 border-t border-(--iu-background)/20 pt-5 dark:border-(--iu-foreground)/10"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="inline-flex size-9 items-center justify-center rounded-full border border-(--iu-background)/35 font-serif text-[14px] dark:border-(--iu-foreground)/30"
+                    >CV</span
+                  >
+                  <span class="text-[12px] leading-tight">
+                    <span class="block">Céleste Varga</span>
+                    <span class="mt-0.5 block text-(--iu-background)/65 dark:text-(--iu-muted)"
+                      >Your banker · in the office until 19:00</span
+                    >
+                  </span>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-private-office]");
+        if (!root) return;
+        var PERIODS = [
+          {
+            id: "quarter",
+            phrase: "this quarter",
+            change: 1284310,
+            pct: 2.7,
+            path: "M0.0 88.7 L26.7 76.2 L53.3 92.0 L80.0 63.8 L106.7 56.5 L133.3 71.0 L160.0 46.0 L186.7 40.8 L213.3 51.9 L240.0 29.6 L266.7 19.8 L293.3 15.2 L320.0 4.0",
+            endY: 4.0,
+          },
+          {
+            id: "year",
+            phrase: "this year",
+            change: 4906112,
+            pct: 11.3,
+            path: "M0.0 92.0 L26.7 81.4 L53.3 88.2 L80.0 71.0 L106.7 59.9 L133.3 66.9 L160.0 50.6 L186.7 38.4 L213.3 43.1 L240.0 27.1 L266.7 17.1 L293.3 11.0 L320.0 4.0",
+            endY: 4.0,
+          },
+          {
+            id: "five",
+            phrase: "over five years",
+            change: 17402880,
+            pct: 56.5,
+            path: "M0.0 92.0 L26.7 84.0 L53.3 90.0 L80.0 76.4 L106.7 65.3 L133.3 69.8 L160.0 56.7 L186.7 42.5 L213.3 46.1 L240.0 31.9 L266.7 20.8 L293.3 13.7 L320.0 4.0",
+            endY: 4.0,
+          },
+        ];
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var radios = Array.prototype.slice.call(root.querySelectorAll('[role="radio"]'));
+        var line = root.querySelector("[data-line]");
+        var dot = root.querySelector("[data-dot]");
+        var changeEl = root.querySelector("[data-change]");
+        var percentEl = root.querySelector("[data-percent]");
+        var live = root.querySelector("[data-live]");
+        var shown = 4906112;
+        var frame = null;
+
+        function money(value) {
+          return "\u20ac" + Math.round(value).toLocaleString("en-GB");
+        }
+
+        function ease(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        // Rolls the gain to its new value over 500ms (instant under reduced motion).
+        function roll(to) {
+          if (frame !== null) cancelAnimationFrame(frame);
+          var from = shown;
+          if (reduce.matches) {
+            shown = to;
+            changeEl.textContent = "+" + money(to);
+            return;
+          }
+          var start = null;
+          function step(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / 500);
+            shown = from + (to - from) * ease(t);
+            changeEl.textContent = "+" + money(shown);
+            frame = t < 1 ? requestAnimationFrame(step) : null;
+          }
+          frame = requestAnimationFrame(step);
+        }
+
+        // Redraws the fine line from its start over 600ms.
+        function draw(d) {
+          line.setAttribute("d", d);
+          if (reduce.matches) return;
+          line.style.transition = "none";
+          line.style.strokeDasharray = "1 1";
+          line.style.strokeDashoffset = "1";
+          line.getBoundingClientRect();
+          line.style.transition = "stroke-dashoffset 600ms cubic-bezier(0.2, 0.8, 0.2, 1)";
+          line.style.strokeDashoffset = "0";
+        }
+
+        function choose(index, focus) {
+          var radio = radios[index];
+          var period = PERIODS[index];
+          if (!radio || !period) return;
+          radios.forEach(function (other) {
+            var checked = other === radio;
+            other.setAttribute("aria-checked", String(checked));
+            other.tabIndex = checked ? 0 : -1;
+            other.querySelector("[data-ring]").hidden = !checked;
+          });
+          percentEl.textContent = period.pct.toFixed(1) + "% " + period.phrase;
+          dot.style.top = period.endY - 4 + "px";
+          roll(period.change);
+          draw(period.path);
+          live.textContent =
+            "Up " + money(period.change) + ", " + period.pct.toFixed(1) + " percent " + period.phrase + ".";
+          if (focus) radio.focus();
+        }
+
+        radios.forEach(function (radio, index) {
+          radio.addEventListener("click", function () {
+            choose(index, false);
+          });
+          radio.addEventListener("keydown", function (event) {
+            var last = radios.length - 1;
+            var forward = event.key === "ArrowRight" || event.key === "ArrowDown";
+            var back = event.key === "ArrowLeft" || event.key === "ArrowUp";
+            if (!forward && !back) return;
+            event.preventDefault();
+            choose(forward ? (index === last ? 0 : index + 1) : index === 0 ? last : index - 1, true);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

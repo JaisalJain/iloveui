@@ -1,0 +1,15 @@
+{
+  "slug": "quorum-workspace-settings",
+  "name": "Quorum workspace settings",
+  "category": "settings",
+  "styleFamily": "data-dense",
+  "tier": "pro",
+  "description": "Dense workspace admin: role edits queue in a diff tray that prices each change and the next invoice; API keys revoke only after an inline confirm.",
+  "tags": ["settings", "workspace", "members", "roles", "billing", "usage", "api-keys", "admin"],
+  "states": ["default", "loading", "error", "success", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

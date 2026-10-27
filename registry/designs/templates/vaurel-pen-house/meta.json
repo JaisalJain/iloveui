@@ -1,0 +1,15 @@
+{
+  "slug": "vaurel-pen-house",
+  "name": "Vaurel pen house",
+  "category": "templates",
+  "styleFamily": "luxury",
+  "tier": "pro",
+  "description": "A complete home page for a fountain-pen atelier: choosing a nib grade rewrites the tuner's test loops at that line width, live in the hero.",
+  "tags": ["template", "landing-page", "storefront", "ecommerce", "luxury", "newsletter", "mega-menu", "serif"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

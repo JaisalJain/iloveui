@@ -1,0 +1,15 @@
+{
+  "slug": "kestrel-signal-bento",
+  "name": "Kestrel signal bento",
+  "category": "bento",
+  "styleFamily": "data-dense",
+  "tier": "pro",
+  "description": "Dense observability panels on one time cursor. Scrub the latency chart and the KPIs, log tail, endpoints and error budget all re-read that minute.",
+  "tags": ["bento", "observability", "charts", "logs", "monitoring", "devtools", "kpi"],
+  "states": ["default", "loading"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "loadstar-app-nav",
+  "name": "Loadstar app navigation",
+  "category": "navigation",
+  "styleFamily": "data-dense",
+  "tier": "pro",
+  "description": "A freight ops shell: dense sidebar with live counts that collapses and peeks back, switchable breadcrumbs, and a quick switcher that rebuilds the trail.",
+  "tags": ["sidebar", "app-shell", "breadcrumbs", "quick-switcher", "collapsible", "navigation"],
+  "states": ["default", "loading", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

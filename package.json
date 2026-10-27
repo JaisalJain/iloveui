@@ -9,9 +9,10 @@
   },
   "scripts": {
     "setup": "node --disable-warning=DEP0040 --import tsx scripts/setup.ts",
-    "dev": "pnpm build-registry && next dev --port 3000",
-    "build": "pnpm cf-typegen && pnpm build-registry && next build",
+    "dev": "pnpm build-registry && pnpm build-zips && next dev --port 3000",
+    "build": "pnpm cf-typegen && pnpm build-registry && pnpm build-zips && next build",
     "preview": "opennextjs-cloudflare build && tsx scripts/check-build.ts && opennextjs-cloudflare preview --port 3000",
+    "deploy": "opennextjs-cloudflare build && tsx scripts/check-build.ts && opennextjs-cloudflare deploy",
     "typecheck": "pnpm cf-typegen && pnpm build-registry --no-r2 && next typegen && tsc --noEmit",
     "lint": "eslint . --max-warnings 0 && prettier . --check && tsx scripts/check-forbidden.ts",
     "format": "prettier . --write",

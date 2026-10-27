@@ -1,0 +1,15 @@
+{
+  "slug": "shelfie-library-states",
+  "name": "Shelfie library states",
+  "category": "states",
+  "styleFamily": "playful",
+  "tier": "pro",
+  "description": "No-results, empty, error and loading states for a reading app, each with an SVG shelf. Add your first book drops one onto the shelf with a bounce.",
+  "tags": ["empty-state", "error-state", "loading", "skeleton", "illustration", "no-results", "playful"],
+  "states": ["default", "empty", "error", "loading"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

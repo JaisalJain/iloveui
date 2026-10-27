@@ -1,0 +1,24 @@
+{
+  "slug": "wren-assistant-chat",
+  "name": "Wren assistant chat",
+  "category": "ai-chat",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "A soft trip-planning assistant: Send presses into a Stop button whose ring fills as the reply streams, and the stay search unfolds into result cards.",
+  "tags": [
+    "ai-chat",
+    "assistant",
+    "streaming",
+    "tool-calls",
+    "composer",
+    "model-selector",
+    "usage-meter",
+    "attachments"
+  ],
+  "states": ["default", "loading", "error", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

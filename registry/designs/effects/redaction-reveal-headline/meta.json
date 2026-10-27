@@ -1,0 +1,15 @@
+{
+  "slug": "redaction-reveal-headline",
+  "name": "Redaction reveal headline",
+  "category": "effects",
+  "styleFamily": "neo-brutalist",
+  "tier": "free",
+  "description": "A loud privacy statement whose key promises sit under black redaction bars that lift once, word by word, as the reader scrolls to them.",
+  "tags": ["text-effect", "scroll-reveal", "headline", "privacy", "neo-brutalist", "landing"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

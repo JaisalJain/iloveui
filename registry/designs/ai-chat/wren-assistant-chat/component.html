@@ -1,0 +1,1254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wren assistant chat · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="px-4 py-10 sm:px-8 sm:py-16">
+      <!-- iloveui:component:start -->
+      <section
+        data-wren
+        aria-label="Wren, trip assistant"
+        class="@container relative mx-auto flex w-full max-w-[760px] flex-col rounded-[max(calc(var(--iu-radius)+14px),24px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground) shadow-(--wr-sh-card) [--wr-line:color-mix(in_oklab,var(--iu-foreground)_38%,var(--iu-surface))] [--wr-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_30%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_10%,transparent),0_1px_2px_color-mix(in_oklab,black_12%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_70%,transparent)] [--wr-sh-card:0_1px_1px_color-mix(in_oklab,black_4%,transparent),0_6px_12px_-4px_color-mix(in_oklab,black_5%,transparent),0_32px_64px_-24px_color-mix(in_oklab,black_18%,transparent)] [--wr-sh-pop:0_2px_4px_color-mix(in_oklab,black_4%,transparent),0_18px_40px_-12px_color-mix(in_oklab,black_24%,transparent)] [--wr-sh-pressed:inset_0_2px_5px_color-mix(in_oklab,black_28%,transparent)] [--wr-sh-raised:inset_0_1px_0_color-mix(in_oklab,white_70%,transparent),0_1px_2px_color-mix(in_oklab,black_7%,transparent),0_6px_14px_-6px_color-mix(in_oklab,black_14%,transparent)] [--wr-sh-well:inset_0_1px_3px_color-mix(in_oklab,black_8%,transparent)] [--wr-tint:color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] [--wr-well:color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] dark:border-(--iu-foreground)/10 dark:[--wr-line:color-mix(in_oklab,var(--iu-foreground)_42%,var(--iu-surface))] dark:[--wr-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_26%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_14%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_35%,transparent)] dark:[--wr-sh-card:inset_0_1px_0_color-mix(in_oklab,white_5%,transparent),0_24px_48px_-16px_color-mix(in_oklab,black_70%,transparent)] dark:[--wr-sh-pop:inset_0_1px_0_color-mix(in_oklab,white_6%,transparent),0_24px_48px_-12px_color-mix(in_oklab,black_75%,transparent)] dark:[--wr-sh-pressed:inset_0_2px_6px_color-mix(in_oklab,black_45%,transparent)] dark:[--wr-sh-raised:inset_0_1px_0_color-mix(in_oklab,white_7%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_6px_14px_-6px_color-mix(in_oklab,black_60%,transparent)] dark:[--wr-sh-well:inset_0_1px_2px_color-mix(in_oklab,black_45%,transparent)] dark:[--wr-tint:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] dark:[--wr-well:color-mix(in_oklab,var(--iu-foreground)_5%,var(--iu-background))]"
+      >
+        <header
+          class="flex items-center gap-3 border-b border-(--iu-border) px-4 py-3.5 @md:px-6 dark:border-(--iu-foreground)/8"
+        >
+          <span
+            aria-hidden="true"
+            style="width: 40px; height: 40px"
+            class="inline-flex shrink-0 items-center justify-center rounded-full bg-(--wr-tint) text-(--iu-foreground) shadow-(--wr-sh-raised)"
+            ><svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M4 14.5c2.6 0 4.2-1.2 5.2-3.4C10.6 8 12.7 6 15.6 6c2.1 0 3.6 1.2 4.4 2.6l-2.4.9c.2 3.9-2.7 7.5-7.6 7.5H5.5"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path d="M9 17l-1.6 3M12 17l-.4 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              <circle cx="15.8" cy="8.9" r="1.1" fill="var(--iu-accent)" /></svg
+          ></span>
+          <div class="min-w-0 flex-1">
+            <h2 class="text-[16px] leading-tight font-semibold">Wren</h2>
+            <p class="truncate text-[13px] text-(--iu-muted)">Wayfern trips · Lisbon, 13–16 Mar</p>
+          </div>
+          <div
+            role="meter"
+            aria-label="Replies"
+            aria-valuemin="0"
+            aria-valuemax="500"
+            aria-valuenow="312"
+            aria-valuetext="312 of 500 replies used"
+            class="flex shrink-0 flex-col items-end gap-1.5"
+          >
+            <span class="text-[12px] font-medium text-(--iu-muted) tabular-nums"
+              ><span data-used class="inline-block text-(--iu-foreground)">312</span><span> / 500</span
+              ><span class="hidden @md:inline"> replies</span></span
+            >
+            <span
+              aria-hidden="true"
+              class="block h-2 w-20 overflow-hidden rounded-full bg-(--wr-well) shadow-(--wr-sh-well) @md:w-28"
+            >
+              <span
+                data-usage-bar
+                class="block h-full rounded-full bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                style="width: 62.4%"
+              ></span>
+            </span>
+          </div>
+        </header>
+
+        <div data-thread class="flex flex-col gap-7 px-4 py-6 @md:px-6 @md:py-8">
+          <div class="flex flex-col items-end gap-2">
+            <span
+              class="inline-flex items-center gap-2 rounded-full border border-(--iu-border) bg-(--iu-surface) py-1 pr-3 pl-1 text-[12px] shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10"
+              ><span class="inline-flex size-6 items-center justify-center rounded-full bg-(--wr-well)"
+                ><svg
+                  aria-hidden="true"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                  <path d="M10 9H8" />
+                  <path d="M16 13H8" />
+                  <path d="M16 17H8" /></svg></span
+              ><span class="font-medium">flights-lis-0313.pdf</span
+              ><span class="text-(--iu-muted) tabular-nums">182 KB</span></span
+            >
+            <p
+              class="max-w-[88%] rounded-[22px] rounded-br-[8px] bg-(--wr-tint) px-4 py-3 text-[15px] leading-[1.55] text-pretty @md:max-w-[75%]"
+            >
+              <span class="sr-only">You said: </span>Plan a long weekend in Lisbon for two, 13 to 16 March. We want
+              somewhere quiet near the tram, and the whole trip under €600.
+            </p>
+            <span class="text-[11px] text-(--iu-muted) tabular-nums">09:41</span>
+          </div>
+          <article data-assistant="m2" aria-label="Wren at 09:41" class="flex gap-3">
+            <span class="hidden @md:block"
+              ><span
+                aria-hidden="true"
+                style="width: 32px; height: 32px"
+                class="inline-flex shrink-0 items-center justify-center rounded-full bg-(--wr-tint) text-(--iu-foreground) shadow-(--wr-sh-raised)"
+                ><svg width="17.6" height="17.6" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 14.5c2.6 0 4.2-1.2 5.2-3.4C10.6 8 12.7 6 15.6 6c2.1 0 3.6 1.2 4.4 2.6l-2.4.9c.2 3.9-2.7 7.5-7.6 7.5H5.5"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path d="M9 17l-1.6 3M12 17l-.4 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  <circle cx="15.8" cy="8.9" r="1.1" fill="var(--iu-accent)" /></svg></span
+            ></span>
+            <div class="min-w-0 flex-1">
+              <div data-body>
+                <div class="flex flex-col gap-3">
+                  <p class="text-[15px] leading-[1.6] text-pretty">
+                    Your flights land at 10:20 on Friday, so I looked for stays you can reach before lunch.
+                  </p>
+                  <div class="my-1">
+                    <button
+                      type="button"
+                      data-tool-toggle
+                      aria-expanded="true"
+                      aria-controls="m2-tool-1"
+                      class="group inline-flex min-h-10 max-w-full cursor-pointer items-center gap-2 rounded-full border border-(--iu-border) bg-(--iu-surface) py-1.5 pr-3 pl-1.5 text-left text-[14px] font-medium shadow-(--wr-sh-raised) transition-[translate,box-shadow,scale] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.98] active:shadow-(--wr-sh-pressed) disabled:cursor-default motion-reduce:transition-none dark:border-(--iu-foreground)/10 pointer-fine:hover:not-disabled:-translate-y-px"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-(--wr-tint) text-(--iu-foreground)"
+                        ><svg
+                          aria-hidden="true"
+                          width="15"
+                          height="15"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="m21 21-4.34-4.34" />
+                          <circle cx="11" cy="11" r="8" /></svg></span
+                      ><span class="truncate">Checked 3 stays in Alfama</span
+                      ><span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">0.8 s</span
+                      ><svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 rotate-180 text-(--iu-muted) transition-transform duration-200 motion-reduce:transition-none"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                    <div id="m2-tool-1">
+                      <div
+                        class="mt-3 rounded-[max(var(--iu-radius),18px)] border border-(--iu-border) bg-(--wr-well) p-[calc(12px*var(--iu-density))] shadow-(--wr-sh-well) @md:p-[calc(16px*var(--iu-density))] dark:border-(--iu-foreground)/8"
+                      >
+                        <p class="text-[12px] font-medium text-(--iu-muted)">Asked for</p>
+                        <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Search arguments">
+                          <li
+                            class="inline-flex items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) px-2.5 py-1 text-[12px] dark:border-(--iu-foreground)/10"
+                          >
+                            <span class="text-(--iu-muted)">Check-in</span
+                            ><span class="font-medium tabular-nums">Fri 13 Mar</span>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) px-2.5 py-1 text-[12px] dark:border-(--iu-foreground)/10"
+                          >
+                            <span class="text-(--iu-muted)">Nights</span><span class="font-medium tabular-nums">3</span>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) px-2.5 py-1 text-[12px] dark:border-(--iu-foreground)/10"
+                          >
+                            <span class="text-(--iu-muted)">Guests</span><span class="font-medium tabular-nums">2</span>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) px-2.5 py-1 text-[12px] dark:border-(--iu-foreground)/10"
+                          >
+                            <span class="text-(--iu-muted)">Max per night</span
+                            ><span class="font-medium tabular-nums">€140</span>
+                          </li>
+                          <li
+                            class="inline-flex items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) px-2.5 py-1 text-[12px] dark:border-(--iu-foreground)/10"
+                          >
+                            <span class="text-(--iu-muted)">Near</span
+                            ><span class="font-medium tabular-nums">Tram 28</span>
+                          </li>
+                        </ul>
+                        <p class="mt-4 text-[12px] font-medium text-(--iu-muted)">Found</p>
+                        <ul class="mt-2 grid grid-cols-1 gap-2">
+                          <li
+                            class="flex items-center gap-3 rounded-[max(var(--iu-radius),14px)] border border-(--iu-accent) bg-(--iu-surface) p-[calc(10px*var(--iu-density))] shadow-(--wr-sh-raised)"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[12px] bg-(--wr-tint) text-[15px] font-semibold"
+                              >C</span
+                            ><span class="min-w-0 flex-1"
+                              ><span class="flex flex-wrap items-center gap-x-2 gap-y-0.5"
+                                ><span class="text-[14px] font-semibold">Casa Azulejo</span
+                                ><span
+                                  class="rounded-full bg-(--iu-accent) px-2 py-0.5 text-[11px] font-semibold text-(--iu-accent-foreground)"
+                                  >Best fit</span
+                                ></span
+                              ><span class="mt-0.5 block truncate text-[12px] text-(--iu-muted)"
+                                >Alfama · 4 min walk to tram 28 · courtyard room</span
+                              ></span
+                            ><span class="shrink-0 text-right"
+                              ><span class="block text-[17px] font-semibold tracking-[-0.01em] tabular-nums">€118</span
+                              ><span class="block text-[11px] text-(--iu-muted)">a night</span></span
+                            >
+                          </li>
+                          <li
+                            class="flex items-center gap-3 rounded-[max(var(--iu-radius),14px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(10px*var(--iu-density))] shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[12px] bg-(--wr-tint) text-[15px] font-semibold"
+                              >P</span
+                            ><span class="min-w-0 flex-1"
+                              ><span class="flex flex-wrap items-center gap-x-2 gap-y-0.5"
+                                ><span class="text-[14px] font-semibold">Pátio das Laranjas</span></span
+                              ><span class="mt-0.5 block truncate text-[12px] text-(--iu-muted)"
+                                >Graça · 7 min walk · rooftop, no lift</span
+                              ></span
+                            ><span class="shrink-0 text-right"
+                              ><span class="block text-[17px] font-semibold tracking-[-0.01em] tabular-nums">€104</span
+                              ><span class="block text-[11px] text-(--iu-muted)">a night</span></span
+                            >
+                          </li>
+                          <li
+                            class="flex items-center gap-3 rounded-[max(var(--iu-radius),14px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(10px*var(--iu-density))] shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10"
+                          >
+                            <span
+                              aria-hidden="true"
+                              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[12px] bg-(--wr-tint) text-[15px] font-semibold"
+                              >R</span
+                            ><span class="min-w-0 flex-1"
+                              ><span class="flex flex-wrap items-center gap-x-2 gap-y-0.5"
+                                ><span class="text-[14px] font-semibold">Rua do Vigário 22</span></span
+                              ><span class="mt-0.5 block truncate text-[12px] text-(--iu-muted)"
+                                >Alfama · 2 min walk · street-facing</span
+                              ></span
+                            ><span class="shrink-0 text-right"
+                              ><span class="block text-[17px] font-semibold tracking-[-0.01em] tabular-nums">€136</span
+                              ><span class="block text-[11px] text-(--iu-muted)">a night</span></span
+                            >
+                          </li>
+                        </ul>
+                        <p class="mt-3 text-[12px] text-(--iu-muted)">
+                          Ranked by walking time to the tram, then by noise from the street.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-[15px] leading-[1.6] text-pretty">
+                    Casa Azulejo fits best: its courtyard rooms face away from the street, and three nights come to
+                    €354. Here is a gentle plan around it.
+                  </p>
+                  <ol
+                    aria-label="Plan by day"
+                    class="rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) px-4 py-1 shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10"
+                  >
+                    <li
+                      class="grid grid-cols-[64px_1fr] gap-3 border-t border-(--iu-border) py-[calc(10px*var(--iu-density))] first:border-t-0 dark:border-(--iu-foreground)/8"
+                    >
+                      <span class="text-[13px] font-semibold tabular-nums">Fri 13</span
+                      ><span class="text-[14px] leading-[1.55] text-pretty"
+                        >Check in, lunch at Graça market, sunset from the Senhora do Monte viewpoint.</span
+                      >
+                    </li>
+                    <li
+                      class="grid grid-cols-[64px_1fr] gap-3 border-t border-(--iu-border) py-[calc(10px*var(--iu-density))] first:border-t-0 dark:border-(--iu-foreground)/8"
+                    >
+                      <span class="text-[13px] font-semibold tabular-nums">Sat 14</span
+                      ><span class="text-[14px] leading-[1.55] text-pretty"
+                        >Tram 28 to Estrela early, then the tile museum and dinner in Alfama.</span
+                      >
+                    </li>
+                    <li
+                      class="grid grid-cols-[64px_1fr] gap-3 border-t border-(--iu-border) py-[calc(10px*var(--iu-density))] first:border-t-0 dark:border-(--iu-foreground)/8"
+                    >
+                      <span class="text-[13px] font-semibold tabular-nums">Sun 15</span
+                      ><span class="text-[14px] leading-[1.55] text-pretty"
+                        >Day trip to Sintra by train, €16.40 return each, back for a late fado set.</span
+                      >
+                    </li>
+                  </ol>
+                  <p class="text-[15px] leading-[1.6] text-pretty">
+                    With €160 set aside for food and €33 for trains, you land at €547, which leaves €53 of room.
+                  </p>
+                </div>
+              </div>
+              <div data-actions class="mt-3 -ml-3 flex flex-wrap items-center gap-1">
+                <button
+                  type="button"
+                  data-copy
+                  class="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13px] font-medium text-(--iu-muted) transition-[background-color,color,scale] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.97] motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--wr-well) pointer-fine:hover:text-(--iu-foreground)"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg
+                  >Copy</button
+                ><button
+                  type="button"
+                  data-retry
+                  class="inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13px] font-medium text-(--iu-muted) transition-[background-color,color,scale] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.97] motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--wr-well) pointer-fine:hover:text-(--iu-foreground)"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" /></svg
+                  >Retry</button
+                ><span class="ml-2 text-[12px] text-(--iu-muted) tabular-nums">Wren Plus · 486 tokens · 09:41</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <form data-composer class="px-3 pb-3 @md:px-5 @md:pb-5">
+          <div
+            class="rounded-[max(calc(var(--iu-radius)+8px),22px)] border border-(--wr-line) bg-(--wr-well) p-2 shadow-(--wr-sh-well) transition-[border-color,box-shadow] duration-200 focus-within:border-(--iu-accent) motion-reduce:transition-none"
+          >
+            <ul data-chips hidden class="flex flex-wrap gap-1.5 px-1 pt-1 pb-2" aria-label="Attachments"></ul>
+            <label for="wren-draft" class="sr-only">Message Wren</label>
+            <textarea
+              id="wren-draft"
+              rows="2"
+              placeholder="Ask Wren about your trip"
+              class="block w-full resize-none bg-transparent px-2 py-[calc(8px*var(--iu-density))] text-[15px] leading-[1.5] text-(--iu-foreground) outline-none placeholder:text-(--iu-muted)"
+            ></textarea>
+            <div class="flex items-center gap-2 pt-1">
+              <input data-file type="file" multiple aria-label="Attach files" class="sr-only" tabindex="-1" />
+              <button
+                type="button"
+                data-attach
+                aria-label="Attach files"
+                class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full border border-(--iu-border) bg-(--iu-surface) text-(--iu-foreground) shadow-(--wr-sh-raised) transition-[scale,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.95] active:shadow-(--wr-sh-pressed) motion-reduce:transition-none dark:border-(--iu-foreground)/10 pointer-coarse:size-10"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"
+                  />
+                </svg>
+              </button>
+              <div class="relative">
+                <button
+                  type="button"
+                  data-model-button
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="wren-models"
+                  aria-label="Model: Wren Plus"
+                  class="inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) pr-2.5 pl-3 text-[13px] font-medium shadow-(--wr-sh-raised) transition-[scale,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.97] active:shadow-(--wr-sh-pressed) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none dark:border-(--iu-foreground)/10 pointer-coarse:h-10"
+                >
+                  <span data-model-name>Wren Plus</span>
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-(--iu-muted)"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <ul
+                  id="wren-models"
+                  data-model-list
+                  role="listbox"
+                  tabindex="-1"
+                  aria-label="Choose a model"
+                  hidden
+                  class="absolute bottom-full left-0 z-30 mb-2 w-[min(280px,calc(100vw-48px))] origin-bottom-left rounded-[max(var(--iu-radius),18px)] border border-(--iu-border) bg-(--iu-surface) p-1.5 shadow-(--wr-sh-pop) outline-none dark:border-(--iu-foreground)/12"
+                >
+                  <li
+                    id="wren-models-0"
+                    role="option"
+                    data-name="Wren Quick"
+                    aria-selected="false"
+                    class="flex cursor-pointer items-start gap-2 rounded-[12px] px-3 py-2.5"
+                  >
+                    <span class="min-w-0 flex-1"
+                      ><span class="block text-[14px] font-semibold">Wren Quick</span
+                      ><span class="block text-[12px] leading-snug text-(--iu-muted)"
+                        >Fast answers for one-line questions</span
+                      ></span
+                    ><svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="mt-0.5 shrink-0 opacity-0"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </li>
+                  <li
+                    id="wren-models-1"
+                    role="option"
+                    data-name="Wren Plus"
+                    aria-selected="true"
+                    class="flex cursor-pointer items-start gap-2 rounded-[12px] bg-(--wr-well) px-3 py-2.5"
+                  >
+                    <span class="min-w-0 flex-1"
+                      ><span class="block text-[14px] font-semibold">Wren Plus</span
+                      ><span class="block text-[12px] leading-snug text-(--iu-muted)"
+                        >Plans trips step by step and checks prices</span
+                      ></span
+                    ><svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="mt-0.5 shrink-0"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </li>
+                  <li
+                    id="wren-models-2"
+                    role="option"
+                    data-name="Wren Deep"
+                    aria-selected="false"
+                    class="flex cursor-pointer items-start gap-2 rounded-[12px] px-3 py-2.5"
+                  >
+                    <span class="min-w-0 flex-1"
+                      ><span class="block text-[14px] font-semibold">Wren Deep</span
+                      ><span class="block text-[12px] leading-snug text-(--iu-muted)"
+                        >Compares many options, takes a little longer</span
+                      ></span
+                    ><svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="mt-0.5 shrink-0 opacity-0"
+                    >
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </li>
+                </ul>
+              </div>
+              <span data-hint class="ml-auto hidden text-[12px] text-(--iu-muted) @md:inline"
+                >Enter to send · Shift+Enter for a new line</span
+              >
+              <span class="relative ml-auto inline-flex size-10 shrink-0 @md:ml-1">
+                <svg
+                  data-ring
+                  aria-hidden="true"
+                  viewBox="0 0 48 48"
+                  class="pointer-events-none absolute -inset-1 hidden size-12 -rotate-90"
+                >
+                  <circle cx="24" cy="24" r="21" fill="none" stroke="var(--wr-well)" stroke-width="2.5" />
+                  <circle
+                    data-ring-arc
+                    cx="24"
+                    cy="24"
+                    r="21"
+                    fill="none"
+                    stroke="var(--iu-accent)"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-dasharray="131.95"
+                    stroke-dashoffset="131.95"
+                  />
+                </svg>
+                <button
+                  type="button"
+                  data-stop
+                  hidden
+                  aria-label="Stop generating"
+                  class="inline-flex size-10 cursor-pointer items-center justify-center rounded-full bg-(--iu-surface) text-(--iu-foreground) shadow-(--wr-sh-raised) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.92]"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="fill-current"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                  </svg>
+                </button>
+                <button
+                  type="submit"
+                  data-send
+                  disabled
+                  aria-label="Send message"
+                  class="inline-flex size-10 cursor-pointer items-center justify-center rounded-full bg-(--iu-accent) text-(--iu-accent-foreground) shadow-(--wr-sh-btn) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.92] disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) disabled:shadow-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="m5 12 7-7 7 7" />
+                    <path d="M12 19V5" />
+                  </svg>
+                </button>
+              </span>
+            </div>
+          </div>
+          <p class="mt-2 px-2 text-center text-[11px] text-(--iu-muted)">
+            Wren can get prices wrong. Check the booking page before you pay.
+          </p>
+        </form>
+
+        <p data-announcer aria-live="polite" class="sr-only"></p>
+      </section>
+      <!-- iloveui:component:end -->
+    </div>
+    <script>
+      var WREN = (function () {
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var SOFT_BUTTON =
+          "inline-flex h-8 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13px] font-medium text-(--iu-muted) transition-[background-color,color,scale] duration-150 active:scale-[0.97] motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--wr-well) pointer-fine:hover:text-(--iu-foreground) " +
+          FOCUS;
+        var TOOL_UNITS = 90;
+        var ICONS = {
+          search: '<path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/>',
+          chevron: '<path d="m6 9 6 6 6-6"/>',
+          file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+          x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+          copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+          check: '<path d="M20 6 9 17l-5-5"/>',
+          retry: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+          loader: '<path d="M21 12a9 9 0 1 1-6.219-8.56"/>',
+          square: '<rect width="18" height="18" x="3" y="3" rx="2"/>',
+        };
+        function icon(name, size, stroke, extra) {
+          return (
+            '<svg aria-hidden="true" width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round"' +
+            (extra ? ' class="' + extra + '"' : "") +
+            ">" +
+            ICONS[name] +
+            "</svg>"
+          );
+        }
+        function esc(text) {
+          return String(text)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+        var REPLY = {
+          time: "09:41",
+          model: "Wren Plus",
+          tokens: 486,
+          parts: [
+            {
+              type: "text",
+              text: "Your flights land at 10:20 on Friday, so I looked for stays you can reach before lunch.",
+            },
+            {
+              type: "tool",
+              call: {
+                label: "Checked 3 stays in Alfama",
+                runningLabel: "Checking stays in Alfama",
+                durationMs: 840,
+                args: [
+                  ["Check-in", "Fri 13 Mar"],
+                  ["Nights", "3"],
+                  ["Guests", "2"],
+                  ["Max per night", "€140"],
+                  ["Near", "Tram 28"],
+                ],
+                results: [
+                  ["Casa Azulejo", "Alfama", "4 min walk to tram 28 · courtyard room", 118, true],
+                  ["Pátio das Laranjas", "Graça", "7 min walk · rooftop, no lift", 104, false],
+                  ["Rua do Vigário 22", "Alfama", "2 min walk · street-facing", 136, false],
+                ],
+              },
+            },
+            {
+              type: "text",
+              text: "Casa Azulejo fits best: its courtyard rooms face away from the street, and three nights come to €354. Here is a gentle plan around it.",
+            },
+            {
+              type: "plan",
+              items: [
+                ["Fri 13", "Check in, lunch at Graça market, sunset from the Senhora do Monte viewpoint."],
+                ["Sat 14", "Tram 28 to Estrela early, then the tile museum and dinner in Alfama."],
+                ["Sun 15", "Day trip to Sintra by train, €16.40 return each, back for a late fado set."],
+              ],
+            },
+            {
+              type: "text",
+              text: "With €160 set aside for food and €33 for trains, you land at €547, which leaves €53 of room.",
+            },
+          ],
+        };
+        function units(part) {
+          if (part.type === "text") return part.text.length;
+          if (part.type === "tool") return TOOL_UNITS;
+          return part.items.reduce(function (sum, item) {
+            return sum + item[1].length;
+          }, 0);
+        }
+        var TOTAL = REPLY.parts.reduce(function (sum, part) {
+          return sum + units(part);
+        }, 0);
+        function plain() {
+          return REPLY.parts
+            .map(function (part) {
+              if (part.type === "text") return part.text;
+              if (part.type === "plan")
+                return part.items
+                  .map(function (item) {
+                    return item[0] + ": " + item[1];
+                  })
+                  .join("\n");
+              return (
+                part.call.label +
+                ": " +
+                part.call.results
+                  .map(function (r) {
+                    return r[0] + " €" + r[3];
+                  })
+                  .join(", ")
+              );
+            })
+            .join("\n\n");
+        }
+        var CARET =
+          '<span aria-hidden="true" class="ml-0.5 inline-block h-[1.05em] w-2 translate-y-[0.15em] rounded-full bg-(--iu-accent)"></span>';
+
+        function tool(call, running, open, panelId) {
+          var html =
+            '<div class="my-1"><button type="button" data-tool-toggle aria-expanded="' +
+            (open && !running) +
+            '" aria-controls="' +
+            panelId +
+            '"' +
+            (running ? " disabled" : "") +
+            ' class="group inline-flex min-h-10 max-w-full cursor-pointer items-center gap-2 rounded-full border border-(--iu-border) bg-(--iu-surface) py-1.5 pr-3 pl-1.5 text-left text-[14px] font-medium shadow-(--wr-sh-raised) transition-[translate,box-shadow,scale] duration-200 active:scale-[0.98] active:shadow-(--wr-sh-pressed) disabled:cursor-default motion-reduce:transition-none dark:border-(--iu-foreground)/10 pointer-fine:hover:not-disabled:-translate-y-px ' +
+            FOCUS +
+            '">' +
+            '<span aria-hidden="true" class="inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-(--wr-tint) text-(--iu-foreground)">' +
+            (running ? icon("loader", 15, 1.75, "animate-spin motion-reduce:animate-none") : icon("search", 15, 1.75)) +
+            "</span>" +
+            '<span class="truncate">' +
+            esc(running ? call.runningLabel + "…" : call.label) +
+            "</span>";
+          if (!running) {
+            html +=
+              '<span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+              (call.durationMs / 1000).toFixed(1) +
+              " s</span>" +
+              icon(
+                "chevron",
+                16,
+                1.5,
+                "shrink-0 text-(--iu-muted) transition-transform duration-200 motion-reduce:transition-none" +
+                  (open ? " rotate-180" : ""),
+              );
+          }
+          html += "</button>";
+          html +=
+            '<div id="' +
+            panelId +
+            '"' +
+            (open && !running ? "" : " hidden") +
+            '><div class="mt-3 rounded-[max(var(--iu-radius),18px)] border border-(--iu-border) bg-(--wr-well) p-[calc(12px*var(--iu-density))] shadow-(--wr-sh-well) @md:p-[calc(16px*var(--iu-density))] dark:border-(--iu-foreground)/8">' +
+            '<p class="text-[12px] font-medium text-(--iu-muted)">Asked for</p>' +
+            '<ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Search arguments">' +
+            call.args
+              .map(function (arg) {
+                return (
+                  '<li class="inline-flex items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--iu-surface) px-2.5 py-1 text-[12px] dark:border-(--iu-foreground)/10"><span class="text-(--iu-muted)">' +
+                  esc(arg[0]) +
+                  '</span><span class="font-medium tabular-nums">' +
+                  esc(arg[1]) +
+                  "</span></li>"
+                );
+              })
+              .join("") +
+            "</ul>" +
+            '<p class="mt-4 text-[12px] font-medium text-(--iu-muted)">Found</p><ul class="mt-2 grid grid-cols-1 gap-2">' +
+            call.results
+              .map(function (stay) {
+                return (
+                  '<li class="flex items-center gap-3 rounded-[max(var(--iu-radius),14px)] border bg-(--iu-surface) p-[calc(10px*var(--iu-density))] shadow-(--wr-sh-raised) ' +
+                  (stay[4] ? "border-(--iu-accent)" : "border-(--iu-border) dark:border-(--iu-foreground)/10") +
+                  '">' +
+                  '<span aria-hidden="true" class="inline-flex size-10 shrink-0 items-center justify-center rounded-[12px] bg-(--wr-tint) text-[15px] font-semibold">' +
+                  esc(stay[0].charAt(0)) +
+                  "</span>" +
+                  '<span class="min-w-0 flex-1"><span class="flex flex-wrap items-center gap-x-2 gap-y-0.5"><span class="text-[14px] font-semibold">' +
+                  esc(stay[0]) +
+                  "</span>" +
+                  (stay[4]
+                    ? '<span class="rounded-full bg-(--iu-accent) px-2 py-0.5 text-[11px] font-semibold text-(--iu-accent-foreground)">Best fit</span>'
+                    : "") +
+                  '</span><span class="mt-0.5 block truncate text-[12px] text-(--iu-muted)">' +
+                  esc(stay[1] + " · " + stay[2]) +
+                  "</span></span>" +
+                  '<span class="shrink-0 text-right"><span class="block text-[17px] font-semibold tracking-[-0.01em] tabular-nums">€' +
+                  stay[3] +
+                  '</span><span class="block text-[11px] text-(--iu-muted)">a night</span></span></li>'
+                );
+              })
+              .join("") +
+            '</ul><p class="mt-3 text-[12px] text-(--iu-muted)">Ranked by walking time to the tram, then by noise from the street.</p></div></div></div>';
+          return html;
+        }
+
+        function body(limit, streaming, idPrefix, openTools) {
+          var html = "";
+          var cursor = 0;
+          REPLY.parts.forEach(function (part, index) {
+            if (cursor >= limit) return;
+            var u = units(part);
+            var visible = Math.min(u, limit - cursor);
+            var caretHere = streaming && visible < u;
+            if (part.type === "text") {
+              html +=
+                '<p class="text-[15px] leading-[1.6] text-pretty">' +
+                esc(part.text.slice(0, visible)) +
+                (caretHere ? CARET : "") +
+                "</p>";
+            } else if (part.type === "tool") {
+              html += tool(part.call, visible < u, openTools, idPrefix + "-tool-" + index);
+            } else {
+              var itemCursor = 0;
+              html +=
+                '<ol aria-label="Plan by day" class="rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) px-4 py-1 shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10">';
+              part.items.forEach(function (item) {
+                if (itemCursor >= visible) return;
+                var shown = Math.min(item[1].length, visible - itemCursor);
+                html +=
+                  '<li class="grid grid-cols-[64px_1fr] gap-3 border-t border-(--iu-border) py-[calc(10px*var(--iu-density))] first:border-t-0 dark:border-(--iu-foreground)/8"><span class="text-[13px] font-semibold tabular-nums">' +
+                  esc(item[0]) +
+                  '</span><span class="text-[14px] leading-[1.55] text-pretty">' +
+                  esc(item[1].slice(0, shown)) +
+                  (caretHere && shown < item[1].length ? CARET : "") +
+                  "</span></li>";
+                itemCursor += item[1].length;
+              });
+              html += "</ol>";
+            }
+            cursor += u;
+          });
+          return '<div class="flex flex-col gap-3">' + html + "</div>";
+        }
+
+        function actions(time, copied) {
+          return (
+            '<div data-actions class="mt-3 -ml-3 flex flex-wrap items-center gap-1">' +
+            '<button type="button" data-copy class="' +
+            SOFT_BUTTON +
+            '">' +
+            (copied ? icon("check", 16, 1.75) + "Copied" : icon("copy", 16, 1.5) + "Copy") +
+            "</button>" +
+            '<button type="button" data-retry class="' +
+            SOFT_BUTTON +
+            '">' +
+            icon("retry", 16, 1.5) +
+            "Retry</button>" +
+            '<span class="ml-2 text-[12px] text-(--iu-muted) tabular-nums">' +
+            REPLY.model +
+            " · " +
+            REPLY.tokens +
+            " tokens · " +
+            time +
+            "</span></div>"
+          );
+        }
+
+        function stopped() {
+          return (
+            '<p class="mt-3 inline-flex items-center gap-1.5 rounded-full bg-(--wr-well) px-3 py-1 text-[12px] font-medium text-(--iu-muted)">' +
+            icon("square", 10, 2, "fill-current") +
+            "Stopped. Ask again or retry for the full plan.</p>"
+          );
+        }
+
+        function assistant(id, time, limit, streaming, isStopped) {
+          var done = limit >= TOTAL;
+          return (
+            '<article data-assistant="' +
+            id +
+            '" aria-label="Wren at ' +
+            time +
+            '"' +
+            (streaming && !done ? ' aria-busy="true"' : "") +
+            ' class="flex gap-3"><span class="hidden @md:block">' +
+            mark(32) +
+            '</span><div class="min-w-0 flex-1"><div data-body>' +
+            body(limit, streaming && !done, id, true) +
+            "</div>" +
+            (isStopped && !done ? stopped() : "") +
+            (done || isStopped ? actions(time, false) : "") +
+            "</div></article>"
+          );
+        }
+
+        function user(text, time, files) {
+          return (
+            '<div class="flex flex-col items-end gap-2">' +
+            files
+              .map(function (file) {
+                return (
+                  '<span class="inline-flex items-center gap-2 rounded-full border border-(--iu-border) bg-(--iu-surface) py-1 pr-3 pl-1 text-[12px] shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10"><span class="inline-flex size-6 items-center justify-center rounded-full bg-(--wr-well)">' +
+                  icon("file", 13, 1.75) +
+                  '</span><span class="font-medium">' +
+                  esc(file.name) +
+                  '</span><span class="text-(--iu-muted) tabular-nums">' +
+                  esc(file.size) +
+                  "</span></span>"
+                );
+              })
+              .join("") +
+            '<p class="max-w-[88%] rounded-[22px] rounded-br-[8px] bg-(--wr-tint) px-4 py-3 text-[15px] leading-[1.55] text-pretty @md:max-w-[75%]"><span class="sr-only">You said: </span>' +
+            esc(text) +
+            '</p><span class="text-[11px] text-(--iu-muted) tabular-nums">' +
+            time +
+            "</span></div>"
+          );
+        }
+
+        function mark(size) {
+          var inner = Math.round(size * 0.55 * 100) / 100;
+          return (
+            '<span aria-hidden="true" style="width:' +
+            size +
+            "px;height:" +
+            size +
+            'px" class="inline-flex shrink-0 items-center justify-center rounded-full bg-(--wr-tint) text-(--iu-foreground) shadow-(--wr-sh-raised)"><svg width="' +
+            inner +
+            '" height="' +
+            inner +
+            '" viewBox="0 0 24 24" fill="none"><path d="M4 14.5c2.6 0 4.2-1.2 5.2-3.4C10.6 8 12.7 6 15.6 6c2.1 0 3.6 1.2 4.4 2.6l-2.4.9c.2 3.9-2.7 7.5-7.6 7.5H5.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 17l-1.6 3M12 17l-.4 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="15.8" cy="8.9" r="1.1" fill="var(--iu-accent)"/></svg></span>'
+          );
+        }
+
+        function chip(file, index) {
+          return (
+            '<li class="inline-flex items-center gap-2 rounded-full border border-(--iu-border) bg-(--iu-surface) py-0.5 pr-0.5 pl-3 text-[12px] shadow-(--wr-sh-raised) dark:border-(--iu-foreground)/10">' +
+            icon("file", 13, 1.75, "text-(--iu-muted)") +
+            '<span class="max-w-[160px] truncate font-medium">' +
+            esc(file.name) +
+            '</span><span class="text-(--iu-muted) tabular-nums">' +
+            esc(file.size) +
+            '</span><button type="button" data-remove="' +
+            index +
+            '" aria-label="Remove ' +
+            esc(file.name) +
+            '" class="inline-flex size-7 cursor-pointer items-center justify-center rounded-full text-(--iu-muted) pointer-coarse:size-10 pointer-fine:hover:bg-(--wr-well) pointer-fine:hover:text-(--iu-foreground) ' +
+            FOCUS +
+            '">' +
+            icon("x", 14, 1.75) +
+            "</button></li>"
+          );
+        }
+
+        return {
+          TOTAL: TOTAL,
+          plain: plain,
+          body: body,
+          actions: actions,
+          stopped: stopped,
+          assistant: assistant,
+          user: user,
+          chip: chip,
+          mark: mark,
+          icon: icon,
+          esc: esc,
+          REPLY: REPLY,
+        };
+      })();
+
+      (function () {
+        var root = document.querySelector("[data-wren]");
+        if (!root) return;
+        var thread = root.querySelector("[data-thread]");
+        var form = root.querySelector("[data-composer]");
+        var input = root.querySelector("textarea");
+        var fileInput = root.querySelector("[data-file]");
+        var chipList = root.querySelector("[data-chips]");
+        var sendButton = root.querySelector("[data-send]");
+        var stopButton = root.querySelector("[data-stop]");
+        var ring = root.querySelector("[data-ring]");
+        var ringArc = root.querySelector("[data-ring-arc]");
+        var hint = root.querySelector("[data-hint]");
+        var announcer = root.querySelector("[data-announcer]");
+        var usedLabel = root.querySelector("[data-used]");
+        var usageBar = root.querySelector("[data-usage-bar]");
+        var meter = root.querySelector('[role="meter"]');
+        var modelButton = root.querySelector("[data-model-button]");
+        var modelList = root.querySelector("[data-model-list]");
+        var modelName = root.querySelector("[data-model-name]");
+        var options = Array.prototype.slice.call(modelList.querySelectorAll('[role="option"]'));
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var CIRC = 2 * Math.PI * 21;
+        var attachments = [];
+        var used = 312;
+        var limit = 500;
+        var live = null;
+        var visible = true;
+        var counter = 3;
+
+        function announce(text) {
+          announcer.textContent = text;
+        }
+
+        new IntersectionObserver(function (entries) {
+          visible = entries[0] ? entries[0].isIntersecting : true;
+        }).observe(root);
+
+        function setStreaming(on) {
+          sendButton.hidden = on;
+          stopButton.hidden = !on;
+          ring.classList.toggle("hidden", !on);
+          modelButton.disabled = on;
+          hint.textContent = on ? "Esc to stop" : "Enter to send · Shift+Enter for a new line";
+          if (!on) updateSend();
+        }
+
+        function updateSend() {
+          sendButton.disabled = input.value.trim().length === 0;
+        }
+
+        function renderLive() {
+          var body = live.article.querySelector("[data-body]");
+          body.innerHTML = WREN.body(live.progress, true, live.id, true);
+          ringArc.setAttribute("stroke-dashoffset", String(CIRC * (1 - live.progress / WREN.TOTAL)));
+        }
+
+        function finish(stopped) {
+          clearInterval(live.timer);
+          var article = live.article;
+          var body = article.querySelector("[data-body]");
+          var done = live.progress >= WREN.TOTAL;
+          body.innerHTML = WREN.body(live.progress, false, live.id, true);
+          article.removeAttribute("aria-busy");
+          var column = body.parentNode;
+          var holder = document.createElement("div");
+          holder.innerHTML = (stopped && !done ? WREN.stopped() : "") + WREN.actions(live.time, false);
+          while (holder.firstChild) column.appendChild(holder.firstChild);
+          if (done) {
+            used = Math.min(limit, used + 1);
+            usedLabel.textContent = String(used);
+            usageBar.style.width = Math.max(4, (used / limit) * 100) + "%";
+            meter.setAttribute("aria-valuenow", String(used));
+            meter.setAttribute("aria-valuetext", used + " of " + limit + " replies used");
+          }
+          announce(stopped ? "Stopped" : "Reply finished");
+          live = null;
+          setStreaming(false);
+        }
+
+        function stream(article, id, time) {
+          live = { article: article, id: id, time: time, progress: 0, timer: 0 };
+          article.setAttribute("aria-busy", "true");
+          Array.prototype.slice
+            .call(article.querySelectorAll("[data-actions], p.inline-flex"))
+            .forEach(function (node) {
+              node.remove();
+            });
+          setStreaming(true);
+          announce("Wren is replying");
+          if (reduce) {
+            live.progress = WREN.TOTAL;
+            finish(false);
+            return;
+          }
+          renderLive();
+          live.timer = setInterval(function () {
+            if (!visible) return;
+            live.progress = Math.min(WREN.TOTAL, live.progress + 3);
+            renderLive();
+            if (live.progress >= WREN.TOTAL) finish(false);
+          }, 32);
+        }
+
+        function stop() {
+          if (!live) return;
+          finish(true);
+          input.focus();
+        }
+
+        function send() {
+          var text = input.value.trim();
+          if (!text || live) return;
+          var id = "r" + counter++;
+          var holder = document.createElement("div");
+          holder.innerHTML = WREN.user(text, "09:44", attachments) + WREN.assistant(id, "09:44", 0, true, false);
+          var article = holder.lastChild;
+          while (holder.firstChild) thread.appendChild(holder.firstChild);
+          input.value = "";
+          attachments = [];
+          renderChips();
+          stream(article, id, "09:44");
+        }
+
+        function renderChips() {
+          chipList.innerHTML = attachments.map(WREN.chip).join("");
+          chipList.hidden = attachments.length === 0;
+        }
+
+        thread.addEventListener("click", function (event) {
+          var target = event.target.closest("button");
+          if (!target) return;
+          if (target.hasAttribute("data-tool-toggle")) {
+            var open = target.getAttribute("aria-expanded") !== "true";
+            target.setAttribute("aria-expanded", String(open));
+            document.getElementById(target.getAttribute("aria-controls")).hidden = !open;
+            var chevron = target.querySelector("svg:last-child");
+            if (chevron) chevron.classList.toggle("rotate-180", open);
+          } else if (target.hasAttribute("data-copy")) {
+            var text = WREN.plain();
+            var done = function () {
+              target.innerHTML = WREN.icon("check", 16, 1.75) + "Copied";
+              announce("Copied to clipboard");
+              setTimeout(function () {
+                target.innerHTML = WREN.icon("copy", 16, 1.5) + "Copy";
+              }, 1600);
+            };
+            if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
+          } else if (target.hasAttribute("data-retry") && !live) {
+            var article = target.closest("[data-assistant]");
+            stream(article, article.getAttribute("data-assistant"), "09:44");
+          }
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          send();
+        });
+        input.addEventListener("input", updateSend);
+        input.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+            event.preventDefault();
+            send();
+          }
+        });
+        stopButton.addEventListener("click", stop);
+        root.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && live) stop();
+        });
+
+        root.querySelector("[data-attach]").addEventListener("click", function () {
+          fileInput.click();
+        });
+        fileInput.addEventListener("change", function () {
+          var files = Array.prototype.slice.call(fileInput.files || []);
+          files.forEach(function (file) {
+            var size =
+              file.size < 1024
+                ? file.size + " B"
+                : file.size < 1048576
+                  ? Math.round(file.size / 1024) + " KB"
+                  : (file.size / 1048576).toFixed(1) + " MB";
+            attachments.push({ name: file.name, size: size });
+          });
+          if (files.length)
+            announce(
+              "Attached " +
+                files
+                  .map(function (f) {
+                    return f.name;
+                  })
+                  .join(", "),
+            );
+          fileInput.value = "";
+          renderChips();
+        });
+        chipList.addEventListener("click", function (event) {
+          var button = event.target.closest("[data-remove]");
+          if (!button) return;
+          var index = Number(button.getAttribute("data-remove"));
+          var removed = attachments.splice(index, 1)[0];
+          renderChips();
+          if (removed) announce("Removed " + removed.name);
+          var next = chipList.querySelectorAll("[data-remove]")[Math.min(index, attachments.length - 1)];
+          (attachments.length && next ? next : input).focus();
+        });
+
+        // Model picker: select-only listbox.
+        var active = 1;
+        var selected = 1;
+        function paint() {
+          options.forEach(function (option, index) {
+            option.classList.toggle("bg-(--wr-well)", index === active);
+            option.setAttribute("aria-selected", String(index === selected));
+            option.querySelector("svg").classList.toggle("opacity-0", index !== selected);
+          });
+          modelList.setAttribute("aria-activedescendant", options[active].id);
+        }
+        function openList() {
+          active = selected;
+          paint();
+          modelList.hidden = false;
+          modelButton.setAttribute("aria-expanded", "true");
+          modelList.focus();
+        }
+        function closeList(focus) {
+          modelList.hidden = true;
+          modelButton.setAttribute("aria-expanded", "false");
+          if (focus) modelButton.focus();
+        }
+        function choose(index) {
+          selected = index;
+          var name = options[index].getAttribute("data-name");
+          modelName.textContent = name;
+          modelButton.setAttribute("aria-label", "Model: " + name);
+          paint();
+          closeList(true);
+        }
+        modelButton.addEventListener("click", function () {
+          if (modelList.hidden) openList();
+          else closeList(false);
+        });
+        modelButton.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            openList();
+          }
+        });
+        modelList.addEventListener("keydown", function (event) {
+          var key = event.key;
+          if (key === "ArrowDown") active = Math.min(options.length - 1, active + 1);
+          else if (key === "ArrowUp") active = Math.max(0, active - 1);
+          else if (key === "Home") active = 0;
+          else if (key === "End") active = options.length - 1;
+          else if (key === "Enter" || key === " ")
+            return (event.preventDefault(), event.stopPropagation(), choose(active));
+          else if (key === "Escape") return (event.preventDefault(), event.stopPropagation(), closeList(true));
+          else if (key === "Tab") return choose(active);
+          else return;
+          event.preventDefault();
+          paint();
+        });
+        options.forEach(function (option, index) {
+          option.addEventListener("click", function () {
+            choose(index);
+          });
+          option.addEventListener("pointerenter", function () {
+            active = index;
+            paint();
+          });
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (!modelList.hidden && !modelButton.parentNode.contains(event.target)) closeList(false);
+        });
+      })();
+    </script>
+  </body>
+</html>

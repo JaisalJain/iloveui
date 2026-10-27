@@ -1,0 +1,15 @@
+{
+  "slug": "bigtop-analytics-shell",
+  "name": "Bigtop analytics shell",
+  "category": "dashboards",
+  "styleFamily": "neo-brutalist",
+  "tier": "free",
+  "description": "A loud web analytics shell with chunky ink bars. Press a traffic source and its share rises through every bar in a stepped cascade.",
+  "tags": ["dashboard", "analytics", "bar-chart", "sidebar", "kpi", "sparkline", "traffic", "brutalist"],
+  "states": ["default", "loading", "empty", "error"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

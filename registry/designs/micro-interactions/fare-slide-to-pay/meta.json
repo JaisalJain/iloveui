@@ -1,0 +1,15 @@
+{
+  "slug": "fare-slide-to-pay",
+  "name": "Fare slide to pay",
+  "category": "micro-interactions",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "A train-fare checkout you pay by sliding: the fill chases the thumb, turns solid past the line, and the thumb docks into a check.",
+  "tags": ["slide-to-pay", "slider", "checkout", "payment", "gesture", "drag", "travel"],
+  "states": ["default", "active", "disabled", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

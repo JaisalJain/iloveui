@@ -1,0 +1,15 @@
+{
+  "slug": "cushion-checkout",
+  "name": "Cushion checkout",
+  "category": "pricing",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "A soft two-panel checkout: seats, billing and country retune the tax line while the total glides to its new value; pay presses in and lands on a receipt.",
+  "tags": ["checkout", "payment-form", "order-summary", "tax", "validation", "seats", "receipt"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

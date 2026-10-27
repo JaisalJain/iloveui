@@ -235,7 +235,14 @@ test.describe("pagination", () => {
 
   test("Load more appends the next page in place, and page 2 is a real URL", async ({ page }) => {
     await page.goto("/designs");
-    await page.getByRole("link", { name: "Load more" }).click();
+    // The explorer hydrates on intent (BrowseIsland), and a link clicked before that follows its href to the real
+    // page 2, as it does without JavaScript. Hover first, as a visitor does, and click once React owns the link.
+    const loadMore = page.getByRole("link", { name: "Load more" });
+    await loadMore.hover();
+    await expect
+      .poll(() => loadMore.evaluate((link) => Object.keys(link).some((key) => key.startsWith("__reactProps"))))
+      .toBe(true);
+    await loadMore.click();
     await expect(results(page)).toHaveCount(Math.min(PAGE_SIZE * 2, designs.length));
     await expect(page).toHaveURL(/\/designs$/);
     await expect(results(page).nth(PAGE_SIZE)).toBeFocused();

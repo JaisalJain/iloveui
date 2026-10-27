@@ -1,0 +1,15 @@
+{
+  "slug": "stepwise-agent-run",
+  "name": "Stepwise agent run",
+  "category": "ai-chat",
+  "styleFamily": "data-dense",
+  "tier": "pro",
+  "description": "An agent run view: a live trace whose bars grow as each step runs while tokens and cost tick up, with every call's input and output a click away.",
+  "tags": ["ai-chat", "agent", "trace", "timeline", "tool-calls", "observability", "cost", "data-dense"],
+  "states": ["default", "loading", "error"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

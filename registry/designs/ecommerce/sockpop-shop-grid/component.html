@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sockpop shop grid · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+      @keyframes sock-bump {
+        from {
+          transform: scale(1.5);
+        }
+        60% {
+          transform: scale(0.92);
+        }
+        to {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-sockpop
+      class="relative min-h-dvh bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--sp-ink:var(--iu-foreground)] [--sp-shadow:color-mix(in_oklab,var(--iu-accent)_32%,var(--iu-foreground))] [--sp-tint:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] dark:[--sp-ink:color-mix(in_oklab,var(--iu-foreground)_80%,var(--iu-surface))] dark:[--sp-shadow:color-mix(in_oklab,var(--iu-accent)_55%,black)] dark:[--sp-tint:color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+    >
+      <div data-page inert class="mx-auto max-w-[1200px] px-4 pt-6 pb-20 sm:px-8 sm:pt-8">
+        <header class="flex items-center justify-between gap-4">
+          <span data-logo class="inline-flex items-center gap-2 text-xl font-extrabold tracking-[-0.03em]"
+            >Sockpop</span
+          >
+          <button
+            type="button"
+            data-cart-button
+            aria-haspopup="dialog"
+            class="relative inline-flex h-11 items-center justify-center gap-2 rounded-full border-2 border-(--sp-ink) bg-(--iu-surface) px-4 px-5 text-sm font-bold text-(--iu-foreground) shadow-[4px_4px_0_var(--sp-shadow)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-[1px_1px_0_var(--sp-shadow)] disabled:cursor-not-allowed disabled:opacity-55 motion-reduce:transition-none pointer-fine:hover:-translate-y-0.5"
+          >
+            <svg
+              aria-hidden="true"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.25"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M16 10a4 4 0 0 1-8 0" />
+              <path d="M3.103 6.034h17.794" />
+              <path
+                d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"
+              />
+            </svg>
+            <span class="max-sm:sr-only">Cart</span>
+            <span
+              data-badge
+              aria-hidden="true"
+              class="grid h-6 min-w-6 place-items-center rounded-full bg-(--iu-accent) px-1.5 text-[12px] font-extrabold text-(--iu-accent-foreground) tabular-nums"
+              >3</span
+            >
+            <span data-badge-sr class="sr-only">, 3 items</span>
+          </button>
+        </header>
+
+        <div class="mt-10 flex flex-wrap items-end justify-between gap-4 sm:mt-14">
+          <div>
+            <p
+              class="inline-block -rotate-2 rounded-full border-2 border-(--sp-ink) bg-(--sp-tint) px-3 py-0.5 text-[12px] font-extrabold tracking-wide uppercase"
+            >
+              Autumn drop · 4 styles
+            </p>
+            <h1
+              class="mt-3 text-[clamp(2.25rem,1.5rem+3vw,3.75rem)] leading-[1] font-extrabold tracking-[-0.04em] text-balance"
+            >
+              Socks with opinions.
+            </h1>
+          </div>
+          <p class="flex items-center gap-2 text-sm font-semibold text-(--iu-muted)">
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" />
+              <path d="M15 18H9" />
+              <path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" />
+              <circle cx="17" cy="18" r="2" />
+              <circle cx="7" cy="18" r="2" />
+            </svg>
+            Free UK shipping over £40.00
+          </p>
+        </div>
+
+        <section
+          data-grid
+          aria-label="Products"
+          class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        ></section>
+      </div>
+
+      <div data-layer class="fixed inset-0 z-50 flex items-end sm:items-stretch sm:justify-end">
+        <div data-scrim aria-hidden="true" class="absolute inset-0 bg-(--iu-foreground)/25 dark:bg-black/60"></div>
+        <div
+          data-drawer
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="sock-cart-title"
+          class="relative flex max-h-[92dvh] w-full flex-col rounded-t-[max(var(--iu-radius),28px)] border-2 border-b-0 border-(--sp-ink) bg-(--iu-surface) sm:m-3 sm:max-h-none sm:w-[440px] sm:rounded-[max(var(--iu-radius),28px)] sm:border-b-2 sm:shadow-[6px_6px_0_var(--sp-shadow)]"
+        >
+          <span
+            aria-hidden="true"
+            class="mx-auto mt-3 h-1.5 w-12 rounded-full bg-(--iu-foreground)/25 sm:hidden"
+          ></span>
+          <div class="flex items-center justify-between gap-4 border-b-2 border-(--sp-ink) px-5 py-4 sm:px-6">
+            <h2 id="sock-cart-title" class="text-xl font-extrabold tracking-[-0.02em]">
+              <span data-title>Your cart</span>
+              <span data-title-count class="font-mono text-sm font-medium text-(--iu-muted) tabular-nums">3</span>
+            </h2>
+            <button
+              type="button"
+              data-close
+              aria-label="Close cart"
+              class="grid size-8 size-10 place-items-center rounded-full border-2 border-(--sp-ink) bg-(--iu-surface) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-40 pointer-coarse:size-10 pointer-fine:hover:bg-(--sp-tint)"
+            >
+              <svg
+                aria-hidden="true"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+          <div data-cart-body class="flex min-h-0 flex-1 flex-col"></div>
+        </div>
+      </div>
+      <p data-announcer role="status" class="sr-only"></p>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-sockpop]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var PRIMARY =
+          "inline-flex h-12 items-center justify-center gap-2 rounded-full bg-(--iu-accent) px-6 text-[15px] font-extrabold text-(--iu-accent-foreground) border-2 border-(--sp-ink) shadow-[4px_4px_0_var(--sp-shadow)] transition-[translate,box-shadow] duration-100 ease-linear motion-reduce:transition-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-[1px_1px_0_var(--sp-shadow)] pointer-fine:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-55 disabled:active:translate-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var SECONDARY =
+          "inline-flex h-11 items-center justify-center gap-2 rounded-full bg-(--iu-surface) px-5 text-sm font-bold text-(--iu-foreground) border-2 border-(--sp-ink) shadow-[4px_4px_0_var(--sp-shadow)] transition-[translate,box-shadow] duration-100 ease-linear motion-reduce:transition-none active:translate-x-[3px] active:translate-y-[3px] active:shadow-[1px_1px_0_var(--sp-shadow)] pointer-fine:hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-55 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var ICON_BUTTON =
+          "grid size-8 place-items-center rounded-full border-2 border-(--sp-ink) bg-(--iu-surface) disabled:cursor-not-allowed disabled:opacity-40 pointer-fine:hover:bg-(--sp-tint) pointer-coarse:size-10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var FOCUSABLE =
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        var SIZES = ["S", "M", "L"];
+        var LABEL = { stripe: "Stripes", dot: "Dots", plain: "Plain" };
+        var FREE_FROM = 4000,
+          FEE = 395;
+        var PRODUCTS = [
+          {
+            id: "lazy-sunday",
+            name: "Lazy Sunday",
+            blurb: "Cushioned crew, combed cotton",
+            price: 1400,
+            patterns: ["stripe", "dot", "plain"],
+            stock: { S: 12, M: 3, L: 0 },
+          },
+          {
+            id: "commuter",
+            name: "Commuter",
+            blurb: "Ankle socks that stay up",
+            price: 1200,
+            compareAt: 1500,
+            patterns: ["dot", "stripe", "plain"],
+            stock: { S: 8, M: 14, L: 6 },
+          },
+          {
+            id: "trail-hopper",
+            name: "Trail Hopper",
+            blurb: "Merino hiking, reinforced heel",
+            price: 1800,
+            patterns: ["plain", "stripe", "dot"],
+            stock: { S: 0, M: 2, L: 9 },
+          },
+          {
+            id: "night-owl",
+            name: "Night Owl",
+            blurb: "Fluffy bed socks with grips",
+            price: 1600,
+            patterns: ["dot", "plain", "stripe"],
+            stock: { S: 0, M: 0, L: 0 },
+            restock: "Back 14 Nov",
+          },
+        ];
+        var cart = [
+          { productId: "commuter", pattern: "dot", size: "M", qty: 2 },
+          { productId: "lazy-sunday", pattern: "stripe", size: "S", qty: 1 },
+        ];
+        var code = "SOCKPOP15";
+        var codeError = "";
+        var placing = false,
+          placed = false;
+        var sockSeq = 0;
+
+        var layer = root.querySelector("[data-layer]");
+        var drawer = root.querySelector("[data-drawer]");
+        var page = root.querySelector("[data-page]");
+        var cartButton = root.querySelector("[data-cart-button]");
+        var announcer = root.querySelector("[data-announcer]");
+
+        function gbp(p) {
+          return "£" + (p / 100).toFixed(2);
+        }
+        function product(id) {
+          return PRODUCTS.filter(function (p) {
+            return p.id === id;
+          })[0];
+        }
+        function key(l) {
+          return l.productId + ":" + l.pattern + ":" + l.size;
+        }
+        function announce(t) {
+          announcer.textContent = t;
+        }
+
+        function sock(pattern, cls) {
+          sockSeq += 1;
+          var id = "sock" + sockSeq;
+          var fill = pattern === "plain" ? "var(--iu-accent)" : "url(#" + id + "-" + pattern + ")";
+          return (
+            '<svg aria-hidden="true" viewBox="0 0 120 140" class="' +
+            cls +
+            '"><defs>' +
+            '<pattern id="' +
+            id +
+            '-stripe" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" class="fill-(--iu-surface)"/><rect width="12" height="6" class="fill-(--iu-accent)"/></pattern>' +
+            '<pattern id="' +
+            id +
+            '-dot" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" class="fill-(--iu-surface)"/><circle cx="6" cy="6" r="3" class="fill-(--iu-accent)"/></pattern></defs>' +
+            '<path d="M38 12h40v60c0 7 3 11 9 15l15 10c11 7 12 22 1 29-7 5-16 5-23 1L45 108c-5-3-7-8-7-14Z" style="fill:' +
+            fill +
+            '" class="stroke-(--sp-ink)" stroke-width="3" stroke-linejoin="round"/>' +
+            '<rect x="38" y="12" width="40" height="14" rx="3" class="fill-(--iu-surface) stroke-(--sp-ink)" stroke-width="3"/>' +
+            '<path d="M44 17v4M52 17v4M60 17v4M68 17v4" class="stroke-(--sp-ink)" stroke-width="2" stroke-linecap="round"/>' +
+            '<path d="M90 98c8 5 11 14 7 22" class="fill-none stroke-(--sp-ink)" stroke-width="3" stroke-linecap="round"/></svg>'
+          );
+        }
+        function swatch(pattern) {
+          var inner =
+            '<rect width="24" height="24" class="' +
+            (pattern === "plain" ? "fill-(--iu-accent)" : "fill-(--iu-surface)") +
+            '"/>';
+          if (pattern === "stripe")
+            inner += [0, 8, 16]
+              .map(function (y) {
+                return '<rect y="' + y + '" width="24" height="4" class="fill-(--iu-accent)"/>';
+              })
+              .join("");
+          if (pattern === "dot")
+            inner += [
+              [6, 6],
+              [18, 6],
+              [12, 13],
+              [6, 20],
+              [18, 20],
+            ]
+              .map(function (d) {
+                return '<circle cx="' + d[0] + '" cy="' + d[1] + '" r="2.4" class="fill-(--iu-accent)"/>';
+              })
+              .join("");
+          return (
+            '<svg aria-hidden="true" viewBox="0 0 24 24" class="size-6 overflow-hidden rounded-full">' +
+            inner +
+            "</svg>"
+          );
+        }
+        root.querySelector("[data-logo]").insertAdjacentHTML("afterbegin", sock("stripe", "size-9 -rotate-12"));
+
+        /* ---------------- product cards */
+        function inCart(id, pattern, size) {
+          var line = cart.filter(function (l) {
+            return key(l) === id + ":" + pattern + ":" + size;
+          })[0];
+          return line ? line.qty : 0;
+        }
+        function renderCard(card, p, index) {
+          var state = card._state;
+          var soldOut = SIZES.every(function (s) {
+            return p.stock[s] === 0;
+          });
+          var saving = p.compareAt ? Math.round((1 - p.price / p.compareAt) * 100) : 0;
+          var left = state.size ? p.stock[state.size] - inCart(p.id, state.pattern, state.size) : 0;
+          var note = soldOut
+            ? '<span class="text-(--iu-muted)">' + (p.restock || "Sold out in every size") + "</span>"
+            : state.size && left <= 0
+              ? '<span class="text-(--iu-muted)">You have every ' + state.size + " we’ve got</span>"
+              : state.size && left <= 3
+                ? '<span class="inline-flex items-center gap-1.5"><span aria-hidden="true" class="size-2 rounded-full bg-(--iu-accent)"></span>Only ' +
+                  left +
+                  " left in " +
+                  state.size +
+                  "</span>"
+                : '<span class="text-(--iu-muted)">In stock · ships tomorrow</span>';
+          var uid = "card-" + p.id;
+          card.innerHTML =
+            '<div data-plate class="relative grid aspect-[5/4] place-items-center border-b-2 border-(--sp-ink) ' +
+            (index % 2 === 0 ? "bg-(--sp-tint)" : "bg-(--iu-background)") +
+            '">' +
+            '<div class="w-[46%] -rotate-[8deg]' +
+            (soldOut ? " opacity-45 grayscale" : "") +
+            '">' +
+            sock(state.pattern, "size-full") +
+            "</div>" +
+            (saving
+              ? '<span class="absolute top-3 left-3 rotate-[-8deg] rounded-full border-2 border-(--sp-ink) bg-(--iu-accent) px-2.5 py-0.5 text-[13px] font-extrabold text-(--iu-accent-foreground)">−' +
+                saving +
+                "%</span>"
+              : "") +
+            (soldOut
+              ? '<span class="absolute top-3 right-3 rotate-[6deg] rounded-full border-2 border-(--sp-ink) bg-(--iu-surface) px-2.5 py-0.5 text-[13px] font-extrabold">Sold out</span>'
+              : "") +
+            "</div>" +
+            '<div class="flex flex-1 flex-col gap-[calc(14px*var(--iu-density))] p-[calc(16px*var(--iu-density))]">' +
+            '<div class="flex items-start justify-between gap-3"><div class="min-w-0"><h3 id="' +
+            uid +
+            '-name" class="text-lg/6 font-extrabold tracking-[-0.02em]">' +
+            p.name +
+            '</h3><p class="text-[13px] text-(--iu-muted)">' +
+            p.blurb +
+            "</p></div>" +
+            '<p class="shrink-0 text-right"><span class="block text-lg/6 font-extrabold tabular-nums">' +
+            gbp(p.price) +
+            "</span>" +
+            (p.compareAt
+              ? '<span class="block text-[13px] text-(--iu-muted) tabular-nums"><span class="sr-only">was </span><s>' +
+                gbp(p.compareAt) +
+                "</s></span>"
+              : "") +
+            "</p></div>" +
+            "<fieldset" +
+            (soldOut ? " disabled" : "") +
+            '><legend class="mb-1.5 text-[12px] font-bold text-(--iu-muted)">Pattern: <span class="text-(--iu-foreground)">' +
+            LABEL[state.pattern] +
+            '</span></legend><div class="flex gap-2">' +
+            p.patterns
+              .map(function (o) {
+                return (
+                  '<label class="grid size-10 cursor-pointer place-items-center rounded-full border-2 border-(--iu-foreground)/30 bg-(--iu-surface) has-checked:border-(--sp-ink) has-checked:shadow-[2px_2px_0_var(--sp-shadow)] has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) has-disabled:cursor-not-allowed">' +
+                  '<input type="radio" name="' +
+                  uid +
+                  '-pattern" value="' +
+                  o +
+                  '"' +
+                  (o === state.pattern ? " checked" : "") +
+                  ' aria-label="' +
+                  LABEL[o] +
+                  '" class="sr-only"/>' +
+                  swatch(o) +
+                  "</label>"
+                );
+              })
+              .join("") +
+            "</div></fieldset>" +
+            "<fieldset" +
+            (soldOut ? " disabled" : "") +
+            '><legend class="mb-1.5 text-[12px] font-bold text-(--iu-muted)">Size</legend><div class="grid grid-cols-3 gap-2">' +
+            SIZES.map(function (s) {
+              var out = p.stock[s] === 0;
+              return (
+                '<label class="relative flex h-10 cursor-pointer items-center justify-center rounded-full border-2 text-sm font-extrabold transition-colors duration-100 motion-reduce:transition-none border-(--iu-foreground)/30 has-checked:border-(--sp-ink) has-checked:bg-(--iu-foreground) has-checked:text-(--iu-background) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent)' +
+                (out ? " cursor-not-allowed border-dashed text-(--iu-muted) line-through" : "") +
+                '">' +
+                '<input type="radio" name="' +
+                uid +
+                '-size" value="' +
+                s +
+                '"' +
+                (state.size === s ? " checked" : "") +
+                (out ? " disabled" : "") +
+                ' aria-label="' +
+                s +
+                (out ? ", sold out" : "") +
+                '" class="sr-only"/>' +
+                s +
+                "</label>"
+              );
+            }).join("") +
+            "</div></fieldset>" +
+            '<p aria-live="polite" class="min-h-5 text-[13px] font-semibold">' +
+            note +
+            "</p>" +
+            '<div class="mt-auto">' +
+            (soldOut
+              ? '<button type="button" data-notify class="' +
+                SECONDARY +
+                ' w-full"' +
+                (state.notified ? " disabled" : "") +
+                ">" +
+                (state.notified ? "We’ll email you" : "Notify me") +
+                "</button>"
+              : '<button type="button" data-add class="' +
+                PRIMARY +
+                ' w-full"' +
+                (!state.size || left <= 0 ? " disabled" : "") +
+                '><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg>Add to cart</button>') +
+            "</div></div>";
+          card.querySelectorAll('input[name="' + uid + '-pattern"]').forEach(function (input) {
+            input.addEventListener("change", function () {
+              state.pattern = input.value;
+              renderCard(card, p, index);
+              card.querySelector('input[name="' + uid + '-pattern"]:checked').focus();
+            });
+          });
+          card.querySelectorAll('input[name="' + uid + '-size"]').forEach(function (input) {
+            input.addEventListener("change", function () {
+              state.size = input.value;
+              renderCard(card, p, index);
+              card.querySelector('input[name="' + uid + '-size"]:checked').focus();
+            });
+          });
+          var add = card.querySelector("[data-add]");
+          if (add)
+            add.addEventListener("click", function () {
+              addLine(p, state, card);
+            });
+          var notify = card.querySelector("[data-notify]");
+          if (notify)
+            notify.addEventListener("click", function () {
+              state.notified = true;
+              renderCard(card, p, index);
+              announce("We’ll email you when " + p.name + " is back.");
+            });
+        }
+        var cards = [];
+        PRODUCTS.forEach(function (p, index) {
+          var card = document.createElement("article");
+          card.setAttribute("aria-labelledby", "card-" + p.id + "-name");
+          card.className =
+            "flex flex-col overflow-hidden rounded-[max(var(--iu-radius),24px)] border-2 border-(--sp-ink) bg-(--iu-surface) shadow-[6px_6px_0_var(--sp-shadow)]";
+          var first =
+            SIZES.filter(function (s) {
+              return p.stock[s] > 0;
+            })[0] || null;
+          card._state = { pattern: p.patterns[0], size: first, notified: false };
+          root.querySelector("[data-grid]").appendChild(card);
+          cards.push({ card: card, p: p, index: index });
+          renderCard(card, p, index);
+        });
+        function refreshCards() {
+          cards.forEach(function (c) {
+            renderCard(c.card, c.p, c.index);
+          });
+        }
+
+        function bumpBadge() {
+          var count = cart.reduce(function (s, l) {
+            return s + l.qty;
+          }, 0);
+          var badge = root.querySelector("[data-badge]");
+          badge.textContent = count;
+          root.querySelector("[data-badge-sr]").textContent = ", " + count + (count === 1 ? " item" : " items");
+          if (!reduce) {
+            badge.style.animation = "none";
+            void badge.offsetWidth;
+            badge.style.animation = "sock-bump 360ms cubic-bezier(0.3,1.4,0.5,1)";
+          }
+        }
+
+        function addLine(p, state, card) {
+          var existing = cart.filter(function (l) {
+            return key(l) === p.id + ":" + state.pattern + ":" + state.size;
+          })[0];
+          if (existing) existing.qty = Math.min(existing.qty + 1, p.stock[state.size]);
+          else cart.push({ productId: p.id, pattern: state.pattern, size: state.size, qty: 1 });
+          placed = false;
+          announce(p.name + ", " + LABEL[state.pattern] + ", size " + state.size + " added to your cart.");
+          refreshCards();
+          renderCart();
+          var from = card.querySelector("[data-plate]").getBoundingClientRect();
+          var to = cartButton.getBoundingClientRect();
+          if (reduce) {
+            bumpBadge();
+            return;
+          }
+          var flyer = document.createElement("div");
+          flyer.setAttribute("aria-hidden", "true");
+          flyer.className = "pointer-events-none fixed z-[70] size-14";
+          var x = from.left + from.width / 2 - 28,
+            y = from.top + from.height / 2 - 28;
+          var dx = to.left + to.width / 2 - 28 - x,
+            dy = to.top + to.height / 2 - 28 - y;
+          flyer.style.left = x + "px";
+          flyer.style.top = y + "px";
+          flyer.innerHTML = sock(state.pattern, "size-full");
+          root.appendChild(flyer);
+          var flight = flyer.animate(
+            [
+              { transform: "translate(0,0) scale(1) rotate(-10deg)" },
+              {
+                transform: "translate(" + dx * 0.5 + "px," + (Math.min(dy, 0) - 90) + "px) scale(0.9) rotate(20deg)",
+                offset: 0.4,
+              },
+              { transform: "translate(" + dx + "px," + dy + "px) scale(0.35) rotate(40deg)" },
+            ],
+            { duration: 620, easing: "ease-in-out" },
+          );
+          flight.onfinish = function () {
+            root.removeChild(flyer);
+            bumpBadge();
+          };
+        }
+
+        /* ---------------- cart */
+        function totals() {
+          var subtotal = 0,
+            sale = 0;
+          cart.forEach(function (l) {
+            var p = product(l.productId);
+            subtotal += p.price * l.qty;
+            if (p.compareAt) sale += (p.compareAt - p.price) * l.qty;
+          });
+          var off = code ? Math.round(subtotal * 0.15) : 0;
+          var after = subtotal - off;
+          var shipping = after >= FREE_FROM || !cart.length ? 0 : FEE;
+          return {
+            subtotal: subtotal,
+            sale: sale,
+            off: off,
+            after: after,
+            shipping: shipping,
+            total: after + shipping,
+          };
+        }
+
+        function row(label, value) {
+          return (
+            '<div class="flex justify-between gap-4"><dt class="text-(--iu-muted)">' +
+            label +
+            '</dt><dd class="font-bold">' +
+            value +
+            "</dd></div>"
+          );
+        }
+
+        function renderCart() {
+          var body = root.querySelector("[data-cart-body]");
+          var count = cart.reduce(function (s, l) {
+            return s + l.qty;
+          }, 0);
+          root.querySelector("[data-title]").textContent = placed ? "Order placed" : "Your cart";
+          root.querySelector("[data-title-count]").textContent = placed ? "" : count;
+          if (placed) {
+            body.innerHTML =
+              '<div class="flex flex-1 flex-col items-center justify-center gap-4 px-6 py-10 text-center">' +
+              '<svg aria-hidden="true" viewBox="0 0 160 120" class="w-44"><circle cx="80" cy="62" r="44" class="fill-(--sp-tint) stroke-(--sp-ink)" stroke-width="3"/><path d="M60 63l14 14 28-30" class="fill-none stroke-(--sp-ink)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="20" width="12" height="12" rx="3" transform="rotate(20 24 26)" class="fill-(--iu-accent)"/><circle cx="136" cy="30" r="6" class="fill-(--iu-accent)"/><path d="M128 96l10 6M22 92l-8 8" class="stroke-(--sp-ink)" stroke-width="3" stroke-linecap="round"/></svg>' +
+              '<p class="text-2xl font-extrabold tracking-[-0.03em]">Your socks are on the way.</p><p class="max-w-[18rem] text-sm text-pretty text-(--iu-muted)">Order <span class="font-mono font-semibold text-(--iu-foreground)">SP-20418</span> ships tomorrow. A receipt is on its way to your inbox.</p>' +
+              '<button type="button" data-dismiss class="' +
+              SECONDARY +
+              '">Keep browsing</button></div>';
+            body.querySelector("[data-dismiss]").addEventListener("click", close);
+            return;
+          }
+          if (!cart.length) {
+            body.innerHTML =
+              '<div class="flex flex-1 flex-col items-center justify-center gap-3 px-6 py-12 text-center">' +
+              '<svg aria-hidden="true" viewBox="0 0 160 110" class="w-40"><path d="M20 96h120" class="stroke-(--sp-ink)" stroke-width="3" stroke-linecap="round"/><path d="M46 44h68l-8 52H54Z" class="fill-(--sp-tint) stroke-(--sp-ink)" stroke-width="3" stroke-linejoin="round"/><path d="M62 44c0-14 8-22 18-22s18 8 18 22" class="fill-none stroke-(--sp-ink)" stroke-width="3" stroke-linecap="round"/><circle cx="68" cy="66" r="3" class="fill-(--sp-ink)"/><circle cx="92" cy="66" r="3" class="fill-(--sp-ink)"/><path d="M70 80c6-4 14-4 20 0" class="fill-none stroke-(--sp-ink)" stroke-width="3" stroke-linecap="round"/></svg>' +
+              '<p class="text-lg font-extrabold">Your cart is sock-free.</p><p class="max-w-[17rem] text-sm text-pretty text-(--iu-muted)">Pick a pattern and a size, then add a pair. Everything ships tomorrow.</p>' +
+              '<button type="button" data-dismiss class="' +
+              PRIMARY +
+              '">Browse the drop</button></div>';
+            body.querySelector("[data-dismiss]").addEventListener("click", close);
+            return;
+          }
+          var t = totals();
+          var toFree = Math.max(0, FREE_FROM - t.after);
+          body.innerHTML =
+            '<div class="flex-1 overflow-y-auto px-5 [scrollbar-gutter:stable] sm:px-6">' +
+            '<div class="mt-4 rounded-[max(var(--iu-radius),18px)] border-2 border-(--sp-ink) bg-(--sp-tint) p-3"><p class="flex items-center gap-2 text-[13px] font-bold">' +
+            (toFree > 0 ? gbp(toFree) + " away from free shipping" : "Free shipping unlocked") +
+            "</p>" +
+            '<div role="progressbar" aria-label="Progress to free shipping" aria-valuemin="0" aria-valuemax="' +
+            FREE_FROM +
+            '" aria-valuenow="' +
+            Math.min(t.after, FREE_FROM) +
+            '" aria-valuetext="' +
+            (toFree > 0 ? gbp(toFree) + " to go" : "Unlocked") +
+            '" class="mt-2 h-3 overflow-hidden rounded-full border-2 border-(--sp-ink) bg-(--iu-surface)"><div class="h-full origin-left bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none" style="transform:scaleX(' +
+            Math.min(1, t.after / FREE_FROM) +
+            ')"></div></div></div>' +
+            '<ul class="divide-y-2 divide-dashed divide-(--iu-foreground)/15">' +
+            cart
+              .map(function (l, i) {
+                var p = product(l.productId),
+                  max = p.stock[l.size];
+                return (
+                  '<li class="flex gap-3 py-[calc(14px*var(--iu-density))]"><span class="grid size-16 shrink-0 place-items-center rounded-[max(var(--iu-radius),16px)] border-2 border-(--sp-ink) bg-(--sp-tint)">' +
+                  sock(l.pattern, "size-12 -rotate-6") +
+                  "</span>" +
+                  '<div class="min-w-0 flex-1"><div class="flex items-start justify-between gap-2"><p class="truncate text-sm font-extrabold">' +
+                  p.name +
+                  '</p><p class="shrink-0 text-sm font-extrabold tabular-nums">' +
+                  gbp(p.price * l.qty) +
+                  "</p></div>" +
+                  '<p class="text-[12px] text-(--iu-muted)">' +
+                  LABEL[l.pattern] +
+                  " · Size " +
+                  l.size +
+                  (p.compareAt
+                    ? '<span class="ml-1.5 font-bold text-(--iu-foreground)">Sale −' +
+                      gbp((p.compareAt - p.price) * l.qty) +
+                      "</span>"
+                    : "") +
+                  "</p>" +
+                  '<div class="mt-2 flex items-center justify-between gap-2"><div role="group" aria-label="Quantity of ' +
+                  p.name +
+                  '" class="flex items-center gap-2">' +
+                  '<button type="button" data-minus="' +
+                  i +
+                  '" aria-label="' +
+                  (l.qty === 1 ? "Remove " + p.name : "One fewer " + p.name) +
+                  '" class="' +
+                  ICON_BUTTON +
+                  '"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/></svg></button>' +
+                  '<span class="w-6 text-center text-sm font-extrabold tabular-nums">' +
+                  l.qty +
+                  "</span>" +
+                  '<button type="button" data-plus="' +
+                  i +
+                  '"' +
+                  (l.qty >= max ? " disabled" : "") +
+                  ' aria-label="One more ' +
+                  p.name +
+                  '" class="' +
+                  ICON_BUTTON +
+                  '"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>' +
+                  (l.qty >= max
+                    ? '<span class="text-[12px] font-semibold text-(--iu-muted)">Max ' + max + "</span>"
+                    : "") +
+                  "</div>" +
+                  '<button type="button" data-remove="' +
+                  i +
+                  '" aria-label="Remove ' +
+                  p.name +
+                  ' from cart" class="grid size-8 place-items-center rounded-full text-(--iu-muted) pointer-fine:hover:bg-(--iu-foreground)/8 pointer-fine:hover:text-(--iu-foreground) pointer-coarse:size-10 ' +
+                  FOCUS +
+                  '"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg></button></div></div></li>'
+                );
+              })
+              .join("") +
+            "</ul>" +
+            '<div class="border-t-2 border-dashed border-(--iu-foreground)/15 py-4">' +
+            (code
+              ? '<div class="flex items-center justify-between gap-3 rounded-full border-2 border-(--sp-ink) bg-(--sp-tint) py-1 pr-1 pl-3"><span class="inline-flex items-center gap-2 text-sm font-extrabold">' +
+                code +
+                ' <span class="font-semibold text-(--iu-muted)">15% off</span></span><button type="button" data-code-remove class="h-8 rounded-full px-3 text-[13px] font-bold pointer-fine:hover:bg-(--iu-foreground)/8 pointer-coarse:h-10 ' +
+                FOCUS +
+                '">Remove</button></div>'
+              : '<form data-code-form novalidate><label for="sock-code" class="mb-1.5 block text-[13px] font-bold">Discount code</label><div class="flex gap-2"><input id="sock-code" autocomplete="off" placeholder="Enter a code"' +
+                (codeError ? ' aria-invalid="true" aria-describedby="sock-code-error"' : "") +
+                ' class="h-11 min-w-0 flex-1 rounded-full border-2 bg-(--iu-surface) px-4 font-mono text-sm uppercase placeholder:text-(--iu-muted) placeholder:normal-case ' +
+                (codeError ? "border-red-600 dark:border-red-400 " : "border-(--iu-foreground)/45 ") +
+                FOCUS +
+                '"/><button type="submit" class="' +
+                SECONDARY +
+                ' px-4">Apply</button></div>' +
+                (codeError
+                  ? '<p id="sock-code-error" class="mt-2 text-[13px] font-semibold text-red-700 dark:text-red-400">' +
+                    codeError +
+                    "</p>"
+                  : "") +
+                "</form>") +
+            "</div></div>" +
+            '<div class="border-t-2 border-(--sp-ink) px-5 pt-4 pb-[max(16px,env(safe-area-inset-bottom))] sm:px-6 sm:pb-6"><dl class="flex flex-col gap-1.5 text-sm tabular-nums">' +
+            row("Subtotal", gbp(t.subtotal)) +
+            (t.sale ? row("Sale savings (included)", "−" + gbp(t.sale)) : "") +
+            (t.off ? row("Code " + code, "−" + gbp(t.off)) : "") +
+            row("Shipping", t.shipping ? gbp(t.shipping) : "Free") +
+            '<div class="mt-1 flex items-baseline justify-between gap-4 border-t-2 border-dashed border-(--iu-foreground)/15 pt-2"><dt class="font-extrabold">Total</dt><dd class="text-2xl font-extrabold tracking-[-0.03em]">' +
+            gbp(t.total) +
+            "</dd></div></dl>" +
+            '<p class="mt-1 text-[12px] text-(--iu-muted)">VAT included · 30-day free returns</p>' +
+            '<button type="button" data-checkout class="' +
+            PRIMARY +
+            ' mt-4 inline-grid w-full"' +
+            (placing ? " disabled" : "") +
+            ">" +
+            '<span class="col-start-1 row-start-1' +
+            (placing ? " invisible" : "") +
+            '">Checkout · ' +
+            gbp(t.total) +
+            "</span>" +
+            '<span aria-hidden="' +
+            !placing +
+            '" class="col-start-1 row-start-1 inline-flex items-center justify-center gap-1' +
+            (placing ? "" : " invisible") +
+            '">Placing order</span></button></div>';
+
+          body.querySelectorAll("[data-minus]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              setQty(Number(b.getAttribute("data-minus")), -1);
+            });
+          });
+          body.querySelectorAll("[data-plus]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              setQty(Number(b.getAttribute("data-plus")), 1);
+            });
+          });
+          body.querySelectorAll("[data-remove]").forEach(function (b) {
+            b.addEventListener("click", function () {
+              setQty(Number(b.getAttribute("data-remove")), -999);
+            });
+          });
+          var removeCode = body.querySelector("[data-code-remove]");
+          if (removeCode)
+            removeCode.addEventListener("click", function () {
+              announce(code + " removed.");
+              code = null;
+              renderCart();
+              body.querySelector("#sock-code").focus();
+            });
+          var form = body.querySelector("[data-code-form]");
+          if (form)
+            form.addEventListener("submit", function (event) {
+              event.preventDefault();
+              var value = body.querySelector("#sock-code").value.trim().toUpperCase();
+              if (!value) codeError = "Type a code first.";
+              else if (value === "WINTER10") codeError = value + " ended on 31 Jan.";
+              else if (value !== "SOCKPOP15")
+                codeError = "We don’t recognise “" + value + "”. Codes are on your receipt email.";
+              else {
+                code = value;
+                codeError = "";
+                announce(value + " applied: 15% off.");
+              }
+              renderCart();
+              var again = body.querySelector("#sock-code") || body.querySelector("[data-code-remove]");
+              if (again) again.focus();
+            });
+          body.querySelector("[data-checkout]").addEventListener("click", function () {
+            placing = true;
+            renderCart();
+            setTimeout(function () {
+              placing = false;
+              placed = true;
+              cart = [];
+              code = null;
+              bumpBadge();
+              refreshCards();
+              renderCart();
+              announce("Order SP-20418 placed.");
+              root.querySelector("[data-close]").focus();
+            }, 1200);
+          });
+        }
+
+        function setQty(index, delta) {
+          var line = cart[index];
+          var p = product(line.productId);
+          var next = Math.min(line.qty + delta, p.stock[line.size]);
+          if (next <= 0) {
+            cart.splice(index, 1);
+            announce(p.name + " removed from your cart.");
+          } else {
+            line.qty = next;
+            announce(p.name + " quantity " + next + ".");
+          }
+          bumpBadge();
+          refreshCards();
+          renderCart();
+          var focusTarget = root.querySelector(
+            next <= 0 ? "[data-close]" : delta > 0 ? '[data-plus="' + index + '"]' : '[data-minus="' + index + '"]',
+          );
+          if (focusTarget && !focusTarget.disabled) focusTarget.focus();
+          else root.querySelector("[data-close]").focus();
+        }
+
+        /* ---------------- drawer */
+        function openCart() {
+          layer.hidden = false;
+          page.inert = true;
+          document.body.style.overflow = "hidden";
+          renderCart();
+          if (!reduce)
+            drawer.animate(
+              [{ transform: window.innerWidth < 640 ? "translateY(100%)" : "translateX(110%)" }, { transform: "none" }],
+              { duration: 320, easing: "cubic-bezier(0.2,0.9,0.2,1)" },
+            );
+          requestAnimationFrame(function () {
+            root.querySelector("[data-close]").focus();
+          });
+        }
+        function close() {
+          if (placing || layer.hidden) return;
+          layer.hidden = true;
+          page.inert = false;
+          document.body.style.overflow = "";
+          if (placed) placed = false;
+          requestAnimationFrame(function () {
+            cartButton.focus();
+          });
+        }
+        cartButton.addEventListener("click", openCart);
+        root.querySelector("[data-close]").addEventListener("click", close);
+        root.querySelector("[data-scrim]").addEventListener("click", close);
+        document.addEventListener("keydown", function (event) {
+          if (layer.hidden) return;
+          if (event.key === "Escape") {
+            event.preventDefault();
+            close();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var nodes = drawer.querySelectorAll(FOCUSABLE);
+          var first = nodes[0],
+            last = nodes[nodes.length - 1];
+          var current = document.activeElement;
+          if (!drawer.contains(current)) {
+            event.preventDefault();
+            (event.shiftKey ? last : first).focus();
+          } else if (event.shiftKey && current === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && current === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+
+        renderCart();
+        document.body.style.overflow = "hidden";
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1889 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Casefile evidence · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      aria-labelledby="casefile-testimonials-id0"
+      class="@container bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1240px] px-4 py-12 sm:px-8 sm:py-16">
+        <div class="grid gap-6 @4xl:grid-cols-[minmax(0,1fr)_auto] @4xl:items-end">
+          <div>
+            <p class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">
+              Sorrel · Customer evidence
+            </p>
+            <h2
+              id="casefile-testimonials-id0"
+              class="mt-3 text-[clamp(1.75rem,1.4rem+1.4vw,2.5rem)] leading-[1.1] font-semibold tracking-[-0.03em] text-balance"
+            >
+              Proof, measured before and after.
+            </h2>
+            <p class="mt-3 max-w-[38rem] text-[14px] leading-relaxed text-pretty text-(--iu-muted)">
+              Nine support teams, their numbers twelve weeks around rollout, and what changed in their words.
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-8 flex flex-col gap-3 border-y border-(--iu-border) py-3 @3xl:flex-row @3xl:items-center @3xl:justify-between"
+        >
+          <div role="group" aria-label="Industry" data-group="industry" class="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              aria-pressed="true"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-accent) bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10"
+            >
+              All industries<span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >9</span
+              ></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              Fintech<span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >2</span
+              ></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              Health<span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >2</span
+              ></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              Logistics<span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >2</span
+              ></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              Retail<span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >1</span
+              ></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              SaaS<span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums">2</span>
+            </button>
+          </div>
+          <div role="group" aria-label="Company size" data-group="size" class="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              aria-pressed="true"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-accent) bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10"
+            >
+              <span aria-hidden="true">Any size</span><span class="sr-only">Any size</span
+              ><span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums">9</span></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              <span aria-hidden="true">1–200</span><span class="sr-only">1 to 200 people</span
+              ><span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums">2</span></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              <span aria-hidden="true">201–1k</span><span class="sr-only">201 to 1,000 people</span
+              ><span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums">4</span></button
+            ><button
+              type="button"
+              aria-pressed="false"
+              data-chip="true"
+              class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 px-2.5 text-[12px] font-medium whitespace-nowrap text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/45"
+            >
+              <span aria-hidden="true">1k+</span><span class="sr-only">more than 1,000 people</span
+              ><span data-count="true" class="font-mono text-[11px] text-(--iu-muted) tabular-nums">3</span>
+            </button>
+          </div>
+        </div>
+        <dl
+          class="mt-6 grid grid-cols-2 overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) @3xl:grid-cols-4 dark:border-(--iu-foreground)/10"
+        >
+          <div class="px-4 py-[calc(14px*var(--iu-density))]">
+            <dt class="text-[11px] leading-tight font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Stories</dt>
+            <dd
+              data-kpi="0"
+              class="mt-2 font-mono text-[24px] leading-none font-medium tracking-[-0.03em] tabular-nums"
+            >
+              <span aria-hidden="true">9</span><span class="sr-only">9</span>
+            </dd>
+            <dd class="mt-1.5 text-[12px] text-(--iu-muted)">matching filters</dd>
+          </div>
+          <div
+            class="border-l border-(--iu-border) px-4 py-[calc(14px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+          >
+            <dt class="text-[11px] leading-tight font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+              Median first response
+            </dt>
+            <dd
+              data-kpi="1"
+              class="mt-2 font-mono text-[24px] leading-none font-medium tracking-[-0.03em] tabular-nums"
+            >
+              <span aria-hidden="true">−76%</span><span class="sr-only">−76%</span>
+            </dd>
+            <dd class="mt-1.5 text-[12px] text-(--iu-muted)">change after rollout</dd>
+          </div>
+          <div
+            class="border-t border-(--iu-border) px-4 py-[calc(14px*var(--iu-density))] @3xl:border-t-0 @3xl:border-l dark:border-(--iu-foreground)/10"
+          >
+            <dt class="text-[11px] leading-tight font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+              Median CSAT
+            </dt>
+            <dd
+              data-kpi="2"
+              class="mt-2 font-mono text-[24px] leading-none font-medium tracking-[-0.03em] tabular-nums"
+            >
+              <span aria-hidden="true">+10 pts</span><span class="sr-only">+10 pts</span>
+            </dd>
+            <dd class="mt-1.5 text-[12px] text-(--iu-muted)">change after rollout</dd>
+          </div>
+          <div
+            class="border-t border-l border-(--iu-border) px-4 py-[calc(14px*var(--iu-density))] @3xl:border-t-0 @3xl:border-l dark:border-(--iu-foreground)/10"
+          >
+            <dt class="text-[11px] leading-tight font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+              Resolved without an agent
+            </dt>
+            <dd
+              data-kpi="3"
+              class="mt-2 font-mono text-[24px] leading-none font-medium tracking-[-0.03em] tabular-nums"
+            >
+              <span aria-hidden="true">31%</span><span class="sr-only">31%</span>
+            </dd>
+            <dd class="mt-1.5 text-[12px] text-(--iu-muted)">median share of tickets</dd>
+          </div>
+        </dl>
+        <p aria-live="polite" data-announce="true" class="sr-only">9 stories</p>
+        <ul
+          aria-label="Customer stories"
+          data-stories="true"
+          class="mt-6 grid grid-cols-1 gap-4 @2xl:grid-cols-2 @5xl:grid-cols-3"
+        >
+          <li
+            data-story="quillpay"
+            data-industry="Fintech"
+            data-size="mid"
+            data-response="-85"
+            data-csat="12"
+            data-deflection="34"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id4"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >PN</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id4" class="truncate text-[14px] font-semibold">Priya Natarajan</h3>
+                  <p class="truncate text-(--iu-muted)">Head of Support, Quillpay</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Fintech<span class="block tabular-nums"
+                    ><span aria-hidden="true">201–1k</span><span class="sr-only">201 to 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Card disputes used to sit overnight. Sorrel routes them to the two people who can close them, with the
+                  ledger already attached.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                      >First response</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-down-right"
+                        aria-hidden="true"
+                      >
+                        <path d="m7 7 10 10"></path>
+                        <path d="M17 7v10H7"></path></svg
+                      >−85%<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">4h 12m</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>38m
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="First response for Quillpay over 12 weeks, before and after rollout in week 5: 4h 12m to 38m."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id14">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id14)">
+                        <path
+                          d="M87.3,25.8L109.1,40.5L130.9,48.8L152.7,52.0L174.5,51.6L196.4,51.9L218.2,51.6L240.0,52.0L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,7.2L21.8,4.0L43.6,7.8L65.5,5.6L87.3,25.8"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,25.8L109.1,40.5L130.9,48.8L152.7,52.0L174.5,51.6L196.4,51.9L218.2,51.6L240.0,52.0"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Mar 2026</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">38m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">93%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">22</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="brightcart"
+            data-industry="Retail"
+            data-size="large"
+            data-response="-71"
+            data-csat="10"
+            data-deflection="41"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id7"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >TW</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id7" class="truncate text-[14px] font-semibold">Tomasz Wierzbicki</h3>
+                  <p class="truncate text-(--iu-muted)">Support Operations Lead, Brightcart</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Retail<span class="block tabular-nums"
+                    ><span aria-hidden="true">1k+</span><span class="sr-only">more than 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Where is my order is now answered before anyone opens a ticket. Our agents spend the day on returns
+                  that need judgement.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                      >Resolved without an agent</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      >+36 pts<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">5%</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>41%
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="Resolved without an agent for Brightcart over 12 weeks, before and after rollout in week 5: 5% to 41%."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id15">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id15)">
+                        <path
+                          d="M87.3,30.9L109.1,17.6L130.9,6.7L152.7,5.6L174.5,4.0L196.4,6.4L218.2,4.8L240.0,4.5L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,52.0L21.8,51.7L43.6,51.7L65.5,51.9L87.3,30.9"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,30.9L109.1,17.6L130.9,6.7L152.7,5.6L174.5,4.0L196.4,6.4L218.2,4.8L240.0,4.5"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Nov 2025</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">55m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">88%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">140</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="carewell"
+            data-industry="Health"
+            data-size="large"
+            data-response="-76"
+            data-csat="17"
+            data-deflection="22"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id2"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >AO</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id2" class="truncate text-[14px] font-semibold">Adaeze Okonkwo</h3>
+                  <p class="truncate text-(--iu-muted)">VP Patient Experience, Carewell Clinics</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Health<span class="block tabular-nums"
+                    ><span aria-hidden="true">1k+</span><span class="sr-only">more than 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Patients get a person who can see their booking history. Satisfaction moved more in one quarter than
+                  in the previous two years.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">CSAT</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      >+17 pts<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">74%</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>91%
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="CSAT for Carewell Clinics over 12 weeks, before and after rollout in week 5: 74% to 91%."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id17">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id17)">
+                        <path
+                          d="M87.3,30.3L109.1,17.5L130.9,7.5L152.7,7.2L174.5,4.0L196.4,6.5L218.2,4.4L240.0,7.5L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,51.4L21.8,48.0L43.6,52.0L65.5,49.7L87.3,30.3"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,30.3L109.1,17.5L130.9,7.5L152.7,7.2L174.5,4.0L196.4,6.5L218.2,4.4L240.0,7.5"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Jan 2026</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">1h 12m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">91%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">96</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="routekit"
+            data-industry="Logistics"
+            data-size="small"
+            data-response="-93"
+            data-csat="9"
+            data-deflection="29"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id1"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >LB</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id1" class="truncate text-[14px] font-semibold">Lukas Brenner</h3>
+                  <p class="truncate text-(--iu-muted)">Co-founder, Routekit</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Logistics<span class="block tabular-nums"
+                    ><span aria-hidden="true">1–200</span><span class="sr-only">1 to 200 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Three of us answered tickets between deliveries. Now the driver ETA goes out on its own and we only
+                  see the real problems.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                      >First response</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-down-right"
+                        aria-hidden="true"
+                      >
+                        <path d="m7 7 10 10"></path>
+                        <path d="M17 7v10H7"></path></svg
+                      >−93%<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">10h 10m</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>45m
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="First response for Routekit over 12 weeks, before and after rollout in week 5: 10h 10m to 45m."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id10">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id10)">
+                        <path
+                          d="M87.3,25.8L109.1,40.5L130.9,48.9L152.7,52.0L174.5,51.8L196.4,51.9L218.2,51.8L240.0,52.0L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,7.0L21.8,4.0L43.6,7.5L65.5,5.5L87.3,25.8"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,25.8L109.1,40.5L130.9,48.9L152.7,52.0L174.5,51.8L196.4,51.9L218.2,51.8L240.0,52.0"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Feb 2026</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">45m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">94%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">3</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="stackmint"
+            data-industry="SaaS"
+            data-size="small"
+            data-response="-78"
+            data-csat="7"
+            data-deflection="47"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id9"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >ML</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id9" class="truncate text-[14px] font-semibold">Mei Lin Ho</h3>
+                  <p class="truncate text-(--iu-muted)">Support Lead, Stackmint</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  SaaS<span class="block tabular-nums"
+                    ><span aria-hidden="true">1–200</span><span class="sr-only">1 to 200 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Half our questions were answered in the docs already. Sorrel finds the right page and the customer
+                  closes the loop themselves.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                      >Resolved without an agent</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      >+41 pts<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">6%</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>47%
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="Resolved without an agent for Stackmint over 12 weeks, before and after rollout in week 5: 6% to 47%."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id16">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id16)">
+                        <path
+                          d="M87.3,31.7L109.1,16.3L130.9,9.2L152.7,4.0L174.5,5.9L196.4,4.3L218.2,6.6L240.0,5.1L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,51.5L21.8,52.0L43.6,51.7L65.5,51.7L87.3,31.7"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,31.7L109.1,16.3L130.9,9.2L152.7,4.0L174.5,5.9L196.4,4.3L218.2,6.6L240.0,5.1"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Apr 2026</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">21m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">95%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">6</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="harborfleet"
+            data-industry="Logistics"
+            data-size="mid"
+            data-response="-73"
+            data-csat="11"
+            data-deflection="26"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id8"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >RD</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id8" class="truncate text-[14px] font-semibold">Rafael Duarte</h3>
+                  <p class="truncate text-(--iu-muted)">Director of Support, Harborfleet</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Logistics<span class="block tabular-nums"
+                    ><span aria-hidden="true">201–1k</span><span class="sr-only">201 to 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Customs holds are stressful for customers. Agents now reply with the exact document missing, and the
+                  scores show it.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">CSAT</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      >+11 pts<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">79%</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>90%
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="CSAT for Harborfleet over 12 weeks, before and after rollout in week 5: 79% to 90%."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id11">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id11)">
+                        <path
+                          d="M87.3,33.2L109.1,14.6L130.9,10.0L152.7,4.0L174.5,8.9L196.4,5.6L218.2,5.1L240.0,7.8L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,50.1L21.8,49.1L43.6,52.0L65.5,47.2L87.3,33.2"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,33.2L109.1,14.6L130.9,10.0L152.7,4.0L174.5,8.9L196.4,5.6L218.2,5.1L240.0,7.8"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Dec 2025</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">1h 4m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">90%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">31</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="kindred"
+            data-industry="Health"
+            data-size="mid"
+            data-response="-86"
+            data-csat="9"
+            data-deflection="19"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id6"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >SV</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id6" class="truncate text-[14px] font-semibold">Sanna Virtanen</h3>
+                  <p class="truncate text-(--iu-muted)">Head of Member Services, Kindred Health</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Health<span class="block tabular-nums"
+                    ><span aria-hidden="true">201–1k</span><span class="sr-only">201 to 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Claims questions arrive with the member&#x27;s plan beside them. Our first reply is the right reply
+                  far more often.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                      >First response</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-down-right"
+                        aria-hidden="true"
+                      >
+                        <path d="m7 7 10 10"></path>
+                        <path d="M17 7v10H7"></path></svg
+                      >−86%<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">6h 20m</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>52m
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="First response for Kindred Health over 12 weeks, before and after rollout in week 5: 6h 20m to 52m."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id18">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id18)">
+                        <path
+                          d="M87.3,26.0L109.1,40.3L130.9,49.1L152.7,51.7L174.5,52.0L196.4,51.7L218.2,51.9L240.0,51.7L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,4.5L21.8,7.2L43.6,4.0L65.5,7.7L87.3,26.0"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,26.0L109.1,40.3L130.9,49.1L152.7,51.7L174.5,52.0L196.4,51.7L218.2,51.9L240.0,51.7"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live May 2026</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">52m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">89%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">48</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="tillwise"
+            data-industry="Fintech"
+            data-size="large"
+            data-response="-72"
+            data-csat="8"
+            data-deflection="38"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id5"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >OH</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id5" class="truncate text-[14px] font-semibold">Omar Haddad</h3>
+                  <p class="truncate text-(--iu-muted)">CX Manager, Tillwise</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  Fintech<span class="block tabular-nums"
+                    ><span aria-hidden="true">1k+</span><span class="sr-only">more than 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Merchants reset their own payout schedules now. That single flow removed more tickets than any hire we
+                  made last year.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                      >Resolved without an agent</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      >+33 pts<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">5%</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>38%
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="Resolved without an agent for Tillwise over 12 weeks, before and after rollout in week 5: 5% to 38%."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id12">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id12)">
+                        <path
+                          d="M87.3,31.3L109.1,17.4L130.9,7.5L152.7,6.4L174.5,4.0L196.4,5.9L218.2,4.3L240.0,6.7L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,51.9L21.8,51.5L43.6,52.0L65.5,51.7L87.3,31.3"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,31.3L109.1,17.4L130.9,7.5L152.7,6.4L174.5,4.0L196.4,5.9L218.2,4.3L240.0,6.7"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Oct 2025</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">49m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">90%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">120</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+          <li
+            data-story="patchwork"
+            data-industry="SaaS"
+            data-size="mid"
+            data-response="-72"
+            data-csat="13"
+            data-deflection="31"
+          >
+            <article
+              aria-labelledby="casefile-testimonials-id3"
+              class="flex h-full flex-col rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) text-[13px] leading-[1.4] dark:border-(--iu-foreground)/10"
+            >
+              <header class="flex items-start gap-3 p-[calc(16px*var(--iu-density))] pb-0">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-9 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/8 text-[12px] font-semibold tracking-wide dark:bg-(--iu-foreground)/12"
+                  >GW</span
+                >
+                <div class="min-w-0 flex-1">
+                  <h3 id="casefile-testimonials-id3" class="truncate text-[14px] font-semibold">Grace Whitfield</h3>
+                  <p class="truncate text-(--iu-muted)">Support Engineer, Patchwork CI</p>
+                </div>
+                <p class="shrink-0 text-right font-mono text-[11px] leading-[1.5] text-(--iu-muted)">
+                  SaaS<span class="block tabular-nums"
+                    ><span aria-hidden="true">201–1k</span><span class="sr-only">201 to 1,000 people</span></span
+                  >
+                </p>
+              </header>
+              <blockquote class="px-[calc(16px*var(--iu-density))] pt-3 text-pretty">
+                <p>
+                  Build failures come in with the log excerpt and the failing step. I answer engineers like an engineer,
+                  and they notice.
+                </p>
+              </blockquote>
+              <figure class="mt-auto pt-4">
+                <div
+                  class="mx-[calc(16px*var(--iu-density))] border-t border-(--iu-border) pt-3 dark:border-(--iu-foreground)/10"
+                >
+                  <figcaption class="flex items-baseline justify-between gap-3">
+                    <span class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">CSAT</span
+                    ><span
+                      class="inline-flex items-center gap-0.5 font-mono text-[12px] font-medium whitespace-nowrap text-emerald-700 tabular-nums dark:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.75"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      >+13 pts<span class="sr-only">, an improvement</span></span
+                    >
+                  </figcaption>
+                  <p class="mt-1 font-mono text-[18px] font-medium tracking-[-0.02em] tabular-nums">
+                    <span class="text-(--iu-muted)">83%</span
+                    ><span aria-hidden="true" class="px-1.5 text-(--iu-muted)">→</span
+                    ><span class="sr-only"> to </span>96%
+                  </p>
+                  <div class="mt-2">
+                    <svg
+                      viewBox="0 0 240 56"
+                      preserveAspectRatio="none"
+                      role="img"
+                      aria-label="CSAT for Patchwork CI over 12 weeks, before and after rollout in week 5: 83% to 96%."
+                      class="block h-14 w-full overflow-visible"
+                    >
+                      <line
+                        x1="0"
+                        x2="240"
+                        y1="56"
+                        y2="56"
+                        stroke="var(--iu-border)"
+                        stroke-width="1"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <line
+                        x1="87.27272727272728"
+                        x2="87.27272727272728"
+                        y1="0"
+                        y2="56"
+                        stroke="var(--iu-muted)"
+                        stroke-width="1"
+                        stroke-dasharray="2 3"
+                        vector-effect="non-scaling-stroke"
+                      ></line>
+                      <defs>
+                        <clipPath id="casefile-testimonials-id13">
+                          <rect x="-2" y="-4" height="64" width="244px"></rect>
+                        </clipPath>
+                      </defs>
+                      <g clip-path="url(#casefile-testimonials-id13)">
+                        <path
+                          d="M87.3,31.3L109.1,15.7L130.9,10.9L152.7,4.0L174.5,7.3L196.4,4.5L218.2,8.7L240.0,5.9L240,56L87.3,56Z"
+                          fill="var(--iu-accent)"
+                          opacity="0.1"
+                        ></path>
+                        <path
+                          d="M0.0,46.3L21.8,52.0L43.6,48.7L65.5,47.9L87.3,31.3"
+                          fill="none"
+                          stroke="var(--iu-muted)"
+                          stroke-width="1.5"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                        <path
+                          d="M87.3,31.3L109.1,15.7L130.9,10.9L152.7,4.0L174.5,7.3L196.4,4.5L218.2,8.7L240.0,5.9"
+                          fill="none"
+                          stroke="var(--iu-accent)"
+                          stroke-width="2"
+                          stroke-linejoin="round"
+                          stroke-linecap="round"
+                          vector-effect="non-scaling-stroke"
+                        ></path>
+                      </g>
+                    </svg>
+                    <div
+                      aria-hidden="true"
+                      class="relative mt-1 flex justify-between font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>wk 1</span
+                      ><span class="absolute top-0 -translate-x-1/2 whitespace-nowrap" style="left: 36.36363636363637%"
+                        >live Jun 2026</span
+                      ><span>wk 12</span>
+                    </div>
+                  </div>
+                </div>
+                <dl
+                  class="mt-3 grid grid-cols-3 border-t border-(--iu-border) font-mono text-[11px] tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <div class="px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))]">
+                    <dt class="text-(--iu-muted)">Reply</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">33m</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">CSAT</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">96%</dd>
+                  </div>
+                  <div
+                    class="border-l border-(--iu-border) px-[calc(16px*var(--iu-density))] py-[calc(10px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+                  >
+                    <dt class="text-(--iu-muted)">Agents</dt>
+                    <dd class="mt-0.5 text-[13px] text-(--iu-foreground)">12</dd>
+                  </div>
+                </dl>
+              </figure>
+            </article>
+          </li>
+        </ul>
+        <p class="mt-6 font-mono text-[11px] leading-relaxed text-(--iu-muted)">
+          Medians of weekly figures from each customer&#x27;s Sorrel workspace, 4 weeks before and 8 weeks after
+          rollout. Published with written approval.
+        </p>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <template data-empty-template
+      ><div
+        data-empty="true"
+        class="mt-6 flex flex-col items-center rounded-[min(var(--iu-radius),6px)] border border-dashed border-(--iu-foreground)/25 px-6 py-14 text-center"
+      >
+        <svg width="96" height="56" viewBox="0 0 96 56" fill="none" aria-hidden="true" class="text-(--iu-muted)">
+          <rect x="0.5" y="0.5" width="95" height="55" rx="3" stroke="currentColor" opacity="0.4"></rect>
+          <path d="M8 42 L24 38 L36 40 L48 30" stroke="currentColor" stroke-width="1.5" opacity="0.7"></path>
+          <path d="M48 30 L88 30" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.5"></path>
+          <line x1="48" x2="48" y1="8" y2="48" stroke="var(--iu-accent)" stroke-dasharray="2 3"></line>
+        </svg>
+        <p data-empty-title="true" class="mt-5 text-[14px] font-semibold">No stories for Health, 1 to 200 people yet</p>
+        <p class="mt-1 max-w-[30rem] text-[13px] text-pretty text-(--iu-muted)">
+          We only publish numbers customers have signed off. Widen the filters to see teams with a similar setup.
+        </p>
+        <button
+          type="button"
+          class="mt-5 inline-flex h-9 items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3 text-[13px] font-medium transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-funnel-x lucide-filter-x"
+            aria-hidden="true"
+          >
+            <path
+              d="M12.531 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14v6a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341l.427-.473"
+            ></path>
+            <path d="m16.5 3.5 5 5"></path>
+            <path d="m21.5 3.5-5 5"></path></svg
+          >Clear filters
+        </button>
+      </div></template
+    >
+    <script>
+      (function () {
+        var root = document.querySelector("[data-stories]").closest("section");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var list = root.querySelector("[data-stories]");
+        var items = Array.prototype.slice.call(list.querySelectorAll("[data-story]"));
+        var announce = root.querySelector("[data-announce]");
+        var INDUSTRIES = ["all", "Fintech", "Health", "Logistics", "Retail", "SaaS"];
+        var SIZES = ["all", "small", "mid", "large"];
+        var SPOKEN = { small: "1 to 200 people", mid: "201 to 1,000 people", large: "more than 1,000 people" };
+        var state = { industry: "all", size: "all" };
+        var shown = [9, -76, 10, 31];
+        var ON = ["border-(--iu-accent)", "bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))]"];
+        var OFF = ["border-(--iu-foreground)/20", "pointer-fine:hover:border-(--iu-foreground)/45"];
+        var empty = null;
+
+        function matches(item, industry, size) {
+          return (
+            (industry === "all" || item.getAttribute("data-industry") === industry) &&
+            (size === "all" || item.getAttribute("data-size") === size)
+          );
+        }
+        function median(values) {
+          if (!values.length) return null;
+          var sorted = values.slice().sort(function (a, b) {
+            return a - b;
+          });
+          var mid = Math.floor(sorted.length / 2);
+          return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+        }
+        var FORMATS = [
+          function (v) {
+            return String(v);
+          },
+          function (v) {
+            return (v > 0 ? "+" : "−") + Math.abs(v) + "%";
+          },
+          function (v) {
+            return "+" + v + " pts";
+          },
+          function (v) {
+            return v + "%";
+          },
+        ];
+        // KPI figures step to their new value over 400ms.
+        function tick(index, to) {
+          var dd = root.querySelector('[data-kpi="' + index + '"]');
+          if (to === null) {
+            dd.innerHTML = '<span class="text-(--iu-muted)">–</span>';
+            return;
+          }
+          if (!dd.querySelector("[aria-hidden]")) {
+            dd.innerHTML = '<span aria-hidden="true"></span><span class="sr-only"></span>';
+          }
+          var visual = dd.querySelector("[aria-hidden]");
+          dd.querySelector(".sr-only").textContent = FORMATS[index](to);
+          var from = shown[index] === null ? to : shown[index];
+          shown[index] = to;
+          if (reduce || from === to) {
+            visual.textContent = FORMATS[index](to);
+            return;
+          }
+          var start = null;
+          function frame(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / 400);
+            var eased = 1 - (1 - t) * (1 - t);
+            visual.textContent = FORMATS[index](Math.round(from + (to - from) * eased));
+            if (t < 1 && shown[index] === to) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        }
+
+        function emptyState() {
+          if (empty) return empty;
+          empty = document.querySelector("[data-empty-template]").content.firstElementChild.cloneNode(true);
+          empty.querySelector("button").addEventListener("click", function () {
+            state.industry = "all";
+            state.size = "all";
+            render();
+          });
+          return empty;
+        }
+
+        function render() {
+          var groups = { industry: INDUSTRIES, size: SIZES };
+          Object.keys(groups).forEach(function (group) {
+            var chips = root.querySelectorAll('[data-group="' + group + '"] [data-chip]');
+            chips.forEach(function (chip, i) {
+              var value = groups[group][i];
+              var on = state[group] === value;
+              chip.setAttribute("aria-pressed", String(on));
+              ON.forEach(function (name) {
+                chip.classList.toggle(name, on);
+              });
+              OFF.forEach(function (name) {
+                chip.classList.toggle(name, !on);
+              });
+              chip.querySelector("[data-count]").textContent = items.filter(function (item) {
+                return group === "industry" ? matches(item, value, state.size) : matches(item, state.industry, value);
+              }).length;
+            });
+          });
+
+          var visible = items.filter(function (item) {
+            return matches(item, state.industry, state.size);
+          });
+          var first = {};
+          if (!reduce) {
+            items.forEach(function (item) {
+              if (!item.hidden) first[item.getAttribute("data-story")] = item.getBoundingClientRect();
+            });
+          }
+          items.forEach(function (item) {
+            item.hidden = visible.indexOf(item) === -1;
+          });
+          // Cards that stay glide to their new place; cards that arrive fade and scale in.
+          if (!reduce) {
+            visible.forEach(function (item) {
+              var before = first[item.getAttribute("data-story")];
+              var after = item.getBoundingClientRect();
+              if (before) {
+                item.animate(
+                  [
+                    { transform: "translate(" + (before.left - after.left) + "px," + (before.top - after.top) + "px)" },
+                    { transform: "none" },
+                  ],
+                  { duration: 260, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+                );
+              } else {
+                item.animate(
+                  [
+                    { opacity: 0, transform: "scale(0.98)" },
+                    { opacity: 1, transform: "none" },
+                  ],
+                  { duration: 200, easing: "ease-out" },
+                );
+                reveal(item.querySelector("svg[role=img]"));
+              }
+            });
+          }
+
+          var summary = [state.industry === "all" ? "" : state.industry, state.size === "all" ? "" : SPOKEN[state.size]]
+            .filter(Boolean)
+            .join(", ");
+          if (!visible.length) {
+            var node = emptyState();
+            node.querySelector("[data-empty-title]").textContent =
+              "No stories for " + (summary || "these filters") + " yet";
+            list.hidden = true;
+            if (!node.parentNode) list.parentNode.insertBefore(node, list.nextSibling);
+          } else {
+            list.hidden = false;
+            if (empty && empty.parentNode) empty.parentNode.removeChild(empty);
+          }
+
+          var pick = function (name) {
+            return visible.map(function (item) {
+              return Number(item.getAttribute("data-" + name));
+            });
+          };
+          tick(0, visible.length);
+          var r = median(pick("response"));
+          var c = median(pick("csat"));
+          var d = median(pick("deflection"));
+          tick(1, r === null ? null : Math.round(r));
+          tick(2, c === null ? null : Math.round(c));
+          tick(3, d === null ? null : Math.round(d));
+          announce.textContent =
+            visible.length + (visible.length === 1 ? " story" : " stories") + (summary ? " for " + summary : "");
+        }
+
+        root.querySelectorAll("[data-group]").forEach(function (group) {
+          var name = group.getAttribute("data-group");
+          group.querySelectorAll("[data-chip]").forEach(function (chip, i) {
+            chip.addEventListener("click", function () {
+              state[name] = (name === "industry" ? INDUSTRIES : SIZES)[i];
+              render();
+            });
+          });
+        });
+
+        // Charts reveal left to right once, when they first come into view.
+        function reveal(svg) {
+          if (!svg || reduce) return;
+          var rect = svg.querySelector("clipPath rect");
+          var full = 244;
+          var start = null;
+          rect.setAttribute("width", "0");
+          function frame(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / 900);
+            var eased = 1 - Math.pow(1 - t, 3);
+            rect.setAttribute("width", String(full * eased));
+            if (t < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        }
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              observer.unobserve(entry.target);
+              reveal(entry.target);
+            }
+          });
+        });
+        root.querySelectorAll("svg[role=img]").forEach(function (svg) {
+          observer.observe(svg);
+        });
+      })();
+    </script>
+  </body>
+</html>

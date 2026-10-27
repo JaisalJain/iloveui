@@ -1,0 +1,15 @@
+{
+  "slug": "hairline-pricing",
+  "name": "Hairline pricing",
+  "category": "pricing",
+  "styleFamily": "swiss-minimal",
+  "tier": "free",
+  "description": "Three plans and a comparison on one strict grid. Switching to yearly cross-fades every price and states the saving per plan in dollars.",
+  "tags": ["pricing", "billing-toggle", "comparison-table", "checkout", "swiss", "grid"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

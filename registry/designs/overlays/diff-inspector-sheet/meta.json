@@ -1,0 +1,15 @@
+{
+  "slug": "diff-inspector-sheet",
+  "name": "Diff inspector sheet",
+  "category": "overlays",
+  "styleFamily": "swiss-minimal",
+  "tier": "pro",
+  "description": "A record inspector side sheet that marks every edited field in its gutter with the old value, and asks inline before discarding unsaved changes.",
+  "tags": ["side-sheet", "inspector", "drawer", "unsaved-changes", "focus-trap", "bottom-sheet", "form"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

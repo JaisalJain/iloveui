@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verelle cards · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto flex min-h-dvh w-full max-w-5xl items-center px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full">
+        <!-- iloveui:component:start -->
+        <section
+          data-verelle
+          aria-labelledby="verelle"
+          class="@container font-(family-name:--iu-font) text-(--iu-foreground)"
+        >
+          <h2 id="verelle" class="sr-only">Maison Verelle: Phase de Lune</h2>
+          <div
+            class="grid gap-[calc(16px*var(--iu-density))] @3xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] @3xl:grid-rows-[auto_auto]"
+          >
+            <article
+              class="group relative flex flex-col rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) transition-[border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] data-[force-state=hover]:border-(--iu-foreground)/40 motion-reduce:transition-none @3xl:row-span-2 pointer-fine:hover:border-(--iu-foreground)/40"
+            >
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-2 border border-(--iu-foreground)/0 transition-[border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[force-state=hover]:border-(--iu-foreground)/25 motion-reduce:transition-none pointer-fine:group-hover:border-(--iu-foreground)/25"
+              ></span>
+              <div class="flex items-baseline justify-between gap-4 px-6 pt-6 @lg:px-8 @lg:pt-8">
+                <p class="text-[10px] font-medium tracking-[0.22em] text-(--iu-muted) uppercase">Maison Verelle</p>
+                <p class="font-mono text-[11px] text-(--iu-muted)">Ref. V9-38-ST</p>
+              </div>
+              <div
+                class="relative mx-6 mt-6 flex h-64 items-center justify-center bg-[color-mix(in_oklab,var(--iu-foreground)_3%,var(--iu-surface))] @lg:mx-8 @lg:h-80 dark:bg-[color-mix(in_oklab,var(--iu-foreground)_5%,var(--iu-surface))]"
+              >
+                <div
+                  class="h-[82%] transition-transform duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[force-state=hover]:scale-[1.02] motion-reduce:transition-none pointer-fine:group-hover:scale-[1.02]"
+                >
+                  <svg viewBox="0 0 240 300" aria-hidden="true" class="h-full w-auto overflow-visible">
+                    <path
+                      d="M92 24h56l6 46H86z"
+                      class="fill-(--iu-surface) stroke-(--iu-foreground)"
+                      stroke-width="1"
+                    ></path>
+                    <path
+                      d="M86 230h68l-6 46H92z"
+                      class="fill-(--iu-surface) stroke-(--iu-foreground)"
+                      stroke-width="1"
+                    ></path>
+                    <path
+                      d="M100 24v-8M140 24v-8M100 276v8M140 276v8"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.4"
+                    ></path>
+                    <rect
+                      x="204"
+                      y="141"
+                      width="14"
+                      height="18"
+                      rx="2"
+                      class="fill-(--iu-surface) stroke-(--iu-foreground)"
+                    ></rect>
+                    <circle
+                      cx="120"
+                      cy="150"
+                      r="86"
+                      class="fill-(--iu-surface) stroke-(--iu-foreground)"
+                      stroke-width="1.25"
+                    ></circle>
+                    <circle
+                      cx="120"
+                      cy="150"
+                      r="78"
+                      class="fill-(--iu-background) stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                    ></circle>
+                    <circle
+                      cx="120"
+                      cy="150"
+                      r="58"
+                      fill="none"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.2"
+                    ></circle>
+                    <line
+                      x1="120"
+                      y1="84"
+                      x2="120"
+                      y2="74"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="127.52604935527106"
+                      y1="78.39442353348433"
+                      x2="127.94416320834166"
+                      y2="74.41633595201122"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="134.96964173887866"
+                      y1="79.57337274716599"
+                      x2="135.8012885021497"
+                      y2="75.66078234423077"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="142.2492235949962"
+                      y1="81.52393082674895"
+                      x2="143.485291572496"
+                      y2="77.71970476156834"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="149.2850383014576"
+                      y1="84.22472704973273"
+                      x2="150.91198487376082"
+                      y2="80.57054521916234"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="153"
+                      y1="92.84232335022705"
+                      x2="158"
+                      y2="84.18206931238265"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="162.32053816505805"
+                      y1="91.75077640500379"
+                      x2="164.67167917422796"
+                      y2="88.51470842750399"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="168.1774036578378"
+                      y1="96.49357256562762"
+                      x2="170.85392608327322"
+                      y2="93.52099326371804"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="173.50642743437237"
+                      y1="101.8225963421622"
+                      x2="176.47900673628197"
+                      y2="99.14607391672678"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="178.2492235949962"
+                      y1="107.67946183494193"
+                      x2="181.485291572496"
+                      y2="105.32832082577204"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="177.15767664977295"
+                      y1="117"
+                      x2="185.81793068761732"
+                      y2="112"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="185.77527295026727"
+                      y1="120.71496169854237"
+                      x2="189.42945478083766"
+                      y2="119.08801512623917"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="188.47606917325106"
+                      y1="127.75077640500379"
+                      x2="192.28029523843168"
+                      y2="126.51470842750399"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="190.426627252834"
+                      y1="135.03035826112134"
+                      x2="194.33921765576923"
+                      y2="134.1987114978503"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="191.60557646651569"
+                      y1="142.47395064472894"
+                      x2="195.58366404798878"
+                      y2="142.05583679165835"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="186"
+                      y1="150"
+                      x2="196"
+                      y2="150"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="191.60557646651569"
+                      y1="157.52604935527103"
+                      x2="195.58366404798878"
+                      y2="157.94416320834165"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="190.426627252834"
+                      y1="164.96964173887866"
+                      x2="194.33921765576923"
+                      y2="165.8012885021497"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="188.47606917325106"
+                      y1="172.2492235949962"
+                      x2="192.28029523843168"
+                      y2="173.485291572496"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="185.77527295026727"
+                      y1="179.2850383014576"
+                      x2="189.42945478083766"
+                      y2="180.91198487376082"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="177.15767664977295"
+                      y1="183"
+                      x2="185.81793068761735"
+                      y2="188"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="178.2492235949962"
+                      y1="192.32053816505805"
+                      x2="181.485291572496"
+                      y2="194.67167917422796"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="173.5064274343724"
+                      y1="198.17740365783777"
+                      x2="176.47900673628197"
+                      y2="200.8539260832732"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="168.17740365783777"
+                      y1="203.5064274343724"
+                      x2="170.85392608327322"
+                      y2="206.47900673628197"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="162.32053816505808"
+                      y1="208.2492235949962"
+                      x2="164.67167917422796"
+                      y2="211.485291572496"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="153"
+                      y1="207.15767664977295"
+                      x2="158"
+                      y2="215.81793068761735"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="149.2850383014576"
+                      y1="215.77527295026727"
+                      x2="150.91198487376082"
+                      y2="219.42945478083766"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="142.2492235949962"
+                      y1="218.47606917325106"
+                      x2="143.485291572496"
+                      y2="222.28029523843168"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="134.96964173887866"
+                      y1="220.426627252834"
+                      x2="135.8012885021497"
+                      y2="224.33921765576923"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="127.52604935527107"
+                      y1="221.60557646651569"
+                      x2="127.94416320834168"
+                      y2="225.58366404798878"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="120.00000000000001"
+                      y1="216"
+                      x2="120.00000000000001"
+                      y2="226"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="112.47395064472894"
+                      y1="221.60557646651569"
+                      x2="112.05583679165834"
+                      y2="225.58366404798878"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="105.03035826112135"
+                      y1="220.426627252834"
+                      x2="104.19871149785031"
+                      y2="224.33921765576923"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="97.75077640500376"
+                      y1="218.47606917325106"
+                      x2="96.51470842750398"
+                      y2="222.28029523843168"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="90.71496169854241"
+                      y1="215.77527295026727"
+                      x2="89.08801512623921"
+                      y2="219.4294547808377"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="87"
+                      y1="207.15767664977295"
+                      x2="82"
+                      y2="215.81793068761732"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="77.67946183494195"
+                      y1="208.2492235949962"
+                      x2="75.32832082577205"
+                      y2="211.485291572496"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="71.8225963421622"
+                      y1="203.50642743437237"
+                      x2="69.14607391672678"
+                      y2="206.47900673628197"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="66.49357256562763"
+                      y1="198.1774036578378"
+                      x2="63.520993263718054"
+                      y2="200.85392608327325"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="61.75077640500379"
+                      y1="192.32053816505808"
+                      x2="58.514708427504004"
+                      y2="194.67167917422796"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="62.84232335022706"
+                      y1="183.00000000000003"
+                      x2="54.18206931238268"
+                      y2="188.00000000000003"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="54.224727049732735"
+                      y1="179.2850383014576"
+                      x2="50.57054521916233"
+                      y2="180.91198487376082"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="51.52393082674895"
+                      y1="172.24922359499624"
+                      x2="47.71970476156834"
+                      y2="173.485291572496"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="49.573372747166005"
+                      y1="164.9696417388787"
+                      x2="45.66078234423078"
+                      y2="165.80128850214973"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="48.39442353348433"
+                      y1="157.5260493552711"
+                      x2="44.416335952011224"
+                      y2="157.94416320834173"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="54"
+                      y1="150"
+                      x2="44"
+                      y2="150"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="48.39442353348433"
+                      y1="142.47395064472892"
+                      x2="44.416335952011224"
+                      y2="142.0558367916583"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="49.573372747166005"
+                      y1="135.0303582611213"
+                      x2="45.66078234423078"
+                      y2="134.1987114978503"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="51.52393082674894"
+                      y1="127.75077640500379"
+                      x2="47.71970476156832"
+                      y2="126.51470842750402"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="54.22472704973272"
+                      y1="120.71496169854242"
+                      x2="50.57054521916231"
+                      y2="119.08801512623921"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="62.842323350227055"
+                      y1="117"
+                      x2="54.182069312382666"
+                      y2="112"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="61.750776405003776"
+                      y1="107.67946183494195"
+                      x2="58.51470842750398"
+                      y2="105.32832082577207"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="66.49357256562763"
+                      y1="101.8225963421622"
+                      x2="63.520993263718054"
+                      y2="99.14607391672675"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="71.82259634216217"
+                      y1="96.49357256562766"
+                      x2="69.14607391672673"
+                      y2="93.52099326371808"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="77.67946183494192"
+                      y1="91.75077640500379"
+                      x2="75.32832082577202"
+                      y2="88.514708427504"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="86.99999999999997"
+                      y1="92.84232335022708"
+                      x2="81.99999999999997"
+                      y2="84.18206931238268"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.9"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="90.7149616985424"
+                      y1="84.22472704973273"
+                      x2="89.08801512623918"
+                      y2="80.57054521916233"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="97.75077640500378"
+                      y1="81.52393082674895"
+                      x2="96.51470842750398"
+                      y2="77.71970476156834"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="105.0303582611213"
+                      y1="79.573372747166"
+                      x2="104.19871149785025"
+                      y2="75.66078234423078"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <line
+                      x1="112.47395064472889"
+                      y1="78.39442353348433"
+                      x2="112.05583679165827"
+                      y2="74.41633595201122"
+                      class="stroke-(--iu-foreground)"
+                      stroke-opacity="0.35"
+                      stroke-width="0.6"
+                    ></line>
+                    <path
+                      d="M96 196a24 24 0 0 1 48 0z"
+                      class="fill-(--iu-surface) stroke-(--iu-foreground)"
+                      stroke-opacity="0.5"
+                    ></path>
+                    <circle cx="113" cy="190" r="7" class="fill-(--iu-accent)"></circle>
+                    <circle cx="117" cy="188" r="7" class="fill-(--iu-surface)"></circle>
+                    <text
+                      x="120"
+                      y="112"
+                      text-anchor="middle"
+                      class="fill-(--iu-foreground) font-serif"
+                      font-size="11"
+                      letter-spacing="2"
+                    >
+                      VERELLE
+                    </text>
+                    <line
+                      x1="120"
+                      y1="150"
+                      x2="88"
+                      y2="128"
+                      class="stroke-(--iu-foreground)"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                    ></line>
+                    <line
+                      x1="120"
+                      y1="150"
+                      x2="164"
+                      y2="118"
+                      class="stroke-(--iu-foreground)"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    ></line>
+                    <line x1="120" y1="164" x2="120" y2="84" class="stroke-(--iu-accent)" stroke-width="0.75"></line>
+                    <circle cx="120" cy="150" r="3" class="fill-(--iu-foreground)"></circle>
+                  </svg>
+                </div>
+                <span
+                  class="absolute bottom-3 left-1/2 h-px w-10 -translate-x-1/2 bg-(--iu-accent)"
+                  aria-hidden="true"
+                ></span>
+              </div>
+              <div class="flex flex-1 flex-col px-6 pt-8 pb-6 text-center @lg:px-8 @lg:pb-8">
+                <h3 class="font-serif text-[40px] leading-none font-normal tracking-[-0.01em] text-balance">
+                  Phase de Lune
+                </h3>
+                <ul class="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[13px] text-(--iu-muted)">
+                  <li class="flex items-center gap-3">38 mm steel</li>
+                  <li class="flex items-center gap-3">
+                    <span aria-hidden="true" class="size-[3px] rounded-full bg-(--iu-muted)"></span>Hand-wound calibre
+                    V.9
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <span aria-hidden="true" class="size-[3px] rounded-full bg-(--iu-muted)"></span>72 h reserve
+                  </li>
+                </ul>
+                <div class="mx-auto mt-6 w-full max-w-72 border-y border-double border-(--iu-border) py-3">
+                  <p class="font-serif text-[28px] leading-none tabular-nums">€14,800</p>
+                  <p class="mt-2 text-[11px] tracking-[0.14em] text-(--iu-muted) uppercase">
+                    Edition of 120 · 9 remain
+                  </p>
+                </div>
+                <div class="mt-8 flex flex-col items-center gap-3">
+                  <button
+                    type="button"
+                    data-reserve
+                    class="relative inline-grid h-12 min-w-44 place-items-center rounded-full bg-(--iu-foreground) px-8 text-[11px] font-medium tracking-[0.22em] text-(--iu-background) uppercase transition-[background-color,scale] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-(--iu-accent) enabled:active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-transparent disabled:text-(--iu-muted) disabled:ring-1 disabled:ring-(--iu-muted) disabled:ring-inset data-[force-state=active]:scale-[0.98] data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-3 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))] motion-reduce:transition-none pointer-fine:enabled:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))]"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -inset-[5px] size-[calc(100%+10px)] overflow-visible"
+                    >
+                      <rect
+                        data-trace
+                        width="100%"
+                        height="100%"
+                        rx="29"
+                        fill="none"
+                        class="stroke-(--iu-accent)"
+                        stroke-width="1"
+                        pathLength="1"
+                        stroke-dashoffset="0"
+                        stroke-dasharray="0 1"
+                      ></rect></svg
+                    ><span
+                      data-label="idle"
+                      aria-hidden="false"
+                      class="col-start-1 row-start-1 inline-flex items-center gap-2 opacity-100 transition-opacity duration-300 motion-reduce:transition-none"
+                      >Reserve</span
+                    ><span
+                      data-label="loading"
+                      aria-hidden="true"
+                      class="col-start-1 row-start-1 inline-flex items-center gap-2 opacity-0 transition-opacity duration-300 motion-reduce:transition-none"
+                      >Reserving</span
+                    ><span
+                      data-label="success"
+                      aria-hidden="true"
+                      class="col-start-1 row-start-1 inline-flex items-center gap-2 opacity-0 transition-opacity duration-300 motion-reduce:transition-none"
+                      ><svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Reserved</span
+                    >
+                  </button>
+                  <p data-note aria-live="polite" class="min-h-5 text-[12px] text-(--iu-muted)">
+                    <span class="block">No payment until your fitting</span>
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article
+              class="group relative grid items-center gap-6 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) p-6 transition-[border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] data-[force-state=hover]:border-(--iu-foreground)/40 motion-reduce:transition-none @md:grid-cols-[minmax(0,1fr)_auto] @lg:p-8 pointer-fine:hover:border-(--iu-foreground)/40"
+            >
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-2 border border-(--iu-foreground)/0 transition-[border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[force-state=hover]:border-(--iu-foreground)/25 motion-reduce:transition-none pointer-fine:group-hover:border-(--iu-foreground)/25"
+              ></span>
+              <div>
+                <p class="text-[10px] font-medium tracking-[0.22em] text-(--iu-muted) uppercase">Complimentary</p>
+                <h3 class="mt-3 font-serif text-[28px] leading-[1.05] font-normal text-balance">Engraved by hand</h3>
+                <p class="mt-3 max-w-[30ch] text-[13px] leading-relaxed text-pretty text-(--iu-muted)">
+                  Every caseback is cut in our Geneva atelier, up to 24 characters in roman or script.
+                </p>
+                <button
+                  type="button"
+                  class="mt-5 inline-flex h-10 items-center gap-2 border-b border-(--iu-foreground)/40 text-[11px] font-medium tracking-[0.2em] whitespace-nowrap uppercase transition-[border-color,gap] duration-300 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-(--iu-accent) enabled:active:opacity-70 disabled:cursor-not-allowed disabled:text-(--iu-muted) data-[force-state=active]:opacity-70 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-3 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:gap-3 data-[force-state=hover]:border-(--iu-accent) motion-reduce:transition-none pointer-fine:enabled:hover:gap-3 pointer-fine:enabled:hover:border-(--iu-accent)"
+                >
+                  Engraving styles<svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path>
+                  </svg>
+                </button>
+              </div>
+              <svg viewBox="0 0 120 120" aria-hidden="true" class="order-first w-24 @md:order-none @md:w-28 @lg:w-32">
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="56"
+                  class="fill-(--iu-background) stroke-(--iu-foreground)"
+                  stroke-opacity="0.5"
+                ></circle>
+                <circle
+                  cx="60"
+                  cy="60"
+                  r="44"
+                  fill="none"
+                  class="stroke-(--iu-foreground)"
+                  stroke-opacity="0.2"
+                  stroke-dasharray="1 3"
+                ></circle>
+                <path id="verelle-arc" d="M24 60a36 36 0 0 1 72 0" fill="none"></path>
+                <text class="fill-(--iu-foreground) font-serif italic" font-size="13">
+                  <textPath href="#verelle-arc" startOffset="50%" text-anchor="middle">C. &amp; A. · MMXXVI</textPath>
+                </text>
+                <text
+                  x="60"
+                  y="80"
+                  text-anchor="middle"
+                  class="fill-(--iu-muted) font-mono"
+                  font-size="6"
+                  letter-spacing="1"
+                >
+                  Nº 047 / 120
+                </text>
+              </svg>
+            </article>
+            <article
+              class="group relative flex flex-col rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) p-6 transition-[border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] data-[force-state=hover]:border-(--iu-foreground)/40 motion-reduce:transition-none @lg:p-8 pointer-fine:hover:border-(--iu-foreground)/40"
+            >
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute inset-2 border border-(--iu-foreground)/0 transition-[border-color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-data-[force-state=hover]:border-(--iu-foreground)/25 motion-reduce:transition-none pointer-fine:group-hover:border-(--iu-foreground)/25"
+              ></span>
+              <div class="flex items-center gap-4">
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-14 shrink-0 items-center justify-center rounded-full border border-(--iu-foreground)/30 font-serif text-[22px] italic"
+                  >CM</span
+                >
+                <div class="min-w-0">
+                  <p class="text-[10px] font-medium tracking-[0.22em] text-(--iu-muted) uppercase">Your advisor</p>
+                  <h3 class="mt-1 font-serif text-[24px] leading-tight font-normal">Céline Marchetti</h3>
+                  <p class="text-[13px] text-(--iu-muted)">Private client advisor, Geneva atelier</p>
+                </div>
+              </div>
+              <dl class="mt-6 grid grid-cols-2 border-t border-(--iu-border) pt-4 text-[13px]">
+                <div>
+                  <dt class="text-[10px] font-medium tracking-[0.22em] text-(--iu-muted) uppercase">Next opening</dt>
+                  <dd class="mt-1.5 pr-4 text-pretty">Thursday 30 October, 11:00</dd>
+                </div>
+                <div class="border-l border-(--iu-border) pl-4">
+                  <dt class="text-[10px] font-medium tracking-[0.22em] text-(--iu-muted) uppercase">Response</dt>
+                  <dd class="mt-1.5 text-pretty">Replies within two hours</dd>
+                </div>
+              </dl>
+              <button
+                type="button"
+                class="mt-6 inline-flex h-11 items-center justify-center rounded-full border border-(--iu-foreground)/50 px-6 text-[11px] font-medium tracking-[0.2em] uppercase transition-[background-color,border-color,scale] duration-300 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-(--iu-accent) enabled:active:scale-[0.98] disabled:cursor-not-allowed disabled:border-dashed disabled:border-(--iu-muted) disabled:text-(--iu-muted) data-[force-state=active]:scale-[0.98] data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-3 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:border-(--iu-foreground) data-[force-state=hover]:bg-(--iu-foreground)/5 motion-reduce:transition-none pointer-fine:enabled:hover:border-(--iu-foreground) pointer-fine:enabled:hover:bg-(--iu-foreground)/5"
+              >
+                Book a private appointment
+              </button>
+            </article>
+          </div>
+        </section>
+        <!-- iloveui:component:end -->
+      </div>
+    </div>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-verelle]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var button = root.querySelector("[data-reserve]");
+        var trace = root.querySelector("[data-trace]");
+        var note = root.querySelector("[data-note] span");
+        var NOTES = {
+          idle: "No payment until your fitting",
+          loading: "Confirming your allocation",
+          success: "Held for you for 48 hours. A confirmation is on its way.",
+        };
+        var status = "idle";
+        var shown = 0;
+        var frame;
+
+        // Draw the hairline from its current length to a target, like a progress stroke.
+        function traceTo(target, duration) {
+          cancelAnimationFrame(frame);
+          var from = shown;
+          if (reduce || duration === 0) {
+            shown = target;
+            trace.setAttribute("stroke-dasharray", target + " 1");
+            return;
+          }
+          var start = null;
+          function step(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / duration);
+            var eased = 1 - Math.pow(1 - t, 3);
+            shown = from + (target - from) * eased;
+            trace.setAttribute("stroke-dasharray", shown + " 1");
+            if (t < 1) frame = requestAnimationFrame(step);
+          }
+          frame = requestAnimationFrame(step);
+        }
+
+        function set(next) {
+          status = next;
+          button.querySelectorAll("[data-label]").forEach(function (span) {
+            var on = span.getAttribute("data-label") === next;
+            span.classList.toggle("opacity-100", on);
+            span.classList.toggle("opacity-0", !on);
+            span.setAttribute("aria-hidden", String(!on));
+          });
+          if (next === "idle") button.removeAttribute("aria-disabled");
+          else button.setAttribute("aria-disabled", "true");
+          button.classList.toggle("cursor-default", next !== "idle");
+          note.textContent = NOTES[next];
+          traceTo(next === "success" ? 1 : next === "loading" ? 0.86 : 0, next === "loading" ? 1400 : 400);
+        }
+
+        button.addEventListener("click", function () {
+          if (status !== "idle") return;
+          set("loading");
+          // Replace this timeout with your reservation request.
+          setTimeout(function () {
+            set("success");
+            setTimeout(function () {
+              set("idle");
+            }, 4000);
+          }, 1600);
+        });
+      })();
+    </script>
+  </body>
+</html>

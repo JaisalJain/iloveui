@@ -1,0 +1,15 @@
+{
+  "slug": "tessera-invoice-table",
+  "name": "Tessera invoice table",
+  "category": "tables",
+  "styleFamily": "data-dense",
+  "tier": "free",
+  "description": "A dense invoices table whose status line turns into a bulk bar on select, rolling the outstanding total as you shift-click a range.",
+  "tags": ["data-table", "invoices", "bulk-actions", "sorting", "pagination", "billing", "selection"],
+  "states": ["default", "loading", "empty", "error"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

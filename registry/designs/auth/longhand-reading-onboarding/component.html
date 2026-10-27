@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Longhand reading questionnaire · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div class="flex min-h-dvh w-full items-center justify-center bg-(--iu-background) px-4 py-10 sm:px-8 sm:py-16">
+      <div
+        data-longhand
+        class="@container w-full max-w-5xl font-(family-name:--iu-font) text-(--iu-foreground) antialiased"
+      >
+        <div class="rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface)">
+          <header class="flex items-baseline justify-between gap-4 px-5 pt-5 @lg:px-10 @lg:pt-8">
+            <span class="font-serif text-2xl italic">Longhand</span>
+            <span class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase tabular-nums"
+              >Reader's survey · 2026</span
+            >
+          </header>
+          <div
+            aria-hidden="true"
+            class="mx-5 mt-4 border-t-[3px] border-double border-(--iu-foreground) @lg:mx-10"
+          ></div>
+
+          <div class="grid @3xl:grid-cols-[15rem_minmax(0,1fr)]">
+            <nav
+              aria-label="Survey contents"
+              class="px-5 pt-5 @lg:px-10 @3xl:border-r @3xl:border-(--iu-border) @3xl:py-10 @3xl:pr-6"
+            >
+              <p class="hidden text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase @3xl:block">
+                Contents
+              </p>
+              <ol data-contents class="hidden @3xl:mt-4 @3xl:block"></ol>
+              <div class="@3xl:hidden">
+                <p class="sr-only" data-progress-text>Chapter I of V, Interests</p>
+                <div aria-hidden="true" data-bars class="grid grid-cols-5 gap-1"></div>
+              </div>
+              <p class="mt-8 hidden text-[13px] leading-relaxed text-pretty text-(--iu-muted) @3xl:block">
+                Four questions, about a minute. Change any answer later from Settings.
+              </p>
+            </nav>
+
+            <div
+              class="min-w-0 px-5 pt-6 pb-[calc(32px*var(--iu-density))] @lg:px-10 @lg:pt-10 @lg:pb-[calc(48px*var(--iu-density))]"
+            >
+              <div
+                data-page
+                class="transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+              >
+                <p data-kicker class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">
+                  Chapter I · Interests
+                </p>
+                <h2
+                  id="lh-title"
+                  tabindex="-1"
+                  data-title
+                  class="mt-3 max-w-[22ch] font-serif text-[40px] leading-[1.02] tracking-[-0.01em] text-balance outline-none @lg:text-[56px]"
+                >
+                  What would you like to read more of?
+                </h2>
+                <p data-aside class="mt-3 text-[15px] text-(--iu-muted) italic">Choose up to three.</p>
+
+                <div data-question>
+                  <fieldset class="mt-8" aria-describedby="lh-notice">
+                    <legend class="sr-only" data-legend>What would you like to read more of?</legend>
+                    <div data-choices class="grid gap-x-10 @xl:grid-cols-2"></div>
+                  </fieldset>
+                  <p
+                    id="lh-notice"
+                    aria-live="polite"
+                    data-notice
+                    class="mt-4 min-h-5 text-[13px] text-(--iu-muted) italic"
+                  >
+                    0 of 3 chosen
+                  </p>
+                  <div class="mt-6 flex items-center justify-between gap-4 border-t border-(--iu-border) pt-5">
+                    <button
+                      type="button"
+                      data-prev
+                      hidden
+                      class="inline-flex h-10 items-center gap-2 rounded-[min(var(--iu-radius),2px)] text-sm text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-fine:hover:text-(--iu-foreground)"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="m12 19-7-7 7-7" />
+                        <path d="M19 12H5" />
+                      </svg>
+                      Previous
+                    </button>
+                    <span data-folio class="font-mono text-[11px] text-(--iu-muted) tabular-nums">p. 01</span>
+                    <button
+                      type="button"
+                      data-next
+                      class="group inline-flex h-11 items-center gap-2 rounded-full bg-(--iu-foreground) px-6 text-sm font-medium text-(--iu-background) transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))]"
+                    >
+                      <span data-next-label>Next chapter</span>
+                      <svg
+                        aria-hidden="true"
+                        class="transition-transform duration-300 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div data-plan hidden class="mt-8 grid gap-10 @3xl:grid-cols-[minmax(0,1fr)_17rem]">
+                  <article>
+                    <p class="text-[17px] leading-[1.65] text-pretty">
+                      <span class="float-left mt-1 mr-2 font-serif text-[64px] leading-[0.8] text-(--iu-accent)">Y</span
+                      ><span data-summary></span>
+                    </p>
+                    <h3
+                      data-reads-title
+                      class="mt-8 border-b border-(--iu-foreground) pb-2 text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase"
+                    >
+                      First reads
+                    </h3>
+                    <ol data-reads></ol>
+                  </article>
+
+                  <form data-save novalidate aria-labelledby="lh-save" class="self-start">
+                    <h3 id="lh-save" class="font-serif text-2xl leading-tight italic">Keep this plan</h3>
+                    <p class="mt-1 text-[13px] text-(--iu-muted)">Free for 30 days, then $6 a month.</p>
+                    <fieldset data-fieldset class="mt-4 grid gap-[calc(16px*var(--iu-density))]">
+                      <legend class="sr-only">Create an account</legend>
+                      <div class="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          class="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-(--iu-foreground)/35 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 pointer-fine:hover:border-(--iu-foreground)"
+                        >
+                          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.19-1.79 4.13-1.15 1.15-2.93 2.4-6.05 2.4-4.83 0-8.6-3.89-8.6-8.72s3.77-8.72 8.6-8.72c2.6 0 4.51 1.03 5.91 2.35l2.31-2.31C18.75 1.44 16.13 0 12.48 0 5.87 0 .31 5.39.31 12s5.56 12 12.17 12c3.57 0 6.27-1.17 8.37-3.36 2.16-2.16 2.84-5.21 2.84-7.67 0-.76-.05-1.47-.17-2.05H12.48z"
+                            />
+                          </svg>
+                          <span><span class="sr-only">Continue with </span>Google</span>
+                        </button>
+                        <button
+                          type="button"
+                          class="inline-flex h-10 items-center justify-center gap-2 rounded-full border border-(--iu-foreground)/35 text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 pointer-fine:hover:border-(--iu-foreground)"
+                        >
+                          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                              d="M12.15 6.9c-.95 0-2.42-1.08-3.96-1.04-2.04.03-3.91 1.18-4.96 3.01-2.12 3.68-.55 9.1 1.52 12.09 1.01 1.45 2.2 3.09 3.79 3.04 1.52-.07 2.09-.99 3.94-.99 1.83 0 2.35.99 3.96.95 1.64-.03 2.67-1.48 3.68-2.95 1.15-1.69 1.63-3.33 1.66-3.42-.04-.01-3.18-1.22-3.22-4.86-.03-3.04 2.48-4.49 2.6-4.56-1.43-2.09-3.63-2.32-4.39-2.38-2-.16-3.68 1.09-4.62 1.09zm3.38-3.07c.84-1.01 1.4-2.43 1.25-3.83-1.21.05-2.66.8-3.53 1.82-.78.9-1.46 2.34-1.27 3.71 1.34.1 2.71-.69 3.55-1.7"
+                            />
+                          </svg>
+                          <span><span class="sr-only">Continue with </span>Apple</span>
+                        </button>
+                      </div>
+                      <p aria-hidden="true" class="text-center text-[13px] text-(--iu-muted) italic">or with email</p>
+                      <div>
+                        <label
+                          for="lh-email"
+                          class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase"
+                          >Email</label
+                        >
+                        <input
+                          id="lh-email"
+                          type="email"
+                          inputmode="email"
+                          autocomplete="email"
+                          placeholder="nadia.farouk@fastmail.com"
+                          class="h-11 w-full border-0 border-b border-(--iu-foreground)/40 bg-transparent px-0 text-base text-(--iu-foreground) placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 aria-invalid:border-red-600 dark:aria-invalid:border-red-400"
+                        />
+                        <p
+                          id="lh-email-error"
+                          data-error-for="email"
+                          hidden
+                          class="mt-1.5 text-[13px] text-red-700 italic dark:text-red-300"
+                        ></p>
+                      </div>
+                      <div>
+                        <label
+                          for="lh-password"
+                          class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase"
+                          >Password</label
+                        >
+                        <div class="relative">
+                          <input
+                            id="lh-password"
+                            type="password"
+                            autocomplete="new-password"
+                            class="h-11 w-full border-0 border-b border-(--iu-foreground)/40 bg-transparent px-0 pr-10 text-base text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 aria-invalid:border-red-600 dark:aria-invalid:border-red-400"
+                          />
+                          <button
+                            type="button"
+                            data-reveal
+                            aria-label="Show password"
+                            aria-pressed="false"
+                            aria-controls="lh-password"
+                            class="absolute top-1/2 right-0 inline-flex size-9 -translate-y-1/2 items-center justify-center rounded-[min(var(--iu-radius),2px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:text-(--iu-foreground)"
+                          >
+                            <svg
+                              data-icon="show"
+                              aria-hidden="true"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path
+                                d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                              />
+                              <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg
+                              data-icon="hide"
+                              hidden
+                              aria-hidden="true"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path
+                                d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"
+                              />
+                              <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+                              <path
+                                d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"
+                              />
+                              <path d="m2 2 20 20" />
+                            </svg>
+                          </button>
+                        </div>
+                        <p
+                          id="lh-password-error"
+                          data-error-for="password"
+                          hidden
+                          class="mt-1.5 text-[13px] text-red-700 italic dark:text-red-300"
+                        ></p>
+                      </div>
+                      <button
+                        type="submit"
+                        data-submit
+                        class="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-(--iu-foreground) px-6 text-sm font-medium text-(--iu-background) transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-progress motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))]"
+                      >
+                        <svg
+                          data-spinner
+                          hidden
+                          aria-hidden="true"
+                          class="animate-spin motion-reduce:animate-none"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                        </svg>
+                        <span data-submit-label>Save my plan</span>
+                      </button>
+                      <button
+                        type="button"
+                        data-change
+                        class="justify-self-center rounded-[min(var(--iu-radius),2px)] text-[13px] text-(--iu-muted) underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-fine:hover:text-(--iu-foreground)"
+                      >
+                        Change my answers
+                      </button>
+                    </fieldset>
+                    <p aria-live="polite" class="sr-only" data-announce></p>
+                  </form>
+
+                  <aside
+                    data-issue
+                    hidden
+                    role="status"
+                    aria-labelledby="lh-issue"
+                    class="self-start border-y-[3px] border-double border-(--iu-foreground) py-5 text-center"
+                  >
+                    <p class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">Issue No. 1</p>
+                    <p id="lh-issue" class="mt-2 font-serif text-4xl italic">Longhand</p>
+                    <p data-issue-meta class="mt-2 font-mono text-[11px] text-(--iu-muted) tabular-nums"></p>
+                    <button
+                      type="button"
+                      class="mt-5 inline-flex h-11 items-center gap-2 rounded-full bg-(--iu-foreground) px-6 text-sm font-medium text-(--iu-background) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                    >
+                      Read a preview
+                      <svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </button>
+                  </aside>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-longhand]");
+        if (!root) return;
+        var q = function (sel) {
+          return root.querySelector(sel);
+        };
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        var CHAPTERS = ["Interests", "Hours", "Length", "Challenge", "Your plan"];
+        var NUMERALS = ["I", "II", "III", "IV", "V"];
+        var TOPICS = [
+          ["essays", "Essays"],
+          ["science", "Science"],
+          ["history", "History"],
+          ["design", "Design"],
+          ["fiction", "Short fiction"],
+          ["economics", "Economics"],
+          ["cities", "Cities"],
+          ["food", "Food"],
+        ];
+        var TIMES = [
+          ["morning", "Early, before the house wakes", "6:30 am", "Monday at 6:30 am"],
+          ["commute", "On the commute", "8:00 am", "Monday at 8:00 am"],
+          ["lunch", "Over lunch", "12:30 pm", "Monday at 12:30 pm"],
+          ["evening", "Late, with the lamp on", "9:00 pm", "Sunday at 9:00 pm"],
+        ];
+        var LENGTHS = [
+          ["5", "Five minutes, between things", "~1,000 words"],
+          ["15", "Fifteen, with a coffee", "~3,000 words"],
+          ["30", "Half an hour, uninterrupted", "~6,000 words"],
+          ["60", "An hour or more, the long read", "12,000+ words"],
+        ];
+        var CHALLENGES = [
+          ["light", "Keep it light", "Clear prose, no prerequisites"],
+          ["stretch", "Stretch me a little", "One harder piece a week, marked"],
+          ["work", "Make me work for it", "Dense, footnoted, rewarding"],
+        ];
+        var READS = {
+          essays: ["On keeping a commonplace book", "Imogen Thrale", "The Lantern Review", 14],
+          science: ["The slow arithmetic of glaciers", "Dr. Ravi Menon", "Field & Fathom", 18],
+          history: ["Ledgers of the salt road", "Beatriz Ordóñez", "Quarterly Antiquary", 22],
+          design: ["Why railway clocks look the way they do", "Henrik Saar", "Margin Notes", 11],
+          fiction: ["The ferryman's daughter keeps time", "Adaeze Nwosu", "Short Story Weekly", 16],
+          economics: ["The price of a pint, 1890 to now", "Tobias Wren", "The Counting House", 13],
+          cities: ["A city learns to walk again", "Lena Kovač", "Common Ground", 19],
+          food: ["Notes from a forty-year sourdough", "Marguerite Ellery", "Table Talk", 12],
+        };
+        var QUESTIONS = [
+          ["Chapter I · Interests", "What would you like to read more of?", "Choose up to three."],
+          ["Chapter II · Hours", "When does reading happen for you?", "We'll deliver to match."],
+          ["Chapter III · Length", "How long can you stay with one piece?", "Roughly, on a good day."],
+          ["Chapter IV · Challenge", "How would you like to be challenged?", "Nothing is graded."],
+        ];
+        var MISSING = [
+          "Choose at least one subject to begin.",
+          "Choose the hour that sounds most like you.",
+          "Choose a length; you can change it later.",
+          "Choose how hard you'd like to be pushed.",
+        ];
+        var step = 0;
+        var saved = false;
+        var answers = { topics: [], time: "", length: "", challenge: "" };
+        var KEYS = ["topics", "time", "length", "challenge"];
+
+        function choiceHtml(type, name, letter, label, hint, checked) {
+          return (
+            '<label class="group relative block cursor-pointer"><input type="' +
+            type +
+            '" name="' +
+            name +
+            '"' +
+            (checked ? " checked" : "") +
+            ' class="peer sr-only" />' +
+            '<span data-line class="relative flex items-baseline gap-4 rounded-[min(var(--iu-radius),2px)] border-b border-(--iu-border) py-[calc(14px*var(--iu-density))] text-(--iu-muted) transition-colors duration-300 peer-checked:text-(--iu-foreground) peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:group-hover:text-(--iu-foreground)">' +
+            '<span aria-hidden="true" class="w-6 shrink-0 font-mono text-[11px] tabular-nums">' +
+            letter +
+            "</span>" +
+            '<span class="min-w-0 flex-1 font-serif text-[22px] leading-snug text-pretty @md:text-[26px]">' +
+            label +
+            "</span>" +
+            (hint
+              ? '<span class="hidden shrink-0 font-mono text-[11px] tabular-nums @md:block">' + hint + "</span>"
+              : "") +
+            '<span aria-hidden="true" class="absolute inset-x-0 -bottom-px h-0.5 origin-left scale-x-0 bg-(--iu-accent) transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] group-has-checked:scale-x-100 motion-reduce:transition-none"></span></span></label>'
+          );
+        }
+
+        function setNotice(text, isError) {
+          var p = q("[data-notice]");
+          p.textContent = "";
+          if (isError) {
+            var span = document.createElement("span");
+            span.className = "text-red-700 not-italic dark:text-red-300";
+            span.textContent = text;
+            p.appendChild(span);
+          } else {
+            p.textContent = text;
+          }
+        }
+
+        function renderChoices() {
+          var box = q("[data-choices]");
+          box.className = step === 0 ? "grid gap-x-10 @xl:grid-cols-2" : "";
+          var rows = step === 0 ? TOPICS : step === 1 ? TIMES : step === 2 ? LENGTHS : CHALLENGES;
+          box.innerHTML = rows
+            .map(function (row, index) {
+              var checked = step === 0 ? answers.topics.indexOf(row[0]) >= 0 : answers[KEYS[step]] === row[0];
+              return choiceHtml(
+                step === 0 ? "checkbox" : "radio",
+                "lh-" + KEYS[step],
+                String.fromCharCode(97 + index),
+                row[1],
+                step === 0 ? "" : row[2],
+                checked,
+              );
+            })
+            .join("");
+          Array.prototype.forEach.call(box.querySelectorAll("input"), function (input, index) {
+            var value = rows[index][0];
+            input.addEventListener("change", function () {
+              if (step === 0) {
+                if (input.checked && answers.topics.length >= 3) {
+                  input.checked = false;
+                  return setNotice("Three is the limit for now. Set one down to pick this up.", true);
+                }
+                answers.topics = input.checked
+                  ? answers.topics.concat(value)
+                  : answers.topics.filter(function (t) {
+                      return t !== value;
+                    });
+                setNotice(answers.topics.length + " of 3 chosen", false);
+              } else {
+                answers[KEYS[step]] = value;
+                setNotice("", false);
+              }
+            });
+          });
+        }
+
+        function renderContents() {
+          var ol = q("[data-contents]");
+          ol.textContent = "";
+          CHAPTERS.forEach(function (chapter, index) {
+            var active = index === step && !saved;
+            var done = index < step || saved;
+            var li = document.createElement("li");
+            li.className = "relative";
+            if (active) li.setAttribute("aria-current", "step");
+            var button = document.createElement("button");
+            button.type = "button";
+            button.disabled = !done || saved;
+            button.className =
+              "flex w-full items-baseline gap-3 rounded-[min(var(--iu-radius),2px)] py-2 text-left text-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-default " +
+              (active
+                ? "text-(--iu-foreground)"
+                : done
+                  ? "text-(--iu-foreground) pointer-fine:hover:underline"
+                  : "text-(--iu-muted)");
+            button.innerHTML =
+              '<span aria-hidden="true" class="w-7 font-serif text-base italic">' +
+              NUMERALS[index] +
+              '</span><span class="flex-1 whitespace-nowrap">' +
+              chapter +
+              '<span class="sr-only">' +
+              (done ? ", answered" : active ? ", current" : "") +
+              '</span></span><span aria-hidden="true" class="font-mono text-[11px] whitespace-nowrap tabular-nums">p. ' +
+              String(index * 4 + 1).padStart(2, "0") +
+              "</span>";
+            button.addEventListener("click", function () {
+              go(index);
+            });
+            li.appendChild(button);
+            if (active || (saved && index === 4)) {
+              var mark = document.createElement("span");
+              mark.setAttribute("aria-hidden", "true");
+              mark.className = "absolute top-2 bottom-2 -left-3 w-0.5 bg-(--iu-accent)";
+              li.appendChild(mark);
+            }
+            ol.appendChild(li);
+          });
+          var bars = q("[data-bars]");
+          bars.textContent = "";
+          CHAPTERS.forEach(function (_, index) {
+            var bar = document.createElement("span");
+            bar.className =
+              "h-0.5 " +
+              (index === step && !saved
+                ? "bg-(--iu-accent)"
+                : index < step || saved
+                  ? "bg-(--iu-foreground)"
+                  : "bg-(--iu-border)");
+            bars.appendChild(bar);
+          });
+          q("[data-progress-text]").textContent = "Chapter " + NUMERALS[step] + " of V, " + CHAPTERS[step];
+        }
+
+        function find(rows, value, fallback) {
+          return (
+            rows.filter(function (r) {
+              return r[0] === value;
+            })[0] || fallback
+          );
+        }
+
+        function renderPlan() {
+          var topics = answers.topics.length ? answers.topics : ["essays", "science", "cities"];
+          var labels = topics.map(function (t) {
+            return find(TOPICS, t, TOPICS[0])[1].toLowerCase();
+          });
+          var listed =
+            labels.length > 1 ? labels.slice(0, -1).join(", ") + " and " + labels[labels.length - 1] : labels[0];
+          var time = find(TIMES, answers.time, TIMES[3]);
+          var length = find(LENGTHS, answers.length, LENGTHS[1]);
+          var challenge = find(CHALLENGES, answers.challenge, CHALLENGES[1]);
+          var picks = topics.slice(0, 3).map(function (t) {
+            return READS[t];
+          });
+          var total = picks.reduce(function (sum, p) {
+            return sum + p[3];
+          }, 0);
+          var readers = { evening: "evening", morning: "early", lunch: "midday", commute: "commuting" }[time[0]];
+          q("[data-kicker]").textContent = saved ? "Issue No. 1 · Saved" : "Chapter V · Your plan";
+          q("[data-title]").textContent = saved ? "Your first issue is set." : "A plan for " + readers + " readers.";
+          q("[data-summary]").textContent = saved
+            ? "our first issue of Longhand arrives " +
+              time[3] +
+              " at " +
+              (q("#lh-email").value.trim() || "your inbox") +
+              ": three pieces, " +
+              total +
+              " minutes of reading, chosen by an editor and not a feed. Reply to any issue to tell us what landed."
+            : "ou asked for " +
+              listed +
+              ", read " +
+              time[1].toLowerCase() +
+              " in pieces of about " +
+              length[0] +
+              " minutes. We'll " +
+              (challenge[0] === "light"
+                ? "keep it clear and unhurried"
+                : challenge[0] === "work"
+                  ? "send the dense, footnoted ones"
+                  : "stretch you a little, one longer piece a week") +
+              ", and deliver every " +
+              time[3] +
+              ".";
+          q("[data-reads-title]").textContent = (saved ? "In Issue No. 1" : "First reads") + " · " + total + " min";
+          var ol = q("[data-reads]");
+          ol.textContent = "";
+          picks.forEach(function (p, index) {
+            var li = document.createElement("li");
+            li.className =
+              "grid grid-cols-[2rem_minmax(0,1fr)_auto] items-baseline gap-x-3 border-b border-(--iu-border) py-3";
+            li.innerHTML =
+              '<span aria-hidden="true" class="font-serif text-lg text-(--iu-muted) italic">' +
+              (index + 1) +
+              '.</span><span class="min-w-0"><span class="block font-serif text-xl leading-snug text-pretty"></span><span class="mt-1 block text-[13px] text-(--iu-muted)"></span></span><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+              p[3] +
+              " min</span>";
+            li.children[1].children[0].textContent = p[0];
+            li.children[1].children[1].textContent = p[1] + ", " + p[2];
+            ol.appendChild(li);
+          });
+          q("[data-issue-meta]").textContent = "3 pieces · " + total + " min · " + time[2];
+        }
+
+        function render() {
+          var question = step < 4;
+          q("[data-question]").hidden = !question;
+          q("[data-plan]").hidden = question;
+          q("[data-aside]").hidden = !question;
+          if (question) {
+            q("[data-kicker]").textContent = QUESTIONS[step][0];
+            q("[data-title]").textContent = QUESTIONS[step][1];
+            q("[data-legend]").textContent = QUESTIONS[step][1];
+            q("[data-aside]").textContent = QUESTIONS[step][2];
+            q("[data-prev]").hidden = step === 0;
+            q("[data-folio]").hidden = step !== 0;
+            q("[data-next-label]").textContent = step === 3 ? "See my plan" : "Next chapter";
+            renderChoices();
+            setNotice(step === 0 ? answers.topics.length + " of 3 chosen" : "", false);
+          } else {
+            renderPlan();
+            q("[data-save]").hidden = saved;
+            q("[data-issue]").hidden = !saved;
+          }
+          renderContents();
+        }
+
+        function go(next) {
+          var page = q("[data-page]");
+          var swap = function () {
+            step = next;
+            render();
+            page.style.transition = "none";
+            page.style.opacity = "0";
+            page.style.transform = "translateY(8px)";
+            void page.offsetWidth;
+            page.style.transition = "";
+            page.style.opacity = "";
+            page.style.transform = "";
+            q("#lh-title").focus();
+          };
+          if (reduce) return swap();
+          page.style.opacity = "0";
+          page.style.transform = "translateY(-4px)";
+          setTimeout(swap, 200);
+        }
+
+        q("[data-next]").addEventListener("click", function () {
+          var empty = step === 0 ? answers.topics.length === 0 : !answers[KEYS[step]];
+          if (empty) return setNotice(MISSING[step], true);
+          go(step + 1);
+        });
+        q("[data-prev]").addEventListener("click", function () {
+          go(step - 1);
+        });
+        q("[data-change]").addEventListener("click", function () {
+          go(3);
+        });
+
+        var reveal = q("[data-reveal]");
+        var password = q("#lh-password");
+        var email = q("#lh-email");
+        reveal.addEventListener("click", function () {
+          var show = password.type === "password";
+          password.type = show ? "text" : "password";
+          reveal.setAttribute("aria-label", show ? "Hide password" : "Show password");
+          reveal.setAttribute("aria-pressed", String(show));
+          reveal.querySelector('[data-icon="show"]').hidden = show;
+          reveal.querySelector('[data-icon="hide"]').hidden = !show;
+        });
+        function fieldError(input, name, message) {
+          var p = q('[data-error-for="' + name + '"]');
+          p.textContent = message;
+          p.hidden = !message;
+          if (message) {
+            input.setAttribute("aria-invalid", "true");
+            input.setAttribute("aria-describedby", "lh-" + name + "-error");
+          } else {
+            input.removeAttribute("aria-invalid");
+            input.removeAttribute("aria-describedby");
+          }
+        }
+        email.addEventListener("blur", function () {
+          if (email.value)
+            fieldError(
+              email,
+              "email",
+              EMAIL.test(email.value.trim()) ? "" : "That address seems to be missing a part.",
+            );
+        });
+        email.addEventListener("input", function () {
+          fieldError(email, "email", "");
+        });
+        password.addEventListener("input", function () {
+          if (password.value.length >= 8) fieldError(password, "password", "");
+        });
+
+        q("[data-save]").addEventListener("submit", function (event) {
+          event.preventDefault();
+          var e = !email.value.trim()
+            ? "Your email is where the plan arrives."
+            : EMAIL.test(email.value.trim())
+              ? ""
+              : "That address seems to be missing a part.";
+          var p = password.value.length >= 8 ? "" : "At least eight characters, please.";
+          fieldError(email, "email", e);
+          fieldError(password, "password", p);
+          if (e) return email.focus();
+          if (p) return password.focus();
+          q("[data-fieldset]").disabled = true;
+          q("[data-spinner]").hidden = false;
+          q("[data-submit-label]").textContent = "Saving your plan";
+          q("[data-submit]").setAttribute("aria-busy", "true");
+          q("[data-announce]").textContent = "Saving your plan";
+          // Replace this timeout with your sign-up request; on failure, re-enable the fieldset and show a message.
+          setTimeout(function () {
+            saved = true;
+            go(4);
+          }, 1400);
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

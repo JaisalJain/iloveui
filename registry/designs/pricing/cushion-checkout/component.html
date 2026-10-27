@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cushion checkout · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      aria-label="Tidewell checkout"
+      data-status="idle"
+      class="group/cc @container font-(family-name:--iu-font) text-(--iu-foreground) [--cc-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_30%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_10%,transparent),0_1px_2px_color-mix(in_oklab,black_12%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_70%,transparent)] [--cc-sh-card:0_1px_1px_color-mix(in_oklab,black_4%,transparent),0_8px_16px_-6px_color-mix(in_oklab,black_6%,transparent),0_40px_72px_-28px_color-mix(in_oklab,black_20%,transparent)] [--cc-sh-key:inset_0_1px_0_color-mix(in_oklab,white_80%,transparent),0_1px_2px_color-mix(in_oklab,black_10%,transparent),0_3px_8px_-3px_color-mix(in_oklab,black_14%,transparent)] [--cc-sh-pressed:inset_0_2px_5px_color-mix(in_oklab,black_28%,transparent),inset_0_1px_1px_color-mix(in_oklab,black_16%,transparent)] [--cc-sh-thumb:inset_0_1px_0_color-mix(in_oklab,white_80%,transparent),0_1px_2px_color-mix(in_oklab,black_8%,transparent),0_4px_10px_-3px_color-mix(in_oklab,black_14%,transparent)] [--cc-sh-well:inset_0_1px_3px_color-mix(in_oklab,black_8%,transparent)] [--cc-tint:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--cc-well:color-mix(in_oklab,var(--iu-foreground)_3%,var(--iu-surface))] dark:[--cc-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_26%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_14%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_35%,transparent)] dark:[--cc-sh-card:inset_0_1px_0_color-mix(in_oklab,white_5%,transparent),0_24px_48px_-16px_color-mix(in_oklab,black_70%,transparent)] dark:[--cc-sh-key:inset_0_1px_0_color-mix(in_oklab,white_8%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent)] dark:[--cc-sh-pressed:inset_0_2px_6px_color-mix(in_oklab,black_45%,transparent),inset_0_1px_1px_color-mix(in_oklab,black_30%,transparent)] dark:[--cc-sh-thumb:inset_0_1px_0_color-mix(in_oklab,white_8%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_4px_10px_-3px_color-mix(in_oklab,black_50%,transparent)] dark:[--cc-sh-well:inset_0_1px_2px_color-mix(in_oklab,black_45%,transparent)] dark:[--cc-tint:color-mix(in_oklab,var(--iu-accent)_5%,var(--iu-background))] dark:[--cc-well:color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-background))]"
+    >
+      <div
+        class="mx-auto grid max-w-[1000px] overflow-hidden rounded-[max(calc(var(--iu-radius)+14px),24px)] border border-(--iu-border) bg-(--iu-surface) shadow-(--cc-sh-card) @2xl:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] dark:border-(--iu-foreground)/10"
+      >
+        <aside
+          aria-labelledby="cushion-checkout-id0-summary"
+          class="flex flex-col border-b border-(--iu-border) bg-(--cc-tint) p-[calc(24px*var(--iu-density))] @2xl:border-r @2xl:border-b-0 @2xl:p-[calc(36px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+        >
+          <div class="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              class="inline-flex size-10 items-center justify-center rounded-[max(var(--iu-radius),12px)] bg-(--iu-accent) text-(--iu-accent-foreground) shadow-(--cc-sh-btn)"
+              ><svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M3 9c2.5-2.4 4.5-2.4 6 0s3.5 2.4 6 0 4.5-2.4 6 0"></path>
+                <path d="M3 15c2.5-2.4 4.5-2.4 6 0s3.5 2.4 6 0 4.5-2.4 6 0" opacity="0.55"></path></svg
+            ></span>
+            <div>
+              <p class="text-base font-semibold">Tidewell</p>
+              <p class="text-sm text-(--iu-muted)">Team plan</p>
+            </div>
+          </div>
+          <h2 id="cushion-checkout-id0-summary" class="mt-8 text-sm font-medium text-(--iu-muted)">Order summary</h2>
+          <fieldset class="mt-3">
+            <legend class="sr-only">Billing period</legend>
+            <div
+              class="relative grid grid-cols-2 rounded-full border border-(--iu-foreground)/35 bg-(--cc-well) p-1 shadow-(--cc-sh-well)"
+            >
+              <label
+                data-billing-option="monthly"
+                class="relative flex h-10 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-(--iu-accent)"
+                ><input type="radio" class="sr-only" name="cushion-checkout-id0-billing" value="monthly" /><span
+                  class="relative"
+                  >Monthly</span
+                ></label
+              ><label
+                data-billing-option="yearly"
+                class="relative flex h-10 cursor-pointer items-center justify-center gap-2 rounded-full text-sm font-medium has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-(--iu-accent)"
+                ><input
+                  type="radio"
+                  class="sr-only"
+                  name="cushion-checkout-id0-billing"
+                  checked=""
+                  value="yearly"
+                /><span
+                  data-thumb="true"
+                  aria-hidden="true"
+                  class="absolute inset-0 rounded-full bg-(--iu-surface) shadow-(--cc-sh-thumb) dark:bg-[color-mix(in_oklab,var(--iu-foreground)_12%,var(--iu-surface))]"
+                ></span
+                ><span class="relative">Yearly</span
+                ><span
+                  class="relative rounded-full bg-(--iu-accent) px-2 py-0.5 text-[11px] font-semibold text-(--iu-accent-foreground) tabular-nums"
+                  >Save 20%</span
+                ></label
+              >
+            </div>
+          </fieldset>
+          <div class="mt-6 flex items-center justify-between gap-4">
+            <div>
+              <p id="cushion-checkout-id0-seats-label" class="text-sm font-medium">Seats</p>
+              <p class="text-[13px] text-(--iu-muted)">Prorated when you add more</p>
+            </div>
+            <div role="group" aria-labelledby="cushion-checkout-id0-seats-label" class="flex items-center gap-1.5">
+              <button
+                type="button"
+                aria-label="Remove a seat"
+                class="inline-flex size-10 items-center justify-center rounded-full border border-(--iu-foreground)/35 bg-(--iu-surface) shadow-(--cc-sh-key) transition-[scale,box-shadow,translate] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.96] active:shadow-(--cc-sh-pressed) disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none motion-reduce:transition-none pointer-fine:hover:not-disabled:-translate-y-px"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-minus"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                </svg></button
+              ><output
+                aria-live="off"
+                data-seats="true"
+                class="w-12 text-center text-2xl font-semibold tracking-[-0.02em] tabular-nums"
+                >4</output
+              ><button
+                type="button"
+                aria-label="Add a seat"
+                class="inline-flex size-10 items-center justify-center rounded-full border border-(--iu-foreground)/35 bg-(--iu-surface) shadow-(--cc-sh-key) transition-[scale,box-shadow,translate] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.96] active:shadow-(--cc-sh-pressed) disabled:cursor-not-allowed disabled:opacity-45 disabled:shadow-none motion-reduce:transition-none pointer-fine:hover:not-disabled:-translate-y-px"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-plus"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5v14"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <dl class="mt-8 space-y-3 text-sm">
+            <div class="flex items-baseline justify-between gap-4">
+              <dt>
+                Team plan × <span data-seats-inline="true">4</span
+                ><span class="block text-[13px] text-(--iu-muted)" data-rate="true"
+                  >$9.60 per seat a month, billed yearly</span
+                >
+              </dt>
+              <dd>
+                <span aria-hidden="true" data-amount="subtotal" class="tabular-nums">$460.80</span
+                ><span class="sr-only" data-amount-sr="subtotal">$460.80</span>
+              </dd>
+            </div>
+            <div class="flex items-baseline justify-between gap-4">
+              <dt>
+                <span data-tax-label="true">VAT 20%</span
+                ><span class="block text-[13px] text-(--iu-muted)" data-tax-note="true"
+                  >Charged for United Kingdom</span
+                >
+              </dt>
+              <dd>
+                <span aria-hidden="true" data-amount="tax" class="tabular-nums">$92.16</span
+                ><span class="sr-only" data-amount-sr="tax">$92.16</span>
+              </dd>
+            </div>
+            <div
+              class="flex items-baseline justify-between gap-4 border-t border-dashed border-(--iu-foreground)/20 pt-4"
+            >
+              <dt class="font-medium">Due today</dt>
+              <dd class="text-[32px] leading-none font-semibold tracking-[-0.03em]">
+                <span aria-hidden="true" data-amount="total" class="tabular-nums">$552.96</span
+                ><span class="sr-only" data-amount-sr="total">$552.96</span>
+              </dd>
+            </div>
+          </dl>
+          <ul aria-label="Included in Team plan" class="mt-8 space-y-2.5 text-[13px] text-(--iu-muted)">
+            <li class="flex items-start gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check mt-0.5 shrink-0 text-(--iu-foreground)"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5"></path></svg
+              >Shared team calendars and booking pages
+            </li>
+            <li class="flex items-start gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check mt-0.5 shrink-0 text-(--iu-foreground)"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5"></path></svg
+              >Round-robin and collective scheduling
+            </li>
+            <li class="flex items-start gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-check mt-0.5 shrink-0 text-(--iu-foreground)"
+                aria-hidden="true"
+              >
+                <path d="M20 6 9 17l-5-5"></path></svg
+              >Priority support with a 4-hour reply
+            </li>
+          </ul>
+          <p class="mt-auto flex items-start gap-2 pt-8 text-[13px] leading-snug text-pretty text-(--iu-muted)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-rotate-ccw mt-0.5 shrink-0"
+              aria-hidden="true"
+            >
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path></svg
+            ><span
+              >Full refund within 14 days, no questions asked. Cancel anytime from Settings. Renews on
+              <span data-renews="true">27 Oct 2027</span>.</span
+            >
+          </p>
+        </aside>
+        <div class="p-[calc(24px*var(--iu-density))] @2xl:p-[calc(36px*var(--iu-density))]">
+          <form novalidate="" aria-labelledby="cushion-checkout-id0-payment" class="flex flex-col gap-5">
+            <div class="flex items-baseline justify-between gap-4">
+              <h2 id="cushion-checkout-id0-payment" class="text-xl font-semibold tracking-[-0.02em]">Payment</h2>
+              <span class="inline-flex items-center gap-1.5 text-[13px] text-(--iu-muted)"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-lock"
+                  aria-hidden="true"
+                >
+                  <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
+                >Encrypted</span
+              >
+            </div>
+            <div>
+              <label for="cushion-checkout-id0-email" class="mb-2 block text-sm font-medium">Email for receipt</label>
+              <div
+                class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+              >
+                <input
+                  id="cushion-checkout-id0-email"
+                  type="email"
+                  autocomplete="email"
+                  inputmode="email"
+                  placeholder="you@company.com"
+                  class="h-full w-full min-w-0 bg-transparent text-base text-(--iu-foreground) outline-none placeholder:text-(--iu-muted)"
+                  value="ines.duarte@harbourline.io"
+                />
+              </div>
+            </div>
+            <div>
+              <label for="cushion-checkout-id0-cardNumber" class="mb-2 block text-sm font-medium">Card number</label>
+              <div
+                class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-credit-card shrink-0 text-(--iu-muted)"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <line x1="2" x2="22" y1="10" y2="10"></line>
+                  <path d="M6 14h2"></path></svg
+                ><input
+                  id="cushion-checkout-id0-cardNumber"
+                  autocomplete="cc-number"
+                  inputmode="numeric"
+                  placeholder="1234 1234 1234 1234"
+                  class="h-full w-full min-w-0 bg-transparent font-mono text-base text-[15px] text-(--iu-foreground) tabular-nums outline-none placeholder:text-(--iu-muted)"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="cushion-checkout-id0-expiry" class="mb-2 block text-sm font-medium">Expiry</label>
+                <div
+                  class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+                >
+                  <input
+                    id="cushion-checkout-id0-expiry"
+                    autocomplete="cc-exp"
+                    inputmode="numeric"
+                    placeholder="MM/YY"
+                    class="h-full w-full min-w-0 bg-transparent font-mono text-base text-[15px] text-(--iu-foreground) tabular-nums outline-none placeholder:text-(--iu-muted)"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div>
+                <label for="cushion-checkout-id0-cvc" class="mb-2 block text-sm font-medium">Security code</label>
+                <div
+                  class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+                >
+                  <input
+                    id="cushion-checkout-id0-cvc"
+                    autocomplete="cc-csc"
+                    inputmode="numeric"
+                    placeholder="3 digits"
+                    class="h-full w-full min-w-0 bg-transparent font-mono text-base text-[15px] text-(--iu-foreground) tabular-nums outline-none placeholder:text-(--iu-muted)"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <label for="cushion-checkout-id0-name" class="mb-2 block text-sm font-medium">Name on card</label>
+              <div
+                class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+              >
+                <input
+                  id="cushion-checkout-id0-name"
+                  autocomplete="cc-name"
+                  class="h-full w-full min-w-0 bg-transparent text-base text-(--iu-foreground) outline-none placeholder:text-(--iu-muted)"
+                  value=""
+                />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-4 @md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+              <div>
+                <label for="cushion-checkout-id0-country" class="mb-2 block text-sm font-medium">Country</label>
+                <div
+                  class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+                >
+                  <select
+                    id="cushion-checkout-id0-country"
+                    autocomplete="country"
+                    class="h-full w-full min-w-0 cursor-pointer appearance-none bg-transparent pr-6 text-base text-(--iu-foreground) outline-none placeholder:text-(--iu-muted)"
+                  >
+                    <option value="GB" selected="">United Kingdom</option>
+                    <option value="DE">Germany</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="IN">India</option>
+                    <option value="AU">Australia</option>
+                    <option value="SG">Singapore</option>
+                    <option value="CA">Canada</option>
+                    <option value="US">United States</option></select
+                  ><svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="pointer-events-none absolute right-4 text-(--iu-muted)"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </div>
+              </div>
+              <div>
+                <label for="cushion-checkout-id0-postalCode" class="mb-2 block text-sm font-medium">Postcode</label>
+                <div
+                  class="relative flex h-12 items-center gap-2 rounded-[max(var(--iu-radius),14px)] border border-(--iu-foreground)/35 bg-(--cc-well) px-4 shadow-(--cc-sh-well) transition-[border-color,box-shadow,background-color] duration-200 focus-within:border-(--iu-foreground)/60 focus-within:bg-(--iu-surface) focus-within:shadow-none focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent) data-[invalid]:border-red-600 motion-reduce:transition-none dark:data-[invalid]:border-red-400"
+                >
+                  <input
+                    id="cushion-checkout-id0-postalCode"
+                    autocomplete="postal-code"
+                    class="h-full w-full min-w-0 bg-transparent text-base text-(--iu-foreground) uppercase outline-none placeholder:text-(--iu-muted)"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="relative mt-2 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-(--iu-accent) px-6 text-base font-semibold text-(--iu-accent-foreground) shadow-(--cc-sh-btn) transition-[scale,box-shadow,translate] duration-200 group-data-[status=loading]/cc:scale-[0.98] group-data-[status=loading]/cc:shadow-(--cc-sh-pressed) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.98] active:shadow-(--cc-sh-pressed) aria-disabled:cursor-progress motion-reduce:transition-none pointer-fine:hover:not-aria-disabled:-translate-y-px"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-lock"
+                aria-hidden="true"
+              >
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg
+              ><span data-pay-verb="true">Pay</span>
+              <span aria-hidden="true" data-amount="pay" class="tabular-nums">$552.96</span
+              ><span class="sr-only" data-amount-sr="pay">$552.96</span>
+            </button>
+            <p data-footnote="true" class="text-center text-[13px] leading-snug text-pretty text-(--iu-muted)">
+              Includes $92.16 VAT. You will see TIDEWELL on your statement.
+            </p>
+          </form>
+        </div>
+      </div>
+      <span aria-live="polite" class="sr-only"></span>
+    </section>
+    <!-- iloveui:component:end -->
+    <template data-receipt-template
+      ><div data-receipt="true" class="flex h-full flex-col">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" class="text-(--iu-accent)">
+          <circle cx="28" cy="28" r="27" fill="currentColor" opacity="0.14"></circle>
+          <circle cx="28" cy="28" r="20" fill="currentColor"></circle>
+          <path
+            d="M19.5 28.5l6 6 11-12"
+            stroke="var(--iu-accent-foreground)"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            pathLength="1"
+            stroke-dashoffset="0"
+            stroke-dasharray="1 1"
+          ></path>
+        </svg>
+        <h2 tabindex="-1" class="mt-6 text-2xl font-semibold tracking-[-0.02em] text-balance outline-none">
+          Payment received
+        </h2>
+        <p data-paid="true" class="mt-2 text-base text-pretty text-(--iu-muted)">
+          $552.96 paid to Tidewell. Your receipt is on its way to
+          <span class="text-(--iu-foreground)">ines.duarte@harbourline.io</span>.
+        </p>
+        <dl
+          class="mt-8 divide-y divide-dashed divide-(--iu-foreground)/15 rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--cc-well) px-5 text-sm dark:border-(--iu-foreground)/10"
+        >
+          <div class="flex justify-between gap-4 py-3">
+            <dt class="text-(--iu-muted)">Receipt</dt>
+            <dd data-row="Receipt" class="text-right font-medium tabular-nums">TW-48217-2026</dd>
+          </div>
+          <div class="flex justify-between gap-4 py-3">
+            <dt class="text-(--iu-muted)">Date</dt>
+            <dd data-row="Date" class="text-right font-medium tabular-nums">27 Oct 2026</dd>
+          </div>
+          <div class="flex justify-between gap-4 py-3">
+            <dt class="text-(--iu-muted)">Card</dt>
+            <dd data-row="Card" class="text-right font-medium tabular-nums">Visa ending 4242</dd>
+          </div>
+          <div class="flex justify-between gap-4 py-3">
+            <dt class="text-(--iu-muted)">Seats</dt>
+            <dd data-row="Seats" class="text-right font-medium tabular-nums">4 on Team plan</dd>
+          </div>
+          <div class="flex justify-between gap-4 py-3">
+            <dt class="text-(--iu-muted)">Next renewal</dt>
+            <dd data-row="Next renewal" class="text-right font-medium tabular-nums">27 Oct 2027</dd>
+          </div>
+        </dl>
+        <div class="mt-auto flex flex-col gap-3 pt-8 @md:flex-row">
+          <button
+            type="button"
+            class="inline-flex h-12 items-center justify-center rounded-full bg-(--iu-accent) px-6 text-[15px] font-semibold text-(--iu-accent-foreground) shadow-(--cc-sh-btn) transition-[scale,box-shadow,translate] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.98] active:shadow-(--cc-sh-pressed) motion-reduce:transition-none @md:flex-1 pointer-fine:hover:-translate-y-px"
+          >
+            Open your workspace</button
+          ><button
+            type="button"
+            class="inline-flex h-12 items-center justify-center rounded-full border border-(--iu-foreground)/35 bg-(--iu-surface) px-6 text-[15px] font-medium shadow-(--cc-sh-key) transition-[scale,box-shadow,translate] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:scale-[0.98] active:shadow-(--cc-sh-pressed) motion-reduce:transition-none pointer-fine:hover:-translate-y-px"
+          >
+            Download receipt
+          </button>
+        </div>
+      </div></template
+    >
+    <script>
+      (function () {
+        var root = document.querySelector("[data-status]");
+        if (!root) return;
+        var P = "cushion-checkout-id0-";
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var seatPrice = { monthly: 1200, yearly: 960 };
+        var renews = { monthly: "27 Nov 2026", yearly: "27 Oct 2027" };
+        var countries = {
+          GB: ["United Kingdom", "VAT", 0.2, "Postcode"],
+          DE: ["Germany", "VAT", 0.19, "Postal code"],
+          NL: ["Netherlands", "VAT", 0.21, "Postal code"],
+          IN: ["India", "GST", 0.18, "PIN code"],
+          AU: ["Australia", "GST", 0.1, "Postcode"],
+          SG: ["Singapore", "GST", 0.09, "Postal code"],
+          CA: ["Canada", "GST", 0.05, "Postal code"],
+          US: ["United States", "Sales tax", 0, "ZIP code"],
+        };
+        var state = { billing: "yearly", seats: 4, minSeats: 1, maxSeats: 50, busy: false };
+        var shown = {};
+        var money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+        var announcer = root.querySelector("[aria-live=polite]");
+        var form = root.querySelector("form");
+        var $ = function (name) {
+          return document.getElementById(P + name);
+        };
+        function fmt(cents) {
+          return money.format(cents / 100);
+        }
+        function digits(value) {
+          return value.replace(/\D/g, "");
+        }
+
+        // The total glides to its new value: an ease-out tween that any new change interrupts.
+        function tweenAmount(name, to) {
+          var els = root.querySelectorAll('[data-amount="' + name + '"]');
+          root.querySelectorAll('[data-amount-sr="' + name + '"]').forEach(function (el) {
+            el.textContent = fmt(to);
+          });
+          var from = shown[name] === undefined ? to : shown[name];
+          var start = null;
+          function frame(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / 480);
+            var eased = 1 - Math.pow(1 - t, 3);
+            shown[name] = from + (to - from) * eased;
+            els.forEach(function (el) {
+              el.textContent = fmt(Math.round(shown[name]));
+            });
+            if (t < 1 && shown["frame-" + name] === token) requestAnimationFrame(frame);
+          }
+          var token = {};
+          shown["frame-" + name] = token;
+          if (reduce || from === to) {
+            shown[name] = to;
+            els.forEach(function (el) {
+              el.textContent = fmt(to);
+            });
+            return;
+          }
+          requestAnimationFrame(frame);
+        }
+
+        function totals() {
+          var c = countries[$("country").value];
+          var subtotal = seatPrice[state.billing] * state.seats * (state.billing === "yearly" ? 12 : 1);
+          var tax = Math.round(subtotal * c[2]);
+          return { c: c, subtotal: subtotal, tax: tax, total: subtotal + tax };
+        }
+
+        function render() {
+          var t = totals();
+          var c = t.c;
+          tweenAmount("subtotal", t.subtotal);
+          tweenAmount("tax", t.tax);
+          tweenAmount("total", t.total);
+          tweenAmount("pay", t.total);
+          root.querySelector("[data-seats]").textContent = state.seats;
+          root.querySelector("[data-seats-inline]").textContent = state.seats;
+          root.querySelector("[data-rate]").textContent =
+            fmt(seatPrice[state.billing]) + " per seat a month, billed " + state.billing;
+          root.querySelector("[data-tax-label]").textContent = c[1] + " " + Math.round(c[2] * 1000) / 10 + "%";
+          root.querySelector("[data-tax-note]").textContent = (c[2] > 0 ? "Charged for " : "Not collected for ") + c[0];
+          root.querySelector("[data-renews]").textContent = renews[state.billing];
+          root.querySelector('label[for="' + P + 'postalCode"]').textContent = c[3];
+          root.querySelector("[data-footnote]").textContent =
+            (c[2] > 0 ? "Includes " + fmt(t.tax) + " " + c[1] + "." : "No " + c[1].toLowerCase() + " charged.") +
+            " You will see TIDEWELL on your statement.";
+          root.querySelector('[aria-label="Remove a seat"]').disabled = state.seats <= state.minSeats;
+          root.querySelector('[aria-label="Add a seat"]').disabled = state.seats >= state.maxSeats;
+          return t;
+        }
+
+        var thumb = root.querySelector("[data-thumb]");
+        root.querySelectorAll("[data-billing-option] input").forEach(function (input) {
+          input.addEventListener("change", function () {
+            var before = thumb.getBoundingClientRect();
+            input.parentNode.insertBefore(thumb, input.nextSibling);
+            if (!reduce) {
+              var after = thumb.getBoundingClientRect();
+              thumb.animate(
+                [{ transform: "translateX(" + (before.left - after.left) + "px)" }, { transform: "none" }],
+                { duration: 320, easing: "cubic-bezier(0.34, 1.3, 0.64, 1)" },
+              );
+            }
+            state.billing = input.value;
+            var t = render();
+            announcer.textContent = "Billed " + state.billing + ", total " + fmt(t.total);
+          });
+        });
+        function changeSeats(delta) {
+          state.seats = Math.min(state.maxSeats, Math.max(state.minSeats, state.seats + delta));
+          var t = render();
+          announcer.textContent = state.seats + (state.seats === 1 ? " seat" : " seats") + ", total " + fmt(t.total);
+        }
+        root.querySelector('[aria-label="Remove a seat"]').addEventListener("click", function () {
+          changeSeats(-1);
+        });
+        root.querySelector('[aria-label="Add a seat"]').addEventListener("click", function () {
+          changeSeats(1);
+        });
+        $("country").addEventListener("change", function () {
+          render();
+          if (errors.postalCode) check("postalCode");
+        });
+
+        function brand(number) {
+          var d = digits(number);
+          if (/^3[47]/.test(d)) return { name: "Amex", cvc: 4, groups: [4, 6, 5] };
+          if (/^4/.test(d)) return { name: "Visa", cvc: 3, groups: [4, 4, 4, 4, 3] };
+          if (/^(5[1-5]|2[2-7])/.test(d)) return { name: "Mastercard", cvc: 3, groups: [4, 4, 4, 4] };
+          return null;
+        }
+        function formatCard(value) {
+          var b = brand(value);
+          var d = digits(value).slice(0, b && b.name === "Amex" ? 15 : 19);
+          var groups = b ? b.groups : [4, 4, 4, 4, 3];
+          var out = [];
+          var i = 0;
+          groups.forEach(function (size) {
+            if (i < d.length) out.push(d.slice(i, i + size));
+            i += size;
+          });
+          return out.join(" ");
+        }
+        var lastExpiry = "";
+        function formatExpiry(value) {
+          var d = digits(value).slice(0, 4);
+          var out = d;
+          if (value.length < lastExpiry.length && lastExpiry.slice(-1) === "/" && value.slice(-1) !== "/")
+            out = d.slice(0, 1);
+          else if (d.length >= 3) out = d.slice(0, 2) + "/" + d.slice(2);
+          else if (d.length === 2) out = d + "/";
+          else if (d.length === 1 && Number(d) > 1) out = "0" + d + "/";
+          lastExpiry = out;
+          return out;
+        }
+        function luhn(number) {
+          var d = digits(number);
+          var sum = 0;
+          for (var i = 0; i < d.length; i += 1) {
+            var n = Number(d[d.length - 1 - i]);
+            if (i % 2 === 1) {
+              n *= 2;
+              if (n > 9) n -= 9;
+            }
+            sum += n;
+          }
+          return d.length >= 13 && sum % 10 === 0;
+        }
+        function validate(field) {
+          var value = $(field).value.trim();
+          if (field === "email") {
+            if (!value) return "Enter the email for your receipt.";
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "That email is missing an @ or a domain.";
+          }
+          if (field === "cardNumber") {
+            if (!value) return "Enter your card number.";
+            return luhn(value) ? "" : "That card number is incomplete or mistyped.";
+          }
+          if (field === "expiry") {
+            var m = /^(\d{2})\/(\d{2})$/.exec(value);
+            if (!m) return "Use MM/YY.";
+            var month = Number(m[1]);
+            var year = 2000 + Number(m[2]);
+            var now = new Date();
+            if (month < 1 || month > 12) return "Month runs from 01 to 12.";
+            if (year < now.getFullYear() || (year === now.getFullYear() && month < now.getMonth() + 1))
+              return "This card has expired.";
+            return "";
+          }
+          if (field === "cvc") {
+            var size = (brand($("cardNumber").value) || { cvc: 3 }).cvc;
+            return digits(value).length === size ? "" : "Enter the " + size + " digits on the back.";
+          }
+          if (field === "name") return value ? "" : "Enter the name printed on the card.";
+          if (field === "postalCode") return value ? "" : "Enter your postal code for tax.";
+          return "";
+        }
+
+        var FIELDS = ["email", "cardNumber", "expiry", "cvc", "name", "postalCode"];
+        var errors = {};
+        function show(field, message) {
+          var input = $(field);
+          var box = input.parentNode;
+          var old = document.getElementById(P + field + "-message");
+          if (old) old.parentNode.removeChild(old);
+          errors[field] = message;
+          if (!message) {
+            box.removeAttribute("data-invalid");
+            input.removeAttribute("aria-invalid");
+            input.removeAttribute("aria-describedby");
+            return;
+          }
+          box.setAttribute("data-invalid", "");
+          input.setAttribute("aria-invalid", "true");
+          input.setAttribute("aria-describedby", P + field + "-message");
+          var p = document.createElement("p");
+          p.id = P + field + "-message";
+          p.className = "mt-2 flex items-start gap-1.5 text-[13px] text-red-700 dark:text-red-400";
+          p.innerHTML =
+            '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="mt-0.5 shrink-0"><circle cx="12" cy="12" r="10" /><line x1="12" x2="12" y1="8" y2="12" /><line x1="12" x2="12.01" y1="16" y2="16" /></svg>';
+          p.appendChild(document.createTextNode(message));
+          box.parentNode.insertBefore(p, box.nextSibling);
+        }
+        function check(field) {
+          show(field, validate(field));
+        }
+
+        var chip = null;
+        FIELDS.forEach(function (field) {
+          var input = $(field);
+          input.addEventListener("input", function () {
+            if (field === "cardNumber") {
+              input.value = formatCard(input.value);
+              var b = brand(input.value);
+              if (b && !chip) {
+                chip = document.createElement("span");
+                chip.className =
+                  "shrink-0 rounded-full bg-(--iu-foreground) px-2 py-0.5 text-[11px] font-semibold text-(--iu-background)";
+                input.parentNode.appendChild(chip);
+              }
+              if (chip && !b) {
+                chip.parentNode.removeChild(chip);
+                chip = null;
+              }
+              if (chip) chip.textContent = b.name;
+              $("cvc").placeholder = b && b.cvc === 4 ? "4 digits" : "3 digits";
+            }
+            if (field === "expiry") input.value = formatExpiry(input.value);
+            if (field === "cvc") input.value = digits(input.value).slice(0, 4);
+            if (errors[field]) check(field);
+          });
+          input.addEventListener("blur", function () {
+            if (input.value.trim()) check(field);
+          });
+        });
+
+        var SPINNER =
+          '<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="animate-spin group-data-[offscreen]/cc:[animation-play-state:paused] motion-reduce:animate-none"><path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg>Processing payment';
+
+        function succeed(t) {
+          var template = document.querySelector("[data-receipt-template]");
+          var receipt = template.content.firstElementChild.cloneNode(true);
+          var b = brand($("cardNumber").value);
+          receipt.querySelector("[data-paid]").innerHTML =
+            fmt(t.total) +
+            ' paid to Tidewell. Your receipt is on its way to <span class="text-(--iu-foreground)"></span>.';
+          receipt.querySelector("[data-paid] span").textContent = $("email").value;
+          receipt.querySelector('[data-row="Card"]').textContent = b
+            ? b.name + " ending " + digits($("cardNumber").value).slice(-4)
+            : "Card on file";
+          receipt.querySelector('[data-row="Seats"]').textContent = state.seats + " on Team plan";
+          receipt.querySelector('[data-row="Next renewal"]').textContent = renews[state.billing];
+          form.parentNode.replaceChild(receipt, form);
+          if (!reduce) {
+            receipt.animate(
+              [
+                { opacity: 0, transform: "scale(0.98)" },
+                { opacity: 1, transform: "none" },
+              ],
+              { duration: 320, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+            );
+            var path = receipt.querySelector("svg path");
+            path.setAttribute("pathLength", "1");
+            path.style.strokeDasharray = "1";
+            path.animate([{ strokeDashoffset: 1 }, { strokeDashoffset: 0 }], {
+              duration: 400,
+              delay: 150,
+              easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+              fill: "backwards",
+            });
+          }
+          root.setAttribute("data-status", "success");
+          announcer.textContent = "";
+          receipt.querySelector("h2").focus();
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (state.busy) return;
+          var invalid = FIELDS.filter(function (field) {
+            check(field);
+            return errors[field];
+          });
+          if (invalid.length) {
+            $(invalid[0]).focus();
+            announcer.textContent =
+              invalid.length + (invalid.length === 1 ? " field needs attention." : " fields need attention.");
+            return;
+          }
+          state.busy = true;
+          var t = totals();
+          var button = form.querySelector('button[type="submit"]');
+          button.setAttribute("aria-disabled", "true");
+          button.innerHTML = SPINNER;
+          root.setAttribute("data-status", "loading");
+          form.querySelectorAll("input, select").forEach(function (el) {
+            el.disabled = true;
+          });
+          root.querySelectorAll("aside button, aside input").forEach(function (el) {
+            el.disabled = true;
+          });
+          announcer.textContent = "Processing payment of " + fmt(t.total);
+          var observer = new IntersectionObserver(function (entries) {
+            if (entries[0]) root.toggleAttribute("data-offscreen", !entries[0].isIntersecting);
+          });
+          observer.observe(root);
+          // Demo payment: replace with your payment call.
+          setTimeout(function () {
+            observer.disconnect();
+            root.removeAttribute("data-offscreen");
+            succeed(t);
+          }, 1400);
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

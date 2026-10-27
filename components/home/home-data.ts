@@ -1,15 +1,13 @@
 import "server-only";
-import { getAllDesigns } from "@/lib/catalog";
+import { FREE_PICKS, HERO_WALL } from "@/config/home";
+import { getAllDesigns, getDesign } from "@/lib/catalog";
 import type { CatalogDesign } from "@/lib/catalog-types";
 import { CATEGORIES } from "@/registry/definitions";
 
-// Build-time data for the home page. Everything here derives from the generated catalog, so the page grows with it.
+// Build-time data for the home page. Counts derive from the generated catalog, so the page grows with it; the wall and
+// the free picks are curated in config/home.ts.
 
-export const WALL_COLUMNS = 4;
-/** Tiles per column before the loop repeats; four keep each column taller than the tallest wall. */
-const TILES_PER_COLUMN = 4;
-
-/** Interleaves designs by category (newest first inside each) so neighbouring tiles never share a category. */
+/** Interleaves designs by category (newest first inside each) so neighbouring designs never share a category. */
 function interleaveByCategory(designs: readonly CatalogDesign[]): CatalogDesign[] {
   const byCategory = new Map<string, CatalogDesign[]>();
   const sorted = [...designs].sort((a, b) => b.createdAt.localeCompare(a.createdAt) || a.slug.localeCompare(b.slug));
@@ -29,18 +27,9 @@ function interleaveByCategory(designs: readonly CatalogDesign[]): CatalogDesign[
   return out;
 }
 
-/**
- * The hero wall's columns. Each column starts at a different offset in the interleaved catalog, so with a small
- * catalog every column shows the designs in a different order, and with 16 or more no design appears twice.
- */
+/** The hero wall's four curated columns, top to bottom. */
 export function wallColumns(): CatalogDesign[][] {
-  const designs = interleavedDesigns();
-  if (designs.length === 0) return [];
-  const step = Math.max(1, Math.floor(designs.length / WALL_COLUMNS));
-  const perColumn = Math.min(TILES_PER_COLUMN, designs.length);
-  return Array.from({ length: WALL_COLUMNS }, (_, column) =>
-    Array.from({ length: perColumn }, (_, index) => designs[(column * step + index) % designs.length]!),
-  );
+  return HERO_WALL.map((column) => column.flatMap((slug) => getDesign(slug) ?? []));
 }
 
 export function interleavedDesigns(): CatalogDesign[] {
@@ -68,7 +57,7 @@ export function categoryIndex() {
   }));
 }
 
-/** Up to eight free designs, newest first, one per category before any category repeats. */
-export function freePicks(limit = 8): CatalogDesign[] {
-  return interleaveByCategory(getAllDesigns().filter((design) => design.tier === "free")).slice(0, limit);
+/** The eight curated free designs, in display order. */
+export function freePicks(): CatalogDesign[] {
+  return FREE_PICKS.flatMap((slug) => getDesign(slug) ?? []);
 }

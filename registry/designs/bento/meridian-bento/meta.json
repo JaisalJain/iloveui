@@ -1,0 +1,15 @@
+{
+  "slug": "meridian-bento",
+  "name": "Meridian scheduling bento",
+  "category": "bento",
+  "styleFamily": "swiss-minimal",
+  "tier": "free",
+  "description": "A ruled Swiss feature grid for a scheduling tool. Drag the meeting across the day and every teammate's local time and availability update.",
+  "tags": ["bento", "features", "scheduling", "time-zones", "grid", "landing"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

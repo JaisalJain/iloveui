@@ -1,6 +1,16 @@
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
+  plugins: [
+    {
+      name: "iloveui:uncached-globs",
+      // Vitest caches transformed modules on disk, keyed by their source. A module that calls import.meta.glob also
+      // depends on which files exist (a new changelog entry changes nothing in lib/changelog.ts), so it is never cached.
+      configureVitest({ defineCacheKeyGenerator }) {
+        defineCacheKeyGenerator(({ sourceCode }) => (sourceCode.includes("import.meta.glob") ? false : undefined));
+      },
+    },
+  ],
   resolve: {
     tsconfigPaths: true,
     alias: {

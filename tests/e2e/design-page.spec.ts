@@ -24,6 +24,12 @@ function siteSource(dir: string): string {
     .join("\n");
 }
 const SITE_SOURCE = ["app", "components", "lib"].map(siteSource).join("\n");
+/** Every free design's source: text found inside it is public, even when it is part of a longer line. */
+const FREE_SOURCE = designs
+  .filter((design) => design.meta.tier === "free")
+  .flatMap(({ dir }) => ["component.tsx", "component.html", "ai-prompt.md"].map((file) => path.join(dir, file)))
+  .map((file) => readFileSync(file, "utf8"))
+  .join("\n");
 const urlOf = (meta: Meta) => `/designs/${meta.category}/${meta.slug}`;
 
 /** Lines long and specific enough that finding one on the page means Pro source leaked (as in pro-source.test.ts). */
@@ -36,7 +42,9 @@ function distinctiveLines(dir: string): string[] {
       // Public by nature: the HTML document title is the design's name, and icon geometry comes from lucide.
       .filter((line) => !/^<(title|path|circle|rect|line|polyline|polygon)[ >]/.test(line))
       // A lone string of class names is shared vocabulary between designs and the site, not reusable source.
-      .filter((line) => !/^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/.test(line)),
+      .filter((line) => !/^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/.test(line))
+      // So is a tag that carries only a class list: the page's own layout and icons render the same markup.
+      .filter((line) => !/^(<[a-z][\w-]*\s+)?class(Name)?=(["'])[\w:\[\]()\/.%#&>~=+!@,* -]+\3\s*\/?>?$/.test(line)),
   );
 }
 
@@ -172,7 +180,7 @@ test.describe("design page", () => {
 
       const documents = [{ url: "page", text: await page.content() }, ...(await Promise.all(bodies))];
       const leaks = documents.flatMap(({ url, text }) =>
-        lines.filter((line) => text.includes(line)).map((line) => `${url}: ${line}`),
+        lines.filter((line) => text.includes(line) && !FREE_SOURCE.includes(line)).map((line) => `${url}: ${line}`),
       );
       expect(leaks).toEqual([]);
     });

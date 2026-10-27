@@ -1,0 +1,1759 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tripwire alert rule form · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) px-4 py-10 font-(family-name:--iu-font) text-(--iu-foreground) sm:px-8 sm:py-16">
+    <!-- iloveui:component:start -->
+    <section
+      data-tripwire-form="true"
+      aria-labelledby="tw-heading"
+      class="@container mx-auto w-full max-w-[1180px] overflow-visible rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-[13px] leading-[1.4] text-(--iu-foreground)"
+    >
+      <header class="flex flex-wrap items-center justify-between gap-3 border-b border-(--iu-border) px-4 py-3">
+        <div class="min-w-0">
+          <p class="font-mono text-[11px] text-(--iu-muted) tabular-nums">alerts / payments / payments-p95-latency</p>
+          <h2 id="tw-heading" class="mt-0.5 text-base font-semibold">Edit alert rule</h2>
+        </div>
+        <span
+          class="inline-flex h-6 items-center gap-1.5 rounded-[min(var(--iu-radius),4px)] border border-(--iu-border) px-2 font-mono text-[11px] text-(--iu-muted) tabular-nums"
+          >v4 · editing</span
+        >
+      </header>
+      <div class="grid @4xl:grid-cols-[minmax(0,1fr)_380px]">
+        <form novalidate="" class="min-w-0">
+          <fieldset class="m-0 min-w-0 border-0 px-4 pb-2">
+            <legend class="sr-only">Rule settings</legend>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label for="tw-name" class="block text-[13px] font-medium text-(--iu-foreground)">Rule name</label>
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">
+                  Shown in notifications and the incident log.
+                </p>
+              </div>
+              <div class="min-w-0">
+                <input
+                  id="tw-name"
+                  spellcheck="false"
+                  autocomplete="off"
+                  aria-describedby="tw-name-help"
+                  class="h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+                  value="payments-p95-latency"
+                />
+                <p id="tw-name-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)">
+                  <span>Lowercase, numbers and dashes.</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label for="tw-metric" id="tw-metric-label" class="block text-[13px] font-medium text-(--iu-foreground)"
+                  >Metric</label
+                >
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">Sampled every 10 seconds.</p>
+              </div>
+              <div class="min-w-0">
+                <div class="relative">
+                  <button
+                    type="button"
+                    id="tw-metric"
+                    role="combobox"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="tw-metric-list"
+                    aria-labelledby="tw-metric-label tw-metric"
+                    aria-describedby="tw-metric-help"
+                    class="flex h-8 w-full items-center justify-between gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 text-left text-[13px] text-(--iu-foreground) transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+                  >
+                    <span data-tw-metric-value="true" class="min-w-0 truncate"
+                      ><span class="font-mono tabular-nums">http.p95_latency</span
+                      ><span class="text-(--iu-muted)"> · ms</span></span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-chevrons-up-down shrink-0 text-(--iu-muted)"
+                      aria-hidden="true"
+                    >
+                      <path d="m7 15 5 5 5-5"></path>
+                      <path d="m7 9 5-5 5 5"></path>
+                    </svg>
+                  </button>
+                  <ul
+                    id="tw-metric-list"
+                    role="listbox"
+                    aria-labelledby="tw-metric-label"
+                    hidden=""
+                    class="absolute inset-x-0 top-full z-30 mt-1 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 bg-(--iu-surface) p-1 shadow-[0_8px_24px_color-mix(in_oklab,black_12%,transparent)]"
+                  >
+                    <li
+                      id="tw-metric-0"
+                      role="option"
+                      aria-selected="true"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/6 px-2 py-1.5"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span class="block font-mono tabular-nums">http.p95_latency</span
+                        ><span class="block truncate text-xs text-(--iu-muted)"
+                          >95th percentile response time</span
+                        ></span
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">ms</span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    </li>
+                    <li
+                      id="tw-metric-1"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span class="block font-mono tabular-nums">http.error_rate</span
+                        ><span class="block truncate text-xs text-(--iu-muted)"
+                          >5xx responses / all responses</span
+                        ></span
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">%</span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check invisible"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    </li>
+                    <li
+                      id="tw-metric-2"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span class="block font-mono tabular-nums">queue.depth</span
+                        ><span class="block truncate text-xs text-(--iu-muted)">Jobs waiting across workers</span></span
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">jobs</span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check invisible"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    </li>
+                    <li
+                      id="tw-metric-3"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span class="block font-mono tabular-nums">host.cpu</span
+                        ><span class="block truncate text-xs text-(--iu-muted)">Mean CPU across instances</span></span
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">%</span
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check invisible"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    </li>
+                  </ul>
+                </div>
+                <p id="tw-metric-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)">
+                  <span>95th percentile response time</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label for="tw-operator" class="block text-[13px] font-medium text-(--iu-foreground)">Condition</label>
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">
+                  Fires when the metric stays past the threshold.
+                </p>
+              </div>
+              <div class="min-w-0">
+                <div
+                  class="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2 @md:grid-cols-[auto_minmax(0,1fr)_auto_96px]"
+                >
+                  <select
+                    id="tw-operator"
+                    aria-label="Comparison"
+                    class="h-8 w-auto w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 pr-7 text-[13px] text-(--iu-foreground) transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+                  >
+                    <option value="above" selected="">Above</option>
+                    <option value="below">Below</option>
+                  </select>
+                  <div class="relative">
+                    <input
+                      id="tw-threshold"
+                      inputmode="decimal"
+                      aria-label="Threshold in ms"
+                      aria-describedby="tw-threshold-help"
+                      class="h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 pr-12 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+                      value="800"
+                    /><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 font-mono text-xs text-(--iu-muted) tabular-nums"
+                      >ms</span
+                    >
+                  </div>
+                  <label for="tw-duration" class="text-xs whitespace-nowrap text-(--iu-muted)">for at least</label>
+                  <div class="relative">
+                    <input
+                      id="tw-duration"
+                      inputmode="numeric"
+                      aria-describedby="tw-duration-help"
+                      class="h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 pr-10 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+                      value="10"
+                    /><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 right-2.5 -translate-y-1/2 font-mono text-xs text-(--iu-muted) tabular-nums"
+                      >min</span
+                    >
+                  </div>
+                </div>
+                <p
+                  id="tw-threshold-help"
+                  class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)"
+                >
+                  <span>Drag the line on the backtest to tune it.</span>
+                </p>
+                <span id="tw-duration-help" hidden=""></span>
+              </div>
+            </div>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label
+                  for="tw-services"
+                  id="tw-services-label"
+                  class="block text-[13px] font-medium text-(--iu-foreground)"
+                  >Services</label
+                >
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">
+                  The rule evaluates each service on its own.
+                </p>
+              </div>
+              <div class="min-w-0">
+                <div class="relative">
+                  <div
+                    data-tw-services-box="true"
+                    class="flex min-h-8 flex-wrap items-center gap-1 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) p-1 pointer-coarse:min-h-10"
+                  >
+                    <ul data-tw-chips="true" aria-label="Selected services" class="contents">
+                      <li
+                        class="inline-flex h-6 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/8 pl-2 font-mono text-xs tabular-nums"
+                      >
+                        checkout-api<button
+                          type="button"
+                          aria-label="Remove checkout-api"
+                          class="relative inline-flex size-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) after:absolute after:-inset-2 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) pointer-coarse:after:-inset-2 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-x"
+                            aria-hidden="true"
+                          >
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                          </svg>
+                        </button>
+                      </li>
+                      <li
+                        class="inline-flex h-6 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/8 pl-2 font-mono text-xs tabular-nums"
+                      >
+                        payments-worker<button
+                          type="button"
+                          aria-label="Remove payments-worker"
+                          class="relative inline-flex size-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) after:absolute after:-inset-2 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) pointer-coarse:after:-inset-2 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-x"
+                            aria-hidden="true"
+                          >
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                          </svg>
+                        </button>
+                      </li>
+                    </ul>
+                    <input
+                      id="tw-services"
+                      role="combobox"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-controls="tw-services-list"
+                      autocomplete="off"
+                      spellcheck="false"
+                      placeholder="Add more"
+                      aria-describedby="tw-services-help"
+                      class="h-6 min-w-24 flex-1 bg-transparent px-1 font-mono text-[13px] tabular-nums outline-none placeholder:text-(--iu-muted) disabled:cursor-not-allowed"
+                      value=""
+                    />
+                  </div>
+                  <ul
+                    id="tw-services-list"
+                    role="listbox"
+                    aria-multiselectable="true"
+                    aria-labelledby="tw-services-label"
+                    hidden=""
+                    class="absolute inset-x-0 top-full z-30 mt-1 max-h-56 [scrollbar-gutter:stable] overflow-y-auto rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/20 bg-(--iu-surface) p-1 shadow-[0_8px_24px_color-mix(in_oklab,black_12%,transparent)]"
+                  >
+                    <li
+                      id="tw-service-0"
+                      role="option"
+                      aria-selected="true"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/6 px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-accent) bg-(--iu-accent) text-(--iu-accent-foreground)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="flex-1 font-mono tabular-nums">checkout-api</span
+                      ><span class="text-xs text-(--iu-muted)">payments</span>
+                    </li>
+                    <li
+                      id="tw-service-1"
+                      role="option"
+                      aria-selected="true"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-accent) bg-(--iu-accent) text-(--iu-accent-foreground)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="flex-1 font-mono tabular-nums">payments-worker</span
+                      ><span class="text-xs text-(--iu-muted)">payments</span>
+                    </li>
+                    <li
+                      id="tw-service-2"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-foreground)/40"
+                      ></span
+                      ><span class="flex-1 font-mono tabular-nums">ledger-sync</span
+                      ><span class="text-xs text-(--iu-muted)">payments</span>
+                    </li>
+                    <li
+                      id="tw-service-3"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-foreground)/40"
+                      ></span
+                      ><span class="flex-1 font-mono tabular-nums">search-api</span
+                      ><span class="text-xs text-(--iu-muted)">discovery</span>
+                    </li>
+                    <li
+                      id="tw-service-4"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-foreground)/40"
+                      ></span
+                      ><span class="flex-1 font-mono tabular-nums">edge-gateway</span
+                      ><span class="text-xs text-(--iu-muted)">platform</span>
+                    </li>
+                    <li
+                      id="tw-service-5"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-foreground)/40"
+                      ></span
+                      ><span class="flex-1 font-mono tabular-nums">auth-service</span
+                      ><span class="text-xs text-(--iu-muted)">identity</span>
+                    </li>
+                    <li
+                      id="tw-service-6"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-foreground)/40"
+                      ></span
+                      ><span class="flex-1 font-mono tabular-nums">notifications</span
+                      ><span class="text-xs text-(--iu-muted)">growth</span>
+                    </li>
+                    <li
+                      id="tw-service-7"
+                      role="option"
+                      aria-selected="false"
+                      class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),4px)] px-2 py-1.5"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-3.5 items-center justify-center rounded-[3px] border border-(--iu-foreground)/40"
+                      ></span
+                      ><span class="flex-1 font-mono tabular-nums">media-resizer</span
+                      ><span class="text-xs text-(--iu-muted)">platform</span>
+                    </li>
+                  </ul>
+                </div>
+                <p id="tw-services-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)">
+                  <span>2 selected. Backspace removes the last one.</span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label id="tw-severity-label" class="block text-[13px] font-medium text-(--iu-foreground)"
+                  >Severity</label
+                >
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">
+                  Sets who is paged and how fast.
+                </p>
+              </div>
+              <div class="min-w-0">
+                <div role="radiogroup" aria-labelledby="tw-severity-label" class="grid grid-cols-3 gap-1">
+                  <label
+                    class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 py-1.5 has-[:checked]:border-(--iu-accent) has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_8%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-(--iu-accent) pointer-coarse:min-h-10"
+                    ><input type="radio" class="sr-only" name="tw-severity" value="sev1" /><span
+                      class="font-mono text-xs font-semibold tabular-nums"
+                      >SEV1</span
+                    ><span class="hidden truncate text-xs text-(--iu-muted) @md:inline">Page now</span></label
+                  ><label
+                    class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 py-1.5 has-[:checked]:border-(--iu-accent) has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_8%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-(--iu-accent) pointer-coarse:min-h-10"
+                    ><input type="radio" class="sr-only" name="tw-severity" checked="" value="sev2" /><span
+                      class="font-mono text-xs font-semibold tabular-nums"
+                      >SEV2</span
+                    ><span class="hidden truncate text-xs text-(--iu-muted) @md:inline">Within 30 min</span></label
+                  ><label
+                    class="flex cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 py-1.5 has-[:checked]:border-(--iu-accent) has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_8%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-(--iu-accent) pointer-coarse:min-h-10"
+                    ><input type="radio" class="sr-only" name="tw-severity" value="sev3" /><span
+                      class="font-mono text-xs font-semibold tabular-nums"
+                      >SEV3</span
+                    ><span class="hidden truncate text-xs text-(--iu-muted) @md:inline">Next workday</span></label
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label id="tw-channel-label" class="block text-[13px] font-medium text-(--iu-foreground)">Notify</label>
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">Where the alert is sent.</p>
+              </div>
+              <div class="min-w-0">
+                <div role="radiogroup" aria-labelledby="tw-channel-label" class="grid grid-cols-3 gap-1">
+                  <label
+                    class="flex cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 py-1.5 text-xs has-[:checked]:border-(--iu-accent) has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_8%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-(--iu-accent) pointer-coarse:min-h-10"
+                    ><input type="radio" class="sr-only" name="tw-channel" checked="" value="slack" /><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-hash"
+                      aria-hidden="true"
+                    >
+                      <line x1="4" x2="20" y1="9" y2="9"></line>
+                      <line x1="4" x2="20" y1="15" y2="15"></line>
+                      <line x1="10" x2="8" y1="3" y2="21"></line>
+                      <line x1="16" x2="14" y1="3" y2="21"></line></svg
+                    >Slack</label
+                  ><label
+                    class="flex cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 py-1.5 text-xs has-[:checked]:border-(--iu-accent) has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_8%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-(--iu-accent) pointer-coarse:min-h-10"
+                    ><input type="radio" class="sr-only" name="tw-channel" value="pagerduty" /><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-siren"
+                      aria-hidden="true"
+                    >
+                      <path d="M7 18v-6a5 5 0 1 1 10 0v6"></path>
+                      <path d="M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z"></path>
+                      <path d="M21 12h1"></path>
+                      <path d="M18.5 4.5 18 5"></path>
+                      <path d="M2 12h1"></path>
+                      <path d="M12 2v1"></path>
+                      <path d="m4.929 4.929.707.707"></path>
+                      <path d="M12 12v6"></path></svg
+                    >PagerDuty</label
+                  ><label
+                    class="flex cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/25 px-2 py-1.5 text-xs has-[:checked]:border-(--iu-accent) has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_8%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-1 has-[:focus-visible]:outline-(--iu-accent) pointer-coarse:min-h-10"
+                    ><input type="radio" class="sr-only" name="tw-channel" value="webhook" /><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-webhook"
+                      aria-hidden="true"
+                    >
+                      <path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2"></path>
+                      <path d="m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06"></path>
+                      <path d="m12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8"></path></svg
+                    >Webhook</label
+                  >
+                </div>
+                <div
+                  data-tw-channel-fields="true"
+                  class="mt-2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/4 p-2.5"
+                >
+                  <label for="tw-slackChannel" class="block text-xs font-medium">Slack channel</label
+                  ><input
+                    id="tw-slackChannel"
+                    spellcheck="false"
+                    placeholder="#oncall-payments"
+                    aria-describedby="tw-slackChannel-help"
+                    class="mt-1 h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+                    value="#oncall-payments"
+                  />
+                  <p
+                    id="tw-slackChannel-help"
+                    class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)"
+                  >
+                    <span>Tripwire must be invited to private channels.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="grid gap-1.5 border-t border-(--iu-border) py-[calc(12px*var(--iu-density))] @2xl:grid-cols-[176px_minmax(0,1fr)] @2xl:gap-4"
+            >
+              <div>
+                <label id="tw-mute-label" class="block text-[13px] font-medium text-(--iu-foreground)"
+                  >Mute window</label
+                >
+                <p class="mt-0.5 hidden text-xs leading-snug text-(--iu-muted) @2xl:block">
+                  Planned work; alerts are logged, not sent.
+                </p>
+              </div>
+              <div class="min-w-0">
+                <label class="flex items-center gap-2"
+                  ><input
+                    id="tw-mute"
+                    type="checkbox"
+                    class="size-4 accent-(--iu-accent) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent)"
+                  /><span>Schedule a mute window</span></label
+                >
+                <div data-tw-mute-slot="true"></div>
+              </div>
+            </div>
+          </fieldset>
+          <div
+            class="sticky bottom-0 z-20 flex flex-wrap items-center justify-between gap-2 border-t border-(--iu-border) bg-(--iu-surface) px-4 py-2.5"
+          >
+            <p data-tw-status="true" class="flex min-w-0 items-center gap-2 text-xs" aria-hidden="true">
+              <span class="text-(--iu-muted)">No changes · v4</span>
+            </p>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                data-tw-discard="true"
+                disabled=""
+                class="h-8 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:text-(--iu-muted) pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6"
+              >
+                Discard</button
+              ><button
+                type="submit"
+                data-tw-save="true"
+                class="inline-flex h-8 min-w-28 items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent) px-3 text-[13px] font-medium text-(--iu-accent-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))]"
+              >
+                Save rule
+              </button>
+            </div>
+          </div>
+          <p data-tw-live="true" aria-live="polite" class="sr-only"></p>
+        </form>
+        <aside
+          aria-labelledby="tw-preview"
+          class="min-w-0 border-t border-(--iu-border) bg-(--iu-background) p-4 @4xl:border-t-0 @4xl:border-l"
+        >
+          <div class="@4xl:sticky @4xl:top-4">
+            <div class="flex items-baseline justify-between gap-2">
+              <h3 id="tw-preview" class="text-xs font-semibold tracking-[0.06em] uppercase">Backtest · last 24 h</h3>
+              <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">http.p95_latency</span>
+            </div>
+            <p data-tw-summary="true" class="mt-2 text-sm" aria-live="polite">
+              Would have fired <strong class="font-semibold tabular-nums">3</strong> times ·
+              <span class="tabular-nums">90 min</span> in alert
+            </p>
+            <div
+              data-tw-chart="true"
+              class="relative mt-3 h-40 rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface)"
+            >
+              <svg
+                role="img"
+                aria-label="http.p95_latency over the last 24 hours, from 343 ms to 1,120 ms."
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+                class="absolute inset-0 size-full"
+              >
+                <g data-tw-runs="true">
+                  <rect
+                    x="36.013636363636365"
+                    width="4.196503496503493"
+                    y="0"
+                    height="100"
+                    class="fill-rose-500/20 dark:fill-rose-400/25"
+                  ></rect>
+                  <rect
+                    x="68.18146853146854"
+                    width="1.399300699300693"
+                    y="0"
+                    height="100"
+                    class="fill-rose-500/20 dark:fill-rose-400/25"
+                  ></rect>
+                  <rect
+                    x="84.26538461538462"
+                    width="0.7"
+                    y="0"
+                    height="100"
+                    class="fill-rose-500/20 dark:fill-rose-400/25"
+                  ></rect>
+                </g>
+                <path
+                  data-tw-line="true"
+                  d="M0.00,95.86 L0.70,88.53 L1.40,93.20 L2.10,93.64 L2.80,89.42 L3.50,90.75 L4.20,92.09 L4.90,88.53 L5.59,88.20 L6.29,89.53 L6.99,88.09 L7.69,88.20 L8.39,86.42 L9.09,90.53 L9.79,89.20 L10.49,86.20 L11.19,85.87 L11.89,90.53 L12.59,85.20 L13.29,86.54 L13.99,82.54 L14.69,83.09 L15.38,87.98 L16.08,84.54 L16.78,80.87 L17.48,82.32 L18.18,82.21 L18.88,82.32 L19.58,79.21 L20.28,78.88 L20.98,82.54 L21.68,82.43 L22.38,78.10 L23.08,81.54 L23.78,82.54 L24.48,80.99 L25.17,79.54 L25.87,80.21 L26.57,74.88 L27.27,77.43 L27.97,75.66 L28.67,74.21 L29.37,80.21 L30.07,78.21 L30.77,75.55 L31.47,75.66 L32.17,75.99 L32.87,77.54 L33.57,71.66 L34.27,78.10 L34.97,75.44 L35.66,75.32 L36.36,9.95 L37.06,31.81 L37.76,28.37 L38.46,24.38 L39.16,21.27 L39.86,29.81 L40.56,69.77 L41.26,73.22 L41.96,70.00 L42.66,71.66 L43.36,71.66 L44.06,72.55 L44.76,72.66 L45.45,71.22 L46.15,69.33 L46.85,73.55 L47.55,71.22 L48.25,74.88 L48.95,72.44 L49.65,74.33 L50.35,74.66 L51.05,74.33 L51.75,71.44 L52.45,71.00 L53.15,77.10 L53.85,71.88 L54.55,77.88 L55.24,75.55 L55.94,77.88 L56.64,78.77 L57.34,71.88 L58.04,78.21 L58.74,75.32 L59.44,79.54 L60.14,77.43 L60.84,76.77 L61.54,80.65 L62.24,74.99 L62.94,75.66 L63.64,75.99 L64.34,76.43 L65.03,76.66 L65.73,78.21 L66.43,82.43 L67.13,84.98 L67.83,83.54 L68.53,43.25 L69.23,40.14 L69.93,80.99 L70.63,83.43 L71.33,82.32 L72.03,86.20 L72.73,81.65 L73.43,87.09 L74.13,86.42 L74.83,82.76 L75.52,89.20 L76.22,86.76 L76.92,90.98 L77.62,84.20 L78.32,86.76 L79.02,84.87 L79.72,92.31 L80.42,85.76 L81.12,91.64 L81.82,85.87 L82.52,89.31 L83.22,88.76 L83.92,92.31 L84.62,27.71 L85.31,93.20 L86.01,90.64 L86.71,94.86 L87.41,89.53 L88.11,90.20 L88.81,90.31 L89.51,92.09 L90.21,95.86 L90.91,95.42 L91.61,89.20 L92.31,95.42 L93.01,91.09 L93.71,89.53 L94.41,96.19 L95.10,89.64 L95.80,89.87 L96.50,88.76 L97.20,88.98 L97.90,90.42 L98.60,92.97 L99.30,94.19 L100.00,90.31"
+                  fill="none"
+                  vector-effect="non-scaling-stroke"
+                  stroke-width="1.25"
+                  stroke-linejoin="round"
+                  class="stroke-(--iu-foreground)"
+                ></path>
+              </svg>
+              <div
+                data-tw-threshold="true"
+                aria-hidden="true"
+                class="absolute inset-x-0 h-0 border-t border-dashed border-(--iu-accent) transition-[top] duration-150 motion-reduce:transition-none"
+                style="top: 45.465645465645466%"
+              >
+                <span
+                  data-tw-handle="true"
+                  class="absolute right-1 -translate-y-1/2 cursor-ns-resize touch-none rounded-[min(var(--iu-radius),4px)] bg-(--iu-accent) px-1.5 py-0.5 font-mono text-[11px] text-(--iu-accent-foreground) tabular-nums select-none"
+                  >800 ms</span
+                >
+              </div>
+            </div>
+            <div
+              aria-hidden="true"
+              class="mt-1.5 flex justify-between font-mono text-[11px] text-(--iu-muted) tabular-nums"
+            >
+              <span>14:40</span><span>20:30</span><span>02:30</span><span>08:30</span><span>now</span>
+            </div>
+            <div data-tw-fired="true">
+              <table class="mt-3 w-full text-left text-xs">
+                <caption class="sr-only">
+                  Times the rule would have fired
+                </caption>
+                <thead class="text-[11px] text-(--iu-muted)">
+                  <tr>
+                    <th scope="col" class="py-1 font-medium">Window</th>
+                    <th scope="col" class="py-1 text-right font-medium">Length</th>
+                    <th scope="col" class="py-1 text-right font-medium">Peak</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="py-1.5 font-mono tabular-nums">23:20–00:20</td>
+                    <td class="py-1.5 text-right font-mono tabular-nums">60 min</td>
+                    <td class="py-1.5 text-right font-mono tabular-nums">1,120 ms</td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="py-1.5 font-mono tabular-nums">07:00–07:20</td>
+                    <td class="py-1.5 text-right font-mono tabular-nums">20 min</td>
+                    <td class="py-1.5 text-right font-mono tabular-nums">848 ms</td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="py-1.5 font-mono tabular-nums">10:50–11:00</td>
+                    <td class="py-1.5 text-right font-mono tabular-nums">10 min</td>
+                    <td class="py-1.5 text-right font-mono tabular-nums">960 ms</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <pre
+              data-tw-rule="true"
+              aria-label="Rule definition"
+              class="mt-4 overflow-x-auto rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) p-3 font-mono text-[11px] leading-[1.6] break-all whitespace-pre-wrap text-(--iu-foreground) tabular-nums"
+            >
+rule payments-p95-latency
+  when http.p95_latency &gt; 800ms
+  for 10m
+  on [checkout-api, payments-worker]
+  severity SEV2
+  notify #oncall-payments</pre>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <template data-tw-template="slack"
+      ><label for="tw-slackChannel" class="block text-xs font-medium">Slack channel</label
+      ><input
+        id="tw-slackChannel"
+        spellcheck="false"
+        placeholder="#oncall-payments"
+        aria-describedby="tw-slackChannel-help"
+        class="mt-1 h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+        value=""
+      />
+      <p id="tw-slackChannel-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)">
+        <span>Tripwire must be invited to private channels.</span>
+      </p></template
+    ><template data-tw-template="pagerduty"
+      ><label for="tw-routingKey" class="block text-xs font-medium">Routing key</label
+      ><input
+        id="tw-routingKey"
+        spellcheck="false"
+        aria-describedby="tw-routingKey-help"
+        class="mt-1 h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+        value=""
+      />
+      <p id="tw-routingKey-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)">
+        <span>From the Events API v2 integration of your PagerDuty service.</span>
+      </p></template
+    ><template data-tw-template="webhook"
+      ><label for="tw-webhookUrl" class="block text-xs font-medium">Endpoint</label
+      ><input
+        id="tw-webhookUrl"
+        type="url"
+        spellcheck="false"
+        aria-describedby="tw-webhookUrl-help"
+        class="mt-1 h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+        value=""
+      />
+      <p id="tw-webhookUrl-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug text-(--iu-muted)">
+        <span>We POST JSON and retry 3 times.</span>
+      </p>
+      <label class="mt-2 flex items-center gap-2 text-xs"
+        ><input
+          type="checkbox"
+          class="size-4 accent-(--iu-accent) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent)"
+          checked=""
+        />Sign requests with an HMAC header</label
+      ></template
+    ><template data-tw-template="mute"
+      ><fieldset class="mt-2 grid gap-2 border-0 p-0 @md:grid-cols-2">
+        <legend class="sr-only">Mute window dates</legend>
+        <div>
+          <label for="tw-muteStart" class="block text-xs text-(--iu-muted)">From</label
+          ><input
+            id="tw-muteStart"
+            type="date"
+            aria-describedby="tw-muteStart-help"
+            class="mt-1 h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+            value=""
+          />
+        </div>
+        <div>
+          <label for="tw-muteEnd" class="block text-xs text-(--iu-muted)">Until</label
+          ><input
+            id="tw-muteEnd"
+            type="date"
+            aria-describedby="tw-muteEnd-help"
+            class="mt-1 h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-2.5 font-mono text-[13px] text-(--iu-foreground) tabular-nums transition-colors duration-100 placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/5 disabled:text-(--iu-muted) aria-invalid:border-rose-600 motion-reduce:transition-none dark:aria-invalid:border-rose-400 pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)/60"
+            value=""
+          />
+        </div>
+        <p class="text-xs text-(--iu-muted) @md:col-span-2">Up to 14 days.</p>
+      </fieldset></template
+    >
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-tripwire-form]");
+        if (!root) return;
+        var P = "tw-";
+        var NOW = "14:30";
+        var EXISTING = ["checkout-p95-latency", "ledger-sync-lag", "edge-5xx-burst"];
+        var METRICS = [
+          { id: "http.p95_latency", unit: "ms", step: 10, description: "95th percentile response time" },
+          { id: "http.error_rate", unit: "%", step: 0.1, description: "5xx responses / all responses" },
+          { id: "queue.depth", unit: "jobs", step: 50, description: "Jobs waiting across workers" },
+          { id: "host.cpu", unit: "%", step: 1, description: "Mean CPU across instances" },
+        ];
+        var SERVICES = [
+          "checkout-api",
+          "payments-worker",
+          "ledger-sync",
+          "search-api",
+          "edge-gateway",
+          "auth-service",
+          "notifications",
+          "media-resizer",
+        ];
+        var ORDER = [
+          "name",
+          "metric",
+          "threshold",
+          "duration",
+          "services",
+          "slackChannel",
+          "routingKey",
+          "webhookUrl",
+          "muteStart",
+          "muteEnd",
+        ];
+        var SVG =
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+        var ALERT =
+          SVG +
+          ' width="14" height="14" stroke-width="1.5" class="mt-px shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>';
+        var ALERT_PLAIN =
+          SVG +
+          ' width="14" height="14" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>';
+        var CIRCLE_CHECK =
+          SVG +
+          ' width="14" height="14" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><path d="m16 9-5.5 5.5L8 12"></path></svg>';
+        var SPINNER =
+          SVG +
+          ' width="14" height="14" stroke-width="1.5" class="animate-spin motion-reduce:animate-none"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>';
+        var X_ICON =
+          SVG +
+          ' width="12" height="12" stroke-width="1.75"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>';
+        var TICK = SVG + ' width="10" height="10" stroke-width="2.5"><path d="M20 6 9 17l-5-5"></path></svg>';
+        var MONO = "font-mono tabular-nums";
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-(--iu-accent)";
+
+        function el(id) {
+          return document.getElementById(P + id);
+        }
+        function q(sel) {
+          return root.querySelector(sel);
+        }
+        function esc(text) {
+          return String(text).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+
+        function demoSeries(kind) {
+          var seed = { "http.p95_latency": 7, "http.error_rate": 11, "queue.depth": 13, "host.cpu": 17 }[kind] || 5;
+          function rand() {
+            seed = (seed * 16807) % 2147483647;
+            return seed / 2147483647;
+          }
+          var out = [];
+          for (var i = 0; i < 144; i++) {
+            var day = Math.sin((i / 144) * Math.PI * 2 - 1.2);
+            var v;
+            if (kind === "http.p95_latency") {
+              v = 430 + 90 * day + rand() * 70;
+              if (i >= 52 && i <= 57) v = 880 + rand() * 260;
+              if (i >= 98 && i <= 99) v = 820 + rand() * 120;
+              if (i === 121) v = 960;
+            } else if (kind === "http.error_rate") {
+              v = 0.32 + 0.12 * day + rand() * 0.14;
+              if (i >= 53 && i <= 56) v = 1.9 + rand() * 0.8;
+              if (i === 121) v = 1.2;
+            } else if (kind === "queue.depth") {
+              v = 140 + 60 * day + rand() * 50;
+              if (i >= 100 && i <= 110) v = 900 + (i - 100) * 180 + rand() * 120;
+              if (i > 110 && i <= 113) v = 600 - (i - 110) * 150;
+            } else {
+              v = 48 + 20 * day + rand() * 8;
+              if (i >= 99 && i <= 111) v = 82 + rand() * 9;
+            }
+            out.push(kind === "http.error_rate" ? Math.round(v * 100) / 100 : Math.round(v));
+          }
+          return out;
+        }
+        function backtest(series, operator, threshold, minutes) {
+          var runs = [];
+          var start = -1;
+          series.forEach(function (value, index) {
+            var past = operator === "above" ? value > threshold : value < threshold;
+            if (past && start < 0) start = index;
+            if ((!past || index === series.length - 1) && start >= 0) {
+              var end = past ? index : index - 1;
+              var slice = series.slice(start, end + 1);
+              var peak = operator === "above" ? Math.max.apply(null, slice) : Math.min.apply(null, slice);
+              runs.push({ start: start, end: end, peak: peak, fires: (end - start + 1) * 10 >= minutes });
+              start = -1;
+            }
+          });
+          return runs;
+        }
+        function clock(ago) {
+          var parts = NOW.split(":").map(Number);
+          var total = (((parts[0] * 60 + parts[1] - ago * 10) % 1440) + 1440) % 1440;
+          return String(Math.floor(total / 60)).padStart(2, "0") + ":" + String(total % 60).padStart(2, "0");
+        }
+        function daysBetween(a, b) {
+          return (Date.parse(b + "T00:00:00Z") - Date.parse(a + "T00:00:00Z")) / 86400000;
+        }
+        function metricOf(id) {
+          return (
+            METRICS.find(function (m) {
+              return m.id === id;
+            }) || METRICS[0]
+          );
+        }
+
+        function validate(v) {
+          var e = {};
+          if (!v.name.trim()) e.name = "Name the rule.";
+          else if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(v.name)) e.name = "Use lowercase letters, numbers and dashes.";
+          else if (EXISTING.indexOf(v.name) >= 0) e.name = "“" + v.name + "” already exists. Pick another name.";
+          var t = Number(v.threshold);
+          if (v.threshold.trim() === "" || isNaN(t)) e.threshold = "Enter a number.";
+          else if (t <= 0) e.threshold = "Must be greater than 0.";
+          var d = Number(v.duration);
+          if (!Number.isInteger(d) || d < 1 || d > 60) e.duration = "1 to 60 minutes.";
+          if (!v.services.length) e.services = "Pick at least one service.";
+          if (v.channel === "slack" && !/^#[a-z0-9][a-z0-9_-]{1,79}$/.test(v.slackChannel))
+            e.slackChannel = "Start with # and use lowercase, for example #oncall-payments.";
+          if (v.channel === "pagerduty" && !/^[a-f0-9]{32}$/.test(v.routingKey))
+            e.routingKey = "Routing keys are 32 hexadecimal characters.";
+          if (v.channel === "webhook" && !/^https:\/\/[^\s/]+\.[^\s]+$/.test(v.webhookUrl))
+            e.webhookUrl = "Use a full https address.";
+          if (v.mute) {
+            if (!v.muteStart) e.muteStart = "Choose a start date.";
+            if (!v.muteEnd) e.muteEnd = "Choose an end date.";
+            if (v.muteStart && v.muteEnd) {
+              var span = daysBetween(v.muteStart, v.muteEnd);
+              if (span < 0) e.muteEnd = "The end is before the start.";
+              else if (span > 14) e.muteEnd = "Mute windows are at most 14 days; this is " + span + ".";
+            }
+          }
+          return e;
+        }
+
+        // ---- read the starting values from the markup ----
+        var form = root.querySelector("form");
+        var fieldset = form.querySelector("fieldset");
+        var templates = {};
+        document.querySelectorAll("template[data-tw-template]").forEach(function (t) {
+          templates[t.getAttribute("data-tw-template")] = t.innerHTML;
+        });
+        function checked(name) {
+          var input = form.querySelector('input[name="' + P + name + '"]:checked');
+          return input ? input.value : "";
+        }
+        var values = {
+          name: el("name").value,
+          metric: q("[data-tw-metric-value] span").textContent.trim(),
+          operator: el("operator").value,
+          threshold: el("threshold").value,
+          duration: el("duration").value,
+          services: Array.prototype.map.call(q("[data-tw-chips]").children, function (li) {
+            return li.firstChild.textContent.trim();
+          }),
+          severity: checked("severity"),
+          channel: checked("channel"),
+          slackChannel: el("slackChannel") ? el("slackChannel").value : "",
+          routingKey: "",
+          webhookUrl: "",
+          signRequests: true,
+          mute: el("mute").checked,
+          muteStart: "",
+          muteEnd: "",
+        };
+        var saved = JSON.parse(JSON.stringify(values));
+        var version = 4;
+        var errors = {};
+        var status = "idle";
+        var savedAt = "";
+        var helpers = {
+          slackChannel: "Tripwire must be invited to private channels.",
+          routingKey: "From the Events API v2 integration of your PagerDuty service.",
+          webhookUrl: "We POST JSON and retry 3 times.",
+        };
+        ORDER.forEach(function (field) {
+          var help = el(field + "-help");
+          if (help && help.tagName === "P") helpers[field] = help.querySelector("span").textContent;
+        });
+
+        // ---- help and error text ----
+        function anchorFor(field) {
+          var control = field === "services" ? q("[data-tw-services-box]").parentElement : el(field);
+          if (!control) return null;
+          return control.parentElement.classList.contains("relative") && field !== "services"
+            ? control.parentElement
+            : control;
+        }
+        function setHelp(field, error) {
+          var help = el(field + "-help");
+          var text = error || helpers[field];
+          if (field === "metric") text = error || metricOf(values.metric).description;
+          if (!text) {
+            if (help && help.tagName === "P") {
+              if (field === "duration") help.outerHTML = '<span id="' + P + 'duration-help" hidden></span>';
+              else help.parentElement.removeChild(help);
+            }
+            return;
+          }
+          var html =
+            '<p id="' +
+            P +
+            field +
+            '-help" class="mt-1.5 flex items-start gap-1.5 text-xs leading-snug ' +
+            (error ? "text-rose-700 dark:text-rose-300" : "text-(--iu-muted)") +
+            '">' +
+            (error ? ALERT : "") +
+            "<span>" +
+            esc(text) +
+            "</span></p>";
+          if (help) help.outerHTML = html;
+          else {
+            var anchor = anchorFor(field);
+            if (anchor) anchor.insertAdjacentHTML("afterend", html);
+          }
+        }
+        function showError(field, message) {
+          errors[field] = message || undefined;
+          if (field === "services") {
+            var box = q("[data-tw-services-box]");
+            box.classList.toggle("border-rose-600", !!message);
+            box.classList.toggle("dark:border-rose-400", !!message);
+            box.classList.toggle("border-(--iu-foreground)/35", !message);
+          }
+          var control = field === "services" ? el("services") : el(field);
+          if (control) {
+            if (message) control.setAttribute("aria-invalid", "true");
+            else control.removeAttribute("aria-invalid");
+          }
+          setHelp(field, message);
+        }
+
+        // ---- the backtest ----
+        function format(metric, value) {
+          return metric.unit === "%"
+            ? value.toFixed(value < 10 ? 2 : 0) + "%"
+            : Math.round(value).toLocaleString("en-US") + " " + metric.unit;
+        }
+        var chart = q("[data-tw-chart]");
+        var bounds = { lo: 0, hi: 1 };
+        function renderChart() {
+          var metric = metricOf(values.metric);
+          var series = demoSeries(metric.id);
+          var threshold = Number(values.threshold);
+          var valid = values.threshold.trim() !== "" && !isNaN(threshold);
+          var runs = valid ? backtest(series, values.operator, threshold, Number(values.duration) || 0) : [];
+          var fired = runs.filter(function (r) {
+            return r.fires;
+          });
+          var minutes = fired.reduce(function (sum, r) {
+            return sum + (r.end - r.start + 1) * 10;
+          }, 0);
+          var lo = Math.min.apply(null, series.concat(valid ? [threshold] : [])) * 0.9;
+          var hi = Math.max.apply(null, series.concat(valid ? [threshold] : [])) * 1.08;
+          bounds = { lo: lo, hi: hi };
+          function y(v) {
+            return (1 - (v - lo) / (hi - lo || 1)) * 100;
+          }
+          function x(i) {
+            return (i / (series.length - 1)) * 100;
+          }
+          q("[data-tw-line]").setAttribute(
+            "d",
+            series
+              .map(function (v, i) {
+                return (i ? "L" : "M") + x(i).toFixed(2) + "," + y(v).toFixed(2);
+              })
+              .join(" "),
+          );
+          q("[data-tw-runs]").innerHTML = runs
+            .map(function (r) {
+              return (
+                '<rect x="' +
+                (x(r.start) - 0.35) +
+                '" width="' +
+                (Math.max(x(r.end) - x(r.start), 0) + 0.7) +
+                '" y="0" height="100" class="' +
+                (r.fires ? "fill-rose-500/20 dark:fill-rose-400/25" : "fill-(--iu-foreground)/6") +
+                '"></rect>'
+              );
+            })
+            .join("");
+          chart
+            .querySelector("svg")
+            .setAttribute(
+              "aria-label",
+              metric.id +
+                " over the last 24 hours, from " +
+                format(metric, Math.min.apply(null, series)) +
+                " to " +
+                format(metric, Math.max.apply(null, series)) +
+                ".",
+            );
+          var line = q("[data-tw-threshold]");
+          line.hidden = !valid;
+          if (valid) {
+            line.style.top = Math.min(100, Math.max(0, y(threshold))) + "%";
+            q("[data-tw-handle]").textContent = format(metric, threshold);
+          }
+          q("[data-tw-summary]").innerHTML = !valid
+            ? '<span class="text-(--iu-muted)">Enter a threshold to backtest.</span>'
+            : fired.length
+              ? 'Would have fired <strong class="font-semibold tabular-nums">' +
+                fired.length +
+                "</strong> " +
+                (fired.length === 1 ? "time" : "times") +
+                ' · <span class="tabular-nums">' +
+                minutes +
+                " min</span> in alert"
+              : "Would not have fired in the last 24 h.";
+          q("[data-tw-fired]").innerHTML = fired.length
+            ? '<table class="mt-3 w-full text-left text-xs"><caption class="sr-only">Times the rule would have fired</caption><thead class="text-[11px] text-(--iu-muted)"><tr><th scope="col" class="py-1 font-medium">Window</th><th scope="col" class="py-1 text-right font-medium">Length</th><th scope="col" class="py-1 text-right font-medium">Peak</th></tr></thead><tbody>' +
+              fired
+                .map(function (r) {
+                  return (
+                    '<tr class="border-t border-(--iu-border)"><td class="py-1.5 ' +
+                    MONO +
+                    '">' +
+                    clock(series.length - 1 - r.start) +
+                    "–" +
+                    clock(series.length - 2 - r.end) +
+                    '</td><td class="py-1.5 text-right ' +
+                    MONO +
+                    '">' +
+                    (r.end - r.start + 1) * 10 +
+                    ' min</td><td class="py-1.5 text-right ' +
+                    MONO +
+                    '">' +
+                    format(metric, r.peak) +
+                    "</td></tr>"
+                  );
+                })
+                .join("") +
+              "</tbody></table>"
+            : "";
+          q("[data-tw-metric-value]").innerHTML =
+            '<span class="' +
+            MONO +
+            '">' +
+            metric.id +
+            '</span><span class="text-(--iu-muted)"> · ' +
+            metric.unit +
+            "</span>";
+        }
+
+        function renderRule() {
+          var metric = metricOf(values.metric);
+          var notify =
+            values.channel === "slack"
+              ? values.slackChannel || "#?"
+              : values.channel === "pagerduty"
+                ? "pagerduty:" + (values.routingKey ? values.routingKey.slice(0, 6) + "…" : "?")
+                : values.webhookUrl || "webhook:?";
+          q("[data-tw-rule]").textContent = [
+            "rule " + (values.name || "untitled"),
+            "  when " +
+              metric.id +
+              " " +
+              (values.operator === "above" ? ">" : "<") +
+              " " +
+              (values.threshold || "?") +
+              (metric.unit === "%" || metric.unit === "ms" ? metric.unit : " " + metric.unit),
+            "  for " + (values.duration || "?") + "m",
+            "  on [" + values.services.join(", ") + "]",
+            "  severity " + values.severity.toUpperCase(),
+            "  notify " + notify,
+          ]
+            .concat(values.mute ? ["  mute " + (values.muteStart || "?") + " .. " + (values.muteEnd || "?")] : [])
+            .join("\n");
+        }
+
+        function dirtyCount() {
+          return Object.keys(values).filter(function (key) {
+            return JSON.stringify(values[key]) !== JSON.stringify(saved[key]);
+          }).length;
+        }
+        function renderStatus() {
+          var dirty = dirtyCount();
+          var errorCount = Object.keys(errors).filter(function (k) {
+            return errors[k];
+          }).length;
+          var node = q("[data-tw-status]");
+          if (status === "saving") node.innerHTML = '<span class="text-(--iu-muted)">Saving…</span>';
+          else if (status === "saved" && !dirty)
+            node.innerHTML =
+              '<span class="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-300">' +
+              CIRCLE_CHECK +
+              "Saved at " +
+              savedAt +
+              " · v" +
+              version +
+              "</span>";
+          else if (errorCount)
+            node.innerHTML =
+              '<span class="inline-flex items-center gap-1.5 text-rose-700 dark:text-rose-300">' +
+              ALERT_PLAIN +
+              errorCount +
+              " fields need attention</span>";
+          else if (dirty)
+            node.innerHTML =
+              '<span class="inline-flex items-center gap-1.5"><span class="size-1.5 rounded-full bg-(--iu-accent)"></span>' +
+              dirty +
+              " unsaved " +
+              (dirty === 1 ? "change" : "changes") +
+              "</span>";
+          else node.innerHTML = '<span class="text-(--iu-muted)">No changes · v' + version + "</span>";
+          q("[data-tw-discard]").disabled = status === "saving" || !dirty;
+        }
+
+        function refresh() {
+          el("preview").nextElementSibling.textContent = values.metric;
+          var muteNote = q("[data-tw-mute-slot] fieldset > p");
+          if (muteNote) {
+            var span = values.muteStart && values.muteEnd ? daysBetween(values.muteStart, values.muteEnd) : -1;
+            muteNote.textContent = "Up to 14 days. " + (span >= 0 ? span + 1 + " days selected." : "");
+          }
+          renderChart();
+          renderRule();
+          renderStatus();
+        }
+
+        function set(field, value) {
+          values[field] = value;
+          if (status === "saved") status = "idle";
+          var fresh = validate(values);
+          Object.keys(errors).forEach(function (key) {
+            if (errors[key] && !fresh[key]) showError(key, null);
+          });
+          refresh();
+        }
+
+        // ---- plain inputs, by delegation so conditional fields work too ----
+        var TEXT_FIELDS = [
+          "name",
+          "threshold",
+          "duration",
+          "slackChannel",
+          "routingKey",
+          "webhookUrl",
+          "muteStart",
+          "muteEnd",
+        ];
+        form.addEventListener("input", function (event) {
+          var id = (event.target.id || "").replace(P, "");
+          if (TEXT_FIELDS.indexOf(id) >= 0)
+            set(id, id === "routingKey" ? event.target.value.trim() : event.target.value);
+        });
+        form.addEventListener("change", function (event) {
+          var target = event.target;
+          var id = (target.id || "").replace(P, "");
+          if (id === "operator") set("operator", target.value);
+          else if (id === "mute") {
+            q("[data-tw-mute-slot]").innerHTML = target.checked ? templates.mute : "";
+            set("mute", target.checked);
+          } else if (target.name === P + "severity") set("severity", target.value);
+          else if (target.name === P + "channel") {
+            q("[data-tw-channel-fields]").innerHTML = templates[target.value];
+            ["slackChannel", "routingKey", "webhookUrl"].forEach(function (f) {
+              errors[f] = undefined;
+            });
+            set("channel", target.value);
+          } else if (target.type === "checkbox" && target.closest("[data-tw-channel-fields]"))
+            set("signRequests", target.checked);
+        });
+        form.addEventListener(
+          "blur",
+          function (event) {
+            var id = (event.target.id || "").replace(P, "");
+            if (TEXT_FIELDS.indexOf(id) >= 0 && String(values[id]).trim() !== "") {
+              showError(id, validate(values)[id] || null);
+              renderStatus();
+            }
+          },
+          true,
+        );
+
+        // ---- metric select ----
+        var metricBtn = el("metric");
+        var metricList = el("metric-list");
+        var metricOptions = Array.prototype.slice.call(metricList.querySelectorAll('[role="option"]'));
+        var metricOpen = false;
+        var metricActive = 0;
+        function metricIndex() {
+          return Math.max(
+            0,
+            METRICS.findIndex(function (m) {
+              return m.id === values.metric;
+            }),
+          );
+        }
+        function paintMetric() {
+          metricList.hidden = !metricOpen;
+          metricBtn.setAttribute("aria-expanded", metricOpen ? "true" : "false");
+          metricOptions.forEach(function (option, index) {
+            option.classList.toggle("bg-(--iu-foreground)/6", index === metricActive);
+          });
+          if (metricOpen) metricBtn.setAttribute("aria-activedescendant", metricOptions[metricActive].id);
+          else metricBtn.removeAttribute("aria-activedescendant");
+        }
+        function chooseMetric(index) {
+          var next = METRICS[index];
+          if (next && next.id !== values.metric) {
+            var peak = Math.max.apply(null, demoSeries(next.id));
+            var suggested = Math.round((peak * 0.75) / next.step) * next.step;
+            values.metric = next.id;
+            el("threshold").value = String(Number(suggested.toFixed(2)));
+            el("threshold").setAttribute("aria-label", "Threshold in " + next.unit);
+            el("threshold").nextElementSibling.textContent = next.unit;
+            metricOptions.forEach(function (option, i) {
+              option.setAttribute("aria-selected", i === index ? "true" : "false");
+              option.querySelector("svg").classList.toggle("invisible", i !== index);
+            });
+            setHelp("metric", null);
+            set("threshold", el("threshold").value);
+          }
+          metricOpen = false;
+          paintMetric();
+        }
+        metricBtn.addEventListener("click", function () {
+          metricOpen = !metricOpen;
+          metricActive = metricIndex();
+          paintMetric();
+        });
+        metricBtn.addEventListener("blur", function () {
+          metricOpen = false;
+          paintMetric();
+        });
+        metricBtn.addEventListener("keydown", function (event) {
+          var last = METRICS.length - 1;
+          if (!metricOpen) {
+            if (["ArrowDown", "ArrowUp", "Enter", " "].indexOf(event.key) >= 0) {
+              event.preventDefault();
+              metricOpen = true;
+              metricActive = metricIndex();
+              paintMetric();
+            }
+            return;
+          }
+          if (event.key === "ArrowDown") metricActive = Math.min(last, metricActive + 1);
+          else if (event.key === "ArrowUp") metricActive = Math.max(0, metricActive - 1);
+          else if (event.key === "Home") metricActive = 0;
+          else if (event.key === "End") metricActive = last;
+          else if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            chooseMetric(metricActive);
+            return;
+          } else if (event.key === "Escape") metricOpen = false;
+          else if (event.key === "Tab") {
+            chooseMetric(metricActive);
+            return;
+          } else return;
+          event.preventDefault();
+          paintMetric();
+        });
+        metricOptions.forEach(function (option, index) {
+          option.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+          });
+          option.addEventListener("click", function () {
+            chooseMetric(index);
+          });
+          option.addEventListener("mousemove", function () {
+            metricActive = index;
+            paintMetric();
+          });
+        });
+
+        // ---- services multi-select ----
+        var serviceInput = el("services");
+        var serviceList = el("services-list");
+        var serviceItems = Array.prototype.slice.call(serviceList.querySelectorAll('[role="option"]'));
+        var serviceOpen = false;
+        var serviceActive = 0;
+        var live = q("[data-tw-live]");
+        function shownServices() {
+          return serviceItems.filter(function (li) {
+            return !li.hidden;
+          });
+        }
+        function renderServices() {
+          var query = serviceInput.value.trim().toLowerCase();
+          serviceItems.forEach(function (li, i) {
+            var id = SERVICES[i];
+            var team = li.lastElementChild.textContent;
+            li.hidden = (id + " " + team).indexOf(query) < 0;
+            var selected = values.services.indexOf(id) >= 0;
+            li.setAttribute("aria-selected", selected ? "true" : "false");
+            var box = li.firstElementChild;
+            box.className =
+              "inline-flex size-3.5 items-center justify-center rounded-[3px] border " +
+              (selected
+                ? "border-(--iu-accent) bg-(--iu-accent) text-(--iu-accent-foreground)"
+                : "border-(--iu-foreground)/40");
+            box.innerHTML = selected ? TICK : "";
+          });
+          var shown = shownServices();
+          var empty = serviceList.querySelector('[role="presentation"]');
+          if (!shown.length && !empty)
+            serviceList.insertAdjacentHTML(
+              "beforeend",
+              '<li role="presentation" class="px-2 py-1.5 text-(--iu-muted)">No service matches “' +
+                esc(serviceInput.value) +
+                "”.</li>",
+            );
+          else if (shown.length && empty) serviceList.removeChild(empty);
+          else if (empty) empty.textContent = "No service matches “" + serviceInput.value + "”.";
+          shown.forEach(function (li, i) {
+            li.classList.toggle("bg-(--iu-foreground)/6", i === serviceActive);
+          });
+          serviceItems.forEach(function (li) {
+            if (li.hidden) li.classList.remove("bg-(--iu-foreground)/6");
+          });
+          serviceList.hidden = !serviceOpen;
+          serviceInput.setAttribute("aria-expanded", serviceOpen ? "true" : "false");
+          if (serviceOpen && shown[serviceActive])
+            serviceInput.setAttribute("aria-activedescendant", shown[serviceActive].id);
+          else serviceInput.removeAttribute("aria-activedescendant");
+          q("[data-tw-chips]").innerHTML = values.services
+            .map(function (id) {
+              return (
+                '<li class="inline-flex h-6 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/8 pl-2 text-xs ' +
+                MONO +
+                '">' +
+                id +
+                '<button type="button" data-remove="' +
+                id +
+                '" aria-label="Remove ' +
+                id +
+                '" class="relative inline-flex size-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) after:absolute after:-inset-2 pointer-coarse:after:-inset-2 pointer-fine:hover:text-(--iu-foreground) ' +
+                FOCUS +
+                '">' +
+                X_ICON +
+                "</button></li>"
+              );
+            })
+            .join("");
+          serviceInput.placeholder = values.services.length ? "Add more" : "Search services";
+          helpers.services = values.services.length + " selected. Backspace removes the last one.";
+          if (!errors.services) setHelp("services", null);
+        }
+        function toggleService(id) {
+          var had = values.services.indexOf(id) >= 0;
+          var next = had
+            ? values.services.filter(function (s) {
+                return s !== id;
+              })
+            : values.services.concat([id]);
+          set("services", next);
+          live.textContent = id + " " + (had ? "removed" : "added") + ". " + next.length + " selected.";
+          renderServices();
+        }
+        q("[data-tw-services-box]").addEventListener("click", function (event) {
+          var remove = event.target.closest("[data-remove]");
+          if (remove) {
+            event.stopPropagation();
+            toggleService(remove.getAttribute("data-remove"));
+            return;
+          }
+          serviceInput.focus();
+        });
+        serviceInput.addEventListener("input", function () {
+          serviceOpen = true;
+          serviceActive = 0;
+          renderServices();
+        });
+        serviceInput.addEventListener("focus", function () {
+          serviceOpen = true;
+          renderServices();
+        });
+        serviceInput.addEventListener("blur", function () {
+          serviceOpen = false;
+          renderServices();
+          if (values.services.length) showError("services", validate(values).services || null);
+        });
+        serviceInput.addEventListener("keydown", function (event) {
+          var shown = shownServices();
+          var last = shown.length - 1;
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            serviceActive = serviceOpen ? (serviceActive >= last ? 0 : serviceActive + 1) : 0;
+            serviceOpen = true;
+            renderServices();
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            serviceOpen = true;
+            serviceActive = serviceActive <= 0 ? last : serviceActive - 1;
+            renderServices();
+          } else if (event.key === "Enter") {
+            event.preventDefault();
+            if (serviceOpen && shown[serviceActive]) {
+              toggleService(SERVICES[serviceItems.indexOf(shown[serviceActive])]);
+              serviceInput.value = "";
+              renderServices();
+            }
+          } else if (event.key === "Escape") {
+            if (serviceOpen) serviceOpen = false;
+            else serviceInput.value = "";
+            renderServices();
+          } else if (event.key === "Backspace" && serviceInput.value === "" && values.services.length) {
+            toggleService(values.services[values.services.length - 1]);
+          }
+        });
+        serviceItems.forEach(function (li, index) {
+          li.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+          });
+          li.addEventListener("click", function () {
+            toggleService(SERVICES[index]);
+            serviceInput.value = "";
+            renderServices();
+          });
+          li.addEventListener("mousemove", function () {
+            serviceActive = shownServices().indexOf(li);
+            renderServices();
+          });
+        });
+
+        // ---- drag the threshold on the chart ----
+        var handle = q("[data-tw-handle]");
+        var dragging = false;
+        handle.addEventListener("pointerdown", function (event) {
+          if (fieldset.disabled) return;
+          handle.setPointerCapture(event.pointerId);
+          dragging = true;
+          q("[data-tw-threshold]").classList.remove("transition-[top]");
+        });
+        handle.addEventListener("pointermove", function (event) {
+          if (!dragging) return;
+          var rect = chart.getBoundingClientRect();
+          var metric = metricOf(values.metric);
+          var ratio = Math.min(1, Math.max(0, (event.clientY - rect.top) / rect.height));
+          var raw = bounds.hi - ratio * (bounds.hi - bounds.lo);
+          var stepped = Math.max(metric.step, Math.round(raw / metric.step) * metric.step);
+          el("threshold").value = String(Number(stepped.toFixed(2)));
+          set("threshold", el("threshold").value);
+        });
+        function stop() {
+          dragging = false;
+          q("[data-tw-threshold]").classList.add("transition-[top]");
+        }
+        handle.addEventListener("pointerup", stop);
+        handle.addEventListener("pointercancel", stop);
+
+        // ---- save and discard ----
+        var saveBtn = q("[data-tw-save]");
+        // Keep focus where it is on press, so blur validation cannot shift the button away mid-click.
+        saveBtn.addEventListener("mousedown", function (event) {
+          event.preventDefault();
+        });
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (status === "saving" || fieldset.disabled) return;
+          var found = validate(values);
+          ORDER.forEach(function (field) {
+            if (field !== "metric") showError(field, found[field] || null);
+          });
+          var bad = ORDER.filter(function (field) {
+            return found[field];
+          });
+          renderStatus();
+          if (bad.length) {
+            live.textContent =
+              "Not saved. " + bad.length + " " + (bad.length === 1 ? "field needs" : "fields need") + " attention.";
+            var target = el(bad[0]);
+            if (target) target.focus();
+            return;
+          }
+          status = "saving";
+          fieldset.disabled = true;
+          saveBtn.disabled = true;
+          saveBtn.innerHTML = SPINNER + "Saving";
+          live.textContent = "Saving rule.";
+          renderStatus();
+          // Replace this timer with your request.
+          setTimeout(function () {
+            var time = new Date();
+            savedAt = String(time.getHours()).padStart(2, "0") + ":" + String(time.getMinutes()).padStart(2, "0");
+            version += 1;
+            saved = JSON.parse(JSON.stringify(values));
+            status = "saved";
+            fieldset.disabled = false;
+            saveBtn.disabled = false;
+            saveBtn.textContent = "Save rule";
+            root.querySelector("header > span").textContent = "v" + version + " · editing";
+            live.textContent = "Rule saved.";
+            renderStatus();
+          }, 1200);
+        });
+        q("[data-tw-discard]").addEventListener("click", function () {
+          if (values.metric !== saved.metric)
+            chooseMetric(
+              METRICS.findIndex(function (m) {
+                return m.id === saved.metric;
+              }),
+            );
+          values = JSON.parse(JSON.stringify(saved));
+          el("name").value = values.name;
+          el("operator").value = values.operator;
+          el("threshold").value = values.threshold;
+          el("duration").value = values.duration;
+          form.querySelector('input[name="' + P + 'severity"][value="' + values.severity + '"]').checked = true;
+          form.querySelector('input[name="' + P + 'channel"][value="' + values.channel + '"]').checked = true;
+          q("[data-tw-channel-fields]").innerHTML = templates[values.channel];
+          if (el("slackChannel")) el("slackChannel").value = values.slackChannel;
+          if (el("routingKey")) el("routingKey").value = values.routingKey;
+          if (el("webhookUrl")) el("webhookUrl").value = values.webhookUrl;
+          el("mute").checked = values.mute;
+          q("[data-tw-mute-slot]").innerHTML = values.mute ? templates.mute : "";
+          ORDER.forEach(function (field) {
+            if (field !== "metric") showError(field, null);
+          });
+          status = "idle";
+          renderServices();
+          refresh();
+        });
+
+        renderServices();
+        refresh();
+      })();
+    </script>
+  </body>
+</html>

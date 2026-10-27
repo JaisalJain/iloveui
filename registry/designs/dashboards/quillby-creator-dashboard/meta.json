@@ -1,0 +1,15 @@
+{
+  "slug": "quillby-creator-dashboard",
+  "name": "Quillby creator dashboard",
+  "category": "dashboards",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "A soft newsletter dashboard whose KPI cards press like keys: pick one and the big chart morphs its curve to that metric.",
+  "tags": ["dashboard", "kpi", "sparkline", "newsletter", "creator", "sidebar", "goal-ring", "chart"],
+  "states": ["default", "loading", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

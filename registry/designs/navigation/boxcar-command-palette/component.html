@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Boxcar command palette · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-boxcar
+      class="flex min-h-dvh w-full justify-center bg-(--iu-background) px-4 py-10 font-(family-name:--iu-font) text-(--iu-foreground) sm:px-8 sm:py-16"
+    >
+      <div class="w-full">
+        <button
+          type="button"
+          data-trigger
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          class="group flex h-12 w-full max-w-[440px] items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-4 text-left shadow-[4px_4px_0_0_var(--iu-foreground)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:translate-x-1 active:translate-y-1 active:shadow-none motion-reduce:transition-none"
+        >
+          <svg
+            aria-hidden="true"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <span class="flex-1 truncate text-[15px] font-bold">Search or jump to</span>
+          <span class="flex items-center gap-1 text-(--iu-muted)"
+            ><kbd
+              data-mod
+              class="inline-flex h-6 min-w-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current px-1 font-mono text-[11px] font-bold"
+              >⌘</kbd
+            ><kbd
+              class="inline-flex h-6 min-w-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current px-1 font-mono text-[11px] font-bold"
+              >K</kbd
+            ></span
+          >
+        </button>
+
+        <div
+          data-layer
+          hidden
+          class="fixed inset-0 z-50 flex items-start justify-center px-3 pt-[8dvh] sm:px-6 sm:pt-[12dvh]"
+        >
+          <div
+            data-backdrop
+            aria-hidden="true"
+            class="absolute inset-0 bg-(--iu-background)/85 bg-[repeating-linear-gradient(135deg,color-mix(in_oklab,var(--iu-foreground)_14%,transparent)_0_2px,transparent_2px_12px)]"
+          ></div>
+          <div
+            data-panel
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="boxcar-title"
+            class="relative flex max-h-[84dvh] w-full max-w-[640px] flex-col overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[8px_8px_0_0_var(--iu-foreground)]"
+          >
+            <div
+              class="flex h-9 shrink-0 items-center justify-between bg-(--iu-foreground) pr-1 pl-4 text-(--iu-background)"
+            >
+              <h2 id="boxcar-title" class="font-mono text-[11px] font-bold tracking-[0.08em] uppercase">
+                Boxcar / Jump to anything
+              </h2>
+              <button
+                type="button"
+                data-close
+                class="inline-flex h-7 items-center rounded-[min(var(--iu-radius),4px)] px-2 font-mono text-[11px] font-bold uppercase focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-coarse:min-h-10"
+              >
+                Esc<span class="sr-only"> to close the command palette</span>
+              </button>
+            </div>
+            <div class="flex min-h-16 shrink-0 items-center gap-3 border-b-2 border-(--iu-foreground) px-4">
+              <svg
+                aria-hidden="true"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              <span
+                data-scope
+                hidden
+                class="inline-flex shrink-0 -rotate-3 items-center gap-1 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-foreground) px-2 py-0.5 font-mono text-[11px] font-bold tracking-[0.06em] text-(--iu-background) uppercase transition-[scale,rotate] duration-100 ease-linear motion-reduce:transition-none"
+              ></span>
+              <input
+                data-input
+                type="text"
+                role="combobox"
+                aria-expanded="true"
+                aria-controls="boxcar-list"
+                aria-autocomplete="list"
+                aria-label="Search Boxcar"
+                autocomplete="off"
+                spellcheck="false"
+                placeholder="Type a command or search"
+                class="h-14 min-w-0 flex-1 bg-transparent text-lg font-bold tracking-[-0.01em] outline-none placeholder:text-(--iu-muted) sm:text-xl"
+              />
+            </div>
+            <div class="min-h-0 flex-1 [scrollbar-gutter:stable] overflow-y-auto overscroll-contain">
+              <div
+                data-empty
+                hidden
+                class="flex items-center gap-5 border-b-2 border-dashed border-(--iu-foreground)/30 px-5 py-6"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-16 shrink-0 -rotate-3 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-background) font-mono text-4xl font-extrabold shadow-[4px_4px_0_0_var(--iu-foreground)]"
+                  >0</span
+                >
+                <div class="min-w-0">
+                  <p class="text-lg leading-tight font-extrabold tracking-[-0.02em] text-balance">
+                    Nothing matches “<span data-empty-query></span>”.
+                  </p>
+                  <p class="mt-1 text-sm text-pretty text-(--iu-muted)">
+                    Check the spelling or clear the scope with Backspace. Or turn it into an issue now.
+                  </p>
+                </div>
+              </div>
+              <div id="boxcar-list" role="listbox" aria-label="Results" class="p-2"></div>
+            </div>
+            <div
+              class="flex shrink-0 items-center gap-4 border-t-2 border-(--iu-foreground) px-4 py-2 font-mono text-[11px] font-bold tracking-[0.04em] text-(--iu-muted) uppercase"
+            >
+              <span class="inline-flex items-center gap-1.5"
+                ><kbd
+                  class="inline-flex h-6 min-w-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current px-1 font-mono text-[11px] font-bold"
+                  >↑</kbd
+                ><kbd
+                  class="inline-flex h-6 min-w-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current px-1 font-mono text-[11px] font-bold"
+                  >↓</kbd
+                >Move</span
+              >
+              <span class="inline-flex items-center gap-1.5"
+                ><span
+                  class="inline-flex h-6 min-w-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current"
+                  ><svg
+                    aria-hidden="true"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+                    <path d="m9 10-5 5 5 5" /></svg></span
+                >Open</span
+              >
+              <span class="ml-auto hidden items-center gap-3 sm:inline-flex"
+                ><span>&gt; Commands</span><span># Projects</span><span>@ People</span></span
+              >
+            </div>
+            <p data-live aria-live="polite" class="sr-only"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-boxcar]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var RECENT = [
+          { id: "box-1284", label: "Courier webhook retries double-charge", kind: "issue", meta: "BOX-1284" },
+          { id: "field-app-v4", label: "Field app v4", kind: "project", meta: "Mobile · 62%" },
+          { id: "ana", label: "Ana Oyelaran", kind: "person", meta: "Platform lead" },
+        ];
+        var SUGGESTIONS = [
+          {
+            id: "actions",
+            label: "Actions",
+            items: [
+              { id: "create-issue", label: "Create issue", kind: "action", shortcut: ["C"] },
+              { id: "assign-me", label: "Assign to me", kind: "action", shortcut: ["I"] },
+              { id: "change-status", label: "Change status", kind: "action", shortcut: ["S"] },
+            ],
+          },
+          {
+            id: "go",
+            label: "Go to",
+            items: [
+              { id: "inbox", label: "Inbox", kind: "page", meta: "14 unread", shortcut: ["G", "I"] },
+              { id: "my-issues", label: "My issues", kind: "page", meta: "9 open", shortcut: ["G", "M"] },
+              { id: "cycles", label: "Cycles", kind: "page", meta: "Cycle 31", shortcut: ["G", "C"] },
+            ],
+          },
+        ];
+        var INDEX = RECENT.concat(
+          [
+            { id: "box-1291", label: "Invoice PDF missing VAT line", kind: "issue", meta: "BOX-1291" },
+            { id: "box-1302", label: "Offline sync drops photo attachments", kind: "issue", meta: "BOX-1302" },
+            { id: "box-1277", label: "Driver app crashes on rotate", kind: "issue", meta: "BOX-1277" },
+            { id: "box-1310", label: "Invite flow loses team on refresh", kind: "issue", meta: "BOX-1310" },
+            { id: "billing-migration", label: "Billing migration", kind: "project", meta: "Payments · 18%" },
+            { id: "depot-scanner", label: "Depot scanner rollout", kind: "project", meta: "Ops · 81%" },
+            { id: "mateo", label: "Mateo Ricci", kind: "person", meta: "iOS" },
+            { id: "hana", label: "Hana Sato", kind: "person", meta: "Design" },
+          ],
+          SUGGESTIONS[0].items,
+          SUGGESTIONS[1].items,
+          [
+            { id: "invite", label: "Invite teammate", kind: "action" },
+            { id: "theme", label: "Switch theme", kind: "action", shortcut: ["⇧", "T"] },
+          ],
+        );
+        var SCOPES = { ">": "commands", "#": "projects", "@": "people" };
+        var SCOPE_LABEL = { commands: "Commands", projects: "Projects", people: "People" };
+        var SCOPE_KINDS = {
+          all: ["issue", "project", "person", "action", "page"],
+          commands: ["action", "page"],
+          projects: ["project"],
+          people: ["person"],
+        };
+        var RESULT_GROUPS = [
+          { id: "issues", label: "Issues", kinds: ["issue"] },
+          { id: "projects", label: "Projects", kinds: ["project"] },
+          { id: "people", label: "People", kinds: ["person"] },
+          { id: "commands", label: "Commands", kinds: ["action", "page"] },
+        ];
+        var ICONS = {
+          issue: '<circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="1" />',
+          project:
+            '<path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z" /><path d="M8 10v4" /><path d="M12 10v2" /><path d="M16 10v6" />',
+          page: '<path d="M5 12h14" /><path d="m12 5 7 7-7 7" />',
+          action: '<rect width="18" height="18" x="3" y="3" rx="2" /><path d="M9 15 15 9" />',
+          create: '<path d="M5 12h14" /><path d="M12 5v14" />',
+        };
+        var KBD =
+          "inline-flex h-6 min-w-6 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current px-1 font-mono text-[11px] font-bold";
+
+        var trigger = root.querySelector("[data-trigger]");
+        var layer = root.querySelector("[data-layer]");
+        var panel = root.querySelector("[data-panel]");
+        var input = root.querySelector("[data-input]");
+        var list = root.querySelector("#boxcar-list");
+        var scopeTag = root.querySelector("[data-scope]");
+        var emptyBlock = root.querySelector("[data-empty]");
+        var live = root.querySelector("[data-live]");
+        var state = { open: false, scope: "all", active: 0, options: [], stamped: false };
+
+        if (/Mac|iPhone|iPad/.test(navigator.platform) === false) root.querySelector("[data-mod]").textContent = "Ctrl";
+
+        function escapeHtml(value) {
+          return value.replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+        function highlight(text, query) {
+          var at = query ? text.toLowerCase().indexOf(query.toLowerCase()) : -1;
+          if (at < 0) return escapeHtml(text);
+          return (
+            escapeHtml(text.slice(0, at)) +
+            '<mark class="bg-transparent text-current underline decoration-2 underline-offset-[3px]">' +
+            escapeHtml(text.slice(at, at + query.length)) +
+            "</mark>" +
+            escapeHtml(text.slice(at + query.length))
+          );
+        }
+        function iconFor(item) {
+          var box =
+            "relative inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-current";
+          if (item.kind === "person") {
+            var initials = item.label
+              .split(/\s+/)
+              .map(function (p) {
+                return p[0] || "";
+              })
+              .join("")
+              .slice(0, 2)
+              .toUpperCase();
+            return (
+              '<span aria-hidden="true" class="' + box + ' font-mono text-[11px] font-bold">' + initials + "</span>"
+            );
+          }
+          var paths = item.id === "__create" ? ICONS.create : ICONS[item.kind];
+          return (
+            '<span aria-hidden="true" class="' +
+            box +
+            '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+            paths +
+            "</svg></span>"
+          );
+        }
+        function optionHtml(item, index, query) {
+          var meta = item.meta
+            ? '<span data-dim class="relative hidden shrink-0 font-mono text-xs tabular-nums sm:block">' +
+              highlight(item.meta, query) +
+              "</span>"
+            : "";
+          var keys = item.shortcut
+            ? '<span data-dim class="relative hidden shrink-0 items-center gap-1 sm:flex"><span class="sr-only">Shortcut </span>' +
+              item.shortcut
+                .map(function (k) {
+                  return '<kbd class="' + KBD + '">' + escapeHtml(k) + "</kbd>";
+                })
+                .join("") +
+              "</span>"
+            : "";
+          return (
+            '<div id="boxcar-option-' +
+            item.id +
+            '" role="option" aria-selected="false" data-index="' +
+            index +
+            '" class="relative flex min-h-10 cursor-default items-center gap-3 px-3 py-[calc(8px*var(--iu-density))] text-(--iu-foreground) transition-transform duration-100 ease-linear select-none motion-reduce:transition-none">' +
+            '<span data-block aria-hidden="true" hidden class="absolute inset-0 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-accent) shadow-[4px_4px_0_0_var(--iu-foreground)]"></span>' +
+            iconFor(item) +
+            '<span class="relative min-w-0 flex-1"><span class="block truncate text-[15px] font-bold tracking-[-0.01em]">' +
+            highlight(item.label, item.id === "__create" ? "" : query) +
+            "</span></span>" +
+            meta +
+            keys +
+            "</div>"
+          );
+        }
+        function groupHtml(id, label, items, offset, query) {
+          return (
+            '<div role="group" aria-labelledby="boxcar-group-' +
+            id +
+            '"><div id="boxcar-group-' +
+            id +
+            '" class="flex items-center gap-2 px-2 pt-3 pb-1.5 font-mono text-[11px] font-bold tracking-[0.08em] text-(--iu-muted) uppercase">' +
+            label +
+            ' <span class="tabular-nums">[' +
+            items.length +
+            "]</span></div>" +
+            items
+              .map(function (item, i) {
+                return optionHtml(item, offset + i, query);
+              })
+              .join("") +
+            "</div>"
+          );
+        }
+
+        function render() {
+          var query = input.value.trim();
+          var kinds = SCOPE_KINDS[state.scope];
+          var groups;
+          if (!query) {
+            groups =
+              state.scope !== "all"
+                ? [
+                    {
+                      id: state.scope,
+                      label: SCOPE_LABEL[state.scope],
+                      items: INDEX.filter(function (i) {
+                        return kinds.indexOf(i.kind) >= 0;
+                      }),
+                    },
+                  ]
+                : [{ id: "recent", label: "Recent", items: RECENT }].concat(SUGGESTIONS);
+          } else {
+            var needle = query.toLowerCase();
+            var seen = {};
+            var matches = INDEX.filter(function (item) {
+              if (seen[item.id] || kinds.indexOf(item.kind) < 0) return false;
+              var hit =
+                item.label.toLowerCase().indexOf(needle) >= 0 || (item.meta || "").toLowerCase().indexOf(needle) >= 0;
+              if (hit) seen[item.id] = true;
+              return hit;
+            });
+            groups = RESULT_GROUPS.map(function (g) {
+              return {
+                id: g.id,
+                label: g.label,
+                items: matches.filter(function (i) {
+                  return g.kinds.indexOf(i.kind) >= 0;
+                }),
+              };
+            }).filter(function (g) {
+              return g.items.length > 0;
+            });
+          }
+          var empty = !!query && groups.length === 0;
+          emptyBlock.hidden = !empty;
+          root.querySelector("[data-empty-query]").textContent = query;
+          if (empty) {
+            state.options = [
+              { id: "__create", label: "Create issue “" + query + "”", kind: "action", shortcut: ["↵"] },
+            ];
+            list.innerHTML = optionHtml(state.options[0], 0, query);
+          } else {
+            state.options = [];
+            var html = "";
+            groups.forEach(function (g) {
+              html += groupHtml(g.id, g.label, g.items, state.options.length, query);
+              state.options = state.options.concat(g.items);
+            });
+            list.innerHTML = html;
+          }
+          var count = groups.reduce(function (t, g) {
+            return t + g.items.length;
+          }, 0);
+          live.textContent = empty ? "No results" : query ? count + (count === 1 ? " result" : " results") : "";
+          state.active = Math.min(state.active, state.options.length - 1);
+          paintActive();
+        }
+
+        function paintActive() {
+          Array.prototype.forEach.call(list.querySelectorAll("[role=option]"), function (option) {
+            var on = Number(option.getAttribute("data-index")) === state.active;
+            option.setAttribute("aria-selected", String(on));
+            option.querySelector("[data-block]").hidden = !on;
+            option.classList.toggle("text-(--iu-accent-foreground)", on);
+            option.classList.toggle("text-(--iu-foreground)", !on);
+            Array.prototype.forEach.call(option.querySelectorAll("[data-dim]"), function (el) {
+              el.classList.toggle("text-(--iu-muted)", !on);
+            });
+            if (on) {
+              input.setAttribute("aria-activedescendant", option.id);
+              option.scrollIntoView({ block: "nearest" });
+            }
+          });
+          if (!state.options.length) input.removeAttribute("aria-activedescendant");
+        }
+
+        function setScope(scope) {
+          state.scope = scope;
+          scopeTag.hidden = scope === "all";
+          if (scope !== "all") {
+            var prefix = Object.keys(SCOPES).filter(function (k) {
+              return SCOPES[k] === scope;
+            })[0];
+            scopeTag.innerHTML = '<span aria-hidden="true">' + escapeHtml(prefix) + "</span>" + SCOPE_LABEL[scope];
+            if (!reduce) {
+              scopeTag.style.transition = "none";
+              scopeTag.style.scale = "1.2";
+              scopeTag.style.rotate = "-8deg";
+              scopeTag.getBoundingClientRect();
+              scopeTag.style.transition = "";
+              scopeTag.style.scale = "1";
+              scopeTag.style.rotate = "-3deg";
+            }
+          }
+          input.setAttribute("aria-label", scope === "all" ? "Search Boxcar" : "Search " + SCOPE_LABEL[scope]);
+          input.placeholder =
+            scope === "all" ? "Type a command or search" : "Search " + SCOPE_LABEL[scope].toLowerCase();
+        }
+
+        function setOpen(open) {
+          state.open = open;
+          layer.hidden = !open;
+          trigger.setAttribute("aria-expanded", String(open));
+          if (open) {
+            input.value = "";
+            setScope("all");
+            state.active = 0;
+            state.stamped = false;
+            render();
+            input.focus();
+          } else {
+            live.textContent = "";
+            trigger.focus();
+          }
+        }
+
+        function choose(index) {
+          var item = state.options[index];
+          if (!item || state.stamped) return;
+          state.stamped = true;
+          var option = list.querySelector('[data-index="' + index + '"]');
+          option.classList.add("translate-x-1", "translate-y-1");
+          option.querySelector("[data-block]").classList.remove("shadow-[4px_4px_0_0_var(--iu-foreground)]");
+          live.textContent = item.id === "__create" ? "Creating issue " + input.value.trim() : "Opening " + item.label;
+          root.dispatchEvent(new CustomEvent("boxcar:select", { detail: item }));
+          // The row presses into its shadow first, so the choice is felt before the palette closes.
+          setTimeout(
+            function () {
+              setOpen(false);
+            },
+            reduce ? 0 : 160,
+          );
+        }
+
+        input.addEventListener("input", function () {
+          var prefix = SCOPES[input.value.charAt(0)];
+          if (state.scope === "all" && prefix && input.value.length > 0 && input.dataset.prev === "") {
+            input.value = input.value.slice(1).replace(/^\s+/, "");
+            setScope(prefix);
+          }
+          input.dataset.prev = input.value;
+          state.active = 0;
+          render();
+        });
+        input.addEventListener("keydown", function (event) {
+          var count = state.options.length;
+          input.dataset.prev = input.value;
+          if (event.key === "ArrowDown" && count) {
+            event.preventDefault();
+            state.active = (state.active + 1) % count;
+            paintActive();
+          } else if (event.key === "ArrowUp" && count) {
+            event.preventDefault();
+            state.active = (state.active - 1 + count) % count;
+            paintActive();
+          } else if (event.key === "Enter") {
+            event.preventDefault();
+            choose(state.active);
+          } else if (event.key === "Escape") {
+            event.preventDefault();
+            event.stopPropagation();
+            if (input.value || state.scope !== "all") {
+              input.value = "";
+              setScope("all");
+              state.active = 0;
+              render();
+            } else setOpen(false);
+          } else if (event.key === "Backspace" && !input.value && state.scope !== "all") {
+            event.preventDefault();
+            setScope("all");
+            state.active = 0;
+            render();
+          }
+        });
+        list.addEventListener("pointermove", function (event) {
+          var option = event.target.closest("[role=option]");
+          if (!option) return;
+          var index = Number(option.getAttribute("data-index"));
+          if (index !== state.active) {
+            state.active = index;
+            paintActive();
+          }
+        });
+        list.addEventListener("click", function (event) {
+          var option = event.target.closest("[role=option]");
+          if (option) choose(Number(option.getAttribute("data-index")));
+        });
+        panel.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            setOpen(false);
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var focusable = panel.querySelectorAll("input, button");
+          var first = focusable[0];
+          var last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+        trigger.addEventListener("click", function () {
+          setOpen(true);
+        });
+        root.querySelector("[data-close]").addEventListener("click", function () {
+          setOpen(false);
+        });
+        root.querySelector("[data-backdrop]").addEventListener("click", function () {
+          setOpen(false);
+        });
+        window.addEventListener("keydown", function (event) {
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+            event.preventDefault();
+            setOpen(!state.open);
+          }
+        });
+        input.dataset.prev = "";
+      })();
+    </script>
+  </body>
+</html>

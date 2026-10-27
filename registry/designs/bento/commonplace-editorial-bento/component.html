@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Commonplace editorial bento · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-commonplace-editorial-bento
+      aria-labelledby="commonplace-editorial-bento-1"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1200px] px-6 py-16 sm:px-10 sm:py-24">
+        <div
+          class="flex items-baseline justify-between gap-4 border-y-[3px] border-double border-(--iu-foreground) py-2"
+        >
+          <span class="font-serif text-xl italic">Commonplace</span
+          ><span class="text-right text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase"
+            >No. 07 · Autumn 2026</span
+          >
+        </div>
+        <div class="mt-10 grid grid-cols-12 gap-x-6 gap-y-6 sm:mt-14">
+          <h2
+            id="commonplace-editorial-bento-1"
+            class="col-span-12 font-serif text-[clamp(2.75rem,1.6rem+4.4vw,5.25rem)] leading-[0.98] font-normal tracking-[-0.02em] text-balance lg:col-span-8"
+          >
+            Read once. <em class="italic">Keep what you underlined.</em>
+          </h2>
+          <p
+            class="col-span-12 max-w-[34rem] self-end border-l border-(--iu-border) pl-5 text-base leading-[1.6] text-pretty text-(--iu-muted) lg:col-span-4"
+          >
+            Commonplace files every passage you mark into a notebook that cites itself, answers questions from your own
+            library and brings the best lines back when you have forgotten them.
+          </p>
+        </div>
+        <article class="mt-14 border-t border-(--iu-foreground) pt-8 sm:mt-20">
+          <div class="grid grid-cols-12 gap-x-6 gap-y-10">
+            <div class="col-span-12 lg:col-span-7">
+              <header>
+                <p class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">
+                  <span class="font-serif text-sm tracking-normal normal-case italic">I.</span> Highlights
+                </p>
+                <h3 class="mt-3 font-serif text-[28px] leading-[1.1] font-normal tracking-[-0.01em] text-balance">
+                  Underline a sentence. It files itself, with the citation.
+                </h3>
+              </header>
+              <figure
+                class="mt-8 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(24px*var(--iu-density))] sm:p-[calc(36px*var(--iu-density))]"
+              >
+                <figcaption
+                  class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-(--iu-border) pb-3"
+                >
+                  <span class="font-serif text-lg italic">The quiet return of the night train</span
+                  ><span class="font-mono text-[11px] text-(--iu-muted)"
+                    >Margit Halvorsen · The Ferrous Review · p. 24</span
+                  >
+                </figcaption>
+                <p
+                  class="mt-5 text-[17px] leading-[1.75] text-pretty first-letter:float-left first-letter:mt-1.5 first-letter:mr-2 first-letter:font-serif first-letter:text-[64px] first-letter:leading-[0.8]"
+                >
+                  When the last sleeper service between Vienna and Paris closed in 2007, the timetable called it a
+                  rationalisation.
+                  <span
+                    data-passage="p1"
+                    class="cursor-pointer bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] [box-decoration-break:clone] bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-out motion-reduce:transition-none"
+                    >Nineteen years later, the same route sells out its couchettes six weeks ahead,</span
+                  ><button
+                    type="button"
+                    data-toggle="p1"
+                    aria-pressed="true"
+                    aria-label="Remove passage 1: Nineteen years later, the same route sells out its couchettes six weeks ahead,"
+                    aria-controls="commonplace-editorial-bento-2"
+                    class="relative -top-2 mx-0.5 inline-flex size-6 items-center justify-center rounded-full border border-(--iu-foreground) bg-(--iu-foreground) align-middle font-mono text-[10px] text-(--iu-background) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:size-10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                  </button>
+                  and operators are ordering carriages faster than factories can build them. The revival is less about
+                  nostalgia than arithmetic:
+                  <span
+                    data-passage="p2"
+                    class="cursor-pointer bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] [box-decoration-break:clone] bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-out motion-reduce:transition-none"
+                    >a night train turns eleven hours of travel into no hours of lost working day.</span
+                  ><button
+                    type="button"
+                    data-toggle="p2"
+                    aria-pressed="true"
+                    aria-label="Remove passage 2: a night train turns eleven hours of travel into no hours of lost working day."
+                    aria-controls="commonplace-editorial-bento-2"
+                    class="relative -top-2 mx-0.5 inline-flex size-6 items-center justify-center rounded-full border border-(--iu-foreground) bg-(--iu-foreground) align-middle font-mono text-[10px] text-(--iu-background) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:size-10"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path>
+                    </svg>
+                  </button>
+                  Airlines answered with cheaper fares;
+                  <span
+                    data-passage="p3"
+                    class="cursor-pointer bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] [box-decoration-break:clone] bg-[length:0%_2px] bg-[position:0_100%] bg-no-repeat pb-0.5 underline decoration-(--iu-foreground)/40 decoration-dotted underline-offset-[5px] transition-[background-size] duration-[400ms] ease-out motion-reduce:transition-none"
+                    >rail answered with a bed, a door that locks and breakfast at the border.</span
+                  ><button
+                    type="button"
+                    data-toggle="p3"
+                    aria-pressed="false"
+                    aria-label="File passage 3: rail answered with a bed, a door that locks and breakfast at the border."
+                    aria-controls="commonplace-editorial-bento-2"
+                    class="relative -top-2 mx-0.5 inline-flex size-6 items-center justify-center rounded-full border border-(--iu-foreground)/40 align-middle font-mono text-[10px] text-(--iu-foreground) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:hover:border-(--iu-foreground)"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-plus"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                  </button>
+                </p>
+              </figure>
+            </div>
+            <aside
+              id="commonplace-editorial-bento-2"
+              aria-label="Notebook"
+              class="col-span-12 lg:col-span-5 lg:border-l lg:border-(--iu-border) lg:pl-6"
+            >
+              <div class="flex items-baseline justify-between border-b border-(--iu-foreground) pb-2">
+                <span class="font-serif text-xl italic">Notebook</span
+                ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums" aria-live="polite" data-count="true"
+                  >2 of 3 passages filed</span
+                >
+              </div>
+              <div data-notes="true">
+                <ol class="flex flex-col">
+                  <li
+                    class="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-3 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))]"
+                    style="opacity: 1; transform: none"
+                  >
+                    <span class="font-serif text-[32px] leading-none italic tabular-nums">1</span>
+                    <div>
+                      <blockquote class="font-serif text-xl leading-snug text-pretty">
+                        “Nineteen years later, the same route sells out its couchettes six weeks ahead.”
+                      </blockquote>
+                      <p class="mt-3 font-mono text-[11px] leading-relaxed text-(--iu-muted)">
+                        Halvorsen, M. (2026). The quiet return of the night train. The Ferrous Review, 14(3), 24.
+                      </p>
+                    </div>
+                  </li>
+                  <li
+                    class="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-3 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))]"
+                    style="opacity: 1; transform: none"
+                  >
+                    <span class="font-serif text-[32px] leading-none italic tabular-nums">2</span>
+                    <div>
+                      <blockquote class="font-serif text-xl leading-snug text-pretty">
+                        “A night train turns eleven hours of travel into no hours of lost working day.”
+                      </blockquote>
+                      <p class="mt-3 font-mono text-[11px] leading-relaxed text-(--iu-muted)">
+                        Halvorsen, M. (2026). The quiet return of the night train. The Ferrous Review, 14(3), 24.
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+                <div class="flex items-center justify-between gap-4 pt-4">
+                  <span class="font-mono text-[11px] text-(--iu-muted)">APA 7 · page numbers kept</span
+                  ><button
+                    type="button"
+                    class="inline-flex h-10 items-center border-b border-(--iu-foreground) text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                  >
+                    <span aria-live="polite">Copy 2 citations</span>
+                  </button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </article>
+        <div class="mt-14 grid grid-cols-12 gap-y-12 border-t border-(--iu-foreground) pt-8 sm:mt-20 lg:gap-x-0">
+          <article class="col-span-12 md:col-span-6 md:pr-6 lg:col-span-5 lg:pr-8">
+            <header>
+              <p class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">
+                <span class="font-serif text-sm tracking-normal normal-case italic">II.</span> Ask
+              </p>
+              <h3 class="mt-3 font-serif text-[28px] leading-[1.1] font-normal tracking-[-0.01em] text-balance">
+                Questions answered from your own shelves.
+              </h3>
+            </header>
+            <div class="mt-6 border-t border-(--iu-border) pt-5">
+              <p class="font-serif text-xl leading-snug italic">What have I saved about sleeper-train pricing?</p>
+              <p class="mt-4 text-[15px] leading-[1.65] text-pretty">
+                Two of your sources agree that couchette demand now outruns supply<sup
+                  class="ml-0.5 font-mono text-[10px] text-(--iu-muted)"
+                  >1</sup
+                >, and that operators price berths like hotel rooms rather than seats<sup
+                  class="ml-0.5 font-mono text-[10px] text-(--iu-muted)"
+                  >2</sup
+                >. You have not saved anything on fares before 2024.
+              </p>
+              <ol
+                class="mt-5 flex flex-col gap-1.5 border-t border-(--iu-border) pt-3 font-mono text-[11px] text-(--iu-muted)"
+              >
+                <li>1 · Halvorsen, M., The Ferrous Review, 14 September 2026</li>
+                <li>2 · Brandauer, I., Transport Notes, 3 March 2026</li>
+              </ol>
+            </div>
+          </article>
+          <article class="col-span-12 md:col-span-6 md:border-l md:border-(--iu-border) md:pl-6 lg:col-span-4 lg:px-8">
+            <header>
+              <p class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">
+                <span class="font-serif text-sm tracking-normal normal-case italic">III.</span> Queue
+              </p>
+              <h3 class="mt-3 font-serif text-[28px] leading-[1.1] font-normal tracking-[-0.01em] text-balance">
+                Tonight’s reading, set like a contents page.
+              </h3>
+            </header>
+            <ol class="mt-6 border-t border-(--iu-border)">
+              <li class="border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">01</span
+                  ><span class="min-w-0 font-serif text-[17px] leading-snug">The quiet return of the night train</span
+                  ><span
+                    aria-hidden="true"
+                    class="min-w-4 flex-1 translate-y-[-3px] border-b border-dotted border-(--iu-foreground)/35"
+                  ></span
+                  ><span class="font-mono text-[11px] whitespace-nowrap tabular-nums">18 min</span>
+                </div>
+                <p class="mt-1.5 pl-7 font-mono text-[11px] text-(--iu-muted)">62% read · resumes at p. 25</p>
+              </li>
+              <li class="border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">02</span
+                  ><span class="min-w-0 font-serif text-[17px] leading-snug">A field guide to municipal archives</span
+                  ><span
+                    aria-hidden="true"
+                    class="min-w-4 flex-1 translate-y-[-3px] border-b border-dotted border-(--iu-foreground)/35"
+                  ></span
+                  ><span class="font-mono text-[11px] whitespace-nowrap tabular-nums">11 min</span>
+                </div>
+              </li>
+              <li class="border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">03</span
+                  ><span class="min-w-0 font-serif text-[17px] leading-snug">Why ferries still run on paper</span
+                  ><span
+                    aria-hidden="true"
+                    class="min-w-4 flex-1 translate-y-[-3px] border-b border-dotted border-(--iu-foreground)/35"
+                  ></span
+                  ><span class="font-mono text-[11px] whitespace-nowrap tabular-nums">24 min</span>
+                </div>
+              </li>
+              <li class="border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]">
+                <div class="flex items-baseline gap-2">
+                  <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">04</span
+                  ><span class="min-w-0 font-serif text-[17px] leading-snug">Letters from the signal box</span
+                  ><span
+                    aria-hidden="true"
+                    class="min-w-4 flex-1 translate-y-[-3px] border-b border-dotted border-(--iu-foreground)/35"
+                  ></span
+                  ><span class="font-mono text-[11px] whitespace-nowrap tabular-nums">9 min</span>
+                </div>
+              </li>
+            </ol>
+            <p class="mt-3 font-mono text-[11px] text-(--iu-muted) tabular-nums">4 pieces · 62 min</p>
+          </article>
+          <article class="col-span-12 lg:col-span-3 lg:border-l lg:border-(--iu-border) lg:pl-8">
+            <header>
+              <p class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">
+                <span class="font-serif text-sm tracking-normal normal-case italic">IV.</span> Resurface
+              </p>
+              <h3 class="mt-3 font-serif text-[28px] leading-[1.1] font-normal tracking-[-0.01em] text-balance">
+                Sundays, an old line returns.
+              </h3>
+            </header>
+            <figure class="mt-6 border-t border-(--iu-border) pt-5">
+              <p class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">Sun 1 Nov</p>
+              <blockquote class="mt-3 font-serif text-[26px] leading-[1.15] text-balance italic">
+                “Every lever in the box was labelled by someone who expected to be forgotten.”
+              </blockquote>
+              <figcaption class="mt-4 text-sm text-(--iu-muted)">
+                from <span class="font-serif text-base italic">Letters from the signal box</span
+                ><span class="mt-1 block font-mono text-[11px]">Third return · next in 21 days</span>
+              </figcaption>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-commonplace-editorial-bento]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+        var passages = [
+          {
+            id: "p1",
+            text: "Nineteen years later, the same route sells out its couchettes six weeks ahead,",
+            page: 24,
+          },
+          { id: "p2", text: "a night train turns eleven hours of travel into no hours of lost working day.", page: 24 },
+          { id: "p3", text: "rail answered with a bed, a door that locks and breakfast at the border.", page: 25 },
+        ];
+        var filed = ["p1", "p2"];
+        var notesBox = root.querySelector("[data-notes]");
+        var count = root.querySelector("[data-count]");
+        var CHECK =
+          '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>';
+        var PLUS =
+          '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>';
+        var SPAN_OFF =
+          "bg-[length:0%_2px] underline decoration-(--iu-foreground)/40 decoration-dotted underline-offset-[5px]";
+        var SPAN_ON = "bg-[length:100%_2px]";
+        var BTN_OFF = "border-(--iu-foreground)/40 text-(--iu-foreground) pointer-fine:hover:border-(--iu-foreground)";
+        var BTN_ON = "border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)";
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+
+        function swap(node, from, to) {
+          from.split(" ").forEach(function (c) {
+            node.classList.remove(c);
+          });
+          to.split(" ").forEach(function (c) {
+            node.classList.add(c);
+          });
+        }
+        function citation(page) {
+          return "Halvorsen, M. (2026). The quiet return of the night train. The Ferrous Review, 14(3), " + page + ".";
+        }
+        function quoteOf(text) {
+          var t = text.replace(/[,.;]$/, "");
+          return t.charAt(0).toUpperCase() + t.slice(1) + ".";
+        }
+
+        function renderNotes(added) {
+          var notes = passages.filter(function (p) {
+            return filed.indexOf(p.id) !== -1;
+          });
+          count.textContent = notes.length + " of " + passages.length + " passages filed";
+          if (notes.length === 0) {
+            notesBox.innerHTML =
+              '<div class="py-10"><p class="font-serif text-xl italic">Nothing filed from this piece yet.</p><p class="mt-2 max-w-[28rem] text-sm leading-relaxed text-(--iu-muted)">Underline a passage on the left, or use the plus beside it. It lands here with its page number and a citation you can paste.</p><button type="button" data-file-first class="mt-5 inline-flex h-10 items-center border-b border-(--iu-foreground) text-sm font-medium ' +
+              FOCUS +
+              '">File the first passage</button></div>';
+            return;
+          }
+          var n = notes.length;
+          notesBox.innerHTML =
+            '<ol class="flex flex-col">' +
+            notes
+              .map(function (note) {
+                return (
+                  '<li data-note="' +
+                  note.id +
+                  '" class="grid grid-cols-[2rem_minmax(0,1fr)] gap-x-3 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))]"><span class="font-serif text-[32px] leading-none italic tabular-nums">' +
+                  (passages.indexOf(note) + 1) +
+                  '</span><div><blockquote class="font-serif text-xl leading-snug text-pretty">“' +
+                  quoteOf(note.text) +
+                  '”</blockquote><p class="mt-3 font-mono text-[11px] leading-relaxed text-(--iu-muted)">' +
+                  citation(note.page) +
+                  "</p></div></li>"
+                );
+              })
+              .join("") +
+            '</ol><div class="flex items-center justify-between gap-4 pt-4"><span class="font-mono text-[11px] text-(--iu-muted)">APA 7 · page numbers kept</span><button type="button" data-copy class="inline-flex h-10 items-center border-b border-(--iu-foreground) text-sm font-medium ' +
+            FOCUS +
+            '"><span aria-live="polite">Copy ' +
+            n +
+            " citation" +
+            (n === 1 ? "" : "s") +
+            "</span></button></div>";
+          if (added && !reduce) {
+            var row = notesBox.querySelector('[data-note="' + added + '"]');
+            if (row && row.animate) {
+              row.animate(
+                [
+                  { opacity: 0, transform: "translateY(8px)" },
+                  { opacity: 1, transform: "none" },
+                ],
+                { duration: 320, easing: EASE },
+              );
+            }
+          }
+        }
+
+        function toggle(id) {
+          var on = filed.indexOf(id) === -1;
+          filed = on
+            ? filed.concat(id)
+            : filed.filter(function (v) {
+                return v !== id;
+              });
+          var span = root.querySelector('[data-passage="' + id + '"]');
+          var button = root.querySelector('[data-toggle="' + id + '"]');
+          var passage = passages.filter(function (p) {
+            return p.id === id;
+          })[0];
+          var number = passages.indexOf(passage) + 1;
+          swap(span, on ? SPAN_OFF : SPAN_ON, on ? SPAN_ON : SPAN_OFF);
+          swap(button, on ? BTN_OFF : BTN_ON, on ? BTN_ON : BTN_OFF);
+          button.setAttribute("aria-pressed", String(on));
+          button.setAttribute("aria-label", (on ? "Remove" : "File") + " passage " + number + ": " + passage.text);
+          button.innerHTML = on ? CHECK : PLUS;
+          renderNotes(on ? id : null);
+        }
+
+        root.querySelectorAll("[data-passage], [data-toggle]").forEach(function (node) {
+          node.addEventListener("click", function () {
+            toggle(node.getAttribute("data-passage") || node.getAttribute("data-toggle"));
+          });
+        });
+        notesBox.addEventListener("click", function (event) {
+          if (event.target.closest("[data-file-first]")) {
+            toggle(passages[0].id);
+            return;
+          }
+          var copy = event.target.closest("[data-copy]");
+          if (!copy) return;
+          var text = passages
+            .filter(function (p) {
+              return filed.indexOf(p.id) !== -1;
+            })
+            .map(function (p) {
+              return citation(p.page);
+            })
+            .join("\n");
+          if (navigator.clipboard) navigator.clipboard.writeText(text).catch(function () {});
+          var label = copy.firstElementChild;
+          var previous = label.textContent;
+          label.textContent = "Copied";
+          setTimeout(function () {
+            if (label.isConnected) label.textContent = previous;
+          }, 1600);
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wipe hold to confirm · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div class="flex min-h-dvh w-full items-center justify-center px-4 py-10 sm:px-8 sm:py-16">
+      <section
+        data-wipe-hold
+        aria-labelledby="wipe-title"
+        class="relative w-full max-w-xl rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground) shadow-[6px_6px_0_var(--iu-foreground)]"
+      >
+        <div
+          class="flex items-center justify-between gap-3 border-b-2 border-(--iu-foreground) px-[calc(16px*var(--iu-density))] py-2.5 font-mono text-xs font-bold tracking-[0.08em] uppercase"
+        >
+          <span>Bolthouse / Devices</span>
+          <span
+            class="-rotate-2 border-2 border-(--iu-foreground) bg-(--iu-accent) px-2 py-0.5 text-(--iu-accent-foreground)"
+            >Danger zone</span
+          >
+        </div>
+        <div class="p-[calc(20px*var(--iu-density))] sm:p-[calc(28px*var(--iu-density))]">
+          <div class="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+            <div class="min-w-0">
+              <p class="font-mono text-xs font-bold tracking-[0.08em] text-(--iu-muted) uppercase">
+                MacBook Pro 14-inch, 2025
+              </p>
+              <h2
+                id="wipe-title"
+                class="mt-2 text-[28px] leading-[1.05] font-extrabold tracking-[-0.03em] text-balance sm:text-[36px]"
+              >
+                Wipe Kofi Mensah's MacBook Pro
+              </h2>
+            </div>
+            <span
+              data-chip
+              class="inline-flex shrink-0 items-center gap-2 border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs font-bold uppercase"
+            >
+              <span data-chip-dot aria-hidden="true" class="size-2 bg-emerald-600 dark:bg-emerald-400"></span>
+              <span data-chip-text>Online</span>
+            </span>
+          </div>
+          <dl class="mt-6 grid grid-cols-2 border-2 border-(--iu-foreground) font-mono text-xs sm:grid-cols-4">
+            <div class="min-w-0 p-[calc(12px*var(--iu-density))]">
+              <dt class="font-bold tracking-[0.08em] text-(--iu-muted) uppercase">Serial</dt>
+              <dd class="mt-1 truncate text-[13px] font-medium text-(--iu-foreground) tabular-nums">C02FK3ZQMD6T</dd>
+            </div>
+            <div class="min-w-0 border-l-2 border-(--iu-foreground) p-[calc(12px*var(--iu-density))]">
+              <dt class="font-bold tracking-[0.08em] text-(--iu-muted) uppercase">System</dt>
+              <dd class="mt-1 truncate text-[13px] font-medium text-(--iu-foreground) tabular-nums">macOS 15.4</dd>
+            </div>
+            <div
+              class="min-w-0 border-t-2 border-(--iu-foreground) p-[calc(12px*var(--iu-density))] sm:border-t-0 sm:border-l-2"
+            >
+              <dt class="font-bold tracking-[0.08em] text-(--iu-muted) uppercase">Last seen</dt>
+              <dd class="mt-1 truncate text-[13px] font-medium text-(--iu-foreground) tabular-nums">3 min ago</dd>
+            </div>
+            <div
+              class="min-w-0 border-t-2 border-l-2 border-(--iu-foreground) p-[calc(12px*var(--iu-density))] sm:border-t-0"
+            >
+              <dt class="font-bold tracking-[0.08em] text-(--iu-muted) uppercase">Location</dt>
+              <dd class="mt-1 truncate text-[13px] font-medium text-(--iu-foreground) tabular-nums">Lisbon HQ</dd>
+            </div>
+          </dl>
+          <ul class="mt-6 space-y-2 text-[15px] leading-snug">
+            <li class="flex gap-3">
+              <span aria-hidden="true" class="mt-2 size-1.5 shrink-0 bg-(--iu-foreground)"></span
+              ><span class="text-pretty">Erases every file, account and setting on the disk.</span>
+            </li>
+            <li class="flex gap-3">
+              <span aria-hidden="true" class="mt-2 size-1.5 shrink-0 bg-(--iu-foreground)"></span
+              ><span class="text-pretty">Removes the device from Bolthouse and revokes its certificates.</span>
+            </li>
+            <li class="flex gap-3">
+              <span aria-hidden="true" class="mt-2 size-1.5 shrink-0 bg-(--iu-foreground)"></span
+              ><span class="text-pretty">Locks it to the activation PIN until it is set up again.</span>
+            </li>
+          </ul>
+          <p class="mt-4 flex items-center gap-2 text-sm font-bold text-red-700 dark:text-red-300">
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </svg>
+            This cannot be undone.
+          </p>
+          <button
+            type="button"
+            data-hold
+            aria-describedby="wipe-hint wipe-message"
+            class="relative mt-7 block h-16 w-full cursor-pointer touch-none overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) text-lg font-extrabold tracking-[0.04em] uppercase shadow-[4px_4px_0_var(--iu-foreground)] transition-[translate,box-shadow] duration-100 ease-linear select-none [-webkit-touch-callout:none] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+          >
+            <span class="absolute inset-0 flex items-center justify-center gap-3 px-4">
+              <span data-icon="loading" hidden class="flex"
+                ><svg
+                  aria-hidden="true"
+                  class="animate-spin motion-reduce:animate-none"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg></span
+              ><span data-icon="success" hidden class="flex"
+                ><svg
+                  aria-hidden="true"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 6 9 17l-5-5" /></svg></span
+              ><span data-icon="error" hidden class="flex"
+                ><svg
+                  aria-hidden="true"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" /></svg
+              ></span>
+              <span data-label>Hold to wipe</span>
+            </span>
+            <span
+              data-fill
+              aria-hidden="true"
+              style="transform: translateX(-100%)"
+              class="absolute inset-0 overflow-hidden bg-(--iu-accent)"
+            >
+              <span
+                data-fill-label
+                style="transform: translateX(100%)"
+                class="absolute inset-0 flex items-center justify-center gap-3 px-4 text-(--iu-accent-foreground)"
+              >
+                <span data-icon="loading" hidden class="flex"
+                  ><svg
+                    aria-hidden="true"
+                    class="animate-spin motion-reduce:animate-none"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg></span
+                ><span data-icon="success" hidden class="flex"
+                  ><svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 6 9 17l-5-5" /></svg></span
+                ><span data-icon="error" hidden class="flex"
+                  ><svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" /></svg
+                ></span>
+                <span data-label>Hold to wipe</span>
+              </span>
+            </span>
+          </button>
+          <div
+            class="mt-3 flex items-center justify-between gap-4 font-mono text-xs font-bold tracking-[0.08em] text-(--iu-muted) uppercase"
+          >
+            <span id="wipe-hint">Press and hold, or hold Space or Enter</span>
+            <span data-seconds aria-hidden="true" class="shrink-0 text-(--iu-foreground) normal-case tabular-nums"
+              >1.6s</span
+            >
+          </div>
+          <p
+            id="wipe-message"
+            data-message
+            class="mt-5 min-h-12 border-t-2 border-(--iu-foreground) pt-4 text-sm text-pretty text-(--iu-muted)"
+          >
+            Releasing early cancels. Nothing happens until the bar is full.
+          </p>
+          <div data-live aria-live="polite" class="sr-only"></div>
+        </div>
+      </section>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-wipe-hold]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var button = root.querySelector("[data-hold]");
+        var fill = root.querySelector("[data-fill]");
+        var fillLabel = root.querySelector("[data-fill-label]");
+        var labels = root.querySelectorAll("[data-label]");
+        var seconds = root.querySelector("[data-seconds]");
+        var message = root.querySelector("[data-message]");
+        var hint = root.querySelector("#wipe-hint");
+        var live = root.querySelector("[data-live]");
+        var HOLD_MS = 1600;
+        var STIFFNESS = 700;
+        var DAMPING = 45;
+        var PRESSED = ["translate-x-1", "translate-y-1", "shadow-[0_0_0_var(--iu-foreground)]"];
+        var RAISED = ["shadow-[4px_4px_0_var(--iu-foreground)]"];
+        var TEXT = {
+          idle: "Hold to wipe",
+          holding: "Keep holding",
+          retry: "Hold to retry",
+          loading: "Sending wipe",
+          success: "Wipe queued",
+        };
+        var MESSAGES = {
+          idle: "Releasing early cancels. Nothing happens until the bar is full.",
+          loading: "Waiting for the laptop to acknowledge the command.",
+          success: "The wipe runs the moment the laptop next checks in, usually within a minute.",
+          error: "The laptop did not answer. Nothing was erased. Hold again to retry.",
+        };
+
+        var progress = 0;
+        var status = "idle";
+        var holding = false;
+        var gesture = false;
+        var frame = 0;
+
+        // Replace with your wipe call; resolve for success, reject for an error.
+        function sendWipe() {
+          return new Promise(function (resolve) {
+            setTimeout(resolve, 1300);
+          });
+        }
+
+        function render(value) {
+          progress = value;
+          fill.style.transform = "translateX(" + (value - 1) * 100 + "%)";
+          fillLabel.style.transform = "translateX(" + (1 - value) * 100 + "%)";
+          var settled = status === "loading" || status === "success";
+          var clamped = Math.min(1, Math.max(0, value));
+          var left = settled ? 0 : Math.round(((1 - clamped) * HOLD_MS) / 100) / 10;
+          seconds.textContent = left.toFixed(1) + "s";
+        }
+
+        function setLabel(text) {
+          labels.forEach(function (label) {
+            label.textContent = text;
+          });
+        }
+
+        function setPressed(on) {
+          PRESSED.forEach(function (name) {
+            button.classList.toggle(name, on);
+          });
+          RAISED.forEach(function (name) {
+            button.classList.toggle(name, !on);
+          });
+        }
+
+        function setStatus(next) {
+          status = next;
+          root.setAttribute("data-status", next);
+          var settled = next === "loading" || next === "success";
+          root.querySelectorAll("[data-icon]").forEach(function (icon) {
+            icon.hidden = icon.getAttribute("data-icon") !== next;
+          });
+          setLabel(next === "error" ? TEXT.retry : TEXT[next]);
+          setPressed(settled);
+          button.classList.toggle("cursor-pointer", !settled);
+          button.classList.toggle("cursor-default", settled);
+          if (settled) button.setAttribute("aria-disabled", "true");
+          else button.removeAttribute("aria-disabled");
+          hint.textContent = settled ? "Confirmed" : "Press and hold, or hold Space or Enter";
+          message.textContent = MESSAGES[next];
+          message.classList.toggle("text-(--iu-muted)", next !== "error");
+          ["font-semibold", "text-red-700", "dark:text-red-300"].forEach(function (name) {
+            message.classList.toggle(name, next === "error");
+          });
+          var chip = root.querySelector("[data-chip]");
+          var dot = root.querySelector("[data-chip-dot]");
+          var success = next === "success";
+          ["rotate-2", "bg-(--iu-foreground)", "text-(--iu-background)"].forEach(function (name) {
+            chip.classList.toggle(name, success);
+          });
+          chip.classList.toggle("bg-(--iu-surface)", !success);
+          ["bg-emerald-600", "dark:bg-emerald-400"].forEach(function (name) {
+            dot.classList.toggle(name, !success);
+          });
+          dot.classList.toggle("bg-(--iu-accent)", success);
+          root.querySelector("[data-chip-text]").textContent = success ? "Erase pending" : "Online";
+          if (next === "loading") live.textContent = "Sending wipe to Kofi Mensah's MacBook Pro.";
+          if (next === "success") live.textContent = "Wipe queued. " + MESSAGES.success;
+          if (next === "error") live.textContent = MESSAGES.error;
+          if (settled) render(1);
+          if (next === "error") render(0);
+        }
+
+        function finish() {
+          holding = false;
+          setStatus("loading");
+          sendWipe().then(
+            function () {
+              setStatus("success");
+              if ("vibrate" in navigator) navigator.vibrate([12, 40, 12]);
+            },
+            function () {
+              setStatus("error");
+            },
+          );
+        }
+
+        // Fill linearly from wherever the bar is, so grabbing a draining hold carries on from there.
+        function startHold() {
+          if (holding || status === "loading" || status === "success") return;
+          cancelAnimationFrame(frame);
+          holding = true;
+          setPressed(true);
+          setLabel(TEXT.holding);
+          live.textContent = "Holding. Release or press Escape to cancel.";
+          var from = progress;
+          var start = performance.now();
+          var duration = (1 - from) * HOLD_MS;
+          function step(now) {
+            if (!holding) return;
+            var t = duration > 0 ? Math.min(1, (now - start) / duration) : 1;
+            render(from + (1 - from) * t);
+            if (t < 1) frame = requestAnimationFrame(step);
+            else finish();
+          }
+          frame = requestAnimationFrame(step);
+        }
+
+        // Drain with a stiff spring that starts at the fill rate.
+        function releaseHold() {
+          if (!holding) return;
+          holding = false;
+          cancelAnimationFrame(frame);
+          setPressed(false);
+          setLabel(status === "error" ? TEXT.retry : TEXT.idle);
+          live.textContent = "";
+          if (reduce.matches) {
+            render(0);
+            return;
+          }
+          var v = -1000 / HOLD_MS;
+          var last = performance.now();
+          function step(now) {
+            if (holding) return;
+            var dt = Math.min(0.032, (now - last) / 1000);
+            last = now;
+            v += (-STIFFNESS * progress - DAMPING * v) * dt;
+            var next = progress + v * dt;
+            if (Math.abs(next) < 0.002 && Math.abs(v) < 0.02) {
+              render(0);
+              return;
+            }
+            render(Math.max(-0.02, next));
+            frame = requestAnimationFrame(step);
+          }
+          frame = requestAnimationFrame(step);
+        }
+
+        button.addEventListener("pointerdown", function (event) {
+          if (event.button !== 0) return;
+          gesture = true;
+          button.setPointerCapture(event.pointerId);
+          startHold();
+        });
+        button.addEventListener("pointerup", releaseHold);
+        button.addEventListener("pointercancel", releaseHold);
+        button.addEventListener("lostpointercapture", releaseHold);
+        button.addEventListener("blur", releaseHold);
+        button.addEventListener("contextmenu", function (event) {
+          event.preventDefault();
+        });
+        button.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            releaseHold();
+            return;
+          }
+          if (event.key !== " " && event.key !== "Enter") return;
+          event.preventDefault();
+          gesture = true;
+          if (!event.repeat) startHold();
+        });
+        button.addEventListener("keyup", function (event) {
+          if (event.key !== " " && event.key !== "Enter") return;
+          event.preventDefault();
+          releaseHold();
+        });
+        // Assistive tech that sends a single click runs the full hold; Escape cancels it.
+        button.addEventListener("click", function () {
+          if (gesture) {
+            gesture = false;
+            return;
+          }
+          startHold();
+        });
+      })();
+    </script>
+  </body>
+</html>

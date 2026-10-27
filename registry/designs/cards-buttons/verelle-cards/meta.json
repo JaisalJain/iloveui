@@ -1,0 +1,15 @@
+{
+  "slug": "verelle-cards",
+  "name": "Verelle cards",
+  "category": "cards-buttons",
+  "styleFamily": "luxury",
+  "tier": "free",
+  "description": "A product, feature and advisor card set for a watch house, where Reserve keeps its width and traces a hairline around its edge as it works.",
+  "tags": ["cards", "product-card", "profile-card", "feature-card", "loading-button", "luxury"],
+  "states": ["default", "hover", "focus", "active", "disabled", "loading", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

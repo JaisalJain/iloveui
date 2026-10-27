@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tidewater submissions · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto w-full max-w-5xl px-4 py-10 sm:px-8 sm:py-16">
+      <!-- iloveui:component:start -->
+      <section
+        data-tidewater
+        aria-labelledby="tidewater-title"
+        class="@container rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground)"
+      >
+        <header class="px-5 pt-6 @2xl:px-10 @2xl:pt-10">
+          <div
+            class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b-[3px] border-double border-(--iu-foreground) pb-2 text-[11px] font-medium tracking-[0.16em] uppercase"
+          >
+            <span>Tidewater Review</span
+            ><span class="font-mono tracking-[0.08em] text-(--iu-muted)">Winter 2026 · No. 31</span>
+          </div>
+          <div class="grid gap-x-10 gap-y-3 pt-6 pb-8 @3xl:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] @3xl:items-end">
+            <h2
+              id="tidewater-title"
+              class="font-serif text-[clamp(2.5rem,1.6rem+4cqi,4.5rem)] leading-[0.95] font-normal tracking-[-0.02em] text-balance"
+            >
+              <em>The reading pile</em>
+            </h2>
+            <p class="max-w-[44ch] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+              Sixteen pieces are waiting for a decision before the issue closes on 14 November. Read slowly; decide
+              together.
+            </p>
+          </div>
+        </header>
+        <div class="max-h-[560px] [scrollbar-gutter:stable] overflow-y-auto">
+          <div
+            class="sticky top-0 z-10 flex flex-wrap items-center gap-x-5 gap-y-2 border-y border-(--iu-border) bg-(--iu-surface) px-5 py-2.5 @2xl:px-10"
+          >
+            <span
+              id="tidewater-title-sort"
+              class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase"
+              >Order by</span
+            >
+            <div data-sorts role="group" aria-labelledby="tidewater-title-sort" class="flex flex-wrap gap-x-4 gap-y-1">
+              <button
+                type="button"
+                aria-pressed="true"
+                class="group inline-flex h-8 items-center gap-1 rounded-[min(var(--iu-radius),2px)] text-[14px] text-(--iu-foreground) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none pointer-coarse:h-10"
+              >
+                <span class="border-b border-(--iu-accent) pb-px font-serif text-[17px] italic">Received</span
+                ><svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14"></path>
+                  <path d="m19 12-7 7-7-7"></path></svg
+                ><span class="sr-only">, descending</span></button
+              ><button
+                type="button"
+                aria-pressed="false"
+                class="group inline-flex h-8 items-center gap-1 rounded-[min(var(--iu-radius),2px)] text-[14px] text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span class="border-b border-transparent pb-px">Length</span></button
+              ><button
+                type="button"
+                aria-pressed="false"
+                class="group inline-flex h-8 items-center gap-1 rounded-[min(var(--iu-radius),2px)] text-[14px] text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span class="border-b border-transparent pb-px">Title</span></button
+              ><button
+                type="button"
+                aria-pressed="false"
+                class="group inline-flex h-8 items-center gap-1 rounded-[min(var(--iu-radius),2px)] text-[14px] text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span class="border-b border-transparent pb-px">Author</span>
+              </button>
+            </div>
+            <span class="ml-auto hidden font-mono text-[11px] text-(--iu-muted) tabular-nums @2xl:inline" data-count
+              >16 in the pile</span
+            >
+          </div>
+          <ol data-pile aria-label="Submissions" start="1" class="px-5 @2xl:px-10">
+            <li
+              class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top scale-y-0 bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10"
+              ></span
+              ><label class="relative self-start"
+                ><input
+                  type="checkbox"
+                  aria-label="Select “The Ferryman’s Ledger” by Ines Achterberg"
+                  class="peer absolute inset-0 size-full cursor-pointer opacity-0"
+                /><span
+                  aria-hidden="true"
+                  class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none text-(--iu-muted) tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:peer-hover:text-(--iu-foreground)"
+                  >01</span
+                ></label
+              >
+              <div class="min-w-0">
+                <a
+                  href="#s-418"
+                  class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @2xl:text-[24px] pointer-fine:hover:underline"
+                  >The Ferryman’s Ledger</a
+                >
+                <p class="mt-1.5 text-[13px] text-(--iu-muted)">
+                  by <span class="text-(--iu-foreground)">Ines Achterberg</span
+                  ><span class="@2xl:hidden"> · Essay · <span class="font-mono tabular-nums">4,210</span> words</span
+                  ><span> · received <span class="font-mono text-[12px] tabular-nums">24 Oct</span></span>
+                </p>
+                <div class="mt-2 @2xl:hidden">
+                  <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                    ><span aria-hidden="true" class="inline-block size-2 rounded-full border border-(--iu-muted)"></span
+                    ><span class="text-(--iu-muted)">Unread</span></span
+                  >
+                </div>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">Essay</p>
+                <p class="mt-1 font-mono text-[13px] tabular-nums">4,210<span class="text-(--iu-muted)"> w</span></p>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                  ><span aria-hidden="true" class="inline-block size-2 rounded-full border border-(--iu-muted)"></span
+                  ><span class="text-(--iu-muted)">Unread</span></span
+                >
+              </div>
+            </li>
+            <li
+              class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top scale-y-0 bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10"
+              ></span
+              ><label class="relative self-start"
+                ><input
+                  type="checkbox"
+                  aria-label="Select “What the Estuary Keeps” by Tomasz Wierzbicki"
+                  class="peer absolute inset-0 size-full cursor-pointer opacity-0"
+                /><span
+                  aria-hidden="true"
+                  class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none text-(--iu-muted) tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:peer-hover:text-(--iu-foreground)"
+                  >02</span
+                ></label
+              >
+              <div class="min-w-0">
+                <a
+                  href="#s-417"
+                  class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @2xl:text-[24px] pointer-fine:hover:underline"
+                  >What the Estuary Keeps</a
+                >
+                <p class="mt-1.5 text-[13px] text-(--iu-muted)">
+                  by <span class="text-(--iu-foreground)">Tomasz Wierzbicki</span
+                  ><span class="@2xl:hidden"> · Fiction · <span class="font-mono tabular-nums">6,880</span> words</span
+                  ><span> · received <span class="font-mono text-[12px] tabular-nums">23 Oct</span></span>
+                </p>
+                <div class="mt-2 @2xl:hidden">
+                  <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                    ><span aria-hidden="true" class="inline-block size-2 rounded-full bg-(--iu-muted)"></span
+                    ><span class="text-(--iu-foreground)">First read</span
+                    ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                      ><span aria-hidden="true">MO</span><span class="sr-only">with Maren Oduya</span></span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">Fiction</p>
+                <p class="mt-1 font-mono text-[13px] tabular-nums">6,880<span class="text-(--iu-muted)"> w</span></p>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                  ><span aria-hidden="true" class="inline-block size-2 rounded-full bg-(--iu-muted)"></span
+                  ><span class="text-(--iu-foreground)">First read</span
+                  ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                    ><span aria-hidden="true">MO</span><span class="sr-only">with Maren Oduya</span></span
+                  ></span
+                >
+              </div>
+            </li>
+            <li
+              class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top scale-y-0 bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10"
+              ></span
+              ><label class="relative self-start"
+                ><input
+                  type="checkbox"
+                  aria-label="Select “Salt Year” by Adaeze Okonkwo"
+                  class="peer absolute inset-0 size-full cursor-pointer opacity-0"
+                /><span
+                  aria-hidden="true"
+                  class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none text-(--iu-muted) tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:peer-hover:text-(--iu-foreground)"
+                  >03</span
+                ></label
+              >
+              <div class="min-w-0">
+                <a
+                  href="#s-415"
+                  class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @2xl:text-[24px] pointer-fine:hover:underline"
+                  >Salt Year</a
+                >
+                <p class="mt-1.5 text-[13px] text-(--iu-muted)">
+                  by <span class="text-(--iu-foreground)">Adaeze Okonkwo</span
+                  ><span class="@2xl:hidden"> · Poetry · <span class="font-mono tabular-nums">940</span> words</span
+                  ><span> · received <span class="font-mono text-[12px] tabular-nums">21 Oct</span></span>
+                </p>
+                <div class="mt-2 @2xl:hidden">
+                  <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                    ><span aria-hidden="true" class="inline-block size-2 rounded-full bg-(--iu-foreground)"></span
+                    ><span class="text-(--iu-foreground)">Second read</span
+                    ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                      ><span aria-hidden="true">LH</span><span class="sr-only">with Linus Harrow</span></span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">Poetry</p>
+                <p class="mt-1 font-mono text-[13px] tabular-nums">940<span class="text-(--iu-muted)"> w</span></p>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                  ><span aria-hidden="true" class="inline-block size-2 rounded-full bg-(--iu-foreground)"></span
+                  ><span class="text-(--iu-foreground)">Second read</span
+                  ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                    ><span aria-hidden="true">LH</span><span class="sr-only">with Linus Harrow</span></span
+                  ></span
+                >
+              </div>
+            </li>
+            <li
+              class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top scale-y-0 bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10"
+              ></span
+              ><label class="relative self-start"
+                ><input
+                  type="checkbox"
+                  aria-label="Select “A Short History of Fog Horns” by Callum Reyes-Whitlock"
+                  class="peer absolute inset-0 size-full cursor-pointer opacity-0"
+                /><span
+                  aria-hidden="true"
+                  class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none text-(--iu-muted) tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:peer-hover:text-(--iu-foreground)"
+                  >04</span
+                ></label
+              >
+              <div class="min-w-0">
+                <a
+                  href="#s-414"
+                  class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @2xl:text-[24px] pointer-fine:hover:underline"
+                  >A Short History of Fog Horns</a
+                >
+                <p class="mt-1.5 text-[13px] text-(--iu-muted)">
+                  by <span class="text-(--iu-foreground)">Callum Reyes-Whitlock</span
+                  ><span class="@2xl:hidden">
+                    · Reportage · <span class="font-mono tabular-nums">5,320</span> words</span
+                  ><span> · received <span class="font-mono text-[12px] tabular-nums">19 Oct</span></span>
+                </p>
+                <div class="mt-2 @2xl:hidden">
+                  <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                    ><span aria-hidden="true" class="inline-block size-2 rounded-full border border-(--iu-muted)"></span
+                    ><span class="text-(--iu-muted)">Unread</span></span
+                  >
+                </div>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">Reportage</p>
+                <p class="mt-1 font-mono text-[13px] tabular-nums">5,320<span class="text-(--iu-muted)"> w</span></p>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                  ><span aria-hidden="true" class="inline-block size-2 rounded-full border border-(--iu-muted)"></span
+                  ><span class="text-(--iu-muted)">Unread</span></span
+                >
+              </div>
+            </li>
+            <li
+              class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top scale-y-0 bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10"
+              ></span
+              ><label class="relative self-start"
+                ><input
+                  type="checkbox"
+                  aria-label="Select “Mending Nets in Kilkeel” by Siobhán Keary"
+                  class="peer absolute inset-0 size-full cursor-pointer opacity-0"
+                /><span
+                  aria-hidden="true"
+                  class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none text-(--iu-muted) tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:peer-hover:text-(--iu-foreground)"
+                  >05</span
+                ></label
+              >
+              <div class="min-w-0">
+                <a
+                  href="#s-412"
+                  class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @2xl:text-[24px] pointer-fine:hover:underline"
+                  >Mending Nets in Kilkeel</a
+                >
+                <p class="mt-1.5 text-[13px] text-(--iu-muted)">
+                  by <span class="text-(--iu-foreground)">Siobhán Keary</span
+                  ><span class="@2xl:hidden"> · Essay · <span class="font-mono tabular-nums">3,175</span> words</span
+                  ><span> · received <span class="font-mono text-[12px] tabular-nums">17 Oct</span></span>
+                </p>
+                <div class="mt-2 @2xl:hidden">
+                  <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                    ><span aria-hidden="true" class="inline-block size-2 rounded-full bg-(--iu-muted)"></span
+                    ><span class="text-(--iu-foreground)">First read</span
+                    ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                      ><span aria-hidden="true">MO</span><span class="sr-only">with Maren Oduya</span></span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">Essay</p>
+                <p class="mt-1 font-mono text-[13px] tabular-nums">3,175<span class="text-(--iu-muted)"> w</span></p>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                  ><span aria-hidden="true" class="inline-block size-2 rounded-full bg-(--iu-muted)"></span
+                  ><span class="text-(--iu-foreground)">First read</span
+                  ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                    ><span aria-hidden="true">MO</span><span class="sr-only">with Maren Oduya</span></span
+                  ></span
+                >
+              </div>
+            </li>
+            <li
+              class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6"
+            >
+              <span
+                aria-hidden="true"
+                class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top scale-y-0 bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10"
+              ></span
+              ><label class="relative self-start"
+                ><input
+                  type="checkbox"
+                  aria-label="Select “Low Water” by Hamid Sorouri"
+                  class="peer absolute inset-0 size-full cursor-pointer opacity-0"
+                /><span
+                  aria-hidden="true"
+                  class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none text-(--iu-muted) tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:peer-hover:text-(--iu-foreground)"
+                  >06</span
+                ></label
+              >
+              <div class="min-w-0">
+                <a
+                  href="#s-411"
+                  class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) @2xl:text-[24px] pointer-fine:hover:underline"
+                  >Low Water</a
+                >
+                <p class="mt-1.5 text-[13px] text-(--iu-muted)">
+                  by <span class="text-(--iu-foreground)">Hamid Sorouri</span
+                  ><span class="@2xl:hidden"> · Fiction · <span class="font-mono tabular-nums">8,945</span> words</span
+                  ><span> · received <span class="font-mono text-[12px] tabular-nums">15 Oct</span></span>
+                </p>
+                <div class="mt-2 @2xl:hidden">
+                  <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                    ><span aria-hidden="true" class="inline-block size-2 rotate-45 bg-(--iu-accent)"></span
+                    ><span class="text-(--iu-foreground)">Shortlisted</span
+                    ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                      ><span aria-hidden="true">LH</span><span class="sr-only">with Linus Harrow</span></span
+                    ></span
+                  >
+                </div>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">Fiction</p>
+                <p class="mt-1 font-mono text-[13px] tabular-nums">8,945<span class="text-(--iu-muted)"> w</span></p>
+              </div>
+              <div class="hidden pt-1.5 @2xl:block">
+                <span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"
+                  ><span aria-hidden="true" class="inline-block size-2 rotate-45 bg-(--iu-accent)"></span
+                  ><span class="text-(--iu-foreground)">Shortlisted</span
+                  ><span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"
+                    ><span aria-hidden="true">LH</span><span class="sr-only">with Linus Harrow</span></span
+                  ></span
+                >
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div data-colophon class="border-t-[3px] border-double border-(--iu-foreground) px-5 py-4 @2xl:px-10">
+          <p class="text-[14px] text-pretty text-(--iu-muted)">
+            Select pieces by their number to shortlist or decline them together.
+          </p>
+        </div>
+        <nav
+          data-pager
+          aria-label="Pages of the pile"
+          class="flex items-center justify-between gap-4 border-t border-(--iu-border) px-5 py-3 @2xl:px-10"
+        >
+          <button
+            type="button"
+            disabled=""
+            class="inline-flex h-9 items-center gap-2 text-[13px] font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:text-(--iu-muted) disabled:opacity-60 pointer-coarse:h-10"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m12 19-7-7 7-7"></path>
+              <path d="M19 12H5"></path></svg
+            ><span>Newer<span class="sr-only @md:not-sr-only"> pieces</span></span>
+          </button>
+          <ol class="flex items-center gap-1">
+            <li>
+              <button
+                type="button"
+                aria-label="Page 1"
+                aria-current="page"
+                class="inline-flex h-9 min-w-9 items-center justify-center font-serif text-[18px] text-(--iu-foreground) italic tabular-nums underline decoration-(--iu-accent) decoration-2 underline-offset-[6px] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed motion-reduce:transition-none pointer-coarse:h-10 pointer-coarse:min-w-10"
+              >
+                1
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                aria-label="Page 2"
+                class="inline-flex h-9 min-w-9 items-center justify-center font-serif text-[18px] text-(--iu-muted) tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed motion-reduce:transition-none pointer-coarse:h-10 pointer-coarse:min-w-10 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                2
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                aria-label="Page 3"
+                class="inline-flex h-9 min-w-9 items-center justify-center font-serif text-[18px] text-(--iu-muted) tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed motion-reduce:transition-none pointer-coarse:h-10 pointer-coarse:min-w-10 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                3
+              </button>
+            </li>
+          </ol>
+          <button
+            type="button"
+            class="inline-flex h-9 items-center gap-2 text-[13px] font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:text-(--iu-muted) disabled:opacity-60 pointer-coarse:h-10"
+          >
+            <span>Older<span class="sr-only @md:not-sr-only"> pieces</span></span
+            ><svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </button>
+        </nav>
+      </section>
+      <!-- iloveui:component:end -->
+    </div>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-tidewater]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var PAGE_SIZE = 6;
+        var WPM = 230;
+        var items = [
+          ["s-418", "The Ferryman’s Ledger", "Ines Achterberg", "Essay", 4210, "2026-10-24", "unread"],
+          [
+            "s-417",
+            "What the Estuary Keeps",
+            "Tomasz Wierzbicki",
+            "Fiction",
+            6880,
+            "2026-10-23",
+            "first-read",
+            "Maren Oduya",
+          ],
+          ["s-415", "Salt Year", "Adaeze Okonkwo", "Poetry", 940, "2026-10-21", "second-read", "Linus Harrow"],
+          ["s-414", "A Short History of Fog Horns", "Callum Reyes-Whitlock", "Reportage", 5320, "2026-10-19", "unread"],
+          [
+            "s-412",
+            "Mending Nets in Kilkeel",
+            "Siobhán Keary",
+            "Essay",
+            3175,
+            "2026-10-17",
+            "first-read",
+            "Maren Oduya",
+          ],
+          ["s-411", "Low Water", "Hamid Sorouri", "Fiction", 8945, "2026-10-15", "shortlisted", "Linus Harrow"],
+          ["s-409", "Inventory of a Drowned Garden", "Paloma Ferreira-Lund", "Poetry", 1260, "2026-10-12", "unread"],
+          [
+            "s-408",
+            "The Lighthouse Keeper’s Daughter Writes Back",
+            "Ruth Ebbesen",
+            "Fiction",
+            5610,
+            "2026-10-10",
+            "second-read",
+            "Maren Oduya",
+          ],
+          ["s-406", "On Tide Tables", "Dev Ramaswamy", "Essay", 2890, "2026-10-08", "unread"],
+          [
+            "s-405",
+            "Night Shift at the Fish Auction",
+            "Grete Solberg",
+            "Reportage",
+            7140,
+            "2026-10-05",
+            "first-read",
+            "Linus Harrow",
+          ],
+          ["s-403", "Barnacles", "Okwudili Ajayi", "Poetry", 610, "2026-10-02", "unread"],
+          [
+            "s-401",
+            "Every Boat Is Named for Someone",
+            "Lucía Montenegro",
+            "Essay",
+            3960,
+            "2026-09-29",
+            "second-read",
+            "Linus Harrow",
+          ],
+          ["s-398", "The Weight of a Wet Rope", "Fintan Doyle", "Fiction", 4475, "2026-09-24", "unread"],
+          ["s-396", "Breakwater", "Yuki Takamura", "Poetry", 820, "2026-09-19", "first-read", "Maren Oduya"],
+          ["s-393", "Where the Pilot Boats Wait", "Anneke Visser", "Reportage", 6025, "2026-09-14", "unread"],
+          [
+            "s-390",
+            "Letters from a Tidal Island",
+            "Rhiannon Pryce",
+            "Essay",
+            5190,
+            "2026-09-08",
+            "second-read",
+            "Maren Oduya",
+          ],
+        ].map(function (r) {
+          return {
+            id: r[0],
+            title: r[1],
+            author: r[2],
+            form: r[3],
+            words: r[4],
+            received: r[5],
+            status: r[6],
+            reader: r[7],
+          };
+        });
+        var SORTS = [
+          ["received", "Received", "desc"],
+          ["words", "Length", "desc"],
+          ["title", "Title", "asc"],
+          ["author", "Author", "asc"],
+        ];
+        var WORDS =
+          "No One Two Three Four Five Six Seven Eight Nine Ten Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen Twenty".split(
+            " ",
+          );
+        var state = {
+          sort: { key: "received", direction: "desc" },
+          page: 1,
+          selected: new Set(),
+          notice: null,
+          undo: null,
+        };
+        var focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var dates = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", timeZone: "UTC" });
+        var ARROW = {
+          up: '<path d="m5 12 7-7 7 7"></path><path d="M12 19V5"></path>',
+          down: '<path d="M12 5v14"></path><path d="m19 12-7 7-7-7"></path>',
+          left: '<path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path>',
+          right: '<path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>',
+          check: '<path d="M20 6 9 17l-5-5"></path>',
+        };
+        function svg(name, size, stroke) {
+          return (
+            '<svg aria-hidden="true" width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round">' +
+            ARROW[name] +
+            "</svg>"
+          );
+        }
+        function esc(t) {
+          return String(t).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+        function spelled(n) {
+          return WORDS[n] || String(n);
+        }
+        function surname(name) {
+          var parts = name.split(/\s+/);
+          return parts[parts.length - 1];
+        }
+        function initials(name) {
+          return name
+            .split(/\s+/)
+            .map(function (p) {
+              return p[0];
+            })
+            .join("")
+            .slice(0, 2)
+            .toUpperCase();
+        }
+        function reading(words) {
+          var m = Math.max(1, Math.round(words / WPM));
+          if (m < 60) return "about " + m + " minutes of reading";
+          var h = Math.floor(m / 60),
+            rest = m % 60;
+          return "about " + h + " hour" + (h === 1 ? "" : "s") + (rest ? " " + rest + " minutes" : "") + " of reading";
+        }
+        function statusLine(item) {
+          var label = {
+            unread: "Unread",
+            "first-read": "First read",
+            "second-read": "Second read",
+            shortlisted: "Shortlisted",
+          }[item.status];
+          var dot = {
+            unread: "rounded-full border border-(--iu-muted)",
+            "first-read": "rounded-full bg-(--iu-muted)",
+            "second-read": "rounded-full bg-(--iu-foreground)",
+            shortlisted: "rotate-45 bg-(--iu-accent)",
+          }[item.status];
+          return (
+            '<span class="inline-flex items-center gap-2 text-[13px] whitespace-nowrap"><span aria-hidden="true" class="inline-block size-2 ' +
+            dot +
+            '"></span><span class="' +
+            (item.status === "unread" ? "text-(--iu-muted)" : "text-(--iu-foreground)") +
+            '">' +
+            label +
+            "</span>" +
+            (item.reader
+              ? '<span class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted)"><span aria-hidden="true">' +
+                initials(item.reader) +
+                '</span><span class="sr-only">with ' +
+                esc(item.reader) +
+                "</span></span>"
+              : "") +
+            "</span>"
+          );
+        }
+        function sorted() {
+          var f = state.sort.direction === "asc" ? 1 : -1,
+            k = state.sort.key;
+          return items.slice().sort(function (a, b) {
+            if (k === "words") return (a.words - b.words) * f;
+            if (k === "title") return a.title.localeCompare(b.title) * f;
+            if (k === "author") return surname(a.author).localeCompare(surname(b.author)) * f;
+            return (Date.parse(a.received) - Date.parse(b.received)) * f;
+          });
+        }
+
+        function render(animate) {
+          var focusKey = document.activeElement && document.activeElement.getAttribute("data-key");
+          var list = sorted();
+          var pageCount = Math.max(1, Math.ceil(list.length / PAGE_SIZE));
+          if (state.page > pageCount) state.page = pageCount;
+          var offset = (state.page - 1) * PAGE_SIZE;
+          var pageItems = list.slice(offset, offset + PAGE_SIZE);
+          var empty = items.length === 0;
+
+          root.querySelector("[data-count]").textContent = items.length + " in the pile";
+          root.querySelector("[data-sorts]").innerHTML = SORTS.map(function (s) {
+            var active = state.sort.key === s[0];
+            return (
+              '<button type="button" data-key="sort-' +
+              s[0] +
+              '" data-sort="' +
+              s[0] +
+              '" aria-pressed="' +
+              active +
+              '"' +
+              (empty ? " disabled" : "") +
+              ' class="group inline-flex h-8 items-center gap-1 rounded-[min(var(--iu-radius),2px)] text-[14px] transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none pointer-coarse:h-10 ' +
+              (active ? "text-(--iu-foreground)" : "text-(--iu-muted) pointer-fine:hover:text-(--iu-foreground)") +
+              " " +
+              focusRing +
+              '"><span class="border-b pb-px ' +
+              (active ? "border-(--iu-accent) font-serif text-[17px] italic" : "border-transparent") +
+              '">' +
+              s[1] +
+              "</span>" +
+              (active
+                ? svg(state.sort.direction === "asc" ? "up" : "down", 13, 1.5) +
+                  '<span class="sr-only">, ' +
+                  (state.sort.direction === "asc" ? "ascending" : "descending") +
+                  "</span>"
+                : "") +
+              "</button>"
+            );
+          }).join("");
+
+          // FLIP: remember where each entry was, render, then glide from there.
+          var pile = root.querySelector("[data-pile]");
+          var before = {};
+          pile.querySelectorAll("li[data-id]").forEach(function (li) {
+            before[li.getAttribute("data-id")] = li.getBoundingClientRect().top;
+          });
+          pile.setAttribute("start", String(offset + 1));
+          pile.innerHTML = pageItems
+            .map(function (item, index) {
+              var sel = state.selected.has(item.id);
+              var number = String(offset + index + 1).padStart(2, "0");
+              var words = item.words.toLocaleString("en-GB");
+              return (
+                '<li data-id="' +
+                item.id +
+                '" class="relative grid grid-cols-[2.5rem_minmax(0,1fr)] gap-x-4 border-b border-(--iu-border) py-[calc(20px*var(--iu-density))] @2xl:grid-cols-[3rem_minmax(0,1fr)_6.5rem_8.5rem] @2xl:gap-x-6">' +
+                '<span aria-hidden="true" class="absolute top-4 bottom-4 -left-5 w-[3px] origin-top bg-(--iu-accent) transition-transform duration-300 motion-reduce:transition-none @2xl:-left-10 ' +
+                (sel ? "scale-y-100" : "scale-y-0") +
+                '"></span>' +
+                '<label class="relative self-start"><input type="checkbox" data-key="pick-' +
+                item.id +
+                '" data-pick="' +
+                item.id +
+                '"' +
+                (sel ? " checked" : "") +
+                ' aria-label="Select “' +
+                esc(item.title) +
+                "” by " +
+                esc(item.author) +
+                '" class="peer absolute inset-0 size-full cursor-pointer opacity-0" />' +
+                '<span aria-hidden="true" class="flex h-10 w-10 items-start justify-start font-serif text-[28px] leading-none tabular-nums transition-colors duration-200 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none ' +
+                (sel ? "text-(--iu-foreground)" : "text-(--iu-muted) pointer-fine:peer-hover:text-(--iu-foreground)") +
+                '">' +
+                (sel
+                  ? '<span class="inline-flex size-8 items-center justify-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)">' +
+                    svg("check", 18, 2) +
+                    "</span>"
+                  : number) +
+                "</span></label>" +
+                '<div class="min-w-0"><a href="#' +
+                item.id +
+                '" class="font-serif text-[22px] leading-[1.15] text-balance decoration-(--iu-accent) decoration-1 underline-offset-4 @2xl:text-[24px] pointer-fine:hover:underline ' +
+                focusRing +
+                '">' +
+                esc(item.title) +
+                "</a>" +
+                '<p class="mt-1.5 text-[13px] text-(--iu-muted)">by <span class="text-(--iu-foreground)">' +
+                esc(item.author) +
+                '</span><span class="@2xl:hidden"> · ' +
+                item.form +
+                ' · <span class="font-mono tabular-nums">' +
+                words +
+                "</span> words</span><span> · received " +
+                '<span class="font-mono text-[12px] tabular-nums">' +
+                dates.format(new Date(item.received + "T00:00:00Z")) +
+                "</span></span></p>" +
+                '<div class="mt-2 @2xl:hidden">' +
+                statusLine(item) +
+                "</div></div>" +
+                '<div class="hidden pt-1.5 @2xl:block"><p class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">' +
+                item.form +
+                '</p><p class="mt-1 font-mono text-[13px] tabular-nums">' +
+                words +
+                '<span class="text-(--iu-muted)"> w</span></p></div>' +
+                '<div class="hidden pt-1.5 @2xl:block">' +
+                statusLine(item) +
+                "</div></li>"
+              );
+            })
+            .join("");
+          if (animate && !reduce) {
+            pile.querySelectorAll("li[data-id]").forEach(function (li) {
+              var was = before[li.getAttribute("data-id")];
+              if (was === undefined) {
+                li.animate([{ opacity: 0 }, { opacity: 1 }], {
+                  duration: 320,
+                  easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+                });
+                return;
+              }
+              var delta = was - li.getBoundingClientRect().top;
+              if (delta)
+                li.animate([{ transform: "translateY(" + delta + "px)" }, { transform: "none" }], {
+                  duration: 320,
+                  easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+                });
+            });
+          }
+
+          // Colophon
+          var chosen = items.filter(function (item) {
+            return state.selected.has(item.id);
+          });
+          var colophon = root.querySelector("[data-colophon]");
+          var button = function (cls, attrs, label) {
+            return '<button type="button" ' + attrs + ' class="' + cls + " " + focusRing + '">' + label + "</button>";
+          };
+          if (state.notice) {
+            colophon.innerHTML =
+              '<div role="status" class="flex flex-wrap items-center gap-x-4 gap-y-2"><span aria-hidden="true" class="inline-block size-2 rotate-45 bg-(--iu-accent)"></span><p class="font-serif text-[20px] italic">' +
+              state.notice +
+              "</p>" +
+              (state.undo
+                ? button(
+                    "inline-flex h-8 items-center border-b border-(--iu-foreground) text-[13px] font-medium pointer-coarse:h-10",
+                    'data-key="undo" data-act="undo"',
+                    "Undo",
+                  )
+                : "") +
+              "</div>";
+          } else if (chosen.length) {
+            var total = chosen.reduce(function (sum, item) {
+              return sum + item.words;
+            }, 0);
+            colophon.innerHTML =
+              '<div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3"><p aria-live="polite" class="text-[15px] text-pretty"><span class="font-serif text-[20px] italic">' +
+              spelled(chosen.length) +
+              (chosen.length === 1 ? " piece" : " pieces") +
+              '</span><span class="text-(--iu-muted)"> · <span class="font-mono text-[13px] tabular-nums">' +
+              total.toLocaleString("en-GB") +
+              "</span> words, " +
+              reading(total) +
+              '</span></p><div class="flex items-center gap-2">' +
+              button(
+                "inline-flex h-9 items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) px-4 text-[13px] font-medium text-(--iu-surface) transition-opacity duration-200 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:opacity-85",
+                'data-key="shortlist" data-act="shortlist"',
+                "Shortlist",
+              ) +
+              button(
+                "inline-flex h-9 items-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/40 px-4 text-[13px] font-medium transition-colors duration-200 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:border-(--iu-foreground)",
+                'data-key="decline" data-act="decline"',
+                "Decline",
+              ) +
+              button(
+                "inline-flex h-9 items-center px-2 text-[13px] text-(--iu-muted) underline-offset-4 pointer-coarse:h-10 pointer-fine:hover:underline",
+                'data-key="clear" data-act="clear"',
+                "Clear",
+              ) +
+              "</div></div>";
+          } else {
+            colophon.innerHTML =
+              '<p class="text-[14px] text-pretty text-(--iu-muted)">' +
+              (empty ? "Nothing to decide." : "Select pieces by their number to shortlist or decline them together.") +
+              "</p>";
+          }
+
+          // Pagination
+          var navButton =
+            "inline-flex h-9 items-center gap-2 text-[13px] font-medium disabled:cursor-not-allowed disabled:text-(--iu-muted) disabled:opacity-60 pointer-coarse:h-10 " +
+            focusRing;
+          var pages = "";
+          for (var n = 1; n <= pageCount; n++) {
+            var current = n === state.page;
+            pages +=
+              '<li><button type="button" data-key="page-' +
+              n +
+              '" data-page="' +
+              n +
+              '" aria-label="Page ' +
+              n +
+              '"' +
+              (current ? ' aria-current="page"' : "") +
+              ' class="inline-flex h-9 min-w-9 items-center justify-center font-serif text-[18px] tabular-nums transition-colors duration-200 disabled:cursor-not-allowed motion-reduce:transition-none pointer-coarse:h-10 pointer-coarse:min-w-10 ' +
+              (current
+                ? "text-(--iu-foreground) italic underline decoration-(--iu-accent) decoration-2 underline-offset-[6px]"
+                : "text-(--iu-muted) pointer-fine:hover:text-(--iu-foreground)") +
+              " " +
+              focusRing +
+              '">' +
+              n +
+              "</button></li>";
+          }
+          root.querySelector("[data-pager]").innerHTML =
+            '<button type="button" data-key="prev" data-page="prev"' +
+            (state.page <= 1 ? " disabled" : "") +
+            ' class="' +
+            navButton +
+            '">' +
+            svg("left", 16, 1.5) +
+            '<span>Newer<span class="sr-only @md:not-sr-only"> pieces</span></span></button>' +
+            '<ol class="flex items-center gap-1">' +
+            pages +
+            "</ol>" +
+            '<button type="button" data-key="next" data-page="next"' +
+            (state.page >= pageCount ? " disabled" : "") +
+            ' class="' +
+            navButton +
+            '"><span>Older<span class="sr-only @md:not-sr-only"> pieces</span></span>' +
+            svg("right", 16, 1.5) +
+            "</button>";
+
+          if (focusKey) {
+            var again = root.querySelector('[data-key="' + focusKey + '"]');
+            if (again) again.focus();
+          }
+        }
+
+        var noticeTimer;
+        function notify(text, undo) {
+          state.notice = text;
+          state.undo = undo;
+          clearTimeout(noticeTimer);
+          noticeTimer = setTimeout(function () {
+            state.notice = null;
+            state.undo = null;
+            render(false);
+          }, 8000);
+        }
+
+        root.addEventListener("change", function (event) {
+          var id = event.target.getAttribute && event.target.getAttribute("data-pick");
+          if (!id) return;
+          if (state.selected.has(id)) state.selected.delete(id);
+          else state.selected.add(id);
+          state.notice = null;
+          render(false);
+        });
+        root.addEventListener("click", function (event) {
+          var target = event.target.closest("button");
+          if (!target || !root.contains(target)) return;
+          var animate = false;
+          if (target.hasAttribute("data-sort")) {
+            var key = target.getAttribute("data-sort");
+            var def = SORTS.filter(function (s) {
+              return s[0] === key;
+            })[0][2];
+            state.sort =
+              state.sort.key === key
+                ? { key: key, direction: state.sort.direction === "asc" ? "desc" : "asc" }
+                : { key: key, direction: def };
+            state.page = 1;
+            animate = true;
+          } else if (target.hasAttribute("data-page")) {
+            var p = target.getAttribute("data-page");
+            state.page = p === "prev" ? state.page - 1 : p === "next" ? state.page + 1 : Number(p);
+          } else if (target.hasAttribute("data-act")) {
+            var act = target.getAttribute("data-act");
+            var count = state.selected.size;
+            var noun = count === 1 ? " piece" : " pieces";
+            if (act === "clear") state.selected.clear();
+            if (act === "undo" && state.undo) {
+              items = state.undo;
+              state.notice = null;
+              state.undo = null;
+              animate = true;
+            }
+            if (act === "shortlist" && count) {
+              var snapshot = items.map(function (item) {
+                return Object.assign({}, item);
+              });
+              items.forEach(function (item) {
+                if (state.selected.has(item.id)) item.status = "shortlisted";
+              });
+              state.selected.clear();
+              notify(spelled(count) + noun + " moved to the shortlist.", snapshot);
+            }
+            if (act === "decline" && count) {
+              var kept = items.slice();
+              items = items.filter(function (item) {
+                return !state.selected.has(item.id);
+              });
+              state.selected.clear();
+              notify(spelled(count) + noun + " declined. Authors are notified on Friday.", kept);
+              animate = true;
+            }
+          } else return;
+          render(animate);
+        });
+        render(false);
+      })();
+    </script>
+  </body>
+</html>

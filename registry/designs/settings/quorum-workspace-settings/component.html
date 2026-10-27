@@ -1,0 +1,1700 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quorum workspace settings · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto max-w-5xl px-4 py-10 sm:px-8 sm:py-16">
+      <!-- iloveui:component:start -->
+      <section
+        data-quorum
+        aria-label="Fernhill Robotics workspace settings"
+        class="@container w-full font-(family-name:--iu-font) text-[13px] leading-[1.4] text-(--iu-foreground)"
+      >
+        <header class="flex flex-wrap items-center gap-x-4 gap-y-2 pb-4">
+          <span
+            aria-hidden="true"
+            class="inline-flex size-9 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-[13px] font-semibold text-(--iu-background)"
+            >FR</span
+          >
+          <div class="min-w-0 flex-1">
+            <h2 class="text-[18px] leading-tight font-semibold tracking-[-0.01em]">Fernhill Robotics</h2>
+            <p class="text-[12px] text-(--iu-muted)">Workspace settings · Team · billed monthly</p>
+          </div>
+          <dl data-seats class="flex gap-6 font-mono text-[12px] tabular-nums">
+            <div>
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Seats</dt>
+              <dd class="mt-0.5">7 / 15</dd>
+            </div>
+            <div>
+              <dt class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">Monthly</dt>
+              <dd class="mt-0.5">$119.00</dd>
+            </div>
+          </dl>
+        </header>
+        <div class="grid grid-cols-1 gap-4 @5xl:grid-cols-[minmax(0,1fr)_340px]">
+          <div class="flex min-w-0 flex-col gap-4">
+            <div
+              class="rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/12"
+            >
+              <div
+                class="flex items-center gap-3 border-b border-(--iu-border) px-3 py-2.5 dark:border-(--iu-foreground)/10"
+              >
+                <h3 class="text-[13px] font-semibold">Members</h3>
+                <span data-members-count class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                  >5 paid · 2 free</span
+                ><button
+                  type="button"
+                  class="ml-auto inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-2.5 text-[12px] font-medium transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" /></svg
+                  >Invite
+                </button>
+              </div>
+              <div class="overflow-x-auto">
+                <table class="w-full table-fixed border-collapse text-left">
+                  <caption class="sr-only">
+                    Workspace members and roles. Role changes apply together from the tray below.
+                  </caption>
+                  <colgroup>
+                    <col />
+                    <col class="w-0 @2xl:w-[120px]" />
+                    <col class="w-[112px]" />
+                    <col class="w-0 @2xl:w-[56px]" />
+                    <col class="w-[44px]" />
+                  </colgroup>
+                  <thead class="sticky top-0 bg-(--iu-surface)">
+                    <tr
+                      class="border-b border-(--iu-border) text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase dark:border-(--iu-foreground)/10"
+                    >
+                      <th scope="col" class="px-3 py-[calc(8px*var(--iu-density))] font-medium">Member</th>
+                      <th
+                        scope="col"
+                        class="invisible overflow-hidden p-0 font-medium whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        Last active
+                      </th>
+                      <th scope="col" class="px-3 py-[calc(8px*var(--iu-density))] font-medium">Role</th>
+                      <th
+                        scope="col"
+                        class="invisible overflow-hidden p-0 font-medium whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        2FA
+                      </th>
+                      <th scope="col" class="px-3 py-[calc(8px*var(--iu-density))] font-medium">
+                        <span class="sr-only">Remove</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody data-rows>
+                    <tr class="border-b border-(--iu-border) last:border-b-0 dark:border-(--iu-foreground)/8">
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >PN</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium">Priya Natarajan</span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >priya@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        Now
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m1">Role for Priya Natarajan</label
+                        ><select
+                          id="quorum-role-m1"
+                          data-role="m1"
+                          disabled
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="owner" selected>Owner</option>
+                          <option value="admin">Admin</option>
+                          <option value="member">Member</option>
+                          <option value="viewer">Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px]"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-emerald-700 dark:text-emerald-400"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="m9 12 2 2 4-4" /></svg
+                          ><span class="sr-only">On</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right"></td>
+                    </tr>
+                    <tr
+                      class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] last:border-b-0 dark:border-(--iu-foreground)/8"
+                    >
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >JÅ</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium">Jonas Åberg</span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >jonas@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        12 min ago
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m2">Role for Jonas Åberg</label
+                        ><select
+                          id="quorum-role-m2"
+                          data-role="m2"
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="admin" selected>Admin</option>
+                          <option value="member">Member</option>
+                          <option value="viewer">Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px]"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-emerald-700 dark:text-emerald-400"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="m9 12 2 2 4-4" /></svg
+                          ><span class="sr-only">On</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right">
+                        <button
+                          type="button"
+                          data-remove="m2"
+                          aria-label="Remove Jonas Åberg"
+                          aria-pressed="false"
+                          class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-b border-(--iu-border) last:border-b-0 dark:border-(--iu-foreground)/8">
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >NH</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium">Noor Haddad</span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >noor@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        2 h ago
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m3">Role for Noor Haddad</label
+                        ><select
+                          id="quorum-role-m3"
+                          data-role="m3"
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="admin">Admin</option>
+                          <option value="member">Member</option>
+                          <option value="viewer" selected>Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px]"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-emerald-700 dark:text-emerald-400"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="m9 12 2 2 4-4" /></svg
+                          ><span class="sr-only">On</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right">
+                        <button
+                          type="button"
+                          data-remove="m3"
+                          aria-label="Remove Noor Haddad"
+                          aria-pressed="false"
+                          class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] last:border-b-0 dark:border-(--iu-foreground)/8"
+                    >
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >TW</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium">Tomasz Wilk</span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >tomasz@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        Yesterday
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m4">Role for Tomasz Wilk</label
+                        ><select
+                          id="quorum-role-m4"
+                          data-role="m4"
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="admin">Admin</option>
+                          <option value="member" selected>Member</option>
+                          <option value="viewer">Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px] text-amber-800 dark:text-amber-300"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="M12 8v4" />
+                            <path d="M12 16h.01" /></svg
+                          ><span class="sr-only">Off</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right">
+                        <button
+                          type="button"
+                          data-remove="m4"
+                          aria-label="Remove Tomasz Wilk"
+                          aria-pressed="false"
+                          class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-b border-(--iu-border) last:border-b-0 dark:border-(--iu-foreground)/8">
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >AO</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium">Ama Owusu</span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >ama@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        Mon 26 Oct
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m5">Role for Ama Owusu</label
+                        ><select
+                          id="quorum-role-m5"
+                          data-role="m5"
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="admin">Admin</option>
+                          <option value="member" selected>Member</option>
+                          <option value="viewer">Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px]"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-emerald-700 dark:text-emerald-400"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="m9 12 2 2 4-4" /></svg
+                          ><span class="sr-only">On</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right">
+                        <button
+                          type="button"
+                          data-remove="m5"
+                          aria-label="Remove Ama Owusu"
+                          aria-pressed="false"
+                          class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr
+                      class="border-b border-(--iu-border) bg-(--iu-foreground)/[0.025] last:border-b-0 dark:border-(--iu-foreground)/8"
+                    >
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >FB</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium">Felix Brandt</span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >felix@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        3 weeks ago
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m6">Role for Felix Brandt</label
+                        ><select
+                          id="quorum-role-m6"
+                          data-role="m6"
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="admin">Admin</option>
+                          <option value="member" selected>Member</option>
+                          <option value="viewer">Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px] text-amber-800 dark:text-amber-300"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="M12 8v4" />
+                            <path d="M12 16h.01" /></svg
+                          ><span class="sr-only">Off</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right">
+                        <button
+                          type="button"
+                          data-remove="m6"
+                          aria-label="Remove Felix Brandt"
+                          aria-pressed="false"
+                          class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="border-b border-(--iu-border) last:border-b-0 dark:border-(--iu-foreground)/8">
+                      <th scope="row" class="px-3 py-[calc(8px*var(--iu-density))] font-normal">
+                        <span class="flex min-w-0 items-center gap-2"
+                          ><span
+                            aria-hidden="true"
+                            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold"
+                            >RT</span
+                          ><span class="min-w-0"
+                            ><span class="block truncate text-[13px] font-medium"
+                              >Rei Takahashi<span
+                                class="ml-1.5 font-mono text-[10px] font-normal text-(--iu-muted) no-underline"
+                                >INVITED</span
+                              ></span
+                            ><span class="block truncate font-mono text-[11px] text-(--iu-muted)"
+                              >rei@fernhill.dev</span
+                            ></span
+                          ></span
+                        >
+                      </th>
+                      <td
+                        class="invisible overflow-hidden p-0 text-[12px] whitespace-nowrap text-(--iu-muted) tabular-nums @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        Invited 24 Oct
+                      </td>
+                      <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                        <label class="sr-only" for="quorum-role-m7">Role for Rei Takahashi</label
+                        ><select
+                          id="quorum-role-m7"
+                          data-role="m7"
+                          class="h-7 w-full cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-1.5 text-[12px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+                        >
+                          <option value="admin">Admin</option>
+                          <option value="member">Member</option>
+                          <option value="viewer" selected>Viewer</option>
+                        </select>
+                      </td>
+                      <td
+                        class="invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]"
+                      >
+                        <span class="inline-flex items-center gap-1 text-[12px] text-amber-800 dark:text-amber-300"
+                          ><svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                            />
+                            <path d="M12 8v4" />
+                            <path d="M12 16h.01" /></svg
+                          ><span class="sr-only">Off</span></span
+                        >
+                      </td>
+                      <td class="px-1 text-right">
+                        <button
+                          type="button"
+                          data-remove="m7"
+                          aria-label="Remove Rei Takahashi"
+                          aria-pressed="false"
+                          class="inline-flex size-7 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <line x1="22" x2="16" y1="11" y2="11" />
+                          </svg>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div
+                role="region"
+                aria-labelledby="quorum-tray"
+                class="border-t border-(--iu-border) bg-(--iu-background) px-3 py-3 dark:border-(--iu-foreground)/10"
+              >
+                <div data-tray>
+                  <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h4 id="quorum-tray" class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+                      Pending changes
+                    </h4>
+                    <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">none</span>
+                  </div>
+                  <p class="mt-1.5 text-[12px] text-(--iu-muted)">
+                    Change a role or remove someone above. Changes apply together, so the bill only changes once.
+                  </p>
+                </div>
+                <p
+                  data-error
+                  role="alert"
+                  hidden
+                  class="mt-2 flex items-start gap-1.5 text-[12px] text-red-800 dark:text-red-300"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-px shrink-0"
+                  >
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                    <path d="M12 9v4" />
+                    <path d="M12 17h.01" /></svg
+                  ><span data-error-text></span>
+                </p>
+              </div>
+            </div>
+            <div
+              class="rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/12"
+            >
+              <div
+                class="flex items-center gap-3 border-b border-(--iu-border) px-3 py-2.5 dark:border-(--iu-foreground)/10"
+              >
+                <h3 class="text-[13px] font-semibold">API keys</h3>
+                <span data-keys-count class="font-mono text-[11px] text-(--iu-muted) tabular-nums">3 active</span
+                ><button
+                  type="button"
+                  data-create
+                  class="ml-auto inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-2.5 text-[12px] font-medium transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="M12 5v14" /></svg
+                  >Create key
+                </button>
+              </div>
+              <div data-keys>
+                <ul>
+                  <li
+                    class="border-b border-(--iu-border) px-3 py-[calc(8px*var(--iu-density))] last:border-b-0 dark:border-(--iu-foreground)/8"
+                  >
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <span class="min-w-0 flex-1"
+                        ><span class="flex items-center gap-2"
+                          ><span class="font-mono text-[12px] font-medium">ci-deploy</span></span
+                        ><span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                          >qk_live_7F2a•••• · deploy, read · created 12 Mar 2026 · used 4 min ago</span
+                        ></span
+                      ><button
+                        type="button"
+                        data-revoke="k1"
+                        class="inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-2.5 text-[12px] font-medium transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                      >
+                        Revoke
+                      </button>
+                    </div>
+                  </li>
+                  <li
+                    class="border-b border-(--iu-border) px-3 py-[calc(8px*var(--iu-density))] last:border-b-0 dark:border-(--iu-foreground)/8"
+                  >
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <span class="min-w-0 flex-1"
+                        ><span class="flex items-center gap-2"
+                          ><span class="font-mono text-[12px] font-medium">analytics-export</span></span
+                        ><span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                          >qk_live_b91C•••• · read · created 2 Jun 2026 · used Yesterday</span
+                        ></span
+                      ><button
+                        type="button"
+                        data-revoke="k2"
+                        class="inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-2.5 text-[12px] font-medium transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                      >
+                        Revoke
+                      </button>
+                    </div>
+                  </li>
+                  <li
+                    class="border-b border-(--iu-border) px-3 py-[calc(8px*var(--iu-density))] last:border-b-0 dark:border-(--iu-foreground)/8"
+                  >
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <span class="min-w-0 flex-1"
+                        ><span class="flex items-center gap-2"
+                          ><span class="font-mono text-[12px] font-medium">legacy-zapier</span
+                          ><span class="inline-flex items-center gap-1 text-[11px] text-amber-800 dark:text-amber-300"
+                            ><svg
+                              aria-hidden="true"
+                              width="12"
+                              height="12"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.75"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            >
+                              <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                              <path d="M12 9v4" />
+                              <path d="M12 17h.01" /></svg
+                            >Unused 60+ days</span
+                          ></span
+                        ><span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                          >qk_live_0dE4•••• · read, write · created 18 Nov 2025 · used 64 days ago</span
+                        ></span
+                      ><button
+                        type="button"
+                        data-revoke="k3"
+                        class="inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/30 bg-(--iu-surface) px-2.5 text-[12px] font-medium transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                      >
+                        Revoke
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <aside aria-label="Billing and usage" class="flex flex-col gap-4">
+            <div
+              class="rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/12"
+            >
+              <div class="border-b border-(--iu-border) px-3 py-2.5 dark:border-(--iu-foreground)/10">
+                <h3 class="text-[13px] font-semibold">Usage this period</h3>
+                <p class="text-[11px] text-(--iu-muted)">1–31 Oct · resets in 4 days</p>
+              </div>
+              <ul class="px-3">
+                <li class="border-b border-(--iu-border) py-3 last:border-b-0 dark:border-(--iu-foreground)/8">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <span class="text-[12px] font-medium">API requests</span
+                    ><span class="font-mono text-[12px] tabular-nums"
+                      >1.84M <span class="text-(--iu-muted)">/ 2.50M</span></span
+                    >
+                  </div>
+                  <div
+                    role="meter"
+                    aria-label="API requests"
+                    aria-valuemin="0"
+                    aria-valuemax="2500000"
+                    aria-valuenow="1842310"
+                    aria-valuetext="1.84M of 2.50M, 74%, projected 2.21M"
+                    class="relative mt-2 h-1.5 bg-(--iu-foreground)/8"
+                  >
+                    <span class="absolute inset-y-0 left-0 bg-(--iu-foreground)/75" style="width: 73.69%"></span
+                    ><span
+                      aria-hidden="true"
+                      class="absolute -inset-y-1 w-0 border-l border-dashed border-(--iu-foreground)/60"
+                      style="left: 88.4%"
+                    ></span>
+                  </div>
+                  <p class="mt-1.5 flex items-center gap-1 font-mono text-[11px] text-(--iu-muted) tabular-nums">
+                    74% · projected 88% by 31 Oct
+                  </p>
+                </li>
+                <li class="border-b border-(--iu-border) py-3 last:border-b-0 dark:border-(--iu-foreground)/8">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <span class="text-[12px] font-medium">Storage</span
+                    ><span class="font-mono text-[12px] tabular-nums"
+                      >38.2 GB <span class="text-(--iu-muted)">/ 50 GB</span></span
+                    >
+                  </div>
+                  <div
+                    role="meter"
+                    aria-label="Storage"
+                    aria-valuemin="0"
+                    aria-valuemax="50"
+                    aria-valuenow="38.2"
+                    aria-valuetext="38.2 GB of 50 GB, 76%, projected 41.6 GB"
+                    class="relative mt-2 h-1.5 bg-(--iu-foreground)/8"
+                  >
+                    <span class="absolute inset-y-0 left-0 bg-(--iu-foreground)/75" style="width: 76.4%"></span
+                    ><span
+                      aria-hidden="true"
+                      class="absolute -inset-y-1 w-0 border-l border-dashed border-(--iu-foreground)/60"
+                      style="left: 83.2%"
+                    ></span>
+                  </div>
+                  <p class="mt-1.5 flex items-center gap-1 font-mono text-[11px] text-(--iu-muted) tabular-nums">
+                    76% · projected 83% by 31 Oct
+                  </p>
+                </li>
+                <li class="border-b border-(--iu-border) py-3 last:border-b-0 dark:border-(--iu-foreground)/8">
+                  <div class="flex items-baseline justify-between gap-2">
+                    <span class="text-[12px] font-medium">Build minutes</span
+                    ><span class="font-mono text-[12px] tabular-nums"
+                      >4,210 min <span class="text-(--iu-muted)">/ 6,000 min</span></span
+                    >
+                  </div>
+                  <div
+                    role="meter"
+                    aria-label="Build minutes"
+                    aria-valuemin="0"
+                    aria-valuemax="6000"
+                    aria-valuenow="4210"
+                    aria-valuetext="4,210 min of 6,000 min, 70%, projected 5,620 min"
+                    class="relative mt-2 h-1.5 bg-(--iu-foreground)/8"
+                  >
+                    <span class="absolute inset-y-0 left-0 bg-amber-600 dark:bg-amber-400" style="width: 70.17%"></span
+                    ><span
+                      aria-hidden="true"
+                      class="absolute -inset-y-1 w-0 border-l border-dashed border-(--iu-foreground)/60"
+                      style="left: 93.67%"
+                    ></span>
+                  </div>
+                  <p
+                    class="mt-1.5 flex items-center gap-1 font-mono text-[11px] text-amber-800 tabular-nums dark:text-amber-300"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                      <path d="M12 9v4" />
+                      <path d="M12 17h.01" /></svg
+                    >70% · projected 94% by 31 Oct
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/12"
+            >
+              <div class="border-b border-(--iu-border) px-3 py-2.5 dark:border-(--iu-foreground)/10">
+                <h3 class="text-[13px] font-semibold">Billing</h3>
+              </div>
+              <dl data-billing class="grid grid-cols-[1fr_auto] gap-x-3 gap-y-1.5 px-3 py-3 text-[12px]">
+                <dt class="text-(--iu-muted)">Base plan</dt>
+                <dd class="text-right font-mono tabular-nums">$49.00</dd>
+                <dt class="text-(--iu-muted)">5 paid seats × $14.00</dt>
+                <dd class="text-right font-mono tabular-nums">$70.00</dd>
+                <dt class="border-t border-(--iu-border) pt-1.5 font-medium dark:border-(--iu-foreground)/10">
+                  Next invoice · 1 Nov 2026
+                </dt>
+                <dd
+                  class="border-t border-(--iu-border) pt-1.5 text-right font-mono font-semibold tabular-nums dark:border-(--iu-foreground)/10"
+                >
+                  <span class="inline-block">$119.00</span>
+                </dd>
+              </dl>
+              <table
+                class="w-full border-collapse border-t border-(--iu-border) text-left text-[12px] dark:border-(--iu-foreground)/10"
+              >
+                <caption class="sr-only">
+                  Recent invoices
+                </caption>
+                <thead>
+                  <tr class="text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase">
+                    <th scope="col" class="px-3 pt-2.5 pb-1 font-medium">Invoice</th>
+                    <th scope="col" class="px-3 pt-2.5 pb-1 text-right font-medium">Amount</th>
+                    <th scope="col" class="px-3 pt-2.5 pb-1 text-right font-medium">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row" class="px-3 py-1 font-normal">
+                      <span class="block">Oct 2026</span
+                      ><span class="block font-mono text-[10px] text-(--iu-muted)">INV-2026-0010</span>
+                    </th>
+                    <td class="px-3 py-1 text-right font-mono tabular-nums">$119.00</td>
+                    <td class="px-3 py-1 text-right">
+                      <span class="inline-flex items-center gap-1 text-[11px]"
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-emerald-700 dark:text-emerald-400"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        >Paid</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="px-3 py-1 font-normal">
+                      <span class="block">Sep 2026</span
+                      ><span class="block font-mono text-[10px] text-(--iu-muted)">INV-2026-0009</span>
+                    </th>
+                    <td class="px-3 py-1 text-right font-mono tabular-nums">$105.00</td>
+                    <td class="px-3 py-1 text-right">
+                      <span class="inline-flex items-center gap-1 text-[11px]"
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-emerald-700 dark:text-emerald-400"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        >Paid</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="px-3 py-1 font-normal">
+                      <span class="block">Aug 2026</span
+                      ><span class="block font-mono text-[10px] text-(--iu-muted)">INV-2026-0008</span>
+                    </th>
+                    <td class="px-3 py-1 text-right font-mono tabular-nums">$105.00</td>
+                    <td class="px-3 py-1 text-right">
+                      <span class="inline-flex items-center gap-1 text-[11px]"
+                        ><svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-emerald-700 dark:text-emerald-400"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg
+                        >Paid</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="h-2"></div>
+            </div>
+          </aside>
+        </div>
+        <p data-announcer aria-live="polite" class="sr-only"></p>
+      </section>
+      <!-- iloveui:component:end -->
+    </div>
+    <script>
+      var QUORUM = (function () {
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var R = "rounded-[min(var(--iu-radius),6px)]";
+        var LABEL = "text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase";
+        var BUTTON =
+          "inline-flex h-7 cursor-pointer items-center justify-center gap-1.5 border border-(--iu-foreground)/30 bg-(--iu-surface) px-2.5 text-[12px] font-medium transition-colors duration-100 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground) " +
+          R +
+          " " +
+          FOCUS;
+        var CELL = "px-3 py-[calc(8px*var(--iu-density))]";
+        var WIDE_CELL =
+          "invisible overflow-hidden p-0 whitespace-nowrap @2xl:visible @2xl:px-3 @2xl:py-[calc(8px*var(--iu-density))]";
+        var ICONS = {
+          check: '<path d="M20 6 9 17l-5-5"/>',
+          arrow: '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+          shieldOk:
+            '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+          shieldBad:
+            '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/>',
+          userMinus:
+            '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="22" x2="16" y1="11" y2="11"/>',
+          undo: '<path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/>',
+          alert:
+            '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+          loader: '<path d="M21 12a9 9 0 1 1-6.219-8.56"/>',
+          copy: '<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+        };
+        function icon(name, size, stroke, cls, label) {
+          return (
+            "<svg " +
+            (label ? 'role="img" aria-label="' + label + '"' : 'aria-hidden="true"') +
+            ' width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round"' +
+            (cls ? ' class="' + cls + '"' : "") +
+            ">" +
+            ICONS[name] +
+            "</svg>"
+          );
+        }
+        var ROLES = [
+          ["owner", "Owner"],
+          ["admin", "Admin"],
+          ["member", "Member"],
+          ["viewer", "Viewer"],
+        ];
+        function roleLabel(role) {
+          return ROLES.filter(function (r) {
+            return r[0] === role;
+          })[0][1];
+        }
+        function initials(name) {
+          return name
+            .split(/\s+/)
+            .map(function (p) {
+              return p[0] || "";
+            })
+            .join("")
+            .slice(0, 2)
+            .toUpperCase();
+        }
+        function money(v) {
+          return (v < 0 ? "−" : "") + "$" + Math.abs(v).toFixed(2);
+        }
+        function delta(v) {
+          return v === 0 ? "±$0.00" : v > 0 ? "+" + money(v) : money(v);
+        }
+        function paid(role) {
+          return role !== "viewer";
+        }
+        var state = {
+          members: [
+            {
+              id: "m1",
+              name: "Priya Natarajan",
+              email: "priya@fernhill.dev",
+              role: "owner",
+              lastActive: "Now",
+              twoFactor: true,
+            },
+            {
+              id: "m2",
+              name: "Jonas Åberg",
+              email: "jonas@fernhill.dev",
+              role: "admin",
+              lastActive: "12 min ago",
+              twoFactor: true,
+            },
+            {
+              id: "m3",
+              name: "Noor Haddad",
+              email: "noor@fernhill.dev",
+              role: "viewer",
+              lastActive: "2 h ago",
+              twoFactor: true,
+            },
+            {
+              id: "m4",
+              name: "Tomasz Wilk",
+              email: "tomasz@fernhill.dev",
+              role: "member",
+              lastActive: "Yesterday",
+              twoFactor: false,
+            },
+            {
+              id: "m5",
+              name: "Ama Owusu",
+              email: "ama@fernhill.dev",
+              role: "member",
+              lastActive: "Mon 26 Oct",
+              twoFactor: true,
+            },
+            {
+              id: "m6",
+              name: "Felix Brandt",
+              email: "felix@fernhill.dev",
+              role: "member",
+              lastActive: "3 weeks ago",
+              twoFactor: false,
+            },
+            {
+              id: "m7",
+              name: "Rei Takahashi",
+              email: "rei@fernhill.dev",
+              role: "viewer",
+              lastActive: "Invited 24 Oct",
+              twoFactor: false,
+              invited: true,
+            },
+          ],
+          changes: {},
+          status: "idle",
+          applied: { lines: [], at: "" },
+          keys: [
+            {
+              id: "k1",
+              name: "ci-deploy",
+              prefix: "qk_live_7F2a",
+              scopes: "deploy, read",
+              created: "12 Mar 2026",
+              lastUsed: "4 min ago",
+            },
+            {
+              id: "k2",
+              name: "analytics-export",
+              prefix: "qk_live_b91C",
+              scopes: "read",
+              created: "2 Jun 2026",
+              lastUsed: "Yesterday",
+            },
+            {
+              id: "k3",
+              name: "legacy-zapier",
+              prefix: "qk_live_0dE4",
+              scopes: "read, write",
+              created: "18 Nov 2025",
+              lastUsed: "64 days ago",
+              stale: true,
+            },
+          ],
+          confirming: null,
+          fresh: null,
+        };
+        var BASE = 49;
+        var SEAT = 14;
+        function pending() {
+          return Object.keys(state.changes)
+            .map(function (id) {
+              return state.changes[id];
+            })
+            .filter(function (c) {
+              var m = state.members.filter(function (x) {
+                return x.id === c.memberId;
+              })[0];
+              return m && (c.remove || (c.role && c.role !== m.role));
+            });
+        }
+        function bills() {
+          var now = 0,
+            next = 0,
+            seats = 0;
+          state.members.forEach(function (m) {
+            var c = state.changes[m.id];
+            if (paid(m.role)) now++;
+            if (!(c && c.remove)) {
+              seats++;
+              if (paid((c && c.role) || m.role)) next++;
+            }
+          });
+          return { now: now, next: next, current: BASE + now * SEAT, nextBill: BASE + next * SEAT, seats: seats };
+        }
+        function header() {
+          var b = bills();
+          return (
+            '<div><dt class="' +
+            LABEL +
+            '">Seats</dt><dd class="mt-0.5">' +
+            b.seats +
+            ' / 15</dd></div><div><dt class="' +
+            LABEL +
+            '">Monthly</dt><dd class="mt-0.5">' +
+            money(b.current) +
+            "</dd></div>"
+          );
+        }
+        function membersCount() {
+          var b = bills();
+          return b.now + " paid · " + (state.members.length - b.now) + " free";
+        }
+        function rows() {
+          var busy = state.status === "applying";
+          return state.members
+            .map(function (m, i) {
+              var c = state.changes[m.id] || {};
+              var removing = Boolean(c.remove);
+              var role = c.role || m.role;
+              var changed = removing || role !== m.role;
+              return (
+                '<tr class="border-b border-(--iu-border) last:border-b-0 dark:border-(--iu-foreground)/8' +
+                (i % 2 === 1 ? " bg-(--iu-foreground)/[0.025]" : "") +
+                (changed ? " shadow-[inset_2px_0_0_var(--iu-accent)]" : "") +
+                '"><th scope="row" class="' +
+                CELL +
+                ' font-normal"><span class="flex min-w-0 items-center gap-2"><span aria-hidden="true" class="inline-flex size-6 shrink-0 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold">' +
+                initials(m.name) +
+                '</span><span class="min-w-0"><span class="block truncate text-[13px] font-medium' +
+                (removing ? " text-(--iu-muted) line-through" : "") +
+                '">' +
+                m.name +
+                (m.invited
+                  ? '<span class="ml-1.5 font-mono text-[10px] font-normal text-(--iu-muted) no-underline">INVITED</span>'
+                  : "") +
+                '</span><span class="block truncate font-mono text-[11px] text-(--iu-muted)">' +
+                m.email +
+                "</span></span></span></th>" +
+                '<td class="' +
+                WIDE_CELL +
+                ' text-[12px] text-(--iu-muted) tabular-nums">' +
+                m.lastActive +
+                "</td>" +
+                '<td class="' +
+                CELL +
+                '"><label class="sr-only" for="quorum-role-' +
+                m.id +
+                '">Role for ' +
+                m.name +
+                '</label><select id="quorum-role-' +
+                m.id +
+                '" data-role="' +
+                m.id +
+                '"' +
+                (m.role === "owner" || removing || busy ? " disabled" : "") +
+                ' class="h-7 w-full cursor-pointer border bg-(--iu-surface) px-1.5 text-[12px] disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10 ' +
+                (role !== m.role ? "border-(--iu-accent)" : "border-(--iu-foreground)/30") +
+                " " +
+                R +
+                " " +
+                FOCUS +
+                '">' +
+                ROLES.filter(function (r) {
+                  return r[0] !== "owner" || m.role === "owner";
+                })
+                  .map(function (r) {
+                    return (
+                      '<option value="' + r[0] + '"' + (r[0] === role ? " selected" : "") + ">" + r[1] + "</option>"
+                    );
+                  })
+                  .join("") +
+                "</select></td>" +
+                '<td class="' +
+                WIDE_CELL +
+                '">' +
+                (m.twoFactor
+                  ? '<span class="inline-flex items-center gap-1 text-[12px]">' +
+                    icon("shieldOk", 14, 1.75, "text-emerald-700 dark:text-emerald-400") +
+                    '<span class="sr-only">On</span></span>'
+                  : '<span class="inline-flex items-center gap-1 text-[12px] text-amber-800 dark:text-amber-300">' +
+                    icon("shieldBad", 14, 1.75) +
+                    '<span class="sr-only">Off</span></span>') +
+                "</td>" +
+                '<td class="px-1 text-right">' +
+                (m.role !== "owner"
+                  ? '<button type="button" data-remove="' +
+                    m.id +
+                    '" aria-label="' +
+                    (removing ? "Keep " : "Remove ") +
+                    m.name +
+                    '" aria-pressed="' +
+                    removing +
+                    '"' +
+                    (busy ? " disabled" : "") +
+                    ' class="inline-flex size-7 cursor-pointer items-center justify-center text-(--iu-muted) disabled:cursor-not-allowed pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground) ' +
+                    R +
+                    " " +
+                    FOCUS +
+                    '">' +
+                    icon(removing ? "undo" : "userMinus", 14, 1.75) +
+                    "</button>"
+                  : "") +
+                "</td></tr>"
+              );
+            })
+            .join("");
+        }
+        function tray() {
+          var ok = state.status === "success";
+          var list = ok ? state.applied.lines : pending();
+          var b = bills();
+          var html =
+            '<div class="flex flex-wrap items-center gap-x-3 gap-y-1"><h4 id="quorum-tray" class="' +
+            LABEL +
+            '">' +
+            (ok ? "Applied at " + state.applied.at : "Pending changes") +
+            '</h4><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+            (ok ? list.length + " applied" : list.length === 0 ? "none" : list.length + " to apply") +
+            "</span></div>";
+          if (list.length === 0) {
+            html +=
+              '<p class="mt-1.5 text-[12px] text-(--iu-muted)">Change a role or remove someone above. Changes apply together, so the bill only changes once.</p>';
+          } else {
+            html +=
+              '<ul class="mt-2 font-mono text-[12px] tabular-nums">' +
+              list
+                .map(function (line) {
+                  var m = state.members.filter(function (x) {
+                    return x.id === line.memberId;
+                  })[0];
+                  var before = line.from || (m ? m.role : "viewer");
+                  var name = line.name || (m ? m.name : line.memberId);
+                  var d = (line.remove ? 0 : paid(line.role || before) ? SEAT : 0) - (paid(before) ? SEAT : 0);
+                  return (
+                    '<li class="grid grid-cols-[16px_minmax(0,1fr)_auto] items-center gap-2 py-0.5"><span aria-hidden="true"' +
+                    (ok ? ' class="text-(--iu-muted)"' : "") +
+                    ">" +
+                    (ok ? icon("check", 12, 2) : line.remove ? "−" : "~") +
+                    '</span><span class="min-w-0 truncate">' +
+                    name +
+                    " " +
+                    (line.remove
+                      ? '<span class="text-(--iu-muted)">removed</span>'
+                      : '<span class="text-(--iu-muted)">' +
+                        roleLabel(before) +
+                        " " +
+                        icon("arrow", 10, 2, "inline align-[-1px]", "to") +
+                        ' <span class="text-(--iu-foreground)">' +
+                        roleLabel(line.role || before) +
+                        "</span></span>") +
+                    "</span><span" +
+                    (d === 0 ? ' class="text-(--iu-muted)"' : "") +
+                    ">" +
+                    delta(d) +
+                    "/mo</span></li>"
+                  );
+                })
+                .join("") +
+              "</ul>";
+          }
+          if (!ok && list.length > 0) {
+            var busy = state.status === "applying";
+            html +=
+              '<div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 border-t border-dashed border-(--iu-border) pt-2"><span class="font-mono text-[12px] tabular-nums">Next invoice ' +
+              money(b.current) +
+              " " +
+              icon("arrow", 10, 2, "inline align-[-1px]", "becomes") +
+              ' <span class="font-semibold">' +
+              money(b.nextBill) +
+              '</span> <span class="text-(--iu-muted)">(' +
+              delta(b.nextBill - b.current) +
+              ')</span></span><span class="ml-auto flex gap-2"><button type="button" data-discard' +
+              (busy ? " disabled" : "") +
+              ' class="' +
+              BUTTON +
+              '">Discard</button><button type="button" data-apply' +
+              (busy ? " disabled" : "") +
+              ' class="inline-flex h-7 min-w-[112px] cursor-pointer items-center justify-center gap-1.5 bg-(--iu-accent) px-2.5 text-[12px] font-semibold text-(--iu-accent-foreground) disabled:cursor-wait pointer-coarse:h-10 ' +
+              R +
+              " " +
+              FOCUS +
+              '">' +
+              (busy
+                ? icon("loader", 12, 2, "animate-spin motion-reduce:animate-none") + "Applying"
+                : state.status === "error"
+                  ? "Retry apply"
+                  : "Apply changes") +
+              "</button></span></div>";
+          }
+          return html;
+        }
+        function billing() {
+          var b = bills();
+          return (
+            '<dt class="text-(--iu-muted)">Base plan</dt><dd class="text-right font-mono tabular-nums">' +
+            money(BASE) +
+            '</dd><dt class="text-(--iu-muted)">' +
+            b.next +
+            " paid seats × " +
+            money(SEAT) +
+            '</dt><dd class="text-right font-mono tabular-nums">' +
+            money(b.next * SEAT) +
+            '</dd><dt class="border-t border-(--iu-border) pt-1.5 font-medium dark:border-(--iu-foreground)/10">Next invoice · 1 Nov 2026</dt><dd class="border-t border-(--iu-border) pt-1.5 text-right font-mono font-semibold tabular-nums dark:border-(--iu-foreground)/10"><span class="inline-block">' +
+            money(b.nextBill) +
+            "</span></dd>"
+          );
+        }
+        function keys() {
+          if (state.keys.length === 0) {
+            return (
+              '<div class="flex flex-col items-start gap-2 px-3 py-6"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-(--iu-muted)"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg><p class="text-[13px] font-medium">No API keys yet</p><p class="max-w-[48ch] text-[12px] text-pretty text-(--iu-muted)">Keys let CI and scripts call the Quorum API as this workspace. Each one can be scoped and revoked on its own.</p><button type="button" data-create class="' +
+              BUTTON +
+              ' mt-1">Create your first key</button></div>'
+            );
+          }
+          return (
+            "<ul>" +
+            state.keys
+              .map(function (k) {
+                var confirming = state.confirming === k.id;
+                var fresh = state.fresh && state.fresh.id === k.id;
+                return (
+                  '<li class="border-b border-(--iu-border) px-3 py-[calc(8px*var(--iu-density))] last:border-b-0 dark:border-(--iu-foreground)/8' +
+                  (confirming ? " bg-red-700/5 dark:bg-red-400/8" : "") +
+                  '"><div class="flex flex-wrap items-center gap-x-4 gap-y-1"><span class="min-w-0 flex-1"><span class="flex items-center gap-2"><span class="font-mono text-[12px] font-medium">' +
+                  k.name +
+                  "</span>" +
+                  (k.stale
+                    ? '<span class="inline-flex items-center gap-1 text-[11px] text-amber-800 dark:text-amber-300">' +
+                      icon("alert", 12, 1.75) +
+                      "Unused 60+ days</span>"
+                    : "") +
+                  '</span><span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+                  k.prefix +
+                  "•••• · " +
+                  k.scopes +
+                  " · created " +
+                  k.created +
+                  " · used " +
+                  k.lastUsed +
+                  "</span></span>" +
+                  (confirming
+                    ? ""
+                    : '<button type="button" data-revoke="' + k.id + '" class="' + BUTTON + '">Revoke</button>') +
+                  "</div>" +
+                  (fresh
+                    ? '<div class="mt-2 flex flex-wrap items-center gap-2 border border-dashed border-(--iu-foreground)/30 bg-(--iu-background) p-2 ' +
+                      R +
+                      '"><code class="min-w-0 flex-1 font-mono text-[12px] break-all">' +
+                      state.fresh.secret +
+                      '</code><button type="button" data-copy-key class="' +
+                      BUTTON +
+                      '">' +
+                      icon("copy", 12, 1.75) +
+                      '<span data-copy-label>Copy</span></button><span class="w-full text-[11px] text-(--iu-muted)">Shown once. Store it in your secrets manager now.</span></div>'
+                    : "") +
+                  (confirming
+                    ? '<div role="group" aria-labelledby="quorum-revoke-' +
+                      k.id +
+                      '" class="mt-2 flex flex-wrap items-center gap-2"><p id="quorum-revoke-' +
+                      k.id +
+                      '" class="min-w-0 flex-1 text-[12px] text-pretty">Revoke <span class="font-mono font-medium">' +
+                      k.name +
+                      '</span>? Requests using it fail immediately. This can’t be undone.</p><button type="button" data-cancel class="' +
+                      BUTTON +
+                      '">Cancel</button><button type="button" data-confirm-revoke="' +
+                      k.id +
+                      '" class="inline-flex h-7 cursor-pointer items-center gap-1.5 bg-red-700 px-2.5 text-[12px] font-semibold text-white pointer-coarse:h-10 dark:bg-red-600 ' +
+                      R +
+                      " " +
+                      FOCUS +
+                      '">Revoke key</button></div>'
+                    : "") +
+                  "</li>"
+                );
+              })
+              .join("") +
+            "</ul>"
+          );
+        }
+        return {
+          state: state,
+          pending: pending,
+          header: header,
+          membersCount: membersCount,
+          rows: rows,
+          tray: tray,
+          billing: billing,
+          keys: keys,
+          roleLabel: roleLabel,
+        };
+      })();
+
+      (function () {
+        var root = document.querySelector("[data-quorum]");
+        if (!root) return;
+        var st = QUORUM.state;
+        var announcer = root.querySelector("[data-announcer]");
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        function render(focusSelector) {
+          root.querySelector("[data-seats]").innerHTML = QUORUM.header();
+          root.querySelector("[data-members-count]").textContent = QUORUM.membersCount();
+          root.querySelector("[data-rows]").innerHTML = QUORUM.rows();
+          root.querySelector("[data-tray]").innerHTML = QUORUM.tray();
+          root.querySelector("[data-billing]").innerHTML = QUORUM.billing();
+          root.querySelector("[data-keys]").innerHTML = QUORUM.keys();
+          root.querySelector("[data-keys-count]").textContent = st.keys.length + " active";
+          if (focusSelector) {
+            var target = root.querySelector(focusSelector);
+            if (target) target.focus();
+          }
+        }
+        function member(id) {
+          return st.members.filter(function (m) {
+            return m.id === id;
+          })[0];
+        }
+        function settle() {
+          if (st.status === "success" || st.status === "error") st.status = "idle";
+          var error = root.querySelector("[data-error]");
+          if (st.status !== "error") error.hidden = true;
+        }
+        root.addEventListener("change", function (event) {
+          var select = event.target.closest("[data-role]");
+          if (!select) return;
+          var m = member(select.getAttribute("data-role"));
+          if (select.value === m.role) delete st.changes[m.id];
+          else st.changes[m.id] = { memberId: m.id, role: select.value };
+          settle();
+          announce(m.name + ": " + QUORUM.roleLabel(select.value) + " pending");
+          render('[data-role="' + m.id + '"]');
+        });
+        root.addEventListener("click", function (event) {
+          var button = event.target.closest("button");
+          if (!button || !root.contains(button)) return;
+          var id;
+          if ((id = button.getAttribute("data-remove"))) {
+            var m = member(id);
+            var removing = st.changes[id] && st.changes[id].remove;
+            if (removing) delete st.changes[id];
+            else st.changes[id] = { memberId: id, remove: true };
+            settle();
+            announce(removing ? m.name + " kept" : m.name + " will be removed");
+            render('[data-remove="' + id + '"]');
+          } else if (button.hasAttribute("data-discard")) {
+            st.changes = {};
+            st.status = "idle";
+            root.querySelector("[data-error]").hidden = true;
+            announce("Changes discarded");
+            render();
+          } else if (button.hasAttribute("data-apply")) {
+            var lines = QUORUM.pending();
+            if (!lines.length) return;
+            st.status = "applying";
+            render("[data-apply]");
+            // Replace with your API call.
+            setTimeout(function () {
+              st.applied = {
+                lines: lines.map(function (c) {
+                  var m = member(c.memberId);
+                  return { memberId: c.memberId, role: c.role, remove: c.remove, from: m.role, name: m.name };
+                }),
+                at: (function () {
+                  var d = new Date();
+                  return String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+                })(),
+              };
+              st.members = st.members
+                .filter(function (m) {
+                  return !(st.changes[m.id] && st.changes[m.id].remove);
+                })
+                .map(function (m) {
+                  var c = st.changes[m.id];
+                  if (c && c.role) m.role = c.role;
+                  return m;
+                });
+              st.changes = {};
+              st.status = "success";
+              announce("Applied " + lines.length + (lines.length === 1 ? " change" : " changes"));
+              render();
+            }, 900);
+          } else if (button.hasAttribute("data-create")) {
+            var keyId = "k" + Date.now();
+            var secret = "qk_live_Hq3vN8xT2mLs9RcW4yJb6KeP0aZd";
+            st.keys.unshift({
+              id: keyId,
+              name: "new-key",
+              prefix: secret.slice(0, 12),
+              scopes: "read",
+              created: "Today",
+              lastUsed: "Never",
+            });
+            st.fresh = { id: keyId, secret: secret };
+            announce("Key created. Copy it now; it is shown once.");
+            render("[data-copy-key]");
+          } else if (button.hasAttribute("data-copy-key") && navigator.clipboard) {
+            navigator.clipboard.writeText(st.fresh.secret).then(
+              function () {
+                button.querySelector("[data-copy-label]").textContent = "Copied";
+                announce("Key copied");
+              },
+              function () {},
+            );
+          } else if ((id = button.getAttribute("data-revoke"))) {
+            st.confirming = id;
+            render("[data-cancel]");
+          } else if (button.hasAttribute("data-cancel")) {
+            var back = st.confirming;
+            st.confirming = null;
+            render('[data-revoke="' + back + '"]');
+          } else if ((id = button.getAttribute("data-confirm-revoke"))) {
+            var key = st.keys.filter(function (k) {
+              return k.id === id;
+            })[0];
+            st.keys = st.keys.filter(function (k) {
+              return k.id !== id;
+            });
+            st.confirming = null;
+            if (st.fresh && st.fresh.id === id) st.fresh = null;
+            announce(key.name + " revoked");
+            render("[data-create]");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

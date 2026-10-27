@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hearth studio bento · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-hearth-studio-bento
+      aria-labelledby="hearth-studio-bento-1"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1200px] px-4 py-16 sm:px-8 sm:py-24">
+        <div class="max-w-[40rem]">
+          <span
+            class="inline-flex h-8 items-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] px-3.5 text-sm font-medium"
+            >Hearth for podcasters</span
+          >
+          <h2
+            id="hearth-studio-bento-1"
+            class="mt-5 text-[clamp(2.25rem,1.6rem+2.6vw,3.5rem)] leading-[1.05] font-semibold tracking-[-0.03em] text-balance"
+          >
+            Sound like you booked a studio.
+          </h2>
+          <p class="mt-4 text-lg leading-relaxed text-pretty text-(--iu-muted)">
+            Record in your kitchen. Hearth cleans the room out of your voice, trims the long pauses and cuts every
+            format you post to.
+          </p>
+        </div>
+        <div class="mt-12 grid grid-cols-1 gap-4 sm:mt-14 md:grid-cols-2 lg:grid-cols-6 lg:gap-5">
+          <article
+            class="relative flex flex-col overflow-hidden rounded-[max(var(--iu-radius),20px)] border border-(--iu-foreground)/8 bg-(--iu-surface) p-[calc(24px*var(--iu-density))] shadow-[inset_0_1px_0_color-mix(in_oklab,white_80%,transparent),0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent),0_12px_32px_-12px_color-mix(in_oklab,var(--iu-foreground)_16%,transparent)] sm:p-[calc(28px*var(--iu-density))] md:row-span-2 lg:col-span-3 dark:border-(--iu-foreground)/10 dark:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] dark:shadow-none"
+          >
+            <div class="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] text-(--iu-foreground)"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-audio-waveform"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 13a2 2 0 0 0 2-2V7a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0V4a2 2 0 0 1 4 0v13a2 2 0 0 0 4 0v-4a2 2 0 0 1 2-2"
+                  ></path></svg
+              ></span>
+              <div>
+                <h3 class="text-lg leading-snug font-semibold tracking-[-0.01em] text-balance">
+                  Your voice, minus the room.
+                </h3>
+                <p class="mt-1 text-sm leading-relaxed text-pretty text-(--iu-muted)">
+                  Flip on Studio sound and the hum between your words drops away. The voice stays exactly as you said
+                  it.
+                </p>
+              </div>
+            </div>
+            <div class="mt-8 flex flex-1 flex-col gap-6">
+              <div
+                aria-hidden="true"
+                class="flex h-44 items-center gap-[3px] rounded-[max(var(--iu-radius),16px)] bg-[color-mix(in_oklab,var(--iu-accent)_6%,var(--iu-surface))] px-5 sm:h-52 lg:h-auto lg:min-h-52 lg:flex-1 dark:bg-(--iu-foreground)/5"
+              >
+                <span
+                  data-bar="n0.14"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.14)"
+                ></span
+                ><span
+                  data-bar="n0.1511111111111111"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.1511111111111111)"
+                ></span
+                ><span
+                  data-bar="0.75017851875995"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.75017851875995)"
+                ></span
+                ><span
+                  data-bar="0.584330152835085"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.584330152835085)"
+                ></span
+                ><span
+                  data-bar="0.7045929761212076"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.7045929761212076)"
+                ></span
+                ><span
+                  data-bar="0.6760442695107565"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.6760442695107565)"
+                ></span
+                ><span
+                  data-bar="0.424432974772084"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.424432974772084)"
+                ></span
+                ><span
+                  data-bar="0.452269193646208"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.452269193646208)"
+                ></span
+                ><span
+                  data-bar="0.7272111471391971"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.7272111471391971)"
+                ></span
+                ><span
+                  data-bar="0.7444270178072605"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.7444270178072605)"
+                ></span
+                ><span
+                  data-bar="0.6258604204916887"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.6258604204916887)"
+                ></span
+                ><span
+                  data-bar="n0.16222222222222224"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.16222222222222224)"
+                ></span
+                ><span
+                  data-bar="n0.17333333333333334"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.17333333333333334)"
+                ></span
+                ><span
+                  data-bar="n0.18444444444444447"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.18444444444444447)"
+                ></span
+                ><span
+                  data-bar="n0.19555555555555557"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.19555555555555557)"
+                ></span
+                ><span
+                  data-bar="n0.20666666666666667"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.20666666666666667)"
+                ></span
+                ><span
+                  data-bar="n0.2177777777777778"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.2177777777777778)"
+                ></span
+                ><span
+                  data-bar="n0.22888888888888892"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.22888888888888892)"
+                ></span
+                ><span
+                  data-bar="0.4638265513717357"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.4638265513717357)"
+                ></span
+                ><span
+                  data-bar="0.7581199385470971"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.7581199385470971)"
+                ></span
+                ><span
+                  data-bar="0.8076412098272664"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.8076412098272664)"
+                ></span
+                ><span
+                  data-bar="0.6626767957383307"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.6626767957383307)"
+                ></span
+                ><span
+                  data-bar="0.7719864824263352"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.7719864824263352)"
+                ></span
+                ><span
+                  data-bar="0.9272085930940628"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.9272085930940628)"
+                ></span
+                ><span
+                  data-bar="0.7198526840438575"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.7198526840438575)"
+                ></span
+                ><span
+                  data-bar="0.4838214761312244"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.4838214761312244)"
+                ></span
+                ><span
+                  data-bar="0.5884571022098182"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.5884571022098182)"
+                ></span
+                ><span
+                  data-bar="n0.14"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.14)"
+                ></span
+                ><span
+                  data-bar="n0.1511111111111111"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.1511111111111111)"
+                ></span
+                ><span
+                  data-bar="n0.16222222222222224"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.16222222222222224)"
+                ></span
+                ><span
+                  data-bar="n0.17333333333333334"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.17333333333333334)"
+                ></span
+                ><span
+                  data-bar="n0.18444444444444447"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.18444444444444447)"
+                ></span
+                ><span
+                  data-bar="n0.19555555555555557"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.19555555555555557)"
+                ></span
+                ><span
+                  data-bar="n0.20666666666666667"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.20666666666666667)"
+                ></span
+                ><span
+                  data-bar="0.8884742425596326"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.8884742425596326)"
+                ></span
+                ><span
+                  data-bar="0.6961381801037707"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.6961381801037707)"
+                ></span
+                ><span
+                  data-bar="0.4423409706988717"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.4423409706988717)"
+                ></span
+                ><span
+                  data-bar="0.5442682205260441"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.5442682205260441)"
+                ></span
+                ><span
+                  data-bar="0.6712747016745921"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.6712747016745921)"
+                ></span
+                ><span
+                  data-bar="0.5264947862339304"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.5264947862339304)"
+                ></span
+                ><span
+                  data-bar="0.5206094825358757"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.5206094825358757)"
+                ></span
+                ><span
+                  data-bar="0.8153781569815736"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.8153781569815736)"
+                ></span
+                ><span
+                  data-bar="0.9065705893047951"
+                  class="h-full flex-1 rounded-full bg-(--iu-accent)"
+                  style="transform: scaleY(0.9065705893047951)"
+                ></span
+                ><span
+                  data-bar="n0.2177777777777778"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.2177777777777778)"
+                ></span
+                ><span
+                  data-bar="n0.22888888888888892"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.22888888888888892)"
+                ></span
+                ><span
+                  data-bar="n0.14"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.14)"
+                ></span
+                ><span
+                  data-bar="n0.1511111111111111"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.1511111111111111)"
+                ></span
+                ><span
+                  data-bar="n0.16222222222222224"
+                  class="h-full flex-1 rounded-full bg-(--iu-foreground)/30"
+                  style="transform: scaleY(0.16222222222222224)"
+                ></span>
+              </div>
+              <div class="mt-auto flex flex-wrap items-center justify-between gap-4">
+                <div>
+                  <span id="hearth-studio-bento-2" class="block text-sm font-semibold">Studio sound</span
+                  ><span class="flex items-baseline gap-2 text-sm text-(--iu-muted)"
+                    >Noise floor<span
+                      data-floor="true"
+                      class="relative inline-block min-w-[6ch] font-mono text-(--iu-foreground) tabular-nums"
+                      ><span class="inline-block" style="opacity: 1; transform: none">−38 dB</span></span
+                    ></span
+                  >
+                </div>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked="false"
+                  aria-labelledby="hearth-studio-bento-2"
+                  class="relative flex h-10 w-[68px] shrink-0 items-center rounded-full border border-(--iu-foreground)/35 bg-(--iu-foreground)/8 p-1 shadow-[inset_0_2px_4px_color-mix(in_oklab,var(--iu-foreground)_12%,transparent)] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                >
+                  <span
+                    class="block size-8 rounded-full bg-(--iu-surface) shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_20%,transparent),0_4px_10px_-2px_color-mix(in_oklab,var(--iu-foreground)_20%,transparent)] dark:bg-(--iu-foreground)"
+                    tabindex="0"
+                    style="transform: none"
+                  ></span>
+                </button>
+              </div>
+              <ul class="flex flex-wrap gap-2" aria-label="Noise sources">
+                <li
+                  data-chip="true"
+                  class="inline-flex h-8 items-center gap-1.5 rounded-full border border-(--iu-foreground)/12 px-3 text-xs font-medium text-(--iu-muted) transition-colors duration-200 motion-reduce:transition-none"
+                >
+                  Room echo<span class="sr-only">, present</span>
+                </li>
+                <li
+                  data-chip="true"
+                  class="inline-flex h-8 items-center gap-1.5 rounded-full border border-(--iu-foreground)/12 px-3 text-xs font-medium text-(--iu-muted) transition-colors duration-200 motion-reduce:transition-none"
+                >
+                  Laptop fan<span class="sr-only">, present</span>
+                </li>
+                <li
+                  data-chip="true"
+                  class="inline-flex h-8 items-center gap-1.5 rounded-full border border-(--iu-foreground)/12 px-3 text-xs font-medium text-(--iu-muted) transition-colors duration-200 motion-reduce:transition-none"
+                >
+                  Street hiss<span class="sr-only">, present</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+          <article
+            class="relative flex flex-col overflow-hidden rounded-[max(var(--iu-radius),20px)] border border-(--iu-foreground)/8 bg-(--iu-surface) p-[calc(24px*var(--iu-density))] shadow-[inset_0_1px_0_color-mix(in_oklab,white_80%,transparent),0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent),0_12px_32px_-12px_color-mix(in_oklab,var(--iu-foreground)_16%,transparent)] sm:p-[calc(28px*var(--iu-density))] lg:col-span-3 dark:border-(--iu-foreground)/10 dark:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] dark:shadow-none"
+          >
+            <div class="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] text-(--iu-foreground)"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-upload"
+                  aria-hidden="true"
+                >
+                  <path d="M12 3v12"></path>
+                  <path d="m17 8-5-5-5 5"></path>
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path></svg
+              ></span>
+              <div>
+                <h3 class="text-lg leading-snug font-semibold tracking-[-0.01em] text-balance">
+                  One episode, every shape.
+                </h3>
+                <p class="mt-1 text-sm leading-relaxed text-pretty text-(--iu-muted)">
+                  Pick where it goes. Hearth reframes the cut and sets the loudness that platform expects.
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 flex flex-col gap-5">
+              <div
+                role="radiogroup"
+                aria-label="Export target"
+                id="hearth-studio-bento-3"
+                class="grid grid-cols-3 rounded-full bg-(--iu-foreground)/6 p-1 shadow-[inset_0_1px_3px_color-mix(in_oklab,var(--iu-foreground)_10%,transparent)] dark:bg-(--iu-foreground)/8"
+              >
+                <button
+                  type="button"
+                  role="radio"
+                  aria-checked="true"
+                  tabindex="0"
+                  data-value="podcast"
+                  class="relative h-10 rounded-full text-sm font-medium text-(--iu-foreground) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 rounded-full bg-(--iu-surface) shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_12%,transparent),0_4px_12px_-4px_color-mix(in_oklab,var(--iu-foreground)_18%,transparent)] dark:bg-(--iu-foreground)/14 dark:shadow-none"
+                  ></span
+                  ><span class="relative">Podcast</span></button
+                ><button
+                  type="button"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-value="video"
+                  class="relative h-10 rounded-full text-sm font-medium text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                >
+                  <span class="relative">Video</span></button
+                ><button
+                  type="button"
+                  role="radio"
+                  aria-checked="false"
+                  tabindex="-1"
+                  data-value="shorts"
+                  class="relative h-10 rounded-full text-sm font-medium text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                >
+                  <span class="relative">Shorts</span>
+                </button>
+              </div>
+              <div class="flex flex-wrap items-center gap-5">
+                <div aria-hidden="true" class="flex h-[156px] w-[212px] shrink-0 items-center justify-center">
+                  <div
+                    data-frame="true"
+                    class="relative flex max-w-full flex-col justify-end overflow-hidden rounded-[max(var(--iu-radius),14px)] bg-[color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] p-2.5 shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_8%,transparent),0_10px_24px_-10px_color-mix(in_oklab,var(--iu-foreground)_24%,transparent)] dark:bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                    style="width: 132px; height: 132px"
+                  >
+                    <span class="absolute top-2.5 left-2.5 size-5 rounded-full bg-(--iu-accent)"></span
+                    ><span class="line-clamp-2 text-[11px] leading-tight font-semibold">Ep. 41 · The slow kitchen</span
+                    ><span class="mt-1.5 block h-1 rounded-full bg-(--iu-foreground)/15"
+                      ><span class="block h-1 w-2/5 rounded-full bg-(--iu-foreground)/70"></span
+                    ></span>
+                  </div>
+                </div>
+                <dl class="flex min-w-0 flex-col gap-2 text-sm">
+                  <div>
+                    <dt class="text-xs text-(--iu-muted)">Shape</dt>
+                    <dd data-spec="true" class="relative font-mono text-[13px] tabular-nums">
+                      <span class="inline-block" style="opacity: 1; transform: none">Cover 1:1</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="text-xs text-(--iu-muted)">File</dt>
+                    <dd data-spec="true" class="relative font-mono text-[13px] tabular-nums">
+                      <span class="inline-block" style="opacity: 1; transform: none">MP3 · 128 kbps</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt class="text-xs text-(--iu-muted)">Loudness</dt>
+                    <dd data-spec="true" class="relative font-mono text-[13px] tabular-nums">
+                      <span class="inline-block" style="opacity: 1; transform: none">−16 LUFS</span>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </article>
+          <article
+            class="relative flex flex-col overflow-hidden rounded-[max(var(--iu-radius),20px)] border border-(--iu-foreground)/8 bg-(--iu-surface) p-[calc(24px*var(--iu-density))] shadow-[inset_0_1px_0_color-mix(in_oklab,white_80%,transparent),0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent),0_12px_32px_-12px_color-mix(in_oklab,var(--iu-foreground)_16%,transparent)] sm:p-[calc(28px*var(--iu-density))] lg:col-span-3 dark:border-(--iu-foreground)/10 dark:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] dark:shadow-none"
+          >
+            <div class="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] text-(--iu-foreground)"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-scissors"
+                  aria-hidden="true"
+                >
+                  <circle cx="6" cy="6" r="3"></circle>
+                  <path d="M8.12 8.12 12 12"></path>
+                  <path d="M20 4 8.12 15.88"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <path d="M14.8 14.8 20 20"></path></svg
+              ></span>
+              <div>
+                <h3 class="text-lg leading-snug font-semibold tracking-[-0.01em] text-balance">
+                  Long pauses, gently shortened.
+                </h3>
+                <p class="mt-1 text-sm leading-relaxed text-pretty text-(--iu-muted)">
+                  Choose how much breathing room to keep. Every gap longer than that is tightened, never cut mid-word.
+                </p>
+              </div>
+            </div>
+            <div class="mt-6 flex flex-col gap-5">
+              <div aria-hidden="true" class="flex h-10 items-center gap-1">
+                <span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 3.2"
+                  ></span
+                  ><span
+                    data-pause="1.8"
+                    class="h-1 rounded-full bg-(--iu-foreground)/20"
+                    style="flex-grow: 0.7"
+                  ></span></span
+                ><span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 2.1"
+                  ></span
+                  ><span
+                    data-pause="0.9"
+                    class="h-1 rounded-full bg-(--iu-foreground)/20"
+                    style="flex-grow: 0.7"
+                  ></span></span
+                ><span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 4.4"
+                  ></span
+                  ><span
+                    data-pause="2.6"
+                    class="h-1 rounded-full bg-(--iu-foreground)/20"
+                    style="flex-grow: 0.7"
+                  ></span></span
+                ><span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 1.6"
+                  ></span
+                  ><span
+                    data-pause="0.6"
+                    class="h-1 rounded-full bg-(--iu-foreground)/20"
+                    style="flex-grow: 0.6"
+                  ></span></span
+                ><span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 2.8"
+                  ></span
+                  ><span
+                    data-pause="1.2"
+                    class="h-1 rounded-full bg-(--iu-foreground)/20"
+                    style="flex-grow: 0.7"
+                  ></span></span
+                ><span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 3.6"
+                  ></span
+                  ><span
+                    data-pause="3.1"
+                    class="h-1 rounded-full bg-(--iu-foreground)/20"
+                    style="flex-grow: 0.7"
+                  ></span></span
+                ><span class="contents"
+                  ><span
+                    class="h-8 rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-surface))] dark:bg-[color-mix(in_oklab,var(--iu-accent)_40%,var(--iu-surface))]"
+                    style="flex-grow: 2.4"
+                  ></span
+                ></span>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-3">
+                  <label for="hearth-studio-bento-4" class="text-sm font-medium">Keep pauses up to</label
+                  ><output data-threshold="true" for="hearth-studio-bento-4" class="font-mono text-sm tabular-nums"
+                    >0.7s</output
+                  >
+                </div>
+                <input
+                  id="hearth-studio-bento-4"
+                  type="range"
+                  min="0.3"
+                  max="1.5"
+                  step="0.1"
+                  style="--fill: 33.33333333333333%"
+                  class="mt-2 h-10 w-full cursor-pointer appearance-none rounded-full bg-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) [&::-moz-range-thumb]:size-8 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border [&::-moz-range-thumb]:border-(--iu-foreground)/35 [&::-moz-range-thumb]:bg-(--iu-surface) [&::-moz-range-track]:h-3 [&::-moz-range-track]:rounded-full [&::-moz-range-track]:bg-[linear-gradient(to_right,var(--iu-accent)_var(--fill),color-mix(in_oklab,var(--iu-foreground)_12%,transparent)_var(--fill))] [&::-webkit-slider-runnable-track]:h-3 [&::-webkit-slider-runnable-track]:rounded-full [&::-webkit-slider-runnable-track]:bg-[linear-gradient(to_right,var(--iu-accent)_var(--fill),color-mix(in_oklab,var(--iu-foreground)_12%,transparent)_var(--fill))] [&::-webkit-slider-thumb]:-mt-2.5 [&::-webkit-slider-thumb]:size-8 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border [&::-webkit-slider-thumb]:border-(--iu-foreground)/35 [&::-webkit-slider-thumb]:bg-(--iu-surface) [&::-webkit-slider-thumb]:shadow-[0_2px_6px_color-mix(in_oklab,var(--iu-foreground)_20%,transparent)] [&::-webkit-slider-thumb]:transition-transform active:[&::-webkit-slider-thumb]:scale-95"
+                  value="0.7"
+                />
+              </div>
+              <p class="flex flex-wrap items-baseline gap-x-2 text-sm text-(--iu-muted)">
+                <span
+                  class="text-[28px] leading-none font-semibold tracking-[-0.02em] text-(--iu-foreground) tabular-nums"
+                  ><span data-saved="true">5:08</span></span
+                >saved · episode runs <span data-runtime="true">47:06</span>
+              </p>
+            </div>
+          </article>
+          <article
+            class="relative flex flex-col overflow-hidden rounded-[max(var(--iu-radius),20px)] border border-(--iu-foreground)/8 bg-(--iu-surface) p-[calc(24px*var(--iu-density))] shadow-[inset_0_1px_0_color-mix(in_oklab,white_80%,transparent),0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent),0_12px_32px_-12px_color-mix(in_oklab,var(--iu-foreground)_16%,transparent)] sm:p-[calc(28px*var(--iu-density))] md:col-span-2 lg:col-span-6 dark:border-(--iu-foreground)/10 dark:bg-[color-mix(in_oklab,var(--iu-foreground)_4%,var(--iu-surface))] dark:shadow-none"
+          >
+            <div class="flex items-start gap-4">
+              <span
+                aria-hidden="true"
+                class="flex size-10 shrink-0 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] text-(--iu-foreground)"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-list-ordered"
+                  aria-hidden="true"
+                >
+                  <path d="M11 5h10"></path>
+                  <path d="M11 12h10"></path>
+                  <path d="M11 19h10"></path>
+                  <path d="M4 4h1v5"></path>
+                  <path d="M4 9h2"></path>
+                  <path d="M6.5 20H3.4c0-1 2.6-1.925 2.6-3.5a1.5 1.5 0 0 0-2.6-1.02"></path></svg
+              ></span>
+              <div>
+                <h3 class="text-lg leading-snug font-semibold tracking-[-0.01em] text-balance">
+                  Chapters, written for you.
+                </h3>
+                <p class="mt-1 text-sm leading-relaxed text-pretty text-(--iu-muted)">
+                  Hearth listens for topic changes and names each part. Pick one to jump there.
+                </p>
+              </div>
+            </div>
+            <fieldset class="mt-6">
+              <legend class="sr-only">Chapters of Ep. 41 · The slow kitchen</legend>
+              <div aria-hidden="true" class="mb-4 flex h-2 gap-1">
+                <span
+                  data-segment="true"
+                  class="rounded-full bg-(--iu-foreground)/12 transition-colors duration-200 motion-reduce:transition-none"
+                  style="flex-grow: 0.0784313725490196"
+                ></span
+                ><span
+                  data-segment="true"
+                  class="rounded-full bg-(--iu-accent) transition-colors duration-200 motion-reduce:transition-none"
+                  style="flex-grow: 0.2549019607843137"
+                ></span
+                ><span
+                  data-segment="true"
+                  class="rounded-full bg-(--iu-foreground)/12 transition-colors duration-200 motion-reduce:transition-none"
+                  style="flex-grow: 0.37254901960784315"
+                ></span
+                ><span
+                  data-segment="true"
+                  class="rounded-full bg-(--iu-foreground)/12 transition-colors duration-200 motion-reduce:transition-none"
+                  style="flex-grow: 0.29411764705882354"
+                ></span>
+              </div>
+              <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <label class="group relative block cursor-pointer"
+                  ><input type="radio" class="peer sr-only" name="hearth-studio-bento-5" value="0" /><span
+                    data-card="true"
+                    class="flex h-full flex-col gap-3 rounded-[max(var(--iu-radius),16px)] border border-(--iu-foreground)/10 bg-(--iu-surface) p-4 shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent)] transition-[transform,background-color,border-color,box-shadow] duration-200 group-active:scale-[0.98] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none dark:bg-transparent pointer-fine:group-hover:-translate-y-0.5"
+                    ><span class="flex items-center justify-between"
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">00:00</span
+                      ><span class="text-xs text-(--iu-muted) tabular-nums">4 min</span></span
+                    ><span class="text-[15px] leading-snug font-medium text-balance"
+                      >Cold open: the burnt bread</span
+                    ></span
+                  ></label
+                ><label class="group relative block cursor-pointer"
+                  ><input type="radio" class="peer sr-only" name="hearth-studio-bento-5" checked="" value="1" /><span
+                    data-card="true"
+                    class="flex h-full flex-col gap-3 rounded-[max(var(--iu-radius),16px)] border border-(--iu-accent)/50 bg-[color-mix(in_oklab,var(--iu-accent)_10%,var(--iu-surface))] p-4 shadow-[inset_0_2px_4px_color-mix(in_oklab,var(--iu-foreground)_8%,transparent)] transition-[transform,background-color,border-color,box-shadow] duration-200 group-active:scale-[0.98] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                    ><span class="flex items-center justify-between"
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">04:12</span
+                      ><span class="text-xs text-(--iu-muted) tabular-nums">13 min</span></span
+                    ><span class="text-[15px] leading-snug font-medium text-balance"
+                      >Why Nadia left the restaurant</span
+                    ></span
+                  ></label
+                ><label class="group relative block cursor-pointer"
+                  ><input type="radio" class="peer sr-only" name="hearth-studio-bento-5" value="2" /><span
+                    data-card="true"
+                    class="flex h-full flex-col gap-3 rounded-[max(var(--iu-radius),16px)] border border-(--iu-foreground)/10 bg-(--iu-surface) p-4 shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent)] transition-[transform,background-color,border-color,box-shadow] duration-200 group-active:scale-[0.98] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none dark:bg-transparent pointer-fine:group-hover:-translate-y-0.5"
+                    ><span class="flex items-center justify-between"
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">17:31</span
+                      ><span class="text-xs text-(--iu-muted) tabular-nums">19 min</span></span
+                    ><span class="text-[15px] leading-snug font-medium text-balance">Fermenting on a budget</span></span
+                  ></label
+                ><label class="group relative block cursor-pointer"
+                  ><input type="radio" class="peer sr-only" name="hearth-studio-bento-5" value="3" /><span
+                    data-card="true"
+                    class="flex h-full flex-col gap-3 rounded-[max(var(--iu-radius),16px)] border border-(--iu-foreground)/10 bg-(--iu-surface) p-4 shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent)] transition-[transform,background-color,border-color,box-shadow] duration-200 group-active:scale-[0.98] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-(--iu-accent) motion-reduce:transition-none dark:bg-transparent pointer-fine:group-hover:-translate-y-0.5"
+                    ><span class="flex items-center justify-between"
+                      ><span class="font-mono text-xs text-(--iu-muted) tabular-nums">36:48</span
+                      ><span class="text-xs text-(--iu-muted) tabular-nums">15 min</span></span
+                    ><span class="text-[15px] leading-snug font-medium text-balance">Listener questions</span></span
+                  ></label
+                >
+              </div>
+            </fieldset>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-hearth-studio-bento]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+        var CHECK =
+          '<span data-check class="inline-flex overflow-hidden"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg></span>';
+
+        function fadeIn(node) {
+          if (reduce || !node.animate) return;
+          node.animate(
+            [
+              { opacity: 0, transform: "translateY(4px)" },
+              { opacity: 1, transform: "none" },
+            ],
+            { duration: 200, easing: EASE },
+          );
+        }
+        function setText(node, text) {
+          if (node.textContent === text) return;
+          node.innerHTML = '<span class="inline-block">' + text + "</span>";
+          fadeIn(node.firstChild);
+        }
+        function swap(node, from, to) {
+          from.split(" ").forEach(function (c) {
+            if (c) node.classList.remove(c);
+          });
+          to.split(" ").forEach(function (c) {
+            if (c) node.classList.add(c);
+          });
+        }
+
+        /* Studio sound */
+        var toggle = root.querySelector('[role="switch"]');
+        var knob = toggle.firstElementChild;
+        var bars = root.querySelectorAll("[data-bar]");
+        var floor = root.querySelector("[data-floor]");
+        var chips = root.querySelectorAll("[data-chip]");
+        var on = false;
+        bars.forEach(function (bar, index) {
+          if (!reduce) bar.style.transition = "transform 420ms " + EASE + " " + (index % 16) * 12 + "ms";
+        });
+        if (!reduce) knob.style.transition = "transform 240ms " + EASE;
+        var OFF_TRACK =
+          "border-(--iu-foreground)/35 bg-(--iu-foreground)/8 shadow-[inset_0_2px_4px_color-mix(in_oklab,var(--iu-foreground)_12%,transparent)]";
+        var ON_TRACK = "border-transparent bg-(--iu-accent)";
+        var OFF_CHIP = "border-(--iu-foreground)/12 text-(--iu-muted)";
+        var ON_CHIP = "border-transparent bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))]";
+        toggle.addEventListener("click", function () {
+          on = !on;
+          toggle.setAttribute("aria-checked", String(on));
+          swap(toggle, on ? OFF_TRACK : ON_TRACK, on ? ON_TRACK : OFF_TRACK);
+          knob.style.transform = on ? "translateX(28px)" : "none";
+          bars.forEach(function (bar) {
+            var value = bar.getAttribute("data-bar");
+            var scale =
+              value.charAt(0) === "n" ? (on ? 0.03 : Number(value.slice(1))) : Number(value) * (on ? 0.94 : 1);
+            bar.style.transform = "scaleY(" + scale + ")";
+          });
+          setText(floor, on ? "−71 dB" : "−38 dB");
+          chips.forEach(function (chip) {
+            swap(chip, on ? OFF_CHIP : ON_CHIP, on ? ON_CHIP : OFF_CHIP);
+            var existing = chip.querySelector("[data-check]");
+            if (on && !existing) {
+              var holder = document.createElement("span");
+              holder.innerHTML = CHECK;
+              chip.insertBefore(holder.firstChild, chip.firstChild);
+            } else if (!on && existing) {
+              chip.removeChild(existing);
+            }
+            chip.querySelector(".sr-only").textContent = on ? ", removed" : ", present";
+          });
+        });
+
+        /* Export targets */
+        var TARGETS = {
+          podcast: { w: 132, h: 132, specs: ["Cover 1:1", "MP3 · 128 kbps", "−16 LUFS"] },
+          video: { w: 208, h: 117, specs: ["Frame 16:9", "MP4 · 1080p", "−14 LUFS"] },
+          shorts: { w: 84, h: 150, specs: ["Frame 9:16", "MP4 · 1080×1920", "−14 LUFS"] },
+        };
+        var group = root.querySelector('[role="radiogroup"]');
+        var radios = Array.prototype.slice.call(group.querySelectorAll('[role="radio"]'));
+        var thumb = group.querySelector('[aria-hidden="true"]');
+        var frame = root.querySelector("[data-frame]");
+        var specs = root.querySelectorAll("[data-spec]");
+        if (!reduce) frame.style.transition = "width 320ms " + EASE + ", height 320ms " + EASE;
+        function choose(button, focus) {
+          var previous = thumb.parentNode;
+          if (previous === button) return;
+          var before = thumb.getBoundingClientRect();
+          radios.forEach(function (radio) {
+            var selected = radio === button;
+            radio.setAttribute("aria-checked", String(selected));
+            radio.tabIndex = selected ? 0 : -1;
+            swap(
+              radio,
+              selected ? "text-(--iu-muted) pointer-fine:hover:text-(--iu-foreground)" : "text-(--iu-foreground)",
+              selected ? "text-(--iu-foreground)" : "text-(--iu-muted) pointer-fine:hover:text-(--iu-foreground)",
+            );
+          });
+          button.insertBefore(thumb, button.firstChild);
+          if (!reduce && thumb.animate) {
+            var after = thumb.getBoundingClientRect();
+            thumb.animate([{ transform: "translateX(" + (before.left - after.left) + "px)" }, { transform: "none" }], {
+              duration: 280,
+              easing: EASE,
+            });
+          }
+          var spec = TARGETS[button.getAttribute("data-value")];
+          frame.style.width = spec.w + "px";
+          frame.style.height = spec.h + "px";
+          specs.forEach(function (node, index) {
+            setText(node, spec.specs[index]);
+          });
+          if (focus) button.focus();
+        }
+        radios.forEach(function (radio) {
+          radio.addEventListener("click", function () {
+            choose(radio, false);
+          });
+        });
+        group.addEventListener("keydown", function (event) {
+          var index = radios.indexOf(thumb.parentNode);
+          var next = index;
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % radios.length;
+          else if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+            next = (index - 1 + radios.length) % radios.length;
+          else if (event.key === "Home") next = 0;
+          else if (event.key === "End") next = radios.length - 1;
+          else return;
+          event.preventDefault();
+          choose(radios[next], true);
+        });
+
+        /* Silence trimmer */
+        var range = root.querySelector('input[type="range"]');
+        var pauses = root.querySelectorAll("[data-pause]");
+        pauses.forEach(function (pause) {
+          if (!reduce) pause.style.transition = "flex-grow 320ms " + EASE;
+        });
+        function clock(seconds) {
+          var whole = Math.max(0, Math.round(seconds));
+          return Math.floor(whole / 60) + ":" + String(whole % 60).padStart(2, "0");
+        }
+        range.addEventListener("input", function () {
+          var t = Number(range.value);
+          var saved = Math.round(412 - (t - 0.3) * 260);
+          range.style.setProperty("--fill", ((t - 0.3) / 1.2) * 100 + "%");
+          root.querySelector("[data-threshold]").textContent = t.toFixed(1) + "s";
+          root.querySelector("[data-saved]").textContent = clock(saved);
+          root.querySelector("[data-runtime]").textContent = clock(3134 - saved);
+          pauses.forEach(function (pause) {
+            pause.style.flexGrow = String(Math.min(Number(pause.getAttribute("data-pause")), t));
+          });
+        });
+
+        /* Chapters */
+        var segments = root.querySelectorAll("[data-segment]");
+        var cards = root.querySelectorAll("[data-card]");
+        var SELECTED =
+          "border-(--iu-accent)/50 bg-[color-mix(in_oklab,var(--iu-accent)_10%,var(--iu-surface))] shadow-[inset_0_2px_4px_color-mix(in_oklab,var(--iu-foreground)_8%,transparent)]";
+        var IDLE =
+          "border-(--iu-foreground)/10 bg-(--iu-surface) shadow-[0_1px_2px_color-mix(in_oklab,var(--iu-foreground)_6%,transparent)] pointer-fine:group-hover:-translate-y-0.5 dark:bg-transparent";
+        root.querySelectorAll('input[type="radio"]').forEach(function (input) {
+          input.addEventListener("change", function () {
+            var chosen = Number(input.value);
+            cards.forEach(function (card, index) {
+              swap(card, index === chosen ? IDLE : SELECTED, index === chosen ? SELECTED : IDLE);
+            });
+            segments.forEach(function (segment, index) {
+              swap(
+                segment,
+                index === chosen ? "bg-(--iu-foreground)/12" : "bg-(--iu-accent)",
+                index === chosen ? "bg-(--iu-accent)" : "bg-(--iu-foreground)/12",
+              );
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

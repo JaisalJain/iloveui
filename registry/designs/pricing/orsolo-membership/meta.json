@@ -1,0 +1,15 @@
+{
+  "slug": "orsolo-membership",
+  "name": "Orsolo membership",
+  "category": "pricing",
+  "styleFamily": "luxury",
+  "tier": "pro",
+  "description": "A quiet membership selection for a travel concierge: a fine double frame glides to the chosen tier, through its benefits, and ends in a member card.",
+  "tags": ["pricing", "membership", "plan-selection", "comparison", "luxury", "serif", "checkout"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

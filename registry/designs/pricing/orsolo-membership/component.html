@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orsolo membership · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      aria-labelledby="orsolo-membership-id0-title"
+      style="--mm-cols: 3"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1180px] px-6 py-20 sm:px-10 sm:py-28">
+        <header class="mx-auto max-w-[44rem] text-center">
+          <p class="text-[11px] font-medium tracking-[0.24em] text-(--iu-muted) uppercase">
+            Orsolo <span aria-hidden="true">·</span> Membership · 2027
+          </p>
+          <h2
+            id="orsolo-membership-id0-title"
+            class="mt-8 font-serif text-[clamp(2.75rem,1.8rem+3.6vw,5rem)] leading-[1.02] font-normal tracking-[-0.02em] text-balance"
+          >
+            Travel, arranged <em class="italic">quietly</em>.
+          </h2>
+          <p class="mx-auto mt-6 max-w-[34rem] text-[15px] leading-relaxed text-pretty text-(--iu-muted)">
+            One annual membership, one person who answers. Choose the attention you would like; we take care of the
+            rest.
+          </p>
+        </header>
+        <fieldset class="mx-auto mt-14 w-fit">
+          <legend class="sr-only">Membership term</legend>
+          <div class="flex items-center gap-8 border-b border-(--iu-border)">
+            <label
+              data-term-option="one"
+              class="relative flex h-11 cursor-pointer items-center gap-2 text-[13px] tracking-[0.04em] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-(--iu-accent)"
+              ><input type="radio" class="sr-only" name="orsolo-membership-id0-term" checked="" value="one" /><span
+                data-term-text="true"
+                class="text-(--iu-foreground)"
+                >One year</span
+              ><span
+                data-term-line="true"
+                aria-hidden="true"
+                class="absolute inset-x-0 -bottom-px h-px bg-(--iu-accent)"
+              ></span></label
+            ><label
+              data-term-option="two"
+              class="relative flex h-11 cursor-pointer items-center gap-2 text-[13px] tracking-[0.04em] has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-4 has-[:focus-visible]:outline-(--iu-accent)"
+              ><input type="radio" class="sr-only" name="orsolo-membership-id0-term" value="two" /><span
+                data-term-text="true"
+                class="text-(--iu-muted)"
+                >Two years</span
+              ><span class="font-serif text-[15px] text-(--iu-muted) italic">save 12%</span></label
+            >
+          </div>
+        </fieldset>
+        <div class="relative mt-14">
+          <div
+            aria-hidden="true"
+            data-frame="true"
+            class="pointer-events-none absolute inset-y-0 left-[28%] hidden w-[calc(72%/var(--mm-cols))] border border-(--iu-foreground)/45 md:block"
+            style="transform: translateX(100%)"
+          >
+            <span class="absolute inset-[3px] border border-(--iu-foreground)/15"></span
+            ><span class="absolute -top-[4px] left-1/2 size-[7px] -translate-x-1/2 rotate-45 bg-(--iu-accent)"></span>
+          </div>
+          <fieldset>
+            <legend class="sr-only">Membership tier</legend>
+            <div class="grid gap-4 md:grid-cols-[28%_repeat(var(--mm-cols),minmax(0,1fr))] md:gap-0">
+              <div class="hidden flex-col justify-end pr-8 pb-8 md:flex">
+                <p class="text-[11px] tracking-[0.24em] text-(--iu-muted) uppercase">Per year</p>
+                <p data-term-note="true" class="mt-3 text-[13px] leading-relaxed text-pretty text-(--iu-muted)">
+                  Billed once a year. Two-year terms are offered below the annual rate.
+                </p>
+              </div>
+              <label
+                data-tier="voyager"
+                class="relative grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-x-4 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) px-5 py-6 text-left has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-[-6px] has-[:focus-visible]:outline-(--iu-accent) md:flex md:flex-col md:items-center md:border-0 md:px-6 md:pt-10 md:pb-8 md:text-center"
+                ><input type="radio" class="sr-only" name="orsolo-membership-id0-tier" value="voyager" /><span
+                  aria-hidden="true"
+                  class="hidden font-serif text-lg text-(--iu-muted) italic md:block"
+                  >I</span
+                ><span class="col-start-1 row-start-1 font-serif text-[28px] leading-none md:mt-3 md:text-[32px]"
+                  >Voyager</span
+                ><span
+                  class="col-start-1 row-start-2 mt-2 text-[10px] tracking-[0.24em] text-(--iu-muted) uppercase md:h-4"
+                ></span
+                ><span
+                  class="col-start-2 row-span-2 row-start-1 self-center text-right font-serif text-[34px] leading-none tracking-[-0.02em] tabular-nums md:mt-8 md:text-[clamp(2.75rem,2rem+1.6vw,3.5rem)]"
+                  ><span class="relative inline-grid"
+                    ><span class="col-start-1 row-start-1 inline-block">€1,450</span></span
+                  ><span
+                    aria-hidden="true"
+                    class="ml-1 font-(family-name:--iu-font) text-[12px] tracking-normal text-(--iu-muted) md:hidden"
+                    >/ yr</span
+                  ><span class="sr-only"> per year</span></span
+                ><span
+                  class="col-span-2 mt-4 text-[13px] leading-relaxed text-pretty text-(--iu-muted) md:mt-6 md:max-w-[17rem]"
+                  >For two or three journeys a year, planned with care.</span
+                ><span
+                  aria-hidden="true"
+                  data-pill="true"
+                  class="mt-8 hidden h-9 items-center rounded-full border border-(--iu-foreground)/35 px-5 text-[11px] tracking-[0.2em] text-(--iu-foreground) uppercase transition-colors duration-300 motion-reduce:transition-none md:inline-flex"
+                  >Select</span
+                ></label
+              ><label
+                data-tier="reserve"
+                class="relative grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-x-4 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) px-5 py-6 text-left has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-[-6px] has-[:focus-visible]:outline-(--iu-accent) max-md:border-(--iu-foreground)/45 md:flex md:flex-col md:items-center md:border-0 md:px-6 md:pt-10 md:pb-8 md:text-center"
+                ><input
+                  type="radio"
+                  class="sr-only"
+                  name="orsolo-membership-id0-tier"
+                  checked=""
+                  value="reserve"
+                /><span
+                  aria-hidden="true"
+                  data-diamond="true"
+                  class="absolute -top-[4px] left-1/2 size-[7px] -translate-x-1/2 rotate-45 bg-(--iu-accent) md:hidden"
+                ></span
+                ><span aria-hidden="true" class="hidden font-serif text-lg text-(--iu-muted) italic md:block">II</span
+                ><span class="col-start-1 row-start-1 font-serif text-[28px] leading-none md:mt-3 md:text-[32px]"
+                  >Reserve</span
+                ><span
+                  class="col-start-1 row-start-2 mt-2 text-[10px] tracking-[0.24em] text-(--iu-muted) uppercase md:h-4"
+                  >The members&#x27; choice</span
+                ><span
+                  class="col-start-2 row-span-2 row-start-1 self-center text-right font-serif text-[34px] leading-none tracking-[-0.02em] tabular-nums md:mt-8 md:text-[clamp(2.75rem,2rem+1.6vw,3.5rem)]"
+                  ><span class="relative inline-grid"
+                    ><span class="col-start-1 row-start-1 inline-block">€3,900</span></span
+                  ><span
+                    aria-hidden="true"
+                    class="ml-1 font-(family-name:--iu-font) text-[12px] tracking-normal text-(--iu-muted) md:hidden"
+                    >/ yr</span
+                  ><span class="sr-only"> per year</span></span
+                ><span
+                  class="col-span-2 mt-4 text-[13px] leading-relaxed text-pretty text-(--iu-muted) md:mt-6 md:max-w-[17rem]"
+                  >A travel designer who knows your habits, and the hours to match.</span
+                ><span
+                  aria-hidden="true"
+                  data-pill="true"
+                  class="mt-8 hidden h-9 items-center rounded-full border border-(--iu-foreground) bg-(--iu-foreground) px-5 text-[11px] tracking-[0.2em] text-(--iu-background) uppercase transition-colors duration-300 motion-reduce:transition-none md:inline-flex"
+                  >Selected</span
+                ></label
+              ><label
+                data-tier="atelier"
+                class="relative grid cursor-pointer grid-cols-[minmax(0,1fr)_auto] gap-x-4 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) px-5 py-6 text-left has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-[-6px] has-[:focus-visible]:outline-(--iu-accent) md:flex md:flex-col md:items-center md:border-0 md:px-6 md:pt-10 md:pb-8 md:text-center"
+                ><input type="radio" class="sr-only" name="orsolo-membership-id0-tier" value="atelier" /><span
+                  aria-hidden="true"
+                  class="hidden font-serif text-lg text-(--iu-muted) italic md:block"
+                  >III</span
+                ><span class="col-start-1 row-start-1 font-serif text-[28px] leading-none md:mt-3 md:text-[32px]"
+                  >Atelier</span
+                ><span
+                  class="col-start-1 row-start-2 mt-2 text-[10px] tracking-[0.24em] text-(--iu-muted) uppercase md:h-4"
+                ></span
+                ><span
+                  class="col-start-2 row-span-2 row-start-1 self-center text-right font-serif text-[34px] leading-none tracking-[-0.02em] tabular-nums md:mt-8 md:text-[clamp(2.75rem,2rem+1.6vw,3.5rem)]"
+                  ><span class="relative inline-grid"
+                    ><span class="col-start-1 row-start-1 inline-block">€9,600</span></span
+                  ><span
+                    aria-hidden="true"
+                    class="ml-1 font-(family-name:--iu-font) text-[12px] tracking-normal text-(--iu-muted) md:hidden"
+                    >/ yr</span
+                  ><span class="sr-only"> per year</span></span
+                ><span
+                  class="col-span-2 mt-4 text-[13px] leading-relaxed text-pretty text-(--iu-muted) md:mt-6 md:max-w-[17rem]"
+                  >One person for every trip, every table and every transfer.</span
+                ><span
+                  aria-hidden="true"
+                  data-pill="true"
+                  class="mt-8 hidden h-9 items-center rounded-full border border-(--iu-foreground)/35 px-5 text-[11px] tracking-[0.2em] text-(--iu-foreground) uppercase transition-colors duration-300 motion-reduce:transition-none md:inline-flex"
+                  >Select</span
+                ></label
+              >
+            </div>
+          </fieldset>
+          <table class="mt-10 w-full table-fixed border-collapse text-left md:mt-0">
+            <caption class="sr-only">
+              What each membership includes
+            </caption>
+            <colgroup>
+              <col class="w-[34%] md:w-[28%]" />
+              <col />
+              <col />
+              <col />
+            </colgroup>
+            <thead class="md:sr-only">
+              <tr class="border-b border-(--iu-border)">
+                <th scope="col" class="pb-3 text-[10px] font-normal tracking-[0.24em] text-(--iu-muted) uppercase">
+                  Benefit
+                </th>
+                <th
+                  data-head="voyager"
+                  scope="col"
+                  class="pb-3 text-center font-serif text-[15px] font-normal text-(--iu-muted) italic"
+                >
+                  <span aria-hidden="true">I</span><span class="sr-only">Voyager</span>
+                </th>
+                <th
+                  data-head="reserve"
+                  scope="col"
+                  class="pb-3 text-center font-serif text-[15px] font-normal text-(--iu-foreground) italic"
+                >
+                  <span aria-hidden="true">II</span><span class="sr-only">Reserve</span>
+                </th>
+                <th
+                  data-head="atelier"
+                  scope="col"
+                  class="pb-3 text-center font-serif text-[15px] font-normal text-(--iu-muted) italic"
+                >
+                  <span aria-hidden="true">III</span><span class="sr-only">Atelier</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-(--iu-border)">
+                <th
+                  scope="row"
+                  class="py-[calc(16px*var(--iu-density))] pr-3 text-[11px] font-normal tracking-[0.16em] text-(--iu-muted) uppercase md:pr-8 md:tracking-[0.2em]"
+                >
+                  Concierge reply
+                </th>
+                <td
+                  data-col="voyager"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Same day
+                </td>
+                <td
+                  data-col="reserve"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-foreground) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  4 hours
+                </td>
+                <td
+                  data-col="atelier"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  1 hour
+                </td>
+              </tr>
+              <tr class="border-t border-(--iu-border)">
+                <th
+                  scope="row"
+                  class="py-[calc(16px*var(--iu-density))] pr-3 text-[11px] font-normal tracking-[0.16em] text-(--iu-muted) uppercase md:pr-8 md:tracking-[0.2em]"
+                >
+                  Travel designer
+                </th>
+                <td
+                  data-col="voyager"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  <span aria-hidden="true">–</span><span class="sr-only">Not included</span>
+                </td>
+                <td
+                  data-col="reserve"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-foreground) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Shared
+                </td>
+                <td
+                  data-col="atelier"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Personal
+                </td>
+              </tr>
+              <tr class="border-t border-(--iu-border)">
+                <th
+                  scope="row"
+                  class="py-[calc(16px*var(--iu-density))] pr-3 text-[11px] font-normal tracking-[0.16em] text-(--iu-muted) uppercase md:pr-8 md:tracking-[0.2em]"
+                >
+                  Hotel upgrades
+                </th>
+                <td
+                  data-col="voyager"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  On request
+                </td>
+                <td
+                  data-col="reserve"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-foreground) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Priority
+                </td>
+                <td
+                  data-col="atelier"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Assured
+                </td>
+              </tr>
+              <tr class="border-t border-(--iu-border)">
+                <th
+                  scope="row"
+                  class="py-[calc(16px*var(--iu-density))] pr-3 text-[11px] font-normal tracking-[0.16em] text-(--iu-muted) uppercase md:pr-8 md:tracking-[0.2em]"
+                >
+                  Airport transfers
+                </th>
+                <td
+                  data-col="voyager"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  <span aria-hidden="true">–</span><span class="sr-only">Not included</span>
+                </td>
+                <td
+                  data-col="reserve"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-foreground) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  4 a year
+                </td>
+                <td
+                  data-col="atelier"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Unlimited
+                </td>
+              </tr>
+              <tr class="border-t border-(--iu-border)">
+                <th
+                  scope="row"
+                  class="py-[calc(16px*var(--iu-density))] pr-3 text-[11px] font-normal tracking-[0.16em] text-(--iu-muted) uppercase md:pr-8 md:tracking-[0.2em]"
+                >
+                  Restaurant tables
+                </th>
+                <td
+                  data-col="voyager"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Standard
+                </td>
+                <td
+                  data-col="reserve"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-foreground) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  Priority
+                </td>
+                <td
+                  data-col="atelier"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  First call
+                </td>
+              </tr>
+              <tr class="border-t border-(--iu-border)">
+                <th
+                  scope="row"
+                  class="py-[calc(16px*var(--iu-density))] pr-3 text-[11px] font-normal tracking-[0.16em] text-(--iu-muted) uppercase md:pr-8 md:tracking-[0.2em]"
+                >
+                  Guest membership
+                </th>
+                <td
+                  data-col="voyager"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  <span aria-hidden="true">–</span><span class="sr-only">Not included</span>
+                </td>
+                <td
+                  data-col="reserve"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-foreground) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  1 guest
+                </td>
+                <td
+                  data-col="atelier"
+                  class="px-1 py-[calc(16px*var(--iu-density))] text-center font-serif text-[15px] text-(--iu-muted) italic transition-colors duration-300 motion-reduce:transition-none md:text-lg"
+                >
+                  3 guests
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mx-auto mt-16 max-w-[40rem] border-t border-(--iu-border) pt-12 text-center">
+          <div data-request-panel="true">
+            <p class="text-[11px] tracking-[0.24em] text-(--iu-muted) uppercase">Your selection</p>
+            <p data-selection="true" class="mt-4 font-serif text-[28px] leading-tight text-balance">
+              <span class="relative inline-grid"
+                ><span class="col-start-1 row-start-1 inline-block">Reserve, one year, €3,900</span></span
+              >
+            </p>
+            <p data-saved="true" class="mt-2 h-5 text-[13px] text-(--iu-muted) tabular-nums">
+              Renews each year; no obligation.
+            </p>
+            <button
+              type="button"
+              data-request="true"
+              class="group relative mt-8 inline-flex h-12 min-w-[16rem] items-center justify-center gap-3 overflow-hidden rounded-full bg-(--iu-foreground) px-8 text-[12px] tracking-[0.2em] text-(--iu-background) uppercase transition-[background-color] duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_86%,var(--iu-background))]"
+            >
+              <span>Request membership</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right transition-transform duration-300 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+          <p class="mx-auto mt-10 max-w-[34rem] text-[12px] leading-relaxed text-pretty text-(--iu-muted)">
+            Prices include VAT where it applies. Membership begins on acceptance, and you may cancel for a full refund
+            within 14 days.
+          </p>
+          <span data-announce="true" aria-live="polite" class="sr-only"></span>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <template data-welcome-template
+      ><div
+        data-welcome="true"
+        class="mx-auto max-w-[30rem] rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/45 p-[3px] text-left"
+      >
+        <div class="border border-(--iu-foreground)/15 px-6 py-8 sm:px-10 sm:py-10">
+          <div
+            class="flex items-baseline justify-between gap-4 text-[10px] tracking-[0.24em] text-(--iu-muted) uppercase"
+          >
+            <span>Orsolo</span><span class="tabular-nums">Nº 0417</span>
+          </div>
+          <h3 tabindex="-1" class="mt-10 font-serif text-[40px] leading-none outline-none">
+            Welcome, <em class="italic">member.</em>
+          </h3>
+          <p data-welcome-text="true" class="mt-4 text-[13px] leading-relaxed text-pretty text-(--iu-muted)">
+            Your Reserve membership begins on 1 November 2026. €3,900 has been charged for one year.
+          </p>
+          <div class="mt-8 flex items-center gap-3 border-t border-(--iu-border) pt-6">
+            <span
+              aria-hidden="true"
+              class="inline-flex size-10 items-center justify-center rounded-full border border-(--iu-foreground)/35 font-serif text-[15px] italic"
+              >ML</span
+            >
+            <p class="text-[13px] leading-snug">
+              Margaux Lefèvre<span class="block text-(--iu-muted)">Your concierge writes within the day</span>
+            </p>
+            <span aria-hidden="true" class="ml-auto size-[7px] rotate-45 bg-(--iu-accent)"></span>
+          </div>
+        </div></div
+    ></template>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-frame]").closest("section");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var SLOW = "cubic-bezier(0.22, 0.61, 0.36, 1)";
+        var tiers = [
+          { id: "voyager", name: "Voyager", annual: 1450 },
+          { id: "reserve", name: "Reserve", annual: 3900 },
+          { id: "atelier", name: "Atelier", annual: 9600 },
+        ];
+        var discount = 0.12;
+        var money = new Intl.NumberFormat("en-GB", { style: "currency", currency: "EUR", maximumFractionDigits: 0 });
+        var state = { tier: "reserve", term: "one", busy: false };
+        var frame = root.querySelector("[data-frame]");
+        var line = root.querySelector("[data-term-line]");
+        var diamond = root.querySelector("[data-diamond]");
+        var announce = root.querySelector("[data-announce]");
+        var PILL_ON = ["border-(--iu-foreground)", "bg-(--iu-foreground)", "text-(--iu-background)"];
+        var PILL_OFF = ["border-(--iu-foreground)/35", "text-(--iu-foreground)"];
+
+        function perYear(tier) {
+          return state.term === "two" ? Math.round(tier.annual * (1 - discount)) : tier.annual;
+        }
+        function current() {
+          return tiers.filter(function (tier) {
+            return tier.id === state.tier;
+          })[0];
+        }
+        function total() {
+          return perYear(current()) * (state.term === "two" ? 2 : 1);
+        }
+        // Values change with a slow cross-fade and a scale of 1.5% or less.
+        function soft(el, text) {
+          if (!el || el.textContent === text) return;
+          if (reduce) {
+            el.textContent = text;
+            return;
+          }
+          el.animate([{ opacity: 1 }, { opacity: 0, transform: "scale(1.015)" }], {
+            duration: 160,
+            easing: SLOW,
+          }).onfinish = function () {
+            el.textContent = text;
+            el.animate(
+              [
+                { opacity: 0, transform: "scale(0.985)" },
+                { opacity: 1, transform: "none" },
+              ],
+              {
+                duration: 400,
+                easing: SLOW,
+              },
+            );
+          };
+        }
+        function swapClasses(el, on, onList, offList) {
+          onList.forEach(function (name) {
+            el.classList.toggle(name, on);
+          });
+          offList.forEach(function (name) {
+            el.classList.toggle(name, !on);
+          });
+        }
+
+        function renderTotals() {
+          var tier = current();
+          var t = total();
+          soft(
+            root.querySelector("[data-selection] span span"),
+            tier.name + ", " + (state.term === "two" ? "two years" : "one year") + ", " + money.format(t),
+          );
+          root.querySelector("[data-saved]").textContent =
+            state.term === "two"
+              ? "You save " + money.format(tier.annual * 2 - t) + " on the two-year term."
+              : "Renews each year; no obligation.";
+        }
+
+        function setTier(id) {
+          state.tier = id;
+          var index = 0;
+          tiers.forEach(function (tier, i) {
+            var on = tier.id === id;
+            if (on) index = i;
+            var label = root.querySelector('[data-tier="' + tier.id + '"]');
+            label.classList.toggle("max-md:border-(--iu-foreground)/45", on);
+            var pill = label.querySelector("[data-pill]");
+            swapClasses(pill, on, PILL_ON, PILL_OFF);
+            pill.textContent = on ? "Selected" : "Select";
+            if (on) label.insertBefore(diamond, label.querySelector("input").nextSibling);
+            root
+              .querySelectorAll('[data-col="' + tier.id + '"], [data-head="' + tier.id + '"]')
+              .forEach(function (cell) {
+                swapClasses(cell, on, ["text-(--iu-foreground)"], ["text-(--iu-muted)"]);
+              });
+          });
+          frame.style.transition = reduce ? "none" : "transform 450ms " + SLOW;
+          frame.style.transform = "translateX(" + index * 100 + "%)";
+          renderTotals();
+        }
+
+        function setTerm(term) {
+          state.term = term;
+          var before = line.getBoundingClientRect();
+          root.querySelectorAll("[data-term-option]").forEach(function (label) {
+            var on = label.getAttribute("data-term-option") === term;
+            swapClasses(label.querySelector("[data-term-text]"), on, ["text-(--iu-foreground)"], ["text-(--iu-muted)"]);
+            if (on) label.appendChild(line);
+          });
+          if (!reduce) {
+            var after = line.getBoundingClientRect();
+            line.animate(
+              [
+                {
+                  transform:
+                    "translateX(" + (before.left - after.left) + "px) scaleX(" + before.width / after.width + ")",
+                  transformOrigin: "left",
+                },
+                { transform: "none", transformOrigin: "left" },
+              ],
+              { duration: 450, easing: SLOW },
+            );
+          }
+          tiers.forEach(function (tier) {
+            soft(root.querySelector('[data-tier="' + tier.id + '"] .inline-grid span'), money.format(perYear(tier)));
+          });
+          root.querySelector("[data-term-note]").textContent =
+            term === "two"
+              ? "Billed once for two years, 12% below the annual rate."
+              : "Billed once a year. Two-year terms are offered below the annual rate.";
+          renderTotals();
+        }
+
+        root.querySelectorAll('input[type="radio"]').forEach(function (input) {
+          input.addEventListener("change", function () {
+            if (input.closest("[data-tier]")) setTier(input.value);
+            else setTerm(input.value);
+          });
+        });
+
+        var button = root.querySelector("[data-request]");
+        button.addEventListener("click", function () {
+          if (state.busy) return;
+          state.busy = true;
+          var tier = current();
+          button.setAttribute("aria-disabled", "true");
+          button.classList.add("cursor-progress");
+          button.querySelector("span").textContent = "Reserving your place";
+          var arrow = button.querySelector("svg");
+          if (arrow) button.removeChild(arrow);
+          var bar = document.createElement("span");
+          bar.setAttribute("aria-hidden", "true");
+          bar.className = "absolute inset-x-8 bottom-2.5 h-px origin-left bg-(--iu-background)/70";
+          bar.style.transform = "scaleX(" + (reduce ? 0.5 : 0.04) + ")";
+          button.appendChild(bar);
+          if (!reduce) {
+            bar.animate([{ transform: "scaleX(0.04)" }, { transform: "scaleX(0.94)" }], {
+              duration: 3000,
+              easing: "cubic-bezier(0.1, 0.6, 0.3, 1)",
+              fill: "forwards",
+            });
+          }
+          root.querySelectorAll('input[type="radio"]').forEach(function (input) {
+            input.disabled = true;
+          });
+          announce.textContent = "Reserving your place in " + tier.name;
+          // Demo request: replace with your membership endpoint.
+          setTimeout(function () {
+            var panel = root.querySelector("[data-request-panel]");
+            var card = document.querySelector("[data-welcome-template]").content.firstElementChild.cloneNode(true);
+            card.querySelector("[data-welcome-text]").textContent =
+              "Your " +
+              tier.name +
+              " membership begins on 1 November 2026. " +
+              money.format(total()) +
+              " has been charged for " +
+              (state.term === "two" ? "two years" : "one year") +
+              ".";
+            panel.parentNode.replaceChild(card, panel);
+            if (!reduce) {
+              card.animate(
+                [
+                  { opacity: 0, transform: "scale(0.985)" },
+                  { opacity: 1, transform: "none" },
+                ],
+                {
+                  duration: 450,
+                  easing: SLOW,
+                },
+              );
+            }
+            card.querySelector("h3").focus();
+            announce.textContent = "Welcome to Orsolo. Membership number 0417.";
+          }, 1600);
+        });
+      })();
+    </script>
+  </body>
+</html>

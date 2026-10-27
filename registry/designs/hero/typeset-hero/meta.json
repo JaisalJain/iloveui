@@ -1,0 +1,15 @@
+{
+  "slug": "typeset-hero",
+  "name": "Typeset hero",
+  "category": "hero",
+  "styleFamily": "editorial",
+  "tier": "free",
+  "description": "An editorial hero for a publishing tool: one article in the editor, reset live as a two-column print page, a web story or a newsletter.",
+  "tags": ["hero", "editorial", "publishing", "serif", "tabs", "newsletter", "landing"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "edge-traffic-canvas",
+  "name": "Edge traffic canvas",
+  "category": "effects",
+  "styleFamily": "dark-technical",
+  "tier": "pro",
+  "description": "A canvas background that draws sampled production requests arcing from clients to the nearest edge region, paused offscreen, with a live readout.",
+  "tags": ["canvas", "background", "network", "edge", "map", "realtime", "devtools"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

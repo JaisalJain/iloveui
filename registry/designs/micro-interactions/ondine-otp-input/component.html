@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ondine OTP input · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <main class="flex min-h-dvh w-full items-center justify-center px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full max-w-xl">
+        <!-- iloveui:component:start -->
+        <section
+          data-otp
+          aria-labelledby="otp-title"
+          class="mx-auto w-full max-w-md font-(family-name:--iu-font) text-(--iu-foreground)"
+        >
+          <div
+            class="rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) p-1.5 dark:border-(--iu-foreground)/15"
+          >
+            <div
+              class="rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) px-5 pt-[calc(40px*var(--iu-density))] pb-[calc(32px*var(--iu-density))] text-center sm:px-10 dark:border-(--iu-foreground)/10"
+            >
+              <p class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">
+                Ondine · Private client
+              </p>
+              <span aria-hidden="true" class="mx-auto mt-5 block h-px w-8 bg-(--iu-accent)"></span>
+              <h2
+                id="otp-title"
+                class="mt-5 font-serif text-[40px] leading-[1.05] font-normal tracking-[-0.02em] text-balance"
+              >
+                Confirm it's <em class="italic">you</em>
+              </h2>
+              <p class="mx-auto mt-4 max-w-[30ch] text-sm leading-relaxed text-pretty text-(--iu-muted)">
+                Enter the 6-digit code sent to
+                <span class="whitespace-nowrap text-(--iu-foreground) tabular-nums">+44 ••••• ••0821</span>. It expires
+                in 10 minutes.
+              </p>
+
+              <fieldset aria-describedby="otp-status" class="mt-10 min-w-0 border-0 p-0">
+                <legend class="sr-only">Verification code</legend>
+                <div data-row class="relative flex justify-center gap-1.5 sm:gap-2.5">
+                  <div data-slot class="relative h-16 w-10 sm:h-[4.5rem] sm:w-12">
+                    <input
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      autocomplete="one-time-code"
+                      aria-label="Digit 1 of 6"
+                      class="absolute inset-0 h-full w-full rounded-[min(var(--iu-radius),2px)] bg-transparent text-center font-serif text-[40px] text-transparent caret-transparent selection:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-serif text-[40px] leading-none tabular-nums"
+                    >
+                      <span data-digit class="absolute"></span>
+                      <span
+                        data-caret
+                        hidden
+                        class="absolute h-9 w-px animate-pulse bg-(--iu-foreground) motion-reduce:animate-none"
+                      ></span>
+                    </span>
+                    <span
+                      data-line
+                      aria-hidden="true"
+                      style="transform: scaleX(0.86)"
+                      class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-foreground)/45 transition-transform duration-[420ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-(--iu-accent) data-error:bg-red-600 data-filled:bg-(--iu-foreground) motion-reduce:transition-none dark:data-error:bg-red-400"
+                    ></span>
+                  </div>
+                  <div data-slot class="relative h-16 w-10 sm:h-[4.5rem] sm:w-12">
+                    <input
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      autocomplete="off"
+                      aria-label="Digit 2 of 6"
+                      class="absolute inset-0 h-full w-full rounded-[min(var(--iu-radius),2px)] bg-transparent text-center font-serif text-[40px] text-transparent caret-transparent selection:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-serif text-[40px] leading-none tabular-nums"
+                    >
+                      <span data-digit class="absolute"></span>
+                      <span
+                        data-caret
+                        hidden
+                        class="absolute h-9 w-px animate-pulse bg-(--iu-foreground) motion-reduce:animate-none"
+                      ></span>
+                    </span>
+                    <span
+                      data-line
+                      aria-hidden="true"
+                      style="transform: scaleX(0.86)"
+                      class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-foreground)/45 transition-transform duration-[420ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-(--iu-accent) data-error:bg-red-600 data-filled:bg-(--iu-foreground) motion-reduce:transition-none dark:data-error:bg-red-400"
+                    ></span>
+                  </div>
+                  <div data-slot class="relative h-16 w-10 sm:h-[4.5rem] sm:w-12">
+                    <input
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      autocomplete="off"
+                      aria-label="Digit 3 of 6"
+                      class="absolute inset-0 h-full w-full rounded-[min(var(--iu-radius),2px)] bg-transparent text-center font-serif text-[40px] text-transparent caret-transparent selection:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-serif text-[40px] leading-none tabular-nums"
+                    >
+                      <span data-digit class="absolute"></span>
+                      <span
+                        data-caret
+                        hidden
+                        class="absolute h-9 w-px animate-pulse bg-(--iu-foreground) motion-reduce:animate-none"
+                      ></span>
+                    </span>
+                    <span
+                      data-line
+                      aria-hidden="true"
+                      style="transform: scaleX(0.86)"
+                      class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-foreground)/45 transition-transform duration-[420ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-(--iu-accent) data-error:bg-red-600 data-filled:bg-(--iu-foreground) motion-reduce:transition-none dark:data-error:bg-red-400"
+                    ></span>
+                  </div>
+                  <div data-slot class="relative h-16 w-10 sm:ml-4 sm:h-[4.5rem] sm:w-12">
+                    <input
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      autocomplete="off"
+                      aria-label="Digit 4 of 6"
+                      class="absolute inset-0 h-full w-full rounded-[min(var(--iu-radius),2px)] bg-transparent text-center font-serif text-[40px] text-transparent caret-transparent selection:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-serif text-[40px] leading-none tabular-nums"
+                    >
+                      <span data-digit class="absolute"></span>
+                      <span
+                        data-caret
+                        hidden
+                        class="absolute h-9 w-px animate-pulse bg-(--iu-foreground) motion-reduce:animate-none"
+                      ></span>
+                    </span>
+                    <span
+                      data-line
+                      aria-hidden="true"
+                      style="transform: scaleX(0.86)"
+                      class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-foreground)/45 transition-transform duration-[420ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-(--iu-accent) data-error:bg-red-600 data-filled:bg-(--iu-foreground) motion-reduce:transition-none dark:data-error:bg-red-400"
+                    ></span>
+                  </div>
+                  <div data-slot class="relative h-16 w-10 sm:h-[4.5rem] sm:w-12">
+                    <input
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      autocomplete="off"
+                      aria-label="Digit 5 of 6"
+                      class="absolute inset-0 h-full w-full rounded-[min(var(--iu-radius),2px)] bg-transparent text-center font-serif text-[40px] text-transparent caret-transparent selection:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-serif text-[40px] leading-none tabular-nums"
+                    >
+                      <span data-digit class="absolute"></span>
+                      <span
+                        data-caret
+                        hidden
+                        class="absolute h-9 w-px animate-pulse bg-(--iu-foreground) motion-reduce:animate-none"
+                      ></span>
+                    </span>
+                    <span
+                      data-line
+                      aria-hidden="true"
+                      style="transform: scaleX(0.86)"
+                      class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-foreground)/45 transition-transform duration-[420ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-(--iu-accent) data-error:bg-red-600 data-filled:bg-(--iu-foreground) motion-reduce:transition-none dark:data-error:bg-red-400"
+                    ></span>
+                  </div>
+                  <div data-slot class="relative h-16 w-10 sm:h-[4.5rem] sm:w-12">
+                    <input
+                      type="text"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      autocomplete="off"
+                      aria-label="Digit 6 of 6"
+                      class="absolute inset-0 h-full w-full rounded-[min(var(--iu-radius),2px)] bg-transparent text-center font-serif text-[40px] text-transparent caret-transparent selection:bg-transparent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed"
+                    />
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden font-serif text-[40px] leading-none tabular-nums"
+                    >
+                      <span data-digit class="absolute"></span>
+                      <span
+                        data-caret
+                        hidden
+                        class="absolute h-9 w-px animate-pulse bg-(--iu-foreground) motion-reduce:animate-none"
+                      ></span>
+                    </span>
+                    <span
+                      data-line
+                      aria-hidden="true"
+                      style="transform: scaleX(0.86)"
+                      class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-foreground)/45 transition-transform duration-[420ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-(--iu-accent) data-error:bg-red-600 data-filled:bg-(--iu-foreground) motion-reduce:transition-none dark:data-error:bg-red-400"
+                    ></span>
+                  </div>
+                  <span
+                    data-joined
+                    aria-hidden="true"
+                    style="transform: scaleX(0)"
+                    class="pointer-events-none absolute inset-x-0 bottom-0 h-px origin-center bg-(--iu-accent) transition-transform delay-75 duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+                  ></span>
+                </div>
+              </fieldset>
+
+              <div id="otp-status" class="mt-6 flex min-h-12 items-start justify-center text-sm">
+                <p data-state="idle" class="text-(--iu-muted) tabular-nums"><span data-progress>0</span> of 6</p>
+                <p data-state="verifying" hidden class="inline-flex items-center gap-2 text-(--iu-muted)">
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="animate-spin motion-reduce:animate-none"
+                  >
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+                  </svg>
+                  <span class="text-[11px] font-medium tracking-[0.2em] uppercase">Verifying</span>
+                </p>
+                <p
+                  data-state="success"
+                  hidden
+                  class="inline-flex items-center gap-2 font-serif text-lg text-(--iu-foreground) italic"
+                >
+                  <span
+                    class="inline-flex size-5 items-center justify-center rounded-full bg-(--iu-accent) text-(--iu-accent-foreground)"
+                    ><svg
+                      aria-hidden="true"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M20 6 9 17l-5-5" /></svg
+                  ></span>
+                  Verified. Welcome back, Margaux.
+                </p>
+                <p data-state="error" hidden class="max-w-[34ch] text-pretty text-red-700 dark:text-red-300">
+                  That code doesn't match. Check the latest message and try again.
+                </p>
+              </div>
+
+              <div
+                class="mt-6 flex flex-col items-center gap-3 border-t border-(--iu-border) pt-6 dark:border-(--iu-foreground)/10"
+              >
+                <p class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">Didn't receive it?</p>
+                <button
+                  type="button"
+                  data-resend
+                  disabled
+                  class="inline-flex h-10 min-w-44 items-center justify-center rounded-full border border-(--iu-foreground)/45 px-6 text-sm transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) focus-visible:outline-solid disabled:cursor-not-allowed disabled:border-(--iu-border) disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:enabled:bg-(--iu-foreground) pointer-fine:hover:enabled:text-(--iu-surface)"
+                >
+                  <span>Resend in <span data-clock class="tabular-nums">0:45</span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <p data-announce aria-live="polite" class="sr-only"></p>
+        </section>
+        <!-- iloveui:component:end -->
+        <p class="mt-4 text-center text-xs text-(--iu-muted)">
+          Demo code: <span class="font-mono tabular-nums">481902</span>
+        </p>
+      </div>
+    </main>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-otp]");
+        if (!root) return;
+        var inputs = Array.prototype.slice.call(root.querySelectorAll("[data-slot] input"));
+        var row = root.querySelector("[data-row]");
+        var joined = root.querySelector("[data-joined]");
+        var resendButton = root.querySelector("[data-resend]");
+        var announcer = root.querySelector("[data-announce]");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var LENGTH = inputs.length;
+        var RESEND_SECONDS = 45;
+        var DESTINATION = "+44 ••••• ••0821";
+
+        var digits = inputs.map(function () {
+          return "";
+        });
+        var status = "idle";
+        var focused = -1;
+        var remaining = RESEND_SECONDS;
+
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        function buzz(pattern) {
+          if (typeof navigator.vibrate === "function") navigator.vibrate(pattern);
+        }
+        function locked() {
+          return status === "verifying" || status === "success";
+        }
+
+        function paint() {
+          inputs.forEach(function (input, index) {
+            var slot = input.parentElement;
+            var digit = digits[index];
+            var shown = slot.querySelector("[data-digit]");
+            if (shown.textContent !== digit) {
+              shown.textContent = digit;
+              if (digit && !reduce.matches && shown.animate) {
+                shown.animate(
+                  [
+                    { opacity: 0, transform: "translateY(6px) scale(0.98)" },
+                    { opacity: 1, transform: "none" },
+                  ],
+                  { duration: 320, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+                );
+              }
+            }
+            input.value = digit;
+            var active = focused === index && !locked();
+            slot.querySelector("[data-caret]").hidden = !(active && !digit);
+            var line = slot.querySelector("[data-line]");
+            line.toggleAttribute("data-active", active && status !== "error");
+            line.toggleAttribute("data-error", status === "error");
+            line.toggleAttribute("data-filled", Boolean(digit) && !active && status !== "error");
+            line.style.transform = "scaleX(" + (status === "success" ? 0 : active ? 1 : 0.86) + ")";
+            input.readOnly = locked();
+            if (status === "error") input.setAttribute("aria-invalid", "true");
+            else input.removeAttribute("aria-invalid");
+          });
+          joined.style.transform = "scaleX(" + (status === "success" ? 1 : 0) + ")";
+          root.querySelectorAll("[data-state]").forEach(function (el) {
+            el.hidden = el.getAttribute("data-state") !== status;
+          });
+          var count = digits.filter(Boolean).length;
+          root.querySelector("[data-progress]").textContent = String(count);
+          root.querySelector('[data-state="idle"]').style.visibility = count === LENGTH ? "hidden" : "";
+        }
+
+        function focusAt(index) {
+          var input = inputs[Math.max(0, Math.min(LENGTH - 1, index))];
+          input.focus();
+          input.select();
+        }
+
+        // Demo backend: 481902 is the code that was sent.
+        function verify(code) {
+          status = "verifying";
+          paint();
+          announce("Code " + code.split("").join(" ") + " entered. Verifying.");
+          setTimeout(function () {
+            if (code === "481902") {
+              status = "success";
+              paint();
+              announce("Verified. Welcome back, Margaux.");
+              buzz(16);
+              resendButton.disabled = true;
+              return;
+            }
+            status = "error";
+            digits = digits.map(function () {
+              return "";
+            });
+            paint();
+            announce("That code doesn't match. Check the latest message and try again.");
+            buzz([10, 60, 10]);
+            if (!reduce.matches && row.animate) {
+              row.animate([{ transform: "translateX(-6px)" }, { transform: "translateX(0)" }], {
+                duration: 420,
+                easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+              });
+            }
+            focusAt(0);
+          }, 900);
+        }
+
+        function fill(index, text) {
+          var chars = text.replace(/\D/g, "").split("");
+          if (!chars.length) return;
+          var start = chars.length >= LENGTH ? 0 : index;
+          chars.slice(0, LENGTH - start).forEach(function (char, offset) {
+            digits[start + offset] = char;
+          });
+          if (status === "error") status = "idle";
+          paint();
+          if (digits.every(Boolean)) {
+            verify(digits.join(""));
+            return;
+          }
+          var empty = -1;
+          for (var i = start; i < LENGTH; i++) {
+            if (!digits[i]) {
+              empty = i;
+              break;
+            }
+          }
+          focusAt(empty === -1 ? start + chars.length : empty);
+        }
+
+        function clearAt(index) {
+          digits[index] = "";
+          paint();
+        }
+
+        inputs.forEach(function (input, index) {
+          input.addEventListener("focus", function () {
+            focused = index;
+            input.select();
+            paint();
+          });
+          input.addEventListener("blur", function () {
+            focused = -1;
+            paint();
+          });
+          input.addEventListener("input", function () {
+            if (locked()) return;
+            var value = input.value;
+            var cleaned = value.replace(/\D/g, "");
+            if (!value) return clearAt(index);
+            if (!cleaned) {
+              input.value = digits[index];
+              return;
+            }
+            var current = digits[index];
+            var typed =
+              cleaned.length === 2 && current && cleaned.indexOf(current) !== -1
+                ? cleaned.replace(current, "")
+                : cleaned;
+            fill(index, typed || cleaned.slice(-1));
+          });
+          input.addEventListener("paste", function (event) {
+            event.preventDefault();
+            if (locked()) return;
+            fill(index, (event.clipboardData || window.clipboardData).getData("text"));
+          });
+          input.addEventListener("keydown", function (event) {
+            if (locked()) return;
+            var key = event.key;
+            if (key === "Backspace") {
+              event.preventDefault();
+              if (digits[index]) clearAt(index);
+              else if (index > 0) {
+                clearAt(index - 1);
+                focusAt(index - 1);
+              }
+            } else if (key === "Delete") {
+              event.preventDefault();
+              clearAt(index);
+            } else if (key === "ArrowLeft") {
+              event.preventDefault();
+              focusAt(index - 1);
+            } else if (key === "ArrowRight") {
+              event.preventDefault();
+              focusAt(index + 1);
+            } else if (key === "Home") {
+              event.preventDefault();
+              focusAt(0);
+            } else if (key === "End") {
+              event.preventDefault();
+              focusAt(LENGTH - 1);
+            }
+          });
+        });
+
+        function clock(seconds) {
+          return Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
+        }
+        function tick() {
+          if (status === "success") return;
+          if (remaining > 0) {
+            remaining -= 1;
+            root.querySelector("[data-clock]").textContent = clock(remaining);
+            setTimeout(tick, 1000);
+          } else {
+            resendButton.disabled = false;
+            resendButton.textContent = "Send a new code";
+          }
+        }
+        setTimeout(tick, 1000);
+
+        resendButton.addEventListener("click", function () {
+          if (remaining > 0) return;
+          remaining = RESEND_SECONDS;
+          resendButton.disabled = true;
+          resendButton.innerHTML = 'Resend in <span data-clock class="tabular-nums">' + clock(remaining) + "</span>";
+          digits = digits.map(function () {
+            return "";
+          });
+          status = "idle";
+          paint();
+          announce("A new code is on its way to " + DESTINATION + ".");
+          focusAt(0);
+          setTimeout(tick, 1000);
+        });
+
+        paint();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Layer peel card · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-layer-peel
+      aria-labelledby="layer-peel-title"
+      class="overflow-hidden bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--lp-shade:color-mix(in_oklab,var(--iu-accent)_32%,var(--iu-foreground))] dark:[--lp-shade:color-mix(in_oklab,var(--iu-accent)_30%,var(--iu-background))]"
+    >
+      <div class="mx-auto grid max-w-[1200px] grid-cols-12 items-center gap-x-6 gap-y-12 px-6 py-14 sm:px-10 sm:py-20">
+        <div class="col-span-12 lg:col-span-5">
+          <span
+            class="inline-flex -rotate-2 items-center gap-1.5 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) px-3 py-1 text-xs font-bold"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"
+              ></path>
+              <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+              <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg
+            >Mallow layers</span
+          >
+          <h2
+            id="layer-peel-title"
+            class="mt-6 text-[clamp(2.25rem,1.5rem+3vw,3.75rem)] leading-[1.02] font-extrabold tracking-[-0.035em] text-balance"
+          >
+            Every screen is a stack. Pull this one apart.
+          </h2>
+          <p class="mt-5 max-w-[30rem] text-base leading-relaxed text-pretty text-(--iu-muted) sm:text-lg">
+            Mallow exports each layer of your design as its own component, so the toast you drew is the toast you ship,
+            timer and all.
+          </p>
+          <ul aria-label="Layers in this screen" class="mt-8 grid gap-2">
+            <li>
+              <button
+                data-layer-button="3"
+                type="button"
+                aria-pressed="false"
+                class="group flex w-full items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-[calc(14px*var(--iu-density))] py-[calc(10px*var(--iu-density))] text-left shadow-[3px_3px_0_var(--lp-shade)] transition-[translate,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-pressed:-translate-x-0.5 aria-pressed:-translate-y-0.5 aria-pressed:shadow-[5px_5px_0_var(--lp-shade)] motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  class="grid size-8 shrink-0 place-items-center rounded-full border-2 border-(--iu-foreground) font-mono text-xs font-bold group-aria-pressed:bg-(--iu-accent) group-aria-pressed:text-(--iu-accent-foreground)"
+                  >04</span
+                ><span class="min-w-0 flex-1"
+                  ><span class="block text-sm font-bold">Toast</span
+                  ><span class="block truncate text-xs text-(--iu-muted)">Ships with its own timer</span></span
+                ><code class="hidden font-mono text-xs text-(--iu-foreground) sm:block">&lt;RoundUpToast /&gt;</code>
+              </button>
+            </li>
+            <li>
+              <button
+                data-layer-button="2"
+                type="button"
+                aria-pressed="false"
+                class="group flex w-full items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-[calc(14px*var(--iu-density))] py-[calc(10px*var(--iu-density))] text-left shadow-[3px_3px_0_var(--lp-shade)] transition-[translate,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-pressed:-translate-x-0.5 aria-pressed:-translate-y-0.5 aria-pressed:shadow-[5px_5px_0_var(--lp-shade)] motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  class="grid size-8 shrink-0 place-items-center rounded-full border-2 border-(--iu-foreground) font-mono text-xs font-bold group-aria-pressed:bg-(--iu-accent) group-aria-pressed:text-(--iu-accent-foreground)"
+                  >03</span
+                ><span class="min-w-0 flex-1"
+                  ><span class="block text-sm font-bold">Balance</span
+                  ><span class="block truncate text-xs text-(--iu-muted)">Reads your --brand token</span></span
+                ><code class="hidden font-mono text-xs text-(--iu-foreground) sm:block">&lt;BalanceCard /&gt;</code>
+              </button>
+            </li>
+            <li>
+              <button
+                data-layer-button="1"
+                type="button"
+                aria-pressed="false"
+                class="group flex w-full items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-[calc(14px*var(--iu-density))] py-[calc(10px*var(--iu-density))] text-left shadow-[3px_3px_0_var(--lp-shade)] transition-[translate,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-pressed:-translate-x-0.5 aria-pressed:-translate-y-0.5 aria-pressed:shadow-[5px_5px_0_var(--lp-shade)] motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  class="grid size-8 shrink-0 place-items-center rounded-full border-2 border-(--iu-foreground) font-mono text-xs font-bold group-aria-pressed:bg-(--iu-accent) group-aria-pressed:text-(--iu-accent-foreground)"
+                  >02</span
+                ><span class="min-w-0 flex-1"
+                  ><span class="block text-sm font-bold">Chart</span
+                  ><span class="block truncate text-xs text-(--iu-muted)">Seven bars, drawn from data</span></span
+                ><code class="hidden font-mono text-xs text-(--iu-foreground) sm:block">&lt;SavingsChart /&gt;</code>
+              </button>
+            </li>
+            <li>
+              <button
+                data-layer-button="0"
+                type="button"
+                aria-pressed="false"
+                class="group flex w-full items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-[calc(14px*var(--iu-density))] py-[calc(10px*var(--iu-density))] text-left shadow-[3px_3px_0_var(--lp-shade)] transition-[translate,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-pressed:-translate-x-0.5 aria-pressed:-translate-y-0.5 aria-pressed:shadow-[5px_5px_0_var(--lp-shade)] motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  class="grid size-8 shrink-0 place-items-center rounded-full border-2 border-(--iu-foreground) font-mono text-xs font-bold group-aria-pressed:bg-(--iu-accent) group-aria-pressed:text-(--iu-accent-foreground)"
+                  >01</span
+                ><span class="min-w-0 flex-1"
+                  ><span class="block text-sm font-bold">Frame</span
+                  ><span class="block truncate text-xs text-(--iu-muted)">Header, nav and safe areas</span></span
+                ><code class="hidden font-mono text-xs text-(--iu-foreground) sm:block">&lt;AppFrame /&gt;</code>
+              </button>
+            </li>
+          </ul>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <button
+              data-toggle
+              type="button"
+              aria-pressed="false"
+              class="inline-flex h-12 items-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) px-5 text-sm font-bold shadow-[4px_4px_0_var(--lp-shade)] transition-[translate,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-1 active:translate-y-1 active:shadow-none motion-reduce:transition-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"
+                ></path>
+                <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+                <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path></svg
+              ><span data-toggle-label>Pull it apart</span></button
+            ><a
+              href="#import"
+              class="group inline-flex h-12 items-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-5 text-sm font-bold text-(--iu-accent-foreground) shadow-[4px_4px_0_var(--iu-foreground)] transition-[translate,box-shadow] duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-1 active:translate-y-1 active:shadow-none motion-reduce:transition-none"
+              >Try it on your file<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path></svg
+            ></a>
+          </div>
+          <p data-live aria-live="polite" class="sr-only"></p>
+        </div>
+        <div
+          data-stage
+          class="col-span-12 grid min-h-[540px] place-items-center [perspective:1400px] sm:min-h-[620px] lg:col-span-7"
+        >
+          <div
+            data-tilt
+            role="img"
+            aria-label="A savings app screen built from 4 layers: Frame, Chart, Balance, Toast."
+            class="relative transition-transform duration-200 ease-out motion-reduce:transition-none"
+            style="transform-style: preserve-3d"
+          >
+            <div
+              data-explode
+              class="relative h-[460px] w-[290px] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none sm:h-[500px] sm:w-[340px]"
+              style="transform-style: preserve-3d"
+            >
+              <div
+                data-layer="0"
+                class="absolute inset-0 overflow-visible rounded-[max(var(--iu-radius),20px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[6px_6px_0_var(--lp-shade)] transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+              >
+                <span data-sheet hidden aria-hidden="true" class="absolute inset-0"
+                  ><span
+                    class="absolute inset-0 rounded-[max(var(--iu-radius),20px)] border-2 border-dashed border-(--iu-foreground)/45"
+                  ></span
+                  ><span
+                    class="absolute -top-3 -left-3 z-10 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-2.5 py-0.5 font-mono text-[11px] font-bold whitespace-nowrap text-(--iu-accent-foreground) shadow-[2px_2px_0_var(--iu-foreground)]"
+                    >01 Frame</span
+                  ></span
+                >
+                <div class="relative flex items-center justify-between px-5 pt-5">
+                  <span class="flex items-center gap-2"
+                    ><span
+                      class="grid size-8 place-items-center rounded-full bg-(--iu-foreground) text-[11px] font-bold text-(--iu-background)"
+                      >NA</span
+                    ><span class="text-sm leading-tight font-bold"
+                      >Nadia<span class="block text-[11px] font-medium text-(--iu-muted)">Rainy-day pot</span></span
+                    ></span
+                  ><span class="flex gap-1"
+                    ><span class="size-1.5 rounded-full bg-(--iu-foreground)"></span
+                    ><span class="size-1.5 rounded-full bg-(--iu-foreground)/30"></span
+                    ><span class="size-1.5 rounded-full bg-(--iu-foreground)/30"></span
+                  ></span>
+                </div>
+                <div
+                  class="absolute inset-x-5 bottom-5 flex justify-between border-t-2 border-(--iu-foreground)/15 pt-3 text-[11px] font-bold text-(--iu-muted)"
+                >
+                  <span class="text-(--iu-foreground)">Home</span><span>Pots</span><span>Cards</span><span>You</span>
+                </div>
+              </div>
+              <div
+                data-layer="1"
+                class="absolute inset-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+              >
+                <span data-sheet hidden aria-hidden="true" class="absolute inset-0"
+                  ><span
+                    class="absolute inset-0 rounded-[max(var(--iu-radius),20px)] border-2 border-dashed border-(--iu-foreground)/45"
+                  ></span
+                  ><span
+                    class="absolute -top-3 -left-3 z-10 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-2.5 py-0.5 font-mono text-[11px] font-bold whitespace-nowrap text-(--iu-accent-foreground) shadow-[2px_2px_0_var(--iu-foreground)]"
+                    >02 Chart</span
+                  ></span
+                >
+                <div class="absolute inset-x-5 bottom-[72px] h-[120px] sm:h-[140px]">
+                  <div class="flex items-baseline justify-between text-[11px] font-bold">
+                    <span>This week</span><span class="font-mono text-(--iu-muted) tabular-nums">$48.20</span>
+                  </div>
+                  <div class="mt-2 flex h-[88px] items-end gap-2 sm:h-[108px]">
+                    <span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                        style="height: 34%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">M</span></span
+                    ><span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                        style="height: 54%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">T</span></span
+                    ><span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                        style="height: 28%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">W</span></span
+                    ><span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                        style="height: 65%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">T</span></span
+                    ><span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                        style="height: 46%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">F</span></span
+                    ><span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent)"
+                        style="height: 75%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">S</span></span
+                    ><span class="flex h-full flex-1 flex-col items-center justify-end gap-1"
+                      ><span
+                        class="w-full rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+                        style="height: 50%"
+                      ></span
+                      ><span class="text-[10px] font-bold text-(--iu-muted)">S</span></span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div
+                data-layer="2"
+                class="absolute inset-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+              >
+                <span data-sheet hidden aria-hidden="true" class="absolute inset-0"
+                  ><span
+                    class="absolute inset-0 rounded-[max(var(--iu-radius),20px)] border-2 border-dashed border-(--iu-foreground)/45"
+                  ></span
+                  ><span
+                    class="absolute -top-3 -left-3 z-10 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-2.5 py-0.5 font-mono text-[11px] font-bold whitespace-nowrap text-(--iu-accent-foreground) shadow-[2px_2px_0_var(--iu-foreground)]"
+                    >03 Balance</span
+                  ></span
+                >
+                <div
+                  class="absolute inset-x-5 top-[76px] rounded-[max(var(--iu-radius),18px)] border-2 border-(--iu-foreground) bg-(--iu-accent) p-4 text-(--iu-accent-foreground) shadow-[4px_4px_0_var(--iu-foreground)]"
+                >
+                  <span class="text-xs font-bold">Saved this month</span
+                  ><span class="mt-1 block text-[34px] leading-none font-extrabold tracking-[-0.03em] tabular-nums"
+                    >$412.60</span
+                  ><span class="mt-3 flex items-center justify-between text-xs font-bold"
+                    ><span>Goal $600 by 30 Nov</span><span class="font-mono tabular-nums">69%</span></span
+                  ><span class="mt-2 block h-2.5 overflow-hidden rounded-full border-2 border-(--iu-accent-foreground)"
+                    ><span class="block h-full w-[69%] bg-(--iu-accent-foreground)"></span
+                  ></span>
+                </div>
+              </div>
+              <div
+                data-layer="3"
+                class="absolute inset-0 transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transition-none"
+              >
+                <span data-sheet hidden aria-hidden="true" class="absolute inset-0"
+                  ><span
+                    class="absolute inset-0 rounded-[max(var(--iu-radius),20px)] border-2 border-dashed border-(--iu-foreground)/45"
+                  ></span
+                  ><span
+                    class="absolute -top-3 -left-3 z-10 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-2.5 py-0.5 font-mono text-[11px] font-bold whitespace-nowrap text-(--iu-accent-foreground) shadow-[2px_2px_0_var(--iu-foreground)]"
+                    >04 Toast</span
+                  ></span
+                >
+                <div
+                  class="absolute top-[204px] -right-6 flex rotate-[-4deg] items-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-(--iu-surface) py-2 pr-4 pl-2 shadow-[3px_3px_0_var(--iu-foreground)] sm:top-[210px]"
+                >
+                  <span
+                    class="grid size-7 place-items-center rounded-full bg-(--iu-accent) text-xs font-extrabold text-(--iu-accent-foreground)"
+                    >+</span
+                  ><span class="text-xs leading-tight font-bold"
+                    >Rounded up $0.80<span class="block font-medium text-(--iu-muted)">Oat flat white</span></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-layer-peel]");
+        if (!root) return;
+        var stage = root.querySelector("[data-stage]");
+        var tilt = root.querySelector("[data-tilt]");
+        var stack = root.querySelector("[data-explode]");
+        var layers = Array.prototype.slice.call(root.querySelectorAll("[data-layer]"));
+        var buttons = Array.prototype.slice.call(root.querySelectorAll("[data-layer-button]"));
+        var toggle = root.querySelector("[data-toggle]");
+        var live = root.querySelector("[data-live]");
+        var reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var names = ["Frame", "Chart", "Balance", "Toast"];
+        var exploded = false;
+        var focused = null;
+
+        function render() {
+          var flat = reduced.matches;
+          stack.style.transform =
+            exploded && !flat ? "translateY(56px) scale(0.86) rotateX(54deg) rotateZ(-32deg)" : "none";
+          layers.forEach(function (layer) {
+            var index = Number(layer.getAttribute("data-layer"));
+            var lift = focused === index ? 28 : 0;
+            var z = exploded ? index * 64 + lift : index * 14 + lift / 2;
+            // Reduced motion: no 3D, the sheets fan out diagonally instead.
+            layer.style.transform =
+              flat && exploded ? "translate(" + index * 26 + "px, " + index * -26 + "px)" : "translateZ(" + z + "px)";
+            layer.style.opacity = focused !== null && focused !== index ? "0.45" : "1";
+            layer.querySelector("[data-sheet]").hidden = !exploded;
+          });
+          buttons.forEach(function (button) {
+            button.setAttribute("aria-pressed", String(Number(button.getAttribute("data-layer-button")) === focused));
+          });
+          toggle.setAttribute("aria-pressed", String(exploded));
+          toggle.querySelector("[data-toggle-label]").textContent = exploded ? "Stack it back" : "Pull it apart";
+        }
+
+        function select(index) {
+          focused = index;
+          render();
+        }
+
+        toggle.addEventListener("click", function () {
+          exploded = !exploded;
+          live.textContent = exploded ? "Layers pulled apart: " + names.join(", ") + "." : "Layers stacked.";
+          render();
+        });
+
+        buttons.forEach(function (button) {
+          var index = Number(button.getAttribute("data-layer-button"));
+          button.addEventListener("focus", function () {
+            select(index);
+          });
+          button.addEventListener("blur", function () {
+            select(null);
+          });
+          button.addEventListener("mouseenter", function () {
+            select(index);
+          });
+          button.addEventListener("click", function () {
+            select(focused === index ? null : index);
+          });
+        });
+        var list = buttons[0].closest("ul");
+        list.addEventListener("mouseleave", function () {
+          select(null);
+        });
+        // Arrow keys move between layers in the list, as a roving group. The list runs top layer first.
+        list.addEventListener("keydown", function (event) {
+          var current = buttons.indexOf(document.activeElement);
+          var last = buttons.length - 1;
+          var next = null;
+          if (event.key === "ArrowDown") next = Math.min(last, current + 1);
+          else if (event.key === "ArrowUp") next = Math.max(0, current - 1);
+          else if (event.key === "Home") next = 0;
+          else if (event.key === "End") next = last;
+          if (next === null) return;
+          event.preventDefault();
+          buttons[next].focus();
+        });
+
+        stage.addEventListener("pointermove", function (event) {
+          if (reduced.matches || event.pointerType !== "mouse") return;
+          var box = stage.getBoundingClientRect();
+          var px = (event.clientX - box.left) / box.width - 0.5;
+          var py = (event.clientY - box.top) / box.height - 0.5;
+          tilt.style.transform = "rotateX(" + -py * 24 + "deg) rotateY(" + px * 24 + "deg)";
+        });
+        stage.addEventListener("pointerleave", function () {
+          tilt.style.transform = "none";
+        });
+        reduced.addEventListener("change", render);
+        render();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bigtop analytics shell · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-bigtop-shell="true"
+      class="flex min-h-dvh flex-col bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--bt-ink:var(--iu-foreground)] lg:flex-row dark:[--bt-ink:color-mix(in_oklab,var(--iu-foreground)_38%,var(--iu-background))]"
+    >
+      <div
+        data-bt-side="true"
+        data-collapsed="false"
+        class="group/side hidden w-60 shrink-0 border-r-2 border-(--iu-foreground) bg-(--iu-surface) transition-[width] duration-100 ease-linear data-[collapsed=true]:w-[76px] motion-reduce:transition-none lg:block"
+      >
+        <div class="sticky top-0 flex h-dvh flex-col p-3">
+          <div class="flex items-center gap-3 pb-5 group-data-[collapsed=true]/side:flex-col">
+            <span
+              aria-hidden="true"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-accent) text-(--iu-accent-foreground)"
+              ><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
+                <path d="M3 20 12 4l9 16Z" stroke-linejoin="miter"></path>
+                <path d="M12 4v16M9 20l3-6 3 6" stroke-linejoin="miter"></path></svg></span
+            ><span
+              class="min-w-0 flex-1 truncate text-lg font-extrabold tracking-[-0.03em] uppercase group-data-[collapsed=true]/side:sr-only"
+              >Bigtop</span
+            ><button
+              type="button"
+              data-bt-toggle="true"
+              aria-expanded="true"
+              aria-controls="bt-nav"
+              aria-label="Collapse sidebar"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevrons-left"
+                aria-hidden="true"
+              >
+                <path d="m11 17-5-5 5-5"></path>
+                <path d="m18 17-5-5 5-5"></path>
+              </svg>
+            </button>
+          </div>
+          <nav id="bt-nav" aria-label="Main" class="flex-1">
+            <ul class="flex flex-col gap-2">
+              <li>
+                <a
+                  href="#traffic"
+                  aria-current="page"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-foreground) px-3 text-sm font-bold text-(--iu-background) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-trending-up shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M16 7h6v6"></path>
+                    <path d="m22 7-8.5 8.5-5-5L2 17"></path></svg
+                  ><span class="truncate group-data-[collapsed=true]/side:sr-only">Traffic</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-10 ml-4 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--iu-foreground) opacity-0 shadow-[3px_3px_0_var(--bt-ink)] group-focus-visible/link:opacity-100 group-data-[collapsed=true]/side:block pointer-fine:group-hover/link:opacity-100"
+                    >Traffic</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pages"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-file-text shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                    ></path>
+                    <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                    <path d="M10 9H8"></path>
+                    <path d="M16 13H8"></path>
+                    <path d="M16 17H8"></path></svg
+                  ><span class="truncate group-data-[collapsed=true]/side:sr-only">Pages</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-10 ml-4 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--iu-foreground) opacity-0 shadow-[3px_3px_0_var(--bt-ink)] group-focus-visible/link:opacity-100 group-data-[collapsed=true]/side:block pointer-fine:group-hover/link:opacity-100"
+                    >Pages</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#sources"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-globe shrink-0"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                    <path d="M2 12h20"></path></svg
+                  ><span class="truncate group-data-[collapsed=true]/side:sr-only">Sources</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-10 ml-4 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--iu-foreground) opacity-0 shadow-[3px_3px_0_var(--bt-ink)] group-focus-visible/link:opacity-100 group-data-[collapsed=true]/side:block pointer-fine:group-hover/link:opacity-100"
+                    >Sources</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#events"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-mouse-pointer-click shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M14 4.1 12 6"></path>
+                    <path d="m5.1 8-2.9-.8"></path>
+                    <path d="m6 12-1.9 2"></path>
+                    <path d="M7.2 2.2 8 5.1"></path>
+                    <path
+                      d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"
+                    ></path></svg
+                  ><span class="truncate group-data-[collapsed=true]/side:sr-only">Events</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-10 ml-4 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--iu-foreground) opacity-0 shadow-[3px_3px_0_var(--bt-ink)] group-focus-visible/link:opacity-100 group-data-[collapsed=true]/side:block pointer-fine:group-hover/link:opacity-100"
+                    >Events</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#goals"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-flag shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"
+                    ></path></svg
+                  ><span class="truncate group-data-[collapsed=true]/side:sr-only">Goals</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-10 ml-4 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--iu-foreground) opacity-0 shadow-[3px_3px_0_var(--bt-ink)] group-focus-visible/link:opacity-100 group-data-[collapsed=true]/side:block pointer-fine:group-hover/link:opacity-100"
+                    >Goals</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#settings"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-settings shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle></svg
+                  ><span class="truncate group-data-[collapsed=true]/side:sr-only">Settings</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-10 ml-4 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 py-1 font-mono text-xs whitespace-nowrap text-(--iu-foreground) opacity-0 shadow-[3px_3px_0_var(--bt-ink)] group-focus-visible/link:opacity-100 group-data-[collapsed=true]/side:block pointer-fine:group-hover/link:opacity-100"
+                    >Settings</span
+                  ></a
+                >
+              </li>
+            </ul>
+          </nav>
+          <div class="mt-4 border-t-2 border-(--iu-foreground) pt-3">
+            <p class="flex items-center gap-2 px-1 group-data-[collapsed=true]/side:justify-center">
+              <span
+                aria-hidden="true"
+                class="size-3 shrink-0 border-2 border-(--iu-foreground) bg-emerald-400 dark:bg-emerald-300"
+              ></span
+              ><span class="min-w-0 group-data-[collapsed=true]/side:sr-only"
+                ><span class="block truncate font-mono text-xs font-bold">lowtide.dev</span
+                ><span class="block truncate text-xs text-(--iu-muted)">Tracking · script v3.2</span></span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-3 border-b-2 border-(--iu-foreground) bg-(--iu-surface) px-3 lg:hidden"
+      >
+        <button
+          data-bt-menu="true"
+          type="button"
+          aria-label="Open navigation"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          aria-controls="bt-drawer"
+          class="inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu"
+            aria-hidden="true"
+          >
+            <path d="M4 5h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 19h16"></path>
+          </svg></button
+        ><span
+          aria-hidden="true"
+          class="inline-flex size-10 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-accent) text-(--iu-accent-foreground)"
+          ><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
+            <path d="M3 20 12 4l9 16Z" stroke-linejoin="miter"></path>
+            <path d="M12 4v16M9 20l3-6 3 6" stroke-linejoin="miter"></path></svg></span
+        ><span class="text-lg font-extrabold tracking-[-0.03em] uppercase">Bigtop</span
+        ><span class="ml-auto truncate font-mono text-xs font-bold">lowtide.dev</span>
+      </div>
+      <dialog
+        data-bt-drawer="true"
+        id="bt-drawer"
+        aria-label="Navigation"
+        class="fixed inset-x-0 top-0 bottom-auto m-0 w-full max-w-none -translate-y-full border-b-2 border-(--iu-foreground) bg-(--iu-surface) p-0 text-(--iu-foreground) shadow-[0_6px_0_var(--bt-ink)] transition-[translate,display,overlay] transition-discrete duration-150 ease-linear backdrop:bg-black/40 open:translate-y-0 motion-reduce:transition-none lg:hidden dark:backdrop:bg-black/70 starting:open:-translate-y-full"
+      >
+        <div class="p-3 font-(family-name:--iu-font)">
+          <div class="flex items-center gap-3 pb-4">
+            <span
+              aria-hidden="true"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-accent) text-(--iu-accent-foreground)"
+              ><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
+                <path d="M3 20 12 4l9 16Z" stroke-linejoin="miter"></path>
+                <path d="M12 4v16M9 20l3-6 3 6" stroke-linejoin="miter"></path></svg></span
+            ><span class="flex-1 text-lg font-extrabold tracking-[-0.03em] uppercase">Bigtop</span
+            ><button
+              type="button"
+              data-bt-close="true"
+              aria-label="Close navigation"
+              class="inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-x"
+                aria-hidden="true"
+              >
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <nav aria-label="Main">
+            <ul class="flex flex-col gap-2">
+              <li>
+                <a
+                  href="#traffic"
+                  aria-current="page"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-foreground) px-3 text-sm font-bold text-(--iu-background) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-trending-up shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M16 7h6v6"></path>
+                    <path d="m22 7-8.5 8.5-5-5L2 17"></path></svg
+                  ><span class="truncate">Traffic</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#pages"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-file-text shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                    ></path>
+                    <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+                    <path d="M10 9H8"></path>
+                    <path d="M16 13H8"></path>
+                    <path d="M16 17H8"></path></svg
+                  ><span class="truncate">Pages</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#sources"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-globe shrink-0"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+                    <path d="M2 12h20"></path></svg
+                  ><span class="truncate">Sources</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#events"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-mouse-pointer-click shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M14 4.1 12 6"></path>
+                    <path d="m5.1 8-2.9-.8"></path>
+                    <path d="m6 12-1.9 2"></path>
+                    <path d="M7.2 2.2 8 5.1"></path>
+                    <path
+                      d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"
+                    ></path></svg
+                  ><span class="truncate">Events</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#goals"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-flag shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528"
+                    ></path></svg
+                  ><span class="truncate">Goals</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#settings"
+                  class="group/link relative flex h-11 items-center gap-3 rounded-[min(var(--iu-radius),4px)] border-2 border-transparent px-3 text-sm font-bold text-(--iu-foreground) uppercase transition-colors duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-settings shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle></svg
+                  ><span class="truncate">Settings</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </dialog>
+      <main class="@container min-w-0 flex-1 px-4 pt-6 pb-14 sm:px-6 lg:px-8 lg:pt-8">
+        <div class="mx-auto max-w-[1200px]">
+          <nav aria-label="Breadcrumb">
+            <ol
+              class="flex flex-wrap items-center gap-2 font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+            >
+              <li class="flex items-center gap-2">
+                <a
+                  href="#sites"
+                  class="underline decoration-2 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-fine:hover:text-(--iu-foreground)"
+                  >Sites</a
+                ><span aria-hidden="true">/</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <a
+                  href="#lowtide-dev"
+                  class="underline decoration-2 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-fine:hover:text-(--iu-foreground)"
+                  >lowtide.dev</a
+                ><span aria-hidden="true">/</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span aria-current="page" class="text-(--iu-foreground)">Traffic</span>
+              </li>
+            </ol>
+          </nav>
+          <header class="mt-3 flex flex-col gap-4 @2xl:flex-row @2xl:items-end @2xl:justify-between">
+            <h1 class="text-[44px] leading-[0.9] font-extrabold tracking-[-0.04em] uppercase @2xl:text-[64px]">
+              Traffic
+            </h1>
+            <div class="flex flex-wrap items-center gap-3">
+              <span
+                class="inline-flex h-10 items-center rounded-[min(var(--iu-radius),4px)] border-2 border-dashed border-(--iu-foreground) px-3 font-mono text-[11px] font-semibold tracking-[0.06em] uppercase tabular-nums"
+                >Oct 14 – Oct 27</span
+              ><button
+                type="button"
+                class="inline-flex h-10 items-center gap-2 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-4 text-sm font-bold uppercase shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none disabled:cursor-not-allowed disabled:border-(--iu-foreground)/40 disabled:text-(--iu-muted) disabled:shadow-none motion-reduce:transition-none"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-download"
+                  aria-hidden="true"
+                >
+                  <path d="M12 15V3"></path>
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <path d="m7 10 5 5 5-5"></path></svg
+                >Export CSV
+              </button>
+            </div>
+          </header>
+          <ul class="mt-8 grid grid-cols-2 gap-4 @4xl:grid-cols-4 @4xl:gap-5">
+            <li
+              class="flex min-w-0 flex-col rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(14px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)]"
+            >
+              <span class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                >Visitors</span
+              ><span
+                class="mt-2 text-[28px] leading-none font-extrabold tracking-[-0.03em] tabular-nums @md:text-[36px]"
+                >24,844</span
+              ><span class="mt-3 flex min-h-7 items-center"
+                ><span
+                  class="inline-flex h-7 -rotate-2 items-center gap-1 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-emerald-200 px-1.5 font-mono text-xs font-bold text-emerald-950 tabular-nums dark:bg-emerald-300 dark:text-emerald-950"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-up-right"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path></svg
+                  >+16.6%<span class="sr-only"> vs previous 14 days, an improvement</span></span
+                ></span
+              ><span class="mt-3 block"
+                ><svg aria-hidden="true" viewBox="0 0 100 40" preserveAspectRatio="none" class="h-10 w-full">
+                  <path
+                    d="M0,31.5 H7.1 V25.9 H14.3 V30.7 H21.4 V36.0 H28.6 V36.0 H35.7 V30.7 H42.9 V31.1 H50.0 V4.0 H57.1 V16.8 H64.3 V28.2 H71.4 V34.7 H78.6 V35.6 H85.7 V29.7 H92.9 V28.9 H100.0"
+                    fill="none"
+                    vector-effect="non-scaling-stroke"
+                    stroke-width="2"
+                    stroke-linejoin="miter"
+                    class="stroke-(--iu-foreground)"
+                  ></path></svg
+              ></span>
+            </li>
+            <li
+              class="flex min-w-0 flex-col rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(14px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)]"
+            >
+              <span class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                >Pageviews</span
+              ><span
+                class="mt-2 text-[28px] leading-none font-extrabold tracking-[-0.03em] tabular-nums @md:text-[36px]"
+                >61,377</span
+              ><span class="mt-3 flex min-h-7 items-center"
+                ><span
+                  class="inline-flex h-7 -rotate-2 items-center gap-1 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-emerald-200 px-1.5 font-mono text-xs font-bold text-emerald-950 tabular-nums dark:bg-emerald-300 dark:text-emerald-950"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-up-right"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path></svg
+                  >+13.4%<span class="sr-only"> vs previous 14 days, an improvement</span></span
+                ></span
+              ><span class="mt-3 block"
+                ><svg aria-hidden="true" viewBox="0 0 100 40" preserveAspectRatio="none" class="h-10 w-full">
+                  <path
+                    d="M0,27.3 H7.1 V17.4 H14.3 V27.5 H21.4 V36.0 H28.6 V35.0 H35.7 V26.1 H42.9 V25.4 H50.0 V4.0 H57.1 V14.1 H64.3 V22.5 H71.4 V31.0 H78.6 V32.3 H85.7 V21.8 H92.9 V22.1 H100.0"
+                    fill="none"
+                    vector-effect="non-scaling-stroke"
+                    stroke-width="2"
+                    stroke-linejoin="miter"
+                    class="stroke-(--iu-foreground)"
+                  ></path></svg
+              ></span>
+            </li>
+            <li
+              class="flex min-w-0 flex-col rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(14px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)]"
+            >
+              <span class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                >Bounce rate</span
+              ><span
+                class="mt-2 text-[28px] leading-none font-extrabold tracking-[-0.03em] tabular-nums @md:text-[36px]"
+                >41.2%</span
+              ><span class="mt-3 flex min-h-7 items-center"
+                ><span
+                  class="inline-flex h-7 -rotate-2 items-center gap-1 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-emerald-200 px-1.5 font-mono text-xs font-bold text-emerald-950 tabular-nums dark:bg-emerald-300 dark:text-emerald-950"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-down-right"
+                    aria-hidden="true"
+                  >
+                    <path d="m7 7 10 10"></path>
+                    <path d="M17 7v10H7"></path></svg
+                  >−2.8 pts<span class="sr-only"> vs previous 14 days, an improvement</span></span
+                ></span
+              ><span class="mt-3 block"
+                ><svg aria-hidden="true" viewBox="0 0 100 40" preserveAspectRatio="none" class="h-10 w-full">
+                  <path
+                    d="M0,20.0 H7.1 V31.0 H14.3 V24.2 H21.4 V13.5 H28.6 V12.4 H35.7 V24.6 H42.9 V28.0 H50.0 V4.0 H57.1 V14.3 H64.3 V28.8 H71.4 V32.2 H78.6 V29.1 H85.7 V36.0 H92.9 V34.1 H100.0"
+                    fill="none"
+                    vector-effect="non-scaling-stroke"
+                    stroke-width="2"
+                    stroke-linejoin="miter"
+                    class="stroke-(--iu-foreground)"
+                  ></path></svg
+              ></span>
+            </li>
+            <li
+              class="flex min-w-0 flex-col rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(14px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)]"
+            >
+              <span class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                >Avg. visit</span
+              ><span
+                class="mt-2 text-[28px] leading-none font-extrabold tracking-[-0.03em] tabular-nums @md:text-[36px]"
+                >2m 48s</span
+              ><span class="mt-3 flex min-h-7 items-center"
+                ><span
+                  class="inline-flex h-7 -rotate-2 items-center gap-1 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-emerald-200 px-1.5 font-mono text-xs font-bold text-emerald-950 tabular-nums dark:bg-emerald-300 dark:text-emerald-950"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.25"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-up-right"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path></svg
+                  >+11.3%<span class="sr-only"> vs previous 14 days, an improvement</span></span
+                ></span
+              ><span class="mt-3 block"
+                ><svg aria-hidden="true" viewBox="0 0 100 40" preserveAspectRatio="none" class="h-10 w-full">
+                  <path
+                    d="M0,17.8 H7.1 V6.2 H14.3 V12.8 H21.4 V22.8 H28.6 V24.4 H35.7 V11.7 H42.9 V10.1 H50.0 V36.0 H57.1 V24.4 H64.3 V9.5 H71.4 V6.8 H78.6 V8.4 H85.7 V4.0 H92.9 V5.7 H100.0"
+                    fill="none"
+                    vector-effect="non-scaling-stroke"
+                    stroke-width="2"
+                    stroke-linejoin="miter"
+                    class="stroke-(--iu-foreground)"
+                  ></path></svg
+              ></span>
+            </li>
+          </ul>
+          <div class="mt-6 grid gap-6 @5xl:grid-cols-12">
+            <section
+              aria-labelledby="bt-chart-title"
+              class="flex min-w-0 flex-col rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(16px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)] @2xl:p-[calc(24px*var(--iu-density))] @5xl:col-span-8"
+            >
+              <div class="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h2
+                    id="bt-chart-title"
+                    class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                  >
+                    <span data-bt-chart-title="true">Visitors by day</span>
+                  </h2>
+                  <p
+                    data-bt-total="true"
+                    class="mt-1 text-[40px] leading-none font-extrabold tracking-[-0.04em] tabular-nums"
+                  >
+                    24,844
+                  </p>
+                </div>
+                <p
+                  data-bt-share="true"
+                  class="inline-flex h-8 items-center rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-2 font-mono text-[11px] font-semibold tracking-[0.06em] uppercase tabular-nums"
+                >
+                  All sources
+                </p>
+              </div>
+              <figure class="mt-6 flex flex-1 flex-col">
+                <div class="relative flex flex-1 flex-col">
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-x-0 flex items-center gap-2"
+                    style="bottom: calc(100% - 1px)"
+                  >
+                    <span class="w-8 shrink-0 font-mono text-[11px] font-bold text-(--iu-muted) tabular-nums">4K</span
+                    ><span class="h-0 flex-1 border-t-2 border-dashed border-(--iu-foreground)/20"></span>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-x-0 flex items-center gap-2"
+                    style="bottom: calc(50% - 1px)"
+                  >
+                    <span class="w-8 shrink-0 font-mono text-[11px] font-bold text-(--iu-muted) tabular-nums">2K</span
+                    ><span class="h-0 flex-1 border-t-2 border-dashed border-(--iu-foreground)/20"></span>
+                  </div>
+                  <div
+                    data-bt-chart="true"
+                    role="img"
+                    aria-label="Visitors per day, Oct 14 to Oct 27: 24,844 in total, peaking at 3,546 on Oct 21."
+                    class="relative ml-10 flex h-56 items-end gap-1 border-b-2 border-(--iu-foreground) @2xl:h-64 @2xl:gap-2 @5xl:h-auto @5xl:min-h-64 @5xl:flex-1"
+                  >
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 39.025%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 0ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 49.15%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 18ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 40.45%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 36ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 31%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 54ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 30.95%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 72ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 40.5%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 90ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 39.85%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 108ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 88.64999999999999%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 126ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 65.575%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 144ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 44.925%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 162ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 33.275%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 180ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 31.75%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 198ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 42.325%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 216ms"
+                      ></span>
+                    </div>
+                    <div
+                      data-bt-bar="true"
+                      class="relative flex-1 overflow-hidden rounded-t-[min(var(--iu-radius),3px)] border-2 border-b-0 border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-100 ease-linear motion-reduce:transition-none"
+                      style="height: 43.675000000000004%"
+                    >
+                      <span
+                        data-bt-part="true"
+                        class="absolute inset-x-0 bottom-0 block border-t-2 border-(--iu-foreground) bg-(--iu-accent) transition-[height] duration-100 ease-[steps(4,end)] motion-reduce:transition-none"
+                        style="height: 0%; border-top-width: 0; transition-delay: 234ms"
+                      ></span>
+                    </div>
+                    <span
+                      data-bt-peak="true"
+                      aria-hidden="true"
+                      class="absolute bottom-full z-10 mb-2 -translate-x-1/2 -rotate-3 rounded-[min(var(--iu-radius),3px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-1.5 py-0.5 font-mono text-[11px] font-bold whitespace-nowrap tabular-nums shadow-[2px_2px_0_var(--bt-ink)]"
+                      style="
+                        left: clamp(48px, 53.57142857142857%, calc(100% - 48px));
+                        bottom: calc(88.64999999999999% + 8px);
+                      "
+                      >Peak 3,546</span
+                    >
+                  </div>
+                </div>
+                <figcaption class="mt-2 ml-10 flex gap-1 @2xl:gap-2" aria-hidden="true">
+                  <span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >14</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >15</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >16</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >17</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >18</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >19</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >20</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-foreground) tabular-nums @2xl:text-[11px]"
+                    >21</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >22</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >23</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >24</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >25</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >26</span
+                  ><span
+                    class="flex-1 text-center font-mono text-[10px] font-bold text-(--iu-muted) tabular-nums @2xl:text-[11px]"
+                    >27</span
+                  >
+                </figcaption>
+              </figure>
+            </section>
+            <div class="grid min-w-0 content-start gap-6 @3xl:grid-cols-2 @5xl:col-span-4 @5xl:grid-cols-1">
+              <section
+                aria-labelledby="bt-sources"
+                class="rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(16px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)]"
+              >
+                <h2
+                  id="bt-sources"
+                  class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                >
+                  Sources · press to isolate
+                </h2>
+                <ul class="mt-3 flex flex-col gap-2">
+                  <li>
+                    <button
+                      type="button"
+                      data-bt-source="search"
+                      aria-pressed="false"
+                      class="relative flex h-11 w-full items-center gap-3 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-3 text-left text-sm font-bold shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow,background-color] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="absolute inset-y-0 left-0 bg-(--iu-foreground)/10 transition-opacity duration-100 motion-reduce:transition-none"
+                        style="width: 44.22798261149573%"
+                      ></span
+                      ><span class="relative flex-1 truncate uppercase">Search</span
+                      ><span class="relative font-mono text-xs tabular-nums">10,988</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      data-bt-source="direct"
+                      aria-pressed="false"
+                      class="relative flex h-11 w-full items-center gap-3 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-3 text-left text-sm font-bold shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow,background-color] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="absolute inset-y-0 left-0 bg-(--iu-foreground)/10 transition-opacity duration-100 motion-reduce:transition-none"
+                        style="width: 29.10159394622444%"
+                      ></span
+                      ><span class="relative flex-1 truncate uppercase">Direct</span
+                      ><span class="relative font-mono text-xs tabular-nums">7,230</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      data-bt-source="hn"
+                      aria-pressed="false"
+                      class="relative flex h-11 w-full items-center gap-3 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-3 text-left text-sm font-bold shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow,background-color] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="absolute inset-y-0 left-0 bg-(--iu-foreground)/10 transition-opacity duration-100 motion-reduce:transition-none"
+                        style="width: 11.821767831267106%"
+                      ></span
+                      ><span class="relative flex-1 truncate uppercase">Hacker News</span
+                      ><span class="relative font-mono text-xs tabular-nums">2,937</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      data-bt-source="newsletter"
+                      aria-pressed="false"
+                      class="relative flex h-11 w-full items-center gap-3 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-3 text-left text-sm font-bold shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow,background-color] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="absolute inset-y-0 left-0 bg-(--iu-foreground)/10 transition-opacity duration-100 motion-reduce:transition-none"
+                        style="width: 7.426340363870552%"
+                      ></span
+                      ><span class="relative flex-1 truncate uppercase">Newsletter</span
+                      ><span class="relative font-mono text-xs tabular-nums">1,845</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button
+                      type="button"
+                      data-bt-source="mastodon"
+                      aria-pressed="false"
+                      class="relative flex h-11 w-full items-center gap-3 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-3 text-left text-sm font-bold shadow-[3px_3px_0_var(--bt-ink)] transition-[translate,box-shadow,background-color] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-none motion-reduce:transition-none"
+                    >
+                      <span
+                        aria-hidden="true"
+                        class="absolute inset-y-0 left-0 bg-(--iu-foreground)/10 transition-opacity duration-100 motion-reduce:transition-none"
+                        style="width: 7.4223152471421665%"
+                      ></span
+                      ><span class="relative flex-1 truncate uppercase">Mastodon</span
+                      ><span class="relative font-mono text-xs tabular-nums">1,844</span>
+                    </button>
+                  </li>
+                </ul>
+                <p data-bt-live="true" aria-live="polite" class="sr-only">Showing all sources</p>
+              </section>
+              <section
+                aria-labelledby="bt-pages"
+                class="rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) p-[calc(16px*var(--iu-density))] shadow-[4px_4px_0_var(--bt-ink)]"
+              >
+                <h2
+                  id="bt-pages"
+                  class="font-mono text-[11px] font-semibold tracking-[0.06em] text-(--iu-muted) uppercase"
+                >
+                  Top pages
+                </h2>
+                <table class="mt-2 w-full table-fixed text-left text-sm">
+                  <caption class="sr-only">
+                    Top pages by visitors
+                  </caption>
+                  <colgroup>
+                    <col />
+                    <col class="w-20" />
+                  </colgroup>
+                  <tbody>
+                    <tr class="border-b-2 border-(--iu-foreground)/15 last:border-b-0">
+                      <td class="py-[calc(8px*var(--iu-density))] pr-3">
+                        <span class="block truncate font-mono text-[13px] font-semibold">/posts/sqlite-is-enough</span
+                        ><span aria-hidden="true" class="mt-1.5 block h-2 border-2 border-(--iu-foreground)"
+                          ><span class="block h-full bg-(--iu-foreground)" style="width: 100%"></span
+                        ></span>
+                      </td>
+                      <td
+                        class="py-[calc(8px*var(--iu-density))] text-right align-top font-mono text-[13px] font-bold tabular-nums"
+                      >
+                        6,214
+                      </td>
+                    </tr>
+                    <tr class="border-b-2 border-(--iu-foreground)/15 last:border-b-0">
+                      <td class="py-[calc(8px*var(--iu-density))] pr-3">
+                        <span class="block truncate font-mono text-[13px] font-semibold">/</span
+                        ><span aria-hidden="true" class="mt-1.5 block h-2 border-2 border-(--iu-foreground)"
+                          ><span class="block h-full bg-(--iu-foreground)" style="width: 80.17380109430319%"></span
+                        ></span>
+                      </td>
+                      <td
+                        class="py-[calc(8px*var(--iu-density))] text-right align-top font-mono text-[13px] font-bold tabular-nums"
+                      >
+                        4,982
+                      </td>
+                    </tr>
+                    <tr class="border-b-2 border-(--iu-foreground)/15 last:border-b-0">
+                      <td class="py-[calc(8px*var(--iu-density))] pr-3">
+                        <span class="block truncate font-mono text-[13px] font-semibold">/posts/tiny-cron</span
+                        ><span aria-hidden="true" class="mt-1.5 block h-2 border-2 border-(--iu-foreground)"
+                          ><span class="block h-full bg-(--iu-foreground)" style="width: 37.12584486643064%"></span
+                        ></span>
+                      </td>
+                      <td
+                        class="py-[calc(8px*var(--iu-density))] text-right align-top font-mono text-[13px] font-bold tabular-nums"
+                      >
+                        2,307
+                      </td>
+                    </tr>
+                    <tr class="border-b-2 border-(--iu-foreground)/15 last:border-b-0">
+                      <td class="py-[calc(8px*var(--iu-density))] pr-3">
+                        <span class="block truncate font-mono text-[13px] font-semibold">/now</span
+                        ><span aria-hidden="true" class="mt-1.5 block h-2 border-2 border-(--iu-foreground)"
+                          ><span class="block h-full bg-(--iu-foreground)" style="width: 18.47441261667203%"></span
+                        ></span>
+                      </td>
+                      <td
+                        class="py-[calc(8px*var(--iu-density))] text-right align-top font-mono text-[13px] font-bold tabular-nums"
+                      >
+                        1,148
+                      </td>
+                    </tr>
+                    <tr class="border-b-2 border-(--iu-foreground)/15 last:border-b-0">
+                      <td class="py-[calc(8px*var(--iu-density))] pr-3">
+                        <span class="block truncate font-mono text-[13px] font-semibold">/posts/a-parser-by-hand</span
+                        ><span aria-hidden="true" class="mt-1.5 block h-2 border-2 border-(--iu-foreground)"
+                          ><span class="block h-full bg-(--iu-foreground)" style="width: 15.867396202124235%"></span
+                        ></span>
+                      </td>
+                      <td
+                        class="py-[calc(8px*var(--iu-density))] text-right align-top font-mono text-[13px] font-bold tabular-nums"
+                      >
+                        986
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-bigtop-shell]");
+        if (!root) return;
+        var START = "2026-10-14";
+        var SOURCES = {
+          search: { label: "Search", daily: [814, 828, 858, 593, 612, 791, 842, 917, 894, 834, 677, 597, 832, 899] },
+          direct: { label: "Direct", daily: [520, 557, 540, 428, 413, 592, 521, 575, 522, 546, 422, 414, 599, 581] },
+          hn: { label: "Hacker News", daily: [32, 39, 26, 23, 39, 28, 55, 1684, 612, 188, 52, 58, 47, 54] },
+          newsletter: { label: "Newsletter", daily: [62, 438, 75, 69, 69, 83, 81, 73, 458, 92, 77, 93, 98, 77] },
+          mastodon: { label: "Mastodon", daily: [133, 104, 119, 127, 105, 126, 95, 297, 137, 137, 103, 108, 117, 136] },
+        };
+        var TOTALS = [1561, 1966, 1618, 1240, 1238, 1620, 1594, 3546, 2623, 1797, 1331, 1270, 1693, 1747];
+        var SCALE = 4000;
+        var GRAND = TOTALS.reduce(function (a, b) {
+          return a + b;
+        }, 0);
+
+        var BTN_ON =
+          "translate-x-[3px] translate-y-[3px] bg-(--iu-accent) text-(--iu-accent-foreground) shadow-none".split(" ");
+        var BTN_OFF =
+          "bg-(--iu-surface) shadow-[3px_3px_0_var(--bt-ink)] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none".split(
+            " ",
+          );
+        var CHIP_ON = ["bg-(--iu-accent)", "text-(--iu-accent-foreground)"];
+        var CHIP_OFF = ["bg-(--iu-surface)"];
+        var CHEVRONS_LEFT = '<path d="m11 17-5-5 5-5"></path><path d="m18 17-5-5 5-5"></path>';
+        var CHEVRONS_RIGHT = '<path d="m6 17 5-5-5-5"></path><path d="m13 17 5-5-5-5"></path>';
+
+        function swap(el, add, remove) {
+          remove.forEach(function (name) {
+            el.classList.remove(name);
+          });
+          add.forEach(function (name) {
+            el.classList.add(name);
+          });
+        }
+        function number(value) {
+          return value.toLocaleString("en-US");
+        }
+        function day(offset) {
+          var date = new Date(START + "T00:00:00Z");
+          date.setUTCDate(date.getUTCDate() + offset);
+          return new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" }).format(date);
+        }
+
+        var buttons = Array.prototype.slice.call(root.querySelectorAll("[data-bt-source]"));
+        var bars = Array.prototype.slice.call(root.querySelectorAll("[data-bt-bar]"));
+        var labels = Array.prototype.slice.call(root.querySelectorAll("figcaption span"));
+        var chart = root.querySelector("[data-bt-chart]");
+        var peak = root.querySelector("[data-bt-peak]");
+        var title = root.querySelector("[data-bt-chart-title]");
+        var total = root.querySelector("[data-bt-total]");
+        var chip = root.querySelector("[data-bt-share]");
+        var live = root.querySelector("[data-bt-live]");
+        var current = null;
+
+        function render() {
+          var source = current ? SOURCES[current] : null;
+          var shown = source ? source.daily : TOTALS;
+          var sum = shown.reduce(function (a, b) {
+            return a + b;
+          }, 0);
+          var peakIndex = 0;
+          shown.forEach(function (value, index) {
+            if (value > shown[peakIndex]) peakIndex = index;
+          });
+          var peakValue = shown[peakIndex];
+
+          bars.forEach(function (bar, index) {
+            swap(
+              bar,
+              [source ? "bg-(--iu-surface)" : "bg-(--iu-foreground)"],
+              [source ? "bg-(--iu-foreground)" : "bg-(--iu-surface)"],
+            );
+            var part = bar.querySelector("[data-bt-part]");
+            part.style.height = source ? (source.daily[index] / TOTALS[index]) * 100 + "%" : "0%";
+            part.style.borderTopWidth = source ? "" : "0";
+          });
+          labels.forEach(function (label, index) {
+            var on = index === peakIndex;
+            swap(
+              label,
+              [on ? "text-(--iu-foreground)" : "text-(--iu-muted)"],
+              [on ? "text-(--iu-muted)" : "text-(--iu-foreground)"],
+            );
+          });
+          peak.textContent = "Peak " + number(peakValue);
+          peak.style.left = "clamp(48px, " + ((peakIndex + 0.5) / TOTALS.length) * 100 + "%, calc(100% - 48px))";
+          peak.style.bottom = "calc(" + (peakValue / SCALE) * 100 + "% + 8px)";
+          title.textContent = source ? source.label + " visitors by day" : "Visitors by day";
+          total.textContent = number(sum);
+          chip.textContent = source ? Math.round((sum / GRAND) * 100) + "% of visitors" : "All sources";
+          swap(chip, source ? CHIP_ON : CHIP_OFF, source ? CHIP_OFF : CHIP_ON);
+          var share = Math.round((peakValue / TOTALS[peakIndex]) * 100);
+          chart.setAttribute(
+            "aria-label",
+            (source ? source.label + " visitors" : "Visitors") +
+              " per day, " +
+              day(0) +
+              " to " +
+              day(TOTALS.length - 1) +
+              ": " +
+              number(sum) +
+              " in total, peaking at " +
+              number(peakValue) +
+              " on " +
+              day(peakIndex) +
+              (source ? ", " + share + "% of that day's visitors." : "."),
+          );
+          buttons.forEach(function (button) {
+            var on = button.getAttribute("data-bt-source") === current;
+            button.setAttribute("aria-pressed", on ? "true" : "false");
+            swap(button, on ? BTN_ON : BTN_OFF, on ? BTN_OFF : BTN_ON);
+            var fill = button.firstElementChild;
+            swap(fill, [on ? "opacity-0" : "bg-(--iu-foreground)/10"], [on ? "bg-(--iu-foreground)/10" : "opacity-0"]);
+          });
+          live.textContent = source ? "Showing " + source.label + " only" : "Showing all sources";
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var id = button.getAttribute("data-bt-source");
+            current = current === id ? null : id;
+            render();
+          });
+        });
+
+        // Sidebar collapse
+        var side = root.querySelector("[data-bt-side]");
+        var toggle = root.querySelector("[data-bt-toggle]");
+        toggle.addEventListener("click", function () {
+          var collapsed = side.getAttribute("data-collapsed") !== "true";
+          side.setAttribute("data-collapsed", collapsed ? "true" : "false");
+          toggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+          toggle.setAttribute("aria-label", collapsed ? "Expand sidebar" : "Collapse sidebar");
+          toggle.querySelector("svg").innerHTML = collapsed ? CHEVRONS_RIGHT : CHEVRONS_LEFT;
+        });
+
+        // Drawer on small screens
+        var drawer = root.querySelector("[data-bt-drawer]");
+        var menu = root.querySelector("[data-bt-menu]");
+        menu.addEventListener("click", function () {
+          drawer.showModal();
+          menu.setAttribute("aria-expanded", "true");
+          var here = drawer.querySelector('[aria-current="page"]');
+          if (here) here.focus();
+        });
+        root.querySelector("[data-bt-close]").addEventListener("click", function () {
+          drawer.close();
+        });
+        drawer.addEventListener("click", function (event) {
+          if (event.target === drawer) drawer.close();
+        });
+        drawer.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            drawer.close();
+          });
+        });
+        drawer.addEventListener("close", function () {
+          menu.setAttribute("aria-expanded", "false");
+          menu.focus();
+        });
+        window.matchMedia("(min-width: 64rem)").addEventListener("change", function (query) {
+          if (query.matches && drawer.open) drawer.close();
+        });
+      })();
+    </script>
+  </body>
+</html>

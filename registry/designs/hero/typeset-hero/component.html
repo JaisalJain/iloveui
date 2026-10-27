@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Typeset hero · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-typeset-hero
+      aria-labelledby="typeset-hero-title"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1240px] px-6 pt-10 pb-16 sm:px-10 sm:pt-14 sm:pb-24">
+        <div
+          class="flex items-baseline justify-between gap-4 border-b-[3px] border-double border-(--iu-foreground)/70 pb-3"
+        >
+          <span class="font-serif text-[22px] leading-none italic">Quire</span>
+          <span class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase tabular-nums"
+            >Vol. 3 · Autumn 2026</span
+          >
+        </div>
+
+        <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-14 sm:mt-16 lg:gap-x-12">
+          <div class="col-span-12 flex flex-col lg:col-span-5 lg:pt-6">
+            <p class="flex items-center gap-3 text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">
+              <span aria-hidden="true" class="h-px w-8 bg-(--iu-accent)"></span>
+              For independent publications
+            </p>
+            <h1
+              id="typeset-hero-title"
+              class="mt-6 font-serif text-[clamp(3rem,1.9rem+4.6vw,5.75rem)] leading-[0.94] font-normal tracking-[-0.02em] text-balance"
+            >
+              One draft, typeset for <em class="italic">every page.</em>
+            </h1>
+            <p class="mt-7 max-w-[32rem] text-base leading-[1.6] text-pretty text-(--iu-muted) sm:text-[17px]">
+              Write in a calm editor. Quire sets the same story for your website, your newsletter and a print-ready PDF,
+              with the hyphenation and hanging punctuation a designer would fuss over.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a
+                href="#start"
+                class="group inline-flex h-11 items-center gap-2 rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) px-5 text-sm font-medium text-(--iu-background) transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_84%,var(--iu-background))]"
+              >
+                Start your first issue
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-200 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+              <span class="text-sm text-(--iu-muted)">Free for one publication.</span>
+            </div>
+            <p class="mt-auto hidden pt-14 font-mono text-[11px] leading-relaxed text-(--iu-muted) lg:block">
+              Fig. 1 — One manuscript, three outputs. Switch the format to see the same story reset.
+            </p>
+          </div>
+
+          <figure class="@container col-span-12 lg:col-span-7">
+            <div
+              class="rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/14"
+            >
+              <div
+                class="flex items-center justify-between gap-4 border-b border-(--iu-border) px-4 py-[calc(10px*var(--iu-density))]"
+              >
+                <figcaption class="min-w-0 truncate text-[13px] font-medium">Issue 14 / Night trains</figcaption>
+                <span
+                  class="inline-flex shrink-0 items-center gap-1.5 font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                  Saved · 1,284 words
+                </span>
+              </div>
+              <div class="flex items-end justify-between gap-4 border-b border-(--iu-border) px-2 @md:px-3">
+                <div role="tablist" aria-label="Output format" class="flex">
+                  <button
+                    id="typeset-tab-print"
+                    type="button"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="typeset-panel"
+                    tabindex="0"
+                    data-format="print"
+                    data-spec="A4 · 2 columns"
+                    class="relative h-10 px-3 text-[13px] text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:font-medium aria-selected:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    Print
+                    <span
+                      data-underline
+                      aria-hidden="true"
+                      class="absolute inset-x-3 -bottom-px h-0.5 bg-(--iu-accent)"
+                    ></span>
+                  </button>
+                  <button
+                    id="typeset-tab-web"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="typeset-panel"
+                    tabindex="-1"
+                    data-format="web"
+                    data-spec="680px · 1 column"
+                    class="relative h-10 px-3 text-[13px] text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:font-medium aria-selected:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    Web
+                    <span
+                      data-underline
+                      hidden
+                      aria-hidden="true"
+                      class="absolute inset-x-3 -bottom-px h-0.5 bg-(--iu-accent)"
+                    ></span>
+                  </button>
+                  <button
+                    id="typeset-tab-newsletter"
+                    type="button"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="typeset-panel"
+                    tabindex="-1"
+                    data-format="newsletter"
+                    data-spec="600px · email-safe"
+                    class="relative h-10 px-3 text-[13px] text-(--iu-muted) transition-colors duration-200 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:font-medium aria-selected:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >
+                    Newsletter
+                    <span
+                      data-underline
+                      hidden
+                      aria-hidden="true"
+                      class="absolute inset-x-3 -bottom-px h-0.5 bg-(--iu-accent)"
+                    ></span>
+                  </button>
+                </div>
+                <span data-spec-label class="hidden pb-3 font-mono text-[11px] text-(--iu-muted) tabular-nums @md:block"
+                  >A4 · 2 columns</span
+                >
+              </div>
+              <div
+                id="typeset-panel"
+                role="tabpanel"
+                aria-labelledby="typeset-tab-print"
+                class="bg-(--iu-foreground)/[0.035] p-3 @md:min-h-[600px] @md:p-6 dark:bg-(--iu-background)"
+              >
+                <!-- Print -->
+                <div
+                  data-page="print"
+                  class="border border-(--iu-border) transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none dark:border-(--iu-foreground)/10"
+                >
+                  <div class="bg-(--iu-surface) px-5 py-6 @md:px-9 @md:py-8">
+                    <div
+                      class="flex items-baseline justify-between gap-4 font-mono text-[10px] tracking-[0.12em] text-(--iu-muted) uppercase"
+                    >
+                      <span>Travel · Essay</span>
+                      <span class="tabular-nums">No. 14</span>
+                    </div>
+                    <div aria-hidden="true" class="mt-2 border-t-[3px] border-double border-(--iu-foreground)/70"></div>
+                    <p
+                      class="mt-5 font-serif text-[30px] leading-[1.02] tracking-[-0.01em] text-balance @md:text-[42px]"
+                    >
+                      The slow return of the night train
+                    </p>
+                    <p
+                      class="mt-3 max-w-[30rem] font-serif text-[16px] leading-snug text-pretty text-(--iu-muted) italic @md:text-[18px]"
+                    >
+                      Europe's sleepers are full again. Nobody planned for it, least of all the railways.
+                    </p>
+                    <p class="mt-4 text-[10px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">
+                      By Ines Albrecht <span aria-hidden="true">·</span> 14 October 2026
+                    </p>
+                    <div
+                      class="mt-6 gap-8 border-t border-(--iu-border) pt-5 text-[13px] leading-[1.6] hyphens-auto text-(--iu-foreground)/85 [column-rule:1px_solid_var(--iu-border)] @md:columns-2 @md:text-justify"
+                    >
+                      <p
+                        class="first-letter:float-left first-letter:mt-1 first-letter:mr-1.5 first-letter:font-serif first-letter:text-[52px] first-letter:leading-[0.8] first-letter:text-(--iu-accent)"
+                      >
+                        At four minutes past nine the sleeper leaves Vienna with its blinds half drawn. By the time the
+                        attendant has collected the breakfast cards, Salzburg is a smear of platform light and the
+                        compartment has become, improbably, a bedroom.
+                      </p>
+                      <p class="mt-3">
+                        Ridership on European sleeper routes rose thirty-one percent between 2023 and 2025, and
+                        operators are adding carriages faster than they can find people to staff them. The demand
+                        surprised everyone who had spent a decade retiring the stock.
+                      </p>
+                      <p
+                        class="my-5 break-inside-avoid border-y border-(--iu-foreground)/60 py-3 font-serif text-[20px] leading-[1.15] text-(--iu-foreground) italic @md:text-left"
+                      >
+                        “A sleeper is a hotel that happens to be moving.”
+                      </p>
+                      <p class="mt-3 first:mt-0">
+                        What passengers describe is less a timetable than a temperament: the refusal to hurry, the
+                        pleasure of arriving somewhere already rested, the strange intimacy of strangers brushing their
+                        teeth in a corridor at dawn.
+                      </p>
+                    </div>
+                    <div
+                      class="mt-6 flex justify-between border-t border-(--iu-border) pt-2 font-mono text-[10px] text-(--iu-muted) tabular-nums"
+                    >
+                      <span>The Platform</span>
+                      <span>p. 14</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Web -->
+                <div
+                  data-page="web"
+                  hidden
+                  class="border border-(--iu-border) transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none dark:border-(--iu-foreground)/10"
+                >
+                  <div class="bg-(--iu-surface)">
+                    <div
+                      class="flex items-center justify-between gap-3 border-b border-(--iu-border) px-5 py-2.5 @md:px-8"
+                    >
+                      <span class="font-serif text-[17px] italic">The Platform</span>
+                      <span class="font-mono text-[10px] text-(--iu-muted)">theplatform.press/travel</span>
+                    </div>
+                    <div class="mx-auto max-w-[34rem] px-5 py-7 @md:px-8 @md:py-10">
+                      <p class="font-mono text-[10px] tracking-[0.12em] text-(--iu-muted) uppercase">Travel · Essay</p>
+                      <p
+                        class="mt-3 font-serif text-[30px] leading-[1.04] tracking-[-0.01em] text-balance @md:text-[38px]"
+                      >
+                        The slow return of the night train
+                      </p>
+                      <p class="mt-3 text-[15px] leading-snug text-pretty text-(--iu-muted)">
+                        Europe's sleepers are full again. Nobody planned for it, least of all the railways.
+                      </p>
+                      <div class="mt-5 flex items-center gap-3">
+                        <span
+                          aria-hidden="true"
+                          class="inline-flex size-7 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold text-(--iu-foreground)"
+                          >IA</span
+                        >
+                        <span class="text-[12px] leading-tight">
+                          <span class="block font-medium">Ines Albrecht</span>
+                          <span class="block text-(--iu-muted)">14 October 2026 · 6 min read</span>
+                        </span>
+                      </div>
+                      <div class="mt-6 text-[14px] leading-[1.6] text-pretty text-(--iu-foreground)/85">
+                        <p>
+                          At four minutes past nine the sleeper leaves Vienna with its blinds half drawn. By the time
+                          the attendant has collected the breakfast cards, Salzburg is a smear of platform light and the
+                          compartment has become, improbably, a bedroom.
+                        </p>
+                        <p
+                          class="my-5 border-l-2 border-(--iu-accent) pl-4 font-serif text-[22px] leading-[1.15] text-(--iu-foreground) italic"
+                        >
+                          “A sleeper is a hotel that happens to be moving.”
+                        </p>
+                        <p>
+                          Ridership on European sleeper routes rose thirty-one percent between 2023 and 2025, and
+                          operators are adding carriages faster than they can find people to staff them. The demand
+                          surprised everyone who had spent a decade retiring the stock.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Newsletter -->
+                <div
+                  data-page="newsletter"
+                  hidden
+                  class="transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+                >
+                  <div
+                    class="mx-auto max-w-[24rem] border border-(--iu-border) bg-(--iu-surface) px-6 py-7 dark:border-(--iu-foreground)/10"
+                  >
+                    <div class="text-center">
+                      <p class="font-serif text-[26px] leading-none">The Platform</p>
+                      <p class="mt-2 font-mono text-[10px] tracking-[0.12em] text-(--iu-muted) uppercase tabular-nums">
+                        Sunday edition · No. 14
+                      </p>
+                    </div>
+                    <div aria-hidden="true" class="mt-4 border-t-[3px] border-double border-(--iu-foreground)/70"></div>
+                    <p class="mt-5 font-serif text-[26px] leading-[1.05] text-balance">
+                      The slow return of the night train
+                    </p>
+                    <p class="mt-2 text-[11px] text-(--iu-muted)">Ines Albrecht · 14 October 2026</p>
+                    <p class="mt-4 text-[14px] leading-[1.6] text-pretty text-(--iu-foreground)/85">
+                      At four minutes past nine the sleeper leaves Vienna with its blinds half drawn. By the time the
+                      attendant has collected the breakfast cards, Salzburg is a smear of platform light and the
+                      compartment has become, improbably, a bedroom.
+                    </p>
+                    <span
+                      class="mt-5 inline-flex h-9 items-center gap-2 bg-(--iu-foreground) px-4 text-[13px] font-medium text-(--iu-background)"
+                    >
+                      Continue reading
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </svg>
+                    </span>
+                    <p class="mt-7 border-t border-(--iu-border) pt-3 text-[10px] leading-relaxed text-(--iu-muted)">
+                      You subscribed at theplatform.press. Manage preferences or unsubscribe at any time.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-typeset-hero]");
+        if (!root) return;
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+        var panel = root.querySelector('[role="tabpanel"]');
+        var specLabel = root.querySelector("[data-spec-label]");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var current = "print";
+
+        function show(format) {
+          if (format === current) return;
+          var outgoing = root.querySelector('[data-page="' + current + '"]');
+          var incoming = root.querySelector('[data-page="' + format + '"]');
+          current = format;
+          outgoing.hidden = true;
+          incoming.hidden = false;
+          if (reduce.matches) return;
+          // Enter from 8px below, the same courteous fade as the React version.
+          incoming.style.opacity = "0";
+          incoming.style.translate = "0 8px";
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              incoming.style.opacity = "";
+              incoming.style.translate = "";
+            });
+          });
+        }
+
+        function select(index) {
+          var tab = tabs[index];
+          if (!tab) return;
+          tabs.forEach(function (other) {
+            var selected = other === tab;
+            other.setAttribute("aria-selected", String(selected));
+            other.tabIndex = selected ? 0 : -1;
+            other.querySelector("[data-underline]").hidden = !selected;
+          });
+          panel.setAttribute("aria-labelledby", tab.id);
+          specLabel.textContent = tab.dataset.spec;
+          show(tab.dataset.format);
+          tab.focus();
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener("click", function () {
+            select(index);
+          });
+          tab.addEventListener("keydown", function (event) {
+            var last = tabs.length - 1;
+            var next = null;
+            if (event.key === "ArrowRight") next = index === last ? 0 : index + 1;
+            else if (event.key === "ArrowLeft") next = index === 0 ? last : index - 1;
+            else if (event.key === "Home") next = 0;
+            else if (event.key === "End") next = last;
+            if (next === null) return;
+            event.preventDefault();
+            select(next);
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Forgeline button system · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto flex min-h-dvh w-full max-w-5xl items-center px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full">
+        <!-- iloveui:component:start -->
+        <section
+          data-forgeline
+          aria-label="atlas-web deployment controls"
+          class="@container relative rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/12 bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground)"
+        >
+          <span
+            aria-hidden="true"
+            class="absolute -top-px -left-px size-2.5 border-t border-l border-(--iu-accent)"
+          ></span
+          ><span
+            aria-hidden="true"
+            class="absolute -top-px -right-px size-2.5 border-t border-r border-(--iu-accent)"
+          ></span
+          ><span
+            aria-hidden="true"
+            class="absolute -bottom-px -left-px size-2.5 border-b border-l border-(--iu-accent)"
+          ></span
+          ><span
+            aria-hidden="true"
+            class="absolute -right-px -bottom-px size-2.5 border-r border-b border-(--iu-accent)"
+          ></span>
+          <header
+            class="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-dashed border-(--iu-foreground)/15 px-4 py-3 @2xl:px-5"
+          >
+            <span data-status-wrap class="inline-flex items-center gap-2 text-[13px] font-medium"
+              ><span
+                data-status-dot
+                aria-hidden="true"
+                class="size-2 rounded-full bg-emerald-600 dark:bg-emerald-400"
+              ></span
+              ><span data-status-text>Ready</span></span
+            ><span class="font-mono text-[13px]">atlas-web</span
+            ><span class="inline-flex items-center gap-1.5 font-mono text-[12px] text-(--iu-muted)"
+              ><svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M15 6a9 9 0 0 0-9 9V3"></path>
+                <circle cx="18" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle></svg
+              >main @ 7f3c2a1</span
+            ><span class="ml-auto hidden truncate font-mono text-[12px] text-(--iu-muted) @2xl:inline"
+              >atlas-web-7f3c2a1.forgeline.app</span
+            >
+          </header>
+          <div class="flex flex-wrap items-center gap-3 px-4 py-4 @2xl:px-5">
+            <div
+              role="radiogroup"
+              aria-label="Panel"
+              class="inline-flex h-9 items-center gap-0.5 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/12 bg-(--iu-background) p-0.5 pointer-coarse:h-11"
+            >
+              <button
+                type="button"
+                role="radio"
+                aria-checked="true"
+                tabindex="0"
+                class="relative h-full rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) motion-reduce:transition-none"
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/15 bg-(--iu-surface)"
+                ></span
+                ><span class="relative">Logs</span></button
+              ><button
+                type="button"
+                role="radio"
+                aria-checked="false"
+                tabindex="-1"
+                class="relative h-full rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:enabled:hover:text-(--iu-foreground)"
+              >
+                <span class="relative">Metrics</span></button
+              ><button
+                type="button"
+                role="radio"
+                aria-checked="false"
+                tabindex="-1"
+                class="relative h-full rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:enabled:hover:text-(--iu-foreground)"
+              >
+                <span class="relative">Traces</span>
+              </button>
+            </div>
+            <div role="group" aria-label="Deployment actions" class="inline-flex items-center gap-0.5">
+              <span class="relative inline-flex"
+                ><button
+                  type="button"
+                  data-copy
+                  data-tip
+                  aria-label="Copy URL"
+                  aria-keyshortcuts="C"
+                  class="relative inline-flex size-8 h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] text-[13px] font-medium whitespace-nowrap text-(--iu-muted) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:opacity-60 data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-(--iu-foreground)/8 data-[force-state=hover]:text-(--iu-foreground) motion-reduce:transition-none pointer-coarse:size-10 pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/8 pointer-fine:enabled:hover:text-(--iu-foreground)"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                  </svg></button></span
+              ><span class="relative inline-flex"
+                ><button
+                  type="button"
+                  data-tip
+                  aria-label="Redeploy"
+                  aria-keyshortcuts="R"
+                  class="relative inline-flex size-8 h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] text-[13px] font-medium whitespace-nowrap text-(--iu-muted) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:opacity-60 data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-(--iu-foreground)/8 data-[force-state=hover]:text-(--iu-foreground) motion-reduce:transition-none pointer-coarse:size-10 pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/8 pointer-fine:enabled:hover:text-(--iu-foreground)"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path>
+                  </svg></button></span
+              ><span class="relative inline-flex"
+                ><button
+                  type="button"
+                  data-tip
+                  aria-label="Open deployment"
+                  class="relative inline-flex size-8 h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] text-[13px] font-medium whitespace-nowrap text-(--iu-muted) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:opacity-60 data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-(--iu-foreground)/8 data-[force-state=hover]:text-(--iu-foreground) motion-reduce:transition-none pointer-coarse:size-10 pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/8 pointer-fine:enabled:hover:text-(--iu-foreground)"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  </svg></button
+              ></span>
+            </div>
+            <div class="ml-auto flex flex-wrap items-center gap-2">
+              <button
+                data-build-log
+                type="button"
+                class="relative inline-flex h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/20 bg-(--iu-foreground)/[0.04] px-3.5 text-[13px] font-medium whitespace-nowrap text-(--iu-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:border-(--iu-foreground)/35 data-[force-state=hover]:bg-(--iu-foreground)/8 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:border-(--iu-foreground)/35 pointer-fine:enabled:hover:bg-(--iu-foreground)/8"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M15 12h-5"></path>
+                  <path d="M15 8h-5"></path>
+                  <path d="M19 17V5a2 2 0 0 0-2-2H4"></path>
+                  <path
+                    d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"
+                  ></path></svg
+                >Build log
+              </button>
+              <div class="relative inline-flex">
+                <button
+                  type="button"
+                  data-deploy
+                  aria-keyshortcuts="Meta+Enter Control+Enter"
+                  class="relative inline-flex h-9 min-w-40 items-center justify-center gap-2 overflow-hidden rounded-[min(var(--iu-radius),8px)] rounded-r-none bg-(--iu-accent) pr-3 pl-3.5 text-[13px] font-medium whitespace-nowrap text-(--iu-accent-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-[color-mix(in_oklab,var(--iu-accent)_94%,var(--iu-foreground))] motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:bg-[color-mix(in_oklab,var(--iu-accent)_94%,var(--iu-foreground))]"
+                >
+                  <span class="relative grid"
+                    ><span class="col-start-1 row-start-1 inline-flex items-center gap-2"
+                      ><svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+                        <path
+                          d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09"
+                        ></path>
+                        <path
+                          d="M9 12a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.4 22.4 0 0 1-4 2z"
+                        ></path>
+                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 .05 5 .05"></path></svg
+                      >Deploy<kbd
+                        class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] bg-(--iu-accent-foreground)/12 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-accent-foreground)"
+                        >⌘↵</kbd
+                      ></span
+                    ></span
+                  ></button
+                ><button
+                  type="button"
+                  data-menu-trigger
+                  aria-label="More deploy options"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  class="relative inline-flex h-9 w-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] rounded-l-none border-l border-(--iu-accent-foreground)/20 bg-(--iu-accent) text-[13px] font-medium whitespace-nowrap text-(--iu-accent-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-[color-mix(in_oklab,var(--iu-accent)_94%,var(--iu-foreground))] motion-reduce:transition-none pointer-coarse:h-10 pointer-coarse:w-10 pointer-fine:enabled:hover:bg-[color-mix(in_oklab,var(--iu-accent)_94%,var(--iu-foreground))]"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <p data-announce aria-live="polite" class="sr-only"></p>
+          <div class="grid border-t border-dashed border-(--iu-foreground)/15 @xl:grid-cols-2 @4xl:grid-cols-4">
+            <div
+              class="flex flex-col gap-4 border-(--iu-foreground)/12 px-4 py-[calc(16px*var(--iu-density))] @2xl:px-5"
+            >
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">01 · Primary</span
+                ><span class="font-mono text-[10px] text-(--iu-muted)">h-9 · accent</span>
+              </div>
+              <div>
+                <button
+                  data-deploy-canary
+                  type="button"
+                  class="relative inline-flex h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-3.5 text-[13px] font-medium whitespace-nowrap text-(--iu-accent-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-[color-mix(in_oklab,var(--iu-accent)_94%,var(--iu-foreground))] motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:bg-[color-mix(in_oklab,var(--iu-accent)_94%,var(--iu-foreground))]"
+                >
+                  Promote<kbd
+                    class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] bg-(--iu-accent-foreground)/12 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-accent-foreground)"
+                    >⌘↵</kbd
+                  >
+                </button>
+              </div>
+            </div>
+            <div
+              class="flex flex-col gap-4 border-t border-dashed border-(--iu-foreground)/12 px-4 py-[calc(16px*var(--iu-density))] @xl:border-t-0 @xl:border-l @xl:border-solid @2xl:px-5"
+            >
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">02 · Secondary</span
+                ><span class="font-mono text-[10px] text-(--iu-muted)">h-9 · 20% line</span>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  class="relative inline-flex h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/20 bg-(--iu-foreground)/[0.04] px-3.5 text-[13px] font-medium whitespace-nowrap text-(--iu-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:border-(--iu-foreground)/35 data-[force-state=hover]:bg-(--iu-foreground)/8 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:border-(--iu-foreground)/35 pointer-fine:enabled:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M15 3h6v6"></path>
+                    <path d="M10 14 21 3"></path>
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path></svg
+                  >Visit
+                </button>
+              </div>
+            </div>
+            <div
+              class="flex flex-col gap-4 border-t border-dashed border-(--iu-foreground)/12 px-4 py-[calc(16px*var(--iu-density))] @2xl:px-5 @4xl:border-t-0 @4xl:border-l @4xl:border-solid"
+            >
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">03 · Ghost</span
+                ><span class="font-mono text-[10px] text-(--iu-muted)">h-9 · no fill</span>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  class="relative inline-flex h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] px-3.5 text-[13px] font-medium whitespace-nowrap text-(--iu-muted) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:opacity-60 data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-(--iu-foreground)/8 data-[force-state=hover]:text-(--iu-foreground) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/8 pointer-fine:enabled:hover:text-(--iu-foreground)"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                    <path d="M21 3v5h-5"></path></svg
+                  >Redeploy<kbd
+                    class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)"
+                    >R</kbd
+                  >
+                </button>
+              </div>
+            </div>
+            <div
+              class="flex flex-col gap-4 border-t border-dashed border-(--iu-foreground)/12 px-4 py-[calc(16px*var(--iu-density))] @xl:border-l @xl:border-solid @2xl:px-5 @4xl:border-t-0 @4xl:border-l @4xl:border-solid"
+            >
+              <div class="flex items-baseline justify-between gap-2">
+                <span class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">04 · Danger</span
+                ><span class="font-mono text-[10px] text-(--iu-muted)">h-9 · semantic</span>
+              </div>
+              <div>
+                <button
+                  type="button"
+                  class="relative inline-flex h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-red-700/50 px-3.5 text-[13px] font-medium whitespace-nowrap text-red-700 transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-red-600/15 disabled:cursor-not-allowed disabled:border-dashed disabled:opacity-60 data-[force-state=active]:translate-y-px data-[force-state=active]:bg-red-600/15 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:bg-red-600/10 motion-reduce:transition-none dark:border-red-400/50 dark:text-red-400 dark:data-[force-state=hover]:bg-red-400/10 pointer-coarse:h-10 pointer-fine:enabled:hover:bg-red-600/10 dark:pointer-fine:enabled:hover:bg-red-400/10"
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                    <path d="M3 3v5h5"></path></svg
+                  >Roll back to v214
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-dashed border-(--iu-foreground)/15 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--iu-foreground)_5%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklab,var(--iu-foreground)_5%,transparent)_1px,transparent_1px)] [background-size:16px_16px] px-4 py-[calc(16px*var(--iu-density))] @2xl:px-5"
+          >
+            <div class="flex items-center gap-4">
+              <span class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">05 · Icon</span
+              ><span class="inline-flex items-end gap-2"
+                ><span class="inline-flex flex-col items-center gap-1"
+                  ><span class="relative inline-flex"
+                    ><button
+                      type="button"
+                      data-copy-size
+                      data-tip
+                      aria-label="Copy URL, 24px"
+                      class="relative inline-flex size-6 h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/20 bg-(--iu-foreground)/[0.04] text-[13px] font-medium whitespace-nowrap text-(--iu-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:border-(--iu-foreground)/35 data-[force-state=hover]:bg-(--iu-foreground)/8 motion-reduce:transition-none pointer-coarse:size-10 pointer-coarse:h-10 pointer-fine:enabled:hover:border-(--iu-foreground)/35 pointer-fine:enabled:hover:bg-(--iu-foreground)/8"
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                      </svg></button></span
+                  ><span aria-hidden="true" class="font-mono text-[10px] text-(--iu-muted) tabular-nums">24</span></span
+                ><span class="inline-flex flex-col items-center gap-1"
+                  ><span class="relative inline-flex"
+                    ><button
+                      type="button"
+                      data-copy-size
+                      data-tip
+                      aria-label="Copy URL, 32px"
+                      class="relative inline-flex size-8 h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/20 bg-(--iu-foreground)/[0.04] text-[13px] font-medium whitespace-nowrap text-(--iu-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:border-(--iu-foreground)/35 data-[force-state=hover]:bg-(--iu-foreground)/8 motion-reduce:transition-none pointer-coarse:size-10 pointer-coarse:h-10 pointer-fine:enabled:hover:border-(--iu-foreground)/35 pointer-fine:enabled:hover:bg-(--iu-foreground)/8"
+                    >
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                      </svg></button></span
+                  ><span aria-hidden="true" class="font-mono text-[10px] text-(--iu-muted) tabular-nums">32</span></span
+                ><span class="inline-flex flex-col items-center gap-1"
+                  ><span class="relative inline-flex"
+                    ><button
+                      type="button"
+                      data-copy-size
+                      data-tip
+                      aria-label="Copy URL, 40px"
+                      class="relative inline-flex size-10 h-9 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/20 bg-(--iu-foreground)/[0.04] text-[13px] font-medium whitespace-nowrap text-(--iu-foreground) transition-[background-color,border-color,color,translate] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] select-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) enabled:active:translate-y-px enabled:active:bg-(--iu-foreground)/12 disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) data-[force-state=active]:translate-y-px data-[force-state=active]:bg-(--iu-foreground)/12 data-[force-state=focus]:outline-2 data-[force-state=focus]:outline-offset-2 data-[force-state=focus]:outline-(--iu-accent) data-[force-state=hover]:border-(--iu-foreground)/35 data-[force-state=hover]:bg-(--iu-foreground)/8 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:border-(--iu-foreground)/35 pointer-fine:enabled:hover:bg-(--iu-foreground)/8"
+                    >
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+                      </svg></button></span
+                  ><span aria-hidden="true" class="font-mono text-[10px] text-(--iu-muted) tabular-nums">40</span></span
+                ></span
+              >
+            </div>
+            <dl class="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <dt class="font-mono text-[10px] tracking-[0.08em] text-(--iu-muted) uppercase">06 · Keys</dt>
+              <dd class="inline-flex items-center gap-2 text-[12px] text-(--iu-muted)">
+                <kbd
+                  class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)"
+                  >⌘↵</kbd
+                >Deploy
+              </dd>
+              <dd class="inline-flex items-center gap-2 text-[12px] text-(--iu-muted)">
+                <kbd
+                  class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)"
+                  >⌥↵</kbd
+                >Preview
+              </dd>
+              <dd class="inline-flex items-center gap-2 text-[12px] text-(--iu-muted)">
+                <kbd
+                  class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)"
+                  >C</kbd
+                >Copy URL
+              </dd>
+              <dd class="inline-flex items-center gap-2 text-[12px] text-(--iu-muted)">
+                <kbd
+                  class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)"
+                  >R</kbd
+                >Redeploy
+              </dd>
+            </dl>
+          </div>
+        </section>
+        <!-- iloveui:component:end -->
+      </div>
+    </div>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-forgeline]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var announcer = root.querySelector("[data-announce]");
+        var deployButton = root.querySelector("[data-deploy]");
+        var idleLabel = deployButton.querySelector(".relative.grid > span");
+        var trigger = root.querySelector("[data-menu-trigger]");
+        var split = trigger.parentElement;
+        var status = "idle";
+        var ICON = {
+          check: '<path d="M20 6 9 17l-5-5"></path>',
+          loader:
+            '<path d="M12 2v4"></path><path d="m16.2 7.8 2.9-2.9"></path><path d="M18 12h4"></path><path d="m16.2 16.2 2.9 2.9"></path><path d="M12 18v4"></path><path d="m4.9 19.1 2.9-2.9"></path><path d="M2 12h4"></path><path d="m4.9 4.9 2.9 2.9"></path>',
+          rocket:
+            '<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>',
+          undo: '<path d="M9 14 4 9l5-5"></path><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"></path>',
+        };
+        function svg(name, size, stroke, extra) {
+          return (
+            '<svg aria-hidden="true" class="' +
+            (extra || "") +
+            '" width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round">' +
+            ICON[name] +
+            "</svg>"
+          );
+        }
+        function announce(text) {
+          announcer.textContent = text;
+        }
+
+        // Segmented view switch: a radio group with roving tabindex and a sliding thumb.
+        var radios = Array.prototype.slice.call(root.querySelectorAll('[role="radio"]'));
+        var thumb = radios[0].querySelector("span[aria-hidden]");
+        function selectView(index, focus) {
+          radios.forEach(function (radio, i) {
+            var on = i === index;
+            radio.setAttribute("aria-checked", String(on));
+            radio.tabIndex = on ? 0 : -1;
+            radio.classList.toggle("text-(--iu-foreground)", on);
+            radio.classList.toggle("text-(--iu-muted)", !on);
+          });
+          var from = thumb.getBoundingClientRect();
+          radios[index].insertBefore(thumb, radios[index].firstChild);
+          var to = thumb.getBoundingClientRect();
+          if (!reduce && from.width) {
+            thumb.animate(
+              [
+                { transform: "translateX(" + (from.left - to.left) + "px)", width: from.width + "px" },
+                { transform: "none", width: to.width + "px" },
+              ],
+              {
+                duration: 160,
+                easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+              },
+            );
+          }
+          if (focus) radios[index].focus();
+        }
+        radios.forEach(function (radio, index) {
+          radio.addEventListener("click", function () {
+            selectView(index, false);
+          });
+          radio.addEventListener("keydown", function (event) {
+            var next = index;
+            if (event.key === "ArrowRight" || event.key === "ArrowDown") next = (index + 1) % radios.length;
+            else if (event.key === "ArrowLeft" || event.key === "ArrowUp")
+              next = (index - 1 + radios.length) % radios.length;
+            else if (event.key === "Home") next = 0;
+            else if (event.key === "End") next = radios.length - 1;
+            else return;
+            event.preventDefault();
+            selectView(next, true);
+          });
+        });
+        root.querySelector("[data-build-log]").addEventListener("click", function () {
+          selectView(0, false);
+        });
+
+        // Tooltips: 400ms on first open, instant within 500ms of the last one closing.
+        var tipTimer,
+          lastClosed = 0,
+          openTip = null;
+        function hideTip() {
+          clearTimeout(tipTimer);
+          if (openTip) {
+            openTip.tip.remove();
+            openTip.button.removeAttribute("aria-describedby");
+            openTip = null;
+            lastClosed = Date.now();
+          }
+        }
+        function showTip(button) {
+          clearTimeout(tipTimer);
+          function open() {
+            hideTip();
+            var tip = document.createElement("span");
+            tip.id = "forgeline-tip";
+            tip.setAttribute("role", "tooltip");
+            tip.className =
+              "pointer-events-none absolute bottom-[calc(100%+8px)] left-1/2 z-30 flex origin-bottom -translate-x-1/2 items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/15 bg-(--iu-surface) px-2 py-1 text-[12px] whitespace-nowrap text-(--iu-foreground) shadow-lg dark:shadow-none";
+            tip.textContent = button.getAttribute("aria-label");
+            var key = button.getAttribute("aria-keyshortcuts");
+            if (key) {
+              var kbd = document.createElement("kbd");
+              kbd.className =
+                "inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)";
+              kbd.textContent = key;
+              tip.appendChild(kbd);
+            }
+            button.parentElement.appendChild(tip);
+            button.setAttribute("aria-describedby", tip.id);
+            openTip = { tip: tip, button: button };
+          }
+          if (Date.now() - lastClosed < 500) open();
+          else tipTimer = setTimeout(open, 400);
+        }
+        root.querySelectorAll("[data-tip]").forEach(function (button) {
+          button.addEventListener("pointerenter", function (event) {
+            if (event.pointerType === "mouse") showTip(button);
+          });
+          button.addEventListener("pointerleave", hideTip);
+          button.addEventListener("focus", function () {
+            if (button.matches(":focus-visible")) showTip(button);
+          });
+          button.addEventListener("blur", hideTip);
+        });
+
+        // Copy URL: the icon becomes a check for 1.4s.
+        var copyButton = root.querySelector("[data-copy]");
+        var copyIcon = copyButton.innerHTML;
+        var copyTimer;
+        function copyUrl() {
+          copyButton.innerHTML = svg("check", 16, 1.5);
+          copyButton.setAttribute("aria-label", "Copied");
+          announce("Deployment URL copied");
+          clearTimeout(copyTimer);
+          copyTimer = setTimeout(function () {
+            copyButton.innerHTML = copyIcon;
+            copyButton.setAttribute("aria-label", "Copy URL");
+          }, 1400);
+        }
+        copyButton.addEventListener("click", copyUrl);
+        root.querySelectorAll("[data-copy-size]").forEach(function (b) {
+          b.addEventListener("click", copyUrl);
+        });
+
+        // Deploy: the label stays in the layout (invisible) so the width never changes; an elapsed timer is honest progress.
+        var statusDot = root.querySelector("[data-status-dot]");
+        var statusText = root.querySelector("[data-status-text]");
+        var timer, settle;
+        function setStatus(next, text) {
+          status = next;
+          var existing = deployButton.querySelector("[data-busy]");
+          if (existing) existing.remove();
+          idleLabel.classList.toggle("invisible", next !== "idle");
+          deployButton.classList.toggle("cursor-progress", next === "loading");
+          trigger.disabled = next === "loading";
+          if (next === "loading") deployButton.setAttribute("aria-disabled", "true");
+          else deployButton.removeAttribute("aria-disabled");
+          statusDot.className =
+            "size-2 rounded-full " +
+            (next === "loading" ? "bg-amber-500 dark:bg-amber-400" : "bg-emerald-600 dark:bg-emerald-400");
+          statusText.textContent = next === "loading" ? "Deploying" : "Ready";
+          if (next === "idle") return;
+          var busy = document.createElement("span");
+          busy.setAttribute("data-busy", "");
+          busy.className =
+            "col-start-1 row-start-1 inline-flex items-center justify-center gap-2 font-mono text-[12px] tabular-nums";
+          busy.innerHTML =
+            (next === "loading"
+              ? svg("loader", 14, 1.75, "animate-spin [animation-duration:1.2s] motion-reduce:animate-none")
+              : svg("check", 14, 2)) +
+            "<span data-busy-text>" +
+            text +
+            "</span>";
+          idleLabel.parentElement.appendChild(busy);
+        }
+        function deploy(target) {
+          if (status !== "idle") return;
+          announce("Deploying atlas-web to " + target);
+          var started = Date.now();
+          setStatus("loading", "Building 0:00");
+          var text = deployButton.querySelector("[data-busy-text]");
+          timer = setInterval(function () {
+            var s = Math.floor((Date.now() - started) / 1000);
+            text.textContent = "Building " + Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+          }, 250);
+          // Replace this timeout with your deploy request.
+          settle = setTimeout(function () {
+            clearInterval(timer);
+            var seconds = Math.max(1, Math.round((Date.now() - started) / 1000));
+            setStatus("success", "Live in " + seconds + "s");
+            announce("Deployed to " + target + " in " + seconds + " seconds");
+            setTimeout(function () {
+              setStatus("idle");
+            }, 2400);
+          }, 2800);
+        }
+        deployButton.addEventListener("click", function () {
+          deploy("production");
+        });
+        root.querySelector("[data-deploy-canary]").addEventListener("click", function () {
+          deploy("canary");
+        });
+
+        // Split menu (WAI-ARIA menu button).
+        var menu = null;
+        var ITEMS = [
+          ["production", "Deploy to production", "⌘↵"],
+          ["preview", "Deploy to preview", "⌥↵"],
+          ["canary", "Promote canary to 100%", ""],
+          ["rollback", "Roll back to v214", ""],
+        ];
+        function items() {
+          return menu ? Array.prototype.slice.call(menu.querySelectorAll('[role="menuitem"]')) : [];
+        }
+        function openMenu(which) {
+          if (menu) return;
+          menu = document.createElement("div");
+          menu.id = "forgeline-menu";
+          menu.setAttribute("role", "menu");
+          menu.setAttribute("aria-label", "Deploy options");
+          menu.className =
+            "absolute top-[calc(100%+6px)] right-0 z-30 w-64 max-w-[calc(100vw-2rem)] origin-top-right rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/15 bg-(--iu-surface) p-1 shadow-lg dark:shadow-none";
+          menu.innerHTML = ITEMS.map(function (item) {
+            var danger = item[0] === "rollback";
+            return (
+              (danger
+                ? '<div role="separator" class="my-1 border-t border-dashed border-(--iu-foreground)/15"></div>'
+                : "") +
+              '<button type="button" role="menuitem" tabindex="-1" data-item="' +
+              item[0] +
+              '" class="flex h-9 w-full items-center gap-2 rounded-[min(var(--iu-radius),6px)] px-2.5 text-left text-[13px] outline-none focus-visible:bg-(--iu-foreground)/8 pointer-fine:hover:bg-(--iu-foreground)/8 pointer-coarse:h-11 ' +
+              (danger ? "text-red-700 dark:text-red-400" : "text-(--iu-foreground)") +
+              '">' +
+              (danger ? svg("undo", 16, 1.5) : svg("rocket", 16, 1.5, "text-(--iu-muted)")) +
+              '<span class="flex-1">' +
+              item[1] +
+              "</span>" +
+              (item[2]
+                ? '<kbd class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/15 px-1 font-mono text-[11px] leading-none font-medium text-(--iu-muted)">' +
+                  item[2] +
+                  "</kbd>"
+                : "") +
+              "</button>"
+            );
+          }).join("");
+          split.appendChild(menu);
+          trigger.setAttribute("aria-expanded", "true");
+          trigger.setAttribute("aria-controls", menu.id);
+          trigger.querySelector("svg").classList.add("rotate-180");
+          if (!reduce)
+            menu.animate(
+              [
+                { opacity: 0, transform: "translateY(-4px) scale(0.98)" },
+                { opacity: 1, transform: "none" },
+              ],
+              { duration: 160, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+            );
+          var list = items();
+          (which === "last" ? list[list.length - 1] : list[0]).focus();
+          menu.addEventListener("keydown", onMenuKey);
+          menu.addEventListener("click", function (event) {
+            var item = event.target.closest("[data-item]");
+            if (!item) return;
+            var id = item.getAttribute("data-item");
+            closeMenu(true);
+            if (id === "rollback") announce("Rolling back to v214");
+            else deploy(id);
+          });
+        }
+        function closeMenu(returnFocus) {
+          if (!menu) return;
+          menu.remove();
+          menu = null;
+          trigger.setAttribute("aria-expanded", "false");
+          trigger.querySelector("svg").classList.remove("rotate-180");
+          if (returnFocus) trigger.focus();
+        }
+        function onMenuKey(event) {
+          var list = items();
+          var index = list.indexOf(document.activeElement);
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            list[(index + (event.key === "ArrowDown" ? 1 : -1) + list.length) % list.length].focus();
+          } else if (event.key === "Home" || event.key === "End") {
+            event.preventDefault();
+            (event.key === "Home" ? list[0] : list[list.length - 1]).focus();
+          } else if (event.key === "Escape") {
+            event.preventDefault();
+            closeMenu(true);
+          } else if (event.key === "Tab") closeMenu(false);
+        }
+        trigger.addEventListener("click", function () {
+          if (menu) closeMenu(false);
+          else openMenu("first");
+        });
+        trigger.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openMenu("first");
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            openMenu("last");
+          }
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (menu && !menu.contains(event.target) && !trigger.contains(event.target)) closeMenu(false);
+        });
+
+        // Shortcuts.
+        window.addEventListener("keydown", function (event) {
+          if (event.target.closest && event.target.closest("input, textarea, select, [contenteditable='true']")) return;
+          if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
+            event.preventDefault();
+            deploy("production");
+          } else if (event.key === "Enter" && event.altKey) {
+            event.preventDefault();
+            deploy("preview");
+          } else if (!event.metaKey && !event.ctrlKey && !event.altKey && (event.key === "c" || event.key === "C")) {
+            copyUrl();
+          } else if (!event.metaKey && !event.ctrlKey && !event.altKey && (event.key === "r" || event.key === "R")) {
+            announce("Redeploying atlas-web");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

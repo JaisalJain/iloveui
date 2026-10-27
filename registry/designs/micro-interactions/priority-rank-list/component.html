@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Priority rank list · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <main class="flex min-h-dvh w-full items-center justify-center px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full max-w-xl">
+        <!-- iloveui:component:start -->
+        <section
+          data-rank-list
+          aria-labelledby="prl-title"
+          class="w-full font-(family-name:--iu-font) text-(--iu-foreground)"
+        >
+          <header class="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+            <div class="min-w-0">
+              <span
+                class="inline-block -rotate-3 rounded-full border-2 border-(--iu-foreground) bg-(--iu-accent) px-3 py-1 text-[11px] font-extrabold tracking-[0.06em] text-(--iu-accent-foreground) uppercase"
+                >Sprout · Q1 2026</span
+              >
+              <h2
+                id="prl-title"
+                class="mt-3 text-[28px] leading-[1.05] font-extrabold tracking-[-0.035em] text-balance"
+              >
+                Rank what ships first
+              </h2>
+            </div>
+            <div class="w-full sm:w-56">
+              <div class="flex items-baseline justify-between gap-3 text-[13px]">
+                <span class="font-semibold">Top 3 capacity</span>
+                <span class="font-bold tabular-nums"><span data-used>10</span> / 10 wk</span>
+              </div>
+              <div
+                data-meter
+                role="meter"
+                aria-label="Top 3 capacity"
+                aria-valuemin="0"
+                aria-valuemax="10"
+                aria-valuenow="10"
+                aria-valuetext="10 of 10 weeks"
+                class="mt-2 h-3 overflow-hidden rounded-full border-2 border-(--iu-foreground) bg-(--iu-background)"
+              >
+                <div
+                  data-meter-fill
+                  class="h-full origin-left bg-(--iu-accent) transition-transform duration-300 ease-[cubic-bezier(0.2,0.8,0.2,1)] data-over:bg-amber-400 motion-reduce:transition-none dark:data-over:bg-amber-300"
+                ></div>
+              </div>
+              <p data-capacity-note class="mt-1.5 flex min-h-5 items-center gap-1.5 text-xs text-(--iu-muted)">
+                <span data-over-note hidden class="inline-flex items-center gap-1.5">
+                  <svg
+                    aria-hidden="true"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="shrink-0 text-amber-700 dark:text-amber-300"
+                  >
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                    <path d="M12 9v4" />
+                    <path d="M12 17h.01" />
+                  </svg>
+                  <span class="font-semibold text-amber-800 dark:text-amber-200"
+                    >Over by <span data-over>0</span> wk.</span
+                  >
+                  Move something down.
+                </span>
+                <span data-free-note>Exactly full. Drag to re-rank.</span>
+              </p>
+            </div>
+          </header>
+
+          <ul data-list aria-labelledby="prl-title" class="mt-6 flex flex-col gap-[calc(14px*var(--iu-density))]">
+            <li
+              data-item="offline"
+              data-title="Offline mode for field notes"
+              data-weeks="5"
+              class="relative list-none outline-none data-lifted:z-10"
+            >
+              <div
+                data-card
+                class="relative flex items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) py-[calc(12px*var(--iu-density))] pr-2 pl-3 shadow-[3px_3px_0_0_var(--iu-foreground)] transition-shadow duration-150 data-lifted:shadow-[6px_8px_0_0_color-mix(in_oklab,var(--iu-accent)_55%,transparent)] motion-reduce:transition-none sm:gap-4 sm:pl-4"
+              >
+                <span
+                  data-rank
+                  data-ship
+                  aria-hidden="true"
+                  class="inline-flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-background) text-lg font-extrabold tracking-[-0.03em] text-(--iu-foreground) tabular-nums data-ship:bg-(--iu-accent) data-ship:text-(--iu-accent-foreground)"
+                  >1</span
+                >
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-[15px] leading-snug font-bold tracking-[-0.01em]"
+                    >Offline mode for field notes</span
+                  >
+                  <span class="mt-1 flex items-center gap-2 text-[13px] text-(--iu-muted)">
+                    <span
+                      class="inline-flex size-5 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] text-[9px] font-bold text-(--iu-foreground)"
+                      >ID</span
+                    >
+                    <span class="truncate">Inês Duarte</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="shrink-0 font-semibold text-(--iu-foreground) tabular-nums">5 wk</span>
+                  </span>
+                </span>
+                <span
+                  data-ships
+                  class="pointer-events-none absolute -top-3 right-14 -rotate-6 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.06em] text-(--iu-foreground) uppercase transition-transform duration-200 motion-reduce:transition-none"
+                  >Ships</span
+                >
+                <button
+                  type="button"
+                  data-handle
+                  aria-label="Move Offline mode for field notes, rank 1 of 6"
+                  aria-describedby="prl-instructions"
+                  aria-pressed="false"
+                  style="touch-action: none"
+                  class="inline-flex size-10 shrink-0 cursor-grab items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-pressed:bg-(--iu-foreground) aria-pressed:text-(--iu-background) pointer-fine:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="9" cy="5" r="1" />
+                    <circle cx="9" cy="19" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="15" cy="5" r="1" />
+                    <circle cx="15" cy="19" r="1" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-item="folders"
+              data-title="Shared folders"
+              data-weeks="3"
+              class="relative list-none outline-none data-lifted:z-10"
+            >
+              <div
+                data-card
+                class="relative flex items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) py-[calc(12px*var(--iu-density))] pr-2 pl-3 shadow-[3px_3px_0_0_var(--iu-foreground)] transition-shadow duration-150 data-lifted:shadow-[6px_8px_0_0_color-mix(in_oklab,var(--iu-accent)_55%,transparent)] motion-reduce:transition-none sm:gap-4 sm:pl-4"
+              >
+                <span
+                  data-rank
+                  data-ship
+                  aria-hidden="true"
+                  class="inline-flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-background) text-lg font-extrabold tracking-[-0.03em] text-(--iu-foreground) tabular-nums data-ship:bg-(--iu-accent) data-ship:text-(--iu-accent-foreground)"
+                  >2</span
+                >
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-[15px] leading-snug font-bold tracking-[-0.01em]"
+                    >Shared folders</span
+                  >
+                  <span class="mt-1 flex items-center gap-2 text-[13px] text-(--iu-muted)">
+                    <span
+                      class="inline-flex size-5 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] text-[9px] font-bold text-(--iu-foreground)"
+                      >KM</span
+                    >
+                    <span class="truncate">Kwame Mensah</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="shrink-0 font-semibold text-(--iu-foreground) tabular-nums">3 wk</span>
+                  </span>
+                </span>
+                <span
+                  data-ships
+                  class="pointer-events-none absolute -top-3 right-14 -rotate-6 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.06em] text-(--iu-foreground) uppercase transition-transform duration-200 motion-reduce:transition-none"
+                  >Ships</span
+                >
+                <button
+                  type="button"
+                  data-handle
+                  aria-label="Move Shared folders, rank 2 of 6"
+                  aria-describedby="prl-instructions"
+                  aria-pressed="false"
+                  style="touch-action: none"
+                  class="inline-flex size-10 shrink-0 cursor-grab items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-pressed:bg-(--iu-foreground) aria-pressed:text-(--iu-background) pointer-fine:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="9" cy="5" r="1" />
+                    <circle cx="9" cy="19" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="15" cy="5" r="1" />
+                    <circle cx="15" cy="19" r="1" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-item="search"
+              data-title="Faster search on Android"
+              data-weeks="2"
+              class="relative list-none outline-none data-lifted:z-10"
+            >
+              <div
+                data-card
+                class="relative flex items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) py-[calc(12px*var(--iu-density))] pr-2 pl-3 shadow-[3px_3px_0_0_var(--iu-foreground)] transition-shadow duration-150 data-lifted:shadow-[6px_8px_0_0_color-mix(in_oklab,var(--iu-accent)_55%,transparent)] motion-reduce:transition-none sm:gap-4 sm:pl-4"
+              >
+                <span
+                  data-rank
+                  data-ship
+                  aria-hidden="true"
+                  class="inline-flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-background) text-lg font-extrabold tracking-[-0.03em] text-(--iu-foreground) tabular-nums data-ship:bg-(--iu-accent) data-ship:text-(--iu-accent-foreground)"
+                  >3</span
+                >
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-[15px] leading-snug font-bold tracking-[-0.01em]"
+                    >Faster search on Android</span
+                  >
+                  <span class="mt-1 flex items-center gap-2 text-[13px] text-(--iu-muted)">
+                    <span
+                      class="inline-flex size-5 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] text-[9px] font-bold text-(--iu-foreground)"
+                      >HS</span
+                    >
+                    <span class="truncate">Hana Sato</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="shrink-0 font-semibold text-(--iu-foreground) tabular-nums">2 wk</span>
+                  </span>
+                </span>
+                <span
+                  data-ships
+                  class="pointer-events-none absolute -top-3 right-14 -rotate-6 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.06em] text-(--iu-foreground) uppercase transition-transform duration-200 motion-reduce:transition-none"
+                  >Ships</span
+                >
+                <button
+                  type="button"
+                  data-handle
+                  aria-label="Move Faster search on Android, rank 3 of 6"
+                  aria-describedby="prl-instructions"
+                  aria-pressed="false"
+                  style="touch-action: none"
+                  class="inline-flex size-10 shrink-0 cursor-grab items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-pressed:bg-(--iu-foreground) aria-pressed:text-(--iu-background) pointer-fine:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="9" cy="5" r="1" />
+                    <circle cx="9" cy="19" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="15" cy="5" r="1" />
+                    <circle cx="15" cy="19" r="1" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-item="calendar"
+              data-title="Calendar sync"
+              data-weeks="4"
+              class="relative list-none outline-none data-lifted:z-10"
+            >
+              <div
+                data-card
+                class="relative flex items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) py-[calc(12px*var(--iu-density))] pr-2 pl-3 shadow-[3px_3px_0_0_var(--iu-foreground)] transition-shadow duration-150 data-lifted:shadow-[6px_8px_0_0_color-mix(in_oklab,var(--iu-accent)_55%,transparent)] motion-reduce:transition-none sm:gap-4 sm:pl-4"
+              >
+                <span
+                  data-rank
+                  aria-hidden="true"
+                  class="inline-flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-background) text-lg font-extrabold tracking-[-0.03em] text-(--iu-foreground) tabular-nums data-ship:bg-(--iu-accent) data-ship:text-(--iu-accent-foreground)"
+                  >4</span
+                >
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-[15px] leading-snug font-bold tracking-[-0.01em]"
+                    >Calendar sync</span
+                  >
+                  <span class="mt-1 flex items-center gap-2 text-[13px] text-(--iu-muted)">
+                    <span
+                      class="inline-flex size-5 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] text-[9px] font-bold text-(--iu-foreground)"
+                      >RK</span
+                    >
+                    <span class="truncate">Ravi Kulkarni</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="shrink-0 font-semibold text-(--iu-foreground) tabular-nums">4 wk</span>
+                  </span>
+                </span>
+                <span
+                  data-ships
+                  hidden
+                  class="pointer-events-none absolute -top-3 right-14 -rotate-6 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.06em] text-(--iu-foreground) uppercase transition-transform duration-200 motion-reduce:transition-none"
+                  >Ships</span
+                >
+                <button
+                  type="button"
+                  data-handle
+                  aria-label="Move Calendar sync, rank 4 of 6"
+                  aria-describedby="prl-instructions"
+                  aria-pressed="false"
+                  style="touch-action: none"
+                  class="inline-flex size-10 shrink-0 cursor-grab items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-pressed:bg-(--iu-foreground) aria-pressed:text-(--iu-background) pointer-fine:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="9" cy="5" r="1" />
+                    <circle cx="9" cy="19" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="15" cy="5" r="1" />
+                    <circle cx="15" cy="19" r="1" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-item="handwriting"
+              data-title="Handwriting to text"
+              data-weeks="6"
+              class="relative list-none outline-none data-lifted:z-10"
+            >
+              <div
+                data-card
+                class="relative flex items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) py-[calc(12px*var(--iu-density))] pr-2 pl-3 shadow-[3px_3px_0_0_var(--iu-foreground)] transition-shadow duration-150 data-lifted:shadow-[6px_8px_0_0_color-mix(in_oklab,var(--iu-accent)_55%,transparent)] motion-reduce:transition-none sm:gap-4 sm:pl-4"
+              >
+                <span
+                  data-rank
+                  aria-hidden="true"
+                  class="inline-flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-background) text-lg font-extrabold tracking-[-0.03em] text-(--iu-foreground) tabular-nums data-ship:bg-(--iu-accent) data-ship:text-(--iu-accent-foreground)"
+                  >5</span
+                >
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-[15px] leading-snug font-bold tracking-[-0.01em]"
+                    >Handwriting to text</span
+                  >
+                  <span class="mt-1 flex items-center gap-2 text-[13px] text-(--iu-muted)">
+                    <span
+                      class="inline-flex size-5 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] text-[9px] font-bold text-(--iu-foreground)"
+                      >LV</span
+                    >
+                    <span class="truncate">Lena Vogt</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="shrink-0 font-semibold text-(--iu-foreground) tabular-nums">6 wk</span>
+                  </span>
+                </span>
+                <span
+                  data-ships
+                  hidden
+                  class="pointer-events-none absolute -top-3 right-14 -rotate-6 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.06em] text-(--iu-foreground) uppercase transition-transform duration-200 motion-reduce:transition-none"
+                  >Ships</span
+                >
+                <button
+                  type="button"
+                  data-handle
+                  aria-label="Move Handwriting to text, rank 5 of 6"
+                  aria-describedby="prl-instructions"
+                  aria-pressed="false"
+                  style="touch-action: none"
+                  class="inline-flex size-10 shrink-0 cursor-grab items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-pressed:bg-(--iu-foreground) aria-pressed:text-(--iu-background) pointer-fine:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="9" cy="5" r="1" />
+                    <circle cx="9" cy="19" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="15" cy="5" r="1" />
+                    <circle cx="15" cy="19" r="1" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+            <li
+              data-item="widgets"
+              data-title="Home screen widgets"
+              data-weeks="1"
+              class="relative list-none outline-none data-lifted:z-10"
+            >
+              <div
+                data-card
+                class="relative flex items-center gap-3 rounded-[max(var(--iu-radius),16px)] border-2 border-(--iu-foreground) bg-(--iu-surface) py-[calc(12px*var(--iu-density))] pr-2 pl-3 shadow-[3px_3px_0_0_var(--iu-foreground)] transition-shadow duration-150 data-lifted:shadow-[6px_8px_0_0_color-mix(in_oklab,var(--iu-accent)_55%,transparent)] motion-reduce:transition-none sm:gap-4 sm:pl-4"
+              >
+                <span
+                  data-rank
+                  aria-hidden="true"
+                  class="inline-flex size-11 shrink-0 items-center justify-center rounded-full border-2 border-(--iu-foreground) bg-(--iu-background) text-lg font-extrabold tracking-[-0.03em] text-(--iu-foreground) tabular-nums data-ship:bg-(--iu-accent) data-ship:text-(--iu-accent-foreground)"
+                  >6</span
+                >
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-[15px] leading-snug font-bold tracking-[-0.01em]"
+                    >Home screen widgets</span
+                  >
+                  <span class="mt-1 flex items-center gap-2 text-[13px] text-(--iu-muted)">
+                    <span
+                      class="inline-flex size-5 items-center justify-center rounded-full bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] text-[9px] font-bold text-(--iu-foreground)"
+                      >TM</span
+                    >
+                    <span class="truncate">Theo Marsh</span>
+                    <span aria-hidden="true">·</span>
+                    <span class="shrink-0 font-semibold text-(--iu-foreground) tabular-nums">1 wk</span>
+                  </span>
+                </span>
+                <span
+                  data-ships
+                  hidden
+                  class="pointer-events-none absolute -top-3 right-14 -rotate-6 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-2 py-0.5 text-[10px] font-extrabold tracking-[0.06em] text-(--iu-foreground) uppercase transition-transform duration-200 motion-reduce:transition-none"
+                  >Ships</span
+                >
+                <button
+                  type="button"
+                  data-handle
+                  aria-label="Move Home screen widgets, rank 6 of 6"
+                  aria-describedby="prl-instructions"
+                  aria-pressed="false"
+                  style="touch-action: none"
+                  class="inline-flex size-10 shrink-0 cursor-grab items-center justify-center rounded-full text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-60 aria-disabled:cursor-not-allowed aria-pressed:bg-(--iu-foreground) aria-pressed:text-(--iu-background) pointer-fine:hover:bg-(--iu-foreground)/8"
+                >
+                  <svg
+                    aria-hidden="true"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="9" cy="12" r="1" />
+                    <circle cx="9" cy="5" r="1" />
+                    <circle cx="9" cy="19" r="1" />
+                    <circle cx="15" cy="12" r="1" />
+                    <circle cx="15" cy="5" r="1" />
+                    <circle cx="15" cy="19" r="1" />
+                  </svg>
+                </button>
+              </div>
+            </li>
+          </ul>
+
+          <div class="mt-5 flex min-h-11 flex-wrap items-center justify-between gap-3">
+            <p id="prl-instructions" class="text-xs text-(--iu-muted)">
+              Drag a handle, or focus it and press Space, then the arrow keys.
+            </p>
+            <span
+              data-status="saving"
+              hidden
+              class="inline-flex items-center gap-2 rounded-full border-2 border-(--iu-foreground) px-3 py-1 text-xs font-bold"
+            >
+              <svg
+                aria-hidden="true"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="animate-spin motion-reduce:animate-none"
+              >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+              </svg>
+              Saving order…
+            </span>
+            <span
+              data-status="saved"
+              hidden
+              class="inline-flex items-center gap-2 rounded-full border-2 border-(--iu-foreground) bg-[color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))] px-3 py-1 text-xs font-bold"
+            >
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M4 12.5 9.5 18 20 6"
+                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Order saved
+            </span>
+          </div>
+
+          <p data-announce aria-live="polite" class="sr-only"></p>
+        </section>
+        <!-- iloveui:component:end -->
+      </div>
+    </main>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-rank-list]");
+        if (!root) return;
+        var list = root.querySelector("[data-list]");
+        var announcer = root.querySelector("[data-announce]");
+        var instructions = root.querySelector("#prl-instructions");
+        var meter = root.querySelector("[data-meter]");
+        var meterFill = root.querySelector("[data-meter-fill]");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        var CUTOFF = 3;
+        var CAPACITY = 10;
+        var SAVED_MS = 2400;
+        var IDLE_TEXT = "Drag a handle, or focus it and press Space, then the arrow keys.";
+
+        var grabbed = null; // { item, order } while picked up with the keyboard
+        var saveTimer = 0;
+        var saving = false;
+
+        function items() {
+          return Array.prototype.slice.call(list.querySelectorAll("[data-item]"));
+        }
+        function ids() {
+          return items().map(function (item) {
+            return item.dataset.item;
+          });
+        }
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        function buzz(ms) {
+          if (typeof navigator.vibrate === "function") navigator.vibrate(ms);
+        }
+
+        // Ranks, "ships" stickers, handle labels and the capacity meter follow the order.
+        function render() {
+          var all = items();
+          var used = 0;
+          all.forEach(function (item, index) {
+            var rank = item.querySelector("[data-rank]");
+            var ship = index < CUTOFF;
+            if (rank.textContent !== String(index + 1)) {
+              rank.textContent = String(index + 1);
+              if (!reduce.matches && rank.animate) {
+                rank.animate(
+                  [
+                    { transform: "translateY(40%)", opacity: 0 },
+                    { transform: "translateY(0)", opacity: 1 },
+                  ],
+                  { duration: 220, easing: "cubic-bezier(0.2, 0.8, 0.2, 1)" },
+                );
+              }
+            }
+            rank.toggleAttribute("data-ship", ship);
+            item.querySelector("[data-ships]").hidden = !ship;
+            item
+              .querySelector("[data-handle]")
+              .setAttribute("aria-label", "Move " + item.dataset.title + ", rank " + (index + 1) + " of " + all.length);
+            if (ship) used += Number(item.dataset.weeks);
+          });
+          var over = used - CAPACITY;
+          root.querySelector("[data-used]").textContent = String(used);
+          meterFill.style.transform = "scaleX(" + Math.min(1, used / CAPACITY) + ")";
+          meterFill.toggleAttribute("data-over", over > 0);
+          meter.setAttribute("aria-valuenow", String(Math.min(used, CAPACITY)));
+          meter.setAttribute(
+            "aria-valuetext",
+            used + " of " + CAPACITY + " weeks" + (over > 0 ? ", over by " + over : ""),
+          );
+          root.querySelector("[data-over-note]").hidden = over <= 0;
+          root.querySelector("[data-over]").textContent = String(over);
+          var free = root.querySelector("[data-free-note]");
+          free.hidden = over > 0;
+          free.textContent =
+            (CAPACITY - used === 0 ? "Exactly full." : CAPACITY - used + " wk free.") + " Drag to re-rank.";
+        }
+
+        // Moves the DOM and lets every other card glide to its new slot (FLIP).
+        function reorder(mutate, skip) {
+          var before = new Map();
+          items().forEach(function (item) {
+            before.set(item, item.getBoundingClientRect().top);
+          });
+          mutate();
+          render();
+          if (reduce.matches) return;
+          items().forEach(function (item) {
+            if (item === skip || !before.has(item)) return;
+            var delta = before.get(item) - item.getBoundingClientRect().top;
+            if (!delta) return;
+            item.style.transition = "none";
+            item.style.transform = "translateY(" + delta + "px)";
+            requestAnimationFrame(function () {
+              item.style.transition = "transform 280ms cubic-bezier(0.34, 1.4, 0.5, 1)";
+              item.style.transform = "";
+            });
+          });
+        }
+
+        function setSaving(on) {
+          saving = on;
+          root.querySelectorAll("[data-handle]").forEach(function (handle) {
+            if (on) handle.setAttribute("aria-disabled", "true");
+            else handle.removeAttribute("aria-disabled");
+          });
+        }
+
+        function setStatus(name) {
+          root.querySelectorAll("[data-status]").forEach(function (el) {
+            el.hidden = el.getAttribute("data-status") !== name;
+          });
+        }
+
+        // Demo backend: saving takes a moment and succeeds.
+        function persist() {
+          clearTimeout(saveTimer);
+          setStatus("saving");
+          setSaving(true);
+          saveTimer = setTimeout(function () {
+            setSaving(false);
+            setStatus("saved");
+            announce("New order saved.");
+            buzz(12);
+            saveTimer = setTimeout(function () {
+              setStatus("");
+            }, SAVED_MS);
+          }, 650);
+        }
+
+        function dropped(item, before) {
+          var after = ids();
+          var rank = after.indexOf(item.dataset.item) + 1;
+          if (before.join() === after.join()) {
+            announce(item.dataset.title + " dropped. Rank " + rank + " unchanged.");
+            return;
+          }
+          announce(item.dataset.title + " dropped at rank " + rank + " of " + after.length + ".");
+          persist();
+        }
+
+        function lift(item, on) {
+          item.toggleAttribute("data-lifted", on);
+          item.querySelector("[data-card]").toggleAttribute("data-lifted", on);
+          item.style.scale = on ? "1.03" : "";
+        }
+
+        // A spring for the release: starts from the throw's velocity, settles in the new slot.
+        function settle(item, from, velocity) {
+          if (reduce.matches) {
+            item.style.transform = "";
+            item.style.rotate = "";
+            return;
+          }
+          var y = from;
+          var v = velocity;
+          var last = null;
+          function step(now) {
+            var dt = last === null ? 1 / 60 : Math.min(0.032, (now - last) / 1000);
+            last = now;
+            v += (-400 * y - 26 * v) * dt;
+            y += v * dt;
+            if (Math.abs(y) < 0.5 && Math.abs(v) < 5) {
+              item.style.transform = "";
+              item.style.rotate = "";
+              return;
+            }
+            item.style.transform = "translateY(" + y + "px)";
+            item.style.rotate = Math.max(-4, Math.min(4, v / 350)) + "deg";
+            requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+
+        items().forEach(function (item) {
+          var handle = item.querySelector("[data-handle]");
+          var drag = null;
+
+          handle.addEventListener("pointerdown", function (event) {
+            if (saving || grabbed || event.button !== 0) return;
+            event.preventDefault();
+            handle.setPointerCapture(event.pointerId);
+            drag = { id: event.pointerId, startY: event.clientY, offset: 0, order: ids(), samples: [] };
+            item.style.transition = "none";
+            lift(item, true);
+            buzz(6);
+          });
+
+          handle.addEventListener("pointermove", function (event) {
+            if (!drag || event.pointerId !== drag.id) return;
+            var dy = event.clientY - drag.startY - drag.offset;
+            drag.samples.push({ t: event.timeStamp, y: event.clientY });
+            if (drag.samples.length > 6) drag.samples.shift();
+            var first = drag.samples[0];
+            var velocity = (event.clientY - first.y) / Math.max(0.001, (event.timeStamp - first.t) / 1000);
+            item.style.transform = "translateY(" + dy + "px)";
+            item.style.rotate = reduce.matches ? "" : Math.max(-4, Math.min(4, velocity / 350)) + "deg";
+
+            // Swap with a neighbour once the card passes its middle.
+            var next = item.nextElementSibling;
+            var prev = item.previousElementSibling;
+            var top = item.getBoundingClientRect().top;
+            if (next && dy > 0 && top + item.offsetHeight > next.getBoundingClientRect().top + next.offsetHeight / 2) {
+              var naturalBefore = item.offsetTop;
+              reorder(function () {
+                list.insertBefore(next, item);
+              }, item);
+              drag.offset += item.offsetTop - naturalBefore;
+              item.style.transform = "translateY(" + (event.clientY - drag.startY - drag.offset) + "px)";
+            } else if (prev && dy < 0 && top < prev.getBoundingClientRect().top + prev.offsetHeight / 2) {
+              var natural = item.offsetTop;
+              reorder(function () {
+                list.insertBefore(item, prev);
+              }, item);
+              drag.offset += item.offsetTop - natural;
+              item.style.transform = "translateY(" + (event.clientY - drag.startY - drag.offset) + "px)";
+            }
+          });
+
+          function release(event) {
+            if (!drag || event.pointerId !== drag.id) return;
+            var samples = drag.samples;
+            var velocity = 0;
+            if (samples.length > 1) {
+              var a = samples[0];
+              var b = samples[samples.length - 1];
+              velocity = (b.y - a.y) / Math.max(0.001, (b.t - a.t) / 1000);
+            }
+            var from = event.clientY - drag.startY - drag.offset;
+            var before = drag.order;
+            drag = null;
+            lift(item, false);
+            settle(item, from, velocity);
+            dropped(item, before);
+          }
+          handle.addEventListener("pointerup", release);
+          handle.addEventListener("pointercancel", release);
+
+          function pick(on) {
+            handle.setAttribute("aria-pressed", on ? "true" : "false");
+            lift(item, on);
+            instructions.textContent = on
+              ? "Moving " + item.dataset.title + ": arrow keys to move, Space to drop, Escape to cancel."
+              : IDLE_TEXT;
+          }
+
+          function drop() {
+            var before = grabbed.order;
+            grabbed = null;
+            pick(false);
+            dropped(item, before);
+          }
+
+          handle.addEventListener("keydown", function (event) {
+            if (saving) return;
+            var isMine = grabbed && grabbed.item === item;
+            if (event.key === " " || event.key === "Enter") {
+              event.preventDefault();
+              if (event.repeat) return;
+              if (!isMine) {
+                grabbed = { item: item, order: ids() };
+                pick(true);
+                buzz(6);
+                var rank = ids().indexOf(item.dataset.item) + 1;
+                announce(
+                  item.dataset.title +
+                    " picked up, rank " +
+                    rank +
+                    " of " +
+                    items().length +
+                    ". Use the arrow keys to move, Space to drop, Escape to cancel.",
+                );
+              } else drop();
+              return;
+            }
+            if (!isMine) return;
+            var all = items();
+            var index = all.indexOf(item);
+            var to = index;
+            if (event.key === "ArrowUp" || event.key === "ArrowLeft") to = index - 1;
+            else if (event.key === "ArrowDown" || event.key === "ArrowRight") to = index + 1;
+            else if (event.key === "Home") to = 0;
+            else if (event.key === "End") to = all.length - 1;
+            else if (event.key === "Escape") {
+              event.preventDefault();
+              var original = grabbed.order;
+              grabbed = null;
+              pick(false);
+              reorder(function () {
+                original.forEach(function (id) {
+                  list.appendChild(list.querySelector('[data-item="' + id + '"]'));
+                });
+              });
+              handle.focus();
+              announce(
+                "Move cancelled. " +
+                  item.dataset.title +
+                  " is back at rank " +
+                  (original.indexOf(item.dataset.item) + 1) +
+                  ".",
+              );
+              return;
+            } else return;
+            event.preventDefault();
+            to = Math.max(0, Math.min(all.length - 1, to));
+            if (to === index) return;
+            reorder(function () {
+              var anchor = to > index ? all[to].nextElementSibling : all[to];
+              list.insertBefore(item, anchor);
+            });
+            handle.focus();
+            var crossed = index < CUTOFF !== to < CUTOFF;
+            announce(
+              item.dataset.title +
+                ", rank " +
+                (to + 1) +
+                " of " +
+                all.length +
+                "." +
+                (crossed ? (to < CUTOFF ? " Now ships this quarter." : " Now below the line.") : ""),
+            );
+          });
+
+          handle.addEventListener("blur", function () {
+            // Moving the node blurs it for a moment; only drop if focus really left.
+            setTimeout(function () {
+              if (grabbed && grabbed.item === item && document.activeElement !== handle) drop();
+            }, 0);
+          });
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

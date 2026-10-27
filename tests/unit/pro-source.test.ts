@@ -23,6 +23,8 @@ export function distinctiveLines(source: string): string[] {
       .filter((line) => line.length >= 28 && !/^(import |export |\/\/|\*|<\/|\)|\}|"use client")/.test(line))
       // A lone string of class names is shared vocabulary between designs and the site, not reusable source.
       .filter((line) => !/^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/.test(line))
+      // So is a tag that carries only a class list (`<div class="ml-auto flex gap-2">`, `class="lucide lucide-search"`).
+      .filter((line) => !/^(<[a-z][\w-]*\s+)?class(Name)?=(["'])[\w:\[\]()\/.%#&>~=+!@,* -]+\3\s*\/?>?$/.test(line))
   );
 }
 
@@ -34,8 +36,13 @@ describe("Pro source never reaches public artifacts", () => {
   const sourceLines = (folder: (typeof folders)[number]) =>
     SOURCE_FILES.flatMap((file) => distinctiveLines(readDesignFile(folder, file)));
   const proFolders = folders.filter((folder) => tierOf(folder) === "pro");
+  const freeFolders = folders.filter((folder) => tierOf(folder) === "free");
   // Lines a free design also contains (token blocks, markers, shared helpers) are public by definition.
-  const freeLines = new Set(folders.filter((folder) => tierOf(folder) === "free").flatMap(sourceLines));
+  const freeLines = new Set(freeFolders.flatMap(sourceLines));
+  // So is any text inside a free design's source, even part of a longer line (`window.clearInterval(timer);`).
+  const freeSource = freeFolders
+    .flatMap((folder) => SOURCE_FILES.map((file) => readDesignFile(folder, file)))
+    .join("\n");
   const artifacts = PUBLIC_ARTIFACTS.flatMap(files).map((file) => ({ file, text: readFileSync(file, "utf8") }));
 
   it("has the generated artifacts to check", () => {
@@ -46,7 +53,7 @@ describe("Pro source never reaches public artifacts", () => {
     const lines = sourceLines(folder).filter((line) => !freeLines.has(line));
     expect(lines.length).toBeGreaterThan(10);
     const leaks = artifacts.flatMap(({ file, text }) =>
-      lines.filter((line) => text.includes(line)).map((line) => `${file}: ${line}`),
+      lines.filter((line) => text.includes(line) && !freeSource.includes(line)).map((line) => `${file}: ${line}`),
     );
     expect(leaks).toEqual([]);
   });

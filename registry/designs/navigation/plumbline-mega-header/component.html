@@ -1,0 +1,1316 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Plumbline mega header · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <header
+      data-plumbline
+      class="sticky top-0 z-40 border-b border-(--iu-border) bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto flex h-16 max-w-[1200px] items-center gap-8 px-6 sm:px-10">
+        <a
+          href="#home"
+          aria-label="Plumbline home"
+          class="-m-1 rounded-[min(var(--iu-radius),6px)] p-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+          ><span class="inline-flex items-center gap-2.5"
+            ><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 1v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M10 8 15 13 10 19 5 13Z" fill="currentColor" /></svg
+            ><span class="text-[17px] font-semibold tracking-[-0.03em]">Plumbline</span></span
+          ></a
+        >
+        <nav aria-label="Main" class="hidden h-full lg:block">
+          <ul data-top-list class="relative flex h-full items-center">
+            <li class="relative flex h-full items-center">
+              <button
+                type="button"
+                data-top-item
+                data-menu-id="product"
+                aria-expanded="false"
+                class="inline-flex h-9 items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-3 text-sm font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+              >
+                Product<svg
+                  aria-hidden="true"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-150 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </li>
+            <li class="relative flex h-full items-center">
+              <button
+                type="button"
+                data-top-item
+                data-menu-id="solutions"
+                aria-expanded="false"
+                class="inline-flex h-9 items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-3 text-sm font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+              >
+                Solutions<svg
+                  aria-hidden="true"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-150 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </li>
+            <li class="relative flex h-full items-center">
+              <button
+                type="button"
+                data-top-item
+                data-menu-id="developers"
+                aria-expanded="false"
+                class="inline-flex h-9 items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-3 text-sm font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+              >
+                Developers<svg
+                  aria-hidden="true"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-150 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+            </li>
+            <li class="relative flex h-full items-center">
+              <a
+                href="#customers"
+                data-top-item
+                class="inline-flex h-9 items-center rounded-[min(var(--iu-radius),6px)] px-3 text-sm font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                >Customers</a
+              >
+            </li>
+            <li class="relative flex h-full items-center">
+              <a
+                href="#pricing"
+                data-top-item
+                class="inline-flex h-9 items-center rounded-[min(var(--iu-radius),6px)] px-3 text-sm font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                >Pricing</a
+              >
+            </li>
+            <li
+              aria-hidden="true"
+              data-marker
+              class="pointer-events-none absolute -bottom-px left-0 h-0.5 w-0 bg-(--iu-accent) opacity-0 transition-[translate,width,opacity] duration-200 ease-out motion-reduce:transition-none"
+            ></li>
+          </ul>
+          <div
+            data-scrim
+            aria-hidden="true"
+            hidden
+            class="pointer-events-none fixed inset-x-0 top-16 bottom-0 -z-10 bg-black/10 dark:bg-black/50"
+          ></div>
+          <div id="plumbline-panel" data-panel-root hidden class="absolute inset-x-0 top-full mt-px">
+            <div
+              data-panel-frame
+              class="relative overflow-hidden border-b border-(--iu-border) bg-(--iu-background) transition-[height] duration-200 ease-out motion-reduce:transition-none"
+            >
+              <div
+                data-panel="product"
+                hidden
+                class="mx-auto grid max-w-[1200px] grid-cols-12 gap-x-6 px-10 pt-8 pb-10 transition-[opacity,translate] duration-200 ease-out motion-reduce:transition-none"
+              >
+                <div class="col-span-12 lg:col-span-3">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">01</span>Observe
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#query-monitor"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Query monitor</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Every warehouse query, ranked by cost</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#lineage"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)">Lineage</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Trace a column from source to dashboard</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#alerts"
+                        aria-current="page"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          ><span aria-hidden="true" class="h-3.5 w-0.5 bg-(--iu-foreground)"></span>Alerts<span
+                            class="text-[11px] font-normal tracking-[0.08em] text-(--iu-muted) uppercase"
+                            >You are here</span
+                          ></span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Page the owner before the bill lands</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 lg:col-span-3">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">02</span>Control
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#budgets"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Query budgets</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Hard caps per team and per model</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#policies"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Access policies</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Row-level rules, written once</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#audit"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Audit log</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Who ran what, kept for 400 days</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 lg:col-span-3">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">03</span>Connect
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#warehouses"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Warehouses</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Connected in under four minutes</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#orchestrators"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Orchestrators</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Costs tagged to the job that ran them</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#api"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Webhooks and API</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Stream every event to your stack</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 border-l border-(--iu-border) pl-6 lg:col-span-3 lg:col-start-10">
+                  <a
+                    href="#budgets"
+                    class="group block rounded-[min(var(--iu-radius),6px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                    ><span class="block text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >New in 4.2</span
+                    ><span class="mt-3 block text-lg leading-snug font-semibold tracking-[-0.02em] text-balance"
+                      >Query budgets</span
+                    ><span class="mt-1.5 block text-[13px] leading-relaxed text-pretty text-(--iu-muted)"
+                      >Cap spend per team. Plumbline pauses runaway jobs at 92% and tells the owner why.</span
+                    >
+                    <figure class="mt-5">
+                      <svg
+                        viewBox="0 0 224 84"
+                        class="h-auto w-full"
+                        role="img"
+                        aria-label="Weekly spend for eight weeks, every week under the $4,200 cap"
+                      >
+                        <line
+                          x1="0"
+                          x2="224"
+                          y1="9.0"
+                          y2="9.0"
+                          stroke="currentColor"
+                          stroke-width="1"
+                          stroke-dasharray="3 3"
+                          class="text-(--iu-foreground)/45"
+                        />
+                        <rect x="4" y="33.0" width="18" height="39.0" class="fill-(--iu-foreground)/18" />
+                        <rect x="32" y="25.5" width="18" height="46.5" class="fill-(--iu-foreground)/18" />
+                        <rect x="60" y="30.0" width="18" height="42.0" class="fill-(--iu-foreground)/18" />
+                        <rect x="88" y="21.0" width="18" height="51.0" class="fill-(--iu-foreground)/18" />
+                        <rect x="116" y="13.5" width="18" height="58.5" class="fill-(--iu-foreground)" />
+                        <rect x="144" y="19.5" width="18" height="52.5" class="fill-(--iu-foreground)/18" />
+                        <rect x="172" y="24.0" width="18" height="48.0" class="fill-(--iu-foreground)/18" />
+                        <rect x="200" y="27.0" width="18" height="45.0" class="fill-(--iu-foreground)/18" />
+                        <line
+                          x1="0"
+                          x2="224"
+                          y1="72.5"
+                          y2="72.5"
+                          stroke="currentColor"
+                          stroke-width="1"
+                          class="text-(--iu-border)"
+                        />
+                      </svg>
+                      <figcaption
+                        class="mt-2 flex justify-between font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                      >
+                        <span>Peak $3,900 · wk 38</span><span>Cap $4,200</span>
+                      </figcaption>
+                    </figure>
+                    <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium"
+                      >Read more
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-transform duration-150 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg></span
+                  ></a>
+                </div>
+              </div>
+              <div
+                data-panel="solutions"
+                hidden
+                class="mx-auto grid max-w-[1200px] grid-cols-12 gap-x-6 px-10 pt-8 pb-10 transition-[opacity,translate] duration-200 ease-out motion-reduce:transition-none"
+              >
+                <div class="col-span-12 lg:col-span-4">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">01</span>By team
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#platform"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Data platform</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)">One bill, split by owner</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#analytics"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Analytics engineering</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)">Catch the model that doubled</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#finance"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)">Finance</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Forecast warehouse spend by month</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#security"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)">Security</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Prove who touched customer data</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 lg:col-span-4">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">02</span>By stage
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#startups"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)">Startups</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Free up to 2 TB scanned a month</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#scale-ups"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Scale-ups</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Budgets before the first surprise</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#enterprise"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Enterprise</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >SSO, residency and a named engineer</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#public-sector"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Public sector</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Hosted in your region, audited yearly</span
+                        ></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 border-l border-(--iu-border) pl-6 lg:col-span-3 lg:col-start-10">
+                  <a
+                    href="#northvale"
+                    class="group block rounded-[min(var(--iu-radius),6px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                    ><span class="block text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >Case study</span
+                    ><span class="mt-3 block text-lg leading-snug font-semibold tracking-[-0.02em] text-balance"
+                      >How Northvale cut warehouse spend</span
+                    ><span class="mt-1.5 block text-[13px] leading-relaxed text-pretty text-(--iu-muted)"
+                      >Forty analysts, one budget per squad, and a bill that fell for five straight months.</span
+                    >
+                    <p
+                      class="mt-4 flex items-baseline gap-1 text-[64px] leading-none font-semibold tracking-[-0.05em] tabular-nums"
+                    >
+                      <span aria-hidden="true" class="text-[40px] tracking-normal">−</span
+                      ><span class="sr-only">down </span>31%
+                    </p>
+                    <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium"
+                      >Read more
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-transform duration-150 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg></span
+                  ></a>
+                </div>
+              </div>
+              <div
+                data-panel="developers"
+                hidden
+                class="mx-auto grid max-w-[1200px] grid-cols-12 gap-x-6 px-10 pt-8 pb-10 transition-[opacity,translate] duration-200 ease-out motion-reduce:transition-none"
+              >
+                <div class="col-span-12 lg:col-span-4">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">01</span>Build
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#docs"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Documentation</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)"
+                          >Guides from install to policy</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#reference"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >API reference</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)">REST and GraphQL, versioned</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 lg:col-span-4">
+                  <p
+                    class="flex items-baseline gap-3 border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="tabular-nums">02</span>Follow
+                  </p>
+                  <ul class="mt-2">
+                    <li>
+                      <a
+                        href="#changelog"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)"
+                          >Changelog</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)">Shipped every Tuesday</span></a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#status"
+                        class="group -mx-3 block rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+                        ><span class="flex items-center gap-2 text-sm font-medium text-(--iu-foreground)">Status</span
+                        ><span class="mt-0.5 block text-[13px] text-(--iu-muted)">Uptime by region, 90 days</span></a
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-span-12 border-l border-(--iu-border) pl-6 lg:col-span-3 lg:col-start-10">
+                  <a
+                    href="#cli"
+                    class="group block rounded-[min(var(--iu-radius),6px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                    ><span class="block text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">CLI</span
+                    ><span class="mt-3 block text-lg leading-snug font-semibold tracking-[-0.02em] text-balance"
+                      >Budgets from your terminal</span
+                    ><span class="mt-1.5 block text-[13px] leading-relaxed text-pretty text-(--iu-muted)"
+                      >Set, check and lift caps without leaving the repo.</span
+                    >
+                    <pre
+                      class="mt-5 overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-background) p-3 font-mono text-[11px] leading-[1.7] text-(--iu-muted)"
+                    ><span class="block truncate text-(--iu-foreground)">$ plumbline cap set growth 4200</span><span class="block truncate">saved  alerts at 80% and 92%</span><span class="block truncate text-(--iu-foreground)">$ plumbline cap ls</span></pre>
+                    <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-medium"
+                      >Read more
+                      <svg
+                        aria-hidden="true"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-transform duration-150 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" /></svg></span
+                  ></a>
+                </div>
+              </div>
+            </div>
+            <div class="border-b border-(--iu-border) bg-(--iu-background)">
+              <div
+                class="mx-auto flex max-w-[1200px] items-center justify-between gap-6 px-10 py-3 text-[13px] text-(--iu-muted)"
+              >
+                <a
+                  href="#status"
+                  class="inline-flex items-center gap-2 rounded-[min(var(--iu-radius),6px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid pointer-fine:hover:text-(--iu-foreground)"
+                  ><span aria-hidden="true" class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>All
+                  systems normal · 99.98% uptime</a
+                >
+                <span class="font-mono text-[11px] tabular-nums">Esc to close · ← → to move between sections</span>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="ml-auto flex items-center gap-2 sm:gap-4">
+          <a
+            href="#sign-in"
+            class="hidden h-9 items-center rounded-[min(var(--iu-radius),6px)] px-3 text-sm font-medium text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none sm:inline-flex pointer-fine:hover:text-(--iu-foreground)"
+            >Sign in</a
+          >
+          <a
+            href="#start"
+            class="inline-flex h-10 items-center gap-2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-4 text-sm font-medium text-(--iu-background) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid motion-reduce:transition-none lg:h-9 pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_84%,var(--iu-background))]"
+            >Start free</a
+          >
+          <button
+            type="button"
+            data-menu-button
+            aria-label="Open menu"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            class="-mr-2 inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid lg:hidden"
+          >
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M4 12h16" />
+              <path d="M4 18h16" />
+              <path d="M4 6h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        data-sheet
+        role="dialog"
+        aria-modal="true"
+        aria-label="Plumbline menu"
+        hidden
+        class="fixed inset-0 z-50 flex [scrollbar-gutter:stable] flex-col overflow-y-auto bg-(--iu-background) lg:hidden"
+      >
+        <div class="flex h-16 shrink-0 items-center justify-between border-b border-(--iu-border) px-6">
+          <span class="inline-flex items-center gap-2.5"
+            ><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 1v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M10 8 15 13 10 19 5 13Z" fill="currentColor" /></svg
+            ><span class="text-[17px] font-semibold tracking-[-0.03em]">Plumbline</span></span
+          >
+          <button
+            type="button"
+            data-sheet-close
+            aria-label="Close menu"
+            class="-mr-2 inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+          >
+            <svg
+              aria-hidden="true"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+        <nav aria-label="Main" class="flex-1 px-6">
+          <p
+            class="flex justify-between border-b border-(--iu-border) py-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+          >
+            <span>Menu</span><span class="tabular-nums">05 sections</span>
+          </p>
+          <ul>
+            <li class="border-b border-(--iu-border)">
+              <button
+                type="button"
+                data-sheet-item
+                data-accordion="product"
+                aria-expanded="false"
+                aria-controls="plumbline-sheet-product"
+                class="relative flex min-h-14 w-full items-center gap-4 py-3 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <span
+                  aria-hidden="true"
+                  class="absolute top-1/2 -left-6 h-6 w-0.5 -translate-y-1/2 bg-(--iu-accent)"
+                ></span
+                ><span class="w-6 text-[11px] font-medium text-(--iu-muted) tabular-nums">01</span
+                ><span class="flex-1 text-[28px] leading-tight font-semibold tracking-[-0.035em]">Product</span
+                ><svg
+                  aria-hidden="true"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-(--iu-muted) transition-transform duration-200 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div
+                id="plumbline-sheet-product"
+                role="region"
+                aria-label="Product"
+                hidden
+                class="overflow-hidden transition-[height] duration-200 ease-out motion-reduce:transition-none"
+              >
+                <div class="grid grid-cols-1 gap-x-6 gap-y-5 pt-1 pb-6 pl-10 min-[480px]:grid-cols-2">
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Observe</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#query-monitor"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Query monitor</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#lineage"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Lineage</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#alerts"
+                          aria-current="page"
+                          class="flex min-h-10 items-center gap-2 text-base font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Alerts<span class="text-[11px] font-normal tracking-[0.08em] text-(--iu-muted) uppercase"
+                            >You are here</span
+                          ></a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Control</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#budgets"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Query budgets</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#policies"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Access policies</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#audit"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Audit log</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Connect</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#warehouses"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Warehouses</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#orchestrators"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Orchestrators</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#api"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Webhooks and API</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="border-b border-(--iu-border)">
+              <button
+                type="button"
+                data-sheet-item
+                data-accordion="solutions"
+                aria-expanded="false"
+                aria-controls="plumbline-sheet-solutions"
+                class="relative flex min-h-14 w-full items-center gap-4 py-3 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <span class="w-6 text-[11px] font-medium text-(--iu-muted) tabular-nums">02</span
+                ><span class="flex-1 text-[28px] leading-tight font-semibold tracking-[-0.035em]">Solutions</span
+                ><svg
+                  aria-hidden="true"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-(--iu-muted) transition-transform duration-200 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div
+                id="plumbline-sheet-solutions"
+                role="region"
+                aria-label="Solutions"
+                hidden
+                class="overflow-hidden transition-[height] duration-200 ease-out motion-reduce:transition-none"
+              >
+                <div class="grid grid-cols-1 gap-x-6 gap-y-5 pt-1 pb-6 pl-10 min-[480px]:grid-cols-2">
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">By team</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#platform"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Data platform</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#analytics"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Analytics engineering</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#finance"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Finance</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#security"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Security</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">By stage</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#startups"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Startups</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#scale-ups"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Scale-ups</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#enterprise"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Enterprise</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#public-sector"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Public sector</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="border-b border-(--iu-border)">
+              <button
+                type="button"
+                data-sheet-item
+                data-accordion="developers"
+                aria-expanded="false"
+                aria-controls="plumbline-sheet-developers"
+                class="relative flex min-h-14 w-full items-center gap-4 py-3 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >
+                <span class="w-6 text-[11px] font-medium text-(--iu-muted) tabular-nums">03</span
+                ><span class="flex-1 text-[28px] leading-tight font-semibold tracking-[-0.035em]">Developers</span
+                ><svg
+                  aria-hidden="true"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-(--iu-muted) transition-transform duration-200 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div
+                id="plumbline-sheet-developers"
+                role="region"
+                aria-label="Developers"
+                hidden
+                class="overflow-hidden transition-[height] duration-200 ease-out motion-reduce:transition-none"
+              >
+                <div class="grid grid-cols-1 gap-x-6 gap-y-5 pt-1 pb-6 pl-10 min-[480px]:grid-cols-2">
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Build</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#docs"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Documentation</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#reference"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >API reference</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Follow</p>
+                    <ul class="mt-1">
+                      <li>
+                        <a
+                          href="#changelog"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Changelog</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="#status"
+                          class="flex min-h-10 items-center gap-2 text-base focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                          >Status</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="border-b border-(--iu-border)">
+              <a
+                href="#customers"
+                data-sheet-item
+                class="relative flex min-h-14 items-center gap-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                ><span class="w-6 text-[11px] font-medium text-(--iu-muted) tabular-nums">04</span
+                ><span class="text-[28px] leading-tight font-semibold tracking-[-0.035em]">Customers</span></a
+              >
+            </li>
+            <li class="border-b border-(--iu-border)">
+              <a
+                href="#pricing"
+                data-sheet-item
+                class="relative flex min-h-14 items-center gap-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+                ><span class="w-6 text-[11px] font-medium text-(--iu-muted) tabular-nums">05</span
+                ><span class="text-[28px] leading-tight font-semibold tracking-[-0.035em]">Pricing</span></a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="sticky bottom-0 border-t border-(--iu-border) bg-(--iu-background) px-6 pt-4 pb-6">
+          <p class="flex items-center gap-2 text-[13px] text-(--iu-muted)">
+            <span aria-hidden="true" class="size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400"></span>All systems
+            normal · 99.98% uptime
+          </p>
+          <div class="mt-4 grid grid-cols-2 gap-3">
+            <a
+              href="#sign-in"
+              class="inline-flex h-11 items-center justify-center rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 text-sm font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >Sign in</a
+            >
+            <a
+              href="#start"
+              class="inline-flex h-11 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-sm font-medium text-(--iu-background) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) focus-visible:outline-solid"
+              >Start free</a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var header = document.querySelector("[data-plumbline]");
+        if (!header) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var CURRENT_MENU = "product";
+        var list = header.querySelector("[data-top-list]");
+        var marker = header.querySelector("[data-marker]");
+        var panel = header.querySelector("[data-panel-root]");
+        var frame = header.querySelector("[data-panel-frame]");
+        var scrim = header.querySelector("[data-scrim]");
+        var tops = Array.prototype.slice.call(header.querySelectorAll("[data-top-item]"));
+        var openId = null;
+        var timer = null;
+
+        function items(container) {
+          return Array.prototype.slice
+            .call(container.querySelectorAll("a[href], button:not([disabled])"))
+            .filter(function (el) {
+              return !el.closest("[hidden]");
+            });
+        }
+        function trigger(id) {
+          return header.querySelector('[data-menu-id="' + id + '"]');
+        }
+        function moveMarker(target) {
+          if (!target) {
+            marker.style.opacity = "0";
+            return;
+          }
+          var listBox = list.getBoundingClientRect();
+          var box = target.getBoundingClientRect();
+          marker.style.width = box.width - 24 + "px";
+          marker.style.translate = box.left - listBox.left + 12 + "px 0";
+          marker.style.opacity = "1";
+        }
+        function restingMarker() {
+          var current = CURRENT_MENU
+            ? trigger(CURRENT_MENU)
+            : header.querySelector('[data-top-item][aria-current="page"]');
+          moveMarker(current);
+        }
+
+        function show(id) {
+          clearTimeout(timer);
+          if (id === openId) return;
+          var previous = openId;
+          var order = tops.map(function (el) {
+            return el.getAttribute("data-menu-id");
+          });
+          var direction = previous && id ? Math.sign(order.indexOf(id) - order.indexOf(previous)) : 0;
+          var fromHeight = panel.hidden ? 0 : frame.getBoundingClientRect().height;
+          openId = id;
+          tops.forEach(function (el) {
+            var menuId = el.getAttribute("data-menu-id");
+            if (!menuId) return;
+            var open = menuId === id;
+            el.setAttribute("aria-expanded", String(open));
+            if (open) el.setAttribute("aria-controls", "plumbline-panel");
+            else el.removeAttribute("aria-controls");
+            el.classList.toggle("text-(--iu-foreground)", open || menuId === CURRENT_MENU);
+            el.classList.toggle("text-(--iu-muted)", !(open || menuId === CURRENT_MENU));
+            el.querySelector("svg").classList.toggle("rotate-180", open);
+          });
+          if (!id) {
+            panel.hidden = true;
+            scrim.hidden = true;
+            restingMarker();
+            return;
+          }
+          panel.hidden = false;
+          scrim.hidden = false;
+          var next = null;
+          Array.prototype.forEach.call(frame.querySelectorAll("[data-panel]"), function (section) {
+            var match = section.getAttribute("data-panel") === id;
+            section.hidden = !match;
+            if (match) next = section;
+          });
+          moveMarker(trigger(id));
+          if (!previous || reduce) {
+            frame.style.height = "";
+            return;
+          }
+          // Morph: animate the frame from the old height to the new one and shift the content 4px.
+          var toHeight = next.getBoundingClientRect().height;
+          frame.style.height = fromHeight + "px";
+          next.style.transition = "none";
+          next.style.opacity = "0";
+          next.style.translate = direction * 4 + "px 0";
+          frame.getBoundingClientRect();
+          next.style.transition = "";
+          frame.style.height = toHeight + "px";
+          next.style.opacity = "1";
+          next.style.translate = "0 0";
+          setTimeout(function () {
+            if (openId === id) frame.style.height = "";
+          }, 220);
+        }
+
+        function intend(id, delay) {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            show(id);
+          }, delay);
+        }
+
+        tops.forEach(function (el, index) {
+          var id = el.getAttribute("data-menu-id");
+          el.addEventListener("pointerenter", function (event) {
+            if (event.pointerType !== "mouse") return;
+            if (id) intend(id, openId ? 0 : 90);
+            else if (openId) intend(null, 120);
+          });
+          if (id)
+            el.addEventListener("click", function () {
+              show(openId === id ? null : id);
+            });
+          el.addEventListener("keydown", function (event) {
+            function moveTo(target) {
+              if (!target) return;
+              event.preventDefault();
+              target.focus();
+              if (openId) show(target.getAttribute("data-menu-id"));
+            }
+            if (event.key === "ArrowRight") moveTo(tops[(index + 1) % tops.length]);
+            else if (event.key === "ArrowLeft") moveTo(tops[(index - 1 + tops.length) % tops.length]);
+            else if (event.key === "Home") moveTo(tops[0]);
+            else if (event.key === "End") moveTo(tops[tops.length - 1]);
+            else if (event.key === "ArrowDown" && id) {
+              event.preventDefault();
+              show(id);
+              var first = items(panel)[0];
+              if (first) first.focus();
+            } else if (event.key === "Escape" && openId) {
+              event.preventDefault();
+              show(null);
+            } else if (event.key === "Tab" && !event.shiftKey && id && openId === id) {
+              var firstLink = items(panel)[0];
+              if (firstLink) {
+                event.preventDefault();
+                firstLink.focus();
+              }
+            }
+          });
+        });
+
+        panel.addEventListener("keydown", function (event) {
+          var links = items(panel);
+          var index = links.indexOf(document.activeElement);
+          var owner = trigger(openId);
+          if (event.key === "Escape") {
+            event.preventDefault();
+            show(null);
+            if (owner) owner.focus();
+          } else if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            var step = event.key === "ArrowDown" ? 1 : -1;
+            links[(index + step + links.length) % links.length].focus();
+          } else if (event.key === "Tab" && event.shiftKey && index === 0) {
+            event.preventDefault();
+            if (owner) owner.focus();
+          } else if (event.key === "Tab" && !event.shiftKey && index === links.length - 1) {
+            var next = tops[tops.indexOf(owner) + 1];
+            if (next) {
+              event.preventDefault();
+              show(null);
+              next.focus();
+            }
+          }
+        });
+        panel.addEventListener("pointerenter", function () {
+          clearTimeout(timer);
+        });
+        header.addEventListener("pointerleave", function (event) {
+          if (event.pointerType === "mouse" && openId) intend(null, 180);
+        });
+        header.addEventListener("focusout", function (event) {
+          if (openId && !header.contains(event.relatedTarget)) show(null);
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (openId && !header.contains(event.target)) show(null);
+        });
+        panel.addEventListener("click", function (event) {
+          if (event.target.closest("a")) show(null);
+        });
+        window.addEventListener("resize", function () {
+          if (openId) moveMarker(trigger(openId));
+          else restingMarker();
+        });
+        if (document.fonts) document.fonts.ready.then(restingMarker);
+        restingMarker();
+
+        // Mobile sheet: a modal dialog with numbered sections that expand in place.
+        var sheet = header.querySelector("[data-sheet]");
+        var menuButton = header.querySelector("[data-menu-button]");
+        var previousOverflow = "";
+        function openSheet() {
+          sheet.hidden = false;
+          menuButton.setAttribute("aria-expanded", "true");
+          previousOverflow = document.body.style.overflow;
+          document.body.style.overflow = "hidden";
+          if (CURRENT_MENU) toggleSection(CURRENT_MENU, true, true);
+          var first = sheet.querySelector("[data-sheet-item]");
+          if (first) first.focus();
+        }
+        function closeSheet() {
+          sheet.hidden = true;
+          menuButton.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = previousOverflow;
+          menuButton.focus();
+        }
+        function toggleSection(id, open, instant) {
+          Array.prototype.forEach.call(sheet.querySelectorAll("[data-accordion]"), function (button) {
+            var mine = button.getAttribute("data-accordion") === id;
+            var expand = mine && open;
+            var region = document.getElementById(button.getAttribute("aria-controls"));
+            var wasOpen = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", String(expand));
+            button.querySelector("svg").classList.toggle("rotate-180", expand);
+            if (expand === wasOpen) return;
+            if (expand) {
+              region.hidden = false;
+              if (reduce || instant) return;
+              var height = region.scrollHeight;
+              region.style.height = "0px";
+              region.getBoundingClientRect();
+              region.style.height = height + "px";
+              setTimeout(function () {
+                region.style.height = "";
+              }, 220);
+            } else if (reduce || instant) {
+              region.hidden = true;
+            } else {
+              region.style.height = region.scrollHeight + "px";
+              region.getBoundingClientRect();
+              region.style.height = "0px";
+              setTimeout(function () {
+                region.hidden = true;
+                region.style.height = "";
+              }, 200);
+            }
+          });
+        }
+        menuButton.addEventListener("click", openSheet);
+        header.querySelector("[data-sheet-close]").addEventListener("click", closeSheet);
+        Array.prototype.forEach.call(sheet.querySelectorAll("[data-accordion]"), function (button) {
+          button.addEventListener("click", function () {
+            toggleSection(button.getAttribute("data-accordion"), button.getAttribute("aria-expanded") !== "true");
+          });
+        });
+        sheet.addEventListener("click", function (event) {
+          if (event.target.closest("a")) closeSheet();
+        });
+        sheet.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            closeSheet();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var focusable = items(sheet);
+          var first = focusable[0];
+          var last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+        window.matchMedia("(min-width: 1024px)").addEventListener("change", function (query) {
+          if (query.matches && !sheet.hidden) closeSheet();
+        });
+      })();
+    </script>
+  </body>
+</html>

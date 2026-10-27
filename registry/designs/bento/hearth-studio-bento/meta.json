@@ -1,0 +1,15 @@
+{
+  "slug": "hearth-studio-bento",
+  "name": "Hearth studio bento",
+  "category": "bento",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "Soft, pressable feature cards for a podcast studio. Flip Studio sound and the noise between words springs flat while the voice stays.",
+  "tags": ["bento", "features", "audio", "podcast", "toggle", "slider", "creator"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

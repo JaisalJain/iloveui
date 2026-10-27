@@ -1,0 +1,15 @@
+{
+  "slug": "quire-research-assistant",
+  "name": "Quire research assistant",
+  "category": "ai-chat",
+  "styleFamily": "editorial",
+  "tier": "pro",
+  "description": "An editorial research answer with inline citations: choosing one draws a rule under its sentence and opens the quoted passage in the sources column.",
+  "tags": ["ai-chat", "research", "citations", "sources", "streaming", "editorial", "serif", "model-selector"],
+  "states": ["default", "loading", "error"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

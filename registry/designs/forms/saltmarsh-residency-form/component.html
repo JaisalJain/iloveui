@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Saltmarsh residency form · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) px-4 py-10 font-(family-name:--iu-font) text-(--iu-foreground) sm:px-8 sm:py-16">
+    <!-- iloveui:component:start -->
+    <section
+      data-saltmarsh-form="true"
+      aria-labelledby="sm-heading"
+      class="@container mx-auto w-full max-w-[1120px] rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground) dark:border-(--iu-foreground)/15"
+    >
+      <header
+        class="border-b-[3px] border-double border-(--iu-foreground) px-[calc(20px*var(--iu-density))] pt-8 pb-8 @2xl:px-[calc(48px*var(--iu-density))] @2xl:pt-12"
+      >
+        <p
+          class="flex flex-wrap justify-between gap-2 text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase"
+        >
+          <span>Saltmarsh Writers&#x27; Residency</span><span class="tabular-nums">Application · 2027 season</span>
+        </p>
+        <h2
+          id="sm-heading"
+          class="mt-6 max-w-[18ch] font-serif text-[40px] leading-[1.02] tracking-[-0.01em] text-balance @2xl:text-[64px]"
+        >
+          A quiet month by the water, to finish the thing.
+        </h2>
+        <p class="mt-5 max-w-[60ch] text-base leading-relaxed text-pretty text-(--iu-muted)">
+          Six writers a season live in the old pilot cottages at Saltmarsh Point. Room, board and a stipend of $2,400
+          are covered. Tell us who you are and what you are working on.
+        </p>
+      </header>
+      <div
+        class="grid gap-12 px-[calc(20px*var(--iu-density))] py-10 @2xl:px-[calc(48px*var(--iu-density))] @4xl:grid-cols-12 @4xl:gap-0"
+      >
+        <form novalidate="" class="flex flex-col gap-12 @4xl:col-span-7 @4xl:pr-12">
+          <fieldset class="m-0 min-w-0 border-0 p-0">
+            <legend class="flex w-full items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+              <span class="font-serif text-2xl text-(--iu-muted) italic">i.</span
+              ><span class="font-serif text-2xl leading-none">About you</span>
+            </legend>
+            <div class="mt-6 flex flex-col gap-8">
+              <div class="grid gap-8 @xl:grid-cols-2 @xl:gap-6">
+                <div>
+                  <label
+                    for="sm-name"
+                    class="block text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase"
+                    >Full name</label
+                  ><input
+                    id="sm-name"
+                    autocomplete="name"
+                    aria-describedby="sm-name-msg"
+                    class="mt-2 h-11 w-full rounded-none border-0 border-b border-(--iu-foreground)/55 bg-transparent px-0 text-base text-(--iu-foreground) transition-[border-color,box-shadow] duration-300 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent) focus:shadow-[inset_0_-1px_0_var(--iu-accent)] disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55"
+                    name="name"
+                    value="Teodora Vasić"
+                  />
+                  <p
+                    id="sm-name-msg"
+                    class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                  >
+                    <span>As you sign your work.</span>
+                  </p>
+                </div>
+                <div>
+                  <label
+                    for="sm-email"
+                    class="block text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase"
+                    >Email</label
+                  ><input
+                    id="sm-email"
+                    type="email"
+                    autocomplete="email"
+                    inputmode="email"
+                    aria-describedby="sm-email-msg"
+                    class="mt-2 h-11 w-full rounded-none border-0 border-b border-(--iu-foreground)/55 bg-transparent px-0 text-base text-(--iu-foreground) transition-[border-color,box-shadow] duration-300 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent) focus:shadow-[inset_0_-1px_0_var(--iu-accent)] disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55"
+                    name="email"
+                    value="teodora@vasic.studio"
+                  />
+                  <p
+                    id="sm-email-msg"
+                    class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                  >
+                    <span>Only for news about your application.</span>
+                  </p>
+                </div>
+              </div>
+              <div class="grid gap-8 @xl:grid-cols-2 @xl:gap-6">
+                <div class="relative">
+                  <label
+                    for="sm-discipline"
+                    id="sm-discipline-label"
+                    class="block text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase"
+                    >Discipline</label
+                  ><button
+                    type="button"
+                    id="sm-discipline"
+                    role="combobox"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="sm-discipline-list"
+                    aria-labelledby="sm-discipline-label sm-discipline"
+                    aria-describedby="sm-discipline-msg"
+                    class="mt-2 flex h-11 w-full items-center justify-between rounded-none border-0 border-b border-(--iu-foreground)/55 bg-transparent px-0 text-left text-base text-(--iu-foreground) transition-[border-color,box-shadow] duration-300 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent) focus:shadow-[inset_0_-1px_0_var(--iu-accent)] disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55"
+                  >
+                    <span data-sm-select-value="true" class="">Fiction</span
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-chevron-down transition-transform duration-300 motion-reduce:transition-none"
+                      aria-hidden="true"
+                    >
+                      <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                  </button>
+                  <ul
+                    id="sm-discipline-list"
+                    role="listbox"
+                    aria-labelledby="sm-discipline-label"
+                    hidden=""
+                    class="absolute inset-x-0 top-[68px] z-20 border border-(--iu-foreground)/40 bg-(--iu-surface) py-1"
+                  >
+                    <li
+                      id="sm-discipline-0"
+                      role="option"
+                      aria-selected="true"
+                      class="flex h-10 cursor-pointer items-center justify-between px-3 text-sm"
+                    >
+                      Fiction<svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path>
+                      </svg>
+                    </li>
+                    <li
+                      id="sm-discipline-1"
+                      role="option"
+                      aria-selected="false"
+                      class="flex h-10 cursor-pointer items-center justify-between px-3 text-sm"
+                    >
+                      Nonfiction
+                    </li>
+                    <li
+                      id="sm-discipline-2"
+                      role="option"
+                      aria-selected="false"
+                      class="flex h-10 cursor-pointer items-center justify-between px-3 text-sm"
+                    >
+                      Poetry
+                    </li>
+                    <li
+                      id="sm-discipline-3"
+                      role="option"
+                      aria-selected="false"
+                      class="flex h-10 cursor-pointer items-center justify-between px-3 text-sm"
+                    >
+                      Literary translation
+                    </li>
+                    <li
+                      id="sm-discipline-4"
+                      role="option"
+                      aria-selected="false"
+                      class="flex h-10 cursor-pointer items-center justify-between px-3 text-sm"
+                    >
+                      Screenwriting
+                    </li>
+                    <li
+                      id="sm-discipline-5"
+                      role="option"
+                      aria-selected="false"
+                      class="flex h-10 cursor-pointer items-center justify-between px-3 text-sm"
+                    >
+                      Graphic narrative
+                    </li>
+                  </ul>
+                  <p
+                    id="sm-discipline-msg"
+                    class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                  >
+                    <span>The form you will work in while here.</span>
+                  </p>
+                </div>
+                <div class="relative">
+                  <label
+                    for="sm-hometown"
+                    class="block text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase"
+                    >Writing from</label
+                  ><input
+                    id="sm-hometown"
+                    role="combobox"
+                    autocomplete="off"
+                    aria-autocomplete="list"
+                    aria-expanded="false"
+                    aria-controls="sm-hometown-list"
+                    aria-describedby="sm-hometown-msg"
+                    placeholder="Start typing a city"
+                    class="mt-2 h-11 w-full rounded-none border-0 border-b border-(--iu-foreground)/55 bg-transparent px-0 text-base text-(--iu-foreground) transition-[border-color,box-shadow] duration-300 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent) focus:shadow-[inset_0_-1px_0_var(--iu-accent)] disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55"
+                    value="Ljubljana, Slovenia"
+                  />
+                  <div
+                    hidden=""
+                    class="absolute inset-x-0 top-[68px] z-20 max-h-64 [scrollbar-gutter:stable] overflow-y-auto border border-(--iu-foreground)/40 bg-(--iu-surface) py-1"
+                  >
+                    <ul data-sm-cities="true" id="sm-hometown-list" role="listbox" aria-label="Cities">
+                      <li
+                        id="sm-city-0"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Accra</span><span class="text-xs text-(--iu-muted)">Ghana</span>
+                      </li>
+                      <li
+                        id="sm-city-1"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Asheville</span><span class="text-xs text-(--iu-muted)">United States</span>
+                      </li>
+                      <li
+                        id="sm-city-2"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Bergen</span><span class="text-xs text-(--iu-muted)">Norway</span>
+                      </li>
+                      <li
+                        id="sm-city-3"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Busan</span><span class="text-xs text-(--iu-muted)">South Korea</span>
+                      </li>
+                      <li
+                        id="sm-city-4"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Duluth</span><span class="text-xs text-(--iu-muted)">United States</span>
+                      </li>
+                      <li
+                        id="sm-city-5"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Galway</span><span class="text-xs text-(--iu-muted)">Ireland</span>
+                      </li>
+                      <li
+                        id="sm-city-6"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Halifax</span><span class="text-xs text-(--iu-muted)">Canada</span>
+                      </li>
+                      <li
+                        id="sm-city-7"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Hobart</span><span class="text-xs text-(--iu-muted)">Australia</span>
+                      </li>
+                      <li
+                        id="sm-city-8"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Kraków</span><span class="text-xs text-(--iu-muted)">Poland</span>
+                      </li>
+                      <li
+                        id="sm-city-9"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Kyoto</span><span class="text-xs text-(--iu-muted)">Japan</span>
+                      </li>
+                      <li
+                        id="sm-city-10"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Lagos</span><span class="text-xs text-(--iu-muted)">Nigeria</span>
+                      </li>
+                      <li
+                        id="sm-city-11"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Leeds</span><span class="text-xs text-(--iu-muted)">United Kingdom</span>
+                      </li>
+                      <li
+                        id="sm-city-12"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Ljubljana</span><span class="text-xs text-(--iu-muted)">Slovenia</span>
+                      </li>
+                      <li
+                        id="sm-city-13"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Marseille</span><span class="text-xs text-(--iu-muted)">France</span>
+                      </li>
+                      <li
+                        id="sm-city-14"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Medellín</span><span class="text-xs text-(--iu-muted)">Colombia</span>
+                      </li>
+                      <li
+                        id="sm-city-15"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Montréal</span><span class="text-xs text-(--iu-muted)">Canada</span>
+                      </li>
+                      <li
+                        id="sm-city-16"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Nairobi</span><span class="text-xs text-(--iu-muted)">Kenya</span>
+                      </li>
+                      <li
+                        id="sm-city-17"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Oaxaca</span><span class="text-xs text-(--iu-muted)">Mexico</span>
+                      </li>
+                      <li
+                        id="sm-city-18"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Porto</span><span class="text-xs text-(--iu-muted)">Portugal</span>
+                      </li>
+                      <li
+                        id="sm-city-19"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Pune</span><span class="text-xs text-(--iu-muted)">India</span>
+                      </li>
+                      <li
+                        id="sm-city-20"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Tallinn</span><span class="text-xs text-(--iu-muted)">Estonia</span>
+                      </li>
+                      <li
+                        id="sm-city-21"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Tbilisi</span><span class="text-xs text-(--iu-muted)">Georgia</span>
+                      </li>
+                      <li
+                        id="sm-city-22"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Trieste</span><span class="text-xs text-(--iu-muted)">Italy</span>
+                      </li>
+                      <li
+                        id="sm-city-23"
+                        role="option"
+                        aria-selected="false"
+                        class="flex h-10 cursor-pointer items-center justify-between gap-3 px-3 text-sm"
+                      >
+                        <span>Valparaíso</span><span class="text-xs text-(--iu-muted)">Chile</span>
+                      </li>
+                    </ul>
+                    <p data-sm-nomatch="true" hidden="" class="px-3 py-3 text-sm text-(--iu-muted)">
+                      No city matches “<span data-sm-query="true">Ljubljana, Slovenia</span>”. Try the nearest one.
+                    </p>
+                  </div>
+                  <p data-sm-citylive="true" aria-live="polite" class="sr-only"></p>
+                  <p
+                    id="sm-hometown-msg"
+                    class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                  >
+                    <span>Where the work is mostly written.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="m-0 min-w-0 border-0 p-0">
+            <legend class="flex w-full items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+              <span class="font-serif text-2xl text-(--iu-muted) italic">ii.</span
+              ><span class="font-serif text-2xl leading-none">The stay</span>
+            </legend>
+            <div class="mt-6 flex flex-col gap-8">
+              <fieldset aria-describedby="sm-season-msg" class="m-0 min-w-0 border-0 p-0">
+                <legend class="text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase">
+                  Season
+                </legend>
+                <div
+                  class="mt-3 grid gap-px border border-(--iu-foreground)/55 bg-(--iu-foreground)/55 @lg:grid-cols-3"
+                >
+                  <label
+                    class="group/season relative flex cursor-pointer items-start gap-3 bg-(--iu-surface) p-4 transition-colors duration-300 has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:disabled]:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/3"
+                    ><input
+                      type="radio"
+                      class="mt-0.5 size-4 shrink-0 cursor-pointer appearance-none rounded-full border border-(--iu-foreground)/70 transition-[border-width,border-color] duration-200 checked:border-[5px] checked:border-(--iu-accent) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none"
+                      name="sm-season"
+                      value="spring"
+                    /><span
+                      ><span class="block font-serif text-xl leading-none"
+                        ><span class="text-(--iu-muted) italic">i.</span> Spring</span
+                      ><span class="mt-1.5 block text-sm text-(--iu-muted)">March to May</span></span
+                    ></label
+                  ><label
+                    class="group/season relative flex cursor-pointer items-start gap-3 bg-(--iu-surface) p-4 transition-colors duration-300 has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:disabled]:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/3"
+                    ><input
+                      type="radio"
+                      class="mt-0.5 size-4 shrink-0 cursor-pointer appearance-none rounded-full border border-(--iu-foreground)/70 transition-[border-width,border-color] duration-200 checked:border-[5px] checked:border-(--iu-accent) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none"
+                      name="sm-season"
+                      value="summer"
+                    /><span
+                      ><span class="block font-serif text-xl leading-none"
+                        ><span class="text-(--iu-muted) italic">ii.</span> Summer</span
+                      ><span class="mt-1.5 block text-sm text-(--iu-muted)">June to August</span></span
+                    ></label
+                  ><label
+                    class="group/season relative flex cursor-pointer items-start gap-3 bg-(--iu-surface) p-4 transition-colors duration-300 has-[:checked]:bg-[color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] has-[:disabled]:cursor-not-allowed has-[:disabled]:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/3"
+                    ><input
+                      type="radio"
+                      class="mt-0.5 size-4 shrink-0 cursor-pointer appearance-none rounded-full border border-(--iu-foreground)/70 transition-[border-width,border-color] duration-200 checked:border-[5px] checked:border-(--iu-accent) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 motion-reduce:transition-none"
+                      name="sm-season"
+                      checked=""
+                      value="autumn"
+                    /><span
+                      ><span class="block font-serif text-xl leading-none"
+                        ><span class="text-(--iu-muted) italic">iii.</span> Autumn</span
+                      ><span class="mt-1.5 block text-sm text-(--iu-muted)">September to November</span></span
+                    ></label
+                  >
+                </div>
+                <p
+                  id="sm-season-msg"
+                  class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                >
+                  <span>Every stay is four weeks; exact dates follow an offer.</span>
+                </p>
+              </fieldset>
+            </div>
+          </fieldset>
+          <fieldset class="m-0 min-w-0 border-0 p-0">
+            <legend class="flex w-full items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+              <span class="font-serif text-2xl text-(--iu-muted) italic">iii.</span
+              ><span class="font-serif text-2xl leading-none">The work</span>
+            </legend>
+            <div class="mt-6 flex flex-col gap-8">
+              <div>
+                <label
+                  for="sm-title"
+                  class="block text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase"
+                  >Project title</label
+                ><input
+                  id="sm-title"
+                  aria-describedby="sm-title-msg"
+                  class="mt-2 h-11 w-full rounded-none border-0 border-b border-(--iu-foreground)/55 bg-transparent px-0 font-serif text-base text-xl text-(--iu-foreground) italic transition-[border-color,box-shadow] duration-300 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent) focus:shadow-[inset_0_-1px_0_var(--iu-accent)] disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55"
+                  name="title"
+                  value="The Ferryman&#x27;s Ledger"
+                />
+                <p
+                  id="sm-title-msg"
+                  class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                >
+                  <span>A working title is fine.</span>
+                </p>
+              </div>
+              <div>
+                <div class="flex items-baseline justify-between gap-4">
+                  <label
+                    for="sm-statement"
+                    class="block text-[11px] font-medium tracking-[0.16em] text-(--iu-foreground) uppercase"
+                    >Statement</label
+                  ><span data-sm-count="true" class="font-mono text-xs text-(--iu-muted) tabular-nums"
+                    >69 / 300 words</span
+                  >
+                </div>
+                <textarea
+                  id="sm-statement"
+                  name="statement"
+                  rows="6"
+                  aria-describedby="sm-statement-msg"
+                  class="mt-2 h-11 h-auto w-full resize-y rounded-none border-0 border-b border-(--iu-foreground)/55 bg-transparent px-0 py-2 text-base leading-relaxed text-(--iu-foreground) transition-[border-color,box-shadow] duration-300 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent) focus:shadow-[inset_0_-1px_0_var(--iu-accent)] disabled:cursor-not-allowed disabled:border-dashed disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55"
+                >
+I am finishing a novel about a river ferry that keeps a ledger of every crossing for ninety years. Two hundred pages exist; the last third, set during the 1964 flood, needs long uninterrupted mornings and a view of moving water. At Saltmarsh I plan to draft the flood chapters and cut the middle by a quarter. My last book, Salt Hours, came out with Brda Press in 2024.</textarea>
+                <p
+                  id="sm-statement-msg"
+                  class="mt-2 flex items-start gap-2 text-sm leading-snug text-pretty text-(--iu-muted)"
+                >
+                  <span>50 to 300 words on what you will write here and why now.</span>
+                </p>
+              </div>
+            </div>
+          </fieldset>
+          <div
+            class="flex flex-col gap-4 border-t border-(--iu-foreground) pt-6 @xl:flex-row @xl:items-center @xl:justify-between"
+          >
+            <p data-sm-note="true" class="text-sm text-pretty text-(--iu-muted)">Decisions by 15 January 2027.</p>
+            <button
+              type="submit"
+              data-sm-submit="true"
+              class="inline-flex h-12 min-w-[13.5rem] items-center justify-center gap-3 rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) px-6 text-sm font-medium tracking-[0.04em] text-(--iu-background) transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-progress motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_85%,var(--iu-background))]"
+            >
+              Send application<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-arrow-right"
+                aria-hidden="true"
+              >
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+          <p data-sm-live="true" aria-live="polite" class="sr-only"></p>
+        </form>
+        <aside
+          aria-labelledby="sm-letter"
+          class="relative @4xl:col-span-5 @4xl:border-l @4xl:border-(--iu-border) @4xl:pl-12"
+        >
+          <div class="@4xl:sticky @4xl:top-8">
+            <h3 id="sm-letter" class="text-[11px] font-medium tracking-[0.16em] text-(--iu-muted) uppercase">
+              Your letter, as the committee reads it
+            </h3>
+            <div
+              data-sm-card="true"
+              class="relative mt-4 border border-(--iu-border) bg-(--iu-background) p-[calc(24px*var(--iu-density))] transition-opacity duration-300 motion-reduce:transition-none dark:border-(--iu-foreground)/15"
+            >
+              <p class="font-mono text-xs text-(--iu-muted) tabular-nums">27 October 2026</p>
+              <div data-sm-letter="true" class="mt-5 space-y-4 font-serif text-[21px] leading-[1.45] text-pretty">
+                <p>Dear committee,</p>
+                <p>
+                  My name is
+                  <span
+                    class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                    >Teodora Vasić</span
+                  >, and I work in
+                  <span
+                    class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                    >fiction</span
+                  >
+                  from
+                  <span
+                    class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                    >Ljubljana</span
+                  >. I would like to spend
+                  <span
+                    class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                    >the autumn</span
+                  >
+                  at Saltmarsh finishing
+                  <span
+                    class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                    >“The Ferryman&#x27;s Ledger”</span
+                  >.
+                </p>
+                <p class="text-(--iu-muted)">
+                  <span
+                    class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                    >I am finishing a novel about a river ferry that keeps a ledger of every crossing for ninety
+                    years.</span
+                  >
+                </p>
+                <p>
+                  Yours,<br /><span class="italic"
+                    ><span
+                      class="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none"
+                      >Teodora Vasić</span
+                    ></span
+                  >
+                </p>
+              </div>
+            </div>
+            <p data-sm-caption="true" class="mt-3 text-xs text-(--iu-muted)">
+              Fill in the form and the letter writes itself.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-saltmarsh-form]");
+        if (!root) return;
+        var P = "sm-";
+        var MIN_WORDS = 50;
+        var MAX_WORDS = 300;
+        var TODAY = "27 October 2026";
+        var DECISION = "15 January 2027";
+        var DISCIPLINES = [
+          { value: "fiction", label: "Fiction", phrase: "fiction" },
+          { value: "nonfiction", label: "Nonfiction", phrase: "nonfiction" },
+          { value: "poetry", label: "Poetry", phrase: "poetry" },
+          { value: "translation", label: "Literary translation", phrase: "literary translation" },
+          { value: "screen", label: "Screenwriting", phrase: "screenwriting" },
+          { value: "graphic", label: "Graphic narrative", phrase: "graphic narrative" },
+        ];
+        var SEASONS = { spring: "Spring", summer: "Summer", autumn: "Autumn" };
+        var ORDER = ["name", "email", "discipline", "hometown", "season", "title", "statement"];
+        var OK =
+          "border-(--iu-foreground)/55 pointer-fine:hover:border-(--iu-foreground) disabled:pointer-fine:hover:border-(--iu-foreground)/55".split(
+            " ",
+          );
+        var BAD = ["border-rose-700", "dark:border-rose-400"];
+        var BTN_IDLE =
+          "bg-(--iu-foreground) text-(--iu-background) disabled:cursor-progress pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_85%,var(--iu-background))]".split(
+            " ",
+          );
+        var BTN_DONE = ["border", "border-(--iu-foreground)", "bg-transparent", "text-(--iu-foreground)"];
+        var ICON =
+          '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+        var ALERT =
+          ICON +
+          ' class="mt-px shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg>';
+        var CHECK = ICON + '><path d="M20 6 9 17l-5-5"></path></svg>';
+        var SPINNER =
+          ICON + ' class="animate-spin motion-reduce:animate-none"><path d="M21 12a9 9 0 1 1-6.219-8.56"></path></svg>';
+        var POSTMARK =
+          '<svg role="img" aria-label="Postmarked received, ' +
+          TODAY +
+          '" viewBox="0 0 120 120" class="absolute -top-9 -right-2 size-24 rotate-[-12deg] @md:size-28">' +
+          '<circle cx="60" cy="60" r="54" fill="none" stroke-width="2" class="stroke-(--iu-accent)"></circle>' +
+          '<circle cx="60" cy="60" r="46" fill="none" stroke-width="1" class="stroke-(--iu-accent)"></circle>' +
+          '<path d="M20 52h80M20 68h80" stroke-width="1" class="stroke-(--iu-accent)"></path>' +
+          '<text x="60" y="64" text-anchor="middle" class="fill-(--iu-foreground) font-mono text-[12px] font-semibold tracking-[0.12em]">RECEIVED</text>' +
+          '<text x="60" y="40" text-anchor="middle" class="fill-(--iu-foreground) font-serif text-[13px] italic">Saltmarsh</text>' +
+          '<text x="60" y="88" text-anchor="middle" class="fill-(--iu-foreground) font-mono text-[10px] tracking-[0.08em]">27 X 2026</text></svg>';
+
+        function el(id) {
+          return document.getElementById(P + id);
+        }
+        function swap(node, add, remove) {
+          remove.forEach(function (name) {
+            node.classList.remove(name);
+          });
+          add.forEach(function (name) {
+            node.classList.add(name);
+          });
+        }
+        function fold(text) {
+          return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+        }
+        function words(text) {
+          var t = text.trim();
+          return t ? t.split(/\s+/).length : 0;
+        }
+        function escapeHtml(text) {
+          return text.replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+
+        var form = root.querySelector("form");
+        var sections = form.querySelectorAll(":scope > fieldset");
+        var inputs = { name: el("name"), email: el("email"), title: el("title"), statement: el("statement") };
+        var selectBtn = el("discipline");
+        var selectList = el("discipline-list");
+        var selectValue = root.querySelector("[data-sm-select-value]");
+        var options = Array.prototype.slice.call(selectList.querySelectorAll('[role="option"]'));
+        var city = el("hometown");
+        var cityList = root.querySelector("[data-sm-cities]");
+        var cityBox = cityList.parentElement;
+        var cityItems = Array.prototype.slice.call(cityList.querySelectorAll('[role="option"]'));
+        var CITIES = cityItems.map(function (item) {
+          return item.firstElementChild.textContent.trim() + ", " + item.lastElementChild.textContent.trim();
+        });
+        var radios = Array.prototype.slice.call(form.querySelectorAll('input[name="' + P + 'season"]'));
+        var count = root.querySelector("[data-sm-count]");
+        var letter = root.querySelector("[data-sm-letter]");
+        var caption = root.querySelector("[data-sm-caption]");
+        var card = root.querySelector("[data-sm-card]");
+        var note = root.querySelector("[data-sm-note]");
+        var submitBtn = root.querySelector("[data-sm-submit]");
+        // Keep focus where it is on press, so blur validation cannot shift the button away mid-click.
+        submitBtn.addEventListener("mousedown", function (event) {
+          event.preventDefault();
+        });
+        var live = root.querySelector("[data-sm-live]");
+        var cityLive = root.querySelector("[data-sm-citylive]");
+        var noMatch = root.querySelector("[data-sm-nomatch]");
+        var querySpan = root.querySelector("[data-sm-query]");
+        var helpers = {};
+        ORDER.forEach(function (field) {
+          helpers[field] = el(field + "-msg")
+            .querySelector("span")
+            .textContent.trim()
+            .replace(/\s+/g, " ");
+        });
+
+        var discipline = DISCIPLINES.find(function (d) {
+          return d.label === selectValue.textContent.trim();
+        });
+        var values = {
+          name: inputs.name.value,
+          email: inputs.email.value,
+          discipline: discipline ? discipline.value : "",
+          hometown: city.value,
+          season: (
+            radios.find(function (r) {
+              return r.checked;
+            }) || { value: "" }
+          ).value,
+          title: inputs.title.value,
+          statement: inputs.statement.value,
+        };
+        var errors = {};
+        var focused = null;
+        var status = "idle";
+
+        function validate(v) {
+          var e = {};
+          if (!v.name.trim()) e.name = "Tell us your name as you would sign a letter.";
+          if (!v.email.trim()) e.email = "Add an email so we can reply.";
+          else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email.trim()))
+            e.email = "That email looks incomplete, for example noor@kettle.page.";
+          if (!v.discipline) e.discipline = "Choose the form you will work in.";
+          if (!v.hometown.trim()) e.hometown = "Choose where you are writing from.";
+          else if (CITIES.indexOf(v.hometown) < 0) e.hometown = "Pick a city from the list, or the nearest one to you.";
+          if (!v.season) e.season = "Choose a season.";
+          if (!v.title.trim()) e.title = "Give the project a working title.";
+          var n = words(v.statement);
+          if (n < MIN_WORDS)
+            e.statement = n
+              ? "Write at least " + MIN_WORDS + " words; you have " + n + "."
+              : "Tell us about the project in a few sentences.";
+          else if (n > MAX_WORDS) e.statement = "Keep it under " + MAX_WORDS + " words; you have " + n + ".";
+          return e;
+        }
+
+        function control(field) {
+          if (field === "discipline") return selectBtn;
+          if (field === "hometown") return city;
+          return inputs[field] || null;
+        }
+
+        function showError(field, message) {
+          errors[field] = message || undefined;
+          var node = control(field);
+          if (node) {
+            swap(node, message ? BAD : OK, message ? OK : BAD);
+            if (message) node.setAttribute("aria-invalid", "true");
+            else node.removeAttribute("aria-invalid");
+          }
+          var msg = el(field + "-msg");
+          swap(
+            msg,
+            message ? ["text-rose-700", "dark:text-rose-300"] : ["text-(--iu-muted)"],
+            message ? ["text-(--iu-muted)"] : ["text-rose-700", "dark:text-rose-300"],
+          );
+          msg.innerHTML = (message ? ALERT : "") + "<span>" + escapeHtml(message || helpers[field]) + "</span>";
+        }
+
+        function set(field, value) {
+          values[field] = value;
+          if (errors[field] && !validate(values)[field]) showError(field, null);
+          renderLetter();
+        }
+
+        function blur(field) {
+          focused = null;
+          if (values[field].trim()) showError(field, validate(values)[field] || null);
+          renderLetter();
+        }
+
+        function clause(field, text, width) {
+          if (text) {
+            return (
+              '<span class="underline decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-300 motion-reduce:transition-none ' +
+              (focused === field ? "decoration-(--iu-accent)" : "decoration-transparent") +
+              '">' +
+              escapeHtml(text) +
+              "</span>"
+            );
+          }
+          return (
+            '<span class="whitespace-nowrap"><span aria-hidden="true" class="inline-block h-[0.9em] translate-y-[0.15em] border-b transition-colors duration-300 motion-reduce:transition-none ' +
+            (width || "w-24") +
+            " " +
+            (focused === field ? "border-(--iu-accent)" : "border-dashed border-(--iu-foreground)/35") +
+            '"></span><span class="sr-only">(not filled in yet)</span></span>'
+          );
+        }
+
+        function renderLetter() {
+          var d = DISCIPLINES.find(function (x) {
+            return x.value === values.discipline;
+          });
+          var opening = values.statement.trim().split(/(?<=[.!?])\s/)[0] || "";
+          if (opening.length > 150) opening = opening.slice(0, 148) + "…";
+          var name = values.name.trim();
+          var place = CITIES.indexOf(values.hometown) >= 0 ? values.hometown.split(", ")[0] : "";
+          var season = values.season ? "the " + SEASONS[values.season].toLowerCase() : "";
+          var title = values.title.trim() ? "“" + values.title.trim() + "”" : "";
+          letter.innerHTML =
+            "<p>Dear committee,</p><p>My name is " +
+            clause("name", name, "w-32") +
+            ", and I work in " +
+            clause("discipline", d ? d.phrase : "") +
+            " from " +
+            clause("hometown", place) +
+            ". I would like to spend " +
+            clause("season", season, "w-20") +
+            " at Saltmarsh finishing " +
+            clause("title", title, "w-32") +
+            '.</p><p class="text-(--iu-muted)">' +
+            clause("statement", opening, "w-40") +
+            '</p><p>Yours,<br><span class="italic">' +
+            clause("name", name, "w-28") +
+            "</span></p>";
+          var n = words(values.statement);
+          count.textContent = n + " / " + MAX_WORDS + " words";
+          swap(
+            count,
+            n > MAX_WORDS ? ["text-rose-700", "dark:text-rose-300"] : ["text-(--iu-muted)"],
+            n > MAX_WORDS ? ["text-(--iu-muted)"] : ["text-rose-700", "dark:text-rose-300"],
+          );
+          if (status !== "success") {
+            caption.textContent = focused
+              ? "The underlined words come from the field you are editing."
+              : "Fill in the form and the letter writes itself.";
+          }
+        }
+
+        // Plain text fields
+        Object.keys(inputs).forEach(function (field) {
+          var input = inputs[field];
+          input.addEventListener("input", function () {
+            set(field, input.value);
+          });
+          input.addEventListener("focus", function () {
+            focused = field;
+            renderLetter();
+          });
+          input.addEventListener("blur", function () {
+            blur(field);
+          });
+        });
+
+        // Season radios
+        radios.forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            set("season", radio.value);
+          });
+          radio.addEventListener("focus", function () {
+            focused = "season";
+            renderLetter();
+          });
+          radio.addEventListener("blur", function () {
+            focused = null;
+            renderLetter();
+          });
+        });
+
+        // Discipline: select-only combobox
+        var selectOpen = false;
+        var active = -1;
+        var typed = { text: "", time: 0 };
+        function selectedIndex() {
+          return DISCIPLINES.findIndex(function (d) {
+            return d.value === values.discipline;
+          });
+        }
+        function paintActive() {
+          options.forEach(function (option, index) {
+            option.classList.toggle("bg-(--iu-foreground)/6", index === active);
+          });
+          if (selectOpen && active >= 0) selectBtn.setAttribute("aria-activedescendant", options[active].id);
+          else selectBtn.removeAttribute("aria-activedescendant");
+        }
+        function openSelect(at) {
+          selectOpen = true;
+          active = at;
+          selectList.hidden = false;
+          selectBtn.setAttribute("aria-expanded", "true");
+          selectBtn.querySelector("svg").classList.add("rotate-180");
+          paintActive();
+        }
+        function closeSelect() {
+          selectOpen = false;
+          selectList.hidden = true;
+          selectBtn.setAttribute("aria-expanded", "false");
+          selectBtn.querySelector("svg").classList.remove("rotate-180");
+          paintActive();
+        }
+        function choose(index) {
+          var option = DISCIPLINES[index];
+          if (option) {
+            selectValue.textContent = option.label;
+            selectValue.className = "";
+            options.forEach(function (node, i) {
+              node.setAttribute("aria-selected", i === index ? "true" : "false");
+              var mark = node.querySelector("svg");
+              if (mark) node.removeChild(mark);
+              if (i === index) node.insertAdjacentHTML("beforeend", CHECK);
+            });
+            set("discipline", option.value);
+          }
+          closeSelect();
+        }
+        function typeahead(ch, time, from) {
+          typed.text = time - typed.time > 600 ? ch.toLowerCase() : typed.text + ch.toLowerCase();
+          typed.time = time;
+          var repeated = typed.text.split("").every(function (c) {
+            return c === typed.text[0];
+          });
+          var needle = repeated ? typed.text[0] : typed.text;
+          var start = repeated ? from + 1 : from;
+          for (var step = 0; step < DISCIPLINES.length; step++) {
+            var i = (start + step + DISCIPLINES.length) % DISCIPLINES.length;
+            if (DISCIPLINES[i].label.toLowerCase().indexOf(needle) === 0) return i;
+          }
+          return Math.max(from, 0);
+        }
+        selectBtn.addEventListener("click", function () {
+          if (selectOpen) closeSelect();
+          else openSelect(Math.max(selectedIndex(), 0));
+        });
+        selectBtn.addEventListener("focus", function () {
+          focused = "discipline";
+          renderLetter();
+        });
+        selectBtn.addEventListener("blur", function () {
+          closeSelect();
+          blur("discipline");
+        });
+        selectBtn.addEventListener("keydown", function (event) {
+          var key = event.key;
+          var last = DISCIPLINES.length - 1;
+          var sel = selectedIndex();
+          if (!selectOpen) {
+            if (["ArrowDown", "ArrowUp", "Enter", " "].indexOf(key) >= 0) {
+              event.preventDefault();
+              openSelect(key === "ArrowUp" ? Math.max(sel, 0) : sel >= 0 ? sel : 0);
+            } else if (key === "Home" || key === "End") {
+              event.preventDefault();
+              openSelect(key === "Home" ? 0 : last);
+            } else if (key.length === 1 && /\S/.test(key)) {
+              openSelect(typeahead(key, event.timeStamp, sel));
+            }
+            return;
+          }
+          if (key === "ArrowDown") active = Math.min(last, active + 1);
+          else if (key === "ArrowUp") {
+            if (event.altKey) {
+              choose(active);
+              event.preventDefault();
+              return;
+            }
+            active = Math.max(0, active - 1);
+          } else if (key === "Home") active = 0;
+          else if (key === "End") active = last;
+          else if (key === "Enter" || key === " ") {
+            event.preventDefault();
+            choose(active);
+            return;
+          } else if (key === "Escape") {
+            event.preventDefault();
+            closeSelect();
+            return;
+          } else if (key === "Tab") {
+            choose(active);
+            return;
+          } else if (key.length === 1 && /\S/.test(key)) {
+            active = typeahead(key, event.timeStamp, active);
+            paintActive();
+            return;
+          } else return;
+          event.preventDefault();
+          paintActive();
+        });
+        options.forEach(function (option, index) {
+          option.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+          });
+          option.addEventListener("click", function () {
+            choose(index);
+          });
+          option.addEventListener("mousemove", function () {
+            active = index;
+            paintActive();
+          });
+        });
+
+        // Hometown: editable combobox with list autocomplete
+        var cityOpen = false;
+        var cityActive = -1;
+        function visible() {
+          return cityItems.filter(function (item) {
+            return !item.hidden;
+          });
+        }
+        function filterCities() {
+          var q = CITIES.indexOf(city.value) >= 0 ? "" : fold(city.value.trim());
+          cityItems.forEach(function (item, i) {
+            var c = fold(CITIES[i]);
+            item.hidden =
+              !!q &&
+              !(
+                c.indexOf(q) === 0 ||
+                c.split(/[\s,]+/).some(function (w) {
+                  return w.indexOf(q) === 0;
+                })
+              );
+          });
+          var shown = visible();
+          noMatch.hidden = shown.length !== 0;
+          querySpan.textContent = city.value;
+          cityLive.textContent =
+            cityOpen && city.value.trim()
+              ? shown.length + " " + (shown.length === 1 ? "city" : "cities") + " found"
+              : "";
+        }
+        function paintCity() {
+          var shown = visible();
+          cityItems.forEach(function (item) {
+            item.classList.remove("bg-(--iu-foreground)/6");
+            item.setAttribute("aria-selected", "false");
+          });
+          var current = shown[cityActive];
+          if (cityOpen && current) {
+            current.classList.add("bg-(--iu-foreground)/6");
+            current.setAttribute("aria-selected", "true");
+            city.setAttribute("aria-activedescendant", current.id);
+            current.scrollIntoView({ block: "nearest" });
+          } else city.removeAttribute("aria-activedescendant");
+        }
+        function setCityOpen(open) {
+          cityOpen = open;
+          cityBox.hidden = !open;
+          city.setAttribute("aria-expanded", open ? "true" : "false");
+          paintCity();
+        }
+        function pickCity(index) {
+          city.value = CITIES[index];
+          set("hometown", city.value);
+          filterCities();
+          cityActive = -1;
+          setCityOpen(false);
+        }
+        city.addEventListener("input", function () {
+          set("hometown", city.value);
+          cityActive = city.value.trim() ? 0 : -1;
+          cityOpen = true;
+          filterCities();
+          setCityOpen(true);
+        });
+        city.addEventListener("click", function () {
+          setCityOpen(true);
+        });
+        city.addEventListener("focus", function () {
+          focused = "hometown";
+          renderLetter();
+        });
+        city.addEventListener("blur", function () {
+          setCityOpen(false);
+          blur("hometown");
+        });
+        city.addEventListener("keydown", function (event) {
+          var shown = visible();
+          var last = shown.length - 1;
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            if (!cityOpen) setCityOpen(true);
+            if (event.key === "ArrowDown") cityActive = cityActive >= last ? 0 : cityActive + 1;
+            else cityActive = cityActive <= 0 ? last : cityActive - 1;
+            paintCity();
+          } else if (event.key === "Enter") {
+            if (cityOpen && shown[cityActive]) {
+              event.preventDefault();
+              pickCity(cityItems.indexOf(shown[cityActive]));
+            }
+          } else if (event.key === "Escape") {
+            if (cityOpen) setCityOpen(false);
+            else {
+              city.value = "";
+              set("hometown", "");
+              filterCities();
+            }
+          } else if (event.key === "Tab" && cityOpen && shown[cityActive]) {
+            pickCity(cityItems.indexOf(shown[cityActive]));
+          }
+        });
+        cityItems.forEach(function (item, index) {
+          item.addEventListener("mousedown", function (event) {
+            event.preventDefault();
+          });
+          item.addEventListener("click", function () {
+            pickCity(index);
+          });
+          item.addEventListener("mousemove", function () {
+            cityActive = visible().indexOf(item);
+            paintCity();
+          });
+        });
+
+        // Submit: validate, then sending, then received
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (status !== "idle") return;
+          var found = validate(values);
+          ORDER.forEach(function (field) {
+            showError(field, found[field] || null);
+          });
+          var bad = ORDER.filter(function (field) {
+            return found[field];
+          });
+          if (bad.length) {
+            live.textContent = bad.length + " " + (bad.length === 1 ? "field needs" : "fields need") + " attention.";
+            var target = bad[0] === "season" ? radios[0] : control(bad[0]);
+            if (target) target.focus();
+            return;
+          }
+          status = "loading";
+          sections.forEach(function (section) {
+            section.disabled = true;
+          });
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = SPINNER + "Sending";
+          live.textContent = "Sending your application.";
+          // Replace this timer with your request.
+          setTimeout(function () {
+            status = "success";
+            swap(submitBtn, BTN_DONE, BTN_IDLE);
+            submitBtn.innerHTML = CHECK + "Application received";
+            note.textContent = "Received " + TODAY + ". We reply by " + DECISION + ".";
+            caption.textContent = "Sent. A copy of this letter is on its way to your inbox.";
+            card.insertAdjacentHTML("beforeend", POSTMARK);
+            live.textContent = "Application received. We reply by " + DECISION + ".";
+          }, 1600);
+        });
+
+        renderLetter();
+      })();
+    </script>
+  </body>
+</html>

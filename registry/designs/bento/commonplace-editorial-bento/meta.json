@@ -1,0 +1,15 @@
+{
+  "slug": "commonplace-editorial-bento",
+  "name": "Commonplace editorial bento",
+  "category": "bento",
+  "styleFamily": "editorial",
+  "tier": "pro",
+  "description": "A magazine features spread for a reading app. Mark a passage and an accent underline draws through it as it files into a notebook, cited.",
+  "tags": ["bento", "features", "editorial", "reading", "notes", "research", "magazine"],
+  "states": ["default", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

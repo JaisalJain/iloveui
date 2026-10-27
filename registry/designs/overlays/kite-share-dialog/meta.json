@@ -1,0 +1,15 @@
+{
+  "slug": "kite-share-dialog",
+  "name": "Kite share dialog",
+  "category": "overlays",
+  "styleFamily": "playful",
+  "tier": "pro",
+  "description": "A chunky share dialog: picked people pop in as chips and join the avatar stack, Copy link draws its check, and a sticker toast waits while hovered.",
+  "tags": ["share", "invite", "dialog", "combobox", "people-picker", "toast", "copy-link", "bottom-sheet"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

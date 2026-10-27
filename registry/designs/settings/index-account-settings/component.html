@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index account settings · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-index-settings
+      aria-label="Isobar account settings"
+      class="@container w-full bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <form novalidate aria-busy="false" class="mx-auto max-w-[1200px] px-5 @2xl:px-10">
+        <div
+          class="sticky top-0 z-20 -mx-5 flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-(--iu-border) bg-(--iu-background) px-5 py-4 @2xl:-mx-10 @2xl:px-10"
+        >
+          <div class="min-w-0 flex-1">
+            <p class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Isobar · Settings</p>
+            <h2 class="mt-1 text-[28px] leading-none font-semibold tracking-[-0.035em] @2xl:text-[40px]">Account</h2>
+          </div>
+          <p aria-live="polite" class="flex h-9 min-w-0 items-center text-[13px] text-(--iu-muted) tabular-nums">
+            <span
+              data-status
+              class="inline-flex items-center gap-1.5 transition-opacity duration-150 motion-reduce:transition-none"
+              >All changes saved · 09:12</span
+            >
+          </p>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              data-discard
+              disabled
+              class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3.5 text-[13px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+            >
+              Discard
+            </button>
+            <button
+              type="submit"
+              data-save
+              disabled
+              class="inline-flex h-9 min-w-[92px] cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent) px-4 text-[13px] font-semibold text-(--iu-accent-foreground) transition-opacity duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) motion-reduce:transition-none pointer-coarse:h-10"
+            >
+              <svg
+                aria-hidden="true"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.75"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="hidden animate-spin motion-reduce:animate-none"
+              >
+                <path d="M21 12a9 9 0 1 1-6.219-8.56" /></svg
+              ><span data-save-label>Save</span
+              ><kbd class="hidden font-mono text-[11px] font-normal @2xl:inline">⌘S</kbd>
+            </button>
+          </div>
+        </div>
+        <div
+          data-error
+          role="alert"
+          hidden
+          class="mt-6 flex items-start gap-3 border-l-2 border-red-700 py-1 pl-4 dark:border-red-400"
+        >
+          <svg
+            aria-hidden="true"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="mt-0.5 shrink-0 text-red-700 dark:text-red-400"
+          >
+            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+            <path d="M12 9v4" />
+            <path d="M12 17h.01" />
+          </svg>
+          <p data-error-text class="text-[14px] text-pretty"></p>
+        </div>
+        <div class="grid grid-cols-12 gap-x-6 pt-10 pb-16">
+          <nav aria-label="Settings sections" class="col-span-3 hidden @4xl:block">
+            <ol class="sticky top-28 border-t border-(--iu-border)">
+              <li class="border-b border-(--iu-border)">
+                <a
+                  href="#ix-profile"
+                  data-index-link="profile"
+                  aria-current="true"
+                  class="group flex h-10 items-center gap-3 text-[13px] text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                  ><span class="w-6 font-mono text-[11px] tabular-nums">01</span
+                  ><span class="flex-1 font-medium">Profile</span
+                  ><span
+                    data-index-count="profile"
+                    hidden
+                    class="inline-flex items-center gap-1.5 font-mono text-[11px] text-(--iu-foreground) tabular-nums"
+                    ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span><span data-n></span
+                    ><span class="sr-only"> edited</span></span
+                  ></a
+                >
+              </li>
+              <li class="border-b border-(--iu-border)">
+                <a
+                  href="#ix-signin"
+                  data-index-link="signin"
+                  class="group flex h-10 items-center gap-3 text-[13px] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  ><span class="w-6 font-mono text-[11px] tabular-nums">02</span><span class="flex-1">Sign-in</span
+                  ><span
+                    data-index-count="signin"
+                    hidden
+                    class="inline-flex items-center gap-1.5 font-mono text-[11px] text-(--iu-foreground) tabular-nums"
+                    ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span><span data-n></span
+                    ><span class="sr-only"> edited</span></span
+                  ></a
+                >
+              </li>
+              <li class="border-b border-(--iu-border)">
+                <a
+                  href="#ix-notifications"
+                  data-index-link="notifications"
+                  class="group flex h-10 items-center gap-3 text-[13px] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  ><span class="w-6 font-mono text-[11px] tabular-nums">03</span
+                  ><span class="flex-1">Notifications</span
+                  ><span
+                    data-index-count="notifications"
+                    hidden
+                    class="inline-flex items-center gap-1.5 font-mono text-[11px] text-(--iu-foreground) tabular-nums"
+                    ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span><span data-n></span
+                    ><span class="sr-only"> edited</span></span
+                  ></a
+                >
+              </li>
+              <li class="border-b border-(--iu-border)">
+                <a
+                  href="#ix-sessions"
+                  data-index-link="sessions"
+                  class="group flex h-10 items-center gap-3 text-[13px] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  ><span class="w-6 font-mono text-[11px] tabular-nums">04</span><span class="flex-1">Sessions</span
+                  ><span
+                    data-index-count="sessions"
+                    hidden
+                    class="inline-flex items-center gap-1.5 font-mono text-[11px] text-(--iu-foreground) tabular-nums"
+                    ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span><span data-n></span
+                    ><span class="sr-only"> edited</span></span
+                  ></a
+                >
+              </li>
+              <li class="border-b border-(--iu-border)">
+                <a
+                  href="#ix-delete"
+                  data-index-link="delete"
+                  class="group flex h-10 items-center gap-3 text-[13px] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  ><span class="w-6 font-mono text-[11px] tabular-nums">05</span
+                  ><span class="flex-1">Delete account</span
+                  ><span
+                    data-index-count="delete"
+                    hidden
+                    class="inline-flex items-center gap-1.5 font-mono text-[11px] text-(--iu-foreground) tabular-nums"
+                    ><span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span><span data-n></span
+                    ><span class="sr-only"> edited</span></span
+                  ></a
+                >
+              </li>
+            </ol>
+          </nav>
+          <div class="col-span-12 flex flex-col gap-16 @4xl:col-span-9">
+            <section id="ix-profile" aria-labelledby="ix-profile-title" class="scroll-mt-28">
+              <div id="ix-profile-title">
+                <div class="flex items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+                  <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">01</span>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-[20px] leading-tight font-semibold tracking-[-0.02em]">Profile</h3>
+                    <p class="mt-1 text-[13px] text-pretty text-(--iu-muted)">
+                      How you appear on shared maps and in comments.
+                    </p>
+                  </div>
+                  <span
+                    data-section-count="profile"
+                    hidden
+                    class="shrink-0 text-[12px] text-(--iu-muted) tabular-nums"
+                  ></span>
+                </div>
+              </div>
+              <div class="divide-y divide-(--iu-border)">
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker="name"
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><label for="ix-name" class="text-[13px] font-medium">Name</label></div>
+                  <div class="min-w-0">
+                    <input
+                      id="ix-name"
+                      data-field="name"
+                      value="Ilse Vandermeer"
+                      autocomplete="name"
+                      class="h-10 w-full max-w-[420px] rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 text-[14px] text-(--iu-foreground) transition-[border-color] duration-150 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 motion-reduce:transition-none dark:aria-invalid:border-red-400"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker="username"
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><label for="ix-username" class="text-[13px] font-medium">Username</label></div>
+                  <div class="min-w-0">
+                    <div class="flex max-w-[420px] items-stretch">
+                      <span
+                        class="inline-flex items-center rounded-l-[min(var(--iu-radius),6px)] border border-r-0 border-(--iu-foreground)/35 px-3 font-mono text-[13px] text-(--iu-muted)"
+                        >isobar.app/@</span
+                      ><input
+                        id="ix-username"
+                        data-field="username"
+                        value="ilse"
+                        autocomplete="username"
+                        spellcheck="false"
+                        aria-describedby="ix-username-hint"
+                        class="h-10 w-full rounded-[min(var(--iu-radius),6px)] rounded-l-none border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 font-mono text-[14px] text-(--iu-foreground) transition-[border-color] duration-150 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 motion-reduce:transition-none dark:aria-invalid:border-red-400"
+                      />
+                    </div>
+                    <p id="ix-username-hint" class="mt-1.5 text-[12px] text-(--iu-muted)">
+                      Your profile lives at isobar.app/@username.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker="email"
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><label for="ix-email" class="text-[13px] font-medium">Email</label></div>
+                  <div class="min-w-0">
+                    <input
+                      id="ix-email"
+                      data-field="email"
+                      type="email"
+                      value="ilse@isobar.app"
+                      autocomplete="email"
+                      aria-describedby="ix-email-hint"
+                      class="h-10 w-full max-w-[420px] rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 text-[14px] text-(--iu-foreground) transition-[border-color] duration-150 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 motion-reduce:transition-none dark:aria-invalid:border-red-400"
+                    />
+                    <p id="ix-email-hint" class="mt-1.5 text-[12px] text-(--iu-muted)">
+                      Verified 12 Jan 2026. Changing it sends a new link.
+                    </p>
+                  </div>
+                </div>
+
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker="title"
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><label for="ix-title" class="text-[13px] font-medium">Title</label></div>
+                  <div class="min-w-0">
+                    <input
+                      id="ix-title"
+                      data-field="title"
+                      value="Forecast designer"
+                      class="h-10 w-full max-w-[420px] rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 text-[14px] text-(--iu-foreground) transition-[border-color] duration-150 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 motion-reduce:transition-none dark:aria-invalid:border-red-400"
+                    />
+                  </div>
+                </div>
+
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker="timezone"
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><label for="ix-tz" class="text-[13px] font-medium">Time zone</label></div>
+                  <div class="min-w-0">
+                    <select
+                      id="ix-tz"
+                      data-field="timezone"
+                      aria-describedby="ix-tz-hint"
+                      class="h-10 w-full max-w-[280px] cursor-pointer rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 text-[14px] text-(--iu-foreground) transition-[border-color] duration-150 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 motion-reduce:transition-none dark:aria-invalid:border-red-400"
+                    >
+                      <option value="Europe/London">London (GMT+0)</option>
+                      <option value="Europe/Amsterdam" selected>Amsterdam (GMT+1)</option>
+                      <option value="America/New_York">New York (GMT−5)</option>
+                      <option value="Asia/Kolkata">Kolkata (GMT+5:30)</option>
+                      <option value="Asia/Tokyo">Tokyo (GMT+9)</option>
+                    </select>
+                    <p id="ix-tz-hint" class="mt-1.5 text-[12px] text-(--iu-muted)">
+                      Digests and quiet hours follow this zone.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="ix-signin" aria-labelledby="ix-signin-title" class="scroll-mt-28">
+              <div id="ix-signin-title">
+                <div class="flex items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+                  <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">02</span>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-[20px] leading-tight font-semibold tracking-[-0.02em]">Sign-in</h3>
+                    <p class="mt-1 text-[13px] text-pretty text-(--iu-muted)">
+                      Password and the second step we ask for on new devices.
+                    </p>
+                  </div>
+                  <span
+                    data-section-count="signin"
+                    hidden
+                    class="shrink-0 text-[12px] text-(--iu-muted) tabular-nums"
+                  ></span>
+                </div>
+              </div>
+              <div class="divide-y divide-(--iu-border)">
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker=""
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><span class="text-[13px] font-medium">Password</span></div>
+                  <div class="min-w-0">
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-1.5">
+                      <span class="font-mono text-[13px] tracking-[0.2em]"
+                        ><span aria-hidden="true">••••••••••••</span><span class="sr-only">Password set</span></span
+                      ><span class="text-[12px] text-(--iu-muted)">Changed 3 Feb 2026</span
+                      ><button
+                        type="button"
+                        class="ml-auto inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3.5 text-[13px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                      >
+                        Change password
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="relative grid grid-cols-1 gap-x-6 gap-y-2 py-[calc(16px*var(--iu-density))] @2xl:grid-cols-[180px_minmax(0,1fr)]"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-marker="twoStep"
+                    class="absolute top-[calc(16px*var(--iu-density))] bottom-[calc(16px*var(--iu-density))] -left-3 w-0.5 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                  ></span>
+                  <div class="pt-2.5"><span class="text-[13px] font-medium">Two-step</span></div>
+                  <div class="min-w-0">
+                    <div class="flex items-start gap-3 pt-1.5">
+                      <button
+                        type="button"
+                        role="switch"
+                        data-switch
+                        aria-checked="true"
+                        aria-labelledby="ix-2fa-label"
+                        class="relative mt-0.5 inline-flex h-6 w-10 shrink-0 cursor-pointer items-center rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground) bg-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                      >
+                        <span
+                          aria-hidden="true"
+                          class="absolute top-0.5 size-[18px] translate-x-[18px] rounded-[min(var(--iu-radius),4px)] bg-(--iu-background) transition-transform duration-150 motion-reduce:transition-none"
+                        ></span></button
+                      ><span
+                        ><span id="ix-2fa-label" class="block text-[14px]"
+                          >Ask for a code from an authenticator app</span
+                        ><span data-switch-note class="mt-0.5 block text-[12px] text-(--iu-muted)"
+                          >On · 8 backup codes left</span
+                        ></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section id="ix-notifications" aria-labelledby="ix-notifications-title" class="scroll-mt-28">
+              <div id="ix-notifications-title">
+                <div class="flex items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+                  <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">03</span>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-[20px] leading-tight font-semibold tracking-[-0.02em]">Notifications</h3>
+                    <p class="mt-1 text-[13px] text-pretty text-(--iu-muted)">
+                      Choose where each kind of update reaches you.
+                    </p>
+                  </div>
+                  <span
+                    data-section-count="notifications"
+                    hidden
+                    class="shrink-0 text-[12px] text-(--iu-muted) tabular-nums"
+                  ></span>
+                </div>
+              </div>
+              <table class="w-full table-fixed border-collapse text-left">
+                <caption class="sr-only">
+                  Notification channels per event
+                </caption>
+                <thead>
+                  <tr class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+                    <th scope="col" class="py-3 font-medium">Event</th>
+                    <th scope="col" class="w-20 py-3 text-center font-medium @2xl:w-28">Email</th>
+                    <th scope="col" class="w-20 py-3 text-center font-medium @2xl:w-28">Push</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-(--iu-border)">
+                    <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-4 font-normal">
+                      <span class="block text-[14px]">Mentions</span
+                      ><span class="block text-[12px] text-(--iu-muted)">Someone tags you on a map</span>
+                    </th>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.mentions.email"
+                          checked
+                          aria-label="Mentions by email"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.mentions.email"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.mentions.push"
+                          checked
+                          aria-label="Mentions by push"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.mentions.push"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-4 font-normal">
+                      <span class="block text-[14px]">Comments</span
+                      ><span class="block text-[12px] text-(--iu-muted)">Replies on maps you own</span>
+                    </th>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.comments.email"
+                          aria-label="Comments by email"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.comments.email"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.comments.push"
+                          checked
+                          aria-label="Comments by push"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.comments.push"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-4 font-normal">
+                      <span class="block text-[14px]">Weekly digest</span
+                      ><span class="block text-[12px] text-(--iu-muted)">Mondays, 08:00 your time</span>
+                    </th>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.digest.email"
+                          checked
+                          aria-label="Weekly digest by email"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.digest.email"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.digest.push"
+                          aria-label="Weekly digest by push"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.digest.push"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <th scope="row" class="py-[calc(12px*var(--iu-density))] pr-4 font-normal">
+                      <span class="block text-[14px]">Billing</span
+                      ><span class="block text-[12px] text-(--iu-muted)">Invoices and failed payments</span>
+                    </th>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.billing.email"
+                          checked
+                          aria-label="Billing by email"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.billing.email"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                    <td class="relative text-center">
+                      <span class="relative inline-grid size-5 place-items-center align-middle pointer-coarse:size-6"
+                        ><input
+                          type="checkbox"
+                          data-field="notify.billing.push"
+                          aria-label="Billing by push"
+                          class="peer col-start-1 row-start-1 size-full cursor-pointer appearance-none rounded-[min(var(--iu-radius),4px)] border border-(--iu-foreground)/45 bg-(--iu-surface) transition-colors duration-150 checked:border-(--iu-foreground) checked:bg-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none" /><svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="pointer-events-none col-start-1 row-start-1 text-(--iu-background) opacity-0 peer-checked:opacity-100"
+                        >
+                          <path d="M20 6 9 17l-5-5" /></svg></span
+                      ><span
+                        aria-hidden="true"
+                        data-marker="notify.billing.push"
+                        class="absolute bottom-1.5 left-1/2 h-0.5 w-5 -translate-x-1/2 bg-(--iu-accent) opacity-0 transition-opacity duration-150 motion-reduce:transition-none"
+                      ></span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <section id="ix-sessions" aria-labelledby="ix-sessions-title" class="scroll-mt-28">
+              <div id="ix-sessions-title">
+                <div class="flex items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+                  <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">04</span>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-[20px] leading-tight font-semibold tracking-[-0.02em]">Sessions</h3>
+                    <p class="mt-1 text-[13px] text-pretty text-(--iu-muted)">
+                      Devices signed in to your account right now.
+                    </p>
+                  </div>
+                  <span
+                    data-section-count="sessions"
+                    hidden
+                    class="shrink-0 text-[12px] text-(--iu-muted) tabular-nums"
+                  ></span>
+                </div>
+              </div>
+              <ul>
+                <li
+                  data-session="s1"
+                  class="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]"
+                >
+                  <span class="min-w-0 flex-1"
+                    ><span data-device class="block text-[14px]">Safari on macOS</span
+                    ><span class="block text-[12px] text-(--iu-muted) tabular-nums">Utrecht, NL · Now</span></span
+                  ><span class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+                    >This device</span
+                  >
+                </li>
+                <li
+                  data-session="s2"
+                  class="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]"
+                >
+                  <span class="min-w-0 flex-1"
+                    ><span data-device class="block text-[14px]">Isobar for iOS</span
+                    ><span class="block text-[12px] text-(--iu-muted) tabular-nums"
+                      >Utrecht, NL · 2 hours ago</span
+                    ></span
+                  ><button
+                    type="button"
+                    data-sign-out
+                    class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3.5 text-[13px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                  >
+                    Sign out
+                  </button>
+                </li>
+                <li
+                  data-session="s3"
+                  class="flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-(--iu-border) py-[calc(12px*var(--iu-density))]"
+                >
+                  <span class="min-w-0 flex-1"
+                    ><span data-device class="block text-[14px]">Firefox on Windows</span
+                    ><span class="block text-[12px] text-(--iu-muted) tabular-nums"
+                      >Rotterdam, NL · Mon 26 Oct</span
+                    ></span
+                  ><button
+                    type="button"
+                    data-sign-out
+                    class="inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3.5 text-[13px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+              <button
+                type="button"
+                data-sign-out-all
+                class="mt-4 inline-flex h-9 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3.5 text-[13px] font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:not-disabled:border-(--iu-foreground)"
+              >
+                Sign out of all other sessions
+              </button>
+            </section>
+            <section id="ix-delete" aria-labelledby="ix-delete-title" class="scroll-mt-28">
+              <div id="ix-delete-title">
+                <div class="flex items-baseline gap-4 border-b border-(--iu-foreground) pb-3">
+                  <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">05</span>
+                  <div class="min-w-0 flex-1">
+                    <h3 class="text-[20px] leading-tight font-semibold tracking-[-0.02em]">Delete account</h3>
+                    <p class="mt-1 text-[13px] text-pretty text-(--iu-muted)">
+                      Removes your maps, comments and API keys after 14 days. Shared maps move to their workspace owner.
+                    </p>
+                  </div>
+                  <span
+                    data-section-count="delete"
+                    hidden
+                    class="shrink-0 text-[12px] text-(--iu-muted) tabular-nums"
+                  ></span>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 gap-x-6 gap-y-3 py-5 @2xl:grid-cols-[180px_minmax(0,1fr)]">
+                <label for="ix-confirm" class="pt-2.5 text-[13px] font-medium">Confirm</label>
+                <div>
+                  <p class="text-[13px] text-(--iu-muted)">
+                    Type your username
+                    <span aria-hidden="true" class="font-mono text-[13px]"
+                      ><span data-matched class="text-(--iu-foreground)"></span
+                      ><span data-rest class="text-(--iu-muted) underline decoration-dotted underline-offset-4"
+                        >ilse</span
+                      ></span
+                    ><span class="sr-only">ilse</span> to confirm.
+                  </p>
+                  <div class="mt-3 flex max-w-[520px] flex-col gap-2 @md:flex-row">
+                    <input
+                      id="ix-confirm"
+                      autocomplete="off"
+                      spellcheck="false"
+                      class="h-10 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-surface) px-3 font-mono text-[14px] text-(--iu-foreground) transition-[border-color] duration-150 outline-none placeholder:text-(--iu-muted) focus:border-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 motion-reduce:transition-none dark:aria-invalid:border-red-400"
+                    />
+                    <button
+                      type="button"
+                      data-delete
+                      disabled
+                      aria-describedby="ix-delete-note"
+                      class="inline-flex h-10 shrink-0 cursor-pointer items-center justify-center gap-2 rounded-[min(var(--iu-radius),6px)] bg-red-700 px-4 text-[13px] font-semibold text-white transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/10 disabled:text-(--iu-muted) motion-reduce:transition-none dark:bg-red-600"
+                    >
+                      Delete account
+                    </button>
+                  </div>
+                  <p id="ix-delete-note" class="mt-2 text-[12px] text-(--iu-muted)">0 of 4 characters match.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </form>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-index-settings]");
+        if (!root) return;
+        var form = root.querySelector("form");
+        var fields = Array.prototype.slice.call(root.querySelectorAll("[data-field]"));
+        var toggle = root.querySelector("[data-switch]");
+        var statusEl = root.querySelector("[data-status]");
+        var saveButton = root.querySelector("[data-save]");
+        var saveLabel = root.querySelector("[data-save-label]");
+        var spinner = saveButton.querySelector("svg");
+        var discardButton = root.querySelector("[data-discard]");
+        var errorBox = root.querySelector("[data-error]");
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var saving = false;
+        var savedAt = "09:12";
+        var justSaved = false;
+
+        function read(el) {
+          return el.type === "checkbox" ? el.checked : el.value;
+        }
+        function write(el, value) {
+          if (el.type === "checkbox") el.checked = value;
+          else el.value = value;
+        }
+        var baseline = {};
+        fields.forEach(function (el) {
+          baseline[el.getAttribute("data-field")] = read(el);
+        });
+        var twoStepSaved = true;
+
+        function section(key) {
+          if (key.indexOf("notify.") === 0) return "notifications";
+          if (key === "twoStep") return "signin";
+          return "profile";
+        }
+        function changes() {
+          var list = fields
+            .filter(function (el) {
+              return read(el) !== baseline[el.getAttribute("data-field")];
+            })
+            .map(function (el) {
+              return el.getAttribute("data-field");
+            });
+          if ((toggle.getAttribute("aria-checked") === "true") !== twoStepSaved) list.push("twoStep");
+          return list;
+        }
+        function setStatus(text, tone, icon) {
+          var swap = function () {
+            statusEl.innerHTML = (icon || "") + text;
+            statusEl.classList.toggle("text-(--iu-foreground)", tone === "dirty");
+            statusEl.style.opacity = "1";
+          };
+          if (statusEl.textContent === text) return;
+          if (reduce) return swap();
+          statusEl.style.opacity = "0";
+          setTimeout(swap, 150);
+        }
+        var CHECK_SVG =
+          '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+        function refresh() {
+          var list = changes();
+          root.querySelectorAll("[data-marker]").forEach(function (marker) {
+            var key = marker.getAttribute("data-marker");
+            var on = key && list.indexOf(key) !== -1;
+            marker.classList.toggle("opacity-100", Boolean(on));
+            marker.classList.toggle("opacity-0", !on);
+          });
+          ["profile", "signin", "notifications"].forEach(function (id) {
+            var n = list.filter(function (key) {
+              return section(key) === id;
+            }).length;
+            var badge = root.querySelector('[data-index-count="' + id + '"]');
+            badge.hidden = n === 0;
+            badge.querySelector("[data-n]").textContent = String(n);
+            var head = root.querySelector('[data-section-count="' + id + '"]');
+            head.hidden = n === 0;
+            head.textContent = n + " edited";
+          });
+          saveButton.disabled = list.length === 0 || saving;
+          discardButton.disabled = list.length === 0 || saving;
+          if (saving) return;
+          if (list.length > 0) {
+            justSaved = false;
+            setStatus(list.length + " unsaved " + (list.length === 1 ? "change" : "changes"), "dirty");
+          } else if (justSaved) setStatus("Saved at " + savedAt, "", CHECK_SVG);
+          else setStatus("All changes saved · " + savedAt, "");
+        }
+
+        form.addEventListener("input", function (event) {
+          if (event.target.hasAttribute("data-field")) {
+            if (event.target.id === "ix-username")
+              event.target.value = event.target.value.toLowerCase().replace(/[^a-z0-9._-]/g, "");
+            errorBox.hidden = true;
+            refresh();
+          }
+        });
+        form.addEventListener("change", refresh);
+
+        function paintSwitch(on) {
+          toggle.setAttribute("aria-checked", String(on));
+          toggle.classList.toggle("border-(--iu-foreground)", on);
+          toggle.classList.toggle("bg-(--iu-foreground)", on);
+          toggle.classList.toggle("border-(--iu-foreground)/35", !on);
+          toggle.classList.toggle("bg-(--iu-surface)", !on);
+          var knob = toggle.firstElementChild;
+          knob.classList.toggle("translate-x-[18px]", on);
+          knob.classList.toggle("bg-(--iu-background)", on);
+          knob.classList.toggle("translate-x-0.5", !on);
+          knob.classList.toggle("bg-(--iu-foreground)/45", !on);
+          root.querySelector("[data-switch-note]").textContent = on
+            ? "On · 8 backup codes left"
+            : "Off · anyone with your password can sign in";
+        }
+        toggle.addEventListener("click", function () {
+          paintSwitch(toggle.getAttribute("aria-checked") !== "true");
+          refresh();
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (saving || changes().length === 0) return;
+          saving = true;
+          saveButton.disabled = true;
+          discardButton.disabled = true;
+          spinner.classList.remove("hidden");
+          saveLabel.textContent = "Saving";
+          form.setAttribute("aria-busy", "true");
+          setStatus("Saving", "");
+          // Replace with your API call.
+          setTimeout(function () {
+            fields.forEach(function (el) {
+              baseline[el.getAttribute("data-field")] = read(el);
+            });
+            twoStepSaved = toggle.getAttribute("aria-checked") === "true";
+            var now = new Date();
+            savedAt = String(now.getHours()).padStart(2, "0") + ":" + String(now.getMinutes()).padStart(2, "0");
+            saving = false;
+            justSaved = true;
+            spinner.classList.add("hidden");
+            saveLabel.textContent = "Save";
+            form.setAttribute("aria-busy", "false");
+            refresh();
+          }, 900);
+        });
+        form.addEventListener("keydown", function (event) {
+          if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "s") {
+            event.preventDefault();
+            form.requestSubmit();
+          }
+        });
+        discardButton.addEventListener("click", function () {
+          fields.forEach(function (el) {
+            write(el, baseline[el.getAttribute("data-field")]);
+          });
+          paintSwitch(twoStepSaved);
+          errorBox.hidden = true;
+          refresh();
+        });
+
+        root.querySelectorAll("[data-index-link]").forEach(function (link) {
+          link.addEventListener("click", function () {
+            root.querySelectorAll("[data-index-link]").forEach(function (other) {
+              var on = other === link;
+              if (on) other.setAttribute("aria-current", "true");
+              else other.removeAttribute("aria-current");
+              other.classList.toggle("text-(--iu-foreground)", on);
+              other.classList.toggle("text-(--iu-muted)", !on);
+              other.children[1].classList.toggle("font-medium", on);
+            });
+          });
+        });
+
+        function signOut(item) {
+          var button = item.querySelector("[data-sign-out]");
+          if (!button) return;
+          item.querySelector("[data-device]").classList.add("text-(--iu-muted)", "line-through");
+          var done = document.createElement("span");
+          done.className = "inline-flex items-center gap-1.5 text-[12px] text-(--iu-muted)";
+          done.innerHTML =
+            '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Signed out';
+          item.replaceChild(done, button);
+        }
+        var allButton = root.querySelector("[data-sign-out-all]");
+        root.querySelectorAll("[data-sign-out]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            signOut(button.closest("[data-session]"));
+            allButton.disabled = !root.querySelector("[data-sign-out]");
+          });
+        });
+        allButton.addEventListener("click", function () {
+          root.querySelectorAll("[data-session]").forEach(signOut);
+          allButton.disabled = true;
+        });
+
+        var target = "ilse";
+        var confirmInput = root.querySelector("#ix-confirm");
+        var deleteButton = root.querySelector("[data-delete]");
+        var note = root.querySelector("#ix-delete-note");
+        confirmInput.addEventListener("input", function () {
+          var text = confirmInput.value;
+          var n = 0;
+          while (n < text.length && n < target.length && text[n] === target[n]) n++;
+          root.querySelector("[data-matched]").textContent = target.slice(0, n);
+          root.querySelector("[data-rest]").textContent = target.slice(n);
+          var ok = text === target;
+          deleteButton.disabled = !ok;
+          note.textContent = ok
+            ? "Ready. You can cancel within 14 days from the email we send."
+            : n + " of " + target.length + " characters match.";
+        });
+        deleteButton.addEventListener("click", function () {
+          deleteButton.disabled = true;
+          confirmInput.disabled = true;
+          deleteButton.textContent = "Deleting";
+        });
+      })();
+    </script>
+  </body>
+</html>

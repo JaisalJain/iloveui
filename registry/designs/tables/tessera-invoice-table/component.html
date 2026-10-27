@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tessera invoice table · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto w-full max-w-5xl px-4 py-10 sm:px-8 sm:py-16">
+      <!-- iloveui:component:start -->
+      <section
+        data-tessera
+        aria-labelledby="tessera-title"
+        class="@container overflow-hidden rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground) shadow-xs dark:shadow-none"
+      >
+        <header class="flex flex-wrap items-end justify-between gap-x-6 gap-y-3 px-4 pt-4 pb-3 @2xl:px-5">
+          <div class="min-w-0">
+            <h2 id="tessera-title" class="text-[15px] font-semibold tracking-[-0.01em]">Invoices</h2>
+            <dl class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[12px] text-(--iu-muted)">
+              <div class="flex gap-1.5">
+                <dt>Outstanding</dt>
+                <dd data-total-outstanding class="font-mono text-(--iu-foreground) tabular-nums">$68,262.30</dd>
+              </div>
+              <div class="flex gap-1.5">
+                <dt>Overdue</dt>
+                <dd data-total-overdue class="font-mono text-red-700 tabular-nums dark:text-red-400">$14,840.70</dd>
+              </div>
+            </dl>
+          </div>
+          <button
+            type="button"
+            class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent) px-3 text-[13px] font-medium text-(--iu-accent-foreground) transition-[filter] duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:brightness-90 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:brightness-95"
+          >
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M5 12h14" />
+              <path d="M12 5v14" />
+            </svg>
+            New invoice
+          </button>
+        </header>
+
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-3 border-t border-(--iu-border) px-4 py-2.5 @2xl:px-5">
+          <div data-filters role="group" aria-label="Filter by status" class="-mx-1 flex flex-wrap gap-1"></div>
+          <div class="relative ml-auto w-full @xl:w-56">
+            <label for="tessera-search" class="sr-only">Search invoices</label>
+            <svg
+              aria-hidden="true"
+              class="pointer-events-none absolute top-1/2 left-2.5 -translate-y-1/2 text-(--iu-muted)"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              id="tessera-search"
+              data-search
+              type="search"
+              placeholder="Customer or invoice"
+              class="h-8 w-full rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-background) pr-2 pl-8 text-[13px] text-(--iu-foreground) placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+            />
+          </div>
+        </div>
+
+        <div
+          data-strip
+          class="relative flex min-h-11 items-center border-t border-(--iu-border) px-4 transition-colors duration-100 motion-reduce:transition-none @2xl:px-5"
+        ></div>
+        <p data-announce aria-live="polite" class="sr-only"></p>
+
+        <div
+          class="hidden max-h-[392px] [scrollbar-gutter:stable] overflow-y-auto border-t border-(--iu-border) @2xl:block"
+        >
+          <table class="w-full table-fixed border-separate border-spacing-0 text-left">
+            <caption data-caption class="sr-only">
+              Invoices
+            </caption>
+            <thead data-head></thead>
+            <tbody data-body class="text-[13px]"></tbody>
+          </table>
+          <div data-empty-wide></div>
+        </div>
+
+        <div class="border-t border-(--iu-border) @2xl:hidden">
+          <div data-list-tools></div>
+          <ul data-list class="divide-y divide-(--iu-border)"></ul>
+          <div data-empty-narrow></div>
+        </div>
+
+        <nav
+          aria-label="Invoice pages"
+          class="flex flex-wrap items-center justify-between gap-3 border-t border-(--iu-border) px-4 py-2.5 @2xl:px-5"
+        >
+          <p data-range class="font-mono text-[12px] text-(--iu-muted) tabular-nums">1–8 of 24</p>
+          <div data-pages class="flex items-center gap-1"></div>
+        </nav>
+      </section>
+      <!-- iloveui:component:end -->
+    </div>
+    <script>
+      (function () {
+        var root = document.querySelector("[data-tessera]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var TODAY = "2026-10-27";
+        var PAGE_SIZE = 8;
+        var DAY = 86400000;
+        var rows = [
+          ["TS-2504", "Alder Robotics", "2026-10-24", "2026-11-23", 642750, 0, true],
+          ["TS-2503", "Fieldnote Press", "2026-10-22", "2026-11-21", 128400, 0],
+          ["TS-2502", "Juniper Health", "2026-10-20", "2026-11-19", 1896000, 948000],
+          ["TS-2501", "Saltmarsh Coffee", "2026-10-18", "2026-11-02", 86520, 86520],
+          ["TS-2499", "Kestrel Freight", "2026-09-14", "2026-10-14", 561275, 0],
+          ["TS-2498", "Oakhaven Dental", "2026-09-28", "2026-10-28", 214900, 0],
+          ["TS-2496", "Marlow & Finch", "2026-09-02", "2026-10-02", 280975, 0],
+          ["TS-2495", "Copperline Studio", "2026-10-01", "2026-10-31", 395000, 395000],
+          ["TS-2493", "Norvale Logistics", "2026-09-30", "2026-10-30", 1172460, 500000],
+          ["TS-2491", "Lumen Analytics", "2026-09-25", "2026-10-25", 74900, 74900],
+          ["TS-2490", "Harbor & Vine", "2026-09-20", "2026-10-20", 312340, 0],
+          ["TS-2488", "Quarry Climbing", "2026-09-18", "2026-10-18", 49800, 49800],
+          ["TS-2487", "Pinecrest Realty", "2026-09-15", "2026-11-14", 758000, 0],
+          ["TS-2485", "Tamarind Foods", "2026-09-10", "2026-10-10", 166215, 166215],
+          ["TS-2484", "Vantage Rowing Club", "2026-09-08", "2026-11-07", 38400, 0],
+          ["TS-2482", "Brightwater Labs", "2026-09-05", "2026-10-05", 920000, 920000],
+          ["TS-2481", "Wrenfield Clinics", "2026-09-03", "2026-10-03", 433180, 200000],
+          ["TS-2479", "Ostra Seafood", "2026-08-29", "2026-09-28", 127560, 127560],
+          ["TS-2478", "Greyline Architects", "2026-08-27", "2026-11-25", 1540000, 0],
+          ["TS-2476", "Pollen Studio", "2026-08-24", "2026-09-23", 58240, 58240],
+          ["TS-2475", "Riverbend Vets", "2026-08-20", "2026-10-19", 96300, 0],
+          ["TS-2473", "Hollis Mercantile", "2026-08-18", "2026-09-17", 247815, 247815],
+          ["TS-2471", "Sundial Solar", "2026-08-15", "2026-11-13", 2084000, 1042000],
+          ["TS-2470", "Ember Bakehouse", "2026-08-12", "2026-09-11", 31275, 31275],
+        ].map(function (r) {
+          return { id: r[0], customer: r[1], issued: r[2], due: r[3], amount: r[4], paid: r[5], draft: !!r[6] };
+        });
+
+        var state = {
+          filter: "all",
+          query: "",
+          sort: { key: "id", direction: "desc" },
+          page: 1,
+          selected: new Set(),
+          anchor: null,
+          flash: new Set(),
+          confirmed: null,
+          shownTotal: 0,
+        };
+        var LABELS = { id: "Invoice", customer: "Customer", due: "Due date", amount: "Amount" };
+        var FILTERS = [
+          ["all", "All"],
+          ["overdue", "Overdue"],
+          ["open", "Open"],
+          ["paid", "Paid"],
+          ["draft", "Draft"],
+        ];
+        var money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+        var dates = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+        var focusRing = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var ghost =
+          "inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2.5 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-100 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 disabled:cursor-not-allowed disabled:text-(--iu-muted) " +
+          focusRing;
+        var cell = "px-3 py-[calc(10px*var(--iu-density))] align-middle";
+        var th =
+          "sticky top-0 z-10 border-b border-(--iu-border) bg-(--iu-surface) px-3 py-2 text-left text-[11px] font-medium text-(--iu-muted)";
+        var PATHS = {
+          alert:
+            '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+          down: '<path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>',
+          up: '<path d="m5 12 7-7 7 7"/><path d="M12 19V5"/>',
+          updown: '<path d="m7 15 5 5 5-5"/><path d="m7 9 5-5 5 5"/>',
+          check: '<path d="M20 6 9 17l-5-5"/>',
+          left: '<path d="m15 18-6-6 6-6"/>',
+          right: '<path d="m9 18 6-6-6-6"/>',
+          done: '<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+          clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+          file: '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/>',
+          mail: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+          download:
+            '<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/>',
+          x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+          plus: '<path d="M5 12h14"/><path d="M12 5v14"/>',
+        };
+        function icon(name, size, stroke, extra) {
+          return (
+            '<svg aria-hidden="true" class="' +
+            (extra || "") +
+            '" width="' +
+            size +
+            '" height="' +
+            size +
+            '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' +
+            stroke +
+            '" stroke-linecap="round" stroke-linejoin="round">' +
+            PATHS[name] +
+            "</svg>"
+          );
+        }
+        function esc(text) {
+          return String(text).replace(/[&<>"]/g, function (c) {
+            return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+          });
+        }
+        function fmt(minor) {
+          return money.format(minor / 100);
+        }
+        function fmtDate(iso) {
+          return dates.format(new Date(iso + "T00:00:00Z"));
+        }
+        function days(from, to) {
+          return Math.round((Date.parse(to) - Date.parse(from)) / DAY);
+        }
+        function statusOf(inv) {
+          if (inv.draft) return "draft";
+          if (inv.paid >= inv.amount) return "paid";
+          return days(inv.due, TODAY) > 0 ? "overdue" : "open";
+        }
+        function initials(name) {
+          return name
+            .replace(/&/g, "")
+            .split(/\s+/)
+            .filter(Boolean)
+            .map(function (p) {
+              return p[0];
+            })
+            .join("")
+            .slice(0, 2)
+            .toUpperCase();
+        }
+        function badge(status, late) {
+          if (status === "paid")
+            return (
+              '<span class="inline-flex items-center gap-1.5 text-[13px] whitespace-nowrap text-emerald-700 dark:text-emerald-400">' +
+              icon("done", 14, 1.75) +
+              "Paid</span>"
+            );
+          if (status === "overdue")
+            return (
+              '<span class="inline-flex items-center gap-1.5 text-[13px] whitespace-nowrap text-red-700 dark:text-red-400">' +
+              icon("alert", 14, 1.75) +
+              '<span>Overdue <span class="font-mono text-[12px] tabular-nums">' +
+              late +
+              "d</span></span></span>"
+            );
+          if (status === "draft")
+            return (
+              '<span class="inline-flex items-center gap-1.5 text-[13px] whitespace-nowrap text-(--iu-muted)">' +
+              icon("file", 14, 1.5) +
+              "Draft</span>"
+            );
+          return (
+            '<span class="inline-flex items-center gap-1.5 text-[13px] whitespace-nowrap text-(--iu-foreground)">' +
+            icon("clock", 14, 1.5, "text-(--iu-muted)") +
+            '<span>Open <span class="font-mono text-[12px] text-(--iu-muted) tabular-nums">' +
+            (late === 0 ? "today" : -late + "d") +
+            "</span></span></span>"
+          );
+        }
+        function checkbox(key, label, checked, mixed) {
+          return (
+            '<label class="relative inline-flex size-6 cursor-pointer items-center justify-center pointer-coarse:size-10"><input type="checkbox" data-key="' +
+            key +
+            '" aria-label="' +
+            esc(label) +
+            '"' +
+            (checked ? " checked" : "") +
+            (mixed ? " data-mixed" : "") +
+            ' class="size-4 cursor-pointer accent-(--iu-accent) ' +
+            focusRing +
+            '" /></label>'
+          );
+        }
+
+        function derive() {
+          var all = rows.map(function (inv) {
+            return { inv: inv, status: statusOf(inv) };
+          });
+          var needle = state.query.trim().toLowerCase();
+          var factor = state.sort.direction === "asc" ? 1 : -1;
+          var visible = all
+            .filter(function (r) {
+              return (
+                (state.filter === "all" || r.status === state.filter) &&
+                (!needle ||
+                  r.inv.customer.toLowerCase().indexOf(needle) !== -1 ||
+                  r.inv.id.toLowerCase().indexOf(needle) !== -1)
+              );
+            })
+            .sort(function (a, b) {
+              var x = a.inv,
+                y = b.inv,
+                k = state.sort.key;
+              if (k === "amount") return (x.amount - y.amount) * factor;
+              if (k === "due") return (Date.parse(x.due) - Date.parse(y.due)) * factor;
+              if (k === "customer") return x.customer.localeCompare(y.customer) * factor;
+              return x.id.localeCompare(y.id, undefined, { numeric: true }) * factor;
+            });
+          var pageCount = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+          if (state.page > pageCount) state.page = pageCount;
+          var pageRows = visible.slice((state.page - 1) * PAGE_SIZE, state.page * PAGE_SIZE);
+          return { all: all, visible: visible, pageRows: pageRows, pageCount: pageCount };
+        }
+
+        function rollTo(el, from, to) {
+          if (reduce || from === to) {
+            el.textContent = fmt(to);
+            return;
+          }
+          var start = null;
+          function frame(now) {
+            if (start === null) start = now;
+            var t = Math.min(1, (now - start) / 140);
+            el.textContent = fmt(Math.round(from + (to - from) * t));
+            if (t < 1) requestAnimationFrame(frame);
+          }
+          el.textContent = fmt(from);
+          requestAnimationFrame(frame);
+        }
+
+        function render() {
+          var focusKey = document.activeElement && document.activeElement.getAttribute("data-key");
+          var d = derive();
+          var counts = { all: 0, draft: 0, open: 0, overdue: 0, paid: 0 };
+          var outstanding = 0,
+            overdue = 0;
+          d.all.forEach(function (r) {
+            counts.all++;
+            counts[r.status]++;
+            if (r.status === "draft") return;
+            outstanding += r.inv.amount - r.inv.paid;
+            if (r.status === "overdue") overdue += r.inv.amount - r.inv.paid;
+          });
+          root.querySelector("[data-total-outstanding]").textContent = fmt(outstanding);
+          root.querySelector("[data-total-overdue]").textContent = fmt(overdue);
+
+          root.querySelector("[data-filters]").innerHTML = FILTERS.map(function (f) {
+            var active = state.filter === f[0];
+            return (
+              '<button type="button" data-key="filter-' +
+              f[0] +
+              '" data-filter="' +
+              f[0] +
+              '" aria-pressed="' +
+              active +
+              '" class="inline-flex h-7 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border px-2 text-[12px] font-medium transition-colors duration-100 motion-reduce:transition-none disabled:cursor-not-allowed pointer-coarse:h-10 ' +
+              (active
+                ? "border-(--iu-accent) bg-[color-mix(in_oklab,var(--iu-accent)_10%,var(--iu-surface))] text-(--iu-foreground)"
+                : "border-transparent text-(--iu-muted) pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)") +
+              " " +
+              focusRing +
+              '">' +
+              f[1] +
+              ' <span class="font-mono text-[11px] tabular-nums opacity-80">' +
+              counts[f[0]] +
+              "</span></button>"
+            );
+          }).join("");
+
+          // Selection strip
+          var selectedRows = d.all.filter(function (r) {
+            return state.selected.has(r.inv.id);
+          });
+          var unpaid = selectedRows.filter(function (r) {
+            return r.status === "open" || r.status === "overdue";
+          });
+          var selectedOutstanding = selectedRows.reduce(function (sum, r) {
+            return sum + (r.status === "draft" ? 0 : r.inv.amount - r.inv.paid);
+          }, 0);
+          var strip = root.querySelector("[data-strip]");
+          var showRows = d.visible.length > 0;
+          strip.classList.toggle(
+            "bg-[color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))]",
+            state.selected.size > 0,
+          );
+          if (state.selected.size > 0) {
+            var confirmButton = function (key, iconName, label, doneLabel) {
+              var done = state.confirmed === key;
+              return (
+                '<button type="button" data-key="bulk-' +
+                key +
+                '" data-bulk="' +
+                key +
+                '" class="' +
+                ghost +
+                '"><span class="grid"><span class="col-start-1 row-start-1 inline-flex items-center gap-1.5 transition-opacity duration-100 motion-reduce:transition-none ' +
+                (done ? "opacity-0" : "") +
+                '">' +
+                icon(iconName, 16, 1.5) +
+                '<span class="sr-only @xl:not-sr-only">' +
+                label +
+                '</span></span><span aria-hidden="' +
+                !done +
+                '" class="col-start-1 row-start-1 inline-flex items-center gap-1.5 transition-opacity duration-100 motion-reduce:transition-none ' +
+                (done ? "" : "opacity-0") +
+                '">' +
+                icon("check", 16, 1.75) +
+                '<span class="sr-only @xl:not-sr-only">' +
+                doneLabel +
+                "</span></span></span></button>"
+              );
+            };
+            strip.innerHTML =
+              '<div class="flex w-full flex-wrap items-center gap-x-3 gap-y-1 py-1.5"><p class="mr-auto text-[13px]"><span class="font-mono font-medium tabular-nums">' +
+              state.selected.size +
+              '</span> selected<span class="text-(--iu-muted)"> · </span><span data-roll class="font-mono tabular-nums"></span><span class="text-(--iu-muted)"> outstanding</span></p><div class="-mr-2 flex items-center gap-0.5">' +
+              confirmButton("remind", "mail", "Send reminder", "Reminded") +
+              '<button type="button" data-key="bulk-paid" data-bulk="paid"' +
+              (unpaid.length === 0 ? " disabled" : "") +
+              ' class="' +
+              ghost +
+              '">' +
+              icon("done", 16, 1.5) +
+              '<span class="sr-only @xl:not-sr-only">Mark paid</span></button>' +
+              confirmButton("export", "download", "Export CSV", "Exported") +
+              '<span aria-hidden="true" class="mx-1 h-4 w-px bg-(--iu-border)"></span><button type="button" data-key="bulk-clear" data-bulk="clear" aria-label="Clear selection" class="' +
+              ghost +
+              ' w-8 justify-center px-0 pointer-coarse:w-10">' +
+              icon("x", 16, 1.5) +
+              "</button></div></div>";
+            rollTo(strip.querySelector("[data-roll]"), state.shownTotal, selectedOutstanding);
+          } else {
+            strip.innerHTML =
+              '<p class="text-[12px] text-(--iu-muted)">' +
+              d.visible.length +
+              (d.visible.length === 1 ? " invoice" : " invoices") +
+              " · sorted by " +
+              LABELS[state.sort.key].toLowerCase() +
+              ", " +
+              (state.sort.direction === "asc" ? "ascending" : "descending") +
+              (showRows ? '<span class="hidden @2xl:inline"> · shift-click to select a range</span>' : "") +
+              "</p>";
+          }
+          state.shownTotal = selectedOutstanding;
+
+          var pageIds = d.pageRows.map(function (r) {
+            return r.inv.id;
+          });
+          var onPage = pageIds.filter(function (id) {
+            return state.selected.has(id);
+          }).length;
+          var allOn = onPage > 0 && onPage === pageIds.length;
+          var mixed = onPage > 0 && onPage < pageIds.length;
+
+          // Table
+          var sortHeader = function (key, right) {
+            var active = state.sort.key === key;
+            var ic = !active
+              ? icon("updown", 12, 1.75, "opacity-60")
+              : icon(state.sort.direction === "asc" ? "up" : "down", 12, 2, "text-(--iu-foreground)");
+            return (
+              '<button type="button" data-key="sort-' +
+              key +
+              '" data-sort="' +
+              key +
+              '" class="-mx-1.5 inline-flex h-6 items-center gap-1 rounded-[min(var(--iu-radius),4px)] px-1.5 tracking-[0.06em] uppercase transition-colors duration-100 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground) ' +
+              (active ? "text-(--iu-foreground) " : "") +
+              (right ? "flex-row-reverse " : "") +
+              focusRing +
+              '">' +
+              LABELS[key] +
+              ic +
+              "</button>"
+            );
+          };
+          var ariaSort = function (key) {
+            return state.sort.key === key
+              ? ' aria-sort="' + (state.sort.direction === "asc" ? "ascending" : "descending") + '"'
+              : "";
+          };
+          root.querySelector("[data-caption]").textContent =
+            "Invoices, " + LABELS[state.sort.key] + " " + (state.sort.direction === "asc" ? "ascending" : "descending");
+          root.querySelector("[data-head]").innerHTML =
+            '<tr><th scope="col" class="' +
+            th +
+            ' w-12 pr-0 pl-4">' +
+            (showRows
+              ? checkbox("page-wide", "Select all invoices on this page", allOn, mixed)
+              : '<span class="sr-only">Select</span>') +
+            '</th><th scope="col"' +
+            ariaSort("customer") +
+            ' class="' +
+            th +
+            ' w-auto">' +
+            sortHeader("customer") +
+            '</th><th scope="col" class="' +
+            th +
+            ' w-[136px] tracking-[0.06em] uppercase">Status</th><th scope="col"' +
+            ariaSort("id") +
+            ' class="' +
+            th +
+            ' hidden w-[96px] @4xl:table-cell">' +
+            sortHeader("id") +
+            '</th><th scope="col"' +
+            ariaSort("due") +
+            ' class="' +
+            th +
+            ' w-[104px]">' +
+            sortHeader("due") +
+            '</th><th scope="col"' +
+            ariaSort("amount") +
+            ' class="' +
+            th +
+            ' w-[124px] text-right">' +
+            sortHeader("amount", true) +
+            '</th><th scope="col" class="' +
+            th +
+            ' hidden w-[128px] pr-5 tracking-[0.06em] uppercase @3xl:table-cell">Collected</th></tr>';
+
+          root.querySelector("[data-body]").innerHTML = d.pageRows
+            .map(function (r) {
+              var inv = r.inv;
+              var sel = state.selected.has(inv.id);
+              var flash = state.flash.has(inv.id);
+              var collected = inv.amount === 0 ? 0 : inv.paid / inv.amount;
+              var late = days(inv.due, TODAY);
+              var b = cell + " border-b border-(--iu-border)";
+              return (
+                '<tr class="transition-colors duration-150 motion-reduce:transition-none even:bg-(--iu-foreground)/[0.025] pointer-fine:hover:bg-(--iu-foreground)/5 ' +
+                (sel
+                  ? "bg-[color-mix(in_oklab,var(--iu-accent)_9%,var(--iu-surface))] even:bg-[color-mix(in_oklab,var(--iu-accent)_9%,var(--iu-surface))] pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_12%,var(--iu-surface))] "
+                  : "") +
+                (flash
+                  ? "bg-emerald-500/12 even:bg-emerald-500/12 dark:bg-emerald-400/12 dark:even:bg-emerald-400/12"
+                  : "") +
+                '"><td class="' +
+                b +
+                " relative pr-0 pl-4 " +
+                (sel ? "shadow-[inset_2px_0_0_var(--iu-accent)]" : "") +
+                '">' +
+                checkbox("row-wide-" + inv.id, "Select " + inv.id + ", " + inv.customer, sel) +
+                '</td><td class="' +
+                b +
+                '"><span class="flex min-w-0 items-center gap-2.5"><span aria-hidden="true" class="inline-flex size-7 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-background) font-mono text-[10px] font-medium text-(--iu-muted)">' +
+                initials(inv.customer) +
+                '</span><span class="min-w-0"><a href="#' +
+                inv.id +
+                '" class="block truncate rounded-sm font-medium text-(--iu-foreground) underline-offset-2 pointer-fine:hover:underline ' +
+                focusRing +
+                '">' +
+                esc(inv.customer) +
+                '</a><span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums @4xl:hidden">' +
+                inv.id +
+                '</span></span></span></td><td class="' +
+                b +
+                '">' +
+                badge(r.status, late) +
+                '</td><td class="' +
+                b +
+                ' hidden font-mono text-[12px] text-(--iu-muted) tabular-nums @4xl:table-cell">' +
+                inv.id +
+                '</td><td class="' +
+                b +
+                ' whitespace-nowrap tabular-nums"><span class="' +
+                (r.status === "overdue" ? "text-(--iu-foreground)" : "text-(--iu-muted)") +
+                '">' +
+                fmtDate(inv.due) +
+                '</span></td><td class="' +
+                b +
+                ' text-right font-mono text-[13px] whitespace-nowrap tabular-nums">' +
+                fmt(inv.amount) +
+                '</td><td class="' +
+                b +
+                ' hidden pr-5 @3xl:table-cell"><span class="flex items-center gap-2"><span aria-hidden="true" class="h-1.5 flex-1 overflow-hidden rounded-full bg-(--iu-foreground)/10"><span class="block h-full origin-left rounded-full transition-transform duration-150 motion-reduce:transition-none ' +
+                (collected >= 1 ? "bg-(--iu-foreground)/55" : "bg-(--iu-accent)") +
+                '" style="transform: scaleX(' +
+                collected +
+                ')"></span></span><span class="w-9 text-right font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+                Math.round(collected * 100) +
+                "%</span></span></td></tr>"
+              );
+            })
+            .join("");
+
+          // Narrow list
+          root.querySelector("[data-list-tools]").innerHTML = showRows
+            ? '<div class="flex items-center justify-between gap-3 border-b border-(--iu-border) px-4 py-2"><div class="inline-flex items-center gap-2 text-[12px] text-(--iu-muted)">' +
+              checkbox("page-narrow", "Select all invoices on this page", allOn, mixed) +
+              '<span aria-hidden="true">Select page</span></div><label class="inline-flex items-center gap-2 text-[12px] text-(--iu-muted)">Sort <select data-key="sort-select" data-sort-select class="h-8 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 bg-(--iu-background) px-2 text-[13px] text-(--iu-foreground) pointer-coarse:h-10 ' +
+              focusRing +
+              '">' +
+              [
+                ["id:desc", "Newest first"],
+                ["due:asc", "Due soonest"],
+                ["amount:desc", "Largest amount"],
+                ["customer:asc", "Customer A–Z"],
+              ]
+                .map(function (o) {
+                  var current = state.sort.key + ":" + state.sort.direction === o[0];
+                  return '<option value="' + o[0] + '"' + (current ? " selected" : "") + ">" + o[1] + "</option>";
+                })
+                .join("") +
+              "</select></label></div>"
+            : "";
+          root.querySelector("[data-list]").innerHTML = d.pageRows
+            .map(function (r) {
+              var inv = r.inv;
+              var sel = state.selected.has(inv.id);
+              return (
+                '<li class="flex gap-2 py-[calc(12px*var(--iu-density))] pr-4 pl-3 transition-colors duration-150 motion-reduce:transition-none ' +
+                (sel
+                  ? "bg-[color-mix(in_oklab,var(--iu-accent)_9%,var(--iu-surface))] shadow-[inset_2px_0_0_var(--iu-accent)] "
+                  : "") +
+                (state.flash.has(inv.id) ? "bg-emerald-500/12 dark:bg-emerald-400/12" : "") +
+                '">' +
+                checkbox("row-narrow-" + inv.id, "Select " + inv.id + ", " + inv.customer, sel) +
+                '<div class="min-w-0 flex-1"><div class="flex items-baseline justify-between gap-3"><a href="#' +
+                inv.id +
+                '" class="truncate rounded-sm text-[14px] font-medium ' +
+                focusRing +
+                '">' +
+                esc(inv.customer) +
+                '</a><span class="font-mono text-[13px] whitespace-nowrap tabular-nums">' +
+                fmt(inv.amount) +
+                '</span></div><div class="mt-1 flex items-center justify-between gap-3"><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">' +
+                inv.id +
+                " · due " +
+                fmtDate(inv.due) +
+                "</span>" +
+                badge(r.status, days(inv.due, TODAY)) +
+                "</div></div></li>"
+              );
+            })
+            .join("");
+
+          var empty = showRows
+            ? ""
+            : '<div class="flex flex-col items-start gap-3 px-4 py-12 @2xl:items-center @2xl:px-5 @2xl:text-center"><svg aria-hidden="true" width="56" height="44" viewBox="0 0 56 44" fill="none" class="text-(--iu-muted)"><rect x="8.5" y="4.5" width="34" height="35" rx="3" stroke="currentColor" stroke-opacity="0.5"/><rect x="13.5" y="8.5" width="34" height="35" rx="3" class="fill-(--iu-surface)" stroke="currentColor"/><path d="M19 17h16M19 23h22M19 29h12" stroke="currentColor" stroke-linecap="round" stroke-opacity="0.6"/></svg><div><p class="text-[14px] font-medium">No invoices match</p><p class="mt-1 max-w-sm text-[13px] text-pretty text-(--iu-muted)">' +
+              (state.query
+                ? "Nothing matches “" + esc(state.query) + "” with this status filter."
+                : "Nothing has this status right now.") +
+              '</p></div><button type="button" data-clear class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] border border-(--iu-foreground)/35 px-3 text-[13px] font-medium transition-colors duration-100 motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 ' +
+              focusRing +
+              '">' +
+              icon("x", 16, 1.5) +
+              "Clear filters</button></div>";
+          root.querySelector("[data-empty-wide]").innerHTML = empty;
+          root.querySelector("[data-empty-narrow]").innerHTML = empty;
+
+          // Pagination
+          var first = d.visible.length === 0 ? 0 : (state.page - 1) * PAGE_SIZE + 1;
+          var last = Math.min(state.page * PAGE_SIZE, d.visible.length);
+          root.querySelector("[data-range]").textContent =
+            d.visible.length === 0 ? "0 invoices" : first + "–" + last + " of " + d.visible.length;
+          var pages = "";
+          var count = showRows ? d.pageCount : 1;
+          pages +=
+            '<button type="button" data-key="prev" data-page="prev" aria-label="Previous page"' +
+            (state.page <= 1 || !showRows ? " disabled" : "") +
+            ' class="' +
+            ghost +
+            ' w-8 justify-center px-0 pointer-coarse:w-10">' +
+            icon("left", 16, 1.5) +
+            "</button>";
+          for (var n = 1; n <= count; n++) {
+            var current = n === state.page;
+            pages +=
+              '<button type="button" data-key="page-' +
+              n +
+              '" data-page="' +
+              n +
+              '" aria-label="Page ' +
+              n +
+              '"' +
+              (current ? ' aria-current="page"' : "") +
+              (!showRows ? " disabled" : "") +
+              ' class="' +
+              ghost +
+              " w-8 justify-center px-0 font-mono text-[12px] tabular-nums pointer-coarse:w-10 " +
+              (current
+                ? "bg-(--iu-foreground)/8 text-(--iu-foreground) shadow-[inset_0_-2px_0_var(--iu-accent)]"
+                : "") +
+              '">' +
+              n +
+              "</button>";
+          }
+          pages +=
+            '<button type="button" data-key="next" data-page="next" aria-label="Next page"' +
+            (state.page >= d.pageCount || !showRows ? " disabled" : "") +
+            ' class="' +
+            ghost +
+            ' w-8 justify-center px-0 pointer-coarse:w-10">' +
+            icon("right", 16, 1.5) +
+            "</button>";
+          root.querySelector("[data-pages]").innerHTML = pages;
+
+          root.querySelectorAll("input[data-mixed]").forEach(function (input) {
+            input.indeterminate = true;
+          });
+          if (focusKey) {
+            var again = root.querySelector('[data-key="' + focusKey + '"]');
+            if (again) again.focus();
+          }
+          root._pageIds = pageIds;
+        }
+
+        function announce(text) {
+          root.querySelector("[data-announce]").textContent = text;
+        }
+        var confirmTimer, flashTimer;
+        function confirm(key) {
+          state.confirmed = key;
+          clearTimeout(confirmTimer);
+          confirmTimer = setTimeout(function () {
+            state.confirmed = null;
+            render();
+          }, 1600);
+        }
+        function unpaidSelected() {
+          return rows.filter(function (inv) {
+            var s = statusOf(inv);
+            return state.selected.has(inv.id) && (s === "open" || s === "overdue");
+          });
+        }
+        function plural(n) {
+          return n + (n === 1 ? " invoice" : " invoices");
+        }
+
+        root.addEventListener("click", function (event) {
+          var target = event.target.closest("button, input[type=checkbox]");
+          if (!target || !root.contains(target)) return;
+          var key = target.getAttribute("data-key") || "";
+          if (target.matches("input[type=checkbox]")) {
+            var pageIds = root._pageIds || [];
+            if (key.indexOf("page-") === 0) {
+              var allOn = pageIds.every(function (id) {
+                return state.selected.has(id);
+              });
+              pageIds.forEach(function (id) {
+                if (allOn) state.selected.delete(id);
+                else state.selected.add(id);
+              });
+            } else {
+              var id = key.replace(/^row-(wide|narrow)-/, "");
+              var turnOn = !state.selected.has(id);
+              var from = state.anchor ? pageIds.indexOf(state.anchor) : -1;
+              var to = pageIds.indexOf(id);
+              if (event.shiftKey && from !== -1 && to !== -1) {
+                pageIds.slice(Math.min(from, to), Math.max(from, to) + 1).forEach(function (rangeId) {
+                  if (turnOn) state.selected.add(rangeId);
+                  else state.selected.delete(rangeId);
+                });
+              } else if (turnOn) state.selected.add(id);
+              else state.selected.delete(id);
+              state.anchor = id;
+            }
+            render();
+            return;
+          }
+          if (target.hasAttribute("data-filter")) {
+            state.filter = target.getAttribute("data-filter");
+            state.page = 1;
+          } else if (target.hasAttribute("data-sort")) {
+            var k = target.getAttribute("data-sort");
+            state.sort =
+              state.sort.key === k
+                ? { key: k, direction: state.sort.direction === "asc" ? "desc" : "asc" }
+                : { key: k, direction: k === "customer" || k === "due" ? "asc" : "desc" };
+            state.page = 1;
+          } else if (target.hasAttribute("data-page")) {
+            var p = target.getAttribute("data-page");
+            state.page = p === "prev" ? state.page - 1 : p === "next" ? state.page + 1 : Number(p);
+          } else if (target.hasAttribute("data-clear")) {
+            state.filter = "all";
+            state.query = "";
+            state.page = 1;
+            root.querySelector("[data-search]").value = "";
+          } else if (target.hasAttribute("data-bulk")) {
+            var action = target.getAttribute("data-bulk");
+            var unpaid = unpaidSelected();
+            if (action === "clear") state.selected.clear();
+            if (action === "remind" && unpaid.length) {
+              confirm("remind");
+              announce("Reminders sent for " + plural(unpaid.length));
+            }
+            if (action === "export") {
+              confirm("export");
+              announce(plural(state.selected.size) + " exported as CSV");
+            }
+            if (action === "paid" && unpaid.length) {
+              unpaid.forEach(function (inv) {
+                inv.paid = inv.amount;
+                state.flash.add(inv.id);
+              });
+              state.selected.clear();
+              announce(plural(unpaid.length) + " marked paid");
+              clearTimeout(flashTimer);
+              flashTimer = setTimeout(function () {
+                state.flash.clear();
+                render();
+              }, 1200);
+            }
+          } else return;
+          render();
+        });
+        root.addEventListener("change", function (event) {
+          if (!event.target.matches("[data-sort-select]")) return;
+          var parts = event.target.value.split(":");
+          state.sort = { key: parts[0], direction: parts[1] };
+          state.page = 1;
+          render();
+        });
+        root.querySelector("[data-search]").addEventListener("input", function (event) {
+          state.query = event.target.value;
+          state.page = 1;
+          render();
+        });
+        render();
+      })();
+    </script>
+  </body>
+</html>

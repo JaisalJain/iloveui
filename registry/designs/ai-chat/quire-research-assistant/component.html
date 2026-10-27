@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quire research assistant · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <div class="mx-auto max-w-5xl px-4 py-10 sm:px-8 sm:py-16">
+      <!-- iloveui:component:start -->
+      <section
+        data-quire
+        aria-label="Quire research desk: Did the 2025 four-day week pilots actually reduce burnout?"
+        class="@container w-full rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) font-(family-name:--iu-font) text-(--iu-foreground) dark:border-(--iu-foreground)/12"
+      >
+        <header
+          class="flex items-center justify-between gap-4 border-b-[3px] border-double border-(--iu-foreground)/40 px-5 py-3 @lg:px-8"
+        >
+          <span class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">Quire research desk</span>
+          <div
+            role="meter"
+            aria-label="Research credits"
+            aria-valuemin="0"
+            aria-valuemax="120"
+            aria-valuenow="38"
+            aria-valuetext="38 of 120 research credits used this month"
+            class="flex items-center gap-3"
+          >
+            <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums"
+              ><span class="hidden @md:inline">Credits </span><span data-used class="text-(--iu-foreground)">38</span> /
+              120</span
+            >
+            <span aria-hidden="true" class="relative block h-px w-16 bg-(--iu-foreground)/25 @md:w-24"
+              ><span
+                data-credit-bar
+                class="absolute inset-y-[-1px] left-0 block bg-(--iu-accent) transition-[width] duration-300 motion-reduce:transition-none"
+                style="width: 31.67%"
+              ></span
+            ></span>
+          </div>
+        </header>
+        <div class="grid grid-cols-1 @4xl:grid-cols-[minmax(0,1fr)_320px]">
+          <div class="min-w-0 px-5 pt-8 pb-6 @lg:px-10 @lg:pt-12 @4xl:border-r @4xl:border-(--iu-border)">
+            <p class="font-mono text-[11px] text-(--iu-muted)">Asked by Hana Sato · Tue 14 Oct 2025, 10:12</p>
+            <h2
+              class="mt-3 max-w-[22ch] font-serif text-[34px] leading-[1.05] tracking-[-0.02em] text-balance italic @lg:text-[48px]"
+            >
+              Did the 2025 four-day week pilots actually reduce burnout?
+            </h2>
+            <p class="mt-4 font-mono text-[11px] text-(--iu-muted)">With people-survey-q3.pdf (412 KB)</p>
+            <div class="mt-8 border-y border-(--iu-border)">
+              <button
+                type="button"
+                data-trace-toggle
+                aria-expanded="false"
+                aria-controls="quire-trace"
+                class="flex min-h-11 w-full cursor-pointer items-center gap-3 py-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+              >
+                <span class="shrink-0 text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase"
+                  >Method</span
+                >
+                <span class="min-w-0 flex-1 truncate text-[14px]">Searched 4 queries, read 9 of 31 sources</span>
+                <span class="hidden font-mono text-[11px] text-(--iu-muted) tabular-nums @md:inline">6.2 s</span>
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="shrink-0 text-(--iu-muted) transition-transform duration-300 motion-reduce:transition-none"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <div id="quire-trace" hidden class="overflow-hidden">
+                <ol class="border-t border-dashed border-(--iu-border) pt-3 pb-4">
+                  <li class="grid grid-cols-[28px_minmax(0,1fr)_auto] items-baseline gap-2 py-1.5">
+                    <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">01</span
+                    ><span class="font-mono text-[12px] break-words">four-day week pilot 2025 burnout results</span
+                    ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">4/12 read</span>
+                  </li>
+                  <li class="grid grid-cols-[28px_minmax(0,1fr)_auto] items-baseline gap-2 py-1.5">
+                    <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">02</span
+                    ><span class="font-mono text-[12px] break-words">four-day week retention after 12 months</span
+                    ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">2/7 read</span>
+                  </li>
+                  <li class="grid grid-cols-[28px_minmax(0,1fr)_auto] items-baseline gap-2 py-1.5">
+                    <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">03</span
+                    ><span class="font-mono text-[12px] break-words">compressed hours sick leave small firms</span
+                    ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">2/8 read</span>
+                  </li>
+                  <li class="grid grid-cols-[28px_minmax(0,1fr)_auto] items-baseline gap-2 py-1.5">
+                    <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">04</span
+                    ><span class="font-mono text-[12px] break-words">four-day week managers overtime</span
+                    ><span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">1/4 read</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+            <div data-answer aria-busy="false" class="mt-8 flex max-w-[64ch] flex-col gap-5">
+              <p class="font-serif text-[26px] leading-[1.25] tracking-[-0.01em] text-balance @lg:text-[30px]">
+                <span
+                  data-cites=""
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >Mostly yes, though the effect is smaller and less even than the headlines </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites=""
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >suggest.</span
+                  ></span
+                >
+              </p>
+              <p class="text-[16px] leading-[1.7] text-pretty @lg:text-[17px]">
+                <span
+                  data-cites="1"
+                  data-active
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >In the largest 2025 pilot, the share of staff reporting burnout fell from 41% to 29% over six </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites="1"
+                    data-active
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >months,</span
+                  ><button
+                    type="button"
+                    data-cite="1"
+                    aria-expanded="true"
+                    aria-controls="quire-source-1"
+                    aria-label="Source 1: Four days, same pay: results from 48 firms"
+                    class="mx-0.5 inline-flex h-6 min-w-6 -translate-y-[0.35em] cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground) bg-(--iu-foreground) px-1 align-baseline font-mono text-[11px] leading-none text-(--iu-background) not-italic tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                  >
+                    1
+                  </button></span
+                >
+                <span
+                  data-cites="5"
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >measured with a standard 16-item inventory rather than a single survey </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites="5"
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >question.</span
+                  ><button
+                    type="button"
+                    data-cite="5"
+                    aria-expanded="false"
+                    aria-controls="quire-source-5"
+                    aria-label="Source 5: Measuring burnout in the 2025 pilot"
+                    class="mx-0.5 inline-flex h-6 min-w-6 -translate-y-[0.35em] cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/35 px-1 align-baseline font-mono text-[11px] leading-none text-(--iu-foreground) not-italic tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  >
+                    5
+                  </button></span
+                >
+              </p>
+              <div>
+                <figure
+                  class="my-2 grid grid-cols-1 gap-x-8 gap-y-4 border-y border-(--iu-border) py-6 @lg:grid-cols-[auto_1fr] @lg:items-center"
+                >
+                  <div class="flex items-baseline gap-3">
+                    <span class="font-serif text-[56px] leading-none tracking-[-0.02em] tabular-nums @lg:text-[72px]"
+                      >41<span class="text-[0.5em]">%</span></span
+                    ><svg
+                      aria-hidden="true"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="self-center text-(--iu-muted)"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" /></svg
+                    ><span
+                      class="font-serif text-[56px] leading-none tracking-[-0.02em] text-(--iu-accent) tabular-nums @lg:text-[72px]"
+                      >29<span class="text-[0.5em]">%</span></span
+                    >
+                  </div>
+                  <svg
+                    viewBox="0 0 240 110"
+                    class="h-auto w-full max-w-[320px]"
+                    role="img"
+                    aria-label="Staff reporting burnout, 48 firms: 41% at Month 0, 29% at Month 6"
+                  >
+                    <line x1="20" x2="220" y1="92" y2="92" stroke="var(--iu-border)" stroke-width="1" />
+                    <line
+                      x1="20"
+                      x2="20"
+                      y1="10"
+                      y2="92"
+                      stroke="var(--iu-border)"
+                      stroke-width="1"
+                      stroke-dasharray="2 3"
+                    />
+                    <line
+                      x1="220"
+                      x2="220"
+                      y1="10"
+                      y2="92"
+                      stroke="var(--iu-border)"
+                      stroke-width="1"
+                      stroke-dasharray="2 3"
+                    />
+                    <line
+                      data-slope
+                      x1="20"
+                      y1="27.65"
+                      x2="220"
+                      y2="46.49"
+                      stroke="var(--iu-foreground)"
+                      stroke-width="2"
+                    />
+                    <circle cx="20" cy="27.65" r="3.5" fill="var(--iu-foreground)" />
+                    <circle cx="220" cy="46.49" r="4.5" fill="var(--iu-accent)" />
+                    <text x="20" y="106" text-anchor="start" class="fill-(--iu-muted) font-mono text-[10px]">
+                      Month 0
+                    </text>
+                    <text x="220" y="106" text-anchor="end" class="fill-(--iu-muted) font-mono text-[10px]">
+                      Month 6
+                    </text>
+                  </svg>
+                  <figcaption class="font-mono text-[11px] text-(--iu-muted) @lg:col-span-2">
+                    Fig. 1 · Staff reporting burnout, 48 firms · source [1]
+                  </figcaption>
+                </figure>
+              </div>
+              <p class="text-[16px] leading-[1.7] text-pretty @lg:text-[17px]">
+                <span
+                  data-cites="3"
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >Sick days fell too, by about 22% on average, with the biggest drops in small </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites="3"
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >teams.</span
+                  ><button
+                    type="button"
+                    data-cite="3"
+                    aria-expanded="false"
+                    aria-controls="quire-source-3"
+                    aria-label="Source 3: Shorter weeks and sick days in small firms"
+                    class="mx-0.5 inline-flex h-6 min-w-6 -translate-y-[0.35em] cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/35 px-1 align-baseline font-mono text-[11px] leading-none text-(--iu-foreground) not-italic tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  >
+                    3
+                  </button></span
+                >
+                <span
+                  data-cites="2"
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >Most firms kept the schedule: 43 of 48 were still on it a year </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites="2"
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >later.</span
+                  ><button
+                    type="button"
+                    data-cite="2"
+                    aria-expanded="false"
+                    aria-controls="quire-source-2"
+                    aria-label="Source 2: Who kept the fourth day?"
+                    class="mx-0.5 inline-flex h-6 min-w-6 -translate-y-[0.35em] cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/35 px-1 align-baseline font-mono text-[11px] leading-none text-(--iu-foreground) not-italic tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  >
+                    2
+                  </button></span
+                >
+              </p>
+              <p class="text-[16px] leading-[1.7] text-pretty @lg:text-[17px]">
+                <span
+                  data-cites="4"
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >The caveat is unpaid spillover. A third of managers say they answer email on the day </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites="4"
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >off,</span
+                  ><button
+                    type="button"
+                    data-cite="4"
+                    aria-expanded="false"
+                    aria-controls="quire-source-4"
+                    aria-label="Source 4: The hidden overtime of compressed weeks"
+                    class="mx-0.5 inline-flex h-6 min-w-6 -translate-y-[0.35em] cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/35 px-1 align-baseline font-mono text-[11px] leading-none text-(--iu-foreground) not-italic tabular-nums transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                  >
+                    4
+                  </button></span
+                >
+                <span
+                  data-cites=""
+                  class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                  >so the gain is real for most staff but thinner for the people running the </span
+                ><span class="whitespace-nowrap"
+                  ><span
+                    data-cites=""
+                    class="bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none"
+                    >teams.</span
+                  ></span
+                >
+              </p>
+            </div>
+            <p data-stopped hidden class="mt-6 font-mono text-[12px] text-(--iu-muted)"></p>
+            <div
+              data-actions
+              class="mt-8 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-(--iu-border) pt-3"
+            >
+              <button
+                type="button"
+                data-copy
+                class="inline-flex h-8 cursor-pointer items-center gap-1.5 px-1 text-[13px] text-(--iu-muted) underline-offset-4 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:text-(--iu-foreground) pointer-fine:hover:underline"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg
+                ><span data-copy-label>Copy with sources</span>
+              </button>
+              <button
+                type="button"
+                data-retry
+                class="inline-flex h-8 cursor-pointer items-center gap-1.5 px-1 text-[13px] text-(--iu-muted) underline-offset-4 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:text-(--iu-foreground) pointer-fine:hover:underline"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                  <path d="M3 3v5h5" /></svg
+                >Retry
+              </button>
+              <span class="ml-auto font-mono text-[11px] text-(--iu-muted) tabular-nums"
+                >Scholar · 1,284 tokens · 6 credits</span
+              >
+            </div>
+          </div>
+          <aside
+            aria-label="Sources"
+            class="border-t border-(--iu-border) px-5 pt-6 pb-6 @lg:px-10 @4xl:border-t-0 @4xl:px-6 @4xl:pt-12"
+          >
+            <div class="flex items-baseline justify-between gap-3 border-b border-(--iu-foreground)/40 pb-2">
+              <h3 class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase">Sources</h3>
+              <span data-cited-count class="font-mono text-[11px] text-(--iu-muted) tabular-nums">5 cited</span>
+            </div>
+            <ol data-sources>
+              <li id="quire-source-1" data-source="1" class="border-b border-(--iu-border)">
+                <button
+                  type="button"
+                  data-cite="1"
+                  aria-expanded="true"
+                  class="grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)] gap-x-2 py-[calc(14px*var(--iu-density))] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                >
+                  <span data-number class="font-serif text-[22px] leading-none text-(--iu-accent) tabular-nums">1</span
+                  ><span
+                    ><span class="block font-serif text-[18px] leading-[1.2] text-pretty"
+                      >Four days, same pay: results from 48 firms</span
+                    ><span class="mt-1 block font-mono text-[11px] text-(--iu-muted)"
+                      >Halvard Institute for Work · 2025 · Report</span
+                    ></span
+                  >
+                </button>
+                <div data-passage class="overflow-hidden">
+                  <blockquote class="mb-4 ml-[36px] border-l-2 border-(--iu-accent) pl-3">
+                    <p class="font-serif text-[17px] leading-[1.4] italic">
+                      “Self-reported burnout fell from 41% to 29% of staff between the first and sixth month of the
+                      pilot.”
+                    </p>
+                    <footer
+                      class="mt-2 flex items-center justify-between gap-2 font-mono text-[11px] text-(--iu-muted)"
+                    >
+                      <span>halvard.org · p. 14</span
+                      ><button
+                        type="button"
+                        data-open="1"
+                        class="inline-flex h-6 cursor-pointer items-center gap-1 text-(--iu-foreground) underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:h-10"
+                      >
+                        Open<svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M7 7h10v10" />
+                          <path d="M7 17 17 7" />
+                        </svg>
+                      </button>
+                    </footer>
+                  </blockquote>
+                </div>
+              </li>
+              <li id="quire-source-2" data-source="2" class="border-b border-(--iu-border)">
+                <button
+                  type="button"
+                  data-cite="2"
+                  aria-expanded="false"
+                  class="grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)] gap-x-2 py-[calc(14px*var(--iu-density))] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                >
+                  <span data-number class="font-serif text-[22px] leading-none text-(--iu-muted) tabular-nums">2</span
+                  ><span
+                    ><span class="block font-serif text-[18px] leading-[1.2] text-pretty">Who kept the fourth day?</span
+                    ><span class="mt-1 block font-mono text-[11px] text-(--iu-muted)"
+                      >Journal of Organisational Health, 18(2) · 2026 · Study</span
+                    ></span
+                  >
+                </button>
+                <div data-passage class="overflow-hidden" hidden>
+                  <blockquote class="mb-4 ml-[36px] border-l-2 border-(--iu-accent) pl-3">
+                    <p class="font-serif text-[17px] leading-[1.4] italic">
+                      “Of the 48 firms, 43 kept the schedule after twelve months; five reverted, most citing client
+                      coverage.”
+                    </p>
+                    <footer
+                      class="mt-2 flex items-center justify-between gap-2 font-mono text-[11px] text-(--iu-muted)"
+                    >
+                      <span>joh-journal.org · Table 3</span
+                      ><button
+                        type="button"
+                        data-open="2"
+                        class="inline-flex h-6 cursor-pointer items-center gap-1 text-(--iu-foreground) underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:h-10"
+                      >
+                        Open<svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M7 7h10v10" />
+                          <path d="M7 17 17 7" />
+                        </svg>
+                      </button>
+                    </footer>
+                  </blockquote>
+                </div>
+              </li>
+              <li id="quire-source-3" data-source="3" class="border-b border-(--iu-border)">
+                <button
+                  type="button"
+                  data-cite="3"
+                  aria-expanded="false"
+                  class="grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)] gap-x-2 py-[calc(14px*var(--iu-density))] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                >
+                  <span data-number class="font-serif text-[22px] leading-none text-(--iu-muted) tabular-nums">3</span
+                  ><span
+                    ><span class="block font-serif text-[18px] leading-[1.2] text-pretty"
+                      >Shorter weeks and sick days in small firms</span
+                    ><span class="mt-1 block font-mono text-[11px] text-(--iu-muted)"
+                      >Corran Economic Review · 2025 · Study</span
+                    ></span
+                  >
+                </button>
+                <div data-passage class="overflow-hidden" hidden>
+                  <blockquote class="mb-4 ml-[36px] border-l-2 border-(--iu-accent) pl-3">
+                    <p class="font-serif text-[17px] leading-[1.4] italic">
+                      “Sick days dropped by 22% on average, with the largest falls in teams of fewer than 20 people.”
+                    </p>
+                    <footer
+                      class="mt-2 flex items-center justify-between gap-2 font-mono text-[11px] text-(--iu-muted)"
+                    >
+                      <span>corran-review.ie · §4.2</span
+                      ><button
+                        type="button"
+                        data-open="3"
+                        class="inline-flex h-6 cursor-pointer items-center gap-1 text-(--iu-foreground) underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:h-10"
+                      >
+                        Open<svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M7 7h10v10" />
+                          <path d="M7 17 17 7" />
+                        </svg>
+                      </button>
+                    </footer>
+                  </blockquote>
+                </div>
+              </li>
+              <li id="quire-source-4" data-source="4" class="border-b border-(--iu-border)">
+                <button
+                  type="button"
+                  data-cite="4"
+                  aria-expanded="false"
+                  class="grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)] gap-x-2 py-[calc(14px*var(--iu-density))] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                >
+                  <span data-number class="font-serif text-[22px] leading-none text-(--iu-muted) tabular-nums">4</span
+                  ><span
+                    ><span class="block font-serif text-[18px] leading-[1.2] text-pretty"
+                      >The hidden overtime of compressed weeks</span
+                    ><span class="mt-1 block font-mono text-[11px] text-(--iu-muted)"
+                      >The Fulmar Post · 2025 · Analysis</span
+                    ></span
+                  >
+                </button>
+                <div data-passage class="overflow-hidden" hidden>
+                  <blockquote class="mb-4 ml-[36px] border-l-2 border-(--iu-accent) pl-3">
+                    <p class="font-serif text-[17px] leading-[1.4] italic">
+                      “A third of the managers we spoke to said they now answer email on the day off, most of them every
+                      week.”
+                    </p>
+                    <footer
+                      class="mt-2 flex items-center justify-between gap-2 font-mono text-[11px] text-(--iu-muted)"
+                    >
+                      <span>fulmarpost.com · para. 9</span
+                      ><button
+                        type="button"
+                        data-open="4"
+                        class="inline-flex h-6 cursor-pointer items-center gap-1 text-(--iu-foreground) underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:h-10"
+                      >
+                        Open<svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M7 7h10v10" />
+                          <path d="M7 17 17 7" />
+                        </svg>
+                      </button>
+                    </footer>
+                  </blockquote>
+                </div>
+              </li>
+              <li id="quire-source-5" data-source="5" class="border-b border-(--iu-border)">
+                <button
+                  type="button"
+                  data-cite="5"
+                  aria-expanded="false"
+                  class="grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)] gap-x-2 py-[calc(14px*var(--iu-density))] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                >
+                  <span data-number class="font-serif text-[22px] leading-none text-(--iu-muted) tabular-nums">5</span
+                  ><span
+                    ><span class="block font-serif text-[18px] leading-[1.2] text-pretty"
+                      >Measuring burnout in the 2025 pilot</span
+                    ><span class="mt-1 block font-mono text-[11px] text-(--iu-muted)"
+                      >Halvard Institute for Work · 2025 · Methods note</span
+                    ></span
+                  >
+                </button>
+                <div data-passage class="overflow-hidden" hidden>
+                  <blockquote class="mb-4 ml-[36px] border-l-2 border-(--iu-accent) pl-3">
+                    <p class="font-serif text-[17px] leading-[1.4] italic">
+                      “Burnout was measured with the 16-item Oldenburg inventory at months 0, 3 and 6, not a single
+                      survey item.”
+                    </p>
+                    <footer
+                      class="mt-2 flex items-center justify-between gap-2 font-mono text-[11px] text-(--iu-muted)"
+                    >
+                      <span>halvard.org · p. 3</span
+                      ><button
+                        type="button"
+                        data-open="5"
+                        class="inline-flex h-6 cursor-pointer items-center gap-1 text-(--iu-foreground) underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:h-10"
+                      >
+                        Open<svg
+                          aria-hidden="true"
+                          width="12"
+                          height="12"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M7 7h10v10" />
+                          <path d="M7 17 17 7" />
+                        </svg>
+                      </button>
+                    </footer>
+                  </blockquote>
+                </div>
+              </li>
+            </ol>
+          </aside>
+        </div>
+        <form class="border-t-[3px] border-double border-(--iu-foreground)/40 px-5 py-4 @lg:px-10">
+          <label for="quire-draft" class="text-[11px] font-medium tracking-[0.14em] text-(--iu-muted) uppercase"
+            >Follow-up</label
+          >
+          <textarea
+            id="quire-draft"
+            rows="2"
+            placeholder="Ask about methods, a source or a counter-argument"
+            class="mt-2 block w-full resize-none border-b border-(--iu-foreground)/35 bg-transparent pb-2 font-serif text-[20px] leading-[1.35] text-(--iu-foreground) outline-none placeholder:text-(--iu-muted) focus:border-(--iu-accent)"
+          ></textarea>
+          <ul data-chips hidden aria-label="Attachments" class="mt-3 flex flex-wrap gap-x-4 gap-y-1"></ul>
+          <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <input data-file type="file" multiple aria-label="Attach documents" tabindex="-1" class="sr-only" />
+            <button
+              type="button"
+              data-attach
+              class="inline-flex h-8 cursor-pointer items-center gap-1.5 px-1 text-[13px] text-(--iu-muted) underline-offset-4 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:text-(--iu-foreground) pointer-fine:hover:underline"
+            >
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"
+                /></svg
+              >Attach
+            </button>
+            <div class="relative">
+              <button
+                type="button"
+                data-model-button
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="quire-depth"
+                class="inline-flex h-8 cursor-pointer items-center gap-1 px-1 text-[13px] text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-60 pointer-coarse:h-10"
+              >
+                <span class="text-(--iu-muted)">Depth</span
+                ><span data-model-name class="font-serif text-[16px] italic">Scholar</span
+                ><svg
+                  aria-hidden="true"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-(--iu-muted)"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </button>
+              <ul
+                id="quire-depth"
+                data-model-list
+                role="listbox"
+                tabindex="-1"
+                aria-label="Research depth"
+                hidden
+                class="absolute bottom-full left-0 z-30 mb-2 w-[min(300px,calc(100vw-48px))] rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/25 bg-(--iu-surface) py-1 outline-none"
+              >
+                <li
+                  id="quire-depth-0"
+                  role="option"
+                  data-name="Scholar"
+                  aria-selected="true"
+                  class="flex cursor-pointer items-start gap-3 border-l-2 border-(--iu-accent) bg-(--iu-foreground)/5 px-3 py-2.5"
+                >
+                  <span class="min-w-0 flex-1"
+                    ><span class="block font-serif text-[18px] leading-tight italic">Scholar</span
+                    ><span class="mt-0.5 block text-[12px] leading-snug text-(--iu-muted)"
+                      >Reads every source it cites. About 30 seconds.</span
+                    ></span
+                  ><svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-1 shrink-0"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </li>
+                <li
+                  id="quire-depth-1"
+                  role="option"
+                  data-name="Brief"
+                  aria-selected="false"
+                  class="flex cursor-pointer items-start gap-3 border-l-2 border-transparent px-3 py-2.5"
+                >
+                  <span class="min-w-0 flex-1"
+                    ><span class="block font-serif text-[18px] leading-tight italic">Brief</span
+                    ><span class="mt-0.5 block text-[12px] leading-snug text-(--iu-muted)"
+                      >Three sources, two paragraphs. About 8 seconds.</span
+                    ></span
+                  ><svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-1 shrink-0 opacity-0"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </li>
+                <li
+                  id="quire-depth-2"
+                  role="option"
+                  data-name="Survey"
+                  aria-selected="false"
+                  class="flex cursor-pointer items-start gap-3 border-l-2 border-transparent px-3 py-2.5"
+                >
+                  <span class="min-w-0 flex-1"
+                    ><span class="block font-serif text-[18px] leading-tight italic">Survey</span
+                    ><span class="mt-0.5 block text-[12px] leading-snug text-(--iu-muted)"
+                      >Up to 60 sources with a comparison table.</span
+                    ></span
+                  ><svg
+                    aria-hidden="true"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-1 shrink-0 opacity-0"
+                  >
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </li>
+              </ul>
+            </div>
+            <span class="ml-auto flex items-center gap-3">
+              <span data-writing class="hidden font-mono text-[11px] text-(--iu-muted) tabular-nums"></span>
+              <button
+                type="button"
+                data-stop
+                hidden
+                class="inline-flex h-10 cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground) px-4 text-[14px] font-medium focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="fill-current"
+                >
+                  <rect width="18" height="18" x="3" y="3" rx="2" /></svg
+                >Stop<kbd class="hidden font-mono text-[10px] text-(--iu-muted) @md:inline">Esc</kbd>
+              </button>
+              <button
+                type="submit"
+                data-ask
+                disabled
+                class="inline-flex h-10 cursor-pointer items-center gap-2 rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) px-4 text-[14px] font-medium text-(--iu-background) transition-opacity duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-40 motion-reduce:transition-none"
+              >
+                Ask<svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </button>
+            </span>
+          </div>
+        </form>
+        <p data-announcer aria-live="polite" class="sr-only"></p>
+      </section>
+      <!-- iloveui:component:end -->
+    </div>
+    <script>
+      var QUIRE = (function () {
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var SQUARE = "rounded-[min(var(--iu-radius),2px)]";
+        var HIGHLIGHT =
+          "bg-[linear-gradient(var(--iu-accent),var(--iu-accent))] box-decoration-clone bg-[length:0%_2px] bg-bottom-left bg-no-repeat pb-0.5 transition-[background-size] duration-[400ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] data-active:bg-[length:100%_2px] motion-reduce:transition-none";
+        var CITE_BASE =
+          "mx-0.5 inline-flex h-6 min-w-6 -translate-y-[0.35em] cursor-pointer items-center justify-center border px-1 align-baseline font-mono text-[11px] leading-none not-italic tabular-nums transition-colors duration-200 motion-reduce:transition-none " +
+          SQUARE +
+          " " +
+          FOCUS +
+          " ";
+        var CITE_ON = "border-(--iu-foreground) bg-(--iu-foreground) text-(--iu-background)";
+        var CITE_OFF = "border-(--iu-foreground)/35 text-(--iu-foreground) pointer-fine:hover:border-(--iu-foreground)";
+        var FIGURE_UNITS = 14;
+        var SOURCES = [
+          [
+            1,
+            "Four days, same pay: results from 48 firms",
+            "Halvard Institute for Work",
+            2025,
+            "Report",
+            "Self-reported burnout fell from 41% to 29% of staff between the first and sixth month of the pilot.",
+            "p. 14",
+            "halvard.org",
+          ],
+          [
+            2,
+            "Who kept the fourth day?",
+            "Journal of Organisational Health, 18(2)",
+            2026,
+            "Study",
+            "Of the 48 firms, 43 kept the schedule after twelve months; five reverted, most citing client coverage.",
+            "Table 3",
+            "joh-journal.org",
+          ],
+          [
+            3,
+            "Shorter weeks and sick days in small firms",
+            "Corran Economic Review",
+            2025,
+            "Study",
+            "Sick days dropped by 22% on average, with the largest falls in teams of fewer than 20 people.",
+            "§4.2",
+            "corran-review.ie",
+          ],
+          [
+            4,
+            "The hidden overtime of compressed weeks",
+            "The Fulmar Post",
+            2025,
+            "Analysis",
+            "A third of the managers we spoke to said they now answer email on the day off, most of them every week.",
+            "para. 9",
+            "fulmarpost.com",
+          ],
+          [
+            5,
+            "Measuring burnout in the 2025 pilot",
+            "Halvard Institute for Work",
+            2025,
+            "Methods note",
+            "Burnout was measured with the 16-item Oldenburg inventory at months 0, 3 and 6, not a single survey item.",
+            "p. 3",
+            "halvard.org",
+          ],
+        ];
+        var BLOCKS = [
+          {
+            type: "lead",
+            sentences: [["Mostly yes, though the effect is smaller and less even than the headlines suggest.", []]],
+          },
+          {
+            type: "paragraph",
+            sentences: [
+              [
+                "In the largest 2025 pilot, the share of staff reporting burnout fell from 41% to 29% over six months,",
+                [1],
+              ],
+              ["measured with a standard 16-item inventory rather than a single survey question.", [5]],
+            ],
+          },
+          { type: "figure" },
+          {
+            type: "paragraph",
+            sentences: [
+              ["Sick days fell too, by about 22% on average, with the biggest drops in small teams.", [3]],
+              ["Most firms kept the schedule: 43 of 48 were still on it a year later.", [2]],
+            ],
+          },
+          {
+            type: "paragraph",
+            sentences: [
+              ["The caveat is unpaid spillover. A third of managers say they answer email on the day off,", [4]],
+              ["so the gain is real for most staff but thinner for the people running the teams.", []],
+            ],
+          },
+        ];
+        function esc(text) {
+          return String(text)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+        function words(text) {
+          return text.split(" ").length;
+        }
+        var TOTAL = BLOCKS.reduce(function (sum, block) {
+          if (block.type === "figure") return sum + FIGURE_UNITS;
+          return (
+            sum +
+            block.sentences.reduce(function (s, sentence) {
+              return s + words(sentence[0]);
+            }, 0)
+          );
+        }, 0);
+        var SENTENCES = BLOCKS.reduce(function (sum, block) {
+          return sum + (block.type === "figure" ? 1 : block.sentences.length);
+        }, 0);
+        function cited(limit) {
+          var set = {};
+          var cursor = 0;
+          var count = 0;
+          BLOCKS.forEach(function (block) {
+            if (block.type === "figure") {
+              cursor += FIGURE_UNITS;
+              if (cursor <= limit) {
+                set[1] = true;
+                count++;
+              }
+              return;
+            }
+            block.sentences.forEach(function (sentence) {
+              cursor += words(sentence[0]);
+              if (cursor <= limit) {
+                count++;
+                sentence[1].forEach(function (n) {
+                  set[n] = true;
+                });
+              }
+            });
+          });
+          return { set: set, sentences: count };
+        }
+        var CARET =
+          '<span aria-hidden="true" class="ml-1 inline-block h-[1em] w-px translate-y-[0.12em] bg-(--iu-accent)"></span>';
+        function cite(n, active) {
+          var source = SOURCES[n - 1];
+          return (
+            '<button type="button" data-cite="' +
+            n +
+            '" aria-expanded="' +
+            active +
+            '" aria-controls="quire-source-' +
+            n +
+            '" aria-label="Source ' +
+            n +
+            ": " +
+            esc(source[1]) +
+            '" class="' +
+            CITE_BASE +
+            (active ? CITE_ON : CITE_OFF) +
+            '">' +
+            n +
+            "</button>"
+          );
+        }
+        function figure() {
+          return (
+            '<div><figure class="my-2 grid grid-cols-1 gap-x-8 gap-y-4 border-y border-(--iu-border) py-6 @lg:grid-cols-[auto_1fr] @lg:items-center"><div class="flex items-baseline gap-3"><span class="font-serif text-[56px] leading-none tracking-[-0.02em] tabular-nums @lg:text-[72px]">41<span class="text-[0.5em]">%</span></span>' +
+            '<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="self-center text-(--iu-muted)"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>' +
+            '<span class="font-serif text-[56px] leading-none tracking-[-0.02em] text-(--iu-accent) tabular-nums @lg:text-[72px]">29<span class="text-[0.5em]">%</span></span></div>' +
+            '<svg viewBox="0 0 240 110" class="h-auto w-full max-w-[320px]" role="img" aria-label="Staff reporting burnout, 48 firms: 41% at Month 0, 29% at Month 6">' +
+            '<line x1="20" x2="220" y1="92" y2="92" stroke="var(--iu-border)" stroke-width="1"/><line x1="20" x2="20" y1="10" y2="92" stroke="var(--iu-border)" stroke-width="1" stroke-dasharray="2 3"/><line x1="220" x2="220" y1="10" y2="92" stroke="var(--iu-border)" stroke-width="1" stroke-dasharray="2 3"/>' +
+            '<line data-slope x1="20" y1="27.65" x2="220" y2="46.49" stroke="var(--iu-foreground)" stroke-width="2"/><circle cx="20" cy="27.65" r="3.5" fill="var(--iu-foreground)"/><circle cx="220" cy="46.49" r="4.5" fill="var(--iu-accent)"/>' +
+            '<text x="20" y="106" text-anchor="start" class="fill-(--iu-muted) font-mono text-[10px]">Month 0</text><text x="220" y="106" text-anchor="end" class="fill-(--iu-muted) font-mono text-[10px]">Month 6</text></svg>' +
+            '<figcaption class="font-mono text-[11px] text-(--iu-muted) @lg:col-span-2">Fig. 1 · Staff reporting burnout, 48 firms · source [1]</figcaption></figure></div>'
+          );
+        }
+        function answer(limit, writing, active) {
+          var html = "";
+          var cursor = 0;
+          var caretPlaced = false;
+          BLOCKS.forEach(function (block) {
+            if (cursor >= limit) return;
+            if (block.type === "figure") {
+              cursor += FIGURE_UNITS;
+              if (cursor <= limit) html += figure();
+              return;
+            }
+            var inner = "";
+            block.sentences.forEach(function (sentence, index) {
+              var list = sentence[0].split(" ");
+              var visible = Math.max(0, Math.min(list.length, limit - cursor));
+              cursor += list.length;
+              if (visible === 0) return;
+              var complete = visible === list.length;
+              var cites = sentence[1];
+              var on = complete && active !== null && cites.indexOf(active) !== -1;
+              var attr = ' data-cites="' + cites.join(" ") + '"' + (on ? " data-active" : "");
+              var caret = writing && !complete && !caretPlaced;
+              if (caret) caretPlaced = true;
+              if (index > 0) inner += " ";
+              if (visible > 1)
+                inner +=
+                  "<span" +
+                  attr +
+                  ' class="' +
+                  HIGHLIGHT +
+                  '">' +
+                  esc(list.slice(0, visible - 1).join(" ")) +
+                  " </span>";
+              inner +=
+                '<span class="whitespace-nowrap"><span' +
+                attr +
+                ' class="' +
+                HIGHLIGHT +
+                '">' +
+                esc(list[visible - 1]) +
+                "</span>" +
+                (complete
+                  ? cites
+                      .map(function (n) {
+                        return cite(n, n === active);
+                      })
+                      .join("")
+                  : "") +
+                (caret ? CARET : "") +
+                "</span>";
+            });
+            html +=
+              block.type === "lead"
+                ? '<p class="font-serif text-[26px] leading-[1.25] tracking-[-0.01em] text-balance @lg:text-[30px]">' +
+                  inner +
+                  "</p>"
+                : '<p class="text-[16px] leading-[1.7] text-pretty @lg:text-[17px]">' + inner + "</p>";
+          });
+          if (limit === 0 && writing)
+            html += '<p class="font-mono text-[12px] text-(--iu-muted)">Reading sources' + CARET + "</p>";
+          return html;
+        }
+        function sources(limit, active) {
+          var set = cited(limit).set;
+          return SOURCES.map(function (s) {
+            var on = s[0] === active;
+            return (
+              '<li id="quire-source-' +
+              s[0] +
+              '" data-source="' +
+              s[0] +
+              '" class="border-b border-(--iu-border)"' +
+              (set[s[0]] ? "" : " hidden") +
+              ">" +
+              '<button type="button" data-cite="' +
+              s[0] +
+              '" aria-expanded="' +
+              on +
+              '" class="grid w-full cursor-pointer grid-cols-[28px_minmax(0,1fr)] gap-x-2 py-[calc(14px*var(--iu-density))] text-left ' +
+              FOCUS +
+              '">' +
+              '<span data-number class="font-serif text-[22px] leading-none tabular-nums ' +
+              (on ? "text-(--iu-accent)" : "text-(--iu-muted)") +
+              '">' +
+              s[0] +
+              "</span>" +
+              '<span><span class="block font-serif text-[18px] leading-[1.2] text-pretty">' +
+              esc(s[1]) +
+              '</span><span class="mt-1 block font-mono text-[11px] text-(--iu-muted)">' +
+              esc(s[2] + " · " + s[3] + " · " + s[4]) +
+              "</span></span></button>" +
+              '<div data-passage class="overflow-hidden"' +
+              (on ? "" : " hidden") +
+              '><blockquote class="mb-4 ml-[36px] border-l-2 border-(--iu-accent) pl-3"><p class="font-serif text-[17px] leading-[1.4] italic">“' +
+              esc(s[5]) +
+              '”</p><footer class="mt-2 flex items-center justify-between gap-2 font-mono text-[11px] text-(--iu-muted)"><span>' +
+              esc(s[7] + " · " + s[6]) +
+              '</span><button type="button" data-open="' +
+              s[0] +
+              '" class="inline-flex h-6 cursor-pointer items-center gap-1 text-(--iu-foreground) underline underline-offset-4 pointer-coarse:h-10 ' +
+              FOCUS +
+              '">Open<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></button></footer></blockquote></div></li>'
+            );
+          }).join("");
+        }
+        function plain() {
+          var body = BLOCKS.map(function (block) {
+            if (block.type === "figure") return "Fig. 1. Staff reporting burnout, 48 firms: 41% to 29% [1]";
+            return block.sentences
+              .map(function (s) {
+                return (
+                  s[0] +
+                  s[1]
+                    .map(function (n) {
+                      return " [" + n + "]";
+                    })
+                    .join("")
+                );
+              })
+              .join(" ");
+          }).join("\n\n");
+          return (
+            "Did the 2025 four-day week pilots actually reduce burnout?\n\n" +
+            body +
+            "\n\nSources\n" +
+            SOURCES.map(function (s) {
+              return "[" + s[0] + "] " + s[1] + ". " + s[2] + ", " + s[3] + ". " + s[7];
+            }).join("\n")
+          );
+        }
+        return {
+          TOTAL: TOTAL,
+          SENTENCES: SENTENCES,
+          SOURCES: SOURCES,
+          cited: cited,
+          answer: answer,
+          sources: sources,
+          plain: plain,
+          CITE_BASE: CITE_BASE,
+          CITE_ON: CITE_ON,
+          CITE_OFF: CITE_OFF,
+        };
+      })();
+
+      (function () {
+        var root = document.querySelector("[data-quire]");
+        if (!root) return;
+        var answerEl = root.querySelector("[data-answer]");
+        var sourcesEl = root.querySelector("[data-sources]");
+        var citedCount = root.querySelector("[data-cited-count]");
+        var actions = root.querySelector("[data-actions]");
+        var stoppedNote = root.querySelector("[data-stopped]");
+        var copyButton = root.querySelector("[data-copy]");
+        var input = root.querySelector("textarea");
+        var form = root.querySelector("form");
+        var askButton = root.querySelector("[data-ask]");
+        var stopButton = root.querySelector("[data-stop]");
+        var progressLabel = root.querySelector("[data-writing]");
+        var announcer = root.querySelector("[data-announcer]");
+        var fileInput = root.querySelector("[data-file]");
+        var chips = root.querySelector("[data-chips]");
+        var usedEl = root.querySelector("[data-used]");
+        var bar = root.querySelector("[data-credit-bar]");
+        var meter = root.querySelector('[role="meter"]');
+        var trace = root.querySelector("[data-trace-toggle]");
+        var modelButton = root.querySelector("[data-model-button]");
+        var modelList = root.querySelector("[data-model-list]");
+        var modelName = root.querySelector("[data-model-name]");
+        var options = Array.prototype.slice.call(modelList.querySelectorAll('[role="option"]'));
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var active = 1;
+        var used = 38;
+        var timer = 0;
+        var progress = QUIRE.TOTAL;
+        var visible = true;
+        var files = [];
+
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        new IntersectionObserver(function (entries) {
+          visible = entries[0] ? entries[0].isIntersecting : true;
+        }).observe(root);
+
+        function paintCitations() {
+          root.querySelectorAll("[data-cites]").forEach(function (span) {
+            var list = span.getAttribute("data-cites").split(" ");
+            span.toggleAttribute("data-active", active !== null && list.indexOf(String(active)) !== -1);
+          });
+          answerEl.querySelectorAll("[data-cite]").forEach(function (button) {
+            var on = Number(button.getAttribute("data-cite")) === active;
+            button.setAttribute("aria-expanded", String(on));
+            button.className = QUIRE.CITE_BASE + (on ? QUIRE.CITE_ON : QUIRE.CITE_OFF);
+          });
+          sourcesEl.querySelectorAll("[data-source]").forEach(function (item) {
+            var on = Number(item.getAttribute("data-source")) === active;
+            item.querySelector("[data-cite]").setAttribute("aria-expanded", String(on));
+            item.querySelector("[data-passage]").hidden = !on;
+            var number = item.querySelector("[data-number]");
+            number.classList.toggle("text-(--iu-accent)", on);
+            number.classList.toggle("text-(--iu-muted)", !on);
+          });
+          var slope = answerEl.querySelector("[data-slope]");
+          if (slope) slope.setAttribute("stroke-width", active === 1 ? "2" : "1.25");
+        }
+
+        function render(writing) {
+          answerEl.innerHTML = QUIRE.answer(progress, writing, active);
+          answerEl.setAttribute("aria-busy", String(writing));
+          var info = QUIRE.cited(progress);
+          sourcesEl.querySelectorAll("[data-source]").forEach(function (item) {
+            item.hidden = !info.set[item.getAttribute("data-source")];
+          });
+          citedCount.textContent = Object.keys(info.set).length + " cited";
+          progressLabel.textContent =
+            "Writing · sentence " + Math.min(QUIRE.SENTENCES, info.sentences + 1) + " of " + QUIRE.SENTENCES;
+          paintCitations();
+        }
+
+        function setWriting(on) {
+          askButton.hidden = on;
+          stopButton.hidden = !on;
+          progressLabel.classList.toggle("@md:inline", on);
+          modelButton.disabled = on;
+          if (on) {
+            actions.hidden = true;
+            stoppedNote.hidden = true;
+          }
+        }
+
+        function finish(stopped) {
+          clearInterval(timer);
+          timer = 0;
+          render(false);
+          setWriting(false);
+          actions.hidden = false;
+          if (stopped) {
+            stoppedNote.hidden = false;
+            stoppedNote.textContent =
+              "Stopped after " +
+              QUIRE.cited(progress).sentences +
+              " of " +
+              QUIRE.SENTENCES +
+              " sentences. Sources below are the ones already cited.";
+            announce("Stopped writing");
+          } else {
+            used = Math.min(120, used + 6);
+            usedEl.textContent = String(used);
+            bar.style.width = (used / 120) * 100 + "%";
+            meter.setAttribute("aria-valuenow", String(used));
+            meter.setAttribute("aria-valuetext", used + " of 120 research credits used this month");
+            announce("Answer written");
+          }
+        }
+
+        function write() {
+          if (timer) return;
+          active = null;
+          progress = 0;
+          setWriting(true);
+          announce("Writing the answer");
+          if (reduce) {
+            progress = QUIRE.TOTAL;
+            finish(false);
+            return;
+          }
+          render(true);
+          timer = setInterval(function () {
+            if (!visible) return;
+            progress = Math.min(QUIRE.TOTAL, progress + 1);
+            render(true);
+            if (progress >= QUIRE.TOTAL) finish(false);
+          }, 70);
+        }
+
+        function stop() {
+          if (!timer) return;
+          finish(true);
+          input.focus();
+        }
+
+        root.addEventListener("click", function (event) {
+          var button = event.target.closest("button");
+          if (!button || !root.contains(button)) return;
+          if (button.hasAttribute("data-cite")) {
+            var n = Number(button.getAttribute("data-cite"));
+            active = active === n ? null : n;
+            paintCitations();
+            if (active !== null) announce("Showing source " + n + ", " + QUIRE.SOURCES[n - 1][2]);
+          } else if (button === trace) {
+            var open = trace.getAttribute("aria-expanded") !== "true";
+            trace.setAttribute("aria-expanded", String(open));
+            document.getElementById(trace.getAttribute("aria-controls")).hidden = !open;
+            trace.querySelector("svg").classList.toggle("rotate-180", open);
+          } else if (button.hasAttribute("data-open")) {
+            // Wire this to your source viewer; the demo only announces it.
+            announce("Opening " + QUIRE.SOURCES[Number(button.getAttribute("data-open")) - 1][7]);
+          } else if (button.hasAttribute("data-retry")) {
+            write();
+          } else if (button === copyButton && navigator.clipboard) {
+            navigator.clipboard.writeText(QUIRE.plain()).then(
+              function () {
+                copyButton.querySelector("[data-copy-label]").textContent = "Copied with sources";
+                announce("Answer copied with its sources");
+                setTimeout(function () {
+                  copyButton.querySelector("[data-copy-label]").textContent = "Copy with sources";
+                }, 1600);
+              },
+              function () {},
+            );
+          } else if (button === stopButton) {
+            stop();
+          } else if (button.hasAttribute("data-attach")) {
+            fileInput.click();
+          } else if (button.hasAttribute("data-remove")) {
+            var index = Number(button.getAttribute("data-remove"));
+            var removed = files.splice(index, 1)[0];
+            renderChips();
+            if (removed) announce("Removed " + removed.name);
+            input.focus();
+          }
+        });
+        root.addEventListener("keydown", function (event) {
+          if (event.key === "Escape" && timer) stop();
+        });
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (!input.value.trim() || timer) return;
+          input.value = "";
+          files = [];
+          renderChips();
+          askButton.disabled = true;
+          write();
+        });
+        input.addEventListener("input", function () {
+          askButton.disabled = input.value.trim().length === 0;
+        });
+        input.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+            event.preventDefault();
+            form.requestSubmit();
+          }
+        });
+
+        function renderChips() {
+          chips.hidden = files.length === 0;
+          chips.innerHTML = files
+            .map(function (file, index) {
+              return (
+                '<li class="inline-flex items-center gap-1 font-mono text-[11px]"><span>' +
+                file.name.replace(/</g, "&lt;") +
+                '</span><span class="text-(--iu-muted)">' +
+                file.size +
+                '</span><button type="button" data-remove="' +
+                index +
+                '" aria-label="Remove ' +
+                file.name.replace(/"/g, "&quot;") +
+                '" class="inline-flex size-6 cursor-pointer items-center justify-center text-(--iu-muted) pointer-coarse:size-10 pointer-fine:hover:text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></li>'
+              );
+            })
+            .join("");
+        }
+        fileInput.addEventListener("change", function () {
+          var picked = Array.prototype.slice.call(fileInput.files || []);
+          picked.forEach(function (file) {
+            var size =
+              file.size < 1048576
+                ? Math.max(1, Math.round(file.size / 1024)) + " KB"
+                : (file.size / 1048576).toFixed(1) + " MB";
+            files.push({ name: file.name, size: size });
+          });
+          if (picked.length)
+            announce(
+              "Attached " +
+                picked
+                  .map(function (f) {
+                    return f.name;
+                  })
+                  .join(", "),
+            );
+          fileInput.value = "";
+          renderChips();
+        });
+
+        // Depth picker: select-only listbox.
+        var current = 0;
+        var selected = 0;
+        function paint() {
+          options.forEach(function (option, index) {
+            var on = index === current;
+            option.classList.toggle("border-(--iu-accent)", on);
+            option.classList.toggle("bg-(--iu-foreground)/5", on);
+            option.classList.toggle("border-transparent", !on);
+            option.setAttribute("aria-selected", String(index === selected));
+            option.querySelector("svg").classList.toggle("opacity-0", index !== selected);
+          });
+          modelList.setAttribute("aria-activedescendant", options[current].id);
+        }
+        function openList() {
+          current = selected;
+          paint();
+          modelList.hidden = false;
+          modelButton.setAttribute("aria-expanded", "true");
+          modelList.focus();
+        }
+        function closeList(focus) {
+          modelList.hidden = true;
+          modelButton.setAttribute("aria-expanded", "false");
+          if (focus) modelButton.focus();
+        }
+        function choose(index) {
+          selected = index;
+          modelName.textContent = options[index].getAttribute("data-name");
+          paint();
+          closeList(true);
+        }
+        modelButton.addEventListener("click", function () {
+          if (modelList.hidden) openList();
+          else closeList(false);
+        });
+        modelButton.addEventListener("keydown", function (event) {
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            openList();
+          }
+        });
+        modelList.addEventListener("keydown", function (event) {
+          var key = event.key;
+          if (key === "ArrowDown") current = Math.min(options.length - 1, current + 1);
+          else if (key === "ArrowUp") current = Math.max(0, current - 1);
+          else if (key === "Home") current = 0;
+          else if (key === "End") current = options.length - 1;
+          else if (key === "Enter" || key === " ")
+            return (event.preventDefault(), event.stopPropagation(), choose(current));
+          else if (key === "Escape") return (event.preventDefault(), event.stopPropagation(), closeList(true));
+          else if (key === "Tab") return choose(current);
+          else return;
+          event.preventDefault();
+          paint();
+        });
+        options.forEach(function (option, index) {
+          option.addEventListener("click", function () {
+            choose(index);
+          });
+          option.addEventListener("pointerenter", function () {
+            current = index;
+            paint();
+          });
+        });
+        document.addEventListener("pointerdown", function (event) {
+          if (!modelList.hidden && !modelButton.parentNode.contains(event.target)) closeList(false);
+        });
+      })();
+    </script>
+  </body>
+</html>

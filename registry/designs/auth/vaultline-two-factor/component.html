@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vaultline two-factor setup · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div class="flex min-h-dvh w-full items-center justify-center bg-(--iu-background) px-4 py-10 sm:px-8 sm:py-16">
+      <div
+        data-vaultline
+        class="@container w-full max-w-5xl font-(family-name:--iu-font) text-(--iu-foreground) antialiased"
+      >
+        <div
+          class="grid overflow-hidden rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--iu-surface) @3xl:grid-cols-[minmax(0,1fr)_minmax(0,22rem)] dark:border-(--iu-foreground)/14"
+        >
+          <section aria-labelledby="vl-title" class="min-w-0">
+            <header
+              class="flex items-center justify-between gap-4 border-b border-dashed border-(--iu-border) px-5 py-3 dark:border-(--iu-foreground)/14"
+            >
+              <span class="flex items-center gap-2 text-sm font-semibold"
+                ><span aria-hidden="true" class="size-2 bg-(--iu-accent)"></span>Vaultline</span
+              >
+              <span data-count class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase tabular-nums"
+                >setup 1/4</span
+              >
+            </header>
+
+            <nav
+              aria-label="Setup steps"
+              class="border-b border-dashed border-(--iu-border) px-5 py-3 dark:border-(--iu-foreground)/14"
+            >
+              <ol class="grid grid-cols-4 gap-2" data-steps>
+                <li data-index="0" class="flex min-w-0 flex-col gap-2 font-mono text-[11px] tabular-nums">
+                  <span aria-hidden="true" data-bar class="h-0.5 w-full"></span
+                  ><span class="flex items-center gap-1.5 truncate"
+                    ><span aria-hidden="true" data-num>01</span><span class="truncate">account</span
+                    ><span class="sr-only" data-sr></span
+                  ></span>
+                </li>
+                <li data-index="1" class="flex min-w-0 flex-col gap-2 font-mono text-[11px] tabular-nums">
+                  <span aria-hidden="true" data-bar class="h-0.5 w-full"></span
+                  ><span class="flex items-center gap-1.5 truncate"
+                    ><span aria-hidden="true" data-num>02</span><span class="truncate">scan</span
+                    ><span class="sr-only" data-sr></span
+                  ></span>
+                </li>
+                <li data-index="2" class="flex min-w-0 flex-col gap-2 font-mono text-[11px] tabular-nums">
+                  <span aria-hidden="true" data-bar class="h-0.5 w-full"></span
+                  ><span class="flex items-center gap-1.5 truncate"
+                    ><span aria-hidden="true" data-num>03</span><span class="truncate">verify</span
+                    ><span class="sr-only" data-sr></span
+                  ></span>
+                </li>
+                <li data-index="3" class="flex min-w-0 flex-col gap-2 font-mono text-[11px] tabular-nums">
+                  <span aria-hidden="true" data-bar class="h-0.5 w-full"></span
+                  ><span class="flex items-center gap-1.5 truncate"
+                    ><span aria-hidden="true" data-num>04</span><span class="truncate">recovery</span
+                    ><span class="sr-only" data-sr></span
+                  ></span>
+                </li>
+              </ol>
+            </nav>
+
+            <div class="px-5 py-[calc(24px*var(--iu-density))] @lg:px-8 @lg:py-[calc(32px*var(--iu-density))]">
+              <div
+                data-body-wrap
+                class="transition-[opacity,transform] duration-150 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+              >
+                <h2
+                  id="vl-title"
+                  tabindex="-1"
+                  class="flex items-center gap-2 text-xl font-semibold tracking-[-0.02em] text-balance outline-none @lg:text-2xl"
+                >
+                  <svg
+                    data-shield
+                    hidden
+                    aria-hidden="true"
+                    class="shrink-0 text-(--iu-accent)"
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                    />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  <span data-title>Create your Vaultline account</span>
+                </h2>
+                <p data-sub class="mt-2 max-w-[34rem] text-sm leading-relaxed text-pretty text-(--iu-muted)">
+                  Secrets for every environment, behind two factors from day one.
+                </p>
+
+                <!-- Step 1: account -->
+                <form data-step="0" novalidate class="mt-6 grid max-w-md gap-[calc(16px*var(--iu-density))]">
+                  <div class="grid grid-cols-2 gap-2">
+                    <button
+                      type="button"
+                      class="inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/25 px-4 text-sm font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                    >
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57l-.02-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22l-.01 3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"
+                        />
+                      </svg>
+                      <span><span class="sr-only">Sign up with </span>GitHub</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/25 px-4 text-sm font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                    >
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                          d="M12.48 10.92v3.28h7.84c-.24 1.84-.85 3.19-1.79 4.13-1.15 1.15-2.93 2.4-6.05 2.4-4.83 0-8.6-3.89-8.6-8.72s3.77-8.72 8.6-8.72c2.6 0 4.51 1.03 5.91 2.35l2.31-2.31C18.75 1.44 16.13 0 12.48 0 5.87 0 .31 5.39.31 12s5.56 12 12.17 12c3.57 0 6.27-1.17 8.37-3.36 2.16-2.16 2.84-5.21 2.84-7.67 0-.76-.05-1.47-.17-2.05H12.48z"
+                        />
+                      </svg>
+                      <span><span class="sr-only">Sign up with </span>Google</span>
+                    </button>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    class="flex items-center gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                  >
+                    <span class="flex-1 border-t border-dashed border-(--iu-foreground)/20"></span>or<span
+                      class="flex-1 border-t border-dashed border-(--iu-foreground)/20"
+                    ></span>
+                  </div>
+                  <div>
+                    <label
+                      for="vl-email"
+                      class="mb-2 block font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >Email</label
+                    >
+                    <input
+                      id="vl-email"
+                      type="email"
+                      inputmode="email"
+                      autocomplete="email"
+                      placeholder="sol@brightline.dev"
+                      class="h-10 w-full rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/35 bg-(--iu-background) px-3 text-sm text-(--iu-foreground) placeholder:text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 aria-invalid:border-red-600 dark:aria-invalid:border-red-400"
+                    />
+                    <p
+                      id="vl-email-error"
+                      data-email-error
+                      hidden
+                      class="mt-2 font-mono text-xs text-red-700 dark:text-red-300"
+                    ></p>
+                  </div>
+                  <div>
+                    <label
+                      for="vl-password"
+                      class="mb-2 block font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >Password</label
+                    >
+                    <div class="relative">
+                      <input
+                        id="vl-password"
+                        type="password"
+                        autocomplete="new-password"
+                        aria-describedby="vl-password-hint"
+                        class="h-10 w-full rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/35 bg-(--iu-background) px-3 pr-11 font-mono text-sm text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 aria-invalid:border-red-600 dark:aria-invalid:border-red-400"
+                      />
+                      <button
+                        type="button"
+                        data-reveal
+                        aria-label="Show password"
+                        aria-pressed="false"
+                        aria-controls="vl-password"
+                        class="absolute top-1/2 right-1 inline-flex size-8 -translate-y-1/2 items-center justify-center rounded-[min(var(--iu-radius),8px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:text-(--iu-foreground)"
+                      >
+                        <svg
+                          data-icon="show"
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                          />
+                          <circle cx="12" cy="12" r="3" />
+                        </svg>
+                        <svg
+                          data-icon="hide"
+                          hidden
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path
+                            d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"
+                          />
+                          <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" />
+                          <path
+                            d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"
+                          />
+                          <path d="m2 2 20 20" />
+                        </svg>
+                      </button>
+                    </div>
+                    <p
+                      id="vl-password-hint"
+                      data-password-hint
+                      class="mt-2 font-mono text-xs text-(--iu-muted) tabular-nums"
+                    >
+                      min 12 chars · 0/12
+                    </p>
+                  </div>
+                  <button
+                    type="submit"
+                    class="mt-1 inline-flex h-10 w-full items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))]"
+                  >
+                    Continue to two-factor
+                    <svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </button>
+                </form>
+
+                <!-- Step 2: scan -->
+                <div data-step="1" hidden class="mt-6 grid gap-6 @lg:grid-cols-[auto_minmax(0,1fr)] @lg:items-start">
+                  <figure class="relative w-fit border border-(--iu-foreground)/15 p-3">
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -top-px -left-px size-2.5 border-t-2 border-l-2 border-(--iu-accent)"
+                    ></span>
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -top-px -right-px size-2.5 border-t-2 border-r-2 border-(--iu-accent)"
+                    ></span>
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -bottom-px -left-px size-2.5 border-b-2 border-l-2 border-(--iu-accent)"
+                    ></span>
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -right-px -bottom-px size-2.5 border-r-2 border-b-2 border-(--iu-accent)"
+                    ></span>
+                    <svg
+                      role="img"
+                      aria-label="QR code for Vaultline two-factor setup"
+                      viewBox="-2 -2 29 29"
+                      class="size-44 bg-(--iu-surface) dark:bg-(--iu-foreground)"
+                      shape-rendering="crispEdges"
+                    >
+                      <path
+                        data-qr
+                        class="fill-(--iu-foreground) dark:fill-(--iu-background)"
+                        fill-rule="evenodd"
+                        d=""
+                      />
+                    </svg>
+                    <figcaption
+                      class="mt-2 text-center font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                    >
+                      otpauth · totp
+                    </figcaption>
+                  </figure>
+                  <div class="min-w-0">
+                    <span
+                      id="vl-key-label"
+                      class="block font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >Can't scan? Enter this key</span
+                    >
+                    <div
+                      class="mt-2 flex items-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/15 bg-(--iu-background) py-1 pr-1 pl-3"
+                    >
+                      <code
+                        data-secret
+                        aria-labelledby="vl-key-label"
+                        class="min-w-0 flex-1 py-1 font-mono text-sm tracking-[0.06em] break-words"
+                        >JBSW Y3DP EHPK 3PXP KZ7Q 2MRA</code
+                      >
+                      <button
+                        type="button"
+                        data-copy="secret"
+                        aria-label="Copy key"
+                        class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),8px)] text-(--iu-muted) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-coarse:size-10 pointer-fine:hover:text-(--iu-foreground)"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                          <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                        </svg>
+                      </button>
+                    </div>
+                    <dl
+                      class="mt-4 grid grid-cols-3 border-y border-dashed border-(--iu-foreground)/15 font-mono text-xs"
+                    >
+                      <div class="py-2">
+                        <dt class="text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">algo</dt>
+                        <dd class="mt-1 tabular-nums">SHA1</dd>
+                      </div>
+                      <div class="py-2">
+                        <dt class="text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">digits</dt>
+                        <dd class="mt-1 tabular-nums">6</dd>
+                      </div>
+                      <div class="py-2">
+                        <dt class="text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">period</dt>
+                        <dd class="mt-1 tabular-nums">30s</dd>
+                      </div>
+                    </dl>
+                    <div class="mt-6 flex flex-wrap gap-2">
+                      <button
+                        type="button"
+                        data-go="2"
+                        class="inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))]"
+                      >
+                        I've scanned it
+                        <svg
+                          aria-hidden="true"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 3: verify -->
+                <form data-step="2" hidden novalidate class="mt-6 max-w-md">
+                  <label
+                    for="vl-code"
+                    class="mb-2 block font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                    >One-time code</label
+                  >
+                  <div class="relative">
+                    <input
+                      id="vl-code"
+                      inputmode="numeric"
+                      autocomplete="one-time-code"
+                      pattern="[0-9]*"
+                      maxlength="6"
+                      aria-describedby="vl-window"
+                      class="absolute inset-0 z-10 h-full w-full cursor-text opacity-0"
+                    />
+                    <div aria-hidden="true" data-cells class="grid grid-cols-6 gap-1.5 @sm:gap-2"></div>
+                  </div>
+                  <div id="vl-window" data-window class="mt-4">
+                    <div class="flex items-baseline justify-between font-mono text-xs text-(--iu-muted) tabular-nums">
+                      <span>code window</span><span data-remaining>30s left</span>
+                    </div>
+                    <div
+                      aria-hidden="true"
+                      data-ticks
+                      class="mt-2 grid grid-cols-[repeat(30,minmax(0,1fr))] gap-px"
+                    ></div>
+                  </div>
+                  <p
+                    id="vl-code-error"
+                    role="alert"
+                    data-code-error
+                    hidden
+                    class="mt-4 flex items-start gap-2 rounded-[min(var(--iu-radius),8px)] border border-red-600/40 bg-red-600/5 px-3 py-2 font-mono text-xs leading-relaxed text-red-800 dark:border-red-400/40 dark:bg-red-400/10 dark:text-red-200"
+                  ></p>
+                  <div class="mt-6 flex flex-wrap items-center gap-2">
+                    <button
+                      type="submit"
+                      data-verify
+                      class="inline-flex h-10 min-w-36 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))]"
+                    >
+                      Verify code
+                    </button>
+                    <button
+                      type="button"
+                      data-go="1"
+                      class="inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/25 px-4 text-sm font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                    >
+                      Show QR again
+                    </button>
+                  </div>
+                  <p aria-live="polite" class="sr-only" data-verify-status></p>
+                </form>
+
+                <!-- Step 4: recovery -->
+                <div data-step="3" hidden class="mt-6">
+                  <div class="relative border border-(--iu-foreground)/15 bg-(--iu-background)">
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -top-px -left-px size-2.5 border-t-2 border-l-2 border-(--iu-accent)"
+                    ></span>
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -top-px -right-px size-2.5 border-t-2 border-r-2 border-(--iu-accent)"
+                    ></span>
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -bottom-px -left-px size-2.5 border-b-2 border-l-2 border-(--iu-accent)"
+                    ></span>
+                    <span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute -right-px -bottom-px size-2.5 border-r-2 border-b-2 border-(--iu-accent)"
+                    ></span>
+                    <div
+                      class="flex items-center justify-between gap-3 border-b border-dashed border-(--iu-foreground)/15 px-4 py-2"
+                    >
+                      <span class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                        >recovery-codes.txt</span
+                      >
+                      <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">10 × single use</span>
+                    </div>
+                    <ol
+                      data-codes
+                      class="grid grid-cols-1 gap-x-6 gap-y-1 px-4 py-3 font-mono text-sm @sm:grid-cols-2"
+                    ></ol>
+                  </div>
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    <button
+                      type="button"
+                      data-copy="codes"
+                      class="inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/25 px-4 text-sm font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                        <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                      </svg>
+                      <span data-copy-label>Copy all</span>
+                    </button>
+                    <button
+                      type="button"
+                      data-download
+                      class="inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/25 px-4 text-sm font-medium text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path d="M12 15V3" />
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <path d="m7 10 5 5 5-5" />
+                      </svg>
+                      Download .txt
+                    </button>
+                  </div>
+                  <p aria-live="polite" class="sr-only" data-copy-status></p>
+                  <label class="mt-6 flex cursor-pointer items-start gap-3 text-sm">
+                    <input
+                      type="checkbox"
+                      data-ack
+                      class="mt-0.5 size-4 shrink-0 accent-(--iu-accent) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+                    />
+                    <span class="text-pretty">I saved these codes somewhere other than this device.</span>
+                  </label>
+                  <button
+                    type="button"
+                    data-finish
+                    disabled
+                    class="mt-4 inline-flex h-10 items-center justify-center gap-2 rounded-[min(var(--iu-radius),8px)] bg-(--iu-accent) px-4 text-sm font-medium text-(--iu-accent-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))]"
+                  >
+                    Finish setup
+                    <svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <aside
+            aria-label="Setup log"
+            class="min-w-0 border-t border-dashed border-(--iu-border) bg-(--iu-background) @3xl:border-t-0 @3xl:border-l dark:border-(--iu-foreground)/14"
+          >
+            <div
+              class="flex items-center justify-between border-b border-dashed border-(--iu-border) px-4 py-3 dark:border-(--iu-foreground)/14"
+            >
+              <span class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase">session log</span>
+              <span class="flex items-center gap-1.5 font-mono text-[11px] text-(--iu-muted)"
+                ><span aria-hidden="true" data-dot class="size-1.5 rounded-full bg-(--iu-accent)"></span
+                ><span data-state>2fa pending</span></span
+              >
+            </div>
+            <ol aria-live="polite" data-log class="grid gap-1.5 px-4 py-4 font-mono text-xs leading-relaxed">
+              <li data-waiting class="text-(--iu-muted)">$ waiting for account…</li>
+              <li aria-hidden="true" data-prompt class="text-(--iu-muted)">
+                $ <span class="inline-block h-3 w-1.5 translate-y-0.5 bg-(--iu-foreground)/60"></span>
+              </li>
+            </ol>
+            <dl
+              class="mx-4 mb-4 grid grid-cols-2 border-t border-dashed border-(--iu-foreground)/15 pt-3 font-mono text-[11px]"
+            >
+              <div>
+                <dt class="tracking-[0.08em] text-(--iu-muted) uppercase">device</dt>
+                <dd class="mt-1">macOS · Firefox 131</dd>
+              </div>
+              <div>
+                <dt class="tracking-[0.08em] text-(--iu-muted) uppercase">region</dt>
+                <dd class="mt-1">eu-central-1</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-vaultline]");
+        if (!root) return;
+        var q = function (sel) {
+          return root.querySelector(sel);
+        };
+        var qa = function (sel) {
+          return Array.prototype.slice.call(root.querySelectorAll(sel));
+        };
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        var SECRET = q("[data-secret]").textContent;
+        var CODES = [
+          "7KQ2-9MXD",
+          "H4TN-2WVA",
+          "PZ8C-L3RE",
+          "Q6JM-YB7F",
+          "3RXW-KD9N",
+          "M2VE-8HTQ",
+          "C9LF-4PZS",
+          "W7BA-N6GU",
+          "E5YK-R2CJ",
+          "T8DH-X3MV",
+        ];
+        var TITLES = [
+          ["Create your Vaultline account", "Secrets for every environment, behind two factors from day one."],
+          ["Scan with your authenticator", "Use 1Password, Authy, or any TOTP app. The key never leaves this device."],
+          ["Enter the 6-digit code", "Type the code your app shows now. Paste works too."],
+          [
+            "Two-factor is on",
+            "Each code works once if you lose your device. Store them somewhere other than this laptop.",
+          ],
+        ];
+        var step = 0;
+        var remaining = 30;
+        var timer = null;
+        var locked = false;
+
+        // QR-style matrix, seeded from the secret (same drawing as the React version).
+        (function drawQr() {
+          var size = 25,
+            state = 0,
+            d = "";
+          for (var i = 0; i < SECRET.length; i++) state = (state * 31 + SECRET.charCodeAt(i)) >>> 0;
+          var random = function () {
+            state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+            return state / 4294967296;
+          };
+          var finder = function (x, y) {
+            return (x < 8 && y < 8) || (x > size - 9 && y < 8) || (x < 8 && y > size - 9);
+          };
+          for (var y = 0; y < size; y++) {
+            for (var x = 0; x < size; x++) {
+              if (finder(x, y)) continue;
+              var timing = (x === 6 || y === 6) && (x + y) % 2 === 0;
+              if (timing || random() > 0.52) d += "M" + x + " " + y + "h1v1h-1z";
+            }
+          }
+          [
+            [0, 0],
+            [size - 7, 0],
+            [0, size - 7],
+          ].forEach(function (o) {
+            d +=
+              "M" +
+              o[0] +
+              " " +
+              o[1] +
+              "h7v7h-7zM" +
+              (o[0] + 1) +
+              " " +
+              (o[1] + 1) +
+              "v5h5v-5zM" +
+              (o[0] + 2) +
+              " " +
+              (o[1] + 2) +
+              "h3v3h-3z";
+          });
+          q("[data-qr]").setAttribute("d", d);
+        })();
+
+        CODES.forEach(function (code, index) {
+          var li = document.createElement("li");
+          li.className = "flex items-baseline gap-3 tabular-nums";
+          li.innerHTML =
+            '<span aria-hidden="true" class="w-5 text-right text-[11px] text-(--iu-muted)">' +
+            String(index + 1).padStart(2, "0") +
+            '</span><span class="tracking-[0.06em]">' +
+            code +
+            "</span>";
+          q("[data-codes]").appendChild(li);
+        });
+        for (var c = 0; c < 6; c++) {
+          var cell = document.createElement("span");
+          q("[data-cells]").appendChild(cell);
+        }
+        for (var t = 0; t < 30; t++) q("[data-ticks]").appendChild(document.createElement("span"));
+
+        function clock() {
+          var now = new Date();
+          return [now.getHours(), now.getMinutes(), now.getSeconds()]
+            .map(function (p) {
+              return String(p).padStart(2, "0");
+            })
+            .join(":");
+        }
+        function log(scope, text) {
+          var waiting = q("[data-waiting]");
+          if (waiting) waiting.remove();
+          var li = document.createElement("li");
+          li.className = "grid grid-cols-[auto_4.5rem_minmax(0,1fr)] gap-x-2";
+          li.innerHTML =
+            '<span class="text-(--iu-muted) tabular-nums">' +
+            clock() +
+            '</span><span class="' +
+            (scope === "totp" ? "text-(--iu-foreground)" : "text-(--iu-muted)") +
+            '">' +
+            scope +
+            '</span><span class="break-words"></span>';
+          li.lastChild.textContent = text;
+          q("[data-log]").insertBefore(li, q("[data-prompt]"));
+        }
+
+        function renderSteps() {
+          qa("[data-steps] li").forEach(function (li, index) {
+            var done = index < step || (index === 3 && locked);
+            var active = index === step && !done;
+            li.className =
+              "flex min-w-0 flex-col gap-2 font-mono text-[11px] tabular-nums " +
+              (active || done ? "text-(--iu-foreground)" : "text-(--iu-muted)");
+            if (active) li.setAttribute("aria-current", "step");
+            else li.removeAttribute("aria-current");
+            li.querySelector("[data-bar]").className =
+              "h-0.5 w-full transition-colors duration-150 motion-reduce:transition-none " +
+              (done ? "bg-(--iu-foreground)" : active ? "bg-(--iu-accent)" : "bg-(--iu-foreground)/15");
+            li.querySelector("[data-num]").textContent = done ? "✓" : "0" + (index + 1);
+            li.querySelector("[data-sr]").textContent = done ? ", done" : active ? ", current" : "";
+          });
+          q("[data-count]").textContent = "setup " + (step + 1) + "/4";
+        }
+
+        function renderCells(error) {
+          var code = q("#vl-code").value;
+          var focused = document.activeElement === q("#vl-code");
+          qa("[data-cells] span").forEach(function (cell, index) {
+            var active = focused && !locked && index === Math.min(code.length, 5);
+            cell.className =
+              "relative flex h-14 items-center justify-center rounded-[min(var(--iu-radius),8px)] border font-mono text-2xl tabular-nums transition-colors duration-150 motion-reduce:transition-none " +
+              (locked
+                ? "border-(--iu-accent) bg-[color-mix(in_oklab,var(--iu-accent)_10%,var(--iu-surface))]"
+                : error
+                  ? "border-red-600 dark:border-red-400"
+                  : active
+                    ? "border-(--iu-foreground) outline-2 outline-offset-2 outline-(--iu-accent)"
+                    : "border-(--iu-foreground)/30");
+            cell.textContent = code[index] || "";
+            if (active && !code[index]) {
+              var caret = document.createElement("span");
+              caret.className = "h-6 w-px bg-(--iu-foreground)";
+              cell.appendChild(caret);
+            }
+          });
+        }
+
+        function renderWindow() {
+          q("[data-remaining]").textContent = String(remaining).padStart(2, "0") + "s left";
+          q("[data-remaining]").className = remaining <= 5 ? "text-(--iu-foreground)" : "";
+          qa("[data-ticks] span").forEach(function (tick, index) {
+            tick.className =
+              "h-1.5 " +
+              (index < remaining
+                ? remaining <= 5
+                  ? "bg-(--iu-accent)"
+                  : "bg-(--iu-foreground)/70"
+                : "bg-(--iu-foreground)/12");
+          });
+        }
+
+        // The TOTP window counts down for real and pauses while offscreen.
+        var visible = true;
+        new IntersectionObserver(function (entries) {
+          visible = entries[0] ? entries[0].isIntersecting : true;
+        }).observe(q("[data-window]"));
+        function startTimer() {
+          if (timer) return;
+          timer = setInterval(function () {
+            if (!visible) return;
+            remaining = remaining <= 1 ? 30 : remaining - 1;
+            renderWindow();
+          }, 1000);
+        }
+
+        function go(next) {
+          var wrap = q("[data-body-wrap]");
+          var swap = function () {
+            step = next;
+            qa("[data-step]").forEach(function (el) {
+              el.hidden = Number(el.getAttribute("data-step")) !== step;
+            });
+            q("[data-title]").textContent = TITLES[step][0];
+            q("[data-sub]").textContent = TITLES[step][1];
+            q("[data-shield]").hidden = step !== 3;
+            renderSteps();
+            if (step === 1 || step === 2) startTimer();
+            wrap.style.opacity = "";
+            wrap.style.transform = "";
+            q("#vl-title").focus();
+          };
+          if (reduce) return swap();
+          wrap.style.opacity = "0";
+          wrap.style.transform = "translateY(4px)";
+          setTimeout(swap, 140);
+        }
+
+        // Step 1.
+        var email = q("#vl-email");
+        var password = q("#vl-password");
+        function emailError() {
+          var v = email.value.trim();
+          return !v ? "Enter the email your team uses." : EMAIL.test(v) ? "" : "Expected name@domain.tld.";
+        }
+        function passwordError() {
+          return !password.value
+            ? "Choose a password."
+            : password.value.length >= 12
+              ? ""
+              : "Use at least 12 characters (" + password.value.length + "/12).";
+        }
+        function showEmail(msg) {
+          var p = q("[data-email-error]");
+          p.textContent = msg;
+          p.hidden = !msg;
+          if (msg) {
+            email.setAttribute("aria-invalid", "true");
+            email.setAttribute("aria-describedby", "vl-email-error");
+          } else {
+            email.removeAttribute("aria-invalid");
+            email.removeAttribute("aria-describedby");
+          }
+        }
+        function showPassword(msg) {
+          var p = q("[data-password-hint]");
+          p.textContent = msg || "min 12 chars · " + password.value.length + "/12";
+          p.className =
+            "mt-2 font-mono text-xs tabular-nums " + (msg ? "text-red-700 dark:text-red-300" : "text-(--iu-muted)");
+          if (msg) password.setAttribute("aria-invalid", "true");
+          else password.removeAttribute("aria-invalid");
+        }
+        email.addEventListener("blur", function () {
+          if (email.value) showEmail(emailError());
+        });
+        email.addEventListener("input", function () {
+          if (!q("[data-email-error]").hidden && !emailError()) showEmail("");
+        });
+        password.addEventListener("blur", function () {
+          if (password.value) showPassword(passwordError());
+        });
+        password.addEventListener("input", function () {
+          showPassword(password.getAttribute("aria-invalid") && passwordError() ? passwordError() : "");
+        });
+        var reveal = q("[data-reveal]");
+        reveal.addEventListener("click", function () {
+          var show = password.type === "password";
+          password.type = show ? "text" : "password";
+          reveal.setAttribute("aria-label", show ? "Hide password" : "Show password");
+          reveal.setAttribute("aria-pressed", String(show));
+          reveal.querySelector('[data-icon="show"]').hidden = show;
+          reveal.querySelector('[data-icon="hide"]').hidden = !show;
+        });
+        q('[data-step="0"]').addEventListener("submit", function (event) {
+          event.preventDefault();
+          var e = emailError(),
+            p = passwordError();
+          showEmail(e);
+          showPassword(p);
+          if (e) return email.focus();
+          if (p) return password.focus();
+          log("auth", "account created · " + email.value.trim());
+          log("totp", "secret issued · SHA1 · 6 digits · 30s");
+          go(1);
+        });
+
+        // Step 2.
+        qa("[data-go]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            go(Number(button.getAttribute("data-go")));
+          });
+        });
+
+        // Step 3.
+        var codeInput = q("#vl-code");
+        function setCodeError(msg) {
+          var p = q("[data-code-error]");
+          p.textContent = "";
+          p.hidden = !msg;
+          if (msg) {
+            var strong = document.createElement("span");
+            strong.className = "font-semibold";
+            strong.textContent = "E_TOTP_MISMATCH";
+            p.appendChild(strong);
+            p.appendChild(document.createTextNode(" · " + msg));
+            codeInput.setAttribute("aria-invalid", "true");
+            codeInput.setAttribute("aria-describedby", "vl-code-error");
+          } else {
+            codeInput.removeAttribute("aria-invalid");
+            codeInput.setAttribute("aria-describedby", "vl-window");
+          }
+          renderCells(!!msg);
+        }
+        codeInput.addEventListener("input", function () {
+          codeInput.value = codeInput.value.replace(/\D/g, "").slice(0, 6);
+          setCodeError("");
+        });
+        codeInput.addEventListener("focus", function () {
+          renderCells(!q("[data-code-error]").hidden);
+        });
+        codeInput.addEventListener("blur", function () {
+          renderCells(!q("[data-code-error]").hidden);
+        });
+        q('[data-step="2"]').addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (locked) return;
+          var code = codeInput.value;
+          if (code.length < 6) {
+            setCodeError("Enter all 6 digits (" + code.length + "/6).");
+            return codeInput.focus();
+          }
+          var verify = q("[data-verify]");
+          verify.disabled = true;
+          codeInput.disabled = true;
+          verify.textContent = "Verifying";
+          q("[data-verify-status]").textContent = "Verifying code";
+          // Replace this timeout with your verify request. This demo rejects 000000.
+          setTimeout(function () {
+            codeInput.disabled = false;
+            if (code === "000000") {
+              verify.disabled = false;
+              verify.textContent = "Verify code";
+              q("[data-verify-status]").textContent = "";
+              log("totp", "verification failed · code rejected");
+              setCodeError(
+                "That code didn't match. Codes change every 30 seconds; wait for a fresh one and try again.",
+              );
+              codeInput.select();
+              return;
+            }
+            locked = true;
+            codeInput.disabled = true;
+            verify.textContent = "Verified";
+            q("[data-verify-status]").textContent = "Code verified";
+            renderCells(false);
+            if (!reduce) {
+              qa("[data-cells] span").forEach(function (cell, index) {
+                cell.animate([{ transform: "none" }, { transform: "translateY(-2px)" }, { transform: "none" }], {
+                  duration: 160,
+                  delay: index * 50,
+                });
+              });
+            }
+            log("totp", "device verified · window 1 of 1");
+            log("recovery", CODES.length + " one-time codes generated");
+            q("[data-dot]").className = "size-1.5 rounded-full bg-emerald-600 dark:bg-emerald-400";
+            q("[data-state]").textContent = "2fa enforced";
+            q("[data-prompt]").hidden = true;
+            setTimeout(
+              function () {
+                go(3);
+              },
+              reduce ? 0 : 520,
+            );
+          }, 1100);
+        });
+
+        // Step 4.
+        qa("[data-copy]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var what = button.getAttribute("data-copy");
+            var value = what === "secret" ? SECRET.replace(/\s/g, "") : CODES.join("\n");
+            if (navigator.clipboard) navigator.clipboard.writeText(value).catch(function () {});
+            if (what === "codes") {
+              q("[data-copy-label]").textContent = "Copied";
+              q("[data-copy-status]").textContent = "Recovery codes copied to clipboard";
+              setTimeout(function () {
+                q("[data-copy-label]").textContent = "Copy all";
+                q("[data-copy-status]").textContent = "";
+              }, 1600);
+            } else {
+              button.setAttribute("aria-label", "Key copied");
+              setTimeout(function () {
+                button.setAttribute("aria-label", "Copy key");
+              }, 1600);
+            }
+          });
+        });
+        q("[data-download]").addEventListener("click", function () {
+          var blob = new Blob(["Vaultline recovery codes\n\n" + CODES.join("\n") + "\n"], { type: "text/plain" });
+          var url = URL.createObjectURL(blob);
+          var a = document.createElement("a");
+          a.href = url;
+          a.download = "vaultline-recovery-codes.txt";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+        });
+        q("[data-ack]").addEventListener("change", function (event) {
+          q("[data-finish]").disabled = !event.target.checked;
+        });
+
+        renderSteps();
+        renderCells(false);
+        renderWindow();
+      })();
+    </script>
+  </body>
+</html>

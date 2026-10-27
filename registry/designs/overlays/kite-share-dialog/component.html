@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kite share dialog · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+      @keyframes kite-pop {
+        from {
+          opacity: 0;
+          transform: scale(0.4) rotate(-6deg);
+        }
+        60% {
+          transform: scale(1.08) rotate(1deg);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes kite-sticker {
+        from {
+          opacity: 0;
+          transform: translateY(-24px) rotate(-8deg) scale(0.8);
+        }
+        60% {
+          transform: translateY(2px) rotate(-1deg) scale(1.03);
+        }
+        to {
+          opacity: 1;
+          transform: rotate(-2deg);
+        }
+      }
+      @keyframes kite-draw {
+        from {
+          stroke-dashoffset: 1;
+        }
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-kite
+      class="relative min-h-dvh bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--ks-ink:var(--iu-foreground)] [--ks-shadow:color-mix(in_oklab,var(--iu-accent)_32%,var(--iu-foreground))] [--ks-tint:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] dark:[--ks-ink:color-mix(in_oklab,var(--iu-foreground)_80%,var(--iu-surface))] dark:[--ks-shadow:color-mix(in_oklab,var(--iu-accent)_55%,black)] dark:[--ks-tint:color-mix(in_oklab,var(--iu-accent)_22%,var(--iu-surface))]"
+    >
+      <div data-page inert class="mx-auto flex max-w-[1080px] flex-col gap-8 px-4 pt-6 pb-32 sm:px-8 sm:pt-10">
+        <header class="flex items-center justify-between gap-4">
+          <span class="inline-flex items-center gap-2.5 text-lg font-extrabold tracking-[-0.02em]">
+            <svg aria-hidden="true" viewBox="0 0 32 32" class="size-8">
+              <path
+                d="M16 3 27 14 16 29 5 14Z"
+                class="fill-(--iu-accent) stroke-(--ks-ink)"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+              <path d="M5 14h22M16 3v26" class="stroke-(--ks-ink)" stroke-width="2" />
+            </svg>
+            Kitebook
+          </span>
+          <button
+            type="button"
+            data-trigger
+            aria-haspopup="dialog"
+            class="inline-flex h-10 h-11 items-center justify-center gap-2 rounded-full border-2 border-(--ks-ink) bg-(--iu-surface) px-4 px-5 text-sm font-bold text-(--iu-foreground) shadow-[4px_4px_0_var(--ks-shadow)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-[1px_1px_0_var(--ks-shadow)] motion-reduce:transition-none pointer-fine:hover:-translate-y-0.5"
+          >
+            <svg
+              aria-hidden="true"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <line x1="19" x2="19" y1="8" y2="14" />
+              <line x1="22" x2="16" y1="11" y2="11" />
+            </svg>
+            Share
+          </button>
+        </header>
+        <div>
+          <p
+            class="inline-block -rotate-2 rounded-full border-2 border-(--ks-ink) bg-(--ks-tint) px-3 py-0.5 text-[12px] font-extrabold tracking-wide uppercase"
+          >
+            Board · 38 pins
+          </p>
+          <h1
+            class="mt-3 text-[clamp(2rem,1.4rem+2.8vw,3.25rem)] leading-[1.02] font-extrabold tracking-[-0.035em] text-balance"
+          >
+            Spring launch moodboard
+          </h1>
+        </div>
+        <div aria-hidden="true" class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div
+            class="relative aspect-[4/5] overflow-hidden rounded-[max(var(--iu-radius),20px)] border-2 border-(--ks-ink) bg-(--ks-tint)"
+          >
+            <svg viewBox="0 0 100 125" class="absolute inset-0 size-full">
+              <circle cx="50" cy="56" r="28" class="fill-(--iu-accent)" />
+            </svg>
+          </div>
+          <div
+            class="relative aspect-[4/5] overflow-hidden rounded-[max(var(--iu-radius),20px)] border-2 border-(--ks-ink) bg-(--iu-surface)"
+          >
+            <svg viewBox="0 0 100 125" class="absolute inset-0 size-full">
+              <path d="M14 98 50 30l36 68Z" class="fill-(--iu-foreground)/12 stroke-(--ks-ink)" stroke-width="2" />
+            </svg>
+          </div>
+          <div
+            class="relative aspect-[4/5] overflow-hidden rounded-[max(var(--iu-radius),20px)] border-2 border-(--ks-ink) bg-(--ks-tint)"
+          >
+            <svg viewBox="0 0 100 125" class="absolute inset-0 size-full">
+              <rect
+                x="22"
+                y="30"
+                width="56"
+                height="56"
+                rx="14"
+                class="fill-(--iu-surface) stroke-(--ks-ink)"
+                stroke-width="2"
+                transform="rotate(12 50 58)"
+              />
+            </svg>
+          </div>
+          <div
+            class="relative aspect-[4/5] overflow-hidden rounded-[max(var(--iu-radius),20px)] border-2 border-(--ks-ink) bg-(--iu-surface)"
+          >
+            <svg viewBox="0 0 100 125" class="absolute inset-0 size-full">
+              <path
+                d="M10 70c16-22 30-22 40 0s24 22 40 0"
+                class="fill-none stroke-(--iu-accent)"
+                stroke-width="6"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div data-layer class="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-6">
+        <div data-scrim aria-hidden="true" class="absolute inset-0 bg-(--iu-foreground)/30 dark:bg-black/65"></div>
+        <div
+          data-dialog
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="kite-title"
+          aria-describedby="kite-desc"
+          class="relative flex max-h-[92dvh] w-full flex-col rounded-t-[max(var(--iu-radius),28px)] border-2 border-b-0 border-(--ks-ink) bg-(--iu-surface) sm:max-h-[min(90dvh,780px)] sm:max-w-[560px] sm:rounded-[max(var(--iu-radius),28px)] sm:border-b-2 sm:shadow-[8px_8px_0_var(--ks-shadow)]"
+        >
+          <span
+            aria-hidden="true"
+            class="mx-auto mt-3 h-1.5 w-12 rounded-full bg-(--iu-foreground)/25 sm:hidden"
+          ></span>
+          <div class="flex items-start gap-4 px-5 pt-4 sm:px-7 sm:pt-7">
+            <div class="min-w-0 flex-1">
+              <h2 id="kite-title" class="text-2xl/7 font-extrabold tracking-[-0.03em] text-balance">
+                Share this board
+              </h2>
+              <p id="kite-desc" class="mt-1 text-sm text-pretty text-(--iu-muted)">
+                Invite people to “Spring launch moodboard” or send them the link.
+              </p>
+            </div>
+            <div data-stack aria-hidden="true" class="hidden items-center sm:flex"></div>
+            <button
+              type="button"
+              data-close
+              aria-label="Close"
+              class="-mt-1 -mr-2 grid size-10 shrink-0 place-items-center rounded-full border-2 border-transparent text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-50 pointer-fine:hover:border-(--ks-ink)"
+            >
+              <svg
+                aria-hidden="true"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="flex [scrollbar-gutter:stable] flex-col gap-[calc(24px*var(--iu-density))] overflow-y-auto px-5 pt-5 pb-6 sm:px-7"
+          >
+            <div>
+              <label for="kite-input" class="mb-2 block text-sm font-extrabold">Invite people</label>
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-start">
+                <div class="relative min-w-0 flex-1">
+                  <div
+                    data-field
+                    class="flex min-h-12 flex-wrap items-center gap-1.5 rounded-[max(var(--iu-radius),24px)] border-2 border-(--ks-ink) bg-(--iu-surface) py-1.5 pr-2 pl-2 focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-(--iu-accent)"
+                  >
+                    <span data-chips class="contents"></span>
+                    <input
+                      id="kite-input"
+                      role="combobox"
+                      aria-expanded="false"
+                      aria-controls="kite-list"
+                      aria-autocomplete="list"
+                      aria-describedby="kite-hint"
+                      autocomplete="off"
+                      placeholder="Add another"
+                      class="h-8 min-w-[8rem] flex-1 bg-transparent px-2 text-sm font-medium outline-none placeholder:text-(--iu-muted)"
+                    />
+                  </div>
+                  <ul
+                    id="kite-list"
+                    role="listbox"
+                    aria-label="Suggestions"
+                    hidden
+                    class="absolute inset-x-0 top-full z-20 mt-2 flex flex-col gap-0.5 rounded-[max(var(--iu-radius),20px)] border-2 border-(--ks-ink) bg-(--iu-surface) p-1.5 shadow-[4px_4px_0_var(--ks-shadow)]"
+                  ></ul>
+                </div>
+                <select
+                  data-role
+                  aria-label="Role for new people"
+                  class="h-9 h-12 cursor-pointer appearance-auto self-start rounded-full border-2 border-(--iu-foreground)/40 border-(--ks-ink) bg-(--iu-surface) pr-2 pl-3 text-[13px] font-bold text-(--iu-foreground) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:opacity-60 pointer-coarse:h-10 pointer-coarse:h-12"
+                >
+                  <option value="edit">Can edit</option>
+                  <option value="comment" selected>Can comment</option>
+                  <option value="view">Can view</option>
+                </select>
+              </div>
+              <p id="kite-hint" data-hint class="mt-2 text-[13px] text-(--iu-muted)">
+                Press Enter or comma to add. Guests outside kitebook.design can comment but not export.
+              </p>
+              <p
+                id="kite-error"
+                data-error
+                hidden
+                class="mt-2 flex items-start gap-1.5 text-[13px] font-semibold text-red-700 dark:text-red-400"
+              >
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="shrink-0"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+                <span></span>
+              </p>
+            </div>
+
+            <section aria-labelledby="kite-people">
+              <h3 id="kite-people" class="mb-2 text-sm font-extrabold">
+                People with access
+                <span data-member-count class="font-mono text-[12px] font-medium text-(--iu-muted) tabular-nums"
+                  >3</span
+                >
+              </h3>
+              <ul data-members class="flex flex-col gap-[calc(8px*var(--iu-density))]"></ul>
+            </section>
+
+            <fieldset>
+              <legend class="mb-2 text-sm font-extrabold">General access</legend>
+              <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                <label
+                  class="flex cursor-pointer items-center gap-3 rounded-[max(var(--iu-radius),18px)] border-2 border-(--iu-foreground)/30 p-3 transition-[translate,box-shadow,border-color] duration-100 ease-linear has-checked:border-(--ks-ink) has-checked:bg-(--ks-tint) has-checked:shadow-[3px_3px_0_var(--ks-shadow)] has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                >
+                  <input type="radio" name="kite-access" value="link" checked class="sr-only" />
+                  <span
+                    class="grid size-9 shrink-0 place-items-center rounded-full border-2 border-(--ks-ink) bg-(--iu-surface)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                      <path d="M2 12h20" />
+                    </svg>
+                  </span>
+                  <span class="min-w-0"
+                    ><span class="block text-sm font-bold">Anyone with the link</span
+                    ><span class="block text-[12px] text-(--iu-muted)">Can view, no sign-in</span></span
+                  >
+                </label>
+                <label
+                  class="flex cursor-pointer items-center gap-3 rounded-[max(var(--iu-radius),18px)] border-2 border-(--iu-foreground)/30 p-3 transition-[translate,box-shadow,border-color] duration-100 ease-linear has-checked:border-(--ks-ink) has-checked:bg-(--ks-tint) has-checked:shadow-[3px_3px_0_var(--ks-shadow)] has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                >
+                  <input type="radio" name="kite-access" value="invited" class="sr-only" />
+                  <span
+                    class="grid size-9 shrink-0 place-items-center rounded-full border-2 border-(--ks-ink) bg-(--iu-surface)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                  </span>
+                  <span class="min-w-0"
+                    ><span class="block text-sm font-bold">Only invited people</span
+                    ><span class="block text-[12px] text-(--iu-muted)">Link asks to sign in</span></span
+                  >
+                </label>
+              </div>
+            </fieldset>
+
+            <div
+              class="flex items-center gap-2 rounded-full border-2 border-dashed border-(--iu-foreground)/40 py-1.5 pr-1.5 pl-4"
+            >
+              <svg
+                aria-hidden="true"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0 text-(--iu-muted)"
+              >
+                <path d="M9 17H7A5 5 0 0 1 7 7h2" />
+                <path d="M15 7h2a5 5 0 1 1 0 10h-2" />
+                <line x1="8" x2="16" y1="12" y2="12" />
+              </svg>
+              <span data-link class="min-w-0 flex-1 truncate font-mono text-[13px]"
+                >kitebook.app/b/spring-launch-7Kq2</span
+              >
+              <button
+                type="button"
+                data-copy
+                aria-label="Copy link"
+                class="relative inline-flex h-10 h-11 min-w-[7.5rem] shrink-0 items-center justify-center gap-2 rounded-full border-2 border-(--ks-ink) bg-(--iu-surface) px-4 px-5 text-sm font-bold text-(--iu-foreground) shadow-[4px_4px_0_var(--ks-shadow)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-[1px_1px_0_var(--ks-shadow)] motion-reduce:transition-none pointer-fine:hover:-translate-y-0.5"
+              >
+                <span data-copy-idle>Copy link</span>
+                <span data-copy-done hidden class="inline-flex items-center gap-1.5">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" class="size-4">
+                    <path
+                      data-check
+                      d="M4 12.5 9.5 18 20 6"
+                      fill="none"
+                      class="stroke-current"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      pathLength="1"
+                      stroke-dasharray="1"
+                    />
+                  </svg>
+                  Copied
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col-reverse gap-3 border-t-2 border-(--ks-ink) px-5 pt-4 pb-[max(20px,env(safe-area-inset-bottom))] sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:pb-6"
+          >
+            <p class="text-[13px] text-(--iu-muted)">
+              <span data-people class="font-bold text-(--iu-foreground) tabular-nums">3</span> people ·
+              <span data-link-state>link on</span>
+            </p>
+            <button
+              type="button"
+              data-send
+              class="inline-flex inline-grid h-12 items-center justify-center gap-2 rounded-full border-2 border-(--ks-ink) bg-(--iu-accent) px-6 text-[15px] font-extrabold text-(--iu-accent-foreground) shadow-[4px_4px_0_var(--ks-shadow)] transition-[translate,box-shadow] duration-100 ease-linear focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) active:translate-x-[3px] active:translate-y-[3px] active:shadow-[1px_1px_0_var(--ks-shadow)] disabled:cursor-not-allowed disabled:opacity-55 disabled:active:translate-0 motion-reduce:transition-none pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[5px_6px_0_var(--ks-shadow)]"
+            >
+              <span data-send-idle class="col-start-1 row-start-1 inline-flex items-center gap-2">
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
+                  />
+                  <path d="m21.854 2.147-10.94 10.939" />
+                </svg>
+                <span data-send-label>Send invite</span>
+              </span>
+              <span
+                data-send-busy
+                aria-hidden="true"
+                class="invisible col-start-1 row-start-1 inline-flex items-center justify-center gap-1"
+              >
+                Sending
+                <span aria-hidden="true" class="inline-flex gap-0.5">
+                  <span class="size-1.5 animate-bounce rounded-full bg-current motion-reduce:animate-none"></span>
+                  <span
+                    class="size-1.5 animate-bounce rounded-full bg-current [animation-delay:120ms] motion-reduce:animate-none"
+                  ></span>
+                  <span
+                    class="size-1.5 animate-bounce rounded-full bg-current [animation-delay:240ms] motion-reduce:animate-none"
+                  ></span>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div data-toast-slot class="pointer-events-none fixed inset-x-4 top-4 z-[60] flex justify-center sm:top-6"></div>
+      <p data-announcer role="status" class="sr-only"></p>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-kite]");
+        if (!root) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var FOCUSABLE =
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        var EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var ROLES = { edit: "Can edit", comment: "Can comment", view: "Can view" };
+        var FOCUS = "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var SELECT =
+          "h-9 cursor-pointer appearance-auto rounded-full border-2 border-(--iu-foreground)/40 bg-(--iu-surface) pr-2 pl-3 text-[13px] font-bold text-(--iu-foreground) pointer-coarse:h-10 disabled:opacity-60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)";
+        var DIRECTORY = [
+          { name: "Bruno Castellanos", email: "bruno@kitebook.design" },
+          { name: "Chiara Benedetti", email: "chiara@lumenfold.studio", guest: true },
+          { name: "Dev Raghunathan", email: "dev@kitebook.design" },
+          { name: "Elif Kaya", email: "elif@kitebook.design" },
+          { name: "Farah Haddad", email: "farah@northpier.co", guest: true },
+          { name: "Ivo Lindahl", email: "ivo@kitebook.design" },
+        ];
+        var members = [
+          { name: "Noa Feld", email: "noa@kitebook.design", role: "owner" },
+          { name: "Amara Osei", email: "amara@kitebook.design", role: "edit" },
+          { name: "Tomasz Wrona", email: "tomasz@kitebook.design", role: "comment" },
+        ];
+        var invitees = [DIRECTORY[1]];
+        var options = [];
+        var active = 0;
+        var busy = false;
+        var copyTimer;
+
+        var layer = root.querySelector("[data-layer]");
+        var dialog = root.querySelector("[data-dialog]");
+        var page = root.querySelector("[data-page]");
+        var input = root.querySelector("#kite-input");
+        var list = root.querySelector("#kite-list");
+        var field = root.querySelector("[data-field]");
+        var announcer = root.querySelector("[data-announcer]");
+        var trigger = root.querySelector("[data-trigger]");
+
+        function esc(text) {
+          var span = document.createElement("span");
+          span.textContent = text;
+          return span.innerHTML;
+        }
+        function initials(name) {
+          return name
+            .split(/\s+/)
+            .map(function (p) {
+              return p[0] || "";
+            })
+            .join("")
+            .slice(0, 2)
+            .toUpperCase();
+        }
+        function avatar(name, index, small) {
+          return (
+            '<span aria-hidden="true" class="grid shrink-0 place-items-center rounded-full border-2 border-(--ks-ink) font-extrabold text-(--iu-foreground) ' +
+            (small ? "size-8 text-[11px] " : "size-10 text-[13px] ") +
+            (index % 2 === 0 ? "bg-(--ks-tint)" : "bg-(--iu-surface)") +
+            '">' +
+            initials(name) +
+            "</span>"
+          );
+        }
+        function pop(el) {
+          if (!reduce) el.style.animation = "kite-pop 320ms cubic-bezier(0.3,1.4,0.5,1)";
+        }
+        function announce(text) {
+          announcer.textContent = text;
+        }
+        function setError(text) {
+          var error = root.querySelector("[data-error]");
+          error.hidden = !text;
+          error.querySelector("span").textContent = text;
+          root.querySelector("[data-hint]").hidden = Boolean(text);
+          field.classList.toggle("border-red-600", Boolean(text));
+          field.classList.toggle("dark:border-red-400", Boolean(text));
+          field.classList.toggle("border-(--ks-ink)", !text);
+          if (text) {
+            input.setAttribute("aria-invalid", "true");
+            input.setAttribute("aria-describedby", "kite-error");
+          } else {
+            input.removeAttribute("aria-invalid");
+            input.setAttribute("aria-describedby", "kite-hint");
+          }
+        }
+        function personFromText(text) {
+          var email = text.trim().toLowerCase();
+          if (!EMAIL.test(email)) return null;
+          var name = email
+            .split("@")[0]
+            .split(/[._-]+/)
+            .filter(Boolean)
+            .map(function (p) {
+              return p.charAt(0).toUpperCase() + p.slice(1);
+            })
+            .join(" ");
+          return { name: name || email, email: email, guest: true };
+        }
+
+        function renderStack(animateEmail) {
+          var stack = root.querySelector("[data-stack]");
+          var everyone = members.concat(invitees);
+          stack.innerHTML =
+            everyone
+              .slice(0, 5)
+              .map(function (person, index) {
+                return (
+                  '<span data-email="' +
+                  esc(person.email) +
+                  '" class="relative' +
+                  (index > 0 ? " -ml-3" : "") +
+                  '" style="z-index:' +
+                  (10 - index) +
+                  '">' +
+                  avatar(person.name, index, true) +
+                  "</span>"
+                );
+              })
+              .join("") +
+            (everyone.length > 5
+              ? '<span class="-ml-3 grid size-8 place-items-center rounded-full border-2 border-(--ks-ink) bg-(--iu-foreground) text-[11px] font-extrabold text-(--iu-background)">+' +
+                (everyone.length - 5) +
+                "</span>"
+              : "");
+          if (animateEmail) {
+            var fresh = stack.querySelector('[data-email="' + animateEmail + '"]');
+            if (fresh) pop(fresh);
+          }
+        }
+
+        function renderChips(animateEmail) {
+          var holder = root.querySelector("[data-chips]");
+          holder.innerHTML = invitees
+            .map(function (person) {
+              return (
+                '<span data-chip="' +
+                esc(person.email) +
+                '" class="inline-flex h-8 items-center gap-1.5 rounded-full border-2 border-(--ks-ink) bg-(--ks-tint) pr-1 pl-1 text-[13px] font-bold">' +
+                '<span aria-hidden="true" class="grid size-5 place-items-center rounded-full bg-(--iu-surface) text-[9px] font-extrabold">' +
+                initials(person.name) +
+                "</span>" +
+                '<span class="max-w-[10rem] truncate">' +
+                esc(person.name) +
+                "</span>" +
+                (person.guest ? '<span class="text-[11px] font-semibold text-(--iu-muted)">guest</span>' : "") +
+                '<button type="button" data-remove="' +
+                esc(person.email) +
+                '" aria-label="Remove ' +
+                esc(person.name) +
+                '" class="grid size-6 place-items-center rounded-full pointer-fine:hover:bg-(--iu-foreground)/10 ' +
+                FOCUS +
+                '">' +
+                '<svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>'
+              );
+            })
+            .join("");
+          holder.querySelectorAll("[data-remove]").forEach(function (button) {
+            button.addEventListener("click", function (event) {
+              event.stopPropagation();
+              removePerson(button.getAttribute("data-remove"));
+            });
+          });
+          if (animateEmail) {
+            var fresh = holder.querySelector('[data-chip="' + animateEmail + '"]');
+            if (fresh) pop(fresh);
+          }
+          input.placeholder = invitees.length ? "Add another" : "Name or email";
+          root.querySelector("[data-send-label]").textContent =
+            invitees.length > 1 ? "Invite " + invitees.length + " people" : "Send invite";
+          renderStack(animateEmail);
+        }
+
+        function renderMembers() {
+          var holder = root.querySelector("[data-members]");
+          holder.innerHTML = members
+            .map(function (member, index) {
+              var control =
+                member.role === "owner"
+                  ? '<span class="pr-3 text-[13px] font-bold text-(--iu-muted)">Owner</span>'
+                  : '<select data-member="' +
+                    esc(member.email) +
+                    '" aria-label="Access for ' +
+                    esc(member.name) +
+                    '" class="' +
+                    SELECT +
+                    '">' +
+                    Object.keys(ROLES)
+                      .map(function (key) {
+                        return (
+                          '<option value="' +
+                          key +
+                          '"' +
+                          (member.role === key ? " selected" : "") +
+                          ">" +
+                          ROLES[key] +
+                          "</option>"
+                        );
+                      })
+                      .join("") +
+                    '<option value="remove">Remove</option></select>';
+              return (
+                '<li class="flex items-center gap-3">' +
+                avatar(member.name, index, false) +
+                '<div class="min-w-0 flex-1"><p class="flex min-w-0 items-center gap-2 text-sm font-bold"><span class="truncate">' +
+                esc(member.name) +
+                "</span>" +
+                (member.role === "owner" ? '<span class="shrink-0 font-medium text-(--iu-muted)">(you)</span>' : "") +
+                (member.pending
+                  ? '<span class="shrink-0 rounded-full bg-(--iu-accent) px-2 text-[11px] font-extrabold text-(--iu-accent-foreground)">Invited</span>'
+                  : "") +
+                '</p><p class="truncate text-[12px] text-(--iu-muted)">' +
+                esc(member.email) +
+                "</p></div>" +
+                control +
+                "</li>"
+              );
+            })
+            .join("");
+          holder.querySelectorAll("[data-member]").forEach(function (select) {
+            select.addEventListener("change", function () {
+              var email = select.getAttribute("data-member");
+              if (select.value === "remove") {
+                var gone = members.filter(function (m) {
+                  return m.email === email;
+                })[0];
+                members = members.filter(function (m) {
+                  return m.email !== email;
+                });
+                renderMembers();
+                renderStack();
+                showToast(gone.name.split(" ")[0] + " removed from the board", "info");
+                dialog.querySelector("[data-close]").focus();
+                return;
+              }
+              members.forEach(function (m) {
+                if (m.email === email) m.role = select.value;
+              });
+            });
+          });
+          root.querySelector("[data-member-count]").textContent = members.length;
+          root.querySelector("[data-people]").textContent = members.length;
+        }
+
+        function computeOptions() {
+          var taken = members.concat(invitees).map(function (p) {
+            return p.email;
+          });
+          var needle = input.value.trim().toLowerCase();
+          var suggestions = DIRECTORY.filter(function (p) {
+            return (
+              taken.indexOf(p.email) === -1 &&
+              (!needle || p.name.toLowerCase().indexOf(needle) !== -1 || p.email.indexOf(needle) !== -1)
+            );
+          }).slice(0, 5);
+          var typed = needle && suggestions.length === 0 ? personFromText(needle) : null;
+          options = typed && taken.indexOf(typed.email) === -1 ? [typed] : suggestions;
+        }
+
+        function renderList(show) {
+          computeOptions();
+          active = Math.min(active, Math.max(options.length - 1, 0));
+          var expanded = show && options.length > 0;
+          list.hidden = !expanded;
+          input.setAttribute("aria-expanded", String(expanded));
+          if (expanded) input.setAttribute("aria-activedescendant", "kite-list-" + active);
+          else input.removeAttribute("aria-activedescendant");
+          list.innerHTML = options
+            .map(function (person, index) {
+              return (
+                '<li id="kite-list-' +
+                index +
+                '" role="option" aria-selected="' +
+                (index === active) +
+                '" data-option="' +
+                index +
+                '" class="flex cursor-pointer items-center gap-3 rounded-[max(var(--iu-radius),14px)] px-2 py-1.5 aria-selected:bg-(--ks-tint)">' +
+                avatar(person.name, index, true) +
+                '<span class="min-w-0 flex-1"><span class="block truncate text-sm font-bold">' +
+                esc(person.name) +
+                '</span><span class="block truncate text-[12px] text-(--iu-muted)">' +
+                esc(person.email) +
+                "</span></span>" +
+                (person.guest
+                  ? '<span class="rounded-full border-2 border-(--ks-ink) px-2 text-[11px] font-extrabold">Guest</span>'
+                  : "") +
+                "</li>"
+              );
+            })
+            .join("");
+          list.querySelectorAll("[data-option]").forEach(function (li) {
+            li.addEventListener("pointerdown", function (event) {
+              event.preventDefault();
+            });
+            li.addEventListener("click", function () {
+              addPerson(options[Number(li.getAttribute("data-option"))]);
+            });
+          });
+        }
+
+        function addPerson(person) {
+          invitees.push(person);
+          input.value = "";
+          active = 0;
+          setError("");
+          renderChips(person.email);
+          renderList(true);
+          announce(person.name + " added.");
+        }
+        function removePerson(email) {
+          var person = invitees.filter(function (p) {
+            return p.email === email;
+          })[0];
+          invitees = invitees.filter(function (p) {
+            return p.email !== email;
+          });
+          renderChips();
+          renderList(false);
+          if (person) announce(person.name + " removed.");
+          input.focus();
+        }
+
+        input.addEventListener("input", function () {
+          active = 0;
+          setError("");
+          renderList(true);
+        });
+        input.addEventListener("focus", function () {
+          renderList(true);
+        });
+        input.addEventListener("blur", function () {
+          renderList(false);
+        });
+        field.addEventListener("click", function () {
+          input.focus();
+        });
+        input.addEventListener("keydown", function (event) {
+          var expanded = !list.hidden;
+          var needle = input.value.trim();
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            active = expanded ? (active + 1) % options.length : 0;
+            renderList(true);
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            active = (active - 1 + options.length) % Math.max(options.length, 1);
+            renderList(true);
+          } else if (event.key === "Enter" || event.key === ",") {
+            if (!needle && event.key === "Enter") return;
+            event.preventDefault();
+            var pick = expanded ? options[active] : personFromText(needle);
+            if (pick) addPerson(pick);
+            else setError("“" + needle + "” isn’t an email address or a teammate.");
+          } else if (event.key === "Escape" && expanded) {
+            event.preventDefault();
+            event.stopPropagation();
+            renderList(false);
+          } else if (event.key === "Backspace" && !input.value && invitees.length) {
+            removePerson(invitees[invitees.length - 1].email);
+          }
+        });
+
+        /* ---------------- dialog */
+        function openDialog() {
+          layer.hidden = false;
+          page.inert = true;
+          document.body.style.overflow = "hidden";
+          if (!reduce)
+            dialog.animate(
+              [
+                { opacity: 0, transform: "translateY(40px) rotate(-1.5deg) scale(0.96)" },
+                { opacity: 1, transform: "none" },
+              ],
+              { duration: 320, easing: "cubic-bezier(0.3,1.3,0.5,1)" },
+            );
+          requestAnimationFrame(function () {
+            input.focus();
+          });
+        }
+        function close() {
+          if (busy || layer.hidden) return;
+          layer.hidden = true;
+          page.inert = false;
+          document.body.style.overflow = "";
+          requestAnimationFrame(function () {
+            trigger.focus();
+          });
+        }
+        trigger.addEventListener("click", openDialog);
+        root.querySelector("[data-close]").addEventListener("click", close);
+        root.querySelector("[data-scrim]").addEventListener("click", close);
+        document.addEventListener("keydown", function (event) {
+          if (layer.hidden) return;
+          if (event.key === "Escape") {
+            event.preventDefault();
+            close();
+            return;
+          }
+          if (event.key !== "Tab") return;
+          var nodes = Array.prototype.filter.call(dialog.querySelectorAll(FOCUSABLE), function (node) {
+            return !(node.type === "radio" && !node.checked);
+          });
+          var first = nodes[0],
+            last = nodes[nodes.length - 1];
+          var current = document.activeElement;
+          if (!dialog.contains(current)) {
+            event.preventDefault();
+            (event.shiftKey ? last : first).focus();
+          } else if (event.shiftKey && current === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && current === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+
+        root.querySelectorAll('input[name="kite-access"]').forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            root.querySelector("[data-link-state]").textContent = radio.value === "link" ? "link on" : "link off";
+          });
+        });
+
+        /* ---------------- copy */
+        root.querySelector("[data-copy]").addEventListener("click", function () {
+          var button = this;
+          var text = root.querySelector("[data-link]").textContent;
+          try {
+            if (navigator.clipboard)
+              navigator.clipboard
+                .writeText((location.protocol === "http:" ? "http:" : "https:") + "//" + text)
+                .catch(function () {});
+          } catch (error) {
+            /* Clipboard can be blocked in embedded frames; the link stays visible and selectable. */
+          }
+          button.setAttribute("aria-label", "Link copied");
+          button.querySelector("[data-copy-idle]").hidden = true;
+          var done = button.querySelector("[data-copy-done]");
+          done.hidden = false;
+          var check = done.querySelector("[data-check]");
+          check.style.animation = reduce ? "none" : "kite-draw 280ms ease-out both";
+          clearTimeout(copyTimer);
+          copyTimer = setTimeout(function () {
+            done.hidden = true;
+            button.querySelector("[data-copy-idle]").hidden = false;
+            button.setAttribute("aria-label", "Copy link");
+          }, 1800);
+          var linkOn = root.querySelector('input[name="kite-access"]:checked').value === "link";
+          showToast(linkOn ? "Link copied. Anyone with it can view." : "Link copied.", "copy");
+        });
+
+        /* ---------------- toast */
+        var toastState = null;
+        function showToast(text, kind) {
+          var slot = root.querySelector("[data-toast-slot]");
+          if (toastState) {
+            cancelAnimationFrame(toastState.frame);
+            slot.innerHTML = "";
+          }
+          var icon =
+            kind === "copy"
+              ? '<path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/>'
+              : '<path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/>';
+          var el = document.createElement("div");
+          el.className =
+            "pointer-events-auto relative flex -rotate-2 items-center gap-3 overflow-hidden rounded-full border-2 border-(--ks-ink) bg-(--iu-surface) py-2 pr-2 pl-2 shadow-[4px_4px_0_var(--ks-shadow)]";
+          el.innerHTML =
+            '<span class="grid size-8 shrink-0 place-items-center rounded-full bg-(--iu-accent) text-(--iu-accent-foreground)"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">' +
+            icon +
+            "</svg></span>" +
+            '<span class="text-sm font-bold">' +
+            esc(text) +
+            '</span><span data-paused class="font-mono text-[11px] font-medium text-(--iu-muted)"></span>' +
+            '<button type="button" aria-label="Dismiss notification" class="grid size-8 place-items-center rounded-full text-(--iu-muted) pointer-fine:hover:bg-(--iu-foreground)/8 pointer-fine:hover:text-(--iu-foreground) pointer-coarse:size-10 ' +
+            FOCUS +
+            '"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>' +
+            '<span data-fuse aria-hidden="true" class="absolute inset-x-4 bottom-0 h-[3px] origin-left rounded-full bg-(--iu-accent)"></span>';
+          if (!reduce) el.style.animation = "kite-sticker 360ms cubic-bezier(0.3,1.4,0.5,1) both";
+          slot.appendChild(el);
+          announce(text);
+          var state = { remaining: 4200, paused: false, last: performance.now(), frame: 0 };
+          toastState = state;
+          function done() {
+            cancelAnimationFrame(state.frame);
+            if (el.parentNode) el.parentNode.removeChild(el);
+            if (toastState === state) toastState = null;
+          }
+          function pause(value) {
+            state.paused = value;
+            el.querySelector("[data-paused]").textContent = value ? "paused" : "";
+          }
+          el.addEventListener("pointerenter", function () {
+            pause(true);
+          });
+          el.addEventListener("pointerleave", function () {
+            pause(false);
+          });
+          el.addEventListener("focusin", function () {
+            pause(true);
+          });
+          el.addEventListener("focusout", function () {
+            pause(false);
+          });
+          el.querySelector("button").addEventListener("click", done);
+          var fuse = el.querySelector("[data-fuse]");
+          function tick(now) {
+            var delta = now - state.last;
+            state.last = now;
+            if (!state.paused) state.remaining -= delta;
+            fuse.style.transform = "scaleX(" + Math.max(0, state.remaining / 4200) + ")";
+            if (state.remaining <= 0) done();
+            else state.frame = requestAnimationFrame(tick);
+          }
+          state.frame = requestAnimationFrame(tick);
+        }
+
+        /* ---------------- send */
+        root.querySelector("[data-send]").addEventListener("click", function () {
+          if (busy) return;
+          if (!invitees.length) {
+            setError("Add at least one person to invite.");
+            input.focus();
+            return;
+          }
+          var button = this;
+          busy = true;
+          button.disabled = true;
+          root.querySelector("[data-send-idle]").classList.add("invisible");
+          root.querySelector("[data-send-busy]").classList.remove("invisible");
+          setTimeout(function () {
+            var role = root.querySelector("[data-role]").value;
+            var sent = invitees.slice();
+            sent.forEach(function (p) {
+              members.push({ name: p.name, email: p.email, guest: p.guest, role: role, pending: true });
+            });
+            invitees = [];
+            busy = false;
+            button.disabled = false;
+            root.querySelector("[data-send-idle]").classList.remove("invisible");
+            root.querySelector("[data-send-busy]").classList.add("invisible");
+            renderChips();
+            renderMembers();
+            showToast(
+              sent.length === 1 ? "Invite sent to " + sent[0].name.split(" ")[0] : sent.length + " invites sent",
+              "invite",
+            );
+            input.focus();
+          }, 1000);
+        });
+
+        renderChips();
+        renderMembers();
+        document.body.style.overflow = "hidden";
+      })();
+    </script>
+  </body>
+</html>

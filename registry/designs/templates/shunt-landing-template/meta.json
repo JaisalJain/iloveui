@@ -1,0 +1,15 @@
+{
+  "slug": "shunt-landing-template",
+  "name": "Shunt landing page",
+  "category": "templates",
+  "styleFamily": "neo-brutalist",
+  "tier": "pro",
+  "description": "A full neo-brutalist landing page for a job queue. Press Retry on the failed job in the hero and watch it stamp its way down the rail to Done.",
+  "tags": ["landing-page", "template", "devtools", "pricing", "faq", "job-queue", "neo-brutalist"],
+  "states": ["default", "loading", "error", "success"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-27"
+}

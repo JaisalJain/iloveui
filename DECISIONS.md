@@ -46,6 +46,7 @@ Choices the specification leaves open, places where current tool documentation o
 
 ## Catalog pipeline
 
+- **Spec change (owner request, 2026-10-27): a nineteenth category, "Micro-interactions and motion components" (slug `micro-interactions`, 35 designs, 2 free).** Hero, bento, dashboards and AI chat drop to 25 and navigation, auth and pricing to 20, with hero and bento giving up one free design each, so the catalog stays at 365 designs and 24 free; Phase 6 now includes at least six micro-interactions, with slide to pay and the morphing submit button as the free pair.
 - **Design tokens live in one global token set, and components read `--iu-*` directly.** It is the shadcn convention (one `@iloveui/tokens` registry theme item, a `theme.css` for copy and paste), and it lets a buyer re-theme every design at once; Theme Lab writes the same token block into copies and downloads.
 - **Theme Lab defaults: vermilion accent, zinc neutrals, 10px radius, Inter Tight, comfortable density.** The accent foreground is computed per accent for 4.5:1 contrast, which makes it near-black on `#FF4D1F`.
 - **Designs gate hover with `pointer-fine:hover:`.** Tailwind v4's `hover:` checks only `(hover: hover)`, and a site-level custom variant cannot travel with pasted code, so the portable form satisfies spec 7.3 wherever the design lands.

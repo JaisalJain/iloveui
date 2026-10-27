@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
 import type { DesignMeta } from "@/registry/schema";
-import { aiPromptProblems, componentProblems, htmlProblems, notesProblems, pascalCase } from "@/scripts/lib/validate";
+import {
+  aiPromptProblems,
+  componentProblems,
+  htmlProblems,
+  notesProblems,
+  pascalCase,
+  validateCatalog,
+} from "@/scripts/lib/validate";
 
 const meta: DesignMeta = {
   slug: "ledger-pricing",
@@ -148,5 +155,27 @@ describe("documentation rules", () => {
     expect(notesProblems(notes)).toEqual([]);
     expect(notesProblems(notes.replace("focal point: Yes.", "focal point: Mostly."))).toHaveLength(1);
     expect(notesProblems(notes.replace("## Usage notes", "## Usage"))).toHaveLength(1);
+  });
+});
+
+describe("validateCatalog", () => {
+  const design = (slug: string, overrides: Partial<DesignMeta> = {}): DesignMeta => ({
+    ...meta,
+    slug,
+    name: slug,
+    ...overrides,
+  });
+
+  it("keeps each category within its free allowance from section 9.1", () => {
+    const free = (slug: string) => design(slug, { category: "micro-interactions", tier: "free" });
+    expect(validateCatalog([free("slide-to-pay"), free("morphing-submit")])).toEqual([]);
+    expect(validateCatalog([free("slide-to-pay"), free("morphing-submit"), free("hold-to-confirm")])).toEqual([
+      { where: "micro-interactions", message: "3 free designs; this category has 2" },
+    ]);
+    expect(validateCatalog([design("settings-panel", { category: "settings", tier: "free" })])).toHaveLength(1);
+  });
+
+  it("rejects repeated slugs and names", () => {
+    expect(validateCatalog([design("ledger"), design("ledger")])).toHaveLength(2);
   });
 });

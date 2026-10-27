@@ -5,23 +5,23 @@ export const CATEGORIES = [
   {
     slug: "hero",
     name: "Hero sections",
-    target: 30,
-    free: 3,
+    target: 25,
+    free: 2,
     brief:
       "One message in under 10 words, one primary action, a visual that shows the product rather than decorating it, readable at 375px without the visual.",
   },
   {
     slug: "bento",
     name: "Bento grids and feature showcases",
-    target: 30,
-    free: 3,
+    target: 25,
+    free: 2,
     brief:
       "Varied cell sizes with a clear reading order, each cell proving one feature with a mini UI, never icon-plus-paragraph cells only.",
   },
   {
     slug: "navigation",
     name: "Navigation, mega menus and command palettes",
-    target: 25,
+    target: 20,
     free: 2,
     brief:
       "Full keyboard support, visible current location, mobile menu designed rather than collapsed, palette with groups, recent items and shortcuts.",
@@ -29,7 +29,7 @@ export const CATEGORIES = [
   {
     slug: "pricing",
     name: "Pricing and checkout",
-    target: 25,
+    target: 20,
     free: 2,
     brief:
       "One highlighted plan, comparable rows, monthly/yearly toggle where relevant with the saving stated, clear tax and refund line, error and success states for checkout.",
@@ -51,7 +51,7 @@ export const CATEGORIES = [
   {
     slug: "auth",
     name: "Auth and onboarding",
-    target: 25,
+    target: 20,
     free: 2,
     brief:
       "Email and social sign-in, inline validation, password visibility toggle, loading and error states, progress indication for multi-step flows.",
@@ -59,7 +59,7 @@ export const CATEGORIES = [
   {
     slug: "dashboards",
     name: "Dashboard shells and KPI cards",
-    target: 30,
+    target: 25,
     free: 2,
     brief:
       "Collapsible sidebar, breadcrumb, realistic metrics with deltas and sparklines drawn in SVG, empty and loading states.",
@@ -97,7 +97,7 @@ export const CATEGORIES = [
   {
     slug: "ai-chat",
     name: "AI chat and agent interfaces",
-    target: 30,
+    target: 25,
     free: 1,
     brief:
       "Streaming text simulation, tool-call blocks that expand, message actions (copy, retry), composer with attachments and model selector, token or usage meter, stop-generating state.",
@@ -109,6 +109,14 @@ export const CATEGORIES = [
     free: 1,
     brief:
       "Purposeful, performant (transform and opacity only, or canvas with requestAnimationFrame paused offscreen), full fallback under reduced motion; none of the forbidden patterns in 7.1.",
+  },
+  {
+    slug: "micro-interactions",
+    name: "Micro-interactions and motion components",
+    target: 35,
+    free: 2,
+    brief:
+      "One self-contained interactive component whose motion communicates state, built with motion/react on transform and opacity at 60fps: mouse, touch and an equivalent keyboard path for every gesture; springs with velocity-aware release, snap-back and interruption; idle, active, loading, success, error and disabled states; an aria-live announcement; instant changes or short fades under reduced motion; optional vibration on success; onComplete and onChange callbacks with typed labels, thresholds and durations; no interaction repeated within the category and none of the forbidden patterns in 7.1.",
   },
   {
     slug: "settings",

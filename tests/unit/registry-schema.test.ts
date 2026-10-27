@@ -17,12 +17,39 @@ const valid = {
   createdAt: "2026-10-26",
 };
 
+// Section 9.1: [target, free] per category, in spec order.
+const SECTION_9_1: [string, number, number][] = [
+  ["hero", 25, 2],
+  ["bento", 25, 2],
+  ["navigation", 20, 2],
+  ["pricing", 20, 2],
+  ["testimonials", 15, 1],
+  ["cta-footers", 20, 1],
+  ["auth", 20, 2],
+  ["dashboards", 25, 2],
+  ["tables", 15, 1],
+  ["forms", 20, 2],
+  ["cards-buttons", 20, 2],
+  ["overlays", 15, 1],
+  ["ai-chat", 25, 1],
+  ["effects", 20, 1],
+  ["micro-interactions", 35, 2],
+  ["settings", 10, 0],
+  ["states", 10, 0],
+  ["ecommerce", 15, 0],
+  ["templates", 10, 0],
+];
+
 describe("catalog definitions", () => {
-  it("matches the spec targets: 365 designs, 24 free, 18 categories, 8 style families", () => {
-    expect(CATEGORIES).toHaveLength(18);
+  it("matches the spec targets: 365 designs, 24 free, 19 categories, 8 style families", () => {
+    expect(CATEGORIES).toHaveLength(19);
     expect(CATEGORIES.reduce((sum, category) => sum + category.target, 0)).toBe(365);
     expect(CATEGORIES.reduce((sum, category) => sum + category.free, 0)).toBe(24);
     expect(STYLE_FAMILIES).toHaveLength(8);
+  });
+
+  it("gives every category the target and free allowance from section 9.1", () => {
+    expect(CATEGORIES.map((category) => [category.slug, category.target, category.free])).toEqual(SECTION_9_1);
   });
 });
 

@@ -21,6 +21,9 @@ Choices the specification leaves open, places where current tool documentation o
 - **Fonts are self-hosted files loaded with `next/font/local`.** The same woff2 files serve the site through next/font and the sandboxed preview iframes through plain `@font-face`, so previews and the site never diverge and builds need no network access; the SIL Open Font License texts ship in `public/fonts/licenses/`.
 - **OG images use TTF copies of the fonts in `assets/fonts/`, imported as bytes.** Satori reads TTF, OTF and WOFF but not WOFF2, and a Turbopack `bytes` rule embeds the files so the image routes never touch a filesystem.
 
+- **`@clerk/ui` is pinned and passed to `ClerkProvider`.** Clerk's documented way to keep styling that refers to its markup safe across UI releases; the UI then ships with the auth pages' bundle instead of loading from Clerk's CDN, and only those pages load it.
+- **`@clerk/testing` is a dev dependency.** End-to-end tests must sign in to the Clerk development instance, and Clerk's official Playwright helpers supply the testing token that its bot protection requires; nothing in section 6 does that.
+
 ## Platform
 
 - **Next.js 16.4 with `middleware.ts` on the Edge runtime.** Next 16 renames middleware to `proxy.ts`, but proxy always runs on Node.js and OpenNext marks Node middleware experimental with a large bundle cost, while `middleware.ts` remains supported (the build prints a deprecation notice).
@@ -29,6 +32,9 @@ Choices the specification leaves open, places where current tool documentation o
 - **One minimal root layout, with the site stylesheet in `app/(site)/layout.tsx`.** Preview documents load only their own stylesheet. Unmatched URLs reach a catch-all page inside the site group that renders the site's 404, because Next preloads a root `not-found` boundary's stylesheet on every document (preview frames included), and the experimental `globalNotFound` flag would need a second root layout.
 - **Typed routes are on.** A link to a route that does not exist fails the typecheck, which enforces the no-dead-links rule.
 - **Every server code path reads configuration through `process.env`.** OpenNext exposes `.env.local` there locally and Worker secrets there in production, which keeps one code path for both.
+- **Clerk keys come from an accountless Clerk development app that `pnpm setup` provisions when `.env.local` has none (docs override the spec).** `@clerk/nextjs` removed keyless mode in 7.8; an accountless app needs no account (only network access during setup), works in `next dev` and the local Workers preview, and can be claimed into a Clerk account later without changing its keys.
+- **The middleware matches only `/account`, `/sign-in`, `/sign-up`, `/checkout` and `/api`.** Public pages never run Clerk, so they stay static and load no Clerk JavaScript, and `/r/` registry requests with iloveui tokens never reach Clerk's own token parsing.
+- **A non-HttpOnly `iu_signed_in` cookie tells static pages that a visitor is probably signed in.** Design pages use it only to decide whether to ask the API for owner-only content; every API route still checks the Clerk session and the license itself.
 - **`public/_headers` sets immutable caching for `/_next/static/*` and `/fonts/*`.** Workers Static Assets serves those files without running the Worker, so `next.config` headers do not apply to them.
 
 ## Design system
@@ -63,6 +69,36 @@ Choices the specification leaves open, places where current tool documentation o
 - **Segmented controls on the load path are a small radiogroup (`components/ui/segments.tsx`) with Radix ToggleGroup's markup and keyboard model.** Radix ToggleGroup cost several kilobytes on every browse page; it remains in the parts that load on intent.
 - **Clerk loads only on /sign-in, /sign-up, /account and checkout (owner rule, 2026-10-27).** Browse, design and other public pages never load Clerk's client; signed-in features there call our API, where the server-side auth checks decide.
 
+## Accounts
+
+- **Inside the Clerk route group, Clerk's client also keeps the `iu_signed_in` hint in sync.** Clerk finishes sign-in with a client-side navigation that the middleware never sees as a page load.
+- **Signing out clears the hint before Clerk redirects.** A flag keeps Clerk's last signed-in render from writing it back, so the header shows "Sign in" on the next page.
+- **Header sign-in and account links are plain `<a>` elements.** Public pages never prefetch Clerk routes, and following the link is a page load the middleware can refresh the session on.
+- **A user deleted in Clerk keeps a users row with an empty email, stamped with the deletion time.** Their licenses stay for the payment records; their CLI token, bookmarks and held seats are removed in the same batch that records the webhook event.
+- **/sign-in, /sign-up and /account are not indexed.** They are personal or transactional pages with nothing to find in search.
+- **Clerk's warning colour maps to the site accent.** The site has one accent, and it also gives Clerk's development-mode badge enough contrast.
+- **Account dates are formatted on the server in UTC.** The server render and the browser show the same text, with no hydration mismatch across time zones.
+- **Rotating a token, refunding and removing a seat ask for confirmation; removing a bookmark does not.** The first three cannot be undone with one click, a bookmark can.
+- **The `.env` line on /account keeps the `ilui_live_...` placeholder.** The real token appears only in its show-once block, so the snippets stay safe to copy into documentation or screenshots.
+
+## Payments and access
+
+- **`PaymentProvider` also has `getInvoice`.** Dodo Payments issues the invoices as Merchant of Record, so the account page's invoice link asks the provider instead of rendering our own.
+- **The local test checkout and its webhook route exist only in development builds.** A compile-time `NODE_ENV` check around their dynamic imports removes them from production output, where those URLs return the site's 404 and `scripts/check-build.ts` confirms no LocalProvider code shipped.
+- **LocalProvider's checkout link carries an HMAC-signed session that expires after 24 hours.** The local checkout page then needs no storage and no sign-in of its own, and a tampered link is rejected.
+- **Webhooks are processed before they are acknowledged.** The event row, license and seats are written in one D1 batch and the route answers 200 only after it commits, so a failure is retried with the same webhook id and de-duplicated through `webhook_events`.
+- **A refund revokes access when the provider confirms it.** Dodo's refund call returns a pending refund, so access ends on `refund.succeeded`; the local provider confirms at once.
+- **A refund deletes CLI tokens only for people who lose Pro.** The owner and seat holders keep their token when another active license or seat still gives them access.
+- **The checkout's cancel URL is /pricing.** Someone who backs out of payment lands where they chose the plan.
+- **Any signed-in user can create a CLI token.** `/r/` checks Pro access on every request, so a token answers 403 until its owner has Pro and starts working the moment they buy it.
+- **Tokens are stored as HMAC-SHA-256 keyed with `TOKEN_PEPPER`.** It is the standard construction for a peppered hash, and the 32 base62 characters come from rejection sampling, so every character is uniform.
+- **`lastUsedAt` is written at most once a minute, and an install is counted once per user and design per five minutes.** The shadcn CLI requests an item several times during one `add`, which would otherwise multiply writes and counts.
+- **The `/r/` rate limit is keyed by user, not by token.** One token per user means rotating the token cannot reset the limit.
+- **The registry endpoint is `app/r/[name]/route.ts` and answers errors as JSON without redirects.** A `[name].json` segment resolves differently in next dev and on OpenNext, so the route takes the whole name and strips `.json` itself, and the shadcn CLI reads JSON error bodies.
+- **Free registry items stay static in `public/r/`.** They are served before the Worker runs, so free installs are neither rate-limited nor counted.
+- **Every download adds `theme.css` and writes the Theme Lab tokens into `component.html`.** The zip then matches what the design page copies, with the default tokens when no theme is given.
+- **Bookmarks merge once, then the account wins.** The first signed-in visit merges a browser's local bookmarks into the account; after that the account's list is the source of truth and every toggle is mirrored to it.
+
 ## Catalog pipeline
 
 - **Spec change (owner request, 2026-10-27): a nineteenth category, "Micro-interactions and motion components" (slug `micro-interactions`, 35 designs, 2 free).** Hero, bento, dashboards and AI chat drop to 25 and navigation, auth and pricing to 20, with hero and bento giving up one free design each, so the catalog stays at 365 designs and 24 free; Phase 6 now includes at least six micro-interactions, with slide to pay and the morphing submit button as the free pair.
@@ -94,6 +130,7 @@ Choices the specification leaves open, places where current tool documentation o
 ## Testing
 
 - **End-to-end tests run against two targets, one after the other on port 3000.** Everything runs against `pnpm preview` (the production build in the local Workers runtime) except the local purchase journey in `*.dev.spec.ts`, which needs the development-only LocalProvider and therefore runs against `pnpm dev`.
+- **Development-target specs run one at a time, after a warm-up.** They share the dev server's local D1 file (some specs also write to it through wrangler) and a rate-limited Clerk development instance, and purchases failed intermittently when they ran in parallel; the warm-up loads each page they drive first, because a click that lands before a cold page hydrates does nothing.
 - **The build check looks for a code-only marker.** `scripts/check-build.ts` fails the preview or deploy if the string `iloveui-local-provider`, which exists only in LocalProvider code, appears anywhere in the production output.
 - **The forbidden-words gate reads its lists from CLAUDE.md.** `scripts/check-forbidden.ts` (part of `pnpm lint`) derives the hype words, placeholder words and visual-pattern names from sections 7.1 and 16 at runtime, so no file outside CLAUDE.md has to spell them out.
 - **Site accessibility checks add axe's best-practice rules to WCAG 2.2 AA.** They are closer to Lighthouse's accessibility audit; preview iframes are excluded there and audited on their own preview URLs.

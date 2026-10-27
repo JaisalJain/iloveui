@@ -18,9 +18,14 @@ export async function expectNoAxeViolations(page: Page, { exclude = [] as string
 }
 
 /** Collects console errors, warnings and uncaught exceptions; assert the list is empty at the end of a test. */
+// Clerk prints this on every page it loads while it runs on development keys (the accountless app from pnpm setup);
+// production keys never print it. Any other Clerk warning still fails the test.
+const CLERK_DEVELOPMENT_KEYS_WARNING = "Clerk: Clerk has been loaded with development keys.";
+
 export function watchConsole(page: Page) {
   const problems: string[] = [];
   page.on("console", (message) => {
+    if (message.type() === "warning" && message.text().startsWith(CLERK_DEVELOPMENT_KEYS_WARNING)) return;
     if (message.type() === "error" || message.type() === "warning")
       problems.push(`${message.type()}: ${message.text()}`);
   });

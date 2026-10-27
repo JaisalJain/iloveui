@@ -1,13 +1,15 @@
 // pnpm setup: prepares a fresh clone for local development with no accounts.
 // 1. .env.local from .env.example, with generated secrets
-// 2. Cloudflare binding types
-// 3. D1 migrations applied to the local database
-// 4. the registry built (catalog, previews, thumbnails; Pro payloads into local R2) and the download zips
-// 5. the local database seeded with one demo account state
+// 2. Clerk development keys from an accountless Clerk app, when no keys are set (needs network, no account)
+// 3. Cloudflare binding types
+// 4. D1 migrations applied to the local database
+// 5. the registry built (catalog, previews, thumbnails; Pro payloads into local R2) and the download zips
+// 6. the local database seeded with one demo account state
 import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync } from "node:fs";
 import { randomBytes } from "node:crypto";
 import { getPlatformProxy } from "wrangler";
+import { provisionAccountlessClerk } from "./lib/clerk-accountless";
 import { readEnvFile, setEnvValue } from "./lib/env-file";
 import { DEMO_SEAT_EMAIL, seedDemoAccount } from "./lib/seed";
 
@@ -44,6 +46,20 @@ function ensureEnvFile() {
   }
 }
 
+async function ensureClerkKeys() {
+  step("Clerk");
+  const env = readEnvFile(ENV_FILE);
+  if (env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || env.CLERK_SECRET_KEY) {
+    console.log("  keys found in .env.local, keeping them");
+    return;
+  }
+  const { publishableKey, secretKey } = await provisionAccountlessClerk();
+  setEnvValue(ENV_FILE, "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY", publishableKey);
+  setEnvValue(ENV_FILE, "CLERK_SECRET_KEY", secretKey);
+  console.log("  created an accountless Clerk development app and wrote its keys to .env.local");
+  console.log("  to keep it in a Clerk account later, run: pnpm dlx clerk@latest auth login");
+}
+
 function generateTypes() {
   step("Cloudflare binding types");
   run("pnpm", ["cf-typegen"]);
@@ -74,6 +90,7 @@ async function seed() {
 
 async function main() {
   ensureEnvFile();
+  await ensureClerkKeys();
   generateTypes();
   applyMigrations();
   buildRegistry();

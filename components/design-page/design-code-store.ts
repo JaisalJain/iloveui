@@ -3,11 +3,18 @@
 import { useSyncExternalStore } from "react";
 import type { DesignCode } from "@/lib/catalog-types";
 
-// A free design's code (static JSON at design.codeUrl), fetched once per page and shared by the code panel and the
-// Copy AI Prompt button. Pro designs never use this: their code has no public URL.
+// A design's code, fetched once per page and shared by the code panel and the Copy AI Prompt button: free designs
+// from their static JSON (design.codeUrl), Pro designs from /api/code/<slug>, which answers only entitled viewers.
 
 export type CodeState =
   { status: "idle" } | { status: "loading" } | { status: "ready"; code: DesignCode } | { status: "error" };
+
+/** A failed code request; `status` is the HTTP status, or 0 when the network failed. */
+export class CodeRequestError extends Error {
+  constructor(readonly status: number) {
+    super(`Code request failed with ${status}`);
+  }
+}
 
 const IDLE: CodeState = { status: "idle" };
 const states = new Map<string, CodeState>();
@@ -26,9 +33,12 @@ export function loadDesignCode(url: string): Promise<DesignCode> {
   const inFlight = pending.get(url);
   if (inFlight) return inFlight;
   set(url, { status: "loading" });
-  const request = fetch(url)
+  const request = fetch(url, { credentials: "same-origin" })
+    .catch(() => {
+      throw new CodeRequestError(0);
+    })
     .then(async (response) => {
-      if (!response.ok) throw new Error(`Code request failed with ${response.status}`);
+      if (!response.ok) throw new CodeRequestError(response.status);
       const code = (await response.json()) as DesignCode;
       set(url, { status: "ready", code });
       return code;

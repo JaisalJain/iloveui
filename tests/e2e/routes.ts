@@ -9,4 +9,6 @@ export const SITE_ROUTES = [
   "/designs/forms/pillow-workspace-form",
   "/designs/ecommerce/atelier-product-page",
   "/pricing",
+  "/sign-in",
+  "/sign-up",
 ] as const;

@@ -1,5 +1,6 @@
 import { Moon, Search, Sun } from "lucide-react";
 import Link from "next/link";
+import { AccountLink } from "./account-link";
 import { Logo } from "./logo";
 import { SearchTrigger } from "./search-trigger";
 import { ThemeToggle } from "./theme-toggle";
@@ -17,6 +18,7 @@ export function SiteHeader() {
             sunIcon={<Sun size={16} strokeWidth={1.5} aria-hidden />}
             moonIcon={<Moon size={16} strokeWidth={1.5} aria-hidden />}
           />
+          <AccountLink />
         </div>
       </div>
     </header>

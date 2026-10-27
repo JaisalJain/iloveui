@@ -10,14 +10,20 @@ export default defineConfig({
   testDir: "./tests/e2e",
   testMatch: target === "dev" ? "**/*.dev.spec.ts" : "**/*.spec.ts",
   testIgnore: target === "dev" ? [] : ["**/*.dev.spec.ts"],
+  // The dev target signs in with Clerk test users: global setup mints a Clerk Testing Token and warms the pages the
+  // dev specs use (tests/e2e/dev.setup.ts).
+  globalSetup: target === "dev" ? "./tests/e2e/dev.setup.ts" : undefined,
   outputDir: "./test-results/artifacts",
-  fullyParallel: true,
+  // Dev specs share the dev server's local D1 file (some write to it through wrangler) and a rate-limited Clerk
+  // development instance, so they run one at a time.
+  fullyParallel: target !== "dev",
   forbidOnly: Boolean(process.env.CI),
   retries: 0,
-  workers: process.env.E2E_WORKERS ? Number(process.env.E2E_WORKERS) : "50%",
+  workers: process.env.E2E_WORKERS ? Number(process.env.E2E_WORKERS) : target === "dev" ? 1 : "50%",
   reporter: [["list"]],
   timeout: 60_000,
-  expect: { timeout: 10_000 },
+  // next dev compiles server actions and routes on their first call, which can take longer than 10 seconds.
+  expect: { timeout: target === "dev" ? 30_000 : 10_000 },
   use: {
     baseURL: BASE_URL,
     trace: "retain-on-failure",

@@ -5,8 +5,8 @@ import { notFound } from "next/navigation";
 import { DesignCard } from "@/components/designs/design-card";
 import { TierTag } from "@/components/designs/tier-tag";
 import { CodePanel } from "@/components/design-page/code-panel";
-import { AiPromptButton, BookmarkButton, InstallBar } from "@/components/design-page/design-actions";
-import { LockedCodePanel } from "@/components/design-page/locked-code-panel";
+import { AiPromptButton, BookmarkButton, DownloadButton, InstallBar } from "@/components/design-page/design-actions";
+import { ProCodePanel } from "@/components/design-page/pro-code-panel";
 import { categoryPath, DESIGNS_PATH } from "@/components/design-page/paths";
 import { ReceiptBar } from "@/components/design-page/receipt-bar";
 import { relatedDesigns } from "@/components/design-page/related";
@@ -106,7 +106,8 @@ export default async function DesignPage({ params }: PageProps<"/designs/[catego
           <h1 className="mt-4 text-40 font-semibold text-fg sm:text-64">{design.name}</h1>
           <p className="mt-4 max-w-2xl text-16 text-muted sm:text-20">{design.description}</p>
         </div>
-        <div className="flex flex-wrap items-center gap-2 lg:col-span-4 lg:justify-end">
+        <div className="flex flex-wrap items-start gap-2 lg:col-span-4 lg:justify-end">
+          <DownloadButton slug={design.slug} name={design.name} pro={pro} />
           <BookmarkButton slug={design.slug} name={design.name} />
         </div>
       </header>
@@ -122,7 +123,7 @@ export default async function DesignPage({ params }: PageProps<"/designs/[catego
       <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-12">
         <div className="min-w-0 lg:col-span-8">
           {pro || !design.codeUrl ? (
-            <LockedCodePanel files={design.files} />
+            <ProCodePanel slug={design.slug} files={design.files} />
           ) : (
             <CodePanel slug={design.slug} codeUrl={design.codeUrl} files={design.files} />
           )}
@@ -146,7 +147,7 @@ export default async function DesignPage({ params }: PageProps<"/designs/[catego
               Component, props, tokens and integration steps in one prompt, with your Theme Lab tokens appended.
             </p>
             <div className="mt-3">
-              <AiPromptButton codeUrl={pro ? null : design.codeUrl} />
+              <AiPromptButton slug={design.slug} codeUrl={pro ? null : design.codeUrl} />
             </div>
           </section>
 

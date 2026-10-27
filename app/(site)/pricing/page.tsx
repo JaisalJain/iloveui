@@ -1,8 +1,10 @@
-import { Check, Minus } from "lucide-react";
+import { CircleAlert, Check, Minus } from "lucide-react";
 import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
 import type { ReactNode } from "react";
+import { buttonClasses } from "@/components/ui/button-classes";
 import { FREE_PLAN, PAID_PLANS, formatPrice, type Currency } from "@/config/pricing";
+import { CHECKOUT_ERROR_MESSAGES, isCheckoutError } from "@/lib/payments/checkout-errors";
 import { DEV_REGION_COOKIE, resolveCurrency } from "@/lib/region";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -100,8 +102,13 @@ function CellValue({ value }: { value: Cell }) {
   return <span className="tabular-nums">{value}</span>;
 }
 
-export default async function PricingPage() {
-  const [headerList, cookieStore] = await Promise.all([headers(), cookies()]);
+export default async function PricingPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ checkout_error?: string | string[] }>;
+}) {
+  const [headerList, cookieStore, query] = await Promise.all([headers(), cookies(), searchParams]);
+  const checkoutError = isCheckoutError(query.checkout_error) ? query.checkout_error : null;
   const currency = resolveCurrency({
     countryHeader: headerList.get("cf-ipcountry"),
     devCookie: cookieStore.get(DEV_REGION_COOKIE)?.value ?? null,
@@ -116,6 +123,7 @@ export default async function PricingPage() {
       regular: null,
       terms: "Free forever",
       highlighted: false,
+      action: { href: "/designs?tier=free", label: "Browse free designs" },
     },
     ...(["pro", "team"] as const).map((id) => {
       const plan = PAID_PLANS[id];
@@ -128,6 +136,8 @@ export default async function PricingPage() {
         regular: price.regularMinor ? formatPrice(price.regularMinor, currency) : null,
         terms: id === "team" ? `One payment, up to ${plan.seats} people` : "One payment, lifetime access",
         highlighted: id === "pro",
+        // A plain link, never prefetched: following it starts a checkout.
+        action: { href: `/checkout?plan=${id}`, label: `Get ${plan.name}` },
       };
     }),
   ];
@@ -144,6 +154,19 @@ export default async function PricingPage() {
           later, for one lifetime payment.
         </p>
       </header>
+
+      {checkoutError ? (
+        <div
+          role="alert"
+          className="mt-12 flex max-w-3xl items-start gap-3 rounded-card border border-hairline bg-surface p-4 text-14 shadow-sm sm:mt-16"
+        >
+          <CircleAlert size={16} strokeWidth={1.5} aria-hidden className="mt-0.5 shrink-0 text-danger" />
+          <p>
+            <span className="font-medium">Checkout did not start.</span>{" "}
+            <span className="text-muted">{CHECKOUT_ERROR_MESSAGES[checkoutError]}</span>
+          </p>
+        </div>
+      ) : null}
 
       <section aria-label="Plans" className="mt-12 grid gap-4 sm:mt-16 lg:grid-cols-3">
         {plans.map((plan) => (
@@ -171,7 +194,17 @@ export default async function PricingPage() {
               ) : null}
             </p>
             <p className="mt-1 font-mono text-12 text-muted">{plan.terms}</p>
-            <p className="mt-6 text-14 text-muted">{plan.summary}</p>
+            <p className="mt-6 flex-1 text-14 text-muted">{plan.summary}</p>
+            <a
+              href={plan.action.href}
+              className={buttonClasses({
+                variant: plan.highlighted ? "primary" : "outline",
+                size: "lg",
+                className: "mt-8 w-full",
+              })}
+            >
+              {plan.action.label}
+            </a>
           </article>
         ))}
       </section>

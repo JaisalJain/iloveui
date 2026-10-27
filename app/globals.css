@@ -96,6 +96,41 @@
 
   --ease-*: initial;
   --ease-site: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Spring with stiffness 400, damping 30 and mass 1 sampled over 450ms (ease-spring duration-450): hover lifts
+     and layout changes without a JavaScript animation library. */
+  --ease-spring: linear(
+    0,
+    0.039,
+    0.132,
+    0.255,
+    0.386,
+    0.514,
+    0.631,
+    0.732,
+    0.815,
+    0.882,
+    0.933,
+    0.97,
+    0.996,
+    1.013,
+    1.023,
+    1.027,
+    1.028,
+    1.027,
+    1.024,
+    1.021,
+    1.017,
+    1.013,
+    1.01,
+    1.007,
+    1.005,
+    1.003,
+    1.002,
+    1.001,
+    1,
+    1,
+    1
+  );
   --default-transition-duration: 200ms;
   --default-transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
 
@@ -339,5 +374,13 @@
     a:hover .logo-heart {
       transform: scale(1.18);
     }
+  }
+}
+
+/* Design page code viewer (components/design-page/code-panel.tsx): files past 999 lines widen the line-number
+   gutter through --code-gutter, set per file. */
+@layer components {
+  [data-code-viewer] .iu-code .line::before {
+    width: var(--code-gutter, 3ch);
   }
 }

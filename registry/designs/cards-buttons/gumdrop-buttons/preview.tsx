@@ -1,4 +1,4 @@
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import { PreviewCanvas } from "@/registry/preview-kit";
 import GumdropButtons from "./component";
 

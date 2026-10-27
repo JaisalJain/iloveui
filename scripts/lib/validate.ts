@@ -202,7 +202,7 @@ export function previewProblems(source: string, meta: DesignMeta): string[] {
   if (!/from\s+["']\.\/component["']/.test(source)) problems.push('preview.tsx must import "./component"');
   for (const match of source.matchAll(/^\s*import\s+(?:type\s+)?[\s\S]*?\sfrom\s+["']([^"']+)["']/gm)) {
     const specifier = match[1]!;
-    if (!["./component", "react", "@/registry/preview-kit", "@/registry/schema"].includes(specifier)) {
+    if (!["./component", "react", "@/registry/preview-kit", "@/registry/definitions"].includes(specifier)) {
       problems.push(`preview.tsx imports "${specifier}"`);
     }
   }

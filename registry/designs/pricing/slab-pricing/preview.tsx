@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import SlabPricing, { type SlabCheckoutStatus } from "./component";
 
 /** Demo checkout: opens for 900ms, then confirms. */

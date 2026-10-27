@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import { PreviewCanvas } from "@/registry/preview-kit";
 import RelayAgentConsole, { RELAY_DEMO_TURNS, type RelayToolHealth, type RelayTurn } from "./component";
 

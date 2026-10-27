@@ -26,7 +26,7 @@ Choices the specification leaves open, places where current tool documentation o
 - **Next.js 16.4 with `middleware.ts` on the Edge runtime.** Next 16 renames middleware to `proxy.ts`, but proxy always runs on Node.js and OpenNext marks Node middleware experimental with a large bundle cost, while `middleware.ts` remains supported (the build prints a deprecation notice).
 - **Static-assets incremental cache with cache interception.** Every cacheable page is prerendered and never revalidated, so OpenNext serves the build output straight from Workers Static Assets; without a cache configured it would re-render static pages on every request.
 - **Cache Components stays off.** OpenNext has open bugs with it, and turning it on removes the route segment options the static design pages rely on.
-- **One minimal root layout, with the site stylesheet in `app/(site)/layout.tsx`.** Preview documents load only their own stylesheet, and unmatched URLs still get the custom 404 through `app/not-found.tsx` without the experimental `globalNotFound` flag that two root layouts would need.
+- **One minimal root layout, with the site stylesheet in `app/(site)/layout.tsx`.** Preview documents load only their own stylesheet. Unmatched URLs reach a catch-all page inside the site group that renders the site's 404, because Next preloads a root `not-found` boundary's stylesheet on every document (preview frames included), and the experimental `globalNotFound` flag would need a second root layout.
 - **Typed routes are on.** A link to a route that does not exist fails the typecheck, which enforces the no-dead-links rule.
 - **Every server code path reads configuration through `process.env`.** OpenNext exposes `.env.local` there locally and Worker secrets there in production, which keeps one code path for both.
 - **`public/_headers` sets immutable caching for `/_next/static/*` and `/fonts/*`.** Workers Static Assets serves those files without running the Worker, so `next.config` headers do not apply to them.
@@ -43,6 +43,25 @@ Choices the specification leaves open, places where current tool documentation o
 - **The scrollbar gutter stays reserved and Radix's scroll-lock margin is switched off.** That combination keeps the page perfectly still when dialogs open, with classic and overlay scrollbars alike.
 - **Dialogs focus their container when they open.** The title is announced and keyboard users tab into the controls, instead of a focus ring flashing on the first button.
 - **Site light/dark preference is stored under `iloveui.mode`.** `iloveui.theme` belongs to Theme Lab's brand tokens, which are a separate concern.
+- **The spring (stiffness 400, damping 30) is a CSS `linear()` easing sampled from the spring equation.** Hover lifts and layout changes on browse pages then follow the specified spring without shipping an animation library to the page with the tightest JavaScript budget.
+
+## Site
+
+- **One Theme Lab store and one preview bridge for the whole site.** `lib/client/theme-lab.ts` persists the theme and posts it to every `iframe[data-preview]`, and a bridge in the site shell forwards light/dark to frames that follow the site and answers each frame's ready message, so cards, the hero wall and the preview stage never need their own wiring.
+- **The pricing page shipped in Phase 3, before checkout.** The locked Pro code panel needs a real destination for its unlock card; checkout buttons join the plans in Phase 4.
+- **The pricing page renders per request.** Its currency comes from the `CF-IPCountry` header, so it cannot be one static file; every other page stays static.
+- **The development region switcher sets a cookie the server reads only in development.** It tests both currencies locally without touching `.env.local`, and production ignores it.
+- **The command palette loads `/catalog.json` the first time it opens.** Designs and categories become searchable without adding the catalog to every page's JavaScript.
+- **The format filter on /designs chooses the first code tab instead of hiding designs.** Every design ships both formats (section 9.4), so filtering by format could only ever show everything; it records React or HTML under `iloveui.format`, which design pages open first, and says so next to the control.
+- **Copy counts accept 60 requests per IP per minute.** "Most copied" needs an unauthenticated counter, and the D1 fixed window from `lib/rate-limit.ts` keeps one visitor from inflating it.
+- **Theme Lab docks with `position: sticky` at the end of the /designs layout.** It stays on screen at the bottom of the viewport while browsing, like a fixed dock, but settles above the footer instead of covering it.
+- **Card thumbnails are truly sandboxed (`allow-scripts` only); the preview stage frame is not sandboxed.** Thumbnails are static documents that only need their theme script, so they run in an opaque origin and talk to the page by window identity; the stage runs the Next.js preview app, which needs its own origin for its scripts and storage, and serves only our own code.
+- **Client code imports catalog definitions from `registry/definitions.ts` and helpers from `lib/catalog-shared.ts`.** Neither pulls in zod or the generated catalog, which keeps the /designs JavaScript budget independent of catalog size.
+- **Spec change (owner request, 2026-10-27): the /designs JavaScript target is under 200 kB gzipped through Phase 4, and Phase 5 tries for 150 kB as a best effort.** React and Next.js alone ship about 136 kB, which leaves too little room for the site's own code to make 150 kB a hard gate before Phase 5.
+- **Measured on 2026-10-27, /designs loads 147.6 kB of JavaScript gzipped (231.1 kB before the loading pass).** The five largest contributors are react-dom (73.4 kB), the Next.js app router runtime (44.1 kB), the shared Next.js and React runtime chunk (8.2 kB), the site shell with Next's `Link` (8.0 kB) and the Turbopack runtime (4.4 kB); the home page loads 145.7 kB and a design page 216.7 kB.
+- **Interactive parts load on intent, not at page load.** The command palette, shortcuts dialog, tooltips, Theme Lab's controls, the mobile filter sheet, the style family menu and the browse explorer's hydration wait for a shortcut key, pointerenter, focus or click (and Theme Lab renders as static markup until then), because anything loaded on a timer or when idle still counts against the first load.
+- **Segmented controls on the load path are a small radiogroup (`components/ui/segments.tsx`) with Radix ToggleGroup's markup and keyboard model.** Radix ToggleGroup cost several kilobytes on every browse page; it remains in the parts that load on intent.
+- **Clerk loads only on /sign-in, /sign-up, /account and checkout (owner rule, 2026-10-27).** Browse, design and other public pages never load Clerk's client; signed-in features there call our API, where the server-side auth checks decide.
 
 ## Catalog pipeline
 

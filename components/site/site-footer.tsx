@@ -1,5 +1,7 @@
+import { Keyboard } from "lucide-react";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { DevRegionSwitcher } from "./dev-region-switcher";
 import { Logo } from "./logo";
 import { ShortcutsButton } from "./shortcuts-button";
 
@@ -30,7 +32,10 @@ export function SiteFooter() {
         <p className="text-12 text-muted">
           © {YEAR} {site.owner.name}, {site.owner.country}.
         </p>
-        <ShortcutsButton />
+        <div className="flex flex-wrap items-center gap-4">
+          {process.env.NODE_ENV === "development" ? <DevRegionSwitcher /> : null}
+          <ShortcutsButton icon={<Keyboard size={16} strokeWidth={1.5} aria-hidden />} />
+        </div>
       </div>
     </footer>
   );

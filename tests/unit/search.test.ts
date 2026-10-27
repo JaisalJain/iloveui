@@ -1,6 +1,6 @@
 import Fuse from "fuse.js";
 import { describe, expect, it } from "vitest";
-import { createSearcher, matchesAllTokens, queryTokens, toFuseQuery } from "@/lib/search";
+import { createSearcher, matchesAllTokens, queryTokens, toFuseExpression, toFuseQuery } from "@/lib/search";
 
 const items = [
   { label: "Toggle light and dark theme", keywords: ["mode"] },
@@ -27,5 +27,14 @@ describe("search", () => {
     expect(labels("keybord shortcts")[0]).toBe("Show keyboard shortcuts");
     expect(labels("billing")[0]).toBe("Ledger pricing");
     expect(labels("don't")).toEqual([]);
+  });
+
+  it("lets each word of a query match a different field", () => {
+    const fuse = createSearcher(Fuse, items, ["label", "keywords"]);
+    const labels = (query: string) =>
+      fuse.search(toFuseExpression(query, ["label", "keywords"])).map((result) => result.item.label);
+    expect(labels("ledger billing")[0]).toBe("Ledger pricing");
+    expect(labels("keyboard help")[0]).toBe("Show keyboard shortcuts");
+    expect(labels("ledger mode")).toEqual([]);
   });
 });

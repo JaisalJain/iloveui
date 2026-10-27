@@ -1,3 +1,12 @@
 // Every public site route. Each must have a unique title and description, pass axe in both themes and never
 // overflow horizontally. Later phases add their routes here.
-export const SITE_ROUTES = ["/"] as const;
+export const SITE_ROUTES = [
+  "/",
+  "/designs",
+  "/designs/hero",
+  // A category with no designs yet: its designed empty state must pass the same checks.
+  "/designs/settings",
+  "/designs/forms/pillow-workspace-form",
+  "/designs/ecommerce/atelier-product-page",
+  "/pricing",
+] as const;

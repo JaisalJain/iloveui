@@ -17,8 +17,10 @@ import { useRouter } from "next/navigation";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import { useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import { toggleColorMode } from "@/lib/client/theme-mode";
+import { loadCatalogIndex } from "@/lib/client/catalog-index";
 import {
   ACTION_ENTRIES,
+  catalogEntries,
   MAX_RECENT,
   PAGE_ENTRIES,
   RECENT_STORAGE_KEY,
@@ -26,8 +28,10 @@ import {
   type PaletteGroup,
 } from "@/lib/palette";
 import { Kbd } from "@/components/ui/kbd";
-import { createSearcher, loadFuse, matchesAllTokens, toFuseQuery } from "@/lib/search";
+import { createSearcher, loadFuse, matchesAllTokens, toFuseExpression } from "@/lib/search";
 import { cn } from "@/lib/utils";
+
+const SEARCH_KEYS = ["label", "keywords", "hint", "description"] as const;
 
 const GROUP_ORDER: PaletteGroup[] = ["Recent", "Designs", "Categories", "Pages", "Actions"];
 const GROUP_ICONS: Record<PaletteGroup, LucideIcon> = {
@@ -69,7 +73,9 @@ function rememberEntry(entry: PaletteEntry) {
 }
 
 function fallbackMatch(entries: PaletteEntry[], query: string) {
-  return entries.filter((entry) => matchesAllTokens([entry.label, entry.hint, ...(entry.keywords ?? [])], query));
+  return entries.filter((entry) =>
+    matchesAllTokens([entry.label, entry.hint, entry.description, ...(entry.keywords ?? [])], query),
+  );
 }
 
 export function CommandPalette({
@@ -88,20 +94,38 @@ export function CommandPalette({
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   const [recent, setRecent] = useState<PaletteEntry[]>([]);
-  const [fuse, setFuse] = useState<Fuse<PaletteEntry> | null>(null);
+  const [FuseClass, setFuseClass] = useState<typeof Fuse | null>(null);
+  const [catalog, setCatalog] = useState<PaletteEntry[]>([]);
 
-  const entries = useMemo(() => [...PAGE_ENTRIES, ...ACTION_ENTRIES], []);
+  const entries = useMemo(() => [...PAGE_ENTRIES, ...ACTION_ENTRIES, ...catalog], [catalog]);
+  const fuse = useMemo(
+    () =>
+      FuseClass
+        ? createSearcher(FuseClass, entries, [
+            { name: "label", weight: 3 },
+            { name: "keywords", weight: 2 },
+            { name: "hint", weight: 1 },
+            { name: "description", weight: 0.5 },
+          ])
+        : null,
+    [FuseClass, entries],
+  );
 
   const rows = useMemo<Row[]>(() => {
     const trimmed = query.trim();
     let matches: { entry: PaletteEntry; group: PaletteGroup }[];
     if (!trimmed) {
+      // Designs and categories appear once there is a query; the idle list stays short.
       matches = [
         ...recent.map((entry) => ({ entry, group: "Recent" as const })),
-        ...entries.map((entry) => ({ entry, group: entry.group })),
+        ...entries
+          .filter((entry) => entry.group === "Pages" || entry.group === "Actions")
+          .map((entry) => ({ entry, group: entry.group })),
       ];
     } else {
-      const found = fuse ? fuse.search(toFuseQuery(trimmed), { limit: 24 }).map((result) => result.item) : null;
+      const found = fuse
+        ? fuse.search(toFuseExpression(trimmed, SEARCH_KEYS), { limit: 24 }).map((result) => result.item)
+        : null;
       matches = (found ?? fallbackMatch(entries, trimmed)).map((entry) => ({ entry, group: entry.group }));
     }
     return GROUP_ORDER.flatMap((group) =>
@@ -126,15 +150,13 @@ export function CommandPalette({
 
   function prepare() {
     setRecent(readRecent());
-    void loadFuse().then((FuseClass) => {
-      setFuse(
-        createSearcher(FuseClass, entries, [
-          { name: "label", weight: 3 },
-          { name: "keywords", weight: 2 },
-          { name: "hint", weight: 1 },
-        ]),
-      );
-    });
+    void loadFuse().then((loaded) => setFuseClass(() => loaded));
+    loadCatalogIndex().then(
+      (index) => setCatalog(catalogEntries(index)),
+      () => {
+        // Without the index the palette still searches pages and actions; the next open retries.
+      },
+    );
   }
 
   function select(row: Row) {

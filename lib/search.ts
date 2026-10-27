@@ -1,5 +1,5 @@
 import type Fuse from "fuse.js";
-import type { FuseOptionKey } from "fuse.js";
+import type { Expression, FuseOptionKey } from "fuse.js";
 
 // Client-side search for the Cmd+K palette and the /designs search field. Fuse.js is loaded on first use so it
 // never weighs on a page's initial JavaScript.
@@ -16,6 +16,14 @@ export function queryTokens(query: string): string[] {
 /** Every word must match one of the fields (fuzzily, through Fuse's extended search syntax). */
 export function toFuseQuery(query: string): string {
   return queryTokens(query).join(" ");
+}
+
+/**
+ * Like toFuseQuery, but each word may match a different field ("luxury watch" finds a design tagged luxury whose
+ * description mentions a watch). A plain query string only matches when every word is in the same field.
+ */
+export function toFuseExpression(query: string, keys: readonly string[]): Expression {
+  return { $and: queryTokens(query).map((token) => ({ $or: keys.map((key) => ({ [key]: token })) })) };
 }
 
 /** Instant fallback while Fuse loads: every word must appear in at least one field. */

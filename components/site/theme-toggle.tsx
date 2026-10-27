@@ -1,12 +1,12 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import type { ReactNode } from "react";
 import { toggleColorMode, useColorMode } from "@/lib/client/theme-mode";
 import { Kbd } from "@/components/ui/kbd";
 import { Tooltip } from "@/components/ui/tooltip";
-import { cn } from "@/lib/utils";
 
-export function ThemeToggle({ className }: { className?: string }) {
+/** The icons are rendered by the (server) header, so the shell ships no icon code. */
+export function ThemeToggle({ sunIcon, moonIcon }: { sunIcon: ReactNode; moonIcon: ReactNode }) {
   const mode = useColorMode();
   const next = mode === "dark" ? "light" : "dark";
   return (
@@ -21,17 +21,12 @@ export function ThemeToggle({ className }: { className?: string }) {
         type="button"
         onClick={toggleColorMode}
         aria-label={`Switch to ${next} theme`}
-        className={cn(
-          "inline-flex size-8 items-center justify-center rounded-control text-muted transition-colors duration-160 ease-site",
-          "hover:bg-raised hover:text-fg active:translate-y-px pointer-coarse:size-10",
-          className,
-        )}
+        className={
+          "inline-flex size-8 items-center justify-center rounded-control text-muted transition-colors duration-160 ease-site " +
+          "hover:bg-raised hover:text-fg active:translate-y-px pointer-coarse:size-10"
+        }
       >
-        {mode === "dark" ? (
-          <Sun size={16} strokeWidth={1.5} aria-hidden />
-        ) : (
-          <Moon size={16} strokeWidth={1.5} aria-hidden />
-        )}
+        {mode === "dark" ? sunIcon : moonIcon}
       </button>
     </Tooltip>
   );

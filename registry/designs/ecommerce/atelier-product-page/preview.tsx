@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import AtelierProductPage, {
   atelierBag,
   atelierProduct,

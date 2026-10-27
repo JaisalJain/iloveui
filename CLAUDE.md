@@ -177,7 +177,7 @@ Pro access = owning an active license or holding an active seat on one. Implemen
 
 13. PERFORMANCE, SEO AND ACCESSIBILITY TARGETS (measured on the production build served locally)
 • Lighthouse mobile on /, /designs and one design page: Performance 95+, Accessibility 100, Best Practices 100, SEO 100.
-• LCP under 2.0s, CLS under 0.05, INP under 200ms; /designs JavaScript under 150 kB gzipped; iframes lazy-load and pause offscreen.
+• LCP under 2.0s, CLS under 0.05, INP under 200ms; /designs JavaScript under 200 kB gzipped for Phases 1 to 4 (Phase 5 tries to reach 150 kB, as a best effort only); iframes lazy-load and pause offscreen.
 • Design pages statically generated; per-design OG images at build; JSON-LD Product on /pricing and SoftwareSourceCode on design pages; llms.txt lists catalog, install commands and docs.
 
 14. ENVIRONMENT VARIABLES (.env.example with one-line comments; only TOKEN_PEPPER and LOCAL_WEBHOOK_SECRET are required locally, and pnpm setup generates them)

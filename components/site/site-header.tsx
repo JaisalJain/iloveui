@@ -1,3 +1,4 @@
+import { Moon, Search, Sun } from "lucide-react";
 import Link from "next/link";
 import { Logo } from "./logo";
 import { SearchTrigger } from "./search-trigger";
@@ -11,8 +12,11 @@ export function SiteHeader() {
           <Logo aria-hidden className="h-5 w-auto text-fg" />
         </Link>
         <div className="ml-auto flex items-center gap-2">
-          <SearchTrigger />
-          <ThemeToggle />
+          <SearchTrigger icon={<Search size={16} strokeWidth={1.5} aria-hidden />} />
+          <ThemeToggle
+            sunIcon={<Sun size={16} strokeWidth={1.5} aria-hidden />}
+            moonIcon={<Moon size={16} strokeWidth={1.5} aria-hidden />}
+          />
         </div>
       </div>
     </header>

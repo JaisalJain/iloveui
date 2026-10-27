@@ -1,7 +1,8 @@
 import { PREVIEW_BOOT_SCRIPT, THEME_STYLE_ID } from "../../components/preview/protocol";
 
-// Listens for Theme Lab tokens and light/dark from the parent page; same contract as the React preview runtime.
-const MESSAGE_SCRIPT = `addEventListener('message',function(e){if(e.origin!==location.origin||e.source!==parent)return;var d=e.data;if(!d||d.source!=='iloveui')return;if(d.type==='mode')document.documentElement.classList.toggle('dark',d.mode==='dark');if(d.type==='theme'){var s=document.getElementById('${THEME_STYLE_ID}');if(!s){s=document.createElement('style');s.id='${THEME_STYLE_ID}';document.head.appendChild(s)}s.textContent=d.css}});`;
+// Thumbnails run in a real sandbox (allow-scripts only), so their origin is opaque: messages are trusted when they
+// come from the parent window, and the frame announces itself so the parent sends the theme and light/dark.
+const MESSAGE_SCRIPT = `addEventListener('message',function(e){if(e.source!==parent)return;var d=e.data;if(!d||d.source!=='iloveui')return;if(d.type==='mode')document.documentElement.classList.toggle('dark',d.mode==='dark');if(d.type==='theme'){var s=document.getElementById('${THEME_STYLE_ID}');if(!s){s=document.createElement('style');s.id='${THEME_STYLE_ID}';document.head.appendChild(s)}s.textContent=d.css}});if(parent!==window)parent.postMessage({source:'iloveui-preview',type:'ready'},'*');`;
 
 const escapeHtml = (text: string) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 

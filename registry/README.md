@@ -25,7 +25,7 @@ registry/designs/<category>/<slug>/
   notes.md         usage notes and the taste self-review
 ```
 
-`<category>` is a slug from `registry/schema.ts`. `<slug>` is kebab-case, unique across the whole catalog, and descriptive (`ledger-pricing`, `relay-agent-console`). The component name is the PascalCase slug (`LedgerPricing`).
+`<category>` is a slug from `registry/definitions.ts`. `<slug>` is kebab-case, unique across the whole catalog, and descriptive (`ledger-pricing`, `relay-agent-console`). The component name is the PascalCase slug (`LedgerPricing`).
 
 ## meta.json
 
@@ -205,7 +205,7 @@ The same design as one standalone document: Tailwind v4 classes and vanilla JS, 
 ## preview.tsx
 
 ```tsx
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import { PreviewCanvas } from "@/registry/preview-kit";
 import LedgerPricing from "./component";
 

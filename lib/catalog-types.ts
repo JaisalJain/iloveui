@@ -1,4 +1,4 @@
-import type { CategorySlug, DesignState, StyleFamilySlug } from "@/registry/schema";
+import type { CategorySlug, DesignState, StyleFamilySlug } from "@/registry/definitions";
 
 // Public catalog metadata produced by scripts/build-registry.ts. Nothing here is design source code.
 
@@ -38,6 +38,28 @@ export type CatalogDesign = {
 };
 
 export type Catalog = { designs: CatalogDesign[] };
+
+/** One entry of public/catalog.json: what cards, filters and search need, for every design. */
+export type CatalogIndexEntry = Pick<
+  CatalogDesign,
+  "slug" | "name" | "category" | "styleFamily" | "tier" | "description" | "tags" | "hasMotion" | "createdAt" | "thumb"
+> & { gzipBytes: number };
+
+export function toIndexEntry(design: CatalogDesign): CatalogIndexEntry {
+  return {
+    slug: design.slug,
+    name: design.name,
+    category: design.category,
+    styleFamily: design.styleFamily,
+    tier: design.tier,
+    description: design.description,
+    tags: design.tags,
+    hasMotion: design.hasMotion,
+    createdAt: design.createdAt,
+    gzipBytes: design.receipt.gzipBytes,
+    thumb: design.thumb,
+  };
+}
 
 /** Highlighted source for one file of a design, as served to people allowed to see it. */
 export type CodeFile = { name: string; language: "tsx" | "html"; lines: number; code: string; html: string };

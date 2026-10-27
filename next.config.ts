@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   agentRules: false,
   images: { unoptimized: true },
+  // Sandboxed thumbnails have an opaque origin, so their font requests are cross-origin (public/_headers does the
+  // same for the deployed static assets).
+  async headers() {
+    return [{ source: "/fonts/:path*", headers: [{ key: "Access-Control-Allow-Origin", value: "*" }] }];
+  },
   turbopack: {
     rules: {
       // OG image fonts (assets/fonts) are imported as bytes so the image routes never touch the filesystem.

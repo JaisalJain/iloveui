@@ -1,4 +1,4 @@
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import GridlineHero from "./component";
 
 // A full-width section: rendered edge to edge, without a preview canvas.

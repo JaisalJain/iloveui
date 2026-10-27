@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import TallyOpsDashboard from "./component";
 
 // A full-page app shell: rendered edge to edge, without a preview canvas.

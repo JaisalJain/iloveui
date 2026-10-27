@@ -1,17 +1,25 @@
 "use client";
 
-import { Tooltip as TooltipPrimitive } from "radix-ui";
-import type { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import {
+  cloneElement,
+  useId,
+  type FocusEvent,
+  type HTMLAttributes,
+  type PointerEvent,
+  type ReactElement,
+  type ReactNode,
+} from "react";
+import { focusKeyProps, lazyModule } from "@/lib/client/lazy";
 
-/** One provider for the whole site: 400ms before the first tooltip, then instant for 500ms after one closes. */
-export function TooltipProvider({ children }: { children: ReactNode }) {
-  return (
-    <TooltipPrimitive.Provider delayDuration={400} skipDelayDuration={500}>
-      {children}
-    </TooltipPrimitive.Provider>
-  );
-}
+// Radix Tooltip (and its positioning engine) loads on the first pointerenter or focus on any tooltip trigger, not at
+// page load. Until then each trigger renders as itself; the 400ms first-open delay hides the load, and a trigger
+// that had focus when Radix arrived keeps it (see useCarriedFocus).
+const tooltips = lazyModule(() => import("./tooltip-impl"));
+
+/** For lazily loaded UI that is full of tooltips: start loading them along with it. */
+export const preloadTooltips = tooltips.preload;
+
+type TriggerElement = ReactElement<HTMLAttributes<HTMLElement> & { "data-focus-key"?: string }>;
 
 export function Tooltip({
   content,
@@ -20,28 +28,30 @@ export function Tooltip({
   className,
 }: {
   content: ReactNode;
-  children: ReactNode;
+  /** One element that accepts a ref and event handlers, as Radix's asChild trigger requires. */
+  children: TriggerElement;
   side?: "top" | "right" | "bottom" | "left";
+  /** Extra classes for the bubble; they add to its styles and must not override them. */
   className?: string;
 }) {
+  const loaded = tooltips.use();
+  const focusKey = focusKeyProps(`tooltip${useId()}`);
+  if (!loaded) {
+    return cloneElement(children, {
+      ...focusKey,
+      onPointerEnter: (event: PointerEvent<HTMLElement>) => {
+        tooltips.preload();
+        children.props.onPointerEnter?.(event);
+      },
+      onFocus: (event: FocusEvent<HTMLElement>) => {
+        tooltips.preload();
+        children.props.onFocus?.(event);
+      },
+    });
+  }
   return (
-    <TooltipPrimitive.Root>
-      <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Portal>
-        <TooltipPrimitive.Content
-          side={side}
-          sideOffset={6}
-          collisionPadding={8}
-          className={cn(
-            "z-50 flex items-center gap-2 rounded-control border border-hairline bg-raised px-2 py-1 text-12 text-fg shadow-lg",
-            "origin-(--radix-tooltip-content-transform-origin)",
-            "data-[state=closed]:animate-pop-out data-[state=delayed-open]:animate-pop-in",
-            className,
-          )}
-        >
-          {content}
-        </TooltipPrimitive.Content>
-      </TooltipPrimitive.Portal>
-    </TooltipPrimitive.Root>
+    <loaded.TooltipImpl content={content} side={side} className={className}>
+      {cloneElement(children, focusKey)}
+    </loaded.TooltipImpl>
   );
 }

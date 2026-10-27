@@ -85,7 +85,7 @@ export const DEFAULT_THEME: ThemeState = {
   density: "comfortable",
 };
 
-export const THEME_STORAGE_KEY = "iloveui.theme";
+export { THEME_STORAGE_KEY } from "./theme-storage";
 
 /** Validates anything (for example localStorage contents) into a ThemeState, falling back field by field. */
 export function normalizeTheme(input: unknown): ThemeState {

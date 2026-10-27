@@ -2,7 +2,7 @@
 
 import { Suspense, useSyncExternalStore } from "react";
 import { previewComponents } from "@/registry/generated/preview-loaders";
-import type { DesignState } from "@/registry/schema";
+import type { DesignState } from "@/registry/definitions";
 import { applyThemeCss, FRAME_SOURCE, isParentMessage } from "./protocol";
 
 // The live preview inside an iframe: renders one design in the state the parent asks for, and applies Theme Lab

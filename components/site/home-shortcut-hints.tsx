@@ -6,13 +6,15 @@ import { useSiteShell } from "./site-shell";
 
 export function HomeShortcutHints() {
   const mod = useModKey();
-  const { openPalette, openShortcuts } = useSiteShell();
+  const { openPalette, openShortcuts, preloadDialogs } = useSiteShell();
   return (
     <ul className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 text-14 text-muted">
       <li>
         <button
           type="button"
           onClick={openPalette}
+          onPointerEnter={preloadDialogs}
+          onFocus={preloadDialogs}
           className="inline-flex h-8 items-center gap-2 rounded-control transition-colors hover:text-fg pointer-coarse:h-10"
         >
           <span className="flex items-center gap-1" aria-hidden>
@@ -26,6 +28,8 @@ export function HomeShortcutHints() {
         <button
           type="button"
           onClick={openShortcuts}
+          onPointerEnter={preloadDialogs}
+          onFocus={preloadDialogs}
           className="inline-flex h-8 items-center gap-2 rounded-control transition-colors hover:text-fg pointer-coarse:h-10"
         >
           <Kbd aria-hidden>?</Kbd>

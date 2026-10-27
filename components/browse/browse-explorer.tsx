@@ -582,12 +582,11 @@ export function BrowseExplorer(props: BrowseExplorerProps) {
             )
           ) : (
             <div ref={gridRef} className={`${GRID_CLASSES} [[data-browse-pending]_&]:hidden`}>
-              {designs.map((design, position) => (
+              {designs.map((design) => (
                 <DesignCard
                   key={design.slug}
                   design={design}
                   categoryLabel={categoryNames.get(design.category) ?? design.category}
-                  eager={position < 3}
                 />
               ))}
             </div>

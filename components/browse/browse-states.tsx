@@ -38,6 +38,31 @@ export function SkeletonGrid({ count = 6, pendingOnly = false }: { count?: numbe
   );
 }
 
+/**
+ * The explorer's place while it is on its way: React streams a server-rendered boundary this large after the rest of
+ * the page, and a client navigation loads the explorer's code first. The same columns, the search row and skeleton
+ * cards hold the space, so the footer never jumps up into view and back down.
+ */
+export function ExplorerSkeleton() {
+  return (
+    // Without JavaScript the boundary never fills in; those visitors get the <noscript> copy instead.
+    <div aria-hidden className="noscript:hidden">
+      <div className="lg:grid lg:grid-cols-12 lg:gap-6">
+        <div className="hidden lg:col-span-3 lg:block" />
+        <div className="min-w-0 lg:col-span-9">
+          <div className="h-10 rounded-control border border-hairline bg-surface shadow-sm" />
+          <div className="mt-6 flex min-h-8 items-center">
+            <div className="h-2.5 w-24 rounded-full bg-raised" />
+          </div>
+          <div className="mt-4">
+            <SkeletonGrid />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /** Drawn empty frame: a card outline with a dashed thumbnail and a crossed search lens. */
 export function EmptyIllustration({ variant }: { variant: "filters" | "category" }) {
   return (

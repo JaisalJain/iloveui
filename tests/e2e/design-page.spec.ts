@@ -175,7 +175,9 @@ test.describe("design page", () => {
       await page.goto(urlOf(meta), { waitUntil: "networkidle" });
       await page.locator("section[aria-labelledby=code-heading]").scrollIntoViewIfNeeded();
       await page.getByRole("tab", { name: "HTML" }).click();
-      await page.waitForLoadState("networkidle");
+      // Signed out, the page asks for nothing more (no hint cookie, so no /api/code), and the locked panel is the final
+      // state. Network idle would also wait on card thumbnails, which load in their own frames as they scroll near.
+      await expect(page.getByRole("tab", { name: "HTML" })).toHaveAttribute("aria-selected", "true");
       await expect(page.getByRole("link", { name: "See pricing" }).first()).toBeVisible();
 
       const documents = [{ url: "page", text: await page.content() }, ...(await Promise.all(bodies))];

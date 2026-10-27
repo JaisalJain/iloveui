@@ -74,11 +74,7 @@ export default function CollectionsPage() {
                 <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 xl:grid-cols-3">
                   {preview.map((design, position) => (
                     <li key={design.slug} className={cn(position === PREVIEW_COUNT - 1 && "sm:max-xl:hidden")}>
-                      <DesignCard
-                        design={toIndexEntry(design)}
-                        categoryLabel={categoryName(design.category)}
-                        eager={index === 0}
-                      />
+                      <DesignCard design={toIndexEntry(design)} categoryLabel={categoryName(design.category)} />
                     </li>
                   ))}
                 </ul>

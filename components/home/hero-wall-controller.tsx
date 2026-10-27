@@ -2,33 +2,12 @@
 
 import { Pause, Play } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getColorMode } from "@/lib/client/theme-mode";
+import { afterLoadAndIdle, loadThumbnail } from "@/lib/client/thumbnails";
 
 /** Thumbnails start loading this far beyond the wall's visible edge, so a tile is ready before it drifts in. */
 const LOAD_MARGIN = "40% 0px";
 /** Where a keyboard-focused tile is brought to, as a share of the wall's height from its top. */
 const FOCUS_ANCHOR = 0.18;
-
-/** After the page's own load and an idle moment: the headline and the page's scripts come before any thumbnail. */
-function afterLoadAndIdle(callback: () => void): () => void {
-  // Safari has no requestIdleCallback; a short timeout stands in for it.
-  const hasIdle = typeof (window.requestIdleCallback as unknown) === "function";
-  let cancelled = false;
-  let idleHandle: number | null = null;
-  const idle = () => {
-    if (cancelled) return;
-    idleHandle = hasIdle ? window.requestIdleCallback(callback, { timeout: 1500 }) : window.setTimeout(callback, 200);
-  };
-  if (document.readyState === "complete") idle();
-  else window.addEventListener("load", idle, { once: true });
-  return () => {
-    cancelled = true;
-    window.removeEventListener("load", idle);
-    if (idleHandle === null) return;
-    if (hasIdle) window.cancelIdleCallback(idleHandle);
-    else window.clearTimeout(idleHandle);
-  };
-}
 
 /** Moves a column's drift so the focused tile sits near the top of the wall (the wall is paused while focused). */
 function bringIntoView(wall: HTMLElement, tile: HTMLElement) {
@@ -72,10 +51,7 @@ export function HeroWallController({ wallId }: { wallId: string }) {
           const frame = entry.target as HTMLIFrameElement;
           loader.unobserve(frame);
           const src = frame.dataset.src;
-          if (!src) continue;
-          frame.addEventListener("load", () => frame.setAttribute("data-loaded", ""), { once: true });
-          // The thumbnail reads the mode from its URL before first paint, so it never flashes the other theme.
-          frame.src = `${src}?mode=${getColorMode()}`;
+          if (src) loadThumbnail(frame, src);
         }
       },
       { root: wall, rootMargin: LOAD_MARGIN },

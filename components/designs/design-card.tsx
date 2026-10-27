@@ -18,14 +18,11 @@ export type DesignCardData = Pick<CatalogIndexEntry, "slug" | "name" | "category
 export function DesignCard({
   design,
   categoryLabel,
-  eager = false,
   className,
 }: {
   design: DesignCardData;
   /** The category's display name (the caller has the category list; the card does not import it). */
   categoryLabel: string;
-  /** Load the thumbnail immediately (cards in the first viewport). */
-  eager?: boolean;
   className?: string;
 }) {
   const [intent, setIntent] = useState(false);
@@ -42,10 +39,12 @@ export function DesignCard({
       )}
     >
       <div className="relative aspect-[16/10] overflow-hidden border-b border-hairline bg-raised">
+        {/* ThumbnailLoader sets src near the viewport once the page is idle; React never manages src, and the
+            attribute may already be there when the card hydrates. */}
         <iframe
-          src={design.thumb}
+          data-thumb={design.thumb}
+          suppressHydrationWarning
           title={`${design.name}, thumbnail`}
-          loading={eager ? "eager" : "lazy"}
           tabIndex={-1}
           aria-hidden="true"
           sandbox="allow-scripts"

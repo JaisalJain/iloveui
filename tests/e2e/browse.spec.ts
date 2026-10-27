@@ -190,7 +190,10 @@ test.describe("filters", () => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/designs?tier=free");
     const nav = page.getByRole("navigation", { name: "Categories" });
-    await nav.getByRole("link", { name: new RegExp(`^${fullCategory.name}`) }).click();
+    const link = nav.getByRole("link", { name: new RegExp(`^${fullCategory.name}`) });
+    // The static links carry no query; the explorer adds the URL's filters to them as soon as it has applied them.
+    await expect(link).toHaveAttribute("href", /\?tier=free$/);
+    await link.click();
     await expect(page).toHaveURL(new RegExp(`/designs/${fullCategory.slug}\\?tier=free$`));
     await expect(page.locator("h1")).toHaveText(fullCategory.name);
     await expect(nav.getByRole("link", { name: new RegExp(`^${fullCategory.name}`) })).toHaveAttribute(

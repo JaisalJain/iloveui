@@ -4,6 +4,7 @@ import { lazy, Suspense, useEffect, useRef, type ComponentType } from "react";
 import { isHydrated } from "@/lib/client/hydration";
 import { FORMAT_STORAGE_KEY } from "@/lib/format-preference";
 import type { BrowseExplorerProps } from "./browse-explorer";
+import { ExplorerSkeleton } from "./browse-states";
 
 // The browse explorer (filters, search, sorting, the grid and its cards) is server-rendered HTML that hydrates on
 // intent: the first pointer, focus, key or click inside it. Until then React leaves the server markup as it is,
@@ -11,7 +12,8 @@ import type { BrowseExplorerProps } from "./browse-explorer";
 // carries filters or a format, or a format preference is stored, and on client navigations (no server HTML to keep).
 //
 // React streams a server-rendered Suspense boundary this large after the rest of the page (it fills in as soon as
-// that part of the HTML is parsed), so visitors without JavaScript get the same markup in place from <noscript>.
+// that part of the HTML is parsed), so visitors without JavaScript get the same markup in place from <noscript>, and
+// the skeleton fallback holds the explorer's place until it arrives.
 
 let openGate: () => void = () => undefined;
 const gate =
@@ -86,7 +88,7 @@ export function BrowseIsland(props: BrowseExplorerProps) {
   return (
     <div ref={wrapperRef} className="contents">
       <noscript>{ServerExplorer ? <ServerExplorer {...props} /> : null}</noscript>
-      <Suspense fallback={null}>
+      <Suspense fallback={<ExplorerSkeleton />}>
         {ServerExplorer ? <ServerExplorer {...props} /> : <BrowseExplorer {...props} onHydrated={onExplorerHydrated} />}
       </Suspense>
     </div>

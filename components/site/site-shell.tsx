@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useSyncExternalStore, type ReactNode } from "react";
+import { ThumbnailLoader } from "@/components/designs/thumbnail-loader";
 import { PreviewBridge } from "@/components/preview/preview-bridge";
 import { markHydrated } from "@/lib/client/hydration";
 import { lazyModule } from "@/lib/client/lazy";
@@ -114,6 +115,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         />
       ) : null}
       <PreviewBridge />
+      <ThumbnailLoader />
     </SiteShellContext.Provider>
   );
 }

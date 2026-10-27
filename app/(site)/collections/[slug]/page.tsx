@@ -81,13 +81,9 @@ export default async function CollectionPage({ params }: PageProps<"/collections
       {designs.length > 0 ? <h2 className="sr-only">Designs in this set</h2> : null}
       {designs.length > 0 ? (
         <ul className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-          {designs.map((design, index) => (
+          {designs.map((design) => (
             <li key={design.slug}>
-              <DesignCard
-                design={toIndexEntry(design)}
-                categoryLabel={categoryName(design.category)}
-                eager={index < 3}
-              />
+              <DesignCard design={toIndexEntry(design)} categoryLabel={categoryName(design.category)} />
             </li>
           ))}
         </ul>

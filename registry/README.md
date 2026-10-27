@@ -104,6 +104,7 @@ The `dark:` variant targets a `.dark` ancestor (the shadcn convention; previews 
 - **Keyboard**: everything works without a mouse. Menus, tabs, listboxes and dialogs follow the WAI-ARIA Authoring Practices keyboard patterns (arrows, Home/End, Escape, focus return).
 - Contrast: text 4.5:1, large text and UI parts 3:1, in both modes, with the default theme. `pnpm design:check` runs axe on every state, width and mode.
 - Responsive at 375, 768 and 1440 with no horizontal scrolling. Prefer container queries (`@container`, `@md:`) for components that can land in any column, viewport breakpoints for full-width sections.
+- Never nest `min()` or `max()` with percentages inside `calc()` (also in arbitrary values): Lightning CSS 1.33 crashes on it. Put the `min()` in a custom property and use `var()` inside the `calc()`.
 - Tailwind CSS 4.1 is the floor: avoid utilities introduced in 4.2 or later (`scrollbar-gutter-*`, `inset-s-*`, `font-features-*`); write arbitrary properties instead (`[scrollbar-gutter:stable]`).
 
 ## Motion

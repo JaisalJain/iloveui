@@ -1,0 +1,91 @@
+Every design is themed through ten CSS variables. Set them once, through Theme Lab or by hand, and every design in your project follows your brand. Nothing in a design hard-codes a brand color.
+
+## Theme Lab
+
+Theme Lab is docked at the bottom of [Designs](/designs) and every design page. On a phone it opens as a sheet. It has five controls and a reset:
+
+- **Accent**: eight presets (Vermilion, Cobalt, Emerald, Saffron, Rose, Iris, Lagoon and Graphite) or any hex color. Text on the accent switches between black and white to stay readable, and Theme Lab warns you when an accent has too little contrast against the background.
+- **Neutral**: Zinc, Stone or Slate. Each one is a hand-tuned light and dark set for background, surface, border, text and muted text.
+- **Radius**: 0 to 24 pixels.
+- **Font**: Inter Tight, Geist, IBM Plex Sans or system-ui.
+- **Density**: Comfortable or Compact.
+- **Reset**: back to Vermilion, Zinc, 10 pixels, Inter Tight and Comfortable.
+
+Your choices are saved in this browser under the `iloveui.theme` key and come back on your next visit. They never leave your device unless you download a design.
+
+## Where your values go
+
+- **Previews.** Theme Lab sends the token values to every preview on the page, the card thumbnails and the preview stage alike, so they re-skin as you drag a slider, without reloading.
+- **Copied code.** The **React** tab carries a `theme.css` generated from your current values. Copying from the **HTML** tab rewrites the file's token block with them. The component code itself never changes: it only reads the variables.
+- **Downloads.** The zip contains a `theme.css` with your values, and its `component.html` has them in its token block.
+- **AI prompts.** A copied prompt ends with a Theme tokens section holding the same CSS, so an agent adds your values rather than the defaults.
+- **The CLI.** `npx shadcn@latest add` adds the default tokens only where your stylesheet has none, and never overwrites values you set. To bring Theme Lab values into a CLI project, copy `theme.css` from any design page over your `:root` and `.dark` blocks.
+
+## The tokens
+
+<TokenTable />
+
+One theme produces two sets of values: light ones on `:root` and dark ones on `.dark`. The accent, radius, font and density stay the same in both modes; the neutral supplies a separate light and dark palette.
+
+## Theming by hand
+
+The tokens are plain CSS, so you can set them without Theme Lab. Keep both blocks, and give dark mode its own values instead of inverting light ones:
+
+```css title="theme.css"
+:root {
+  --iu-accent: #0f9f6e;
+  --iu-accent-foreground: #ffffff;
+  --iu-background: #fafaf9;
+  --iu-surface: #ffffff;
+  --iu-border: #e7e5e4;
+  --iu-foreground: #1c1917;
+  --iu-muted: #57534e;
+  --iu-radius: 6px;
+  --iu-font: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --iu-density: 0.8;
+}
+
+.dark {
+  --iu-accent: #0f9f6e;
+  --iu-accent-foreground: #ffffff;
+  --iu-background: #0c0a09;
+  --iu-surface: #1c1917;
+  --iu-border: #33302e;
+  --iu-foreground: #fafaf9;
+  --iu-muted: #a8a29e;
+  --iu-radius: 6px;
+  --iu-font: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --iu-density: 0.8;
+}
+```
+
+A few rules keep designs looking right:
+
+- Keep `--iu-muted` at 4.5:1 or more against both `--iu-background` and `--iu-surface`, and `--iu-accent-foreground` readable on `--iu-accent`.
+- `--iu-density` accepts any number. Values from 0.8 to 1.2 stay comfortable; spacing inside a design multiplies by it.
+- `--iu-radius` is a base, not an absolute. A Neo-brutalist design keeps its corners tight and a Soft tactile one keeps them round, whatever you set.
+
+### Theming one section
+
+Variables cascade, so a class can re-theme everything inside it. Use it for a marketing page that runs a different accent, or a denser admin area:
+
+```css
+.admin {
+  --iu-density: 0.8;
+  --iu-radius: 4px;
+}
+```
+
+```tsx
+<div className="admin">
+  <TallyOpsDashboard />
+</div>
+```
+
+### Using the tokens in your own code
+
+Use the same variables in your own components so they match the designs, with Tailwind v4's variable shorthand:
+
+```tsx
+<button className="rounded-(--iu-radius) bg-(--iu-accent) px-4 py-2 text-(--iu-accent-foreground)">Save changes</button>
+```

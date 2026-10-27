@@ -6,7 +6,7 @@ import { buttonClasses } from "@/components/ui/button-classes";
 import { FREE_PLAN, PAID_PLANS, formatPrice, type Currency } from "@/config/pricing";
 import { CHECKOUT_ERROR_MESSAGES, isCheckoutError } from "@/lib/payments/checkout-errors";
 import { DEV_REGION_COOKIE, resolveCurrency } from "@/lib/region";
-import { site } from "@/lib/site";
+import { absoluteUrl, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { CATEGORIES } from "@/registry/definitions";
 
@@ -82,6 +82,33 @@ function faq(currency: Currency): { question: string; answer: ReactNode }[] {
   ];
 }
 
+/** schema.org Product data for Pro and Team, one Offer per currency (spec section 13). No ratings or reviews. */
+function pricingJsonLd() {
+  const url = absoluteUrl("/pricing");
+  return {
+    "@context": "https://schema.org",
+    "@graph": (["pro", "team"] as const).map((id) => {
+      const plan = PAID_PLANS[id];
+      return {
+        "@type": "Product",
+        "@id": `${url}#${id}`,
+        name: `${site.name} ${plan.name}`,
+        description: plan.summary,
+        brand: { "@type": "Brand", name: site.name },
+        url,
+        offers: (["USD", "INR"] as const).map((currency) => ({
+          "@type": "Offer",
+          price: (plan.prices[currency].amountMinor / 100).toFixed(2),
+          priceCurrency: currency,
+          availability: "https://schema.org/InStock",
+          url,
+          ...(currency === "INR" ? { eligibleRegion: { "@type": "Country", name: "IN" } } : {}),
+        })),
+      };
+    }),
+  };
+}
+
 function CellValue({ value }: { value: Cell }) {
   if (value === true) {
     return (
@@ -144,6 +171,11 @@ export default async function PricingPage({
 
   return (
     <div className="page-frame pt-16 pb-8 sm:pt-24">
+      <script
+        type="application/ld+json"
+        // Built from config/pricing.ts; "<" is escaped so the JSON can never close the tag.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd()).replace(/</g, "\\u003c") }}
+      />
       <header className="max-w-3xl">
         <p className="label-mono text-muted">Pricing</p>
         <h1 className="mt-4 text-40 font-semibold sm:text-64">

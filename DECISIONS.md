@@ -21,8 +21,11 @@ Choices the specification leaves open, places where current tool documentation o
 - **Fonts are self-hosted files loaded with `next/font/local`.** The same woff2 files serve the site through next/font and the sandboxed preview iframes through plain `@font-face`, so previews and the site never diverge and builds need no network access; the SIL Open Font License texts ship in `public/fonts/licenses/`.
 - **OG images use TTF copies of the fonts in `assets/fonts/`, imported as bytes.** Satori reads TTF, OTF and WOFF but not WOFF2, and a Turbopack `bytes` rule embeds the files so the image routes never touch a filesystem.
 
+- **Lighthouse runs through `pnpm dlx lighthouse@13.5.0`, not as a dependency.** Section 13 sets Lighthouse targets; installed as a dev dependency, Lighthouse brings `@opentelemetry/api`, which satisfies an optional peer of Next.js and switches the project to different builds of Next, Clerk and OpenNext.
 - **`@clerk/ui` is pinned and passed to `ClerkProvider`.** Clerk's documented way to keep styling that refers to its markup safe across UI releases; the UI then ships with the auth pages' bundle instead of loading from Clerk's CDN, and only those pages load it.
 - **`@clerk/testing` is a dev dependency.** End-to-end tests must sign in to the Clerk development instance, and Clerk's official Playwright helpers supply the testing token that its bot protection requires; nothing in section 6 does that.
+
+- **CSS never nests a `min()` or `max()` with percentages inside `calc()`.** Lightning CSS 1.33, which compiles every stylesheet here (inside Turbopack and Tailwind), crashes the process while simplifying such an expression; holding the `min()` in a custom property avoids it.
 
 ## Platform
 
@@ -69,6 +72,14 @@ Choices the specification leaves open, places where current tool documentation o
 - **Segmented controls on the load path are a small radiogroup (`components/ui/segments.tsx`) with Radix ToggleGroup's markup and keyboard model.** Radix ToggleGroup cost several kilobytes on every browse page; it remains in the parts that load on intent.
 - **Clerk loads only on /sign-in, /sign-up, /account and checkout (owner rule, 2026-10-27).** Browse, design and other public pages never load Clerk's client; signed-in features there call our API, where the server-side auth checks decide.
 
+- **The hero wall shows the designs' sandboxed static renderings, not their interactive previews.** The browser renders each design's real markup and the theme reaches it live, without booting a React app per tile, which would sink the home page's Lighthouse score.
+- **The hero wall has its own pause button.** Pausing only on hover leaves keyboard and touch users no way to stop motion that lasts longer than five seconds (WCAG 2.2.2).
+- **Hero wall thumbnails load from `data-src` near the viewport once the page is idle.** Native lazy loading starts too far ahead and would fetch every tile behind the headline, which is the LCP element.
+- **The hero wall's styles live in the site stylesheet, not a CSS module.** Every page prefetches the home route through the logo link, and a module's stylesheet would be preloaded, unused, on all of them (which Chrome reports as a warning).
+- **The home page's pricing teaser shows dollar prices with the India prices beside them and links to /pricing.** The home page is static, so it cannot read the visitor's country the way /pricing does.
+
+- **Lighthouse on 2026-10-27 (mobile, production build served locally): Accessibility, Best Practices and SEO 100 on /, /designs and a design page; Performance 94, 97 and 95; CLS 0 and TBT under 200 ms everywhere; LCP 3.0 s, 2.6 s and 2.6 s against the 2.0 s target.** Under Lighthouse's simulated 1.6 Mbps link the React and Next.js runtime (about 136 kB gzipped) and the preloaded fonts arrive before the headline paints. Inlining the CSS (`experimental.inlineCss`) made /designs and design pages slower by enlarging every HTML response, and not preloading JetBrains Mono delayed the largest paint on pages with mono labels near the top, so both were reverted; LCP stays an open Phase 5 target the owner time-boxed.
+
 ## Accounts
 
 - **Inside the Clerk route group, Clerk's client also keeps the `iu_signed_in` hint in sync.** Clerk finishes sign-in with a client-side navigation that the middleware never sees as a page load.
@@ -98,6 +109,23 @@ Choices the specification leaves open, places where current tool documentation o
 - **Free registry items stay static in `public/r/`.** They are served before the Worker runs, so free installs are neither rate-limited nor counted.
 - **Every download adds `theme.css` and writes the Theme Lab tokens into `component.html`.** The zip then matches what the design page copies, with the default tokens when no theme is given.
 - **Bookmarks merge once, then the account wins.** The first signed-in visit merges a browser's local bookmarks into the account; after that the account's list is the source of truth and every toggle is mirrored to it.
+
+## Docs and content
+
+- **Docs and changelog code is highlighted by a local rehype plugin at build time.** MDX output stays static HTML, and no highlighter ships to the Worker or the browser.
+- **`%SITE_URL%` in a docs code fence becomes `NEXT_PUBLIC_SITE_URL` when the page renders.** The components.json snippet then stays exact on every deployment.
+- **Docs titles and descriptions live in `lib/docs.ts`, not in the MDX files.** Navigation, metadata, the sitemap and llms.txt read one list without compiling MDX.
+- **Each changelog entry is `content/changelog/YYYY-MM-DD-topic.mdx` with an exported `metadata` object, collected with `import.meta.glob`.** Adding an entry is adding one file, which is what BATCH.md asks for after each batch.
+- **Docs pages are titled "<Page> · Docs".** "License · Docs" never clashes with the /license page's title.
+- **The CLI docs show the plain URL form of the registry entry for free installs.** With the header form from section 10, the shadcn CLI refuses to run until `ILOVEUI_TOKEN` is set, even for free designs; Pro users get the header form on /account.
+
+## Legal and SEO
+
+- **The legal pages keep the owner's full refund within 14 days.** Dodo Payments' merchant terms describe refunds as enabled for 7 days by default; the promise follows section 1, and the refund route asks Dodo for each refund within the 14 days.
+- **The terms cap liability at the amount paid for the license.** It is the usual limit for a one-time digital purchase; the owner should confirm it before launch.
+- **The contact and privacy pages promise no response times.** Section 1 sets none, so the pages say every email is answered without a deadline the owner never set.
+- **llms.txt shows the plain URL registry form for free installs.** The header form makes the shadcn CLI refuse to run while `ILOVEUI_TOKEN` is empty.
+- **Collections only list designs that genuinely fit.** With eight designs, the product page belongs to no set yet; a set with fewer than six designs says so honestly.
 
 ## Catalog pipeline
 
@@ -131,6 +159,8 @@ Choices the specification leaves open, places where current tool documentation o
 
 - **End-to-end tests run against two targets, one after the other on port 3000.** Everything runs against `pnpm preview` (the production build in the local Workers runtime) except the local purchase journey in `*.dev.spec.ts`, which needs the development-only LocalProvider and therefore runs against `pnpm dev`.
 - **Development-target specs run one at a time, after a warm-up.** They share the dev server's local D1 file (some specs also write to it through wrangler) and a rate-limited Clerk development instance, and purchases failed intermittently when they ran in parallel; the warm-up loads each page they drive first, because a click that lands before a cold page hydrates does nothing.
+- **`pnpm lighthouse` checks the section 13 targets outside `pnpm gates`.** Lab scores move with machine load, so a separate command against `pnpm preview` reports them without making every gate run flaky; Total Blocking Time stands in for INP, which needs real interactions.
+- **`pnpm test:e2e` clears local rate-limit windows once before any server starts.** The suite's anonymous downloads share one IP and an hourly limit, and resetting from inside parallel test workers made their writes to the local database collide.
 - **The build check looks for a code-only marker.** `scripts/check-build.ts` fails the preview or deploy if the string `iloveui-local-provider`, which exists only in LocalProvider code, appears anywhere in the production output.
 - **The forbidden-words gate reads its lists from CLAUDE.md.** `scripts/check-forbidden.ts` (part of `pnpm lint`) derives the hype words, placeholder words and visual-pattern names from sections 7.1 and 16 at runtime, so no file outside CLAUDE.md has to spell them out.
 - **Site accessibility checks add axe's best-practice rules to WCAG 2.2 AA.** They are closer to Lighthouse's accessibility audit; preview iframes are excluded there and audited on their own preview URLs.

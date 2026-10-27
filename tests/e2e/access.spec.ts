@@ -1,4 +1,3 @@
-import { execFileSync } from "node:child_process";
 import { expect, test } from "@playwright/test";
 import { registryItemSchema } from "shadcn/schema";
 import { readZip } from "@/lib/zip";
@@ -83,24 +82,6 @@ test.describe("Pro source stays locked for anonymous and invalid-token requests"
 });
 
 test.describe("free designs are open to everyone", () => {
-  // Anonymous downloads share one per-IP hourly window on this machine; start each run with a fresh one.
-  test.beforeAll(() => {
-    execFileSync(
-      "pnpm",
-      [
-        "exec",
-        "wrangler",
-        "d1",
-        "execute",
-        "iloveui-db",
-        "--local",
-        "--command",
-        "DELETE FROM rate_limits WHERE key LIKE 'download:ip:%'",
-      ],
-      { stdio: "ignore" },
-    );
-  });
-
   for (const design of FREE) {
     test(`${design.slug}: registry item and download`, async ({ request }) => {
       const item = await request.get(`/r/${design.slug}.json`);

@@ -1,3 +1,5 @@
+import path from "node:path";
+import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
@@ -23,4 +25,10 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// MDX for the docs and changelog in content/. Turbopack takes plugins only as serializable values, so the local
+// rehype plugin (heading ids, the on-page contents, build-time code highlighting) is passed as an absolute path.
+const withMDX = createMDX({
+  options: { rehypePlugins: [path.join(process.cwd(), "lib/mdx/rehype-docs.mjs")] },
+});
+
+export default withMDX(nextConfig);

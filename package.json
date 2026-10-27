@@ -23,7 +23,8 @@
     "design:check": "node --disable-warning=DEP0040 --import tsx scripts/design-check.ts",
     "db:generate": "drizzle-kit generate",
     "cf-typegen": "CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV=false wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts > /dev/null",
-    "gates": "tsx scripts/gates.ts"
+    "gates": "tsx scripts/gates.ts",
+    "lighthouse": "tsx scripts/lighthouse.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "7.9.20",

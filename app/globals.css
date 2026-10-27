@@ -384,3 +384,133 @@
     width: var(--code-gutter, 3ch);
   }
 }
+
+/* The home hero wall (spec 7.4). Global rather than a CSS module: other pages prefetch the home route, and a
+   module's stylesheet would then be preloaded on pages that never use it. */
+
+/* The home hero wall (spec 7.4): the only continuous motion on the site. Columns of live thumbnails drift
+   vertically at different speeds, transform only, and pause on hover, focus, the pause button, offscreen and in a
+   hidden tab. Under prefers-reduced-motion the wall is a static grid. */
+
+.hero-wall {
+  --wall-gap: 16px;
+  --wall-pad: 16px;
+  /* Column width keeps every thumbnail iframe at least 400px wide (it renders at 200% and scales to 50%), so the
+     designs show their real small-screen layout, never a squeezed one. The last column is cut by the edge on
+     purpose: the wall bleeds off the page. */
+  --wall-column: clamp(200px, (100cqw - 72px) / 3.6, 360px);
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  gap: var(--wall-gap);
+  padding-inline-start: var(--wall-pad);
+  height: 460px;
+  overflow: clip;
+  background-color: var(--color-canvas);
+}
+
+@media (min-width: 640px) {
+  .hero-wall {
+    --wall-pad: 24px;
+    height: 540px;
+  }
+}
+
+/* Wide screens: the wall fills the hero to the right of the headline panel (columns 6 to 12 of the frame) and bleeds
+   to the viewport edge. */
+@media (min-width: 1024px) {
+  .hero-wall {
+    /* The page frame's content width. Kept in a custom property: Lightning CSS 1.33 (inside Turbopack) crashes when
+       it simplifies a min() with percentages nested in this calc(). */
+    --hero-frame: min(100% - 3rem, 90rem);
+    position: absolute;
+    inset-block: 0;
+    inset-inline-end: 0;
+    inset-inline-start: calc((100% - var(--hero-frame)) / 2 + (var(--hero-frame) + 24px) * 5 / 12 - 24px);
+    height: auto;
+  }
+}
+
+.hero-wall-column {
+  flex: none;
+  width: var(--wall-column);
+}
+
+/* Columns that would show less than a sliver are not rendered, so keyboard focus never lands on a hidden tile. */
+@container (max-width: 487px) {
+  .hero-wall-column:nth-child(n + 3) {
+    display: none;
+  }
+}
+@container (max-width: 703px) {
+  .hero-wall-column:nth-child(n + 4) {
+    display: none;
+  }
+}
+
+.hero-wall-track {
+  position: relative;
+  /* Phones get a slower drift than wide screens: the same distance covers more of a small viewport. */
+  animation: hero-wall-drift calc(var(--column-seconds, 90) * 1.3s) linear var(--column-start, 0s) infinite;
+  will-change: transform;
+}
+
+@media (min-width: 1024px) {
+  .hero-wall-track {
+    animation-duration: calc(var(--column-seconds, 90) * 1s);
+  }
+}
+
+.hero-wall-reverse {
+  animation-direction: reverse;
+}
+
+/* Each set carries its trailing gap, so the track is exactly two sets tall and -50% lands on the seam. */
+.hero-wall-set {
+  display: flex;
+  flex-direction: column;
+  gap: var(--wall-gap);
+  padding-block-end: var(--wall-gap);
+}
+
+@keyframes hero-wall-drift {
+  to {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.hero-wall[data-paused] .hero-wall-track,
+.hero-wall[data-offscreen] .hero-wall-track,
+.hero-wall[data-tab-hidden] .hero-wall-track,
+.hero-wall:focus-within .hero-wall-track {
+  animation-play-state: paused;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-wall:hover .hero-wall-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Thumbnails fade in once loaded instead of flashing a blank frame. */
+.hero-wall-frame {
+  opacity: 0;
+  transition: opacity 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hero-wall-frame[data-loaded] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-wall-track {
+    animation: none;
+    will-change: auto;
+  }
+  .hero-wall-column {
+    margin-block-start: var(--static-offset, 0px);
+  }
+  .hero-wall-clone,
+  .hero-wall-set > :nth-child(n + 4) {
+    display: none;
+  }
+}

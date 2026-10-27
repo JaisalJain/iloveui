@@ -16,10 +16,14 @@ function files(target: string): string[] {
 
 /** Lines long and specific enough that finding one elsewhere means the source leaked. */
 export function distinctiveLines(source: string): string[] {
-  return source
-    .split("\n")
-    .map((line) => line.trim())
-    .filter((line) => line.length >= 28 && !/^(import |export |\/\/|\*|<\/|\)|\}|"use client")/.test(line));
+  return (
+    source
+      .split("\n")
+      .map((line) => line.trim())
+      .filter((line) => line.length >= 28 && !/^(import |export |\/\/|\*|<\/|\)|\}|"use client")/.test(line))
+      // A lone string of class names is shared vocabulary between designs and the site, not reusable source.
+      .filter((line) => !/^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/.test(line))
+  );
 }
 
 describe("Pro source never reaches public artifacts", () => {

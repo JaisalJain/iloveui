@@ -34,7 +34,9 @@ function distinctiveLines(dir: string): string[] {
       .map((line) => line.trim())
       .filter((line) => line.length >= 28 && !/^(import |export |\/\/|\*|<\/|\)|\}|"use client")/.test(line))
       // Public by nature: the HTML document title is the design's name, and icon geometry comes from lucide.
-      .filter((line) => !/^<(title|path|circle|rect|line|polyline|polygon)[ >]/.test(line)),
+      .filter((line) => !/^<(title|path|circle|rect|line|polyline|polygon)[ >]/.test(line))
+      // A lone string of class names is shared vocabulary between designs and the site, not reusable source.
+      .filter((line) => !/^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/.test(line)),
   );
 }
 

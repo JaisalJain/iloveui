@@ -8,13 +8,16 @@ const SOURCE_FILES = ["component.tsx", "component.html", "ai-prompt.md"] as cons
 // Responses also carry site markup: the page <title> (the design's public name) and lucide icon geometry the site
 // itself renders. Those lines are public, not source, so they are left out of the comparison.
 const PUBLIC_MARKUP = /^<(title|path|circle|rect|line|polyline|polygon|ellipse)[\s>]/;
+// A line that is only a string of class names (`"flex items-center gap-3",`) is shared vocabulary: the site and
+// other designs use the same strings, and nobody can rebuild a design from one.
+const CLASS_LIST = /^(["\'`])[\w:\[\]()\/.%#&>~=+!@,* -]+\1,?$/;
 
 function distinctiveLines(source: string): string[] {
   return source
     .split("\n")
     .map((line) => line.trim())
     .filter((line) => line.length >= 28 && !/^(import |export |\/\/|\*|<\/|\)|\}|"use client")/.test(line))
-    .filter((line) => !PUBLIC_MARKUP.test(line));
+    .filter((line) => !PUBLIC_MARKUP.test(line) && !CLASS_LIST.test(line));
 }
 
 function tierOf(folder: DesignFolder): string {

@@ -1,0 +1,74 @@
+Every design comes with a prompt written for coding agents. It tells the agent what the component is, how its props work, which tokens it reads and how to wire it into your app, so the agent integrates the design instead of rewriting it.
+
+## What a prompt contains
+
+Each prompt is Markdown with the same six sections, written for that design:
+
+<DataTable
+  caption="Sections of an AI prompt"
+  head={["Section", "What it says"]}
+  monoFirst={false}
+  rows={[
+    [
+      "Component",
+      "What the design is, how it is laid out and what its one signature interaction does, including its reduced-motion behavior.",
+    ],
+    ["Props", "Every prop with its type, default and purpose, plus the shapes of any data types it takes."],
+    ["Tokens", "Which --iu-* variables the design reads and where each one shows up."],
+    [
+      "Dependencies",
+      "The runtime packages it imports (react, motion, lucide-react) and the Tailwind version it needs.",
+    ],
+    [
+      "Integration steps",
+      "Numbered steps from install to real data: where to render it and which props to replace first.",
+    ],
+    [
+      "Customization ideas",
+      "Changes that keep the design's character, such as different data, an extra column or another density.",
+    ],
+  ]}
+/>
+
+When you copy a prompt from a design page, a seventh section, **Theme tokens**, is added with the CSS for your current Theme Lab values, so the agent adds your brand rather than the defaults.
+
+## Getting a prompt
+
+- **Copy AI prompt** on any design page puts the prompt and your tokens on the clipboard. Free designs work for everyone; Pro designs unlock with Pro or Team.
+- Every download includes the prompt as `ai-prompt.md`, next to the `theme.css` with your tokens.
+
+## Using it with a coding agent
+
+The prompt works with any agent that reads Markdown, such as Claude Code, Cursor or GitHub Copilot. The most reliable order is:
+
+1. Install the component first, so the agent edits real code instead of retyping it:
+
+```bash
+npx shadcn@latest add @iloveui/gridline-hero
+```
+
+2. Paste the prompt, then say what you want, with real file names and data:
+
+```text
+Use the iloveui prompt below to add Gridline hero to app/page.tsx.
+Feed `releases` from getRecentDeploys() in lib/deploys.ts and keep exactly one primary action.
+
+<paste the copied prompt here>
+```
+
+3. Review the diff. A good result keeps the component's markup and only changes props, data and placement.
+
+<Callout title="Let the agent install it">
+  Agents that can run commands can call the shadcn CLI themselves. Point them at the install command on the design page
+  and, for Pro designs, make sure `ILOVEUI_TOKEN` is set in the environment they run in. The shadcn MCP server reads the
+  same `components.json`, so an agent connected to it can search and install from `@iloveui` too.
+</Callout>
+
+## llms.txt
+
+[/llms.txt](/llms.txt) is a plain-text index of iloveui for language models: the catalog with each design's install command, and links to these docs. Give it to an agent when it needs to choose a design for you:
+
+```text
+Read %SITE_URL%/llms.txt, pick the pricing design that best fits a two-plan SaaS,
+and install it with the shadcn CLI.
+```

@@ -1,6 +1,16 @@
 import type { Metadata } from "next";
-import { HomeShortcutHints } from "@/components/site/home-shortcut-hints";
+import { CategoryIndex } from "@/components/home/category-index";
+import { FreePicks } from "@/components/home/free-picks";
+import { Hero } from "@/components/home/hero";
+import { catalogStats, categoryIndex, freePicks, interleavedDesigns, wallColumns } from "@/components/home/home-data";
+import { HowItWorks } from "@/components/home/how-it-works";
+import { LatestChanges } from "@/components/home/latest-changes";
+import { PricingTeaser } from "@/components/home/pricing-teaser";
+import { ValueStrip } from "@/components/home/value-strip";
+import { getChangelogEntries } from "@/lib/changelog";
 import { site } from "@/lib/site";
+
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: { absolute: `${site.name} · ${site.tagline}` },
@@ -9,15 +19,26 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const stats = catalogStats();
+  const picks = freePicks();
+  const designs = interleavedDesigns();
+  // The receipt and CLI examples use a real free design, so every number shown is one a visitor can check.
+  const sample = picks[0] ?? designs[0];
   return (
-    <section className="page-frame pt-24 pb-16 sm:pt-32">
-      <h1 className="max-w-4xl text-40 font-semibold sm:text-64 lg:text-96">
-        {"UI you'll "}
-        <em className="font-serif font-normal tracking-normal">actually</em>
-        {" ship."}
-      </h1>
-      <p className="mt-6 max-w-xl text-20 text-muted">{site.description}</p>
-      <HomeShortcutHints />
-    </section>
+    <>
+      <Hero columns={wallColumns()} total={stats.total} free={stats.free} />
+      <ValueStrip sample={sample} />
+      <CategoryIndex categories={categoryIndex()} total={stats.total} target={stats.target} />
+      {picks.length > 0 ? <FreePicks designs={picks} freeTotal={stats.free} /> : null}
+      {sample ? (
+        <HowItWorks
+          query={picks.length > 0 ? "free" : sample.category}
+          results={(picks.length > 0 ? picks : designs).slice(0, 3)}
+          installSlug={sample.slug}
+        />
+      ) : null}
+      <PricingTeaser />
+      <LatestChanges entries={getChangelogEntries().slice(0, 3)} />
+    </>
   );
 }

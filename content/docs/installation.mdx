@@ -1,0 +1,123 @@
+A design is two pieces: the ten `--iu-*` tokens, added once per project, and the component itself. This page adds both by hand. The [CLI](/docs/cli) does the same in one command.
+
+## Requirements
+
+- **React designs**: React 19 and Tailwind CSS 4.1 or later, in Next.js, Vite or any React setup that runs Tailwind v4.
+- **HTML designs**: nothing. The file loads Tailwind's browser build so it opens on its own; in a project, your own Tailwind v4 build replaces that script.
+- **Dependencies**: a design can depend on `react`, `motion` and `lucide-react`, nothing else. Its receipt bar lists exactly which ones it uses, or "0 deps".
+
+## 1. Add the tokens
+
+Every design reads its colors, radius, font and density from CSS variables. Add them once and every design you paste picks them up.
+
+Open any design page, choose the **React** tab and copy `theme.css`. It holds your Theme Lab values: light values on `:root` and dark values on `.dark`. With the default theme it reads:
+
+```css title="theme.css"
+/* iloveui theme tokens from Theme Lab. Import once in your global stylesheet. */
+:root {
+  --iu-accent: #ff4d1f;
+  --iu-accent-foreground: #111111;
+  --iu-background: #fafafa;
+  --iu-surface: #ffffff;
+  --iu-border: #e4e4e7;
+  --iu-foreground: #18181b;
+  --iu-muted: #52525b;
+  --iu-radius: 10px;
+  --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --iu-density: 1;
+}
+
+.dark {
+  --iu-accent: #ff4d1f;
+  --iu-accent-foreground: #111111;
+  --iu-background: #09090b;
+  --iu-surface: #18181b;
+  --iu-border: #2e2e33;
+  --iu-foreground: #fafafa;
+  --iu-muted: #a1a1aa;
+  --iu-radius: 10px;
+  --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --iu-density: 1;
+}
+```
+
+Save it next to your global stylesheet and import it after Tailwind:
+
+```css title="app/globals.css"
+@import "tailwindcss";
+@import "./theme.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+If you use the CLI, `npx shadcn@latest add @iloveui/tokens` writes the same blocks into the stylesheet named in your `components.json`. [Theming](/docs/theming) explains every token.
+
+## 2. Add a React design
+
+1. On the design page, open the **React** tab and copy `component.tsx` (or press <Kbd>C</Kbd>).
+2. Save it in your project. The CLI uses `components/iloveui/<slug>.tsx`, so that path keeps both routes interchangeable.
+3. Install the dependencies the receipt bar lists:
+
+```bash
+npm install motion lucide-react
+```
+
+4. Render it. Every component has a named and a default export, and every prop has a default, so it renders with realistic demo content before you pass anything:
+
+```tsx title="app/page.tsx"
+import { GridlineHero } from "@/components/iloveui/gridline-hero";
+
+export default function Page() {
+  return <GridlineHero headline="Ship on Fridays without the dread." ctaLabel="Start a workspace" ctaHref="/signup" />;
+}
+```
+
+Components that hold state or animate start with `"use client"`, so they drop into Next.js server components as they are. The props each design takes are listed in its AI prompt, under Props.
+
+## 3. Or add an HTML design
+
+`component.html` is a complete page: open it in a browser and it works. To move it into an existing site:
+
+1. Copy the markup between `<!-- iloveui:component:start -->` and `<!-- iloveui:component:end -->`.
+2. Copy the `<script>` after it, if there is one. It is plain JavaScript scoped to the design's root element.
+3. Copy the token block between `/* iloveui:tokens:start */` and `/* iloveui:tokens:end */` into your stylesheet, once per site. Copying from the **HTML** tab writes your Theme Lab values into that block.
+
+<Callout title="Tailwind in production">
+  The browser build of Tailwind is for trying a file out. In a real site, compile Tailwind v4 as usual so the classes in
+  the markup are generated at build time.
+</Callout>
+
+## Fonts
+
+`--iu-font` names a font stack, it does not load a font. The default is Inter Tight, so load it the way your stack prefers, for example with `next/font/google`, then point the token at it:
+
+```tsx title="app/layout.tsx"
+import { Inter_Tight } from "next/font/google";
+
+const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight" });
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={interTight.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+```css title="app/globals.css"
+:root {
+  --iu-font: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+}
+```
+
+Some families also use Tailwind's `font-serif` or `font-mono` for one accent line or for numbers. They follow whatever your project defines; the previews map them to Instrument Serif and JetBrains Mono.
+
+## Dark mode
+
+Designs switch to dark when an ancestor has the `dark` class, the convention shadcn/ui and next-themes use. Two things make that work:
+
+- the `.dark` block of your tokens, which swaps the values;
+- the `@custom-variant dark (&:where(.dark, .dark *));` line, which points Tailwind's `dark:` utilities at the class instead of the system setting. The CLI adds an equivalent line when your stylesheet has none.
+
+Dark is designed, not inverted: surfaces step lighter with elevation and borders replace shadows, so check both modes in the preview before you ship.

@@ -37,6 +37,15 @@ function mergeAudits() {
 
 // The test list is generated from the catalog, so it must exist before Playwright collects tests.
 if (run("pnpm", ["build-registry", "--no-r2"]) !== 0) process.exit(1);
+// Rate-limit windows left by earlier runs would throttle the suite's anonymous downloads (one IP on this machine,
+// 60 an hour). Clear them once, before any server holds the local database.
+if (
+  run("pnpm", ["exec", "wrangler", "d1", "execute", "iloveui-db", "--local", "--command", "DELETE FROM rate_limits"], {
+    CI: "1",
+  }) !== 0
+) {
+  process.exit(1);
+}
 rmSync(AUDITS_DIR, { recursive: true, force: true });
 
 const hasDevSpecs = readdirSync("tests/e2e", { recursive: true }).some((file) => String(file).endsWith(".dev.spec.ts"));

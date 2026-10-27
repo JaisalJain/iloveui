@@ -1,0 +1,57 @@
+iloveui is a catalog of hand-built UI designs: complete hero sections, pricing tables, dashboards, forms, agent consoles and more, each one ready to paste into a real app. Every design comes in two formats, re-themes to your brand, and lists exactly what it costs your bundle.
+
+## What a design is
+
+A design is one self-contained piece of product UI, built in one of eight style families and designed for light and dark, from 375 to 1440 pixels wide. It ships as:
+
+- **React + Tailwind v4**: a single `component.tsx` with typed props and defaults. Paste it into any Next.js or Vite app.
+- **HTML + Tailwind v4**: a `component.html` with the same markup and vanilla JavaScript for the interactive parts. No framework.
+
+Both read the same ten `--iu-*` CSS variables, so one set of tokens themes every design you use. The only runtime dependencies a design can have are `react`, `motion` and `lucide-react`.
+
+Each design page shows its receipts in a row of mono labels: the gzipped size of the component, its runtime dependencies (or "0 deps"), the axe accessibility result and whether it supports reduced motion.
+
+## How the pieces fit
+
+1. **Browse.** [Designs](/designs) filters by category, Free or Pro, style family, motion and format, and keeps the filters in the URL. Press <Kbd>⌘</Kbd> <Kbd>K</Kbd> (or <Kbd>Ctrl</Kbd> <Kbd>K</Kbd>) to search from anywhere.
+2. **Preview.** The stage on each design page renders the live component. Switch between 375, 768 and 1440 pixels or Full, drag the handle to any width, flip light and dark, step through its states and press Replay to watch its motion again.
+3. **Theme.** Theme Lab sits at the bottom of the browse and design pages. Pick an accent, a neutral, a radius, a font and a density, and every preview changes with you. See [Theming](/docs/theming).
+4. **Take the code.** Copy a file from the React or HTML tab, install with the shadcn CLI, download a zip, or copy the AI prompt for your coding agent. Copies and downloads carry your Theme Lab tokens.
+
+<DataTable
+  caption="Ways to take a design"
+  head={["Way", "What you get"]}
+  monoFirst={false}
+  rows={[
+    ["Copy", "The file from the open tab. The React tab also has a theme.css with your tokens."],
+    ["CLI", "npx shadcn@latest add @iloveui/<slug> writes the component and installs its dependencies."],
+    ["Download", "A zip with component.tsx, component.html, ai-prompt.md, LICENSE.txt and your theme.css."],
+    ["AI prompt", "Markdown that tells a coding agent how to integrate the design, ending with your tokens."],
+  ]}
+/>
+
+[Installation](/docs/installation) covers copying, [CLI](/docs/cli) the terminal, and [AI prompts](/docs/ai-prompts) working with agents.
+
+## Free and Pro
+
+Free designs are free forever, for personal and commercial work, in every format. Pro designs preview fully for everyone; their code, AI prompt and download unlock with one lifetime payment for Pro or Team. [Pricing](/pricing) has the details, and the [license summary](/docs/license) says what you can build.
+
+## Keyboard
+
+<DataTable
+  caption="Keyboard shortcuts"
+  head={["Keys", "Action"]}
+  rows={[
+    ["⌘ K / Ctrl K", "Open search"],
+    ["/", "Focus the search field on the page, or open search"],
+    ["T", "Switch between light and dark"],
+    ["C", "Copy the open code tab on a design page"],
+    ["?", "Show every shortcut"],
+  ]}
+/>
+
+## Start here
+
+- New to the catalog: [add your first design](/docs/installation).
+- Installing from a terminal or CI: [set up the CLI](/docs/cli).
+- Matching your brand: [theme every design at once](/docs/theming).

@@ -1,0 +1,24 @@
+{
+  "slug": "gumdrop-buttons",
+  "name": "Gumdrop buttons",
+  "category": "cards-buttons",
+  "styleFamily": "playful",
+  "tier": "free",
+  "description": "Chunky candy buttons that squash on press and spring back, hold their width while dots bounce, and draw a check on success, plus a streak card.",
+  "tags": [
+    "buttons",
+    "split-button",
+    "menu-button",
+    "loading-button",
+    "icon-button",
+    "streak",
+    "habit-tracker",
+    "playful"
+  ],
+  "states": ["default", "hover", "focus", "active", "disabled", "loading", "success"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.1",
+  "createdAt": "2026-10-26"
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "gridline-hero",
+  "name": "Gridline hero",
+  "category": "hero",
+  "styleFamily": "swiss-minimal",
+  "tier": "free",
+  "description": "A strict-grid hero beside a live release log: the in-flight deploy's timer ticks, a hairline fills and the row flips to Live.",
+  "tags": ["hero", "release-log", "devtools", "grid", "table", "landing"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-26"
+}

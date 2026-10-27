@@ -1,0 +1,15 @@
+{
+  "slug": "tally-ops-dashboard",
+  "name": "Tally ops dashboard",
+  "category": "dashboards",
+  "styleFamily": "data-dense",
+  "tier": "pro",
+  "description": "A payments ops shell with a collapsible rail. Change the date range and every sparkline redraws while its KPI counts to the new figure.",
+  "tags": ["dashboard", "kpi", "sparkline", "payments", "sidebar", "date-range", "table", "fintech"],
+  "states": ["default", "loading", "empty"],
+  "hasMotion": true,
+  "dependencies": ["motion", "lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-26"
+}

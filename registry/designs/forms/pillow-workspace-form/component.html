@@ -1,0 +1,1364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pillow workspace form · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <main class="flex min-h-dvh w-full items-center justify-center bg-(--iu-background) px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full">
+        <!-- iloveui:component:start -->
+        <div
+          data-pillow-workspace-form
+          data-status="idle"
+          class="group/pw @container w-full font-(family-name:--iu-font) text-(--iu-foreground) [--pw-edge:color-mix(in_oklab,var(--iu-foreground)_80%,var(--iu-accent))] [--pw-focus:color-mix(in_oklab,var(--iu-accent)_82%,var(--iu-foreground))] [--pw-halo:color-mix(in_oklab,var(--iu-accent)_22%,transparent)] [--pw-lifted:var(--iu-surface)] [--pw-line:color-mix(in_oklab,var(--iu-foreground)_50%,transparent)] [--pw-pop:linear(0,0.085_4.5%,0.275_9.1%,0.495_13.6%,0.698_18.2%,0.859_22.7%,0.973_27.3%,1.041_31.8%,1.081_40.9%,1.056_50%,1.022_59.1%,1.001_68.2%,0.994_77.3%,0.996_90.9%,1)] [--pw-sh-btn-hover:inset_0_1px_0_color-mix(in_oklab,white_30%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_10%,transparent),0_2px_4px_color-mix(in_oklab,black_12%,transparent),0_14px_26px_-10px_color-mix(in_oklab,var(--iu-accent)_70%,transparent)] [--pw-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_30%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_10%,transparent),0_1px_2px_color-mix(in_oklab,black_12%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_70%,transparent)] [--pw-sh-card:0_1px_1px_color-mix(in_oklab,black_4%,transparent),0_6px_12px_-4px_color-mix(in_oklab,black_5%,transparent),0_32px_64px_-24px_color-mix(in_oklab,black_18%,transparent)] [--pw-sh-knob:0_1px_2px_color-mix(in_oklab,black_20%,transparent),0_2px_6px_-1px_color-mix(in_oklab,black_16%,transparent)] [--pw-sh-lift:inset_0_0_0_0_transparent,0_1px_2px_color-mix(in_oklab,black_6%,transparent),0_12px_24px_-12px_color-mix(in_oklab,black_24%,transparent)] [--pw-sh-pop:0_2px_4px_color-mix(in_oklab,black_4%,transparent),0_18px_40px_-12px_color-mix(in_oklab,black_24%,transparent)] [--pw-sh-pressed:inset_0_2px_5px_color-mix(in_oklab,black_30%,transparent),inset_0_1px_1px_color-mix(in_oklab,black_18%,transparent),0_0_0_0_transparent,0_0_0_0_transparent] [--pw-sh-thumb:0_1px_2px_color-mix(in_oklab,black_8%,transparent),0_4px_10px_-3px_color-mix(in_oklab,black_14%,transparent)] [--pw-sh-well:inset_0_1px_3px_color-mix(in_oklab,black_9%,transparent),0_0_0_0_transparent,0_0_0_0_transparent] [--pw-spring:linear(0,0.078_5.6%,0.247_11.1%,0.438_16.7%,0.614_22.2%,0.757_27.8%,0.863_33.3%,0.936_38.9%,0.982_44.4%,1.007_50%,1.019_55.6%,1.023_61.1%,1.017_72.2%,1.009_83.3%,1)] [--pw-tint:color-mix(in_oklab,var(--iu-accent)_10%,var(--iu-surface))] [--pw-well-hover:color-mix(in_oklab,var(--iu-accent)_7%,color-mix(in_oklab,var(--iu-foreground)_3.5%,var(--iu-surface)))] [--pw-well:color-mix(in_oklab,var(--iu-accent)_4%,color-mix(in_oklab,var(--iu-foreground)_2.5%,var(--iu-surface)))] dark:[--pw-focus:color-mix(in_oklab,var(--iu-accent)_88%,var(--iu-foreground))] dark:[--pw-halo:color-mix(in_oklab,var(--iu-accent)_30%,transparent)] dark:[--pw-lifted:color-mix(in_oklab,var(--iu-foreground)_6%,var(--iu-surface))] dark:[--pw-line:color-mix(in_oklab,var(--iu-foreground)_40%,transparent)] dark:[--pw-sh-btn-hover:inset_0_1px_0_color-mix(in_oklab,white_26%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_14%,transparent),0_2px_4px_color-mix(in_oklab,black_40%,transparent),0_14px_26px_-10px_color-mix(in_oklab,var(--iu-accent)_40%,transparent)] dark:[--pw-sh-btn:inset_0_1px_0_color-mix(in_oklab,white_26%,transparent),inset_0_-2px_0_color-mix(in_oklab,black_14%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_10px_20px_-10px_color-mix(in_oklab,var(--iu-accent)_35%,transparent)] dark:[--pw-sh-card:inset_0_1px_0_color-mix(in_oklab,white_5%,transparent),0_24px_48px_-16px_color-mix(in_oklab,black_70%,transparent)] dark:[--pw-sh-knob:0_1px_2px_color-mix(in_oklab,black_50%,transparent),0_2px_6px_-1px_color-mix(in_oklab,black_40%,transparent)] dark:[--pw-sh-lift:inset_0_0_0_0_transparent,0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_12px_28px_-12px_color-mix(in_oklab,black_80%,transparent)] dark:[--pw-sh-pop:0_2px_4px_color-mix(in_oklab,black_30%,transparent),0_24px_48px_-12px_color-mix(in_oklab,black_75%,transparent)] dark:[--pw-sh-pressed:inset_0_2px_6px_color-mix(in_oklab,black_45%,transparent),inset_0_1px_1px_color-mix(in_oklab,black_30%,transparent),0_0_0_0_transparent,0_0_0_0_transparent] dark:[--pw-sh-thumb:inset_0_1px_0_color-mix(in_oklab,white_8%,transparent),0_1px_2px_color-mix(in_oklab,black_40%,transparent),0_4px_10px_-3px_color-mix(in_oklab,black_50%,transparent)] dark:[--pw-sh-well:inset_0_1px_2px_color-mix(in_oklab,black_45%,transparent),0_0_0_0_transparent,0_0_0_0_transparent] dark:[--pw-tint:color-mix(in_oklab,var(--iu-accent)_16%,var(--iu-surface))] dark:[--pw-well-hover:color-mix(in_oklab,var(--iu-accent)_5%,color-mix(in_oklab,var(--iu-background)_40%,var(--iu-surface)))] dark:[--pw-well:color-mix(in_oklab,var(--iu-accent)_3%,color-mix(in_oklab,var(--iu-background)_60%,var(--iu-surface)))]"
+        >
+          <form
+            novalidate
+            aria-labelledby="pw-title"
+            aria-describedby="pw-description"
+            class="mx-auto w-full max-w-[480px] rounded-[max(calc(var(--iu-radius)+14px),24px)] border border-(--iu-border) bg-(--iu-surface) p-[calc(20px*var(--iu-density))] shadow-(--pw-sh-card) @sm:p-[calc(32px*var(--iu-density))] dark:border-(--iu-foreground)/10"
+          >
+            <h2
+              id="pw-title"
+              class="text-[26px]/[1.15] font-semibold tracking-[-0.025em] text-balance @sm:text-[28px]/[1.1]"
+            >
+              Create your workspace
+            </h2>
+            <p id="pw-description" class="mt-2 text-[15px]/[1.55] text-pretty text-(--iu-muted)">
+              A shared home for your team’s projects, docs and decisions. You can change any of this later.
+            </p>
+
+            <div class="mt-[calc(28px*var(--iu-density))] flex flex-col gap-[calc(24px*var(--iu-density))]">
+              <div class="group/field" data-field="name">
+                <label for="pw-name" class="mb-2 block w-fit text-sm/5 font-medium text-(--iu-foreground)"
+                  >Workspace name</label
+                >
+                <div
+                  class="relative flex min-h-[max(40px,calc(48px*var(--iu-density)))] w-full items-center rounded-[max(var(--iu-radius),14px)] border border-(--pw-line) bg-(--pw-well) shadow-(--pw-sh-well) transition-[translate,background-color,border-color,box-shadow] duration-300 ease-(--pw-spring) group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:bg-(--iu-foreground)/[0.04] group-data-[disabled]/pw:shadow-none group-data-[invalid]/field:border-red-600 focus-within:-translate-y-px focus-within:border-(--pw-edge) focus-within:bg-(--pw-lifted) focus-within:shadow-(--pw-sh-lift) focus-within:ring-4 focus-within:ring-(--pw-halo) group-data-[invalid]/field:focus-within:border-red-600 group-data-[invalid]/field:focus-within:ring-red-600/15 motion-reduce:transition-none dark:group-data-[invalid]/field:border-red-400 dark:group-data-[invalid]/field:focus-within:border-red-400 dark:group-data-[invalid]/field:focus-within:ring-red-400/20 pointer-fine:hover:not-focus-within:not-disabled:not-has-disabled:bg-(--pw-well-hover)"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-monogram
+                    class="pointer-events-none absolute left-2.5 grid size-8 place-items-center rounded-[max(calc(var(--iu-radius)-2px),10px)] border border-(--iu-accent)/30 bg-(--pw-tint) text-[12px] font-semibold tracking-[0.02em] text-(--iu-foreground) transition-colors duration-200 group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:bg-transparent group-data-[disabled]/pw:text-(--iu-muted) data-[empty]:border-dashed data-[empty]:border-(--iu-foreground)/25 data-[empty]:bg-transparent motion-reduce:transition-none"
+                    >FS</span
+                  >
+                  <input
+                    id="pw-name"
+                    type="text"
+                    autocomplete="organization"
+                    maxlength="48"
+                    placeholder="e.g. Juniper Labs"
+                    value="Fernway Studio"
+                    aria-describedby="pw-name-help"
+                    aria-required="true"
+                    class="w-full self-stretch bg-transparent pr-4 pl-[52px] text-base font-medium text-(--iu-foreground) outline-none group-data-[disabled]/pw:text-(--iu-muted) placeholder:text-(--iu-muted) disabled:cursor-not-allowed"
+                  />
+                </div>
+                <p id="pw-name-help" class="mt-2 flex min-w-0">
+                  <span class="sr-only">Workspace URL: </span>
+                  <span
+                    class="inline-flex max-w-full min-w-0 items-center gap-1.5 rounded-full border border-(--iu-border) bg-(--pw-well) py-1 pr-3 pl-2.5 text-[13px]/[18px] text-(--iu-muted)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="shrink-0"
+                    >
+                      <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                    <span class="truncate"
+                      >wrenhouse.app/<span
+                        data-slug
+                        class="font-medium text-(--iu-foreground) data-[placeholder]:text-(--iu-muted)"
+                        >fernway-studio</span
+                      ></span
+                    >
+                  </span>
+                </p>
+                <p
+                  id="pw-name-error"
+                  hidden
+                  class="mt-2 flex items-start gap-1.5 text-[13px]/[18px] font-medium text-red-700 transition-opacity duration-150 group-data-[open]/field:opacity-0 motion-reduce:transition-none dark:text-red-400"
+                >
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-0.5 shrink-0"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" x2="12" y1="8" y2="12" />
+                    <line x1="12" x2="12.01" y1="16" y2="16" /></svg
+                  ><span data-message></span>
+                </p>
+              </div>
+
+              <fieldset class="min-w-0" aria-describedby="pw-size-help" data-size>
+                <legend class="mb-2 block w-fit text-sm/5 font-medium text-(--iu-foreground)">Team size</legend>
+                <div
+                  style="--pw-count: 5"
+                  class="relative grid grid-cols-[repeat(var(--pw-count),minmax(0,1fr))] rounded-full border border-(--pw-line) bg-(--pw-well) p-1 shadow-(--pw-sh-well) group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:shadow-none"
+                >
+                  <span
+                    aria-hidden="true"
+                    data-thumb
+                    style="transform: translateX(100%)"
+                    class="pointer-events-none absolute inset-y-1 left-1 w-[calc((100%-8px)/var(--pw-count))] rounded-full border border-(--pw-line) bg-(--iu-surface) shadow-(--pw-sh-thumb) transition-transform duration-[410ms] ease-(--pw-spring) group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:shadow-none motion-reduce:transition-none dark:bg-[color-mix(in_oklab,var(--iu-foreground)_12%,var(--iu-surface))]"
+                  ></span>
+                  <label
+                    class="relative flex h-10 cursor-pointer items-center justify-center rounded-full text-sm font-semibold tracking-[-0.01em] text-(--iu-muted) tabular-nums transition-[color,scale] duration-200 active:scale-[0.97] has-checked:text-(--iu-foreground) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--pw-focus) has-disabled:cursor-not-allowed has-disabled:active:scale-100 motion-reduce:transition-none @sm:text-[15px] pointer-fine:hover:not-has-disabled:text-(--iu-foreground)"
+                    ><input type="radio" name="pw-size" value="1" class="sr-only" /><span aria-hidden="true">1</span
+                    ><span class="sr-only">Just me</span></label
+                  >
+                  <label
+                    class="relative flex h-10 cursor-pointer items-center justify-center rounded-full text-sm font-semibold tracking-[-0.01em] text-(--iu-muted) tabular-nums transition-[color,scale] duration-200 active:scale-[0.97] has-checked:text-(--iu-foreground) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--pw-focus) has-disabled:cursor-not-allowed has-disabled:active:scale-100 motion-reduce:transition-none @sm:text-[15px] pointer-fine:hover:not-has-disabled:text-(--iu-foreground)"
+                    ><input type="radio" name="pw-size" value="2-10" checked class="sr-only" /><span aria-hidden="true"
+                      >2–10</span
+                    ><span class="sr-only">2 to 10 people</span></label
+                  >
+                  <label
+                    class="relative flex h-10 cursor-pointer items-center justify-center rounded-full text-sm font-semibold tracking-[-0.01em] text-(--iu-muted) tabular-nums transition-[color,scale] duration-200 active:scale-[0.97] has-checked:text-(--iu-foreground) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--pw-focus) has-disabled:cursor-not-allowed has-disabled:active:scale-100 motion-reduce:transition-none @sm:text-[15px] pointer-fine:hover:not-has-disabled:text-(--iu-foreground)"
+                    ><input type="radio" name="pw-size" value="11-50" class="sr-only" /><span aria-hidden="true"
+                      >11–50</span
+                    ><span class="sr-only">11 to 50 people</span></label
+                  >
+                  <label
+                    class="relative flex h-10 cursor-pointer items-center justify-center rounded-full text-sm font-semibold tracking-[-0.01em] text-(--iu-muted) tabular-nums transition-[color,scale] duration-200 active:scale-[0.97] has-checked:text-(--iu-foreground) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--pw-focus) has-disabled:cursor-not-allowed has-disabled:active:scale-100 motion-reduce:transition-none @sm:text-[15px] pointer-fine:hover:not-has-disabled:text-(--iu-foreground)"
+                    ><input type="radio" name="pw-size" value="51-200" class="sr-only" /><span aria-hidden="true"
+                      >51–200</span
+                    ><span class="sr-only">51 to 200 people</span></label
+                  >
+                  <label
+                    class="relative flex h-10 cursor-pointer items-center justify-center rounded-full text-sm font-semibold tracking-[-0.01em] text-(--iu-muted) tabular-nums transition-[color,scale] duration-200 active:scale-[0.97] has-checked:text-(--iu-foreground) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--pw-focus) has-disabled:cursor-not-allowed has-disabled:active:scale-100 motion-reduce:transition-none @sm:text-[15px] pointer-fine:hover:not-has-disabled:text-(--iu-foreground)"
+                    ><input type="radio" name="pw-size" value="201+" class="sr-only" /><span aria-hidden="true"
+                      >200+</span
+                    ><span class="sr-only">More than 200 people</span></label
+                  >
+                </div>
+                <p
+                  id="pw-size-help"
+                  class="mt-2 text-[13px]/[18px] text-pretty text-(--iu-muted) transition-opacity duration-150 group-data-[open]/field:opacity-0 motion-reduce:transition-none"
+                >
+                  We’ll suggest a plan that fits. Only active members are billed.
+                </p>
+              </fieldset>
+
+              <div class="group/field" data-field="role">
+                <span id="pw-role-label" class="mb-2 block w-fit text-sm/5 font-medium text-(--iu-foreground)"
+                  >Your role</span
+                >
+                <div class="relative">
+                  <button
+                    id="pw-role"
+                    type="button"
+                    role="combobox"
+                    aria-labelledby="pw-role-label"
+                    aria-haspopup="listbox"
+                    aria-expanded="false"
+                    aria-controls="pw-role-listbox"
+                    aria-describedby="pw-role-help"
+                    aria-required="true"
+                    class="relative flex min-h-[max(40px,calc(48px*var(--iu-density)))] w-full cursor-pointer items-center gap-3 rounded-[max(var(--iu-radius),14px)] border border-(--pw-line) bg-(--pw-well) px-4 text-left shadow-(--pw-sh-well) transition-[translate,background-color,border-color,box-shadow] duration-300 ease-(--pw-spring) outline-none group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:bg-(--iu-foreground)/[0.04] group-data-[disabled]/pw:shadow-none group-data-[invalid]/field:border-red-600 focus-within:-translate-y-px focus-within:border-(--pw-edge) focus-within:bg-(--pw-lifted) focus-within:shadow-(--pw-sh-lift) focus-within:ring-4 focus-within:ring-(--pw-halo) group-data-[invalid]/field:focus-within:border-red-600 group-data-[invalid]/field:focus-within:ring-red-600/15 disabled:cursor-not-allowed motion-reduce:transition-none dark:group-data-[invalid]/field:border-red-400 dark:group-data-[invalid]/field:focus-within:border-red-400 dark:group-data-[invalid]/field:focus-within:ring-red-400/20 pointer-fine:hover:not-focus-within:not-disabled:not-has-disabled:bg-(--pw-well-hover)"
+                  >
+                    <span
+                      data-value
+                      class="min-w-0 flex-1 truncate text-base font-medium text-(--iu-foreground) group-data-[disabled]/pw:text-(--iu-muted) data-[placeholder]:text-(--iu-muted)"
+                      >Design</span
+                    >
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="shrink-0 text-(--iu-muted) transition-transform duration-200 ease-(--pw-spring) group-data-[open]/field:rotate-180 motion-reduce:transition-none"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <ul
+                    id="pw-role-listbox"
+                    role="listbox"
+                    aria-labelledby="pw-role-label"
+                    hidden
+                    class="absolute inset-x-0 top-full z-30 mt-2 max-h-[min(24rem,60vh)] origin-top overflow-y-auto overscroll-contain rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) p-1.5 shadow-(--pw-sh-pop) transition-[opacity,scale] duration-150 ease-out motion-reduce:transition-none dark:border-(--iu-foreground)/12 dark:bg-(--pw-lifted) starting:scale-[0.98] starting:opacity-0"
+                  >
+                    <li
+                      id="pw-role-option-0"
+                      role="option"
+                      aria-selected="false"
+                      data-value="engineering"
+                      class="flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span data-label class="block truncate text-[15px]/5 font-medium text-(--iu-foreground)"
+                          >Engineering</span
+                        ><span class="mt-0.5 block truncate text-[13px]/[18px] text-(--iu-muted)"
+                          >Code, infrastructure and reviews</span
+                        ></span
+                      ><svg
+                        hidden
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-accent)"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </li>
+                    <li
+                      id="pw-role-option-1"
+                      role="option"
+                      aria-selected="true"
+                      data-value="design"
+                      class="flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span data-label class="block truncate text-[15px]/5 font-medium text-(--iu-foreground)"
+                          >Design</span
+                        ><span class="mt-0.5 block truncate text-[13px]/[18px] text-(--iu-muted)"
+                          >Product, brand and research</span
+                        ></span
+                      ><svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-accent)"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </li>
+                    <li
+                      id="pw-role-option-2"
+                      role="option"
+                      aria-selected="false"
+                      data-value="product"
+                      class="flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span data-label class="block truncate text-[15px]/5 font-medium text-(--iu-foreground)"
+                          >Product</span
+                        ><span class="mt-0.5 block truncate text-[13px]/[18px] text-(--iu-muted)"
+                          >Roadmaps, specs and launches</span
+                        ></span
+                      ><svg
+                        hidden
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-accent)"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </li>
+                    <li
+                      id="pw-role-option-3"
+                      role="option"
+                      aria-selected="false"
+                      data-value="operations"
+                      class="flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span data-label class="block truncate text-[15px]/5 font-medium text-(--iu-foreground)"
+                          >Operations</span
+                        ><span class="mt-0.5 block truncate text-[13px]/[18px] text-(--iu-muted)"
+                          >People, finance and support</span
+                        ></span
+                      ><svg
+                        hidden
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-accent)"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </li>
+                    <li
+                      id="pw-role-option-4"
+                      role="option"
+                      aria-selected="false"
+                      data-value="leadership"
+                      class="flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span data-label class="block truncate text-[15px]/5 font-medium text-(--iu-foreground)"
+                          >Leadership</span
+                        ><span class="mt-0.5 block truncate text-[13px]/[18px] text-(--iu-muted)"
+                          >Founders and department heads</span
+                        ></span
+                      ><svg
+                        hidden
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-accent)"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </li>
+                    <li
+                      id="pw-role-option-5"
+                      role="option"
+                      aria-selected="false"
+                      data-value="other"
+                      class="flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)"
+                    >
+                      <span class="min-w-0 flex-1"
+                        ><span data-label class="block truncate text-[15px]/5 font-medium text-(--iu-foreground)"
+                          >Something else</span
+                        ><span class="mt-0.5 block truncate text-[13px]/[18px] text-(--iu-muted)"
+                          >We’ll keep your templates general</span
+                        ></span
+                      ><svg
+                        hidden
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-accent)"
+                      >
+                        <path d="M20 6 9 17l-5-5" />
+                      </svg>
+                    </li>
+                  </ul>
+                </div>
+                <p
+                  id="pw-role-help"
+                  class="mt-2 text-[13px]/[18px] text-pretty text-(--iu-muted) transition-opacity duration-150 group-data-[open]/field:opacity-0 motion-reduce:transition-none"
+                >
+                  We’ll set up starter templates that fit how you work.
+                </p>
+                <p
+                  id="pw-role-error"
+                  hidden
+                  class="mt-2 flex items-start gap-1.5 text-[13px]/[18px] font-medium text-red-700 transition-opacity duration-150 group-data-[open]/field:opacity-0 motion-reduce:transition-none dark:text-red-400"
+                >
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-0.5 shrink-0"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" x2="12" y1="8" y2="12" />
+                    <line x1="12" x2="12.01" y1="16" y2="16" /></svg
+                  ><span data-message></span>
+                </p>
+              </div>
+
+              <div class="group/field" data-field="tz">
+                <label for="pw-tz" class="mb-2 block w-fit text-sm/5 font-medium text-(--iu-foreground)"
+                  >Time zone</label
+                >
+                <div class="relative">
+                  <div
+                    class="relative flex min-h-[max(40px,calc(48px*var(--iu-density)))] w-full items-center rounded-[max(var(--iu-radius),14px)] border border-(--pw-line) bg-(--pw-well) shadow-(--pw-sh-well) transition-[translate,background-color,border-color,box-shadow] duration-300 ease-(--pw-spring) group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:bg-(--iu-foreground)/[0.04] group-data-[disabled]/pw:shadow-none group-data-[invalid]/field:border-red-600 focus-within:-translate-y-px focus-within:border-(--pw-edge) focus-within:bg-(--pw-lifted) focus-within:shadow-(--pw-sh-lift) focus-within:ring-4 focus-within:ring-(--pw-halo) group-data-[invalid]/field:focus-within:border-red-600 group-data-[invalid]/field:focus-within:ring-red-600/15 motion-reduce:transition-none dark:group-data-[invalid]/field:border-red-400 dark:group-data-[invalid]/field:focus-within:border-red-400 dark:group-data-[invalid]/field:focus-within:ring-red-400/20 pointer-fine:hover:not-focus-within:not-disabled:not-has-disabled:bg-(--pw-well-hover)"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="pointer-events-none absolute left-4 text-(--iu-muted)"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                      <path d="M2 12h20" />
+                    </svg>
+                    <input
+                      id="pw-tz"
+                      type="text"
+                      role="combobox"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-controls="pw-tz-listbox"
+                      aria-describedby="pw-tz-help"
+                      aria-required="true"
+                      autocomplete="off"
+                      autocapitalize="none"
+                      spellcheck="false"
+                      placeholder="Search a city or offset"
+                      value="Lisbon"
+                      data-zone="Europe/Lisbon"
+                      class="min-w-0 flex-1 self-stretch bg-transparent pl-11 text-base font-medium text-(--iu-foreground) outline-none group-data-[disabled]/pw:text-(--iu-muted) placeholder:text-(--iu-muted) disabled:cursor-not-allowed"
+                    />
+                    <span data-offset class="shrink-0 text-sm font-medium text-(--iu-muted) tabular-nums">UTC+0</span>
+                    <button
+                      type="button"
+                      tabindex="-1"
+                      aria-label="Show time zones"
+                      aria-expanded="false"
+                      aria-controls="pw-tz-listbox"
+                      data-tz-toggle
+                      class="mr-1 ml-1 grid size-10 shrink-0 cursor-pointer place-items-center rounded-full text-(--iu-muted) disabled:cursor-not-allowed"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-transform duration-200 ease-(--pw-spring) group-data-[open]/field:rotate-180 motion-reduce:transition-none"
+                      >
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    data-tz-popup
+                    hidden
+                    class="absolute inset-x-0 top-full z-30 mt-2 origin-top rounded-[max(var(--iu-radius),16px)] border border-(--iu-border) bg-(--iu-surface) p-1.5 shadow-(--pw-sh-pop) transition-[opacity,scale] duration-150 ease-out motion-reduce:transition-none dark:border-(--iu-foreground)/12 dark:bg-(--pw-lifted) starting:scale-[0.98] starting:opacity-0"
+                  >
+                    <ul
+                      id="pw-tz-listbox"
+                      role="listbox"
+                      aria-label="Time zones"
+                      class="relative max-h-[min(17.5rem,50vh)] overflow-y-auto overscroll-contain"
+                    ></ul>
+                    <p data-tz-empty hidden class="px-3 py-5 text-center text-sm/5 text-pretty text-(--iu-muted)">
+                      <span class="block font-medium text-(--iu-foreground)"
+                        >No time zone matches “<span data-query></span>”</span
+                      >
+                      Try a city, a country or an offset such as UTC+2.
+                    </p>
+                  </div>
+                </div>
+                <span data-tz-live class="sr-only" aria-live="polite"></span>
+                <p
+                  id="pw-tz-help"
+                  class="mt-2 text-[13px]/[18px] text-pretty text-(--iu-muted) transition-opacity duration-150 group-data-[open]/field:opacity-0 motion-reduce:transition-none"
+                >
+                  Due dates, reminders and digests follow this zone.
+                </p>
+                <p
+                  id="pw-tz-error"
+                  hidden
+                  class="mt-2 flex items-start gap-1.5 text-[13px]/[18px] font-medium text-red-700 transition-opacity duration-150 group-data-[open]/field:opacity-0 motion-reduce:transition-none dark:text-red-400"
+                >
+                  <svg
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.75"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mt-0.5 shrink-0"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" x2="12" y1="8" y2="12" />
+                    <line x1="12" x2="12.01" y1="16" y2="16" /></svg
+                  ><span data-message></span>
+                </p>
+              </div>
+
+              <div
+                data-switch-tile
+                class="flex cursor-pointer items-start gap-4 rounded-[max(var(--iu-radius),14px)] border border-(--iu-border) bg-(--pw-well) p-4 transition-colors duration-200 group-data-[disabled]/pw:cursor-not-allowed motion-reduce:transition-none dark:border-(--iu-foreground)/10 pointer-fine:hover:not-has-disabled:bg-(--pw-well-hover)"
+              >
+                <div class="min-w-0 flex-1">
+                  <label for="pw-invite" class="block w-fit cursor-pointer text-sm/5 font-medium"
+                    >Invite teammates by email</label
+                  >
+                  <p id="pw-invite-help" class="mt-1 text-[13px]/[18px] text-pretty text-(--iu-muted)">
+                    We’ll ask for their addresses on the next step.
+                  </p>
+                </div>
+                <button
+                  id="pw-invite"
+                  type="button"
+                  role="switch"
+                  aria-checked="true"
+                  aria-describedby="pw-invite-help"
+                  class="group/switch relative mt-0.5 inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full border border-(--pw-line) bg-(--pw-well) shadow-(--pw-sh-well) transition-[background-color,border-color] duration-200 outline-none group-data-[disabled]/pw:border-(--iu-foreground)/15 group-data-[disabled]/pw:bg-(--iu-foreground)/15 group-data-[disabled]/pw:shadow-none before:absolute before:-inset-2 before:content-[''] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--pw-focus) disabled:cursor-not-allowed aria-checked:border-(--pw-focus) aria-checked:bg-(--iu-accent) group-data-[disabled]/pw:aria-checked:border-(--iu-foreground)/15 group-data-[disabled]/pw:aria-checked:bg-(--iu-foreground)/25 motion-reduce:transition-none"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="absolute top-1/2 left-[5px] size-4 -translate-y-1/2 rounded-full bg-(--pw-line) transition-[translate,width,height,background-color] duration-[410ms] ease-(--pw-spring) group-aria-checked/switch:size-5 group-aria-checked/switch:translate-x-[18px] group-aria-checked/switch:bg-(--iu-surface) group-aria-checked/switch:shadow-(--pw-sh-knob) motion-reduce:transition-none dark:group-aria-checked/switch:bg-(--iu-foreground)"
+                  ></span>
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-[calc(32px*var(--iu-density))]">
+              <div class="relative flex h-12 items-center">
+                <button
+                  type="submit"
+                  data-submit
+                  class="relative isolate inline-flex h-12 w-full shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-(--iu-accent) text-[15px] font-semibold text-(--iu-accent-foreground) shadow-(--pw-sh-btn) transition-[width,translate,scale,box-shadow,background-color] duration-[380ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] outline-none group-data-[status=loading]/pw:w-12 group-data-[status=loading]/pw:scale-[0.96] group-data-[status=loading]/pw:shadow-(--pw-sh-pressed) group-data-[status=success]/pw:w-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--pw-focus) active:not-aria-disabled:scale-[0.98] active:not-aria-disabled:shadow-(--pw-sh-pressed) disabled:cursor-not-allowed disabled:bg-(--iu-foreground)/8 disabled:text-(--iu-muted) disabled:shadow-none aria-disabled:cursor-default motion-reduce:transition-none dark:bg-[color-mix(in_oklab,var(--iu-accent)_90%,var(--iu-background))] dark:disabled:bg-(--iu-foreground)/10 pointer-fine:hover:not-active:not-aria-disabled:-translate-y-px pointer-fine:hover:not-active:not-aria-disabled:shadow-(--pw-sh-btn-hover)"
+                >
+                  <span
+                    class="flex items-center gap-2 px-6 whitespace-nowrap transition-opacity duration-150 ease-out group-data-[status=loading]/pw:opacity-0 group-data-[status=success]/pw:opacity-0 motion-reduce:transition-none"
+                  >
+                    Create workspace
+                    <svg
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.75"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 grid place-items-center opacity-0 transition-opacity duration-200 group-data-[status=loading]/pw:opacity-100 group-data-[status=loading]/pw:delay-200 group-data-[status=success]/pw:delay-150 motion-reduce:transition-none"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      class="size-6 group-data-[offscreen]/pw:[animation-play-state:paused]! group-data-[status=loading]/pw:motion-safe:animate-spin"
+                    >
+                      <circle cx="12" cy="12" r="9.25" stroke="currentColor" stroke-width="2.25" class="opacity-25" />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9.25"
+                        stroke="currentColor"
+                        stroke-width="2.25"
+                        stroke-linecap="round"
+                        pathLength="100"
+                        transform="rotate(-90 12 12)"
+                        class="transition-[stroke-dasharray] duration-200 ease-out [stroke-dasharray:28_100] group-data-[status=success]/pw:[stroke-dasharray:100_100] motion-reduce:transition-none"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    class="absolute inset-0 grid scale-50 place-items-center opacity-0 transition-[opacity,scale] duration-500 ease-(--pw-pop) group-data-[status=success]/pw:scale-100 group-data-[status=success]/pw:opacity-100 group-data-[status=success]/pw:delay-150 motion-reduce:transition-none"
+                  >
+                    <svg viewBox="0 0 24 24" fill="none" class="size-6">
+                      <path
+                        d="M20 6 9 17l-5-5"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        pathLength="1"
+                        class="transition-[stroke-dashoffset] delay-[180ms] duration-300 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/pw:[stroke-dashoffset:0] motion-reduce:transition-none"
+                      />
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  aria-hidden="true"
+                  class="pointer-events-none invisible absolute inset-y-0 right-0 left-16 flex min-w-0 -translate-x-1 flex-col justify-center opacity-0 transition-[opacity,translate,visibility] duration-300 ease-out group-data-[status=loading]/pw:visible group-data-[status=loading]/pw:translate-x-0 group-data-[status=loading]/pw:opacity-100 group-data-[status=loading]/pw:delay-[220ms] group-data-[status=success]/pw:visible group-data-[status=success]/pw:translate-x-0 group-data-[status=success]/pw:opacity-100 motion-reduce:transition-none"
+                >
+                  <p data-status-title class="truncate text-[15px]/5 font-semibold text-(--iu-foreground)">
+                    Creating Fernway Studio…
+                  </p>
+                  <p data-status-detail class="mt-0.5 truncate text-[13px]/[18px] text-(--iu-muted)">
+                    Reserving wrenhouse.app/fernway-studio
+                  </p>
+                </div>
+              </div>
+              <p
+                id="pw-form-error"
+                hidden
+                class="mt-3 flex items-start gap-1.5 text-[13px]/[18px] font-medium text-red-700 dark:text-red-400"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="mt-0.5 shrink-0"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" /></svg
+                ><span data-message></span>
+              </p>
+            </div>
+            <p role="status" data-announcer class="sr-only"></p>
+          </form>
+        </div>
+        <!-- iloveui:component:end -->
+      </div>
+    </main>
+    <script>
+      (() => {
+        const root = document.querySelector("[data-pillow-workspace-form]");
+        if (!root) return;
+
+        const DOMAIN = "wrenhouse.app";
+        const MESSAGES = {
+          nameEmpty: "Give your workspace a name.",
+          nameShort: "Use at least 3 letters or numbers.",
+          role: "Choose the role closest to yours.",
+          timeZone: "Choose your team’s time zone.",
+          timeZonePick: "Pick a time zone from the list.",
+          form: "We couldn’t create the workspace. Try again in a moment.",
+        };
+        const ZONES = [
+          { value: "Pacific/Honolulu", city: "Honolulu", region: "United States", keywords: "Hawaii" },
+          {
+            value: "America/Los_Angeles",
+            city: "Los Angeles",
+            region: "United States",
+            keywords: "San Francisco Seattle Pacific",
+          },
+          { value: "America/Denver", city: "Denver", region: "United States", keywords: "Mountain" },
+          { value: "America/Mexico_City", city: "Mexico City", region: "Mexico" },
+          { value: "America/Chicago", city: "Chicago", region: "United States", keywords: "Austin Central" },
+          { value: "America/New_York", city: "New York", region: "United States", keywords: "Boston Miami Eastern" },
+          { value: "America/Toronto", city: "Toronto", region: "Canada", keywords: "Montreal" },
+          { value: "America/Bogota", city: "Bogotá", region: "Colombia", keywords: "Lima" },
+          { value: "America/Sao_Paulo", city: "São Paulo", region: "Brazil", keywords: "Rio de Janeiro" },
+          { value: "America/Argentina/Buenos_Aires", city: "Buenos Aires", region: "Argentina" },
+          { value: "Atlantic/Reykjavik", city: "Reykjavík", region: "Iceland" },
+          { value: "Europe/Lisbon", city: "Lisbon", region: "Portugal", keywords: "Porto" },
+          { value: "Europe/London", city: "London", region: "United Kingdom", keywords: "Dublin Edinburgh" },
+          { value: "Africa/Lagos", city: "Lagos", region: "Nigeria" },
+          { value: "Europe/Madrid", city: "Madrid", region: "Spain", keywords: "Barcelona" },
+          { value: "Europe/Paris", city: "Paris", region: "France" },
+          { value: "Europe/Berlin", city: "Berlin", region: "Germany", keywords: "Munich Amsterdam" },
+          { value: "Europe/Stockholm", city: "Stockholm", region: "Sweden", keywords: "Oslo Copenhagen" },
+          { value: "Europe/Warsaw", city: "Warsaw", region: "Poland", keywords: "Prague" },
+          { value: "Africa/Johannesburg", city: "Johannesburg", region: "South Africa", keywords: "Cape Town" },
+          { value: "Europe/Athens", city: "Athens", region: "Greece", keywords: "Helsinki" },
+          { value: "Africa/Nairobi", city: "Nairobi", region: "Kenya" },
+          { value: "Europe/Istanbul", city: "Istanbul", region: "Türkiye" },
+          { value: "Asia/Dubai", city: "Dubai", region: "United Arab Emirates", keywords: "Abu Dhabi" },
+          { value: "Asia/Karachi", city: "Karachi", region: "Pakistan" },
+          { value: "Asia/Kolkata", city: "Bengaluru", region: "India", keywords: "Kolkata Mumbai Delhi Chennai" },
+          { value: "Asia/Dhaka", city: "Dhaka", region: "Bangladesh" },
+          { value: "Asia/Bangkok", city: "Bangkok", region: "Thailand", keywords: "Hanoi" },
+          { value: "Asia/Jakarta", city: "Jakarta", region: "Indonesia" },
+          { value: "Asia/Singapore", city: "Singapore", region: "Singapore", keywords: "Kuala Lumpur" },
+          { value: "Asia/Manila", city: "Manila", region: "Philippines" },
+          { value: "Asia/Shanghai", city: "Shanghai", region: "China", keywords: "Beijing Shenzhen" },
+          { value: "Asia/Seoul", city: "Seoul", region: "South Korea" },
+          { value: "Asia/Tokyo", city: "Tokyo", region: "Japan", keywords: "Osaka" },
+          { value: "Australia/Sydney", city: "Sydney", region: "Australia", keywords: "Melbourne" },
+          { value: "Pacific/Auckland", city: "Auckland", region: "New Zealand", keywords: "Wellington" },
+        ];
+        const OPTION_CLASS =
+          "flex cursor-pointer items-center gap-3 rounded-[max(calc(var(--iu-radius)-2px),10px)] px-3 py-2.5 select-none data-[active]:bg-(--pw-tint)";
+
+        // Replace with your API call. Resolve to finish with the check, resolve with field errors such as
+        // { name: "That URL is taken." } to show them, or throw an Error to show its message under the button.
+        function createWorkspace(values) {
+          return new Promise((resolve) => setTimeout(resolve, 1600));
+        }
+
+        const fold = (text) =>
+          text
+            .normalize("NFKD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+        const slugify = (name) =>
+          fold(name)
+            .replace(/&/g, " and ")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 40)
+            .replace(/-+$/, "");
+        const initials = (name) =>
+          name
+            .trim()
+            .split(/\s+/)
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((word) => Array.from(word)[0] || "")
+            .join("")
+            .toUpperCase();
+        const isPrintable = (event) => event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
+
+        // Today's UTC offset of an IANA zone, such as "UTC+1", so daylight saving is always right.
+        const offsets = new Map();
+        function utcOffset(timeZone) {
+          if (offsets.has(timeZone)) return offsets.get(timeZone);
+          let label = "";
+          try {
+            const part = new Intl.DateTimeFormat("en-US", { timeZone, timeZoneName: "shortOffset" })
+              .formatToParts(new Date())
+              .find((item) => item.type === "timeZoneName");
+            if (part) label = part.value === "GMT" ? "UTC+0" : part.value.replace("GMT", "UTC").replace("-", "\u2212");
+          } catch {
+            label = "";
+          }
+          offsets.set(timeZone, label);
+          return label;
+        }
+
+        function searchZones(query) {
+          const needle = fold(query.trim());
+          if (!needle) return ZONES;
+          const hits = ZONES.filter((zone) => {
+            const offset = utcOffset(zone.value);
+            return fold(
+              `${zone.city} ${zone.region} ${zone.value} ${zone.keywords || ""} ${offset} ${offset.replace("\u2212", "-")}`,
+            )
+              .replace(/_/g, " ")
+              .includes(needle);
+          });
+          // Best matches first: the city starts with the query, then a word of the city, then a word of the region.
+          const rank = (zone) => {
+            const city = fold(zone.city);
+            if (city.startsWith(needle)) return 0;
+            if (city.split(/[\s-]+/).some((word) => word.startsWith(needle))) return 1;
+            return fold(`${zone.region} ${zone.keywords || ""}`)
+              .split(/[\s-]+/)
+              .some((word) => word.startsWith(needle))
+              ? 2
+              : 3;
+          };
+          return hits.sort((a, b) => rank(a) - rank(b));
+        }
+
+        function findExactZone(query) {
+          const needle = fold(query.trim());
+          if (!needle) return undefined;
+          return ZONES.find((zone) => fold(zone.city) === needle || fold(`${zone.city}, ${zone.region}`) === needle);
+        }
+
+        function keepInView(list, item) {
+          if (!item) return;
+          if (item.offsetTop < list.scrollTop) list.scrollTop = item.offsetTop - 6;
+          else if (item.offsetTop + item.offsetHeight > list.scrollTop + list.clientHeight) {
+            list.scrollTop = item.offsetTop + item.offsetHeight - list.clientHeight + 6;
+          }
+        }
+
+        const form = root.querySelector("form");
+        const nameInput = root.querySelector("#pw-name");
+        const monogram = root.querySelector("[data-monogram]");
+        const slugText = root.querySelector("[data-slug]");
+        const sizeFieldset = root.querySelector("[data-size]");
+        const sizeRadios = Array.from(sizeFieldset.querySelectorAll('input[type="radio"]'));
+        const thumb = root.querySelector("[data-thumb]");
+        const roleWrap = root.querySelector('[data-field="role"]');
+        const roleTrigger = root.querySelector("#pw-role");
+        const roleValue = roleTrigger.querySelector("[data-value]");
+        const roleList = root.querySelector("#pw-role-listbox");
+        const roleOptions = Array.from(roleList.querySelectorAll('[role="option"]'));
+        const tzWrap = root.querySelector('[data-field="tz"]');
+        const tzInput = root.querySelector("#pw-tz");
+        const tzToggle = root.querySelector("[data-tz-toggle]");
+        const tzOffset = root.querySelector("[data-offset]");
+        const tzPopup = root.querySelector("[data-tz-popup]");
+        const tzList = root.querySelector("#pw-tz-listbox");
+        const tzEmpty = root.querySelector("[data-tz-empty]");
+        const tzLive = root.querySelector("[data-tz-live]");
+        const invite = root.querySelector("#pw-invite");
+        const tile = root.querySelector("[data-switch-tile]");
+        const submit = root.querySelector("[data-submit]");
+        const statusTitle = root.querySelector("[data-status-title]");
+        const statusDetail = root.querySelector("[data-status-detail]");
+        const formError = root.querySelector("#pw-form-error");
+        const announcer = root.querySelector("[data-announcer]");
+
+        const fields = {
+          name: { wrap: root.querySelector('[data-field="name"]'), control: nameInput, id: "pw-name" },
+          role: { wrap: roleWrap, control: roleTrigger, id: "pw-role" },
+          timeZone: { wrap: tzWrap, control: tzInput, id: "pw-tz" },
+        };
+        const state = {
+          status: "idle",
+          role: roleOptions.find((option) => option.getAttribute("aria-selected") === "true")?.dataset.value || "",
+          timeZone: tzInput.dataset.zone || "",
+          tzQuery: tzInput.value,
+          tzTyped: false,
+          errors: {},
+        };
+        const locked = () => state.status === "loading" || state.status === "success";
+
+        function announce(text) {
+          announcer.textContent = text;
+        }
+
+        function setError(field, message) {
+          if (message) state.errors[field] = message;
+          else delete state.errors[field];
+          if (field === "form") {
+            formError.hidden = !message;
+            formError.querySelector("[data-message]").textContent = message || "";
+            if (message) submit.setAttribute("aria-describedby", "pw-form-error");
+            else submit.removeAttribute("aria-describedby");
+            return;
+          }
+          const { wrap, control, id } = fields[field];
+          wrap.toggleAttribute("data-invalid", Boolean(message));
+          if (message) control.setAttribute("aria-invalid", "true");
+          else control.removeAttribute("aria-invalid");
+          control.setAttribute("aria-describedby", message ? `${id}-error` : `${id}-help`);
+          root.querySelector(`#${id}-help`).hidden = Boolean(message);
+          const error = root.querySelector(`#${id}-error`);
+          error.hidden = !message;
+          error.querySelector("[data-message]").textContent = message || "";
+        }
+
+        function validate() {
+          const errors = {};
+          const name = nameInput.value;
+          if (!name.trim()) errors.name = MESSAGES.nameEmpty;
+          else if (slugify(name).replace(/-/g, "").length < 3) errors.name = MESSAGES.nameShort;
+          if (!state.role) errors.role = MESSAGES.role;
+          if (!state.timeZone) errors.timeZone = state.tzQuery.trim() ? MESSAGES.timeZonePick : MESSAGES.timeZone;
+          return errors;
+        }
+
+        /* Workspace name: the monogram and the URL preview follow every keystroke. */
+        function renderName() {
+          const slug = slugify(nameInput.value);
+          const letters = initials(nameInput.value);
+          monogram.textContent = letters;
+          monogram.toggleAttribute("data-empty", !letters);
+          slugText.textContent = slug || "your-workspace";
+          slugText.toggleAttribute("data-placeholder", !slug);
+          renderStatusText();
+        }
+        nameInput.addEventListener("input", () => {
+          renderName();
+          if (state.errors.name) setError("name", validate().name);
+        });
+        nameInput.addEventListener("blur", () => {
+          if (nameInput.value.trim()) setError("name", validate().name);
+        });
+
+        /* Team size: native radios (arrow keys move the selection), the thumb slides under the checked one. */
+        function renderThumb() {
+          const index = Math.max(
+            sizeRadios.findIndex((radio) => radio.checked),
+            0,
+          );
+          thumb.style.transform = `translateX(${index * 100}%)`;
+        }
+        sizeRadios.forEach((radio) => radio.addEventListener("change", renderThumb));
+
+        /* Role: select-only combobox (WAI-ARIA APG). Focus stays on the trigger; aria-activedescendant moves. */
+        let roleOpen = false;
+        let roleActive = -1;
+        const search = { text: "", time: 0 };
+        const roleIndex = () => roleOptions.findIndex((option) => option.dataset.value === state.role);
+
+        function renderRole() {
+          const selectedIndex = roleIndex();
+          roleWrap.toggleAttribute("data-open", roleOpen);
+          roleTrigger.setAttribute("aria-expanded", String(roleOpen));
+          roleList.hidden = !roleOpen;
+          roleOptions.forEach((option, index) => {
+            option.toggleAttribute("data-active", index === roleActive);
+            option.setAttribute("aria-selected", String(index === selectedIndex));
+            option.querySelector("svg").toggleAttribute("hidden", index !== selectedIndex);
+          });
+          if (roleOpen && roleActive >= 0)
+            roleTrigger.setAttribute("aria-activedescendant", roleOptions[roleActive].id);
+          else roleTrigger.removeAttribute("aria-activedescendant");
+          const selected = roleOptions[selectedIndex];
+          roleValue.textContent = selected ? selected.querySelector("[data-label]").textContent : "Choose your role";
+          roleValue.toggleAttribute("data-placeholder", !selected);
+          if (roleOpen) keepInView(roleList, roleOptions[roleActive]);
+        }
+        function showRole(index) {
+          roleOpen = true;
+          roleActive = index;
+          renderRole();
+        }
+        function closeRole() {
+          roleOpen = false;
+          renderRole();
+        }
+        function commitRole(index) {
+          const option = roleOptions[index];
+          if (option) {
+            state.role = option.dataset.value;
+            setError("role", undefined);
+          }
+          closeRole();
+        }
+        function typeahead(char, time, from) {
+          search.text = time - search.time > 600 ? char : search.text + char;
+          search.time = time;
+          const text = search.text.toLowerCase();
+          const repeated = text.split("").every((letter) => letter === text[0]);
+          const needle = repeated ? text.slice(0, 1) : text;
+          const start = repeated ? from + 1 : from;
+          for (let step = 0; step < roleOptions.length; step += 1) {
+            const index = (start + step) % roleOptions.length;
+            const label = roleOptions[index].querySelector("[data-label]").textContent.toLowerCase();
+            if (label.startsWith(needle)) return index;
+          }
+          return -1;
+        }
+
+        root.querySelector("#pw-role-label").addEventListener("click", () => roleTrigger.focus());
+        roleTrigger.addEventListener("click", () => (roleOpen ? closeRole() : showRole(Math.max(roleIndex(), 0))));
+        roleTrigger.addEventListener("blur", closeRole);
+        roleList.addEventListener("mousedown", (event) => event.preventDefault());
+        roleOptions.forEach((option, index) => {
+          option.addEventListener("pointermove", () => {
+            if (roleActive !== index) showRole(index);
+          });
+          option.addEventListener("click", () => commitRole(index));
+        });
+        roleTrigger.addEventListener("keydown", (event) => {
+          if (locked() || roleOptions.length === 0) return;
+          const last = roleOptions.length - 1;
+          const selectedIndex = roleIndex();
+          const current = roleActive >= 0 ? roleActive : Math.max(selectedIndex, 0);
+          if (!roleOpen) {
+            if (["ArrowDown", "ArrowUp", "Enter", " ", "Home", "End"].includes(event.key)) {
+              event.preventDefault();
+              showRole(event.key === "Home" ? 0 : event.key === "End" ? last : Math.max(selectedIndex, 0));
+            } else if (isPrintable(event)) {
+              event.preventDefault();
+              const match = typeahead(event.key, event.timeStamp, Math.max(selectedIndex, 0));
+              showRole(match >= 0 ? match : Math.max(selectedIndex, 0));
+            }
+            return;
+          }
+          switch (event.key) {
+            case "ArrowDown":
+              event.preventDefault();
+              showRole(Math.min(current + 1, last));
+              break;
+            case "ArrowUp":
+              event.preventDefault();
+              if (event.altKey) commitRole(current);
+              else showRole(Math.max(current - 1, 0));
+              break;
+            case "Home":
+            case "PageUp":
+              event.preventDefault();
+              showRole(event.key === "Home" ? 0 : Math.max(current - 10, 0));
+              break;
+            case "End":
+            case "PageDown":
+              event.preventDefault();
+              showRole(event.key === "End" ? last : Math.min(current + 10, last));
+              break;
+            case "Enter":
+              event.preventDefault();
+              commitRole(current);
+              break;
+            case " ":
+              event.preventDefault();
+              if (event.timeStamp - search.time < 600 && search.text) {
+                const match = typeahead(" ", event.timeStamp, current);
+                if (match >= 0) showRole(match);
+              } else commitRole(current);
+              break;
+            case "Escape":
+              event.preventDefault();
+              event.stopPropagation();
+              closeRole();
+              break;
+            case "Tab":
+              commitRole(current);
+              break;
+            default:
+              if (isPrintable(event)) {
+                event.preventDefault();
+                const match = typeahead(event.key, event.timeStamp, current);
+                if (match >= 0) showRole(match);
+              }
+          }
+        });
+
+        /* Time zone: editable combobox with list autocomplete (WAI-ARIA APG). */
+        let tzOpen = false;
+        let tzActive = -1;
+        let tzMatches = [];
+        const selectedZone = () => ZONES.find((zone) => zone.value === state.timeZone);
+        const optionId = (zone) => `pw-tz-option-${zone.value.replace(/[^a-zA-Z0-9]/g, "-")}`;
+        const checkIcon = roleOptions[0].querySelector("svg").outerHTML;
+
+        function buildOption(zone, index) {
+          const item = document.createElement("li");
+          item.id = optionId(zone);
+          item.setAttribute("role", "option");
+          item.className = OPTION_CLASS;
+          item.innerHTML =
+            '<span class="min-w-0 flex-1 truncate"><span class="text-[15px]/5 font-medium text-(--iu-foreground)"></span>' +
+            '<span class="ml-2 text-[13px] text-(--iu-muted)"></span></span>' +
+            '<span class="shrink-0 text-[13px] text-(--iu-muted) tabular-nums"></span>' +
+            checkIcon;
+          const [city, region] = item.firstElementChild.children;
+          city.textContent = zone.city;
+          region.textContent = zone.region;
+          item.children[1].textContent = utcOffset(zone.value);
+          item.lastElementChild.removeAttribute("hidden");
+          item.addEventListener("pointermove", () => {
+            if (tzActive !== index) {
+              tzActive = index;
+              renderTzActive();
+            }
+          });
+          item.addEventListener("click", () => commitZone(zone));
+          return item;
+        }
+        function renderTzOptions() {
+          const selected = selectedZone();
+          tzMatches = searchZones(selected && state.tzQuery === selected.city ? "" : state.tzQuery);
+          tzList.replaceChildren(...tzMatches.map(buildOption));
+          tzList.hidden = tzMatches.length === 0;
+        }
+        function renderTzActive() {
+          Array.from(tzList.children).forEach((item, index) => {
+            const isSelected = tzMatches[index].value === state.timeZone;
+            item.toggleAttribute("data-active", index === tzActive);
+            item.setAttribute("aria-selected", String(isSelected));
+            item.lastElementChild.classList.toggle("invisible", !isSelected);
+          });
+          const activeZone = tzOpen ? tzMatches[tzActive] : undefined;
+          if (activeZone) tzInput.setAttribute("aria-activedescendant", optionId(activeZone));
+          else tzInput.removeAttribute("aria-activedescendant");
+          if (tzOpen) keepInView(tzList, tzList.children[tzActive]);
+        }
+        function renderTz() {
+          const selected = selectedZone();
+          tzWrap.toggleAttribute("data-open", tzOpen);
+          tzInput.setAttribute("aria-expanded", String(tzOpen));
+          tzToggle.setAttribute("aria-expanded", String(tzOpen));
+          tzPopup.hidden = !tzOpen;
+          tzEmpty.hidden = !(tzOpen && tzMatches.length === 0);
+          tzEmpty.querySelector("[data-query]").textContent = state.tzQuery.trim();
+          tzOffset.hidden = !(selected && state.tzQuery === selected.city);
+          if (selected) tzOffset.textContent = utcOffset(selected.value);
+          tzLive.textContent =
+            tzOpen && state.tzTyped
+              ? tzMatches.length
+                ? `${tzMatches.length} time zones found`
+                : "No time zone matches"
+              : "";
+          renderTzActive();
+        }
+        function openTz(pick) {
+          tzOpen = true;
+          renderTzOptions();
+          const selectedIndex = tzMatches.findIndex((zone) => zone.value === state.timeZone);
+          if (pick === "none") tzActive = -1;
+          else if (pick === "last") tzActive = selectedIndex >= 0 ? selectedIndex : tzMatches.length - 1;
+          else tzActive = Math.max(selectedIndex, 0);
+          renderTz();
+        }
+        function closeTz() {
+          tzOpen = false;
+          renderTz();
+        }
+        function setQuery(query) {
+          state.tzTyped = true;
+          state.tzQuery = query;
+          state.timeZone = "";
+          setError("timeZone", undefined);
+        }
+        function commitZone(zone) {
+          state.timeZone = zone.value;
+          state.tzQuery = zone.city;
+          state.tzTyped = false;
+          tzInput.value = zone.city;
+          setError("timeZone", undefined);
+          tzOpen = false;
+          renderTzOptions();
+          renderTz();
+        }
+
+        tzInput.addEventListener("input", () => {
+          setQuery(tzInput.value);
+          tzOpen = true;
+          tzActive = 0;
+          renderTzOptions();
+          renderTz();
+        });
+        tzInput.addEventListener("click", () => {
+          if (!tzOpen && !locked()) openTz("selected");
+        });
+        tzInput.addEventListener("keydown", (event) => {
+          if (locked()) return;
+          const last = tzMatches.length - 1;
+          const activeZone = tzOpen ? tzMatches[tzActive] : undefined;
+          switch (event.key) {
+            case "ArrowDown":
+              event.preventDefault();
+              if (!tzOpen) openTz(event.altKey ? "none" : "selected");
+              else if (last >= 0) {
+                tzActive = tzActive >= last ? 0 : tzActive + 1;
+                renderTzActive();
+              }
+              break;
+            case "ArrowUp":
+              event.preventDefault();
+              if (event.altKey) closeTz();
+              else if (!tzOpen) openTz("last");
+              else if (last >= 0) {
+                tzActive = tzActive <= 0 ? last : tzActive - 1;
+                renderTzActive();
+              }
+              break;
+            case "Enter":
+              if (activeZone) {
+                event.preventDefault();
+                commitZone(activeZone);
+              }
+              break;
+            case "Escape":
+              if (tzOpen) {
+                event.preventDefault();
+                event.stopPropagation();
+                closeTz();
+              } else if (tzInput.value) {
+                event.preventDefault();
+                tzInput.value = "";
+                setQuery("");
+                renderTzOptions();
+                renderTz();
+              }
+              break;
+            case "Tab":
+              if (activeZone && state.tzTyped) commitZone(activeZone);
+              break;
+          }
+        });
+        tzInput.addEventListener("blur", () => {
+          tzOpen = false;
+          if (state.tzTyped) {
+            state.tzTyped = false;
+            const exact = findExactZone(state.tzQuery);
+            if (exact) return commitZone(exact);
+            if (state.tzQuery.trim()) setError("timeZone", MESSAGES.timeZonePick);
+          }
+          renderTz();
+        });
+        tzToggle.addEventListener("mousedown", (event) => event.preventDefault());
+        tzToggle.addEventListener("click", () => {
+          tzInput.focus();
+          if (tzOpen) closeTz();
+          else openTz("selected");
+        });
+        tzPopup.addEventListener("mousedown", (event) => event.preventDefault());
+
+        /* Invite switch: the switch, its label and the whole tile toggle it. */
+        function toggleInvite() {
+          invite.setAttribute("aria-checked", String(invite.getAttribute("aria-checked") !== "true"));
+        }
+        invite.addEventListener("click", toggleInvite);
+        tile.addEventListener("click", (event) => {
+          if (locked() || event.target.closest("label, button")) return;
+          toggleInvite();
+        });
+
+        /* Submit: the button presses in, becomes a progress ring while the request runs, then pops out as a check. */
+        let observer = null;
+        function renderStatusText() {
+          const name = nameInput.value.trim() || "your workspace";
+          const url = `${DOMAIN}/${slugify(nameInput.value) || "your-workspace"}`;
+          statusTitle.textContent = state.status === "success" ? `${name} is ready` : `Creating ${name}…`;
+          statusDetail.textContent = state.status === "success" ? `Live at ${url}` : `Reserving ${url}`;
+        }
+        function setStatus(status) {
+          state.status = status;
+          root.dataset.status = status;
+          const busy = locked();
+          [nameInput, sizeFieldset, roleTrigger, tzInput, tzToggle, invite].forEach((control) => {
+            control.disabled = busy;
+          });
+          if (busy) submit.setAttribute("aria-disabled", "true");
+          else submit.removeAttribute("aria-disabled");
+          if (status === "loading") submit.setAttribute("aria-busy", "true");
+          else submit.removeAttribute("aria-busy");
+          if (status === "loading") submit.setAttribute("aria-label", "Creating workspace");
+          else if (status === "success") submit.setAttribute("aria-label", "Workspace created");
+          else submit.removeAttribute("aria-label");
+          renderStatusText();
+          // The ring is an honest indicator: it only spins while the request runs and pauses offscreen.
+          observer?.disconnect();
+          observer = null;
+          root.removeAttribute("data-offscreen");
+          if (status === "loading" && "IntersectionObserver" in window) {
+            observer = new IntersectionObserver(([entry]) => {
+              if (entry) root.toggleAttribute("data-offscreen", !entry.isIntersecting);
+            });
+            observer.observe(root);
+          }
+        }
+        function showErrors(errors) {
+          ["name", "role", "timeZone", "form"].forEach((field) => setError(field, errors[field]));
+          setStatus("error");
+          const invalid = ["name", "role", "timeZone"].filter((field) => errors[field]);
+          if (invalid[0]) fields[invalid[0]].control.focus();
+          announce(
+            errors.form ||
+              (invalid.length === 1
+                ? "One field needs your attention."
+                : `${invalid.length} fields need your attention.`),
+          );
+        }
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (locked()) return;
+          const found = validate();
+          if (Object.keys(found).length > 0) {
+            showErrors(found);
+            return;
+          }
+          const name = nameInput.value.trim();
+          const slug = slugify(name);
+          const values = {
+            name,
+            teamSize: sizeRadios.find((radio) => radio.checked)?.value || "",
+            role: state.role,
+            timeZone: state.timeZone,
+            inviteByEmail: invite.getAttribute("aria-checked") === "true",
+            slug,
+            url: `${DOMAIN}/${slug}`,
+          };
+          submit.focus({ preventScroll: true });
+          ["name", "role", "timeZone", "form"].forEach((field) => setError(field, undefined));
+          setStatus("loading");
+          announce(`Creating ${name}.`);
+          try {
+            const result = await createWorkspace(values);
+            if (result && typeof result === "object" && Object.keys(result).length > 0) {
+              showErrors(result);
+              return;
+            }
+            setStatus("success");
+            announce(`${name} is ready at ${values.url}.`);
+          } catch (error) {
+            showErrors({ form: error instanceof Error && error.message ? error.message : MESSAGES.form });
+          }
+        });
+
+        // Restored form values (back/forward cache) and today's offsets are reflected on load.
+        renderName();
+        renderThumb();
+        renderRole();
+        renderTzOptions();
+        renderTz();
+      })();
+    </script>
+  </body>
+</html>

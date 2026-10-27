@@ -1,0 +1,15 @@
+{
+  "slug": "margin-notes-testimonials",
+  "name": "Margin notes",
+  "category": "testimonials",
+  "styleFamily": "editorial",
+  "tier": "free",
+  "description": "An editorial testimonial spread: an issue index beside a serif pull quote that swaps line by line while the issue number ticks.",
+  "tags": ["testimonials", "pull-quote", "editorial", "tabs", "serif", "social-proof"],
+  "states": ["default"],
+  "hasMotion": true,
+  "dependencies": [],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.1",
+  "createdAt": "2026-10-26"
+}

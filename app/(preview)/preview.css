@@ -1,0 +1,7 @@
+@import "tailwindcss" source(none);
+@import "../../registry/preview-base.css";
+
+/* Only catalog code compiles into preview documents. */
+@source "../../registry/designs/**/*.{tsx,html}";
+@source "../../registry/preview-kit.tsx";
+@source "./";

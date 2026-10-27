@@ -1,0 +1,2039 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Relay agent console · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <main class="flex min-h-dvh w-full items-start justify-center bg-(--iu-background) px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full max-w-5xl">
+        <!-- iloveui:component:start -->
+        <section
+          data-relay-console
+          aria-labelledby="relay-title"
+          class="@container/console relative flex min-h-0 w-full flex-col rounded-[min(var(--iu-radius),8px)] border border-(--iu-border) bg-(--rc-panel) font-(family-name:--iu-font) text-(--iu-foreground) [--rc-line:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] [--rc-panel:var(--iu-surface)] [--rc-raised:var(--iu-surface)] [--rc-sunken:color-mix(in_oklab,var(--iu-foreground)_3.5%,var(--iu-surface))] dark:border-(--iu-foreground)/12 dark:[--rc-line:color-mix(in_oklab,var(--iu-foreground)_11%,transparent)] dark:[--rc-panel:color-mix(in_oklab,var(--iu-surface)_45%,var(--iu-background))] dark:[--rc-raised:var(--iu-surface)] dark:[--rc-sunken:color-mix(in_oklab,var(--iu-background)_70%,var(--iu-surface))]"
+        >
+          <header class="flex h-12 shrink-0 items-center gap-3 border-b border-(--rc-line) px-4 @2xl:px-6">
+            <svg aria-hidden="true" viewBox="0 0 16 16" width="16" height="16" fill="none" class="shrink-0">
+              <rect x="1.75" y="1.75" width="5.5" height="5.5" rx="1.25" stroke="currentColor" stroke-width="1.5" />
+              <rect x="8.75" y="8.75" width="5.5" height="5.5" rx="1.25" class="fill-(--iu-accent)" />
+              <path d="M7.25 4.5h2.5a1.5 1.5 0 0 1 1.5 1.5v2.75" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+            <h2 id="relay-title" class="flex min-w-0 items-baseline gap-2 text-sm">
+              <span class="hidden shrink-0 font-medium @lg:inline">Ops agent</span>
+              <span aria-hidden="true" class="hidden text-(--iu-muted) @lg:inline">/</span>
+              <span class="truncate font-medium @lg:font-normal @lg:text-(--iu-muted)"
+                >EU refund spike, Sat 24 Oct</span
+              >
+            </h2>
+            <p
+              class="ml-auto flex shrink-0 items-center gap-2 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+            >
+              <span aria-hidden="true" data-health-dot class="size-1.5 rounded-full bg-emerald-500"></span>
+              <span data-health-short class="@lg:hidden">Ready</span>
+              <span data-health-long class="hidden @lg:inline">3 tools ready</span>
+            </p>
+          </header>
+
+          <!-- One scroll container for the thread and the composer, so both share a column; the composer sticks. -->
+          <div
+            data-scroller
+            class="flex min-h-0 flex-1 flex-col overflow-y-auto rounded-b-[calc(min(var(--iu-radius),8px)-1px)]"
+          >
+            <div class="flex-1 px-4 py-6 @2xl:px-6 @2xl:py-8">
+              <ol data-thread class="mx-auto flex w-full max-w-[832px] flex-col gap-y-[calc(32px*var(--iu-density))]">
+                <li>
+                  <article
+                    aria-labelledby="relay-turn-1-label"
+                    class="grid grid-cols-1 gap-y-2.5 @2xl:grid-cols-[88px_minmax(0,1fr)] @2xl:gap-x-6"
+                  >
+                    <header
+                      class="flex items-baseline gap-2 font-mono text-[11px] tracking-[0.08em] uppercase @2xl:flex-col @2xl:gap-1 @2xl:pt-[17px]"
+                    >
+                      <span id="relay-turn-1-label" class="text-(--iu-foreground)">You</span>
+                      <time class="text-(--iu-muted) tabular-nums">09:41</time>
+                    </header>
+                    <div class="min-w-0">
+                      <div
+                        class="rounded-[min(var(--iu-radius),8px)] border border-transparent bg-(--rc-sunken) px-4 py-3 text-[15px] leading-[1.6] text-pretty dark:border-(--rc-line) dark:bg-(--rc-raised)"
+                      >
+                        Why did EU refunds spike on Saturday afternoon? Check the warehouse and any incidents in that
+                        window.
+                      </div>
+                    </div>
+                  </article>
+                </li>
+                <li>
+                  <article
+                    data-turn
+                    aria-labelledby="relay-turn-2-label"
+                    class="grid grid-cols-1 gap-y-2.5 @2xl:grid-cols-[88px_minmax(0,1fr)] @2xl:gap-x-6"
+                  >
+                    <header
+                      class="flex items-baseline gap-2 font-mono text-[11px] tracking-[0.08em] uppercase @2xl:flex-col @2xl:gap-1 @2xl:pt-[5px]"
+                    >
+                      <span id="relay-turn-2-label" class="text-(--iu-foreground)">Ops agent</span>
+                      <time class="text-(--iu-muted) tabular-nums">09:41</time>
+                    </header>
+                    <div class="flex min-w-0 flex-col gap-3">
+                      <div data-part="text" class="space-y-3 text-[15px] leading-[1.65] text-pretty text-(--iu-muted)">
+                        <p>
+                          Pulling Saturday's EU refunds by hour first, then I'll check the incident log for the same
+                          window.
+                        </p>
+                      </div>
+
+                      <div
+                        data-part="tool"
+                        data-call="call-refunds"
+                        data-name="warehouse.query"
+                        data-duration="2318"
+                        data-default-open
+                        class="relative"
+                      >
+                        <span
+                          aria-hidden="true"
+                          data-offset
+                          class="absolute top-[14px] left-[-112px] hidden font-mono text-[11px] text-(--iu-muted) tabular-nums @2xl/console:block"
+                          >+0.6 s</span
+                        >
+                        <div
+                          data-state="done"
+                          class="@container rounded-[min(var(--iu-radius),6px)] border border-(--rc-line) bg-(--rc-raised) data-[state=error]:border-red-600/35 dark:data-[state=error]:border-red-400/30"
+                        >
+                          <button
+                            id="relay-call-refunds"
+                            type="button"
+                            data-toggle
+                            aria-expanded="true"
+                            aria-controls="relay-call-refunds-body"
+                            class="group flex w-full items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/3"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="shrink-0 text-(--iu-muted) transition-transform duration-150 group-aria-expanded:rotate-90 motion-reduce:transition-none"
+                            >
+                              <path d="m9 18 6-6-6-6" />
+                            </svg>
+                            <span
+                              aria-hidden="true"
+                              class="hidden size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-panel) text-(--iu-muted) @md:flex"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="13"
+                                height="13"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <ellipse cx="12" cy="5" rx="9" ry="3" />
+                                <path d="M3 5V19A9 3 0 0 0 21 19V5" />
+                                <path d="M3 12A9 3 0 0 0 21 12" />
+                              </svg>
+                            </span>
+                            <span class="min-w-0 flex-1 truncate">
+                              <span class="font-mono text-[13px] text-(--iu-foreground)">warehouse.query</span>
+                              <span class="ml-2.5 hidden text-[13px] text-(--iu-muted) @md:inline"
+                                >payments.refunds · EU · 24 Oct</span
+                              >
+                            </span>
+                            <span data-elapsed class="shrink-0 font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                              >2,318 ms</span
+                            >
+                            <span
+                              data-status="running"
+                              hidden
+                              class="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-(--iu-foreground)"
+                            >
+                              <span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span>
+                              <span class="sr-only @md:not-sr-only">Running</span>
+                            </span>
+                            <span
+                              data-status="done"
+                              class="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-(--iu-muted)"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="text-emerald-600 dark:text-emerald-400"
+                              >
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m16 9-5.5 5.5L8 12" />
+                              </svg>
+                              <span class="sr-only @md:not-sr-only">Done</span>
+                            </span>
+                            <span
+                              data-status="cancelled"
+                              hidden
+                              class="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-(--iu-muted)"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M4.929 4.929 19.07 19.071" />
+                              </svg>
+                              <span class="sr-only @md:not-sr-only">Cancelled</span>
+                            </span>
+                          </button>
+                          <div
+                            id="relay-call-refunds-body"
+                            data-body
+                            data-open="true"
+                            class="grid grid-rows-[0fr] transition-[grid-template-rows,visibility] duration-150 ease-out data-[open=false]:invisible data-[open=true]:grid-rows-[1fr] motion-reduce:transition-none"
+                          >
+                            <div class="relative min-h-0 overflow-hidden">
+                              <div class="border-t border-dashed border-(--rc-line)">
+                                <div class="px-3 pt-2.5 pb-3">
+                                  <div
+                                    class="flex items-center justify-between gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                                  >
+                                    <span>Arguments</span>
+                                    <span class="truncate tracking-normal normal-case">SQL</span>
+                                  </div>
+                                  <pre
+                                    class="mt-2 rounded-[min(var(--iu-radius),4px)] bg-(--rc-sunken) px-3 py-2.5 font-mono text-[12px] leading-[1.65] break-words whitespace-pre-wrap text-(--iu-muted)"
+                                  ><code><span class="text-(--iu-foreground)">select</span> created_hour <span class="text-(--iu-foreground)">as</span> hour,
+       count(*) <span class="text-(--iu-foreground)">as</span> refunds,
+       sum(amount_eur) <span class="text-(--iu-foreground)">as</span> eur
+<span class="text-(--iu-foreground)">from</span> payments.refunds
+<span class="text-(--iu-foreground)">where</span> region = <span class="text-(--iu-foreground)">'eu'</span>
+  <span class="text-(--iu-foreground)">and</span> created_day = <span class="text-(--iu-foreground)">'2026-10-24'</span>
+<span class="text-(--iu-foreground)">group by</span> 1
+<span class="text-(--iu-foreground)">order by</span> refunds <span class="text-(--iu-foreground)">desc</span>
+<span class="text-(--iu-foreground)">limit</span> 4;</code></pre>
+                                </div>
+                                <div
+                                  data-section="result"
+                                  class="border-t border-dashed border-(--rc-line) px-3 pt-2.5 pb-3"
+                                >
+                                  <div
+                                    class="flex items-center justify-between gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                                  >
+                                    <span>Result</span>
+                                    <span class="truncate tracking-normal normal-case">4 rows · 2.1 GB scanned</span>
+                                  </div>
+                                  <table class="mt-2 w-full border-collapse font-mono text-[12px] tabular-nums">
+                                    <caption class="sr-only">
+                                      Result of warehouse.query
+                                    </caption>
+                                    <thead>
+                                      <tr>
+                                        <th
+                                          scope="col"
+                                          class="pr-6 pb-1.5 text-left text-[11px] font-normal whitespace-nowrap text-(--iu-muted) last:pr-0"
+                                        >
+                                          hour
+                                        </th>
+                                        <th
+                                          scope="col"
+                                          class="w-full pr-6 pb-1.5 text-right text-[11px] font-normal text-(--iu-muted) last:pr-0"
+                                        >
+                                          refunds
+                                        </th>
+                                        <th
+                                          scope="col"
+                                          class="pr-6 pb-1.5 text-right text-[11px] font-normal whitespace-nowrap text-(--iu-muted) last:pr-0"
+                                        >
+                                          eur
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr class="border-t border-dashed border-(--rc-line)">
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          14:00
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top text-(--iu-foreground) last:pr-0"
+                                        >
+                                          <span class="flex items-center justify-between gap-3">
+                                            <span
+                                              aria-hidden="true"
+                                              class="relative h-1.5 max-w-[280px] min-w-10 flex-1"
+                                            >
+                                              <span
+                                                data-bar
+                                                class="absolute inset-y-0 left-0 origin-left rounded-[1px] bg-(--iu-accent)"
+                                                style="width: 100%"
+                                              ></span>
+                                            </span>
+                                            <span class="min-w-[5ch] text-right">1,284</span>
+                                          </span>
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          61,940.20
+                                        </td>
+                                      </tr>
+                                      <tr class="border-t border-dashed border-(--rc-line)">
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          15:00
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top text-(--iu-foreground) last:pr-0"
+                                        >
+                                          <span class="flex items-center justify-between gap-3">
+                                            <span
+                                              aria-hidden="true"
+                                              class="relative h-1.5 max-w-[280px] min-w-10 flex-1"
+                                            >
+                                              <span
+                                                data-bar
+                                                class="absolute inset-y-0 left-0 origin-left rounded-[1px] bg-(--iu-foreground)/25"
+                                                style="width: 76%"
+                                              ></span>
+                                            </span>
+                                            <span class="min-w-[5ch] text-right">977</span>
+                                          </span>
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          47,302.85
+                                        </td>
+                                      </tr>
+                                      <tr class="border-t border-dashed border-(--rc-line)">
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          13:00
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top text-(--iu-foreground) last:pr-0"
+                                        >
+                                          <span class="flex items-center justify-between gap-3">
+                                            <span
+                                              aria-hidden="true"
+                                              class="relative h-1.5 max-w-[280px] min-w-10 flex-1"
+                                            >
+                                              <span
+                                                data-bar
+                                                class="absolute inset-y-0 left-0 origin-left rounded-[1px] bg-(--iu-foreground)/25"
+                                                style="width: 17%"
+                                              ></span>
+                                            </span>
+                                            <span class="min-w-[5ch] text-right">212</span>
+                                          </span>
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          9,815.40
+                                        </td>
+                                      </tr>
+                                      <tr class="border-t border-dashed border-(--rc-line)">
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          16:00
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top text-(--iu-foreground) last:pr-0"
+                                        >
+                                          <span class="flex items-center justify-between gap-3">
+                                            <span
+                                              aria-hidden="true"
+                                              class="relative h-1.5 max-w-[280px] min-w-10 flex-1"
+                                            >
+                                              <span
+                                                data-bar
+                                                class="absolute inset-y-0 left-0 origin-left rounded-[1px] bg-(--iu-foreground)/25"
+                                                style="width: 10%"
+                                              ></span>
+                                            </span>
+                                            <span class="min-w-[5ch] text-right">131</span>
+                                          </span>
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          6,048.10
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div
+                                  data-section="waiting"
+                                  hidden
+                                  class="border-t border-dashed border-(--rc-line) px-3 pt-2.5 pb-3"
+                                >
+                                  <div
+                                    class="flex items-center justify-between gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                                  >
+                                    <span>Result</span>
+                                    <span class="truncate tracking-normal normal-case">Waiting for rows</span>
+                                  </div>
+                                  <div aria-hidden="true" class="mt-2.5 space-y-3">
+                                    <div class="flex items-center gap-4">
+                                      <span class="h-2 w-10 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                      <span class="h-2 rounded-[2px] bg-(--iu-foreground)/8" style="width: 36%"></span>
+                                      <span class="ml-auto h-2 w-14 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                      <span class="h-2 w-10 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                      <span class="h-2 rounded-[2px] bg-(--iu-foreground)/8" style="width: 28%"></span>
+                                      <span class="ml-auto h-2 w-14 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                      <span class="h-2 w-10 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                      <span class="h-2 rounded-[2px] bg-(--iu-foreground)/8" style="width: 32%"></span>
+                                      <span class="ml-auto h-2 w-14 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <p
+                                  data-section="cancelled"
+                                  hidden
+                                  class="border-t border-dashed border-(--rc-line) px-3 py-3 text-[13px] text-(--iu-muted)"
+                                >
+                                  Stopped before warehouse.query returned. Nothing was read.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div data-part="text" class="space-y-3 text-[15px] leading-[1.65] text-pretty text-(--iu-muted)">
+                        <p>
+                          Refunds jumped at 14:00: 1,284 in one hour against a Saturday median of 96. A spike that sharp
+                          usually means failing payments rather than customers changing their minds, so I'm checking the
+                          card gateway.
+                        </p>
+                      </div>
+
+                      <div
+                        data-part="tool"
+                        data-call="call-incidents"
+                        data-name="incidents.search"
+                        data-duration="1406"
+                        class="relative"
+                      >
+                        <span
+                          aria-hidden="true"
+                          data-offset
+                          class="absolute top-[14px] left-[-112px] hidden font-mono text-[11px] text-(--iu-muted) tabular-nums @2xl/console:block"
+                          >+4.1 s</span
+                        >
+                        <div
+                          data-state="done"
+                          class="@container rounded-[min(var(--iu-radius),6px)] border border-(--rc-line) bg-(--rc-raised) data-[state=error]:border-red-600/35 dark:data-[state=error]:border-red-400/30"
+                        >
+                          <button
+                            id="relay-call-incidents"
+                            type="button"
+                            data-toggle
+                            aria-expanded="false"
+                            aria-controls="relay-call-incidents-body"
+                            class="group flex w-full items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-3 py-[calc(10px*var(--iu-density))] text-left transition-colors duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/3"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="shrink-0 text-(--iu-muted) transition-transform duration-150 group-aria-expanded:rotate-90 motion-reduce:transition-none"
+                            >
+                              <path d="m9 18 6-6-6-6" />
+                            </svg>
+                            <span
+                              aria-hidden="true"
+                              class="hidden size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-panel) text-(--iu-muted) @md:flex"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="13"
+                                height="13"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <path d="M18 16.98h-5.99c-1.1 0-1.95.94-2.48 1.9A4 4 0 0 1 2 17c.01-.7.2-1.4.57-2" />
+                                <path d="m6 17 3.13-5.78c.53-.97.1-2.18-.5-3.1a4 4 0 1 1 6.89-4.06" />
+                                <path d="m12 6 3.13 5.73C15.66 12.7 16.9 13 18 13a4 4 0 0 1 0 8" />
+                              </svg>
+                            </span>
+                            <span class="min-w-0 flex-1 truncate">
+                              <span class="font-mono text-[13px] text-(--iu-foreground)">incidents.search</span>
+                              <span class="ml-2.5 hidden text-[13px] text-(--iu-muted) @md:inline"
+                                >card-gateway · eu-west · 13:00–17:00</span
+                              >
+                            </span>
+                            <span data-elapsed class="shrink-0 font-mono text-[12px] text-(--iu-muted) tabular-nums"
+                              >1,406 ms</span
+                            >
+                            <span
+                              data-status="running"
+                              hidden
+                              class="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-(--iu-foreground)"
+                            >
+                              <span aria-hidden="true" class="size-1.5 rounded-full bg-(--iu-accent)"></span>
+                              <span class="sr-only @md:not-sr-only">Running</span>
+                            </span>
+                            <span
+                              data-status="done"
+                              class="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-(--iu-muted)"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="text-emerald-600 dark:text-emerald-400"
+                              >
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="m16 9-5.5 5.5L8 12" />
+                              </svg>
+                              <span class="sr-only @md:not-sr-only">Done</span>
+                            </span>
+                            <span
+                              data-status="cancelled"
+                              hidden
+                              class="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-(--iu-muted)"
+                            >
+                              <svg
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              >
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M4.929 4.929 19.07 19.071" />
+                              </svg>
+                              <span class="sr-only @md:not-sr-only">Cancelled</span>
+                            </span>
+                          </button>
+                          <div
+                            id="relay-call-incidents-body"
+                            data-body
+                            data-open="false"
+                            inert
+                            class="grid grid-rows-[0fr] transition-[grid-template-rows,visibility] duration-150 ease-out data-[open=false]:invisible data-[open=true]:grid-rows-[1fr] motion-reduce:transition-none"
+                          >
+                            <div class="relative min-h-0 overflow-hidden">
+                              <div class="border-t border-dashed border-(--rc-line)">
+                                <div class="px-3 pt-2.5 pb-3">
+                                  <div
+                                    class="flex items-center justify-between gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                                  >
+                                    <span>Arguments</span>
+                                    <span class="truncate tracking-normal normal-case">JSON</span>
+                                  </div>
+                                  <pre
+                                    class="mt-2 rounded-[min(var(--iu-radius),4px)] bg-(--rc-sunken) px-3 py-2.5 font-mono text-[12px] leading-[1.65] break-words whitespace-pre-wrap text-(--iu-muted)"
+                                  ><code>{
+  "service": <span class="text-(--iu-foreground)">"card-gateway"</span>,
+  "region": <span class="text-(--iu-foreground)">"eu-west"</span>,
+  "since": <span class="text-(--iu-foreground)">"2026-10-24 13:00"</span>,
+  "until": <span class="text-(--iu-foreground)">"2026-10-24 17:00"</span>,
+  "tz": <span class="text-(--iu-foreground)">"Europe/Berlin"</span>
+}</code></pre>
+                                </div>
+                                <div
+                                  data-section="result"
+                                  class="border-t border-dashed border-(--rc-line) px-3 pt-2.5 pb-3"
+                                >
+                                  <div
+                                    class="flex items-center justify-between gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                                  >
+                                    <span>Result</span>
+                                    <span class="truncate tracking-normal normal-case">2 incidents · CEST</span>
+                                  </div>
+                                  <table class="mt-2 w-full border-collapse font-mono text-[12px] tabular-nums">
+                                    <caption class="sr-only">
+                                      Result of incidents.search
+                                    </caption>
+                                    <thead>
+                                      <tr>
+                                        <th
+                                          scope="col"
+                                          class="pr-6 pb-1.5 text-left text-[11px] font-normal whitespace-nowrap text-(--iu-muted) last:pr-0"
+                                        >
+                                          id
+                                        </th>
+                                        <th
+                                          scope="col"
+                                          class="hidden pr-6 pb-1.5 text-left text-[11px] font-normal whitespace-nowrap text-(--iu-muted) last:pr-0 @md:table-cell"
+                                        >
+                                          sev
+                                        </th>
+                                        <th
+                                          scope="col"
+                                          class="w-full pr-6 pb-1.5 text-left text-[11px] font-normal text-(--iu-muted) last:pr-0"
+                                        >
+                                          title
+                                        </th>
+                                        <th
+                                          scope="col"
+                                          class="pr-6 pb-1.5 text-right text-[11px] font-normal whitespace-nowrap text-(--iu-muted) last:pr-0"
+                                        >
+                                          window
+                                        </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr class="border-t border-dashed border-(--rc-line)">
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          INC-4471
+                                        </td>
+                                        <td
+                                          class="hidden py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0 @md:table-cell"
+                                        >
+                                          SEV-2
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top text-(--iu-foreground) last:pr-0"
+                                        >
+                                          Issuer timeouts on 3-D Secure
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          13:52–15:38
+                                        </td>
+                                      </tr>
+                                      <tr class="border-t border-dashed border-(--rc-line)">
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          INC-4473
+                                        </td>
+                                        <td
+                                          class="hidden py-[calc(6px*var(--iu-density))] pr-6 text-left align-top whitespace-nowrap text-(--iu-foreground) last:pr-0 @md:table-cell"
+                                        >
+                                          SEV-4
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-left align-top text-(--iu-foreground) last:pr-0"
+                                        >
+                                          Slow settlement report exports
+                                        </td>
+                                        <td
+                                          class="py-[calc(6px*var(--iu-density))] pr-6 text-right align-top whitespace-nowrap text-(--iu-foreground) last:pr-0"
+                                        >
+                                          15:05–15:21
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                                <div
+                                  data-section="waiting"
+                                  hidden
+                                  class="border-t border-dashed border-(--rc-line) px-3 pt-2.5 pb-3"
+                                >
+                                  <div
+                                    class="flex items-center justify-between gap-3 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                                  >
+                                    <span>Result</span>
+                                    <span class="truncate tracking-normal normal-case">Waiting for rows</span>
+                                  </div>
+                                  <div aria-hidden="true" class="mt-2.5 space-y-3">
+                                    <div class="flex items-center gap-4">
+                                      <span class="h-2 w-10 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                      <span class="h-2 rounded-[2px] bg-(--iu-foreground)/8" style="width: 36%"></span>
+                                      <span class="ml-auto h-2 w-14 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                      <span class="h-2 w-10 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                      <span class="h-2 rounded-[2px] bg-(--iu-foreground)/8" style="width: 28%"></span>
+                                      <span class="ml-auto h-2 w-14 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                    </div>
+                                    <div class="flex items-center gap-4">
+                                      <span class="h-2 w-10 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                      <span class="h-2 rounded-[2px] bg-(--iu-foreground)/8" style="width: 32%"></span>
+                                      <span class="ml-auto h-2 w-14 rounded-[2px] bg-(--iu-foreground)/8"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <p
+                                  data-section="cancelled"
+                                  hidden
+                                  class="border-t border-dashed border-(--rc-line) px-3 py-3 text-[13px] text-(--iu-muted)"
+                                >
+                                  Stopped before incidents.search returned. Nothing was read.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        data-part="text"
+                        class="space-y-3 text-[15px] leading-[1.65] text-pretty text-(--iu-foreground)"
+                      >
+                        <p>
+                          It's one incident.
+                          <code
+                            class="rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-raised) px-1 py-px font-mono text-[13px] whitespace-nowrap"
+                            >INC-4471</code
+                          >, issuer timeouts on 3-D Secure, ran from 13:52 to 15:38 and covers the 2,261 refunds issued
+                          between 14:00 and 16:00. Timed-out payments were still captured, so the retry job refunded
+                          them automatically: no revenue lost, but <strong class="font-semibold">€791</strong> in refund
+                          fees.
+                        </p>
+                        <p>
+                          I'd cap automatic refunds at one per order and add the fee cost to the
+                          <code
+                            class="rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-raised) px-1 py-px font-mono text-[13px] whitespace-nowrap"
+                            >INC-4471</code
+                          >
+                          postmortem.
+                        </p>
+                      </div>
+
+                      <p
+                        data-stopped
+                        hidden
+                        class="flex items-center gap-2 font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="18" height="18" x="3" y="3" rx="2" />
+                        </svg>
+                        <span data-stopped-text>Stopped after 0.0 s</span>
+                      </p>
+
+                      <div data-actions class="-ml-2 flex flex-wrap items-center gap-x-1 gap-y-1">
+                        <button
+                          type="button"
+                          data-copy
+                          class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-copy-icon
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+                          </svg>
+                          <svg
+                            aria-hidden="true"
+                            data-copied-icon
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="hidden"
+                          >
+                            <path d="M20 6 9 17l-5-5" />
+                          </svg>
+                          <span class="grid">
+                            <span data-copy-label class="col-start-1 row-start-1">Copy</span>
+                            <span aria-hidden="true" class="invisible col-start-1 row-start-1">Copied</span>
+                          </span>
+                        </button>
+                        <button
+                          type="button"
+                          data-retry
+                          class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                            <path d="M3 3v5h5" />
+                          </svg>
+                          Retry
+                        </button>
+                        <p data-meta class="ml-auto pl-2 font-mono text-[11px] text-(--iu-muted) tabular-nums">
+                          vesper-2 · 1,846 tokens · 7.8 s
+                        </p>
+                      </div>
+                    </div>
+                  </article>
+                </li>
+              </ol>
+            </div>
+
+            <div
+              class="sticky bottom-0 z-10 shrink-0 border-t border-(--rc-line) bg-(--rc-panel) px-4 pt-3 pb-3.5 @2xl:px-6 @2xl:pt-4 @2xl:pb-4"
+            >
+              <div class="mx-auto w-full max-w-[832px] @2xl:pl-[112px]">
+                <form
+                  data-composer
+                  class="rounded-[min(var(--iu-radius),8px)] border border-(--iu-foreground)/50 bg-(--iu-surface) has-[textarea:focus-visible]:outline-2 has-[textarea:focus-visible]:outline-offset-2 has-[textarea:focus-visible]:outline-(--iu-accent) dark:border-(--iu-foreground)/35"
+                >
+                  <ul data-chips aria-label="Attachments" class="flex flex-wrap gap-2 px-3 pt-3">
+                    <li
+                      data-name="INC-4471-timeline.md"
+                      class="inline-flex h-8 max-w-full items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--rc-line) bg-(--rc-raised) pr-1 pl-2.5 text-[13px]"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-muted)"
+                      >
+                        <path
+                          d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                        />
+                        <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                        <path d="M10 9H8" />
+                        <path d="M16 13H8" />
+                        <path d="M16 17H8" />
+                      </svg>
+                      <span class="min-w-0 truncate">INC-4471-timeline.md</span>
+                      <span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">6 KB</span>
+                      <button
+                        type="button"
+                        data-chip-remove
+                        aria-label="Remove INC-4471-timeline.md"
+                        class="relative inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:before:absolute pointer-coarse:before:-inset-2 pointer-fine:hover:bg-(--iu-foreground)/8 pointer-fine:hover:text-(--iu-foreground)"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M18 6 6 18" />
+                          <path d="m6 6 12 12" />
+                        </svg>
+                      </button>
+                    </li>
+                    <li
+                      data-name="refund-fees-2026.csv"
+                      class="inline-flex h-8 max-w-full items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--rc-line) bg-(--rc-raised) pr-1 pl-2.5 text-[13px]"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="shrink-0 text-(--iu-muted)"
+                      >
+                        <path
+                          d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                        />
+                        <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                        <path d="M8 13h2" />
+                        <path d="M14 13h2" />
+                        <path d="M8 17h2" />
+                        <path d="M14 17h2" />
+                      </svg>
+                      <span class="min-w-0 truncate">refund-fees-2026.csv</span>
+                      <span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">18 KB</span>
+                      <button
+                        type="button"
+                        data-chip-remove
+                        aria-label="Remove refund-fees-2026.csv"
+                        class="relative inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:before:absolute pointer-coarse:before:-inset-2 pointer-fine:hover:bg-(--iu-foreground)/8 pointer-fine:hover:text-(--iu-foreground)"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M18 6 6 18" />
+                          <path d="m6 6 12 12" />
+                        </svg>
+                      </button>
+                    </li>
+                  </ul>
+                  <label for="relay-draft" class="sr-only">Message Ops agent</label>
+                  <textarea
+                    id="relay-draft"
+                    rows="1"
+                    placeholder="Ask about payments, incidents or deploys"
+                    class="block max-h-[200px] min-h-[52px] w-full resize-none bg-transparent px-3.5 pt-3 pb-2 text-[15px] leading-[1.6] text-(--iu-foreground) outline-none placeholder:text-(--iu-muted)"
+                  >
+Draft the INC-4471 postmortem note with the fee impact.</textarea>
+                  <div class="flex items-center gap-1 px-2 pb-2">
+                    <input data-file-input type="file" multiple hidden />
+                    <button
+                      type="button"
+                      data-attach
+                      aria-label="Attach files"
+                      class="inline-flex size-8 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      >
+                        <path
+                          d="m16 6-8.414 8.586a2 2 0 0 0 2.829 2.829l8.414-8.586a4 4 0 1 0-5.657-5.657l-8.379 8.551a6 6 0 1 0 8.485 8.485l8.379-8.551"
+                        />
+                      </svg>
+                    </button>
+                    <div data-model class="relative">
+                      <span id="relay-model-label" class="sr-only">Model</span>
+                      <button
+                        type="button"
+                        role="combobox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-controls="relay-model-list"
+                        aria-labelledby="relay-model-label relay-model-value"
+                        class="inline-flex h-8 items-center gap-1.5 rounded-[min(var(--iu-radius),6px)] pr-1.5 pl-2 font-mono text-[12px] text-(--iu-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/6"
+                      >
+                        <span id="relay-model-value" data-model-value>vesper-2</span>
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="text-(--iu-muted)"
+                        >
+                          <path d="m7 15 5 5 5-5" />
+                          <path d="m7 9 5-5 5 5" />
+                        </svg>
+                      </button>
+                      <ul
+                        id="relay-model-list"
+                        role="listbox"
+                        aria-labelledby="relay-model-label"
+                        data-open="false"
+                        class="absolute bottom-full left-0 z-20 mb-2 w-[min(18rem,calc(100vw-4rem))] origin-bottom-left rounded-[min(var(--iu-radius),8px)] border border-(--rc-line) bg-(--iu-surface) p-1 transition-[opacity,transform,visibility] duration-150 ease-out data-[open=false]:invisible data-[open=false]:translate-y-1 data-[open=false]:scale-[0.98] data-[open=false]:opacity-0 motion-reduce:transition-none dark:border-(--iu-foreground)/15"
+                      >
+                        <li
+                          id="relay-model-option-0"
+                          role="option"
+                          aria-selected="true"
+                          data-active="false"
+                          data-model="vesper-2"
+                          data-limit="200000"
+                          class="flex cursor-default items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2.5 py-2 data-[active=true]:bg-(--iu-foreground)/6"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-check
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="shrink-0 text-(--iu-accent)"
+                          >
+                            <path d="M20 6 9 17l-5-5" />
+                          </svg>
+                          <span class="min-w-0 flex-1">
+                            <span class="block font-mono text-[13px] text-(--iu-foreground)">vesper-2</span>
+                            <span class="block text-[12px] text-(--iu-muted)">Balanced for analysis</span>
+                          </span>
+                          <span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">200k</span>
+                        </li>
+                        <li
+                          id="relay-model-option-1"
+                          role="option"
+                          aria-selected="false"
+                          data-active="false"
+                          data-model="vesper-2-mini"
+                          data-limit="128000"
+                          class="flex cursor-default items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2.5 py-2 data-[active=true]:bg-(--iu-foreground)/6"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-check
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="invisible shrink-0 text-(--iu-accent)"
+                          >
+                            <path d="M20 6 9 17l-5-5" />
+                          </svg>
+                          <span class="min-w-0 flex-1">
+                            <span class="block font-mono text-[13px] text-(--iu-foreground)">vesper-2-mini</span>
+                            <span class="block text-[12px] text-(--iu-muted)">Fast lookups, lower cost</span>
+                          </span>
+                          <span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">128k</span>
+                        </li>
+                        <li
+                          id="relay-model-option-2"
+                          role="option"
+                          aria-selected="false"
+                          data-active="false"
+                          data-model="vesper-2-long"
+                          data-limit="1000000"
+                          class="flex cursor-default items-center gap-2.5 rounded-[min(var(--iu-radius),6px)] px-2.5 py-2 data-[active=true]:bg-(--iu-foreground)/6"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            data-check
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="14"
+                            height="14"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="invisible shrink-0 text-(--iu-accent)"
+                          >
+                            <path d="M20 6 9 17l-5-5" />
+                          </svg>
+                          <span class="min-w-0 flex-1">
+                            <span class="block font-mono text-[13px] text-(--iu-foreground)">vesper-2-long</span>
+                            <span class="block text-[12px] text-(--iu-muted)">Long investigations</span>
+                          </span>
+                          <span class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums">1M</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <button
+                      type="submit"
+                      data-send
+                      class="ml-auto inline-flex h-8 min-w-[76px] items-center justify-center gap-1.5 rounded-[min(var(--iu-radius),6px)] bg-(--iu-accent) px-3 text-[13px] font-medium text-(--iu-accent-foreground) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:bg-(--iu-foreground)/8 disabled:text-(--iu-muted) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--iu-accent)/90"
+                    >
+                      <span data-send-label class="inline-flex items-center gap-1.5">
+                        Send
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+                          <path d="m9 10-5 5 5 5" />
+                        </svg>
+                      </span>
+                      <span data-stop-label class="hidden items-center gap-1.5">
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="10"
+                          height="10"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          stroke="currentColor"
+                          stroke-width="0"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <rect width="18" height="18" x="3" y="3" rx="2" />
+                        </svg>
+                        Stop
+                      </span>
+                    </button>
+                  </div>
+                </form>
+                <div class="mt-3 flex items-center gap-3">
+                  <div class="flex min-w-0 items-center gap-2.5">
+                    <span
+                      id="relay-context-label"
+                      class="font-mono text-[11px] tracking-[0.08em] text-(--iu-muted) uppercase"
+                      >Context</span
+                    >
+                    <div
+                      role="meter"
+                      data-meter
+                      aria-labelledby="relay-context-label"
+                      aria-valuemin="0"
+                      aria-valuemax="200000"
+                      aria-valuenow="30818"
+                      aria-valuetext="30,818 of 200,000 tokens, 15%"
+                      class="relative h-1 w-14 shrink-0 overflow-hidden rounded-full bg-(--iu-foreground)/10 @md:w-28"
+                    >
+                      <span
+                        data-meter-fill
+                        class="absolute inset-0 origin-left bg-(--iu-foreground)/70 transition-transform duration-150 ease-out motion-reduce:transition-none"
+                        style="transform: scaleX(0.15409)"
+                      ></span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      class="font-mono text-[11px] whitespace-nowrap text-(--iu-muted) tabular-nums"
+                    >
+                      <span data-meter-compact class="@lg:hidden">30.8k / 200k</span>
+                      <span data-meter-full class="hidden @lg:inline">30,818 / 200,000</span>
+                    </span>
+                    <span data-meter-near hidden class="font-mono text-[11px] text-amber-700 dark:text-amber-400"
+                      >Near limit</span
+                    >
+                  </div>
+                  <p class="ml-auto hidden items-center gap-3 font-mono text-[11px] text-(--iu-muted) @xl:flex">
+                    <span data-hint="stop" hidden class="inline-flex items-center gap-1.5">
+                      <kbd
+                        class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-raised) px-1 font-mono text-[11px] text-(--iu-muted)"
+                        >Esc</kbd
+                      >
+                      stop
+                    </span>
+                    <span data-hint="send" class="inline-flex items-center gap-1.5">
+                      <kbd
+                        class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-raised) px-1 font-mono text-[11px] text-(--iu-muted)"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="11"
+                          height="11"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+                          <path d="m9 10-5 5 5 5" />
+                        </svg>
+                        <span class="sr-only">Enter</span>
+                      </kbd>
+                      send
+                    </span>
+                    <span data-hint="newline" class="inline-flex items-center gap-1.5">
+                      <kbd
+                        class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-raised) px-1 font-mono text-[11px] text-(--iu-muted)"
+                        >Shift</kbd
+                      >
+                      <kbd
+                        class="inline-flex h-5 min-w-5 items-center justify-center rounded-[min(var(--iu-radius),4px)] border border-(--rc-line) bg-(--rc-raised) px-1 font-mono text-[11px] text-(--iu-muted)"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="11"
+                          height="11"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+                          <path d="m9 10-5 5 5 5" />
+                        </svg>
+                        <span class="sr-only">Enter</span>
+                      </kbd>
+                      new line
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p data-run-status aria-live="polite" class="sr-only"></p>
+          <p data-notice aria-live="polite" class="sr-only"></p>
+
+          <template data-chip-template>
+            <li
+              class="inline-flex h-8 max-w-full items-center gap-2 rounded-[min(var(--iu-radius),6px)] border border-(--rc-line) bg-(--rc-raised) pr-1 pl-2.5 text-[13px]"
+            >
+              <svg
+                aria-hidden="true"
+                data-icon="text"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0 text-(--iu-muted)"
+              >
+                <path
+                  d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                />
+                <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                <path d="M10 9H8" />
+                <path d="M16 13H8" />
+                <path d="M16 17H8" />
+              </svg>
+              <svg
+                aria-hidden="true"
+                data-icon="sheet"
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0 text-(--iu-muted)"
+              >
+                <path
+                  d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"
+                />
+                <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+                <path d="M8 13h2" />
+                <path d="M14 13h2" />
+                <path d="M8 17h2" />
+                <path d="M14 17h2" />
+              </svg>
+              <span data-chip-name class="min-w-0 truncate"></span>
+              <span data-chip-size class="shrink-0 font-mono text-[11px] text-(--iu-muted) tabular-nums"></span>
+              <button
+                type="button"
+                data-chip-remove
+                class="relative inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:before:absolute pointer-coarse:before:-inset-2 pointer-fine:hover:bg-(--iu-foreground)/8 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </li>
+          </template>
+
+          <template data-user-template>
+            <li>
+              <article class="grid grid-cols-1 gap-y-2.5 @2xl:grid-cols-[88px_minmax(0,1fr)] @2xl:gap-x-6">
+                <header
+                  class="flex items-baseline gap-2 font-mono text-[11px] tracking-[0.08em] uppercase @2xl:flex-col @2xl:gap-1 @2xl:pt-[17px]"
+                >
+                  <span data-user-label class="text-(--iu-foreground)">You</span>
+                  <time data-user-time class="text-(--iu-muted) tabular-nums"></time>
+                </header>
+                <div class="min-w-0">
+                  <div
+                    data-user-text
+                    class="rounded-[min(var(--iu-radius),8px)] border border-transparent bg-(--rc-sunken) px-4 py-3 text-[15px] leading-[1.6] text-pretty dark:border-(--rc-line) dark:bg-(--rc-raised)"
+                  ></div>
+                </div>
+              </article>
+            </li>
+          </template>
+        </section>
+        <!-- iloveui:component:end -->
+      </div>
+    </main>
+    <script>
+      (() => {
+        const root = document.querySelector("[data-relay-console]");
+        if (!root) return;
+
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+        const MS_PER_TOKEN = 1000 / 28;
+        const CONTEXT_USED = 30818;
+        const TURN_TOKENS = 1846;
+        const MODEL = "vesper-2";
+
+        const $ = (selector, scope = root) => scope.querySelector(selector);
+        const $$ = (selector, scope = root) => Array.from(scope.querySelectorAll(selector));
+        const group = (value) => String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        const formatMs = (ms) => `${group(Math.round(ms))} ms`;
+        const formatSeconds = (ms) => `${(ms / 1000).toFixed(1)} s`;
+        const compact = (value) =>
+          value >= 1e6
+            ? `${Number((value / 1e6).toFixed(1))}M`
+            : value >= 1000
+              ? `${Number((value / 1000).toFixed(value >= 1e5 ? 0 : 1))}k`
+              : String(value);
+        const formatBytes = (bytes) =>
+          bytes >= 1048576
+            ? `${(bytes / 1048576).toFixed(1)} MB`
+            : bytes >= 1024
+              ? `${Math.round(bytes / 1024)} KB`
+              : `${bytes} B`;
+
+        // Writes only what changed, so a frame of the stream touches as little of the DOM as possible.
+        const setText = (node, text) => {
+          if (node.textContent !== text) node.textContent = text;
+        };
+        const setHidden = (node, hidden) => {
+          if (node.hidden !== hidden) node.hidden = hidden;
+        };
+        const setAttr = (node, name, value) => {
+          if (node.getAttribute(name) !== value) node.setAttribute(name, value);
+        };
+
+        const scroller = $("[data-scroller]");
+        const threadList = $("[data-thread]");
+        const turn = $("[data-turn]");
+        const actions = $("[data-actions]", turn);
+        const meta = $("[data-meta]", turn);
+        const stoppedNote = $("[data-stopped]", turn);
+        const stoppedText = $("[data-stopped-text]", turn);
+        const runStatus = $("[data-run-status]");
+        const notice = $("[data-notice]");
+        const announce = (message) => setText(notice, message);
+
+        // Every word of an answer becomes a token the stream can reveal; code spans are single tokens.
+        const caret = document.createElement("span");
+        caret.setAttribute("aria-hidden", "true");
+        caret.className = "ml-0.5 inline-block h-[1.15em] w-[0.5em] translate-y-[0.2em] bg-(--iu-accent)";
+
+        function tokenize(node, para, tokens) {
+          for (const child of Array.from(node.childNodes)) {
+            if (child.nodeType === Node.TEXT_NODE) {
+              const fragment = document.createDocumentFragment();
+              for (const piece of child.textContent.match(/\s*\S+\s*|\s+/g) || []) {
+                if (!piece.trim()) {
+                  fragment.append(piece);
+                  continue;
+                }
+                const span = document.createElement("span");
+                span.textContent = piece;
+                fragment.append(span);
+                tokens.push({ node: span, para });
+              }
+              child.replaceWith(fragment);
+            } else if (child.nodeName === "CODE") {
+              tokens.push({ node: child, para });
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+              tokenize(child, para, tokens);
+            }
+          }
+        }
+
+        const parts = $$("[data-part]", turn).map((el) => {
+          if (el.dataset.part === "text") {
+            const paragraphs = $$("p", el);
+            const tokens = [];
+            paragraphs.forEach((paragraph, index) => tokenize(paragraph, index, tokens));
+            return { kind: "text", el, paragraphs, tokens, duration: tokens.length * MS_PER_TOKEN };
+          }
+          return {
+            kind: "tool",
+            el,
+            id: el.dataset.call,
+            name: el.dataset.name,
+            duration: Number(el.dataset.duration),
+            defaultOpen: el.hasAttribute("data-default-open"),
+            userOpen: null,
+            block: $("[data-state]", el),
+            toggle: $("[data-toggle]", el),
+            body: $("[data-body]", el),
+            elapsed: $("[data-elapsed]", el),
+            offset: $("[data-offset]", el),
+            table: $("table", el),
+            statuses: Object.fromEntries($$("[data-status]", el).map((node) => [node.dataset.status, node])),
+            sections: Object.fromEntries($$("[data-section]", el).map((node) => [node.dataset.section, node])),
+          };
+        });
+        const totalMs = parts.reduce((sum, part) => sum + part.duration, 0);
+
+        // The run plays the answer part by part: text paced by tokens, tool calls by their duration.
+        let run = { phase: "idle", part: parts.length, clock: 0, fresh: new Set(), completed: false };
+
+        function advance(dt) {
+          let part = run.part;
+          let clock = run.clock + dt;
+          while (part < parts.length && clock >= parts[part].duration) {
+            clock -= parts[part].duration;
+            if (parts[part].kind === "tool") run.fresh.add(parts[part].id);
+            part += 1;
+          }
+          run.part = part;
+          run.clock = clock;
+          if (part >= parts.length) {
+            run.phase = "idle";
+            run.clock = 0;
+            run.completed = true;
+          }
+        }
+
+        function showText(part, count, withCaret) {
+          part.tokens.forEach((token, index) => setHidden(token.node, index >= count));
+          const lastPara = count > 0 ? part.tokens[count - 1].para : withCaret ? 0 : -1;
+          part.paragraphs.forEach((paragraph, index) => setHidden(paragraph, index > lastPara));
+          if (withCaret) {
+            const last = part.tokens[count - 1];
+            if (last && last.node.nextSibling !== caret) last.node.after(caret);
+            else if (!last && part.paragraphs[0].firstChild !== caret) part.paragraphs[0].prepend(caret);
+          } else if (part.el.contains(caret)) {
+            caret.remove();
+          }
+        }
+
+        function setOpen(part, open) {
+          setAttr(part.toggle, "aria-expanded", String(open));
+          setAttr(part.body, "data-open", String(open));
+          if (part.body.inert === open) part.body.inert = !open;
+        }
+
+        function animateResolve(part) {
+          if (reduced.matches || typeof part.block.animate !== "function") return;
+          part.statuses.done.animate(
+            [
+              { opacity: 0, transform: "translateY(2px)" },
+              { opacity: 1, transform: "none" },
+            ],
+            { duration: 160, easing: EASE },
+          );
+          $$("tbody tr", part.table).forEach((row, index) =>
+            row.animate(
+              [
+                { opacity: 0, transform: "translateY(4px)" },
+                { opacity: 1, transform: "none" },
+              ],
+              { duration: 180, delay: 40 + index * 60, easing: EASE, fill: "backwards" },
+            ),
+          );
+          $$("[data-bar]", part.table).forEach((bar, index) =>
+            bar.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }], {
+              duration: 240,
+              delay: 100 + index * 60,
+              easing: EASE,
+              fill: "backwards",
+            }),
+          );
+        }
+
+        function renderTool(part, state, elapsed, offset) {
+          const previous = part.block.getAttribute("data-state");
+          setAttr(part.block, "data-state", state);
+          setText(part.elapsed, formatMs(elapsed));
+          part.elapsed.classList.toggle("text-(--iu-foreground)", state === "running");
+          part.elapsed.classList.toggle("text-(--iu-muted)", state !== "running");
+          Object.entries(part.statuses).forEach(([name, node]) => setHidden(node, name !== state));
+          setHidden(part.sections.result, state !== "done");
+          setHidden(part.sections.waiting, state !== "running");
+          setHidden(part.sections.cancelled, state !== "cancelled");
+          setText(part.offset, `+${(offset / 1000).toFixed(1)} s`);
+          const fresh = run.fresh.has(part.id);
+          setOpen(part, part.userOpen ?? (state === "running" || fresh || part.defaultOpen));
+          if (previous !== state && state === "done" && fresh) animateResolve(part);
+        }
+
+        // Context meter, model and composer state.
+        const meter = $("[data-meter]");
+        const meterFill = $("[data-meter-fill]");
+        const meterCompact = $("[data-meter-compact]");
+        const meterFull = $("[data-meter-full]");
+        const meterNear = $("[data-meter-near]");
+        let limit = 200000;
+
+        function renderMeter(used) {
+          const ratio = limit > 0 ? Math.min(1, used / limit) : 0;
+          const near = ratio >= 0.8;
+          setAttr(meter, "aria-valuemax", String(limit));
+          setAttr(meter, "aria-valuenow", String(used));
+          setAttr(meter, "aria-valuetext", `${group(used)} of ${group(limit)} tokens, ${Math.round(ratio * 100)}%`);
+          meterFill.style.transform = `scaleX(${ratio})`;
+          meterFill.classList.toggle("bg-amber-500", near);
+          meterFill.classList.toggle("bg-(--iu-foreground)/70", !near);
+          setHidden(meterNear, !near);
+          setText(meterCompact, `${compact(used)} / ${compact(limit)}`);
+          setText(meterFull, `${group(used)} / ${group(limit)}`);
+        }
+
+        const form = $("[data-composer]");
+        const textarea = $("#relay-draft");
+        const sendButton = $("[data-send]");
+        const sendLabel = $("[data-send-label]");
+        const stopLabel = $("[data-stop-label]");
+        const hints = Object.fromEntries($$("[data-hint]").map((node) => [node.dataset.hint, node]));
+        const healthDot = $("[data-health-dot]");
+        const healthShort = $("[data-health-short]");
+        const healthLong = $("[data-health-long]");
+        const SEND_CLASSES = [
+          "bg-(--iu-accent)",
+          "text-(--iu-accent-foreground)",
+          "disabled:bg-(--iu-foreground)/8",
+          "disabled:text-(--iu-muted)",
+          "pointer-fine:enabled:hover:bg-(--iu-accent)/90",
+        ];
+        const STOP_CLASSES = [
+          "bg-(--iu-foreground)",
+          "text-(--iu-background)",
+          "pointer-fine:hover:bg-(--iu-foreground)/85",
+        ];
+
+        function renderComposer(streaming) {
+          sendButton.type = streaming ? "button" : "submit";
+          SEND_CLASSES.forEach((name) => sendButton.classList.toggle(name, !streaming));
+          STOP_CLASSES.forEach((name) => sendButton.classList.toggle(name, streaming));
+          sendLabel.classList.toggle("hidden", streaming);
+          sendLabel.classList.toggle("inline-flex", !streaming);
+          stopLabel.classList.toggle("hidden", !streaming);
+          stopLabel.classList.toggle("inline-flex", streaming);
+          sendButton.disabled = !streaming && !textarea.value.trim();
+          setHidden(hints.stop, !streaming);
+          setHidden(hints.send, streaming);
+          setHidden(hints.newline, streaming);
+          healthDot.classList.toggle("bg-(--iu-accent)", streaming);
+          healthDot.classList.toggle("bg-emerald-500", !streaming);
+          setText(healthShort, streaming ? "Live" : "Ready");
+          setText(healthLong, streaming ? "Responding" : "3 tools ready");
+        }
+
+        // Keeps the newest output in view while streaming, unless the reader scrolled up.
+        let pinned = true;
+        scroller.addEventListener("scroll", () => {
+          pinned = scroller.scrollHeight - scroller.scrollTop - scroller.clientHeight < 40;
+        });
+        const follow = () => {
+          if (pinned && scroller.scrollHeight > scroller.clientHeight) scroller.scrollTop = scroller.scrollHeight;
+        };
+
+        function render() {
+          const playing = run.phase !== "idle";
+          const streaming = run.phase === "streaming";
+          let elapsedTotal = 0;
+          let lastVisible = null;
+          parts.forEach((part, index) => {
+            const visible = !playing || index <= run.part;
+            setHidden(part.el, !visible);
+            if (!visible) return;
+            const partial = playing && index === run.part;
+            if (part.kind === "text") {
+              const count = partial
+                ? Math.min(part.tokens.length, Math.floor(run.clock / MS_PER_TOKEN))
+                : part.tokens.length;
+              showText(part, count, partial && streaming);
+              elapsedTotal += count * MS_PER_TOKEN;
+            } else {
+              const state = partial ? (streaming ? "running" : "cancelled") : "done";
+              const elapsed = partial ? run.clock : part.duration;
+              renderTool(part, state, elapsed, elapsedTotal);
+              elapsedTotal += elapsed;
+            }
+            lastVisible = part;
+          });
+
+          setHidden(actions, streaming);
+          setText(meta, `${MODEL} · ${group(TURN_TOKENS)} tokens · ${formatSeconds(elapsedTotal)}`);
+          setHidden(stoppedNote, run.phase !== "stopped");
+          setText(stoppedText, `Stopped after ${formatSeconds(elapsedTotal)}`);
+          if (streaming) turn.setAttribute("aria-busy", "true");
+          else turn.removeAttribute("aria-busy");
+
+          const share = totalMs > 0 ? Math.min(1, elapsedTotal / totalMs) : 1;
+          renderMeter(playing ? Math.round(CONTEXT_USED - TURN_TOKENS + TURN_TOKENS * share) : CONTEXT_USED);
+          renderComposer(streaming);
+
+          const message = streaming
+            ? lastVisible && lastVisible.kind === "tool"
+              ? `Running ${lastVisible.name}`
+              : "Ops agent is writing"
+            : run.phase === "stopped"
+              ? "Stopped"
+              : run.completed
+                ? "Response complete"
+                : "";
+          setText(runStatus, message);
+          follow();
+        }
+
+        // One frame loop drives the run while it is on screen; it stops offscreen and under reduced motion.
+        let frame = 0;
+        let last = 0;
+        let pending = 0;
+        let onScreen = true;
+
+        function loop(now) {
+          if (last !== 0) pending += Math.min(now - last, 64);
+          last = now;
+          if (pending >= 32) {
+            advance(pending);
+            pending = 0;
+            render();
+          }
+          frame = run.phase === "streaming" ? requestAnimationFrame(loop) : 0;
+        }
+        function startLoop() {
+          if (frame !== 0 || run.phase !== "streaming" || reduced.matches || !onScreen) return;
+          last = 0;
+          frame = requestAnimationFrame(loop);
+        }
+        function stopLoop() {
+          if (frame !== 0) cancelAnimationFrame(frame);
+          frame = 0;
+        }
+        new IntersectionObserver((entries) => {
+          onScreen = entries.some((entry) => entry.isIntersecting);
+          if (onScreen) startLoop();
+          else stopLoop();
+        }).observe(root);
+        reduced.addEventListener("change", () => (reduced.matches ? stopLoop() : startLoop()));
+
+        function stop() {
+          if (run.phase !== "streaming") return;
+          stopLoop();
+          run.phase = "stopped";
+          render();
+        }
+
+        // Retry replays the answer; under reduced motion it lands finished, at once.
+        function retry() {
+          stopLoop();
+          parts.forEach((part) => {
+            if (part.kind === "tool") part.userOpen = null;
+          });
+          setCopied(false);
+          run = reduced.matches
+            ? { phase: "idle", part: parts.length, clock: 0, fresh: new Set(), completed: true }
+            : { phase: "streaming", part: 0, clock: 0, fresh: new Set(), completed: false };
+          render();
+          startLoop();
+          requestAnimationFrame(() => sendButton.focus());
+        }
+
+        root.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && run.phase === "streaming" && !event.defaultPrevented) {
+            event.preventDefault();
+            stop();
+          }
+        });
+
+        parts.forEach((part) => {
+          if (part.kind !== "tool") return;
+          part.toggle.addEventListener("click", () => {
+            part.userOpen = part.toggle.getAttribute("aria-expanded") !== "true";
+            setOpen(part, part.userOpen);
+          });
+        });
+
+        // Copy with "Copied" feedback.
+        const copyButton = $("[data-copy]");
+        const copyLabel = $("[data-copy-label]");
+        const copyIcon = $("[data-copy-icon]");
+        const copiedIcon = $("[data-copied-icon]");
+        let copyTimer = 0;
+
+        function setCopied(copied) {
+          setText(copyLabel, copied ? "Copied" : "Copy");
+          copyIcon.classList.toggle("hidden", copied);
+          copiedIcon.classList.toggle("hidden", !copied);
+          window.clearTimeout(copyTimer);
+          if (copied) copyTimer = window.setTimeout(() => setCopied(false), 1600);
+        }
+
+        function answerText() {
+          return parts
+            .filter((part) => part.kind === "text" && !part.el.hidden)
+            .map((part) => {
+              const paragraphs = [];
+              part.tokens.forEach((token) => {
+                if (!token.node.hidden)
+                  paragraphs[token.para] = (paragraphs[token.para] || "") + token.node.textContent;
+              });
+              return paragraphs
+                .filter(Boolean)
+                .map((text) => text.replace(/\s+/g, " ").trim())
+                .join("\n\n");
+            })
+            .filter(Boolean)
+            .join("\n\n");
+        }
+
+        async function writeClipboard(text) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch {
+            // Sandboxed frames can block the async clipboard; a selected textarea still copies on a user gesture.
+            const area = document.createElement("textarea");
+            area.value = text;
+            area.setAttribute("readonly", "");
+            area.style.position = "fixed";
+            area.style.top = "-1000px";
+            document.body.append(area);
+            area.select();
+            let copied = false;
+            try {
+              copied = document.execCommand("copy");
+            } catch {
+              copied = false;
+            }
+            area.remove();
+            return copied;
+          }
+        }
+
+        copyButton.addEventListener("click", async () => {
+          const copied = await writeClipboard(answerText());
+          setCopied(copied);
+          announce(copied ? "Copied the answer" : "Copy failed. Select the text to copy it.");
+        });
+        $("[data-retry]").addEventListener("click", retry);
+
+        // Model listbox: the select-only combobox pattern (arrows, Home/End, Enter/Space, Escape, Tab).
+        const picker = $("[data-model]");
+        const combo = $("[role='combobox']", picker);
+        const listbox = $("[role='listbox']", picker);
+        const options = $$("[role='option']", picker);
+        const modelValue = $("[data-model-value]", picker);
+        let selectedIndex = 0;
+        let activeIndex = 0;
+        let listOpen = false;
+
+        function paintOptions() {
+          options.forEach((option, index) => setAttr(option, "data-active", String(listOpen && index === activeIndex)));
+          if (listOpen) combo.setAttribute("aria-activedescendant", options[activeIndex].id);
+          else combo.removeAttribute("aria-activedescendant");
+        }
+        function onOutside(event) {
+          if (!picker.contains(event.target)) closeList();
+        }
+        function openList(index) {
+          activeIndex = index;
+          listOpen = true;
+          listbox.setAttribute("data-open", "true");
+          combo.setAttribute("aria-expanded", "true");
+          paintOptions();
+          document.addEventListener("pointerdown", onOutside);
+        }
+        function closeList() {
+          listOpen = false;
+          listbox.setAttribute("data-open", "false");
+          combo.setAttribute("aria-expanded", "false");
+          paintOptions();
+          document.removeEventListener("pointerdown", onOutside);
+        }
+        function choose(index) {
+          const option = options[index];
+          if (!option) return;
+          selectedIndex = index;
+          options.forEach((node, position) => {
+            node.setAttribute("aria-selected", String(position === index));
+            $("[data-check]", node).classList.toggle("invisible", position !== index);
+          });
+          modelValue.textContent = option.dataset.model;
+          limit = Number(option.dataset.limit);
+          closeList();
+          render();
+        }
+
+        combo.addEventListener("click", () => (listOpen ? closeList() : openList(selectedIndex)));
+        combo.addEventListener("keyup", (event) => {
+          if (event.key === " ") event.preventDefault();
+        });
+        combo.addEventListener("keydown", (event) => {
+          const lastIndex = options.length - 1;
+          if (!listOpen) {
+            if (["ArrowDown", "ArrowUp", "Enter", " "].includes(event.key)) {
+              event.preventDefault();
+              openList(selectedIndex);
+            } else if (event.key === "Home" || event.key === "End") {
+              event.preventDefault();
+              openList(event.key === "Home" ? 0 : lastIndex);
+            }
+            return;
+          }
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            activeIndex = Math.min(lastIndex, activeIndex + 1);
+            paintOptions();
+          } else if (event.key === "ArrowUp" && event.altKey) {
+            event.preventDefault();
+            choose(activeIndex);
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            activeIndex = Math.max(0, activeIndex - 1);
+            paintOptions();
+          } else if (event.key === "Home" || event.key === "End") {
+            event.preventDefault();
+            activeIndex = event.key === "Home" ? 0 : lastIndex;
+            paintOptions();
+          } else if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            choose(activeIndex);
+          } else if (event.key === "Escape") {
+            event.preventDefault();
+            event.stopPropagation();
+            closeList();
+          } else if (event.key === "Tab") {
+            choose(activeIndex);
+          }
+        });
+        options.forEach((option, index) => {
+          option.addEventListener("pointerdown", (event) => event.preventDefault());
+          option.addEventListener("pointerenter", () => {
+            activeIndex = index;
+            paintOptions();
+          });
+          option.addEventListener("click", () => choose(index));
+        });
+
+        // Attachments: removable chips, and files picked with the paperclip.
+        const chipList = $("[data-chips]");
+        const chipTemplate = $("[data-chip-template]");
+        const fileInput = $("[data-file-input]");
+
+        function makeChip(name, size) {
+          const chip = chipTemplate.content.firstElementChild.cloneNode(true);
+          chip.dataset.name = name;
+          $(/\.(csv|tsv|xlsx?)$/i.test(name) ? "[data-icon='text']" : "[data-icon='sheet']", chip).remove();
+          $("[data-chip-name]", chip).textContent = name;
+          $("[data-chip-size]", chip).textContent = formatBytes(size);
+          $("[data-chip-remove]", chip).setAttribute("aria-label", `Remove ${name}`);
+          return chip;
+        }
+
+        chipList.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-chip-remove]");
+          if (!button) return;
+          const chip = button.closest("li");
+          const index = $$("li", chipList).indexOf(chip);
+          chip.remove();
+          announce(`Removed ${chip.dataset.name}`);
+          const remaining = $$("[data-chip-remove]", chipList);
+          setHidden(chipList, remaining.length === 0);
+          (remaining[Math.min(index, remaining.length - 1)] || textarea).focus();
+        });
+        $("[data-attach]").addEventListener("click", () => fileInput.click());
+        fileInput.addEventListener("change", () => {
+          const picked = Array.from(fileInput.files || []);
+          fileInput.value = "";
+          if (picked.length === 0) return;
+          picked.forEach((file) => chipList.append(makeChip(file.name, file.size)));
+          setHidden(chipList, false);
+          announce(picked.length === 1 ? `Attached ${picked[0].name}` : `Attached ${picked.length} files`);
+        });
+
+        // Composer: Enter sends, Shift+Enter adds a line; the message joins the thread right away.
+        const userTemplate = $("[data-user-template]");
+        let sentCount = 0;
+
+        function autosize() {
+          textarea.style.height = "auto";
+          textarea.style.height = `${Math.min(textarea.scrollHeight, 200)}px`;
+        }
+
+        function send() {
+          const text = textarea.value.trim();
+          if (!text || run.phase === "streaming") return;
+          const files = $$("li", chipList).map((chip) => chip.dataset.name);
+          const item = userTemplate.content.firstElementChild.cloneNode(true);
+          sentCount += 1;
+          const labelId = `relay-sent-${sentCount}-label`;
+          $("article", item).setAttribute("aria-labelledby", labelId);
+          $("[data-user-label]", item).id = labelId;
+          $("[data-user-time]", item).textContent = new Date().toTimeString().slice(0, 5);
+          const body = $("[data-user-text]", item);
+          body.append(text);
+          if (files.length > 0) {
+            const list = document.createElement("ul");
+            list.setAttribute("aria-label", "Attached files");
+            list.className = "mt-2.5 flex flex-wrap gap-x-4 gap-y-1";
+            files.forEach((name) => {
+              const entry = document.createElement("li");
+              entry.className = "inline-flex items-center gap-1.5 font-mono text-[11px] text-(--iu-muted)";
+              const icon = $(
+                `[data-icon='${/\.(csv|tsv|xlsx?)$/i.test(name) ? "sheet" : "text"}']`,
+                chipTemplate.content,
+              );
+              entry.append(icon.cloneNode(true), name);
+              list.append(entry);
+            });
+            body.append(list);
+          }
+          threadList.append(item);
+          textarea.value = "";
+          chipList.replaceChildren();
+          setHidden(chipList, true);
+          autosize();
+          renderComposer(false);
+          pinned = true;
+          follow();
+        }
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          send();
+        });
+        sendButton.addEventListener("click", (event) => {
+          if (run.phase !== "streaming") return;
+          event.preventDefault();
+          stop();
+        });
+        textarea.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+            event.preventDefault();
+            send();
+          }
+        });
+        textarea.addEventListener("input", () => {
+          autosize();
+          sendButton.disabled = run.phase !== "streaming" && !textarea.value.trim();
+        });
+
+        autosize();
+      })();
+    </script>
+  </body>
+</html>

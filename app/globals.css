@@ -154,6 +154,12 @@
 @layer base {
   :root {
     color-scheme: light;
+    /* Code highlighting: site neutrals plus a warm tint (light canvas hue) and a cool tint (dark neutral hue). */
+    --code-fg: oklch(17.76% 0 0);
+    --code-comment: oklch(53.99% 0.0077 286.14);
+    --code-punct: oklch(47.69% 0.0095 286.03);
+    --code-warm: oklch(46.93% 0.0754 64.13);
+    --code-cool: oklch(45.96% 0.0597 286.27);
   }
   :root[data-theme="dark"] {
     color-scheme: dark;
@@ -166,6 +172,11 @@
     --color-control: oklch(100% 0 0 / 0.36);
     --color-danger: oklch(70.86% 0.1699 26.47);
     --color-accent: oklch(66.86% 0.2211 34.59);
+    --code-fg: oklch(94.61% 0 0);
+    --code-comment: oklch(64.86% 0.0088 286.15);
+    --code-punct: oklch(71.05% 0.0072 286.22);
+    --code-warm: oklch(85.93% 0.0449 73.8);
+    --code-cool: oklch(81.92% 0.0461 286.73);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -179,6 +190,11 @@
       --color-control: oklch(100% 0 0 / 0.36);
       --color-danger: oklch(70.86% 0.1699 26.47);
       --color-accent: oklch(66.86% 0.2211 34.59);
+      --code-fg: oklch(94.61% 0 0);
+      --code-comment: oklch(64.86% 0.0088 286.15);
+      --code-punct: oklch(71.05% 0.0072 286.22);
+      --code-warm: oklch(85.93% 0.0449 73.8);
+      --code-cool: oklch(81.92% 0.0461 286.73);
     }
   }
 
@@ -274,6 +290,42 @@
 }
 
 @layer components {
+  /* Highlighted code from scripts/lib/highlight.ts. Line numbers are CSS counters, so copying code skips them. */
+  .iu-code {
+    margin: 0;
+    color: var(--code-fg);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    tab-size: 2;
+    counter-reset: line;
+  }
+  .iu-code .line::before {
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 3ch;
+    margin-right: 2ch;
+    text-align: right;
+    color: var(--code-comment);
+    user-select: none;
+  }
+  .iu-code .k-comment {
+    color: var(--code-comment);
+  }
+  .iu-code .k-punct {
+    color: var(--code-punct);
+  }
+  .iu-code .k-warm {
+    color: var(--code-warm);
+  }
+  .iu-code .k-cool {
+    color: var(--code-cool);
+  }
+  .iu-code .k-italic {
+    font-style: italic;
+  }
+
   /* The logo heart swells once on hover or keyboard focus of its link. */
   .logo-heart {
     transform-box: fill-box;

@@ -1,0 +1,3062 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atelier product page · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-atelier=""
+      data-part="root"
+      class="relative bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--atelier-caption:color-mix(in_oklab,var(--atelier-ink)_66%,var(--atelier-plate))] [--atelier-graphite:color-mix(in_oklab,var(--atelier-ink)_46%,var(--atelier-plate))] [--atelier-ink:var(--iu-background)] [--atelier-lacquer:color-mix(in_oklab,var(--iu-accent)_88%,var(--atelier-ink))] [--atelier-plate:var(--iu-foreground)] [--atelier-steel:color-mix(in_oklab,var(--atelier-ink)_84%,var(--atelier-plate))] dark:[--atelier-ink:var(--iu-foreground)] dark:[--atelier-plate:color-mix(in_oklab,var(--iu-surface)_72%,var(--iu-background))]"
+    >
+      <div data-part="page">
+        <header class="border-b border-(--iu-border)">
+          <div class="mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-12">
+            <a
+              href="#"
+              class="-mx-1 inline-flex h-10 items-center rounded-[min(var(--iu-radius),2px)] px-1 font-serif text-[22px] tracking-[0.34em] uppercase focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent)"
+              >Orvanne</a
+            ><button
+              type="button"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls="atelier-bag"
+              data-part="bag-button"
+              class="-mr-3 inline-flex h-10 items-center gap-2.5 rounded-full px-3 text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                <path d="M3.103 6.034h17.794"></path>
+                <path
+                  d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"
+                ></path></svg
+              >Bag<span data-part="bag-count" class="inline-grid tabular-nums *:[grid-area:1/1]"
+                ><span style="opacity: 1"><span aria-hidden="true">(1)</span></span></span
+              ><span class="sr-only">, 1 piece</span>
+            </button>
+          </div>
+        </header>
+        <article aria-labelledby="atelier-title" class="mx-auto max-w-[1320px] px-5 pb-20 sm:px-8 sm:pb-28 lg:px-12">
+          <nav aria-label="Breadcrumb" class="py-4 sm:py-5">
+            <ol
+              class="flex flex-wrap items-center gap-x-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex min-h-6 items-center rounded-[min(var(--iu-radius),2px)] transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >Watches</a
+                >
+              </li>
+              <li aria-hidden="true" class="text-(--iu-foreground)/30">/</li>
+              <li><span aria-current="page" class="text-(--iu-foreground)">Méridienne</span></li>
+            </ol>
+          </nav>
+          <div class="grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1.22fr)_minmax(0,1fr)]">
+            <figure class="-mx-5 self-start sm:mx-0 lg:sticky lg:top-6">
+              <div
+                class="relative aspect-square overflow-hidden border-y border-(--iu-border) bg-(--atelier-plate) sm:aspect-[5/4] sm:rounded-[min(var(--iu-radius),2px)] sm:border lg:aspect-[4/5] dark:border-(--iu-foreground)/10"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pointer-events-none absolute inset-2.5 border border-(--atelier-caption)/25 sm:inset-3"
+                ></span
+                ><svg
+                  viewBox="0 0 600 750"
+                  preserveAspectRatio="xMidYMid slice"
+                  role="img"
+                  aria-label="Line drawing of the Méridienne in Steel, 38 mm, face on."
+                  data-part="drawing"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  class="absolute inset-0 size-full transition-[color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] **:[vector-effect:non-scaling-stroke] motion-reduce:transition-none"
+                  style="color: var(--atelier-steel)"
+                >
+                  <defs>
+                    <linearGradient id="atelier-fade" x1="0" y1="0" x2="0" y2="750" gradientUnits="userSpaceOnUse">
+                      <stop offset="0.02" stop-color="white" stop-opacity="0"></stop>
+                      <stop offset="0.24" stop-color="white"></stop>
+                      <stop offset="0.76" stop-color="white"></stop>
+                      <stop offset="0.98" stop-color="white" stop-opacity="0"></stop>
+                    </linearGradient>
+                    <mask id="atelier-strap" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="750">
+                      <rect width="600" height="750" fill="url(#atelier-fade)" stroke="none"></rect>
+                    </mask>
+                  </defs>
+                  <g data-part="figure" style="opacity: 1">
+                    <g data-part="scale" transform="translate(300 375) scale(1) translate(-300 -375)">
+                      <g mask="url(#atelier-strap)">
+                        <path d="M 223 246.27 L 227.5 0"></path>
+                        <path d="M 377 246.27 L 372.5 0"></path>
+                        <path d="M 223 503.73 L 227.5 750"></path>
+                        <path d="M 377 503.73 L 372.5 750"></path>
+                        <path
+                          d="M 230.7 236 L 235 0"
+                          stroke-dasharray="3 3.5"
+                          stroke-opacity="0.6"
+                          stroke-width="0.75"
+                        ></path>
+                        <path
+                          d="M 369.3 236 L 365 0"
+                          stroke-dasharray="3 3.5"
+                          stroke-opacity="0.6"
+                          stroke-width="0.75"
+                        ></path>
+                        <path
+                          d="M 230.7 514 L 235 750"
+                          stroke-dasharray="3 3.5"
+                          stroke-opacity="0.6"
+                          stroke-width="0.75"
+                        ></path>
+                        <path
+                          d="M 369.3 514 L 365 750"
+                          stroke-dasharray="3 3.5"
+                          stroke-opacity="0.6"
+                          stroke-width="0.75"
+                        ></path>
+                        <circle cx="300" cy="616" r="2.6" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="640" r="2.6" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="664" r="2.6" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="688" r="2.6" stroke-width="0.75"></circle>
+                      </g>
+                      <path
+                        d="M 192 270.79 C 197.5 254 203.5 234 205.6 214 Q 206.6 204.5 213.2 204.5 Q 220.8 204.5 221 212 L 221 247.49"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M 408 270.79 C 402.5 254 396.5 234 394.4 214 Q 393.4 204.5 386.8 204.5 Q 379.2 204.5 379 212 L 379 247.49"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M 192 479.21 C 197.5 496 203.5 516 205.6 536 Q 206.6 545.5 213.2 545.5 Q 220.8 545.5 221 538 L 221 502.51"
+                        stroke-linejoin="round"
+                      ></path>
+                      <path
+                        d="M 408 479.21 C 402.5 496 396.5 516 394.4 536 Q 393.4 545.5 386.8 545.5 Q 379.2 545.5 379 538 L 379 502.51"
+                        stroke-linejoin="round"
+                      ></path>
+                      <circle cx="300" cy="375" r="150" stroke-width="1.25"></circle>
+                      <circle cx="300" cy="375" r="141"></circle>
+                      <circle cx="300" cy="375" r="136.5" stroke-opacity="0.45" stroke-width="0.75"></circle>
+                      <path
+                        d="M 165.09 320.49 A 145.5 145.5 0 0 1 245.49 240.09"
+                        stroke-opacity="0.75"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      ></path>
+                      <path
+                        d="M 434.91 429.51 A 145.5 145.5 0 0 1 354.51 509.91"
+                        stroke-opacity="0.35"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                      ></path>
+                      <rect x="449.5" y="369.5" width="3.5" height="11"></rect>
+                      <rect x="453" y="362" width="16" height="26" rx="3"></rect>
+                      <path d="M 457 364.5 L 457 385.5" stroke-opacity="0.5" stroke-width="0.75"></path>
+                      <path d="M 461 364.5 L 461 385.5" stroke-opacity="0.5" stroke-width="0.75"></path>
+                      <path d="M 465 364.5 L 465 385.5" stroke-opacity="0.5" stroke-width="0.75"></path>
+                      <g
+                        data-part="dial"
+                        class="transition-[color] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+                        style="color: var(--atelier-steel)"
+                      >
+                        <circle
+                          data-part="wash"
+                          cx="300"
+                          cy="375"
+                          r="132"
+                          class="fill-current"
+                          fill-opacity="0.05"
+                        ></circle>
+                        <circle cx="300" cy="375" r="129" stroke-opacity="0.8" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="375" r="124.5" stroke-opacity="0.5" stroke-width="0.75"></circle>
+                        <line x1="300" y1="254.5" x2="300" y2="246" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="313.01"
+                          y1="251.18"
+                          x2="313.48"
+                          y2="246.71"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="325.89"
+                          y1="253.22"
+                          x2="326.82"
+                          y2="248.82"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="338.47"
+                          y1="256.59"
+                          x2="339.86"
+                          y2="252.31"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="350.64"
+                          y1="261.26"
+                          x2="352.47"
+                          y2="257.15"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="360.25" y1="270.64" x2="364.5" y2="263.28" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="373.18"
+                          y1="274.28"
+                          x2="375.82"
+                          y2="270.64"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="383.31"
+                          y1="282.48"
+                          x2="386.32"
+                          y2="279.13"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="392.52"
+                          y1="291.69"
+                          x2="395.87"
+                          y2="288.68"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="400.72"
+                          y1="301.82"
+                          x2="404.36"
+                          y2="299.18"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="404.36" y1="314.75" x2="411.72" y2="310.5" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="413.74"
+                          y1="324.36"
+                          x2="417.85"
+                          y2="322.53"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="418.41"
+                          y1="336.53"
+                          x2="422.69"
+                          y2="335.14"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="421.78"
+                          y1="349.11"
+                          x2="426.18"
+                          y2="348.18"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="423.82"
+                          y1="361.99"
+                          x2="428.29"
+                          y2="361.52"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="420.5" y1="375" x2="429" y2="375" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="423.82"
+                          y1="388.01"
+                          x2="428.29"
+                          y2="388.48"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="421.78"
+                          y1="400.89"
+                          x2="426.18"
+                          y2="401.82"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="418.41"
+                          y1="413.47"
+                          x2="422.69"
+                          y2="414.86"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="413.74"
+                          y1="425.64"
+                          x2="417.85"
+                          y2="427.47"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="404.36" y1="435.25" x2="411.72" y2="439.5" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="400.72"
+                          y1="448.18"
+                          x2="404.36"
+                          y2="450.82"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="392.52"
+                          y1="458.31"
+                          x2="395.87"
+                          y2="461.32"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="383.31"
+                          y1="467.52"
+                          x2="386.32"
+                          y2="470.87"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="373.18"
+                          y1="475.72"
+                          x2="375.82"
+                          y2="479.36"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="360.25" y1="479.36" x2="364.5" y2="486.72" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="350.64"
+                          y1="488.74"
+                          x2="352.47"
+                          y2="492.85"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="338.47"
+                          y1="493.41"
+                          x2="339.86"
+                          y2="497.69"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="325.89"
+                          y1="496.78"
+                          x2="326.82"
+                          y2="501.18"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="313.01"
+                          y1="498.82"
+                          x2="313.48"
+                          y2="503.29"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="300" y1="495.5" x2="300" y2="504" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="286.99"
+                          y1="498.82"
+                          x2="286.52"
+                          y2="503.29"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="274.11"
+                          y1="496.78"
+                          x2="273.18"
+                          y2="501.18"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="261.53"
+                          y1="493.41"
+                          x2="260.14"
+                          y2="497.69"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="249.36"
+                          y1="488.74"
+                          x2="247.53"
+                          y2="492.85"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="239.75" y1="479.36" x2="235.5" y2="486.72" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="226.82"
+                          y1="475.72"
+                          x2="224.18"
+                          y2="479.36"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="216.69"
+                          y1="467.52"
+                          x2="213.68"
+                          y2="470.87"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="207.48"
+                          y1="458.31"
+                          x2="204.13"
+                          y2="461.32"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="199.28"
+                          y1="448.18"
+                          x2="195.64"
+                          y2="450.82"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="195.64" y1="435.25" x2="188.28" y2="439.5" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="186.26"
+                          y1="425.64"
+                          x2="182.15"
+                          y2="427.47"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="181.59"
+                          y1="413.47"
+                          x2="177.31"
+                          y2="414.86"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="178.22"
+                          y1="400.89"
+                          x2="173.82"
+                          y2="401.82"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="176.18"
+                          y1="388.01"
+                          x2="171.71"
+                          y2="388.48"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="179.5" y1="375" x2="171" y2="375" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="176.18"
+                          y1="361.99"
+                          x2="171.71"
+                          y2="361.52"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="178.22"
+                          y1="349.11"
+                          x2="173.82"
+                          y2="348.18"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="181.59"
+                          y1="336.53"
+                          x2="177.31"
+                          y2="335.14"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="186.26"
+                          y1="324.36"
+                          x2="182.15"
+                          y2="322.53"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="195.64" y1="314.75" x2="188.28" y2="310.5" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="199.28"
+                          y1="301.82"
+                          x2="195.64"
+                          y2="299.18"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="207.48"
+                          y1="291.69"
+                          x2="204.13"
+                          y2="288.68"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="216.69"
+                          y1="282.48"
+                          x2="213.68"
+                          y2="279.13"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="226.82"
+                          y1="274.28"
+                          x2="224.18"
+                          y2="270.64"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="239.75" y1="270.64" x2="235.5" y2="263.28" stroke-width="1" stroke-opacity="1"></line>
+                        <line
+                          x1="249.36"
+                          y1="261.26"
+                          x2="247.53"
+                          y2="257.15"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="261.53"
+                          y1="256.59"
+                          x2="260.14"
+                          y2="252.31"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="274.11"
+                          y1="253.22"
+                          x2="273.18"
+                          y2="248.82"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line
+                          x1="286.99"
+                          y1="251.18"
+                          x2="286.52"
+                          y2="246.71"
+                          stroke-width="0.75"
+                          stroke-opacity="0.7"
+                        ></line>
+                        <line x1="300" y1="362" x2="300" y2="322" stroke-opacity="0.2" stroke-width="0.75"></line>
+                        <line
+                          x1="301.13"
+                          y1="362.05"
+                          x2="304.62"
+                          y2="322.2"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="302.26"
+                          y1="362.2"
+                          x2="309.2"
+                          y2="322.81"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="303.36"
+                          y1="362.44"
+                          x2="313.72"
+                          y2="323.81"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="304.45"
+                          y1="362.78"
+                          x2="318.13"
+                          y2="325.2"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="305.49"
+                          y1="363.22"
+                          x2="322.4"
+                          y2="326.97"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="306.5"
+                          y1="363.74"
+                          x2="326.5"
+                          y2="329.1"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="307.46"
+                          y1="364.35"
+                          x2="330.4"
+                          y2="331.58"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="308.36"
+                          y1="365.04"
+                          x2="334.07"
+                          y2="334.4"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="309.19"
+                          y1="365.81"
+                          x2="337.48"
+                          y2="337.52"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="309.96"
+                          y1="366.64"
+                          x2="340.6"
+                          y2="340.93"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="310.65"
+                          y1="367.54"
+                          x2="343.42"
+                          y2="344.6"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="311.26"
+                          y1="368.5"
+                          x2="345.9"
+                          y2="348.5"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="311.78"
+                          y1="369.51"
+                          x2="348.03"
+                          y2="352.6"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.22"
+                          y1="370.55"
+                          x2="349.8"
+                          y2="356.87"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.56"
+                          y1="371.64"
+                          x2="351.19"
+                          y2="361.28"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.8"
+                          y1="372.74"
+                          x2="352.19"
+                          y2="365.8"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.95"
+                          y1="373.87"
+                          x2="352.8"
+                          y2="370.38"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line x1="313" y1="375" x2="353" y2="375" stroke-opacity="0.2" stroke-width="0.75"></line>
+                        <line
+                          x1="312.95"
+                          y1="376.13"
+                          x2="352.8"
+                          y2="379.62"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.8"
+                          y1="377.26"
+                          x2="352.19"
+                          y2="384.2"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.56"
+                          y1="378.36"
+                          x2="351.19"
+                          y2="388.72"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="312.22"
+                          y1="379.45"
+                          x2="349.8"
+                          y2="393.13"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="311.78"
+                          y1="380.49"
+                          x2="348.03"
+                          y2="397.4"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="311.26"
+                          y1="381.5"
+                          x2="345.9"
+                          y2="401.5"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="310.65"
+                          y1="382.46"
+                          x2="343.42"
+                          y2="405.4"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="309.96"
+                          y1="383.36"
+                          x2="340.6"
+                          y2="409.07"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="309.19"
+                          y1="384.19"
+                          x2="337.48"
+                          y2="412.48"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="308.36"
+                          y1="384.96"
+                          x2="334.07"
+                          y2="415.6"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="307.46"
+                          y1="385.65"
+                          x2="330.4"
+                          y2="418.42"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="306.5"
+                          y1="386.26"
+                          x2="326.5"
+                          y2="420.9"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="305.49"
+                          y1="386.78"
+                          x2="322.4"
+                          y2="423.03"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="304.45"
+                          y1="387.22"
+                          x2="318.13"
+                          y2="424.8"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="303.36"
+                          y1="387.56"
+                          x2="313.72"
+                          y2="426.19"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="302.26"
+                          y1="387.8"
+                          x2="309.2"
+                          y2="427.19"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="301.13"
+                          y1="387.95"
+                          x2="304.62"
+                          y2="427.8"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line x1="300" y1="388" x2="300" y2="428" stroke-opacity="0.2" stroke-width="0.75"></line>
+                        <line
+                          x1="298.87"
+                          y1="387.95"
+                          x2="295.38"
+                          y2="427.8"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="297.74"
+                          y1="387.8"
+                          x2="290.8"
+                          y2="427.19"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="296.64"
+                          y1="387.56"
+                          x2="286.28"
+                          y2="426.19"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="295.55"
+                          y1="387.22"
+                          x2="281.87"
+                          y2="424.8"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="294.51"
+                          y1="386.78"
+                          x2="277.6"
+                          y2="423.03"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="293.5"
+                          y1="386.26"
+                          x2="273.5"
+                          y2="420.9"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="292.54"
+                          y1="385.65"
+                          x2="269.6"
+                          y2="418.42"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="291.64"
+                          y1="384.96"
+                          x2="265.93"
+                          y2="415.6"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="290.81"
+                          y1="384.19"
+                          x2="262.52"
+                          y2="412.48"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="290.04"
+                          y1="383.36"
+                          x2="259.4"
+                          y2="409.07"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="289.35"
+                          y1="382.46"
+                          x2="256.58"
+                          y2="405.4"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="288.74"
+                          y1="381.5"
+                          x2="254.1"
+                          y2="401.5"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="288.22"
+                          y1="380.49"
+                          x2="251.97"
+                          y2="397.4"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.78"
+                          y1="379.45"
+                          x2="250.2"
+                          y2="393.13"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.44"
+                          y1="378.36"
+                          x2="248.81"
+                          y2="388.72"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.2"
+                          y1="377.26"
+                          x2="247.81"
+                          y2="384.2"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.05"
+                          y1="376.13"
+                          x2="247.2"
+                          y2="379.62"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line x1="287" y1="375" x2="247" y2="375" stroke-opacity="0.2" stroke-width="0.75"></line>
+                        <line
+                          x1="287.05"
+                          y1="373.87"
+                          x2="247.2"
+                          y2="370.38"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.2"
+                          y1="372.74"
+                          x2="247.81"
+                          y2="365.8"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.44"
+                          y1="371.64"
+                          x2="248.81"
+                          y2="361.28"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="287.78"
+                          y1="370.55"
+                          x2="250.2"
+                          y2="356.87"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="288.22"
+                          y1="369.51"
+                          x2="251.97"
+                          y2="352.6"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="288.74"
+                          y1="368.5"
+                          x2="254.1"
+                          y2="348.5"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="289.35"
+                          y1="367.54"
+                          x2="256.58"
+                          y2="344.6"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="290.04"
+                          y1="366.64"
+                          x2="259.4"
+                          y2="340.93"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="290.81"
+                          y1="365.81"
+                          x2="262.52"
+                          y2="337.52"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="291.64"
+                          y1="365.04"
+                          x2="265.93"
+                          y2="334.4"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="292.54"
+                          y1="364.35"
+                          x2="269.6"
+                          y2="331.58"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="293.5"
+                          y1="363.74"
+                          x2="273.5"
+                          y2="329.1"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="294.51"
+                          y1="363.22"
+                          x2="277.6"
+                          y2="326.97"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="295.55"
+                          y1="362.78"
+                          x2="281.87"
+                          y2="325.2"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="296.64"
+                          y1="362.44"
+                          x2="286.28"
+                          y2="323.81"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="297.74"
+                          y1="362.2"
+                          x2="290.8"
+                          y2="322.81"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <line
+                          x1="298.87"
+                          y1="362.05"
+                          x2="295.38"
+                          y2="322.2"
+                          stroke-opacity="0.2"
+                          stroke-width="0.75"
+                        ></line>
+                        <circle cx="300" cy="375" r="56" stroke-opacity="0.45" stroke-width="0.75"></circle>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(30 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(60 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(90 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(120 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(150 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(210 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(240 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(270 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(300 300 375)"></rect>
+                        <rect x="298.2" y="261" width="3.6" height="18" rx="0.6" transform="rotate(330 300 375)"></rect>
+                        <rect x="294.2" y="259" width="3.6" height="20" rx="0.6"></rect>
+                        <rect x="302.2" y="259" width="3.6" height="20" rx="0.6"></rect>
+                        <text
+                          x="301.8"
+                          y="305"
+                          text-anchor="middle"
+                          font-size="13"
+                          letter-spacing="3.6"
+                          stroke="none"
+                          class="fill-current font-serif"
+                        >
+                          ORVANNE
+                        </text>
+                        <text
+                          x="301.3"
+                          y="315"
+                          text-anchor="middle"
+                          font-size="5.2"
+                          letter-spacing="2.6"
+                          stroke="none"
+                          fill-opacity="0.8"
+                          class="fill-current"
+                        >
+                          GENÈVE
+                        </text>
+                        <circle cx="300" cy="443" r="26" class="fill-(--atelier-plate)"></circle>
+                        <circle
+                          data-part="wash"
+                          cx="300"
+                          cy="443"
+                          r="26"
+                          stroke="none"
+                          class="fill-current"
+                          fill-opacity="0.05"
+                        ></circle>
+                        <circle cx="300" cy="443" r="21.5" stroke-opacity="0.5" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="443" r="4" stroke-opacity="0.25" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="443" r="8" stroke-opacity="0.25" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="443" r="12" stroke-opacity="0.25" stroke-width="0.75"></circle>
+                        <circle cx="300" cy="443" r="16" stroke-opacity="0.25" stroke-width="0.75"></circle>
+                        <line x1="300" y1="424.5" x2="300" y2="418" stroke-width="0.75"></line>
+                        <line x1="310.75" y1="424.38" x2="312.5" y2="421.35" stroke-width="0.75"></line>
+                        <line x1="318.62" y1="432.25" x2="321.65" y2="430.5" stroke-width="0.75"></line>
+                        <line x1="318.5" y1="443" x2="325" y2="443" stroke-width="0.75"></line>
+                        <line x1="318.62" y1="453.75" x2="321.65" y2="455.5" stroke-width="0.75"></line>
+                        <line x1="310.75" y1="461.62" x2="312.5" y2="464.65" stroke-width="0.75"></line>
+                        <line x1="300" y1="461.5" x2="300" y2="468" stroke-width="0.75"></line>
+                        <line x1="289.25" y1="461.62" x2="287.5" y2="464.65" stroke-width="0.75"></line>
+                        <line x1="281.38" y1="453.75" x2="278.35" y2="455.5" stroke-width="0.75"></line>
+                        <line x1="281.5" y1="443" x2="275" y2="443" stroke-width="0.75"></line>
+                        <line x1="281.38" y1="432.25" x2="278.35" y2="430.5" stroke-width="0.75"></line>
+                        <line x1="289.25" y1="424.38" x2="287.5" y2="421.35" stroke-width="0.75"></line>
+                      </g>
+                      <g transform="rotate(304.8 300 375)">
+                        <path
+                          d="M 300 287 L 305.4 365.32 L 300 388 L 294.6 365.32 Z"
+                          stroke-linejoin="round"
+                          class="fill-(--atelier-plate)"
+                        ></path>
+                        <path
+                          d="M 300 287 L 305.4 365.32 L 300 388 Z"
+                          stroke="none"
+                          class="fill-current"
+                          fill-opacity="0.2"
+                        ></path>
+                        <path d="M 300 287 L 300 388" stroke-opacity="0.55" stroke-width="0.75"></path>
+                      </g>
+                      <g transform="rotate(57.6 300 375)">
+                        <path
+                          d="M 300 254 L 304.6 361.69 L 300 392 L 295.4 361.69 Z"
+                          stroke-linejoin="round"
+                          class="fill-(--atelier-plate)"
+                        ></path>
+                        <path
+                          d="M 300 254 L 304.6 361.69 L 300 392 Z"
+                          stroke="none"
+                          class="fill-current"
+                          fill-opacity="0.2"
+                        ></path>
+                        <path d="M 300 254 L 300 392" stroke-opacity="0.55" stroke-width="0.75"></path>
+                      </g>
+                      <circle cx="300" cy="375" r="5" class="fill-(--atelier-plate)"></circle>
+                      <circle cx="300" cy="375" r="1.6" stroke="none" class="fill-current"></circle>
+                      <g class="text-(--iu-accent)">
+                        <path d="M 300 449 L 300 421" transform="rotate(216 300 443)" stroke-linecap="round"></path>
+                        <circle cx="300" cy="443" r="1.8" stroke="none" class="fill-current"></circle>
+                      </g>
+                      <g class="text-(--atelier-caption) max-sm:hidden" stroke-width="0.75">
+                        <g>
+                          <path d="M 186.84 298.67 L 128 236 H 44" stroke-opacity="0.7"></path>
+                          <circle cx="186.84" cy="298.67" r="2" stroke="none" class="fill-current"></circle>
+                          <text
+                            x="44"
+                            y="229"
+                            text-anchor="start"
+                            font-size="8.5"
+                            letter-spacing="1.8"
+                            stroke="none"
+                            class="fill-current uppercase"
+                          >
+                            Sapphire crystal
+                          </text>
+                        </g>
+                        <g>
+                          <path d="M 398.73 318 L 472 236 H 556" stroke-opacity="0.7"></path>
+                          <circle cx="398.73" cy="318" r="2" stroke="none" class="fill-current"></circle>
+                          <text
+                            x="556"
+                            y="229"
+                            text-anchor="end"
+                            font-size="8.5"
+                            letter-spacing="1.8"
+                            stroke="none"
+                            class="fill-current uppercase"
+                          >
+                            Applied indices
+                          </text>
+                        </g>
+                        <g>
+                          <path d="M 326 443 L 472 528 H 556" stroke-opacity="0.7"></path>
+                          <circle cx="326" cy="443" r="2" stroke="none" class="fill-current"></circle>
+                          <text
+                            x="556"
+                            y="521"
+                            text-anchor="end"
+                            font-size="8.5"
+                            letter-spacing="1.8"
+                            stroke="none"
+                            class="fill-current uppercase"
+                          >
+                            Small seconds
+                          </text>
+                        </g>
+                        <g>
+                          <path d="M 232.4 612 L 232.4 612 H 44" stroke-opacity="0.7"></path>
+                          <circle cx="232.4" cy="612" r="2" stroke="none" class="fill-current"></circle>
+                          <text
+                            x="44"
+                            y="605"
+                            text-anchor="start"
+                            font-size="8.5"
+                            letter-spacing="1.8"
+                            stroke="none"
+                            class="fill-current uppercase"
+                          >
+                            Hand-stitched calfskin
+                          </text>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+                <div
+                  class="pointer-events-none absolute inset-x-8 top-8 flex items-start justify-between gap-4 text-[10px] font-medium tracking-[0.22em] text-(--atelier-caption) uppercase tabular-nums max-sm:hidden"
+                >
+                  <span data-part="sku" class="inline-grid *:[grid-area:1/1]"
+                    ><span style="opacity: 1">Ref. OV-3801-ST-38</span></span
+                  ><span data-part="dims" class="inline-grid *:[grid-area:1/1]"
+                    ><span style="opacity: 1">Ø 38 mm · 10.4 mm</span></span
+                  >
+                </div>
+              </div>
+              <figcaption class="mt-4 text-center text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">
+                <span data-part="shown" class="inline-grid *:[grid-area:1/1]"
+                  ><span style="opacity: 1">Shown in Steel<span class="sm:hidden"> · 38 mm</span></span></span
+                >
+              </figcaption>
+            </figure>
+            <div class="min-w-0 lg:pt-4">
+              <p class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">
+                Maison Orvanne · Automatic
+              </p>
+              <h1
+                id="atelier-title"
+                class="mt-4 font-serif text-[clamp(3.5rem,2.6rem+3.4vw,6rem)] leading-[0.92] font-normal tracking-[-0.015em] text-balance"
+              >
+                Méridienne
+              </h1>
+              <p class="mt-6 max-w-[32rem] text-[15px] leading-[1.7] text-pretty text-(--iu-muted)">
+                A self-winding watch with a 72-hour reserve, assembled and regulated by hand in our Geneva atelier, then
+                worn for ten days before it leaves.
+              </p>
+              <div data-part="price" class="mt-8 grid border-t border-(--iu-border) pt-7 *:[grid-area:1/1]">
+                <div style="opacity: 1">
+                  <p class="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+                    <span class="font-serif text-[2.75rem] leading-none tracking-[-0.01em] tabular-nums">$2,176</span
+                    ><del class="text-[15px] text-(--iu-muted) tabular-nums decoration-1"
+                      ><span class="sr-only">Was </span>$2,560</del
+                    ><span
+                      class="inline-flex h-6 items-center self-center rounded-full border border-(--iu-accent) px-2.5 text-[10px] font-medium tracking-[0.2em] uppercase tabular-nums"
+                      >Save $384 · 15%</span
+                    >
+                  </p>
+                  <p class="mt-3 text-[13px] text-(--iu-muted)">Archive price until 30 November</p>
+                  <p class="mt-5 flex items-start gap-3 text-sm">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="mt-[3px] shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg
+                    ><span>In stock, ships within 2 days</span>
+                  </p>
+                </div>
+              </div>
+              <form data-part="form" novalidate="" class="mt-9">
+                <fieldset>
+                  <legend class="w-full">
+                    <span
+                      class="flex items-baseline justify-between text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                      ><span>Finish</span
+                      ><span data-part="finish-name" class="inline-grid text-(--iu-foreground) *:[grid-area:1/1]"
+                        ><span style="opacity: 1">Steel</span></span
+                      ></span
+                    >
+                  </legend>
+                  <div class="mt-5 flex flex-wrap gap-x-7 gap-y-4">
+                    <label
+                      class="group/finish relative flex w-14 cursor-pointer flex-col items-center gap-3 has-disabled:cursor-not-allowed"
+                      ><input type="radio" class="peer sr-only" name="atelier-finish" checked="" value="steel" /><span
+                        class="grid size-11 place-items-center rounded-full ring-(--iu-foreground) ring-offset-[3px] ring-offset-(--iu-background) transition-shadow duration-300 group-has-checked/finish:ring-1 group-has-focus-visible/finish:outline-2 group-has-focus-visible/finish:outline-offset-[6px] group-has-focus-visible/finish:outline-(--iu-accent) group-has-disabled/finish:opacity-40 motion-reduce:transition-none pointer-fine:group-hover/finish:ring-1 pointer-fine:group-hover/finish:ring-(--iu-foreground)/35 pointer-fine:group-has-checked/finish:group-hover/finish:ring-(--iu-foreground)"
+                        ><svg viewBox="0 0 44 44" aria-hidden="true" class="size-11">
+                          <circle
+                            cx="22"
+                            cy="22"
+                            r="21.5"
+                            class="fill-(--atelier-plate) stroke-(--iu-foreground)/15"
+                          ></circle>
+                          <circle
+                            cx="22"
+                            cy="22"
+                            r="13"
+                            fill="none"
+                            stroke-width="1.5"
+                            style="stroke: var(--atelier-steel)"
+                          ></circle>
+                          <circle cx="22" cy="22" r="7" style="fill: var(--atelier-steel)"></circle></svg></span
+                      ><span
+                        class="text-xs text-(--iu-muted) transition-colors duration-300 group-has-checked/finish:text-(--iu-foreground) motion-reduce:transition-none"
+                        >Steel</span
+                      ></label
+                    ><label
+                      class="group/finish relative flex w-14 cursor-pointer flex-col items-center gap-3 has-disabled:cursor-not-allowed"
+                      ><input type="radio" class="peer sr-only" name="atelier-finish" value="graphite" /><span
+                        class="grid size-11 place-items-center rounded-full ring-(--iu-foreground) ring-offset-[3px] ring-offset-(--iu-background) transition-shadow duration-300 group-has-checked/finish:ring-1 group-has-focus-visible/finish:outline-2 group-has-focus-visible/finish:outline-offset-[6px] group-has-focus-visible/finish:outline-(--iu-accent) group-has-disabled/finish:opacity-40 motion-reduce:transition-none pointer-fine:group-hover/finish:ring-1 pointer-fine:group-hover/finish:ring-(--iu-foreground)/35 pointer-fine:group-has-checked/finish:group-hover/finish:ring-(--iu-foreground)"
+                        ><svg viewBox="0 0 44 44" aria-hidden="true" class="size-11">
+                          <circle
+                            cx="22"
+                            cy="22"
+                            r="21.5"
+                            class="fill-(--atelier-plate) stroke-(--iu-foreground)/15"
+                          ></circle>
+                          <circle
+                            cx="22"
+                            cy="22"
+                            r="13"
+                            fill="none"
+                            stroke-width="1.5"
+                            style="stroke: var(--atelier-graphite)"
+                          ></circle>
+                          <circle cx="22" cy="22" r="7" style="fill: var(--atelier-graphite)"></circle></svg></span
+                      ><span
+                        class="text-xs text-(--iu-muted) transition-colors duration-300 group-has-checked/finish:text-(--iu-foreground) motion-reduce:transition-none"
+                        >Graphite</span
+                      ></label
+                    ><label
+                      class="group/finish relative flex w-14 cursor-pointer flex-col items-center gap-3 has-disabled:cursor-not-allowed"
+                      ><input type="radio" class="peer sr-only" name="atelier-finish" value="lacquer" /><span
+                        class="grid size-11 place-items-center rounded-full ring-(--iu-foreground) ring-offset-[3px] ring-offset-(--iu-background) transition-shadow duration-300 group-has-checked/finish:ring-1 group-has-focus-visible/finish:outline-2 group-has-focus-visible/finish:outline-offset-[6px] group-has-focus-visible/finish:outline-(--iu-accent) group-has-disabled/finish:opacity-40 motion-reduce:transition-none pointer-fine:group-hover/finish:ring-1 pointer-fine:group-hover/finish:ring-(--iu-foreground)/35 pointer-fine:group-has-checked/finish:group-hover/finish:ring-(--iu-foreground)"
+                        ><svg viewBox="0 0 44 44" aria-hidden="true" class="size-11">
+                          <circle
+                            cx="22"
+                            cy="22"
+                            r="21.5"
+                            class="fill-(--atelier-plate) stroke-(--iu-foreground)/15"
+                          ></circle>
+                          <circle
+                            cx="22"
+                            cy="22"
+                            r="13"
+                            fill="none"
+                            stroke-width="1.5"
+                            style="stroke: var(--atelier-steel)"
+                          ></circle>
+                          <circle cx="22" cy="22" r="7" style="fill: var(--atelier-lacquer)"></circle></svg></span
+                      ><span
+                        class="text-xs text-(--iu-muted) transition-colors duration-300 group-has-checked/finish:text-(--iu-foreground) motion-reduce:transition-none"
+                        >Lacquer</span
+                      ></label
+                    >
+                  </div>
+                </fieldset>
+                <fieldset class="mt-9">
+                  <legend class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">
+                    Case size
+                  </legend>
+                  <div class="mt-4 flex flex-wrap gap-2">
+                    <label class="group/size relative cursor-pointer has-disabled:cursor-not-allowed"
+                      ><input type="radio" class="peer sr-only" name="atelier-size" value="34" /><span
+                        class="inline-flex h-10 min-w-[4.75rem] items-center justify-center rounded-full border border-(--iu-foreground)/35 px-4 text-[13px] tabular-nums transition-colors duration-300 group-has-checked/size:border-(--iu-foreground) group-has-checked/size:bg-(--iu-foreground) group-has-checked/size:text-(--iu-background) group-has-focus-visible/size:outline-2 group-has-focus-visible/size:outline-offset-2 group-has-focus-visible/size:outline-(--iu-accent) group-has-disabled/size:border-dashed group-has-disabled/size:text-(--iu-muted) group-has-disabled/size:line-through group-has-[:disabled:checked]/size:border-(--iu-foreground) group-has-[:disabled:checked]/size:bg-transparent group-has-[:disabled:checked]/size:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:group-has-enabled/size:group-hover/size:border-(--iu-foreground)"
+                        >34 mm</span
+                      ></label
+                    ><label class="group/size relative cursor-pointer has-disabled:cursor-not-allowed"
+                      ><input type="radio" class="peer sr-only" name="atelier-size" checked="" value="38" /><span
+                        class="inline-flex h-10 min-w-[4.75rem] items-center justify-center rounded-full border border-(--iu-foreground)/35 px-4 text-[13px] tabular-nums transition-colors duration-300 group-has-checked/size:border-(--iu-foreground) group-has-checked/size:bg-(--iu-foreground) group-has-checked/size:text-(--iu-background) group-has-focus-visible/size:outline-2 group-has-focus-visible/size:outline-offset-2 group-has-focus-visible/size:outline-(--iu-accent) group-has-disabled/size:border-dashed group-has-disabled/size:text-(--iu-muted) group-has-disabled/size:line-through group-has-[:disabled:checked]/size:border-(--iu-foreground) group-has-[:disabled:checked]/size:bg-transparent group-has-[:disabled:checked]/size:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:group-has-enabled/size:group-hover/size:border-(--iu-foreground)"
+                        >38 mm</span
+                      ></label
+                    ><label class="group/size relative cursor-pointer has-disabled:cursor-not-allowed"
+                      ><input
+                        type="radio"
+                        disabled=""
+                        aria-describedby="atelier-reason-41"
+                        class="peer sr-only"
+                        name="atelier-size"
+                        value="41"
+                      /><span
+                        class="inline-flex h-10 min-w-[4.75rem] items-center justify-center rounded-full border border-(--iu-foreground)/35 px-4 text-[13px] tabular-nums transition-colors duration-300 group-has-checked/size:border-(--iu-foreground) group-has-checked/size:bg-(--iu-foreground) group-has-checked/size:text-(--iu-background) group-has-focus-visible/size:outline-2 group-has-focus-visible/size:outline-offset-2 group-has-focus-visible/size:outline-(--iu-accent) group-has-disabled/size:border-dashed group-has-disabled/size:text-(--iu-muted) group-has-disabled/size:line-through group-has-[:disabled:checked]/size:border-(--iu-foreground) group-has-[:disabled:checked]/size:bg-transparent group-has-[:disabled:checked]/size:text-(--iu-foreground) motion-reduce:transition-none pointer-fine:group-has-enabled/size:group-hover/size:border-(--iu-foreground)"
+                        >41 mm</span
+                      ></label
+                    >
+                  </div>
+                  <div data-part="size-notes">
+                    <p class="mt-3 flex flex-wrap items-center gap-x-3 text-[13px] text-(--iu-muted)">
+                      <span data-part="fit">Fits wrists 15 to 18 cm.</span
+                      ><a
+                        href="#size-guide"
+                        class="inline-flex min-h-6 items-center rounded-[min(var(--iu-radius),2px)] text-(--iu-foreground) underline decoration-(--iu-foreground)/30 underline-offset-4 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:decoration-(--iu-foreground)"
+                        >Size guide</a
+                      >
+                    </p>
+                    <p id="atelier-reason-41" class="mt-1 text-[13px] text-(--iu-muted)">
+                      <span class="text-(--iu-foreground)">41 mm</span> sold out in Steel. The next pieces leave the
+                      atelier on 14 January.
+                    </p>
+                  </div>
+                </fieldset>
+                <div class="mt-9 grid grid-cols-[auto_minmax(0,1fr)] items-end gap-3">
+                  <div>
+                    <label
+                      for="atelier-qty"
+                      class="block text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                      >Quantity</label
+                    >
+                    <div
+                      class="mt-3 flex h-12 items-center rounded-full border border-(--iu-foreground)/35 has-[input:focus-visible]:outline-2 has-[input:focus-visible]:outline-offset-2 has-[input:focus-visible]:outline-(--iu-accent)"
+                    >
+                      <button
+                        type="button"
+                        aria-label="Decrease quantity"
+                        data-part="qty-dec"
+                        disabled=""
+                        class="grid size-12 place-items-center rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:text-(--iu-foreground)/30 motion-reduce:transition-none pointer-fine:enabled:hover:bg-(--iu-foreground)/6"
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14"></path>
+                        </svg></button
+                      ><input
+                        id="atelier-qty"
+                        type="number"
+                        inputmode="numeric"
+                        min="1"
+                        max="3"
+                        aria-describedby="atelier-qty-hint"
+                        class="w-7 [appearance:textfield] bg-transparent text-center text-sm tabular-nums outline-none disabled:text-(--iu-muted) [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                        value="1"
+                      /><button
+                        type="button"
+                        aria-label="Increase quantity"
+                        data-part="qty-inc"
+                        class="grid size-12 place-items-center rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:text-(--iu-foreground)/30 motion-reduce:transition-none pointer-fine:enabled:hover:bg-(--iu-foreground)/6"
+                      >
+                        <svg
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M5 12h14"></path>
+                          <path d="M12 5v14"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    data-part="add"
+                    aria-describedby="atelier-qty-hint"
+                    class="inline-flex h-12 items-center justify-center gap-3 rounded-full bg-(--iu-foreground) px-6 text-xs font-medium tracking-[0.18em] whitespace-nowrap text-(--iu-background) uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:cursor-not-allowed disabled:border disabled:border-dashed disabled:border-(--iu-foreground)/35 disabled:bg-transparent disabled:text-(--iu-muted) motion-reduce:transition-none pointer-fine:enabled:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_84%,var(--iu-background))]"
+                  >
+                    Add to bag<span aria-hidden="true" class="h-3 w-px bg-current opacity-35 max-sm:hidden"></span
+                    ><span class="tabular-nums max-sm:hidden">$2,176</span>
+                  </button>
+                </div>
+                <p id="atelier-qty-hint" class="mt-3 min-h-5 text-[13px] text-(--iu-muted)"></p>
+              </form>
+              <dl class="mt-7 border-t border-(--iu-border)">
+                <div
+                  class="grid gap-1 border-b border-(--iu-border) py-[calc(16px*var(--iu-density))] sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-6"
+                >
+                  <dt class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase sm:pt-[3px]">
+                    Delivery
+                  </dt>
+                  <dd class="text-sm leading-relaxed text-pretty">
+                    Complimentary and insured. Order today to receive it between Thu 29 Oct and Mon 2 Nov.
+                  </dd>
+                </div>
+                <div
+                  class="grid gap-1 border-b border-(--iu-border) py-[calc(16px*var(--iu-density))] sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-6"
+                >
+                  <dt class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase sm:pt-[3px]">
+                    Returns
+                  </dt>
+                  <dd class="text-sm leading-relaxed text-pretty">
+                    Within 30 days, collected from your door at no cost.
+                  </dd>
+                </div>
+                <div
+                  class="grid gap-1 border-b border-(--iu-border) py-[calc(16px*var(--iu-density))] sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-6"
+                >
+                  <dt class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase sm:pt-[3px]">
+                    Warranty
+                  </dt>
+                  <dd class="text-sm leading-relaxed text-pretty">Five years, with servicing at our Geneva atelier.</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div
+        data-part="drawer"
+        data-open="false"
+        inert=""
+        class="group/bag invisible fixed inset-0 z-50 transition-[visibility] duration-500 data-[open=true]:visible data-[open=true]:duration-0 motion-reduce:transition-none"
+      >
+        <div
+          aria-hidden="true"
+          data-part="scrim"
+          class="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-500 group-data-[open=true]/bag:opacity-100 motion-reduce:transition-none dark:bg-black/60"
+        ></div>
+        <div
+          id="atelier-bag"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="atelier-bag-title"
+          tabindex="-1"
+          data-part="panel"
+          class="absolute inset-x-0 bottom-0 flex max-h-[92dvh] translate-y-full [scrollbar-gutter:stable_both-edges] flex-col overflow-y-auto overscroll-contain rounded-t-[min(var(--iu-radius),4px)] border-t border-(--iu-border) bg-(--iu-surface) transition-[translate] duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] outline-none *:shrink-0 group-data-[open=true]/bag:translate-y-0 motion-reduce:transition-none sm:inset-y-0 sm:right-0 sm:left-auto sm:max-h-none sm:w-[440px] sm:translate-x-full sm:translate-y-0 sm:rounded-none sm:border-t-0 sm:border-l sm:group-data-[open=true]/bag:translate-x-0 dark:border-(--iu-foreground)/10"
+        >
+          <div
+            class="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-(--iu-border) bg-(--iu-surface) px-5 pt-5 pb-4 sm:px-8 sm:pt-8 sm:pb-6"
+          >
+            <div>
+              <h2
+                id="atelier-bag-title"
+                class="font-serif text-[1.75rem] leading-none tracking-[-0.01em] sm:text-[2rem]"
+              >
+                Your bag
+              </h2>
+              <p data-part="bag-note" class="mt-3 text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">
+                1 piece · held for 30 minutes
+              </p>
+            </div>
+            <button
+              type="button"
+              aria-label="Close bag"
+              data-part="close"
+              class="-mt-1.5 -mr-2 grid size-10 shrink-0 place-items-center rounded-full text-(--iu-muted) transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/6 pointer-fine:hover:text-(--iu-foreground)"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <div
+            data-part="empty"
+            hidden=""
+            class="flex flex-1 flex-col items-center justify-center px-8 pt-12 pb-14 text-center"
+          >
+            <svg
+              viewBox="0 0 160 120"
+              aria-hidden="true"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              class="h-30 w-40 text-(--iu-muted)"
+            >
+              <path d="M 27 60 L 33 10 L 127 10 L 133 60" stroke-linejoin="round"></path>
+              <path d="M 34 56 L 39 16 L 121 16 L 126 56" stroke-opacity="0.4" stroke-linejoin="round"></path>
+              <text
+                x="81"
+                y="38"
+                text-anchor="middle"
+                font-size="7.5"
+                letter-spacing="2.4"
+                stroke="none"
+                class="fill-current font-serif uppercase"
+              >
+                Orvanne
+              </text>
+              <path d="M 66 44 L 96 44" stroke-opacity="0.4"></path>
+              <rect x="20" y="60" width="120" height="42" rx="1.5"></rect>
+              <path d="M 20 70 L 140 70" stroke-opacity="0.4"></path>
+              <path d="M 56 70 C 56 58 104 58 104 70"></path>
+              <path d="M 80 61 L 80 70" stroke-opacity="0.6"></path>
+              <path d="M 12 108 L 148 108" stroke-opacity="0.3"></path>
+            </svg>
+            <p class="mt-8 font-serif text-[1.75rem] leading-tight">Your bag is empty</p>
+            <p class="mt-3 max-w-[17rem] text-sm leading-relaxed text-pretty text-(--iu-muted)">
+              Pieces you add are held for 30 minutes while you decide.
+            </p>
+            <button
+              type="button"
+              data-part="continue"
+              class="mt-8 inline-flex h-11 items-center justify-center rounded-full border border-(--iu-foreground)/35 px-6 text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+            >
+              Continue with Méridienne
+            </button>
+          </div>
+          <div data-part="filled" class="contents *:shrink-0">
+            <ul data-part="lines">
+              <li data-part="line" data-id="OV-ST-INK-20" class="overflow-hidden">
+                <div
+                  data-fresh="false"
+                  class="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-4 border-b border-(--iu-border) px-5 py-[calc(14px*var(--iu-density))] transition-colors duration-1000 data-[fresh=true]:bg-(--iu-foreground)/[0.04] motion-reduce:transition-none sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-5 sm:px-8 sm:py-[calc(20px*var(--iu-density))]"
+                >
+                  <div
+                    data-part="thumb"
+                    class="h-16 w-12 overflow-hidden rounded-[min(var(--iu-radius),2px)] bg-(--atelier-plate) sm:h-20 sm:w-14"
+                  >
+                    <svg
+                      viewBox="140 155 320 440"
+                      preserveAspectRatio="xMidYMid slice"
+                      aria-hidden="true"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1"
+                      class="size-full **:[vector-effect:non-scaling-stroke]"
+                      style="color: var(--atelier-steel)"
+                    >
+                      <path d="M 246 155 L 246 595 M 354 155 L 354 595"></path>
+                      <path
+                        d="M 256 155 L 256 595 M 344 155 L 344 595"
+                        stroke-dasharray="3 3.5"
+                        stroke-opacity="0.6"
+                      ></path>
+                      <rect x="226" y="262" width="148" height="46" rx="14"></rect>
+                      <path d="M 300 262 L 300 338" stroke-linecap="round"></path>
+                      <rect x="238" y="346" width="124" height="14" rx="2"></rect>
+                      <ellipse cx="300" cy="420" rx="4" ry="5.5"></ellipse>
+                      <ellipse cx="300" cy="452" rx="4" ry="5.5"></ellipse>
+                      <ellipse cx="300" cy="484" rx="4" ry="5.5"></ellipse>
+                      <ellipse cx="300" cy="516" rx="4" ry="5.5"></ellipse>
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="flex items-baseline justify-between gap-3">
+                      <p data-part="name" class="truncate font-serif text-xl leading-tight">Calfskin strap</p>
+                      <p data-part="line-price" class="text-sm tabular-nums">$260</p>
+                    </div>
+                    <div class="mt-1 flex items-baseline justify-between gap-3 text-xs text-(--iu-muted)">
+                      <p data-part="detail" class="truncate">Ink · 20 mm · quick release</p>
+                    </div>
+                    <div class="mt-2.5 flex items-center justify-between gap-3 sm:mt-3">
+                      <div
+                        role="group"
+                        aria-label="Quantity of Calfskin strap"
+                        class="flex h-8 items-center rounded-full border border-(--iu-foreground)/35 pointer-coarse:h-10"
+                      >
+                        <button
+                          type="button"
+                          aria-label="Decrease quantity of Calfskin strap"
+                          data-part="line-dec"
+                          disabled=""
+                          class="grid size-8 place-items-center rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:text-(--iu-foreground)/30 motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/6"
+                        >
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14"></path>
+                          </svg></button
+                        ><span aria-live="polite" data-part="line-qty" class="w-5 text-center text-[13px] tabular-nums"
+                          >1</span
+                        ><button
+                          type="button"
+                          aria-label="Increase quantity of Calfskin strap"
+                          data-part="line-inc"
+                          class="grid size-8 place-items-center rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:text-(--iu-foreground)/30 motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/6"
+                        >
+                          <svg
+                            width="12"
+                            height="12"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 12h14"></path>
+                            <path d="M12 5v14"></path>
+                          </svg>
+                        </button>
+                      </div>
+                      <button
+                        type="button"
+                        data-part="remove"
+                        class="inline-flex min-h-6 items-center rounded-[min(var(--iu-radius),2px)] text-xs text-(--iu-muted) underline decoration-(--iu-foreground)/25 underline-offset-4 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground) pointer-fine:hover:decoration-(--iu-foreground)"
+                      >
+                        Remove<span class="sr-only"> Calfskin strap</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+            <form data-part="code-form" novalidate="" class="px-5 py-5 sm:px-8 sm:py-6">
+              <label
+                for="atelier-code"
+                class="block text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase"
+                >Discount code</label
+              >
+              <div class="mt-3 flex gap-2">
+                <input
+                  id="atelier-code"
+                  autocomplete="off"
+                  autocapitalize="characters"
+                  spellcheck="false"
+                  placeholder="Enter code"
+                  aria-describedby="atelier-code-hint"
+                  class="h-10 min-w-0 flex-1 rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/35 bg-transparent px-3 text-sm tracking-[0.12em] uppercase placeholder:tracking-normal placeholder:text-(--iu-muted) placeholder:normal-case focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) aria-invalid:border-red-700 dark:aria-invalid:border-red-400"
+                  name="code"
+                  value=""
+                /><button
+                  type="submit"
+                  data-part="apply"
+                  class="inline-flex h-10 min-w-[5.5rem] items-center justify-center rounded-full border border-(--iu-foreground)/35 px-5 text-xs font-medium tracking-[0.18em] uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:border-(--iu-foreground)"
+                >
+                  Apply
+                </button>
+              </div>
+              <p
+                id="atelier-code-hint"
+                aria-live="polite"
+                class="mt-2.5 flex gap-1.5 text-xs leading-relaxed text-(--iu-muted)"
+              >
+                One code per order, applied before tax.
+              </p>
+            </form>
+            <dl
+              data-part="totals"
+              class="mt-auto grid grid-cols-[minmax(0,1fr)_auto] gap-x-6 gap-y-1.5 border-t border-(--iu-border) px-5 pt-4 pb-1 text-sm sm:gap-y-2 sm:px-8 sm:pt-6"
+            >
+              <dt class="text-(--iu-muted)">Subtotal</dt>
+              <dd class="text-right tabular-nums">$260.00</dd>
+              <dt class="text-(--iu-muted)">Shipping</dt>
+              <dd class="text-right">Complimentary</dd>
+              <dt class="text-(--iu-muted)">Estimated tax · NY 8.875%</dt>
+              <dd class="text-right tabular-nums">$23.08</dd>
+            </dl>
+            <div class="sticky bottom-0 bg-(--iu-surface) px-5 pt-3 pb-5 sm:px-8 sm:pt-4 sm:pb-8">
+              <div class="flex items-baseline justify-between gap-6 border-t border-(--iu-border) pt-4 sm:pt-5">
+                <span class="text-[11px] font-medium tracking-[0.2em] text-(--iu-muted) uppercase">Total</span
+                ><span data-part="total" class="font-serif text-[2rem] leading-none tabular-nums">$283.08</span>
+              </div>
+              <a
+                href="#checkout"
+                data-part="checkout"
+                class="mt-4 flex inline-flex h-12 w-full items-center justify-center gap-3 rounded-full bg-(--iu-foreground) px-6 text-xs font-medium tracking-[0.18em] text-(--iu-background) uppercase transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none sm:mt-5 pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_84%,var(--iu-background))]"
+                >Checkout</a
+              >
+              <p class="mt-3 text-center text-xs text-(--iu-muted)">Duties included · returns within 30 days</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p aria-live="polite" data-part="live" class="sr-only"></p>
+      <template data-template="line"
+        ><li data-part="line" class="overflow-hidden">
+          <div
+            data-fresh="true"
+            class="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-4 border-b border-(--iu-border) px-5 py-[calc(14px*var(--iu-density))] transition-colors duration-1000 data-[fresh=true]:bg-(--iu-foreground)/[0.04] motion-reduce:transition-none sm:grid-cols-[3.5rem_minmax(0,1fr)] sm:gap-5 sm:px-8 sm:py-[calc(20px*var(--iu-density))]"
+          >
+            <span aria-hidden="true" data-part="mark" class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"></span>
+            <div
+              data-part="thumb"
+              class="h-16 w-12 overflow-hidden rounded-[min(var(--iu-radius),2px)] bg-(--atelier-plate) sm:h-20 sm:w-14"
+            ></div>
+            <div class="min-w-0">
+              <p
+                data-part="added"
+                class="mb-1.5 flex items-center gap-1.5 text-[10px] font-medium tracking-[0.2em] uppercase sm:mb-2"
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M20 6 9 17l-5-5"></path></svg
+                >Just added
+              </p>
+              <div class="flex items-baseline justify-between gap-3">
+                <p data-part="name" class="truncate font-serif text-xl leading-tight">Méridienne</p>
+                <p data-part="line-price" class="text-sm tabular-nums">$2,176</p>
+              </div>
+              <div class="mt-1 flex items-baseline justify-between gap-3 text-xs text-(--iu-muted)">
+                <p data-part="detail" class="truncate">Steel · 38 mm</p>
+                <del data-part="line-was" class="tabular-nums"><span class="sr-only">Was </span>$2,560</del>
+              </div>
+              <div class="mt-2.5 flex items-center justify-between gap-3 sm:mt-3">
+                <div
+                  role="group"
+                  aria-label="Quantity of Méridienne"
+                  class="flex h-8 items-center rounded-full border border-(--iu-foreground)/35 pointer-coarse:h-10"
+                >
+                  <button
+                    type="button"
+                    aria-label="Decrease quantity of Méridienne"
+                    data-part="line-dec"
+                    disabled=""
+                    class="grid size-8 place-items-center rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:text-(--iu-foreground)/30 motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/6"
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                    </svg></button
+                  ><span aria-live="polite" data-part="line-qty" class="w-5 text-center text-[13px] tabular-nums"
+                    >1</span
+                  ><button
+                    type="button"
+                    aria-label="Increase quantity of Méridienne"
+                    data-part="line-inc"
+                    class="grid size-8 place-items-center rounded-full transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) disabled:text-(--iu-foreground)/30 motion-reduce:transition-none pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--iu-foreground)/6"
+                  >
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5v14"></path>
+                    </svg>
+                  </button>
+                </div>
+                <button
+                  type="button"
+                  data-part="remove"
+                  class="inline-flex min-h-6 items-center rounded-[min(var(--iu-radius),2px)] text-xs text-(--iu-muted) underline decoration-(--iu-foreground)/25 underline-offset-4 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:min-h-10 pointer-fine:hover:text-(--iu-foreground) pointer-fine:hover:decoration-(--iu-foreground)"
+                >
+                  Remove<span class="sr-only"> Méridienne</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </li></template
+      ><template data-template="line-mark"
+        ><span
+          aria-hidden="true"
+          data-part="mark"
+          class="absolute inset-y-0 left-0 w-0.5 bg-(--iu-accent)"
+        ></span></template
+      ><template data-template="line-added"
+        ><p
+          data-part="added"
+          class="mb-1.5 flex items-center gap-1.5 text-[10px] font-medium tracking-[0.2em] uppercase sm:mb-2"
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5"></path></svg
+          >Just added
+        </p></template
+      ><template data-template="thumb-watch"
+        ><svg
+          viewBox="140 155 320 440"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          class="size-full **:[vector-effect:non-scaling-stroke]"
+          style="color: var(--atelier-steel)"
+        >
+          <path d="M 223 246.27 L 226 155 M 377 246.27 L 374 155 M 223 503.73 L 226 595 M 377 503.73 L 374 595"></path>
+          <path
+            d="M 192 270.79 C 197.5 254 203.5 234 205.6 214 Q 206.6 204.5 213.2 204.5 Q 220.8 204.5 221 212 L 221 247.49"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M 408 270.79 C 402.5 254 396.5 234 394.4 214 Q 393.4 204.5 386.8 204.5 Q 379.2 204.5 379 212 L 379 247.49"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M 192 479.21 C 197.5 496 203.5 516 205.6 536 Q 206.6 545.5 213.2 545.5 Q 220.8 545.5 221 538 L 221 502.51"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M 408 479.21 C 402.5 496 396.5 516 394.4 536 Q 393.4 545.5 386.8 545.5 Q 379.2 545.5 379 538 L 379 502.51"
+            stroke-linejoin="round"
+          ></path>
+          <circle cx="300" cy="375" r="150"></circle>
+          <circle cx="300" cy="375" r="141" stroke-opacity="0.6"></circle>
+          <rect x="453" y="362" width="16" height="26" rx="3"></rect>
+          <g style="color: var(--atelier-steel)">
+            <circle cx="300" cy="375" r="132" class="fill-current" fill-opacity="0.08"></circle>
+            <line x1="300" y1="275" x2="300" y2="255"></line>
+            <line x1="350" y1="288.4" x2="360" y2="271.08"></line>
+            <line x1="386.6" y1="325" x2="403.92" y2="315"></line>
+            <line x1="400" y1="375" x2="420" y2="375"></line>
+            <line x1="386.6" y1="425" x2="403.92" y2="435"></line>
+            <line x1="350" y1="461.6" x2="360" y2="478.92"></line>
+            <line x1="250" y1="461.6" x2="240" y2="478.92"></line>
+            <line x1="213.4" y1="425" x2="196.08" y2="435"></line>
+            <line x1="200" y1="375" x2="180" y2="375"></line>
+            <line x1="213.4" y1="325" x2="196.08" y2="315"></line>
+            <line x1="250" y1="288.4" x2="240" y2="271.08"></line>
+            <circle cx="300" cy="443" r="26" stroke-opacity="0.7"></circle>
+          </g>
+          <path d="M 300 375 L 231.02 327.06" stroke-width="1.5" stroke-linecap="round"></path>
+          <path d="M 300 375 L 399.63 311.77" stroke-width="1.5" stroke-linecap="round"></path></svg></template
+      ><template data-template="thumb-strap"
+        ><svg
+          viewBox="140 155 320 440"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1"
+          class="size-full **:[vector-effect:non-scaling-stroke]"
+          style="color: var(--atelier-steel)"
+        >
+          <path d="M 246 155 L 246 595 M 354 155 L 354 595"></path>
+          <path d="M 256 155 L 256 595 M 344 155 L 344 595" stroke-dasharray="3 3.5" stroke-opacity="0.6"></path>
+          <rect x="226" y="262" width="148" height="46" rx="14"></rect>
+          <path d="M 300 262 L 300 338" stroke-linecap="round"></path>
+          <rect x="238" y="346" width="124" height="14" rx="2"></rect>
+          <ellipse cx="300" cy="420" rx="4" ry="5.5"></ellipse>
+          <ellipse cx="300" cy="452" rx="4" ry="5.5"></ellipse>
+          <ellipse cx="300" cy="484" rx="4" ry="5.5"></ellipse>
+          <ellipse cx="300" cy="516" rx="4" ry="5.5"></ellipse></svg></template
+      ><template data-template="error"
+        ><div
+          role="alert"
+          data-part="error"
+          class="mt-4 flex gap-3.5 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) p-5"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide-alert-circle mt-0.5 shrink-0 text-red-700 dark:text-red-400"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" x2="12" y1="8" y2="12"></line>
+            <line x1="12" x2="12.01" y1="16" y2="16"></line>
+          </svg>
+          <div class="min-w-0">
+            <p class="text-sm font-medium">Not added to your bag</p>
+            <p data-part="error-message" class="mt-1.5 text-sm leading-relaxed text-pretty text-(--iu-muted)">
+              The last Graphite 38 mm was reserved by another client a moment ago. Nothing was charged.
+            </p>
+            <button
+              type="button"
+              data-part="error-action"
+              class="mt-4 inline-flex min-h-6 items-center rounded-[min(var(--iu-radius),2px)] text-xs font-medium tracking-[0.16em] uppercase underline decoration-(--iu-foreground)/30 underline-offset-[6px] transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:decoration-(--iu-foreground)"
+            >
+              Choose Graphite 41 mm instead
+            </button>
+          </div>
+        </div></template
+      ><template data-template="spinner"
+        ><svg
+          viewBox="0 0 16 16"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.25"
+          class="size-4 animate-spin [animation-duration:1.4s] motion-reduce:animate-none"
+          style="animation-play-state: paused"
+        >
+          <circle cx="8" cy="8" r="6.5" stroke-opacity="0.3"></circle>
+          <path d="M 8 1.5 A 6.5 6.5 0 0 1 14.5 8" stroke-linecap="round"></path></svg></template
+      ><template data-template="code-applied"
+        ><div
+          class="mt-3 flex h-10 items-center justify-between gap-3 rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) px-3"
+        >
+          <p class="flex min-w-0 items-center gap-2 text-sm">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              class="shrink-0"
+            >
+              <path d="M20 6 9 17l-5-5"></path></svg
+            ><span data-part="code-name" class="truncate tracking-[0.12em] uppercase"></span
+            ><span data-part="code-off" class="shrink-0 text-(--iu-muted)"></span>
+          </p>
+          <button
+            type="button"
+            class="inline-flex min-h-6 shrink-0 items-center rounded-[min(var(--iu-radius),2px)] text-xs text-(--iu-muted) underline decoration-(--iu-foreground)/25 underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) pointer-fine:hover:text-(--iu-foreground)"
+          >
+            Remove<span class="sr-only"></span>
+          </button></div></template
+      ><template data-template="alert-icon"
+        ><svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          class="mt-px shrink-0"
+        >
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" x2="12" y1="8" y2="12"></line>
+          <line x1="12" x2="12.01" y1="16" y2="16"></line></svg
+      ></template>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-atelier]");
+        if (!root) return;
+
+        // Catalogue data, the same as the React component's defaults. Replace it with your product.
+        var product = {
+          name: "Méridienne",
+          saleLabel: "Archive event",
+          saleNote: "Archive price until 30 November",
+          finishes: [
+            { id: "steel", name: "Steel", tone: "var(--atelier-steel)" },
+            { id: "graphite", name: "Graphite", tone: "var(--atelier-graphite)" },
+            { id: "lacquer", name: "Lacquer", tone: "var(--atelier-steel)", dialTone: "var(--atelier-lacquer)" },
+          ],
+          sizes: [
+            { id: "34", label: "34 mm", diameter: 34, thickness: "9.6 mm", fit: "Fits wrists 13.5 to 16 cm" },
+            { id: "38", label: "38 mm", diameter: 38, thickness: "10.4 mm", fit: "Fits wrists 15 to 18 cm" },
+            { id: "41", label: "41 mm", diameter: 41, thickness: "11.2 mm", fit: "Fits wrists 16.5 to 20 cm" },
+          ],
+          variants: [
+            { id: "OV-3801-ST-34", finishId: "steel", sizeId: "34", price: 2176, compareAtPrice: 2560, stock: 8 },
+            { id: "OV-3801-ST-38", finishId: "steel", sizeId: "38", price: 2176, compareAtPrice: 2560, stock: 12 },
+            {
+              id: "OV-3801-ST-41",
+              finishId: "steel",
+              sizeId: "41",
+              price: 2176,
+              compareAtPrice: 2560,
+              stock: 0,
+              soldOutReason: "The next pieces leave the atelier on 14 January.",
+            },
+            {
+              id: "OV-3801-GR-34",
+              finishId: "graphite",
+              sizeId: "34",
+              price: 2414,
+              compareAtPrice: 2840,
+              stock: 0,
+              soldOutReason: "Graphite is no longer made in 34 mm.",
+            },
+            { id: "OV-3801-GR-38", finishId: "graphite", sizeId: "38", price: 2414, compareAtPrice: 2840, stock: 2 },
+            { id: "OV-3801-GR-41", finishId: "graphite", sizeId: "41", price: 2414, compareAtPrice: 2840, stock: 5 },
+            { id: "OV-3801-LQ-34", finishId: "lacquer", sizeId: "34", price: 3120, stock: 4 },
+            { id: "OV-3801-LQ-38", finishId: "lacquer", sizeId: "38", price: 3120, stock: 1 },
+            {
+              id: "OV-3801-LQ-41",
+              finishId: "lacquer",
+              sizeId: "41",
+              price: 3120,
+              stock: 0,
+              soldOutReason: "Lacquer dials in 41 mm are made to order from February.",
+            },
+          ],
+        };
+        var lines = [
+          {
+            id: "OV-ST-INK-20",
+            name: "Calfskin strap",
+            detail: "Ink · 20 mm · quick release",
+            price: 260,
+            quantity: 1,
+            maxQuantity: 3,
+            thumbnail: "strap",
+            tone: "var(--atelier-steel)",
+          },
+        ];
+        var codes = { ATELIER10: 10 };
+        var TAX_RATE = 0.08875;
+        var TAX_LABEL = "Estimated tax · NY";
+        var PER_CLIENT_LIMIT = 3;
+        var LOW_STOCK = 3;
+        var CODE_PATTERN = /^[A-Z0-9-]{4,16}$/;
+        var EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
+        var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+        // Hold the piece in your cart here: resolve once it is held, or reject with an Error to show its message.
+        function reserve(line) {
+          root.dispatchEvent(new CustomEvent("atelier:add", { detail: line }));
+          return new Promise(function (resolve) {
+            window.setTimeout(resolve, 700);
+          });
+        }
+
+        var state = {
+          finishId: "steel",
+          sizeId: "38",
+          quantity: 1,
+          busy: false,
+          error: null,
+          open: false,
+          highlight: null,
+          code: null,
+        };
+        var keys = {};
+        var returnFocus = null;
+        var settleTimer = 0;
+        var figureAnimation = null;
+        var spinnerObserver = null;
+        var lockedStyles = null;
+
+        var whole = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        });
+        var exact = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        });
+        function money(value, cents) {
+          return cents || !Number.isInteger(value) ? exact.format(value) : whole.format(value);
+        }
+        function r2(value) {
+          return Math.round(value * 100) / 100;
+        }
+        function pieceCount(count) {
+          return count + (count === 1 ? " piece" : " pieces");
+        }
+        function reduced() {
+          return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        }
+        function part(name, scope) {
+          return (scope || root).querySelector('[data-part="' + name + '"]');
+        }
+        function cloneTemplate(name) {
+          return root.querySelector('template[data-template="' + name + '"]').content.firstElementChild.cloneNode(true);
+        }
+
+        var page = part("page");
+        var bagButton = part("bag-button");
+        var drawing = part("drawing");
+        var figure = part("figure");
+        var scaleGroup = part("scale");
+        var dial = part("dial");
+        var form = part("form");
+        var priceBox = part("price");
+        var sizeNotes = part("size-notes");
+        var qtyInput = form.querySelector('input[type="number"]');
+        var qtyDec = part("qty-dec");
+        var qtyInc = part("qty-inc");
+        var qtyHint = document.getElementById(qtyInput.getAttribute("aria-describedby"));
+        var addButton = part("add");
+        var finishRadios = Array.prototype.slice.call(form.querySelectorAll('input[name="atelier-finish"]'));
+        var sizeRadios = Array.prototype.slice.call(form.querySelectorAll('input[name="atelier-size"]'));
+        var drawer = part("drawer");
+        var panel = part("panel");
+        var linesList = part("lines");
+        var filled = part("filled");
+        var emptyState = part("empty");
+        var codeForm = part("code-form");
+        var codeInput = codeForm.querySelector("input");
+        var codeRow = codeInput.parentElement;
+        var codeHint = document.getElementById(codeInput.getAttribute("aria-describedby"));
+        var totalsList = part("totals");
+        var live = part("live");
+
+        function finish() {
+          return product.finishes.find(function (item) {
+            return item.id === state.finishId;
+          });
+        }
+        function size() {
+          return product.sizes.find(function (item) {
+            return item.id === state.sizeId;
+          });
+        }
+        function variantFor(finishId, sizeId) {
+          return product.variants.find(function (item) {
+            return item.finishId === finishId && item.sizeId === sizeId;
+          });
+        }
+        function inStock(finishId, sizeId) {
+          var variant = variantFor(finishId, sizeId);
+          return !!variant && variant.stock > 0;
+        }
+        function variant() {
+          return variantFor(state.finishId, state.sizeId);
+        }
+        function stock() {
+          var current = variant();
+          return current ? current.stock : 0;
+        }
+        function maxQuantity() {
+          return Math.max(1, Math.min(stock(), PER_CLIENT_LIMIT));
+        }
+        function quantity() {
+          return Math.min(state.quantity, maxQuantity());
+        }
+        // The wanted size when it is in stock in this finish, otherwise the nearest size that is.
+        function pickSize(finishId, wantedId) {
+          if (inStock(finishId, wantedId)) return wantedId;
+          var wanted = Math.max(
+            0,
+            product.sizes.findIndex(function (item) {
+              return item.id === wantedId;
+            }),
+          );
+          var best = null;
+          product.sizes.forEach(function (item, index) {
+            if (!inStock(finishId, item.id)) return;
+            var distance = Math.abs(index - wanted);
+            if (!best || distance < best.distance) best = { id: item.id, distance: distance };
+          });
+          return best ? best.id : wantedId;
+        }
+        function totals() {
+          var result = { pieces: 0, subtotal: 0, saleDiscount: 0, codeDiscount: 0, shipping: 0, tax: 0, total: 0 };
+          lines.forEach(function (line) {
+            var listed = line.compareAtPrice || line.price;
+            result.pieces += line.quantity;
+            result.subtotal += listed * line.quantity;
+            result.saleDiscount += (listed - line.price) * line.quantity;
+          });
+          var percentOff = state.code ? state.code.percentOff : 0;
+          result.codeDiscount = r2(((result.subtotal - result.saleDiscount) * percentOff) / 100);
+          var taxable = r2(result.subtotal - result.saleDiscount - result.codeDiscount);
+          result.tax = r2(taxable * TAX_RATE);
+          result.total = r2(taxable + result.tax);
+          result.code = state.code ? state.code.code : undefined;
+          return result;
+        }
+        function announce(text) {
+          live.textContent = text;
+        }
+
+        // Motion: the same cross-fade, fade-through and slide as the React version, instant under reduced motion.
+        function crossFade(container, next) {
+          var previous = Array.prototype.slice.call(container.children);
+          next.style.opacity = "1";
+          container.appendChild(next);
+          if (reduced()) {
+            previous.forEach(function (node) {
+              node.remove();
+            });
+            return;
+          }
+          next.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, easing: EASE });
+          previous.forEach(function (node) {
+            node.setAttribute("aria-hidden", "true");
+            node.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, easing: EASE, fill: "forwards" }).onfinish =
+              function () {
+                node.remove();
+              };
+          });
+        }
+        function swap(name, key, fill) {
+          if (keys[name] === key) return;
+          keys[name] = key;
+          var span = document.createElement("span");
+          fill(span);
+          crossFade(part(name), span);
+        }
+        function fadeThrough(apply) {
+          if (figureAnimation) figureAnimation.cancel();
+          if (reduced()) {
+            apply();
+            return;
+          }
+          var leave = figure.animate([{ opacity: 1 }, { opacity: 0 }], {
+            duration: 260,
+            easing: EASE,
+            fill: "forwards",
+          });
+          figureAnimation = leave;
+          leave.onfinish = function () {
+            apply();
+            figureAnimation = figure.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: EASE });
+            leave.cancel();
+          };
+        }
+
+        function stockLine(current) {
+          var count = current ? current.stock : 0;
+          var f = finish();
+          var s = size();
+          if (count <= 0) {
+            return (
+              '<span aria-hidden="true" class="mt-2.5 h-px w-3 shrink-0 bg-(--iu-foreground)"></span><span>Sold out in ' +
+              f.name +
+              ", " +
+              s.label +
+              "." +
+              (current && current.soldOutReason
+                ? '<span class="text-(--iu-muted)"> ' + current.soldOutReason + "</span>"
+                : "") +
+              "</span>"
+            );
+          }
+          if (count <= LOW_STOCK) {
+            return (
+              '<span aria-hidden="true" class="mt-[7px] size-1.5 shrink-0 rounded-full bg-(--iu-accent)"></span><span>Only ' +
+              count +
+              " left in " +
+              s.label +
+              "</span>"
+            );
+          }
+          return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mt-[3px] shrink-0" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg><span>In stock, ships within 2 days</span>';
+        }
+
+        function renderPrice() {
+          var current = variant();
+          var key = (current ? current.id : state.sizeId) + "-" + (stock() <= 0 ? "out" : "in");
+          if (keys.price === key) return;
+          keys.price = key;
+          var block = document.createElement("div");
+          var html =
+            '<p class="flex flex-wrap items-baseline gap-x-4 gap-y-2"><span class="font-serif text-[2.75rem] leading-none tracking-[-0.01em] tabular-nums">' +
+            (current ? money(current.price) : "—") +
+            "</span>";
+          if (current && current.compareAtPrice) {
+            var saving = current.compareAtPrice - current.price;
+            html +=
+              '<del class="text-[15px] text-(--iu-muted) tabular-nums decoration-1"><span class="sr-only">Was </span>' +
+              money(current.compareAtPrice) +
+              '</del><span class="inline-flex h-6 items-center self-center rounded-full border border-(--iu-accent) px-2.5 text-[10px] font-medium tracking-[0.2em] uppercase tabular-nums">Save ' +
+              money(saving) +
+              " · " +
+              Math.round((saving / current.compareAtPrice) * 100) +
+              "%</span>";
+          }
+          html +=
+            '</p><p class="mt-3 text-[13px] text-(--iu-muted)">' +
+            (current && current.compareAtPrice ? product.saleNote : "Full price · new this season") +
+            '</p><p class="mt-5 flex items-start gap-3 text-sm">' +
+            stockLine(current) +
+            "</p>";
+          block.innerHTML = html;
+          crossFade(priceBox, block);
+        }
+
+        function renderPlate(sizeChanged) {
+          var f = finish();
+          var s = size();
+          var current = variant();
+          drawing.style.color = f.tone;
+          dial.style.color = f.dialTone || f.tone;
+          Array.prototype.forEach.call(root.querySelectorAll('[data-part="wash"]'), function (wash) {
+            wash.setAttribute("fill-opacity", f.dialTone ? "0.12" : "0.05");
+          });
+          drawing.setAttribute(
+            "aria-label",
+            "Line drawing of the " + product.name + " in " + f.name + ", " + s.label + ", face on.",
+          );
+          if (sizeChanged) {
+            fadeThrough(function () {
+              var scale = r2(size().diameter / 38);
+              scaleGroup.setAttribute("transform", "translate(300 375) scale(" + scale + ") translate(-300 -375)");
+            });
+          }
+          swap("sku", current ? current.id : s.id, function (span) {
+            span.textContent = "Ref. " + (current ? current.id : "—");
+          });
+          swap("dims", s.id, function (span) {
+            span.textContent = "Ø " + s.diameter + " mm · " + s.thickness;
+          });
+          swap("shown", f.id + "-" + s.id, function (span) {
+            span.textContent = "Shown in " + f.name;
+            var phone = document.createElement("span");
+            phone.className = "sm:hidden";
+            phone.textContent = " · " + s.label;
+            span.appendChild(phone);
+          });
+          swap("finish-name", f.id, function (span) {
+            span.textContent = f.name;
+          });
+        }
+
+        function renderSizes() {
+          var f = finish();
+          sizeRadios.forEach(function (radio) {
+            var available = inStock(state.finishId, radio.value);
+            var selected = radio.value === state.sizeId;
+            radio.checked = selected;
+            radio.disabled = !available;
+            if (!available && !selected) radio.setAttribute("aria-describedby", "atelier-reason-" + radio.value);
+            else radio.removeAttribute("aria-describedby");
+          });
+          finishRadios.forEach(function (radio) {
+            radio.checked = radio.value === state.finishId;
+            radio.disabled = !product.sizes.some(function (item) {
+              return inStock(radio.value, item.id);
+            });
+          });
+          part("fit", sizeNotes).textContent = size().fit + ".";
+          Array.prototype.forEach.call(sizeNotes.querySelectorAll('p[id^="atelier-reason-"]'), function (node) {
+            node.remove();
+          });
+          product.sizes.forEach(function (item) {
+            if (item.id === state.sizeId || inStock(state.finishId, item.id)) return;
+            var reason = document.createElement("p");
+            reason.id = "atelier-reason-" + item.id;
+            reason.className = "mt-1 text-[13px] text-(--iu-muted)";
+            var label = document.createElement("span");
+            label.className = "text-(--iu-foreground)";
+            label.textContent = item.label;
+            var soldOut = variantFor(state.finishId, item.id);
+            reason.append(
+              label,
+              " sold out in " + f.name + ". " + (soldOut && soldOut.soldOutReason ? soldOut.soldOutReason : ""),
+            );
+            sizeNotes.appendChild(reason);
+          });
+        }
+
+        function renderQuantity() {
+          var max = maxQuantity();
+          var soldOut = stock() <= 0;
+          var qty = quantity();
+          qtyInput.max = String(max);
+          qtyInput.value = String(qty);
+          qtyInput.disabled = soldOut;
+          qtyDec.disabled = qty <= 1 || soldOut;
+          qtyInc.disabled = qty >= max || soldOut;
+          qtyHint.textContent = soldOut
+            ? ""
+            : qty >= max && max > 1
+              ? "Limit of " + max + " for this piece."
+              : max === 1
+                ? "One per client for this piece."
+                : "";
+        }
+
+        function renderAdd() {
+          var current = variant();
+          var soldOut = stock() <= 0;
+          addButton.disabled = soldOut;
+          if (spinnerObserver) {
+            spinnerObserver.disconnect();
+            spinnerObserver = null;
+          }
+          if (state.busy) {
+            addButton.setAttribute("aria-disabled", "true");
+            addButton.replaceChildren(cloneTemplate("spinner"), "Adding to bag");
+            var spinner = addButton.firstElementChild;
+            spinnerObserver = new IntersectionObserver(function (entries) {
+              spinner.style.animationPlayState = entries[0] && entries[0].isIntersecting ? "running" : "paused";
+            });
+            spinnerObserver.observe(spinner);
+            return;
+          }
+          addButton.removeAttribute("aria-disabled");
+          if (soldOut) {
+            addButton.textContent = "Sold out";
+            return;
+          }
+          addButton.innerHTML =
+            'Add to bag<span aria-hidden="true" class="h-3 w-px bg-current opacity-35 max-sm:hidden"></span><span class="tabular-nums max-sm:hidden">' +
+            money(current.price * quantity()) +
+            "</span>";
+        }
+
+        function alternative() {
+          var sameFinish = pickSize(state.finishId, state.sizeId);
+          if (sameFinish !== state.sizeId) return { finishId: state.finishId, sizeId: sameFinish };
+          var other = product.finishes.find(function (item) {
+            return inStock(item.id, state.sizeId);
+          });
+          return other ? { finishId: other.id, sizeId: state.sizeId } : null;
+        }
+
+        function renderError() {
+          var existing = part("error", form);
+          if (existing) existing.remove();
+          if (!state.error) return;
+          var alert = cloneTemplate("error");
+          part("error-message", alert).textContent = state.error;
+          var next = stock() <= 0 ? alternative() : null;
+          var action = part("error-action", alert);
+          action.textContent = next
+            ? "Choose " +
+              product.finishes.find(function (item) {
+                return item.id === next.finishId;
+              }).name +
+              " " +
+              product.sizes.find(function (item) {
+                return item.id === next.sizeId;
+              }).label +
+              " instead"
+            : "Try again";
+          action.addEventListener("click", function () {
+            state.error = null;
+            renderError();
+            if (next) select(next.finishId, next.sizeId, "");
+            addButton.focus();
+          });
+          form.appendChild(alert);
+        }
+
+        function describe() {
+          var current = variant();
+          var count = stock();
+          var price = current
+            ? current.compareAtPrice
+              ? money(current.price) + ", was " + money(current.compareAtPrice)
+              : money(current.price)
+            : "";
+          var stockText = count <= 0 ? "Sold out." : count <= LOW_STOCK ? "Only " + count + " left." : "In stock.";
+          return finish().name + ", " + size().label + ". " + price + ". " + stockText;
+        }
+
+        function select(finishId, sizeId, prefix) {
+          var sizeChanged = sizeId !== state.sizeId;
+          state.finishId = finishId;
+          state.sizeId = sizeId;
+          if (state.error) {
+            state.error = null;
+            renderError();
+          }
+          renderPlate(sizeChanged);
+          renderPrice();
+          renderSizes();
+          renderQuantity();
+          renderAdd();
+          announce(prefix + describe());
+        }
+
+        // The bag.
+        function lineNode(line) {
+          var node = cloneTemplate("line");
+          node.setAttribute("data-id", line.id);
+          var thumb = cloneTemplate(line.thumbnail === "strap" ? "thumb-strap" : "thumb-watch");
+          thumb.style.color = line.tone || "var(--atelier-steel)";
+          var dialGroup = thumb.querySelector("g");
+          if (dialGroup) dialGroup.style.color = line.dialTone || line.tone || "var(--atelier-steel)";
+          part("thumb", node).appendChild(thumb);
+          part("name", node).textContent = line.name;
+          part("detail", node).textContent = line.detail;
+          var was = part("line-was", node);
+          if (!line.compareAtPrice) was.remove();
+          node.querySelector('[role="group"]').setAttribute("aria-label", "Quantity of " + line.name);
+          part("line-dec", node).setAttribute("aria-label", "Decrease quantity of " + line.name);
+          part("line-inc", node).setAttribute("aria-label", "Increase quantity of " + line.name);
+          part("remove", node).querySelector(".sr-only").textContent = " " + line.name;
+          return node;
+        }
+
+        function updateLine(node, line) {
+          var marked = !!state.highlight && state.highlight.id === line.id;
+          var row = node.firstElementChild;
+          row.setAttribute("data-fresh", String(marked && state.highlight.fresh));
+          var mark = part("mark", row);
+          var added = part("added", row);
+          if (marked && !mark) row.prepend(cloneTemplate("line-mark"));
+          if (!marked && mark) mark.remove();
+          if (marked && !added) part("name", row).parentElement.before(cloneTemplate("line-added"));
+          if (!marked && added) added.remove();
+          part("line-price", node).textContent = money(line.price * line.quantity);
+          var was = part("line-was", node);
+          if (was) was.lastChild.textContent = money(line.compareAtPrice * line.quantity);
+          part("line-qty", node).textContent = String(line.quantity);
+          part("line-dec", node).disabled = line.quantity <= 1;
+          part("line-inc", node).disabled = line.quantity >= line.maxQuantity;
+        }
+
+        function renderTotals() {
+          var t = totals();
+          var rows = [["Subtotal", money(t.subtotal, true), true]];
+          if (t.saleDiscount > 0)
+            rows.push(["Discount · " + product.saleLabel, "−" + money(t.saleDiscount, true), true]);
+          if (t.codeDiscount > 0) rows.push(["Discount · " + t.code, "−" + money(t.codeDiscount, true), true]);
+          rows.push(["Shipping", "Complimentary", false]);
+          rows.push([TAX_LABEL + " " + +(TAX_RATE * 100).toFixed(3) + "%", money(t.tax, true), true]);
+          totalsList.replaceChildren();
+          rows.forEach(function (row) {
+            var term = document.createElement("dt");
+            term.className = "text-(--iu-muted)";
+            term.textContent = row[0];
+            var value = document.createElement("dd");
+            value.className = row[2] ? "text-right tabular-nums" : "text-right";
+            value.textContent = row[1];
+            totalsList.append(term, value);
+          });
+          part("total").textContent = money(t.total, true);
+          part("bag-note").textContent = lines.length
+            ? pieceCount(t.pieces) + " · held for 30 minutes"
+            : "Nothing held yet";
+          swap("bag-count", String(t.pieces), function (span) {
+            var count = document.createElement("span");
+            count.setAttribute("aria-hidden", "true");
+            count.textContent = "(" + t.pieces + ")";
+            span.appendChild(count);
+          });
+          bagButton.querySelector(".sr-only").textContent = ", " + pieceCount(t.pieces);
+        }
+
+        function renderBag() {
+          var present = {};
+          Array.prototype.forEach.call(linesList.children, function (node) {
+            present[node.getAttribute("data-id")] = node;
+          });
+          lines.forEach(function (line, index) {
+            var node = present[line.id] || lineNode(line);
+            delete present[line.id];
+            if (linesList.children[index] !== node) linesList.insertBefore(node, linesList.children[index] || null);
+            updateLine(node, line);
+          });
+          Object.keys(present).forEach(function (id) {
+            var node = present[id];
+            if (reduced() || !lines.length) {
+              node.remove();
+              return;
+            }
+            node.removeAttribute("data-id");
+            node.animate(
+              [
+                { opacity: 1, height: node.offsetHeight + "px" },
+                { opacity: 0, height: "0px" },
+              ],
+              { duration: 350, easing: EASE, fill: "forwards" },
+            ).onfinish = function () {
+              node.remove();
+            };
+          });
+          filled.hidden = lines.length === 0;
+          emptyState.hidden = lines.length > 0;
+          renderTotals();
+          root.dispatchEvent(new CustomEvent("atelier:bag", { detail: lines.slice() }));
+        }
+
+        function settleHighlight() {
+          window.clearTimeout(settleTimer);
+          settleTimer = window.setTimeout(function () {
+            if (!state.highlight) return;
+            state.highlight.fresh = false;
+            renderBag();
+          }, 2600);
+        }
+
+        // The drawer: a modal dialog with a focus trap, Escape, focus return and a scroll lock that does not shift.
+        function lockScroll() {
+          var html = document.documentElement;
+          var body = document.body;
+          lockedStyles = { overflow: html.style.overflow, padding: body.style.paddingRight };
+          var width = html.clientWidth;
+          html.style.overflow = "hidden";
+          var scrollbar = html.clientWidth - width;
+          if (scrollbar > 0) {
+            body.style.paddingRight = (parseFloat(getComputedStyle(body).paddingRight) || 0) + scrollbar + "px";
+          }
+        }
+        function unlockScroll() {
+          if (!lockedStyles) return;
+          document.documentElement.style.overflow = lockedStyles.overflow;
+          document.body.style.paddingRight = lockedStyles.padding;
+          lockedStyles = null;
+        }
+        function onDocumentKey(event) {
+          if (event.key === "Escape") {
+            event.preventDefault();
+            setOpen(false);
+          }
+        }
+        function setOpen(open, trigger) {
+          if (open === state.open) return;
+          state.open = open;
+          drawer.setAttribute("data-open", String(open));
+          drawer.inert = !open;
+          page.inert = open;
+          bagButton.setAttribute("aria-expanded", String(open));
+          if (open) {
+            returnFocus = trigger || null;
+            lockScroll();
+            document.addEventListener("keydown", onDocumentKey);
+            panel.focus({ preventScroll: true });
+            return;
+          }
+          unlockScroll();
+          document.removeEventListener("keydown", onDocumentKey);
+          window.clearTimeout(settleTimer);
+          state.highlight = null;
+          renderBag();
+          var target = returnFocus && returnFocus.isConnected ? returnFocus : addButton;
+          target.focus({ preventScroll: true });
+          returnFocus = null;
+        }
+
+        panel.addEventListener("keydown", function (event) {
+          if (event.key !== "Tab") return;
+          var items = Array.prototype.filter.call(panel.querySelectorAll(FOCUSABLE), function (item) {
+            return item.getClientRects().length > 0;
+          });
+          var first = items[0];
+          var last = items[items.length - 1];
+          if (!first) {
+            event.preventDefault();
+            return;
+          }
+          if (event.shiftKey && (document.activeElement === first || document.activeElement === panel)) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
+        });
+        bagButton.addEventListener("click", function () {
+          setOpen(true, bagButton);
+        });
+        part("scrim").addEventListener("click", function () {
+          setOpen(false);
+        });
+        part("close").addEventListener("click", function () {
+          setOpen(false);
+        });
+        part("continue").addEventListener("click", function () {
+          setOpen(false);
+        });
+        part("checkout").addEventListener("click", function () {
+          root.dispatchEvent(
+            new CustomEvent("atelier:checkout", { detail: { lines: lines.slice(), totals: totals() } }),
+          );
+        });
+
+        linesList.addEventListener("click", function (event) {
+          var button = event.target.closest("button");
+          var node = button && button.closest('[data-part="line"]');
+          if (!node || !node.getAttribute("data-id")) return;
+          var id = node.getAttribute("data-id");
+          var line = lines.find(function (item) {
+            return item.id === id;
+          });
+          if (!line) return;
+          var action = button.getAttribute("data-part");
+          if (action === "line-dec" || action === "line-inc") {
+            var delta = action === "line-inc" ? 1 : -1;
+            line.quantity = Math.min(line.maxQuantity, Math.max(1, line.quantity + delta));
+            renderBag();
+          } else if (action === "remove") {
+            lines = lines.filter(function (item) {
+              return item.id !== id;
+            });
+            if (state.highlight && state.highlight.id === id) state.highlight = null;
+            announce(line.name + " removed from your bag.");
+            panel.focus({ preventScroll: true });
+            renderBag();
+          }
+        });
+
+        // The discount code.
+        function setCodeHint(kind, message) {
+          var error = kind === "error";
+          codeHint.className =
+            "mt-2.5 flex gap-1.5 text-xs leading-relaxed " +
+            (error ? "text-red-700 dark:text-red-400" : "text-(--iu-muted)");
+          codeHint.replaceChildren();
+          if (error) codeHint.appendChild(cloneTemplate("alert-icon"));
+          codeHint.append(message);
+          if (error) codeInput.setAttribute("aria-invalid", "true");
+          else codeInput.removeAttribute("aria-invalid");
+        }
+        codeInput.addEventListener("input", function () {
+          if (codeInput.hasAttribute("aria-invalid")) setCodeHint("idle", "One code per order, applied before tax.");
+        });
+        codeForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var code = codeInput.value.trim().toUpperCase();
+          if (!code) return setCodeHint("error", "Enter a code first.");
+          if (!CODE_PATTERN.test(code)) return setCodeHint("error", "Codes are 4 to 16 letters or numbers.");
+          if (codes[code] === undefined) {
+            return setCodeHint(
+              "error",
+              code + " isn’t a code we recognise. Check the spelling, or ask your client advisor.",
+            );
+          }
+          state.code = { code: code, percentOff: codes[code] };
+          codeInput.value = "";
+          var applied = cloneTemplate("code-applied");
+          part("code-name", applied).textContent = code;
+          part("code-off", applied).textContent = "· " + codes[code] + "% off";
+          var remove = applied.querySelector("button");
+          remove.querySelector(".sr-only").textContent = " code " + code;
+          remove.addEventListener("click", function () {
+            state.code = null;
+            applied.replaceWith(codeRow);
+            setCodeHint("idle", "One code per order, applied before tax.");
+            renderTotals();
+            announce("Discount code removed.");
+            codeInput.focus();
+          });
+          codeRow.replaceWith(applied);
+          setCodeHint("applied", "Applied before tax. One code per order.");
+          renderTotals();
+          announce(code + " applied: " + codes[code] + "% off.");
+          remove.focus();
+        });
+
+        // Selection, quantity and Add to bag.
+        finishRadios.forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            var next = product.finishes.find(function (item) {
+              return item.id === radio.value;
+            });
+            var nextSize = pickSize(radio.value, state.sizeId);
+            var prefix = nextSize !== state.sizeId ? size().label + " is not available in " + next.name + ". " : "";
+            select(radio.value, nextSize, prefix);
+          });
+        });
+        sizeRadios.forEach(function (radio) {
+          radio.addEventListener("change", function () {
+            select(state.finishId, radio.value, "");
+          });
+        });
+        function setQuantity(value) {
+          state.quantity = Math.min(maxQuantity(), Math.max(1, Number.isFinite(value) ? Math.round(value) : 1));
+          renderQuantity();
+          renderAdd();
+        }
+        qtyDec.addEventListener("click", function () {
+          setQuantity(quantity() - 1);
+        });
+        qtyInc.addEventListener("click", function () {
+          setQuantity(quantity() + 1);
+        });
+        qtyInput.addEventListener("input", function () {
+          setQuantity(qtyInput.valueAsNumber);
+        });
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var current = variant();
+          if (state.busy || !current || current.stock <= 0) return;
+          var f = finish();
+          var line = {
+            id: current.id,
+            name: product.name,
+            detail: f.name + " · " + size().label,
+            price: current.price,
+            compareAtPrice: current.compareAtPrice,
+            quantity: quantity(),
+            maxQuantity: maxQuantity(),
+            thumbnail: "watch",
+            tone: f.tone,
+            dialTone: f.dialTone,
+          };
+          state.error = null;
+          renderError();
+          state.busy = true;
+          renderAdd();
+          reserve(line).then(
+            function () {
+              state.busy = false;
+              var existing = lines.find(function (item) {
+                return item.id === line.id;
+              });
+              if (existing) line.quantity = Math.min(existing.quantity + line.quantity, line.maxQuantity);
+              lines = [line].concat(
+                lines.filter(function (item) {
+                  return item.id !== line.id;
+                }),
+              );
+              state.highlight = { id: line.id, fresh: true };
+              state.quantity = 1;
+              renderQuantity();
+              renderAdd();
+              renderBag();
+              settleHighlight();
+              setOpen(true, addButton);
+            },
+            function (error) {
+              state.busy = false;
+              state.error =
+                error && error.message
+                  ? error.message
+                  : "The atelier did not confirm the hold, so nothing was reserved or charged. Please try again.";
+              renderAdd();
+              renderError();
+            },
+          );
+        });
+
+        keys.sku = variant().id;
+        keys.dims = state.sizeId;
+        keys.shown = state.finishId + "-" + state.sizeId;
+        keys["finish-name"] = state.finishId;
+        keys.price = variant().id + "-in";
+        keys["bag-count"] = String(totals().pieces);
+      })();
+    </script>
+  </body>
+</html>

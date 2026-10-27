@@ -1,0 +1,15 @@
+{
+  "slug": "pillow-workspace-form",
+  "name": "Pillow workspace form",
+  "category": "forms",
+  "styleFamily": "soft-tactile",
+  "tier": "free",
+  "description": "A soft create-workspace form whose fields lift on focus; the submit button presses in, turns into a progress ring, then pops out as a check.",
+  "tags": ["form", "onboarding", "combobox", "select", "segmented-control", "switch", "validation", "loading-button"],
+  "states": ["default", "focus", "error", "disabled", "loading", "success"],
+  "hasMotion": true,
+  "dependencies": ["lucide-react"],
+  "registryDependencies": ["@iloveui/tokens"],
+  "version": "1.0.0",
+  "createdAt": "2026-10-26"
+}

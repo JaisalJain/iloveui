@@ -1,0 +1,2449 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tally ops dashboard · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <div
+      data-tally-dashboard="true"
+      class="flex min-h-dvh flex-col bg-(--iu-background) font-(family-name:--iu-font) text-[13px] leading-[1.4] text-(--iu-foreground) lg:flex-row"
+    >
+      <div
+        id="tally-sidebar"
+        data-collapsed="false"
+        class="group/sidebar sticky top-0 z-30 hidden h-dvh w-60 shrink-0 flex-col border-r border-(--iu-border) bg-(--iu-background) transition-[width] duration-150 ease-out data-[collapsed=true]:w-14 motion-reduce:transition-none lg:flex"
+      >
+        <div class="flex h-14 shrink-0 items-center border-b border-(--iu-border) px-2">
+          <button
+            type="button"
+            data-tally-account="true"
+            class="flex h-10 w-full min-w-0 items-center gap-2 rounded-[min(var(--iu-radius),6px)] px-2 text-left transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/4"
+          >
+            <span
+              aria-hidden="true"
+              class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-(--iu-background)"
+              ><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke-width="1.6" stroke-linecap="round">
+                <path d="M4 3.5v9M6.67 3.5v9M9.33 3.5v9M12 3.5v9" stroke="currentColor"></path>
+                <path d="M2.5 10.75 13.5 5.25" class="stroke-(--iu-accent)"></path></svg></span
+            ><span
+              class="min-w-0 flex-1 overflow-hidden leading-tight whitespace-nowrap group-data-[collapsed=true]/sidebar:sr-only"
+              ><span class="block truncate text-[13px] font-semibold">Larkspur Market</span
+              ><span class="block truncate text-xs text-(--iu-muted)">Fivebar · Live</span></span
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-chevrons-up-down shrink-0 text-(--iu-muted) group-data-[collapsed=true]/sidebar:hidden"
+              aria-hidden="true"
+            >
+              <path d="m7 15 5 5 5-5"></path>
+              <path d="m7 9 5-5 5 5"></path>
+            </svg>
+          </button>
+        </div>
+        <nav aria-label="Main" class="flex-1 px-2 py-3">
+          <div>
+            <div class="flex h-7 items-center px-3">
+              <p
+                id="tally-side-group-0"
+                class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase group-data-[collapsed=true]/sidebar:sr-only"
+              >
+                Payments
+              </p>
+              <span
+                aria-hidden="true"
+                class="mx-auto hidden h-px w-4 bg-(--iu-border) group-data-[collapsed=true]/sidebar:block"
+              ></span>
+            </div>
+            <ul aria-labelledby="tally-side-group-0" class="flex flex-col gap-1">
+              <li>
+                <a
+                  href="#overview"
+                  aria-current="page"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/6 px-3 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-100 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-(--iu-accent) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none dark:bg-(--iu-foreground)/10 pointer-coarse:h-10"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-layout-dashboard shrink-0"
+                    aria-hidden="true"
+                  >
+                    <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                    <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                    <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                    <rect width="7" height="5" x="3" y="16" rx="1"></rect></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Overview</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Overview</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#transactions"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-left-right shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 3 4 7l4 4"></path>
+                    <path d="M4 7h16"></path>
+                    <path d="m16 21 4-4-4-4"></path>
+                    <path d="M20 17H4"></path></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Transactions</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Transactions</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#payouts"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-landmark shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 18v-7"></path>
+                    <path
+                      d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"
+                    ></path>
+                    <path d="M14 18v-7"></path>
+                    <path d="M18 18v-7"></path>
+                    <path d="M3 22h18"></path>
+                    <path d="M6 18v-7"></path></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Payouts</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Payouts</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#disputes"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-shield-alert shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                    ></path>
+                    <path d="M12 8v4"></path>
+                    <path d="M12 16h.01"></path></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Disputes</span
+                  ><span
+                    class="ml-auto inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-(--iu-foreground)/7 px-1 font-mono text-[11px] text-(--iu-foreground) tabular-nums group-data-[collapsed=true]/sidebar:sr-only dark:bg-(--iu-foreground)/12"
+                    ><span class="sr-only">, </span>3<span class="sr-only"> open</span></span
+                  ><span
+                    aria-hidden="true"
+                    class="absolute top-1 left-6 hidden size-1.5 rounded-full bg-(--iu-foreground) ring-2 ring-(--iu-background) group-data-[collapsed=true]/sidebar:block"
+                  ></span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Disputes</span
+                  ></a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="mt-4">
+            <div class="flex h-7 items-center px-3">
+              <p
+                id="tally-side-group-1"
+                class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase group-data-[collapsed=true]/sidebar:sr-only"
+              >
+                Business
+              </p>
+              <span
+                aria-hidden="true"
+                class="mx-auto hidden h-px w-4 bg-(--iu-border) group-data-[collapsed=true]/sidebar:block"
+              ></span>
+            </div>
+            <ul aria-labelledby="tally-side-group-1" class="flex flex-col gap-1">
+              <li>
+                <a
+                  href="#customers"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-users shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                    <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                    <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                    <circle cx="9" cy="7" r="4"></circle></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Customers</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Customers</span
+                  ></a
+                >
+              </li>
+              <li>
+                <a
+                  href="#reports"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-chart-no-axes-column lucide-bar-chart-2 shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 21v-6"></path>
+                    <path d="M12 21V3"></path>
+                    <path d="M19 21V9"></path></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Reports</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Reports</span
+                  ></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="border-t border-(--iu-border) px-2 py-2">
+          <ul class="flex flex-col gap-1">
+            <li>
+              <a
+                href="#settings"
+                class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-settings shrink-0"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                  ></path>
+                  <circle cx="12" cy="12" r="3"></circle></svg
+                ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Settings</span
+                ><span
+                  aria-hidden="true"
+                  class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                  >Settings</span
+                ></a
+              >
+            </li>
+          </ul>
+          <div class="mt-2 flex h-11 items-center gap-2 px-2">
+            <span
+              aria-hidden="true"
+              class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+              >NH</span
+            ><span
+              class="min-w-0 flex-1 overflow-hidden leading-tight whitespace-nowrap group-data-[collapsed=true]/sidebar:sr-only"
+              ><span class="block truncate text-[13px] font-medium">Noor Haddad</span
+              ><span class="block truncate text-xs text-(--iu-muted)">Payments ops</span></span
+            >
+          </div>
+        </div>
+      </div>
+      <div
+        class="sticky top-0 z-30 flex h-14 shrink-0 items-center gap-1 border-b border-(--iu-border) bg-(--iu-background) px-2 lg:hidden"
+      >
+        <button
+          type="button"
+          aria-label="Open navigation"
+          aria-haspopup="dialog"
+          aria-expanded="false"
+          aria-controls="tally-drawer"
+          class="inline-flex size-10 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-menu"
+            aria-hidden="true"
+          >
+            <path d="M4 5h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 19h16"></path>
+          </svg>
+        </button>
+        <div class="flex min-w-0 flex-1 items-center gap-3">
+          <span
+            aria-hidden="true"
+            class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-(--iu-background)"
+            ><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke-width="1.6" stroke-linecap="round">
+              <path d="M4 3.5v9M6.67 3.5v9M9.33 3.5v9M12 3.5v9" stroke="currentColor"></path>
+              <path d="M2.5 10.75 13.5 5.25" class="stroke-(--iu-accent)"></path></svg></span
+          ><span class="min-w-0 truncate text-[13px] leading-tight"
+            ><span class="block truncate font-semibold">Larkspur Market</span
+            ><span class="block truncate text-xs text-(--iu-muted)">Fivebar · Live</span></span
+          >
+        </div>
+        <span class="pr-2"
+          ><span
+            aria-hidden="true"
+            class="inline-flex size-7 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+            >NH</span
+          ><span class="sr-only">Signed in as Noor Haddad</span></span
+        >
+      </div>
+      <dialog
+        id="tally-drawer"
+        aria-label="Navigation"
+        class="fixed inset-y-0 right-auto left-0 m-0 h-dvh max-h-none w-72 max-w-[calc(100vw-3rem)] -translate-x-full border-r border-(--iu-border) bg-(--iu-surface) p-0 text-(--iu-foreground) shadow-xl transition-[translate,display,overlay] transition-discrete duration-200 ease-out backdrop:bg-black/40 open:translate-x-0 motion-reduce:transition-none lg:hidden dark:backdrop:bg-black/60 starting:open:-translate-x-full"
+      >
+        <div
+          data-collapsed="false"
+          class="group/sidebar flex h-full flex-col font-(family-name:--iu-font) text-[13px] leading-[1.4]"
+        >
+          <div class="flex h-14 shrink-0 items-center gap-1 border-b border-(--iu-border) px-2">
+            <div class="min-w-0 flex-1">
+              <button
+                type="button"
+                data-tally-account="true"
+                class="flex h-10 w-full min-w-0 items-center gap-2 rounded-[min(var(--iu-radius),6px)] px-2 text-left transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/4"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) text-(--iu-background)"
+                  ><svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  >
+                    <path d="M4 3.5v9M6.67 3.5v9M9.33 3.5v9M12 3.5v9" stroke="currentColor"></path>
+                    <path d="M2.5 10.75 13.5 5.25" class="stroke-(--iu-accent)"></path></svg></span
+                ><span
+                  class="min-w-0 flex-1 overflow-hidden leading-tight whitespace-nowrap group-data-[collapsed=true]/sidebar:sr-only"
+                  ><span class="block truncate text-[13px] font-semibold">Larkspur Market</span
+                  ><span class="block truncate text-xs text-(--iu-muted)">Fivebar · Live</span></span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chevrons-up-down shrink-0 text-(--iu-muted) group-data-[collapsed=true]/sidebar:hidden"
+                  aria-hidden="true"
+                >
+                  <path d="m7 15 5 5 5-5"></path>
+                  <path d="m7 9 5-5 5 5"></path>
+                </svg>
+              </button>
+            </div>
+            <button
+              type="button"
+              aria-label="Close navigation"
+              class="inline-flex size-10 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-x"
+                aria-hidden="true"
+              >
+                <path d="M18 6 6 18"></path>
+                <path d="m6 6 12 12"></path>
+              </svg>
+            </button>
+          </div>
+          <nav aria-label="Main" class="flex-1 px-2 py-3">
+            <div>
+              <div class="flex h-7 items-center px-3">
+                <p
+                  id="tally-drawer-group-0"
+                  class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase group-data-[collapsed=true]/sidebar:sr-only"
+                >
+                  Payments
+                </p>
+                <span
+                  aria-hidden="true"
+                  class="mx-auto hidden h-px w-4 bg-(--iu-border) group-data-[collapsed=true]/sidebar:block"
+                ></span>
+              </div>
+              <ul aria-labelledby="tally-drawer-group-0" class="flex flex-col gap-1">
+                <li>
+                  <a
+                    href="#overview"
+                    aria-current="page"
+                    class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/6 px-3 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-100 before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:rounded-full before:bg-(--iu-accent) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none dark:bg-(--iu-foreground)/10 pointer-coarse:h-10"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-layout-dashboard shrink-0"
+                      aria-hidden="true"
+                    >
+                      <rect width="7" height="9" x="3" y="3" rx="1"></rect>
+                      <rect width="7" height="5" x="14" y="3" rx="1"></rect>
+                      <rect width="7" height="9" x="14" y="12" rx="1"></rect>
+                      <rect width="7" height="5" x="3" y="16" rx="1"></rect></svg
+                    ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Overview</span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                      >Overview</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#transactions"
+                    class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-arrow-left-right shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path d="M8 3 4 7l4 4"></path>
+                      <path d="M4 7h16"></path>
+                      <path d="m16 21 4-4-4-4"></path>
+                      <path d="M20 17H4"></path></svg
+                    ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only"
+                      >Transactions</span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                      >Transactions</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#payouts"
+                    class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-landmark shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path d="M10 18v-7"></path>
+                      <path
+                        d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"
+                      ></path>
+                      <path d="M14 18v-7"></path>
+                      <path d="M18 18v-7"></path>
+                      <path d="M3 22h18"></path>
+                      <path d="M6 18v-7"></path></svg
+                    ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Payouts</span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                      >Payouts</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#disputes"
+                    class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-shield-alert shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                      ></path>
+                      <path d="M12 8v4"></path>
+                      <path d="M12 16h.01"></path></svg
+                    ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Disputes</span
+                    ><span
+                      class="ml-auto inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-(--iu-foreground)/7 px-1 font-mono text-[11px] text-(--iu-foreground) tabular-nums group-data-[collapsed=true]/sidebar:sr-only dark:bg-(--iu-foreground)/12"
+                      ><span class="sr-only">, </span>3<span class="sr-only"> open</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="absolute top-1 left-6 hidden size-1.5 rounded-full bg-(--iu-foreground) ring-2 ring-(--iu-background) group-data-[collapsed=true]/sidebar:block"
+                    ></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                      >Disputes</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <div class="flex h-7 items-center px-3">
+                <p
+                  id="tally-drawer-group-1"
+                  class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase group-data-[collapsed=true]/sidebar:sr-only"
+                >
+                  Business
+                </p>
+                <span
+                  aria-hidden="true"
+                  class="mx-auto hidden h-px w-4 bg-(--iu-border) group-data-[collapsed=true]/sidebar:block"
+                ></span>
+              </div>
+              <ul aria-labelledby="tally-drawer-group-1" class="flex flex-col gap-1">
+                <li>
+                  <a
+                    href="#customers"
+                    class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-users shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                      <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                      <circle cx="9" cy="7" r="4"></circle></svg
+                    ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Customers</span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                      >Customers</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#reports"
+                    class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-chart-no-axes-column lucide-bar-chart-2 shrink-0"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 21v-6"></path>
+                      <path d="M12 21V3"></path>
+                      <path d="M19 21V9"></path></svg
+                    ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Reports</span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                      >Reports</span
+                    ></a
+                  >
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="border-t border-(--iu-border) px-2 py-2">
+            <ul class="flex flex-col gap-1">
+              <li>
+                <a
+                  href="#settings"
+                  class="group/link relative flex h-8 items-center gap-3 rounded-[min(var(--iu-radius),6px)] px-3 text-[13px] font-medium text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/4 pointer-fine:hover:text-(--iu-foreground)"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-settings shrink-0"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"
+                    ></path>
+                    <circle cx="12" cy="12" r="3"></circle></svg
+                  ><span class="min-w-0 flex-1 truncate group-data-[collapsed=true]/sidebar:sr-only">Settings</span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-1/2 left-full z-40 ml-3 hidden -translate-y-1/2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-2 py-1 text-xs font-medium whitespace-nowrap text-(--iu-background) opacity-0 shadow-md transition-opacity duration-100 group-focus-visible/link:opacity-100 group-data-[collapsed=true]/sidebar:block motion-reduce:transition-none pointer-fine:group-hover/link:opacity-100 pointer-fine:group-hover/link:delay-300"
+                    >Settings</span
+                  ></a
+                >
+              </li>
+            </ul>
+            <div class="mt-2 flex h-11 items-center gap-2 px-2">
+              <span
+                aria-hidden="true"
+                class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                >NH</span
+              ><span
+                class="min-w-0 flex-1 overflow-hidden leading-tight whitespace-nowrap group-data-[collapsed=true]/sidebar:sr-only"
+                ><span class="block truncate text-[13px] font-medium">Noor Haddad</span
+                ><span class="block truncate text-xs text-(--iu-muted)">Payments ops</span></span
+              >
+            </div>
+          </div>
+        </div>
+      </dialog>
+      <div class="flex min-w-0 flex-1 flex-col">
+        <header
+          class="flex h-14 shrink-0 items-center gap-3 border-b border-(--iu-border) bg-(--iu-background) px-4 lg:sticky lg:top-0 lg:z-20 lg:px-6"
+        >
+          <button
+            type="button"
+            aria-label="Sidebar"
+            aria-expanded="true"
+            aria-controls="tally-sidebar"
+            class="-ml-2 hidden size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none lg:inline-flex pointer-coarse:size-10 pointer-fine:hover:bg-(--iu-foreground)/5 pointer-fine:hover:text-(--iu-foreground)"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-panel-left-close lucide-sidebar-close"
+              aria-hidden="true"
+            >
+              <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+              <path d="M9 3v18"></path>
+              <path d="m16 15-3-3 3-3"></path>
+            </svg></button
+          ><span aria-hidden="true" class="hidden h-4 w-px bg-(--iu-border) lg:block"></span>
+          <nav aria-label="Breadcrumb" class="min-w-0">
+            <ol class="flex min-w-0 items-center gap-2 text-[13px]">
+              <li class="flex min-w-0 items-center gap-2">
+                <a
+                  href="#payments"
+                  class="inline-flex h-6 min-w-0 items-center truncate rounded-[min(var(--iu-radius),4px)] text-(--iu-muted) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:text-(--iu-foreground)"
+                  >Payments</a
+                >
+              </li>
+              <li class="flex min-w-0 items-center gap-2">
+                <svg
+                  aria-hidden="true"
+                  width="8"
+                  height="14"
+                  viewBox="0 0 8 14"
+                  class="shrink-0 text-(--iu-muted) opacity-50"
+                >
+                  <path d="M6.5 1.5 1.5 12.5" stroke="currentColor" stroke-linecap="round"></path></svg
+                ><a
+                  href="#overview"
+                  aria-current="page"
+                  class="inline-flex h-6 min-w-0 items-center truncate rounded-[min(var(--iu-radius),4px)] font-medium text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none"
+                  >Overview</a
+                >
+              </li>
+            </ol>
+          </nav>
+          <fieldset
+            class="relative ml-auto flex shrink-0 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/5 p-0.5 dark:bg-(--iu-foreground)/7"
+          >
+            <legend class="sr-only">Date range</legend>
+            <span
+              aria-hidden="true"
+              data-tally-thumb="true"
+              class="absolute inset-y-0.5 left-0.5 w-11 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground) transition-transform duration-150 ease-out motion-reduce:transition-none"
+              style="transform: translateX(100%)"
+            ></span
+            ><label
+              class="pointer-fine:[&amp;:not(:has(:checked))]:hover:text-(--iu-foreground) relative flex h-7 w-11 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),4px)] text-xs font-medium text-(--iu-muted) tabular-nums transition-colors duration-100 has-checked:text-(--iu-background) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10"
+              ><input type="radio" class="sr-only" name="tally-range" value="7d" />7D<span class="sr-only">
+                (last 7 days)</span
+              ></label
+            ><label
+              class="pointer-fine:[&amp;:not(:has(:checked))]:hover:text-(--iu-foreground) relative flex h-7 w-11 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),4px)] text-xs font-medium text-(--iu-muted) tabular-nums transition-colors duration-100 has-checked:text-(--iu-background) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10"
+              ><input type="radio" class="sr-only" name="tally-range" checked="" value="30d" />30D<span class="sr-only">
+                (last 30 days)</span
+              ></label
+            ><label
+              class="pointer-fine:[&amp;:not(:has(:checked))]:hover:text-(--iu-foreground) relative flex h-7 w-11 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),4px)] text-xs font-medium text-(--iu-muted) tabular-nums transition-colors duration-100 has-checked:text-(--iu-background) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10"
+              ><input type="radio" class="sr-only" name="tally-range" value="90d" />90D<span class="sr-only">
+                (last 90 days)</span
+              ></label
+            ><label
+              class="pointer-fine:[&amp;:not(:has(:checked))]:hover:text-(--iu-foreground) relative flex h-7 w-11 cursor-pointer items-center justify-center rounded-[min(var(--iu-radius),4px)] text-xs font-medium text-(--iu-muted) tabular-nums transition-colors duration-100 has-checked:text-(--iu-background) has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10"
+              ><input type="radio" class="sr-only" name="tally-range" value="12m" />12M<span class="sr-only">
+                (last 12 months)</span
+              ></label
+            >
+          </fieldset>
+        </header>
+        <main class="@container/main flex-1 px-4 py-5 lg:px-6 lg:py-6">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+            <h1 class="text-xl leading-7 font-semibold tracking-[-0.02em] text-balance">Overview</h1>
+            <p data-tally-period="true" class="text-[13px] text-(--iu-muted) tabular-nums" style="opacity: 1">
+              <span class="text-(--iu-foreground)">Sep 27 – Oct 26, 2026</span
+              ><span class="hidden sm:inline"> · compared with Aug 28 – Sep 26, 2026</span>
+            </p>
+          </div>
+          <p data-tally-announce="true" aria-live="polite" class="sr-only"></p>
+          <section
+            aria-labelledby="tally-kpi-title"
+            class="mt-4 overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface)"
+            style="--tally-columns: 4"
+          >
+            <h2 id="tally-kpi-title" class="sr-only">Key metrics, last 30 days</h2>
+            <dl
+              class="-mx-px -mt-px grid grid-cols-1 @xl/main:grid-cols-2 @4xl/main:grid-cols-[repeat(var(--tally-columns),minmax(0,1fr))]"
+            >
+              <div
+                data-tally-metric="gross"
+                class="grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,40%)] gap-x-4 border-t border-l border-(--iu-border) bg-(--iu-surface) px-[calc(16px*var(--iu-density))] pt-[calc(16px*var(--iu-density))] pb-[calc(12px*var(--iu-density))] @xl/main:flex @xl/main:flex-col"
+              >
+                <dt class="col-start-1 text-[13px] leading-5 font-medium text-(--iu-muted)">Gross volume</dt>
+                <dd
+                  class="col-start-1 mt-1 text-[22px] leading-8 font-semibold tracking-[-0.025em] whitespace-nowrap tabular-nums @xl/main:text-[26px]"
+                >
+                  <span data-tally-main="true">$1,309,137</span
+                  ><span
+                    data-tally-tail="true"
+                    class="ml-px text-[0.62em] leading-none font-medium tracking-normal text-(--iu-muted)"
+                    >.16</span
+                  >
+                </dd>
+                <dd class="col-start-1 mt-1 text-xs leading-5">
+                  <span
+                    data-tally-delta="true"
+                    data-tone="good"
+                    class="group/delta flex flex-wrap items-center gap-x-1.5"
+                    style="opacity: 1"
+                    ><span
+                      class="inline-flex items-center gap-1 font-medium whitespace-nowrap tabular-nums group-data-[tone=bad]/delta:text-red-700 group-data-[tone=flat]/delta:text-(--iu-muted) group-data-[tone=good]/delta:text-emerald-700 dark:group-data-[tone=bad]/delta:text-red-400 dark:group-data-[tone=good]/delta:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      ><span data-tally-delta-value="true">+9.3%</span></span
+                    ><span class="whitespace-nowrap text-(--iu-muted)"
+                      >vs <span data-tally-compare="true">prior 30 days</span
+                      ><span data-tally-verdict="true" class="sr-only">, an improvement</span></span
+                    ></span
+                  >
+                </dd>
+                <dd
+                  class="col-start-2 row-span-3 row-start-1 min-w-0 self-end @xl/main:mt-auto @xl/main:self-stretch @xl/main:pt-3"
+                >
+                  <div
+                    role="img"
+                    aria-label="Gross volume per day, last 30 days: low $37,052, high $48,981"
+                    class="relative h-12 w-full"
+                  >
+                    <div data-tally-clip="true" class="absolute inset-0" style="clip-path: inset(0 0% 0 0)">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 100 48"
+                        preserveAspectRatio="none"
+                        class="block size-full overflow-visible text-(--iu-foreground)"
+                      >
+                        <defs>
+                          <linearGradient id="tally-spark-gross" x1="0" x2="0" y1="0" y2="1">
+                            <stop
+                              offset="0"
+                              stop-color="currentColor"
+                              class="[stop-opacity:0.12] dark:[stop-opacity:0.2]"
+                            ></stop>
+                            <stop offset="1" stop-color="currentColor" stop-opacity="0"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path
+                          data-tally-area="true"
+                          d="M0 31.45C1.15 26.91 2.30 17.82 3.45 17.82C4.60 17.82 5.75 24.54 6.90 24.54C8.05 24.54 9.20 23.04 10.34 20.40C11.49 17.76 12.64 8.72 13.79 8.72C14.94 8.72 16.09 17.30 17.24 20.03C18.39 22.76 19.54 23.47 20.69 25.09C21.84 26.71 22.99 29.76 24.14 29.76C25.29 29.76 26.44 13.27 27.59 13.27C28.74 13.27 29.89 15.29 31.03 15.29C32.18 15.29 33.33 8.00 34.48 8.00C35.63 8.00 36.78 11.17 37.93 12.57C39.08 13.97 40.23 13.85 41.38 16.41C42.53 18.96 43.68 26.46 44.83 28.19C45.98 29.92 47.13 30.79 48.28 30.79C49.43 30.79 50.57 12.30 51.72 12.30C52.87 12.30 54.02 16.71 55.17 16.71C56.32 16.71 57.47 15.26 58.62 14.57C59.77 13.87 60.92 12.53 62.07 12.53C63.22 12.53 64.37 13.76 65.52 16.21C66.67 18.66 67.82 27.48 68.97 27.48C70.11 27.48 71.26 27.33 72.41 27.03C73.56 26.74 74.71 20.53 75.86 17.65C77.01 14.78 78.16 9.78 79.31 9.78C80.46 9.78 81.61 14.28 82.76 15.27C83.91 16.26 85.06 16.76 86.21 16.76C87.36 16.76 88.51 12.41 89.66 12.41C90.80 12.41 91.95 17.00 93.10 18.53C94.25 20.06 95.40 21.58 96.55 21.58C97.70 21.58 98.85 16.48 100.00 13.92L100 48L0 48Z"
+                          fill="url(#tally-spark-gross)"
+                        ></path>
+                        <path
+                          data-tally-line="true"
+                          d="M0 31.45C1.15 26.91 2.30 17.82 3.45 17.82C4.60 17.82 5.75 24.54 6.90 24.54C8.05 24.54 9.20 23.04 10.34 20.40C11.49 17.76 12.64 8.72 13.79 8.72C14.94 8.72 16.09 17.30 17.24 20.03C18.39 22.76 19.54 23.47 20.69 25.09C21.84 26.71 22.99 29.76 24.14 29.76C25.29 29.76 26.44 13.27 27.59 13.27C28.74 13.27 29.89 15.29 31.03 15.29C32.18 15.29 33.33 8.00 34.48 8.00C35.63 8.00 36.78 11.17 37.93 12.57C39.08 13.97 40.23 13.85 41.38 16.41C42.53 18.96 43.68 26.46 44.83 28.19C45.98 29.92 47.13 30.79 48.28 30.79C49.43 30.79 50.57 12.30 51.72 12.30C52.87 12.30 54.02 16.71 55.17 16.71C56.32 16.71 57.47 15.26 58.62 14.57C59.77 13.87 60.92 12.53 62.07 12.53C63.22 12.53 64.37 13.76 65.52 16.21C66.67 18.66 67.82 27.48 68.97 27.48C70.11 27.48 71.26 27.33 72.41 27.03C73.56 26.74 74.71 20.53 75.86 17.65C77.01 14.78 78.16 9.78 79.31 9.78C80.46 9.78 81.61 14.28 82.76 15.27C83.91 16.26 85.06 16.76 86.21 16.76C87.36 16.76 88.51 12.41 89.66 12.41C90.80 12.41 91.95 17.00 93.10 18.53C94.25 20.06 95.40 21.58 96.55 21.58C97.70 21.58 98.85 16.48 100.00 13.92"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                          class="opacity-80"
+                        ></path>
+                      </svg>
+                    </div>
+                    <span
+                      data-tally-dot="true"
+                      aria-hidden="true"
+                      class="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--iu-accent) ring-2 ring-(--iu-surface)"
+                      style="left: 100%; top: 13.92px"
+                    ></span>
+                  </div>
+                </dd>
+              </div>
+              <div
+                data-tally-metric="net"
+                class="grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,40%)] gap-x-4 border-t border-l border-(--iu-border) bg-(--iu-surface) px-[calc(16px*var(--iu-density))] pt-[calc(16px*var(--iu-density))] pb-[calc(12px*var(--iu-density))] @xl/main:flex @xl/main:flex-col"
+              >
+                <dt class="col-start-1 text-[13px] leading-5 font-medium text-(--iu-muted)">Net revenue</dt>
+                <dd
+                  class="col-start-1 mt-1 text-[22px] leading-8 font-semibold tracking-[-0.025em] whitespace-nowrap tabular-nums @xl/main:text-[26px]"
+                >
+                  <span data-tally-main="true">$97,451</span
+                  ><span
+                    data-tally-tail="true"
+                    class="ml-px text-[0.62em] leading-none font-medium tracking-normal text-(--iu-muted)"
+                    >.48</span
+                  >
+                </dd>
+                <dd class="col-start-1 mt-1 text-xs leading-5">
+                  <span
+                    data-tally-delta="true"
+                    data-tone="good"
+                    class="group/delta flex flex-wrap items-center gap-x-1.5"
+                    style="opacity: 1"
+                    ><span
+                      class="inline-flex items-center gap-1 font-medium whitespace-nowrap tabular-nums group-data-[tone=bad]/delta:text-red-700 group-data-[tone=flat]/delta:text-(--iu-muted) group-data-[tone=good]/delta:text-emerald-700 dark:group-data-[tone=bad]/delta:text-red-400 dark:group-data-[tone=good]/delta:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      ><span data-tally-delta-value="true">+8.8%</span></span
+                    ><span class="whitespace-nowrap text-(--iu-muted)"
+                      >vs <span data-tally-compare="true">prior 30 days</span
+                      ><span data-tally-verdict="true" class="sr-only">, an improvement</span></span
+                    ></span
+                  >
+                </dd>
+                <dd
+                  class="col-start-2 row-span-3 row-start-1 min-w-0 self-end @xl/main:mt-auto @xl/main:self-stretch @xl/main:pt-3"
+                >
+                  <div
+                    role="img"
+                    aria-label="Net revenue per day, last 30 days: low $2,402, high $3,880"
+                    class="relative h-12 w-full"
+                  >
+                    <div data-tally-clip="true" class="absolute inset-0" style="clip-path: inset(0 0% 0 0)">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 100 48"
+                        preserveAspectRatio="none"
+                        class="block size-full overflow-visible text-(--iu-foreground)"
+                      >
+                        <defs>
+                          <linearGradient id="tally-spark-net" x1="0" x2="0" y1="0" y2="1">
+                            <stop
+                              offset="0"
+                              stop-color="currentColor"
+                              class="[stop-opacity:0.12] dark:[stop-opacity:0.2]"
+                            ></stop>
+                            <stop offset="1" stop-color="currentColor" stop-opacity="0"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path
+                          data-tally-area="true"
+                          d="M0 26.12C1.15 23.19 2.30 17.33 3.45 17.33C4.60 17.33 5.75 22.98 6.90 22.98C8.05 22.98 9.20 22.53 10.34 21.64C11.49 20.76 12.64 8.38 13.79 8.38C14.94 8.38 16.09 15.83 17.24 18.63C18.39 21.42 19.54 25.15 20.69 25.15C21.84 25.15 22.99 24.65 24.14 23.64C25.29 22.64 26.44 16.19 27.59 16.19C28.74 16.19 29.89 16.76 31.03 16.76C32.18 16.76 33.33 10.24 34.48 10.24C35.63 10.24 36.78 12.15 37.93 13.87C39.08 15.59 40.23 19.06 41.38 20.55C42.53 22.04 43.68 22.00 44.83 22.79C45.98 23.57 47.13 25.28 48.28 25.28C49.43 25.28 50.57 12.01 51.72 12.01C52.87 12.01 54.02 19.72 55.17 19.72C56.32 19.72 57.47 15.09 58.62 15.09C59.77 15.09 60.92 17.66 62.07 17.66C63.22 17.66 64.37 14.39 65.52 14.39C66.67 14.39 67.82 23.60 68.97 23.60C70.11 23.60 71.26 21.46 72.41 19.95C73.56 18.43 74.71 16.50 75.86 14.50C77.01 12.51 78.16 8.00 79.31 8.00C80.46 8.00 81.61 31.45 82.76 31.45C83.91 31.45 85.06 19.96 86.21 16.57C87.36 13.17 88.51 11.09 89.66 11.09C90.80 11.09 91.95 15.93 93.10 15.93C94.25 15.93 95.40 15.41 96.55 15.41C97.70 15.41 98.85 15.63 100.00 15.74L100 48L0 48Z"
+                          fill="url(#tally-spark-net)"
+                        ></path>
+                        <path
+                          data-tally-line="true"
+                          d="M0 26.12C1.15 23.19 2.30 17.33 3.45 17.33C4.60 17.33 5.75 22.98 6.90 22.98C8.05 22.98 9.20 22.53 10.34 21.64C11.49 20.76 12.64 8.38 13.79 8.38C14.94 8.38 16.09 15.83 17.24 18.63C18.39 21.42 19.54 25.15 20.69 25.15C21.84 25.15 22.99 24.65 24.14 23.64C25.29 22.64 26.44 16.19 27.59 16.19C28.74 16.19 29.89 16.76 31.03 16.76C32.18 16.76 33.33 10.24 34.48 10.24C35.63 10.24 36.78 12.15 37.93 13.87C39.08 15.59 40.23 19.06 41.38 20.55C42.53 22.04 43.68 22.00 44.83 22.79C45.98 23.57 47.13 25.28 48.28 25.28C49.43 25.28 50.57 12.01 51.72 12.01C52.87 12.01 54.02 19.72 55.17 19.72C56.32 19.72 57.47 15.09 58.62 15.09C59.77 15.09 60.92 17.66 62.07 17.66C63.22 17.66 64.37 14.39 65.52 14.39C66.67 14.39 67.82 23.60 68.97 23.60C70.11 23.60 71.26 21.46 72.41 19.95C73.56 18.43 74.71 16.50 75.86 14.50C77.01 12.51 78.16 8.00 79.31 8.00C80.46 8.00 81.61 31.45 82.76 31.45C83.91 31.45 85.06 19.96 86.21 16.57C87.36 13.17 88.51 11.09 89.66 11.09C90.80 11.09 91.95 15.93 93.10 15.93C94.25 15.93 95.40 15.41 96.55 15.41C97.70 15.41 98.85 15.63 100.00 15.74"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                          class="opacity-80"
+                        ></path>
+                      </svg>
+                    </div>
+                    <span
+                      data-tally-dot="true"
+                      aria-hidden="true"
+                      class="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--iu-accent) ring-2 ring-(--iu-surface)"
+                      style="left: 100%; top: 15.74px"
+                    ></span>
+                  </div>
+                </dd>
+              </div>
+              <div
+                data-tally-metric="failed"
+                class="grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,40%)] gap-x-4 border-t border-l border-(--iu-border) bg-(--iu-surface) px-[calc(16px*var(--iu-density))] pt-[calc(16px*var(--iu-density))] pb-[calc(12px*var(--iu-density))] @xl/main:flex @xl/main:flex-col"
+              >
+                <dt class="col-start-1 text-[13px] leading-5 font-medium text-(--iu-muted)">Failed charges</dt>
+                <dd
+                  class="col-start-1 mt-1 text-[22px] leading-8 font-semibold tracking-[-0.025em] whitespace-nowrap tabular-nums @xl/main:text-[26px]"
+                >
+                  <span data-tally-main="true">341</span
+                  ><span
+                    data-tally-tail="true"
+                    class="ml-px text-[0.62em] leading-none font-medium tracking-normal text-(--iu-muted)"
+                  ></span>
+                </dd>
+                <dd class="col-start-1 mt-1 text-xs leading-5">
+                  <span
+                    data-tally-delta="true"
+                    data-tone="good"
+                    class="group/delta flex flex-wrap items-center gap-x-1.5"
+                    style="opacity: 1"
+                    ><span
+                      class="inline-flex items-center gap-1 font-medium whitespace-nowrap tabular-nums group-data-[tone=bad]/delta:text-red-700 group-data-[tone=flat]/delta:text-(--iu-muted) group-data-[tone=good]/delta:text-emerald-700 dark:group-data-[tone=bad]/delta:text-red-400 dark:group-data-[tone=good]/delta:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-down-right"
+                        aria-hidden="true"
+                      >
+                        <path d="m7 7 10 10"></path>
+                        <path d="M17 7v10H7"></path></svg
+                      ><span data-tally-delta-value="true">−3.4%</span></span
+                    ><span class="whitespace-nowrap text-(--iu-muted)"
+                      >vs <span data-tally-compare="true">prior 30 days</span
+                      ><span data-tally-verdict="true" class="sr-only">, an improvement</span></span
+                    ></span
+                  >
+                </dd>
+                <dd
+                  class="col-start-2 row-span-3 row-start-1 min-w-0 self-end @xl/main:mt-auto @xl/main:self-stretch @xl/main:pt-3"
+                >
+                  <div
+                    role="img"
+                    aria-label="Failed charges per day, last 30 days: low 7, high 16"
+                    class="relative h-12 w-full"
+                  >
+                    <div data-tally-clip="true" class="absolute inset-0" style="clip-path: inset(0 0% 0 0)">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 100 48"
+                        preserveAspectRatio="none"
+                        class="block size-full overflow-visible text-(--iu-foreground)"
+                      >
+                        <defs>
+                          <linearGradient id="tally-spark-failed" x1="0" x2="0" y1="0" y2="1">
+                            <stop
+                              offset="0"
+                              stop-color="currentColor"
+                              class="[stop-opacity:0.12] dark:[stop-opacity:0.2]"
+                            ></stop>
+                            <stop offset="1" stop-color="currentColor" stop-opacity="0"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path
+                          data-tally-area="true"
+                          d="M0 23.63C1.15 22.76 2.30 21.03 3.45 21.03C4.60 21.03 5.75 31.45 6.90 31.45C8.05 31.45 9.20 30.58 10.34 28.84C11.49 27.11 12.64 18.42 13.79 18.42C14.94 18.42 16.09 28.84 17.24 28.84C18.39 28.84 19.54 27.11 20.69 26.24C21.84 25.37 22.99 25.37 24.14 23.63C25.29 21.90 26.44 8.00 27.59 8.00C28.74 8.00 29.89 14.95 31.03 18.42C32.18 21.90 33.33 28.84 34.48 28.84C35.63 28.84 36.78 27.97 37.93 26.24C39.08 24.50 40.23 15.82 41.38 15.82C42.53 15.82 43.68 15.82 44.83 15.82C45.98 15.82 47.13 26.24 48.28 26.24C49.43 26.24 50.57 23.20 51.72 21.03C52.87 18.86 54.02 13.21 55.17 13.21C56.32 13.21 57.47 21.03 58.62 21.03C59.77 21.03 60.92 10.61 62.07 10.61C63.22 10.61 64.37 18.42 65.52 21.03C66.67 23.63 67.82 26.24 68.97 26.24C70.11 26.24 71.26 26.24 72.41 26.24C73.56 26.24 74.71 13.21 75.86 13.21C77.01 13.21 78.16 13.21 79.31 13.21C80.46 13.21 81.61 21.03 82.76 21.03C83.91 21.03 85.06 13.21 86.21 13.21C87.36 13.21 88.51 14.95 89.66 15.82C90.80 16.68 91.95 18.42 93.10 18.42C94.25 18.42 95.40 18.42 96.55 18.42C97.70 18.42 98.85 11.47 100.00 8.00L100 48L0 48Z"
+                          fill="url(#tally-spark-failed)"
+                        ></path>
+                        <path
+                          data-tally-line="true"
+                          d="M0 23.63C1.15 22.76 2.30 21.03 3.45 21.03C4.60 21.03 5.75 31.45 6.90 31.45C8.05 31.45 9.20 30.58 10.34 28.84C11.49 27.11 12.64 18.42 13.79 18.42C14.94 18.42 16.09 28.84 17.24 28.84C18.39 28.84 19.54 27.11 20.69 26.24C21.84 25.37 22.99 25.37 24.14 23.63C25.29 21.90 26.44 8.00 27.59 8.00C28.74 8.00 29.89 14.95 31.03 18.42C32.18 21.90 33.33 28.84 34.48 28.84C35.63 28.84 36.78 27.97 37.93 26.24C39.08 24.50 40.23 15.82 41.38 15.82C42.53 15.82 43.68 15.82 44.83 15.82C45.98 15.82 47.13 26.24 48.28 26.24C49.43 26.24 50.57 23.20 51.72 21.03C52.87 18.86 54.02 13.21 55.17 13.21C56.32 13.21 57.47 21.03 58.62 21.03C59.77 21.03 60.92 10.61 62.07 10.61C63.22 10.61 64.37 18.42 65.52 21.03C66.67 23.63 67.82 26.24 68.97 26.24C70.11 26.24 71.26 26.24 72.41 26.24C73.56 26.24 74.71 13.21 75.86 13.21C77.01 13.21 78.16 13.21 79.31 13.21C80.46 13.21 81.61 21.03 82.76 21.03C83.91 21.03 85.06 13.21 86.21 13.21C87.36 13.21 88.51 14.95 89.66 15.82C90.80 16.68 91.95 18.42 93.10 18.42C94.25 18.42 95.40 18.42 96.55 18.42C97.70 18.42 98.85 11.47 100.00 8.00"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                          class="opacity-80"
+                        ></path>
+                      </svg>
+                    </div>
+                    <span
+                      data-tally-dot="true"
+                      aria-hidden="true"
+                      class="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--iu-accent) ring-2 ring-(--iu-surface)"
+                      style="left: 100%; top: 8px"
+                    ></span>
+                  </div>
+                </dd>
+              </div>
+              <div
+                data-tally-metric="dispute"
+                class="grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,40%)] gap-x-4 border-t border-l border-(--iu-border) bg-(--iu-surface) px-[calc(16px*var(--iu-density))] pt-[calc(16px*var(--iu-density))] pb-[calc(12px*var(--iu-density))] @xl/main:flex @xl/main:flex-col"
+              >
+                <dt class="col-start-1 text-[13px] leading-5 font-medium text-(--iu-muted)">Dispute rate</dt>
+                <dd
+                  class="col-start-1 mt-1 text-[22px] leading-8 font-semibold tracking-[-0.025em] whitespace-nowrap tabular-nums @xl/main:text-[26px]"
+                >
+                  <span data-tally-main="true">0.44</span
+                  ><span
+                    data-tally-tail="true"
+                    class="ml-px text-[0.62em] leading-none font-medium tracking-normal text-(--iu-muted)"
+                    >%</span
+                  >
+                </dd>
+                <dd class="col-start-1 mt-1 text-xs leading-5">
+                  <span
+                    data-tally-delta="true"
+                    data-tone="bad"
+                    class="group/delta flex flex-wrap items-center gap-x-1.5"
+                    style="opacity: 1"
+                    ><span
+                      class="inline-flex items-center gap-1 font-medium whitespace-nowrap tabular-nums group-data-[tone=bad]/delta:text-red-700 group-data-[tone=flat]/delta:text-(--iu-muted) group-data-[tone=good]/delta:text-emerald-700 dark:group-data-[tone=bad]/delta:text-red-400 dark:group-data-[tone=good]/delta:text-emerald-400"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-up-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M7 7h10v10"></path>
+                        <path d="M7 17 17 7"></path></svg
+                      ><span data-tally-delta-value="true">+0.06 pts</span></span
+                    ><span class="whitespace-nowrap text-(--iu-muted)"
+                      >vs <span data-tally-compare="true">prior 30 days</span
+                      ><span data-tally-verdict="true" class="sr-only">, a deterioration</span></span
+                    ></span
+                  >
+                </dd>
+                <dd
+                  class="col-start-2 row-span-3 row-start-1 min-w-0 self-end @xl/main:mt-auto @xl/main:self-stretch @xl/main:pt-3"
+                >
+                  <div
+                    role="img"
+                    aria-label="Dispute rate per day, last 30 days: low 0.35%, high 0.55%"
+                    class="relative h-12 w-full"
+                  >
+                    <div data-tally-clip="true" class="absolute inset-0" style="clip-path: inset(0 0% 0 0)">
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 100 48"
+                        preserveAspectRatio="none"
+                        class="block size-full overflow-visible text-(--iu-foreground)"
+                      >
+                        <defs>
+                          <linearGradient id="tally-spark-dispute" x1="0" x2="0" y1="0" y2="1">
+                            <stop
+                              offset="0"
+                              stop-color="currentColor"
+                              class="[stop-opacity:0.12] dark:[stop-opacity:0.2]"
+                            ></stop>
+                            <stop offset="1" stop-color="currentColor" stop-opacity="0"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path
+                          data-tally-area="true"
+                          d="M0 27.93C1.15 27.15 2.30 25.59 3.45 25.59C4.60 25.59 5.75 26.95 6.90 27.93C8.05 28.91 9.20 31.45 10.34 31.45C11.49 31.45 12.64 13.86 13.79 13.86C14.94 13.86 16.09 14.25 17.24 15.03C18.39 15.82 19.54 29.10 20.69 29.10C21.84 29.10 22.99 23.44 24.14 20.90C25.29 18.36 26.44 13.86 27.59 13.86C28.74 13.86 29.89 21.29 31.03 22.07C32.18 22.85 33.33 22.46 34.48 23.24C35.63 24.02 36.78 29.10 37.93 29.10C39.08 29.10 40.23 11.52 41.38 11.52C42.53 11.52 43.68 26.76 44.83 26.76C45.98 26.76 47.13 16.21 48.28 16.21C49.43 16.21 50.57 23.24 51.72 23.24C52.87 23.24 54.02 22.46 55.17 20.90C56.32 19.33 57.47 12.69 58.62 12.69C59.77 12.69 60.92 26.76 62.07 26.76C63.22 26.76 64.37 8.00 65.52 8.00C66.67 8.00 67.82 11.13 68.97 12.69C70.11 14.25 71.26 17.38 72.41 17.38C73.56 17.38 74.71 15.03 75.86 15.03C77.01 15.03 78.16 15.82 79.31 16.21C80.46 16.60 81.61 16.60 82.76 17.38C83.91 18.16 85.06 23.24 86.21 25.59C87.36 27.93 88.51 31.45 89.66 31.45C90.80 31.45 91.95 25.59 93.10 25.59C94.25 25.59 95.40 25.59 96.55 25.59C97.70 25.59 98.85 22.46 100.00 20.90L100 48L0 48Z"
+                          fill="url(#tally-spark-dispute)"
+                        ></path>
+                        <path
+                          data-tally-line="true"
+                          d="M0 27.93C1.15 27.15 2.30 25.59 3.45 25.59C4.60 25.59 5.75 26.95 6.90 27.93C8.05 28.91 9.20 31.45 10.34 31.45C11.49 31.45 12.64 13.86 13.79 13.86C14.94 13.86 16.09 14.25 17.24 15.03C18.39 15.82 19.54 29.10 20.69 29.10C21.84 29.10 22.99 23.44 24.14 20.90C25.29 18.36 26.44 13.86 27.59 13.86C28.74 13.86 29.89 21.29 31.03 22.07C32.18 22.85 33.33 22.46 34.48 23.24C35.63 24.02 36.78 29.10 37.93 29.10C39.08 29.10 40.23 11.52 41.38 11.52C42.53 11.52 43.68 26.76 44.83 26.76C45.98 26.76 47.13 16.21 48.28 16.21C49.43 16.21 50.57 23.24 51.72 23.24C52.87 23.24 54.02 22.46 55.17 20.90C56.32 19.33 57.47 12.69 58.62 12.69C59.77 12.69 60.92 26.76 62.07 26.76C63.22 26.76 64.37 8.00 65.52 8.00C66.67 8.00 67.82 11.13 68.97 12.69C70.11 14.25 71.26 17.38 72.41 17.38C73.56 17.38 74.71 15.03 75.86 15.03C77.01 15.03 78.16 15.82 79.31 16.21C80.46 16.60 81.61 16.60 82.76 17.38C83.91 18.16 85.06 23.24 86.21 25.59C87.36 27.93 88.51 31.45 89.66 31.45C90.80 31.45 91.95 25.59 93.10 25.59C94.25 25.59 95.40 25.59 96.55 25.59C97.70 25.59 98.85 22.46 100.00 20.90"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          vector-effect="non-scaling-stroke"
+                          class="opacity-80"
+                        ></path>
+                      </svg>
+                    </div>
+                    <span
+                      data-tally-dot="true"
+                      aria-hidden="true"
+                      class="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--iu-accent) ring-2 ring-(--iu-surface)"
+                      style="left: 100%; top: 20.9px"
+                    ></span>
+                  </div>
+                </dd>
+              </div>
+            </dl>
+          </section>
+          <section
+            aria-labelledby="tally-payouts-title"
+            class="mt-5 overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface)"
+          >
+            <div class="flex min-h-12 items-center justify-between gap-4 border-b border-(--iu-border) px-4 py-2">
+              <div class="flex min-w-0 flex-col @md/main:flex-row @md/main:items-baseline @md/main:gap-2">
+                <h2 id="tally-payouts-title" class="text-sm font-semibold whitespace-nowrap">Recent payouts</h2>
+                <p data-tally-payout-count="true" class="truncate text-xs text-(--iu-muted) tabular-nums">
+                  168 in the last 30 days
+                </p>
+              </div>
+              <a
+                href="#payouts"
+                class="group/all -mr-2 inline-flex h-8 shrink-0 items-center gap-1 rounded-[min(var(--iu-radius),6px)] px-2 text-[13px] font-medium text-(--iu-foreground) transition-colors duration-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-coarse:h-10 pointer-fine:hover:bg-(--iu-foreground)/5"
+                >View all<span class="sr-only"> payouts</span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-arrow-right text-(--iu-muted) transition-transform duration-100 motion-reduce:transition-none pointer-fine:group-hover/all:translate-x-0.5"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path></svg
+              ></a>
+            </div>
+            <table class="hidden w-full table-fixed text-left text-[13px] @2xl/main:table">
+              <caption class="sr-only">
+                Recent payouts, newest first
+              </caption>
+              <thead>
+                <tr
+                  class="border-b border-(--iu-border) text-[11px] font-medium tracking-[0.06em] text-(--iu-muted) uppercase"
+                >
+                  <th scope="col" class="w-[34%] px-4 py-2 font-medium @4xl/main:w-[28%]">Recipient</th>
+                  <th scope="col" class="w-[22%] px-3 py-2 font-medium @4xl/main:w-[15%]">Status</th>
+                  <th scope="col" class="w-[18%] px-3 py-2 font-medium @4xl/main:w-[12%]">Arrival</th>
+                  <th scope="col" class="hidden w-[14%] px-3 py-2 font-medium @4xl/main:table-cell">Destination</th>
+                  <th scope="col" class="hidden w-[15%] px-3 py-2 font-medium @4xl/main:table-cell">Payout</th>
+                  <th scope="col" class="w-[26%] px-4 py-2 text-right font-medium @4xl/main:w-[16%]">Amount</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-(--iu-border)">
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >HC</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KwR2mTq"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Halvorsen Ceramics
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/6 px-2 text-xs font-medium whitespace-nowrap text-(--iu-foreground) dark:bg-(--iu-foreground)/10"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path></svg
+                      >In transit</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    Oct 27
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 4821
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KwR2mTq
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $12,486.40
+                  </td>
+                </tr>
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >AL</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KwQ7nVd"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Adeyemi &amp; Lin Studio
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] px-2 text-xs font-medium whitespace-nowrap text-(--iu-muted) ring-1 ring-(--iu-border) ring-inset"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-calendar-clock"
+                        aria-hidden="true"
+                      >
+                        <path d="M16 14v2.2l1.6 1"></path>
+                        <path d="M16 2v3"></path>
+                        <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338"></path>
+                        <path d="M3 9h5.859"></path>
+                        <path d="M8 2v3"></path>
+                        <circle cx="16" cy="16" r="6"></circle></svg
+                      >Scheduled</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    Oct 28
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 0937
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KwQ7nVd
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $8,912.75
+                  </td>
+                </tr>
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >BB</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KvZ6kDx"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Brightwater Bikes
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-emerald-500/10 px-2 text-xs font-medium whitespace-nowrap text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Paid</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    Oct 26
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 5520
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KvZ6kDx
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $24,107.32
+                  </td>
+                </tr>
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >MT</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KvY2hSe"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Marisol Tea Co.
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-red-500/10 px-2 text-xs font-medium whitespace-nowrap text-red-700 dark:bg-red-400/10 dark:text-red-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-circle-alert lucide-alert-circle"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                        <line x1="12" x2="12.01" y1="16" y2="16"></line></svg
+                      >Failed</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    <span aria-hidden="true">—</span><span class="sr-only">Returned to balance</span>
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 7714
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KvY2hSe
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $3,264.90
+                  </td>
+                </tr>
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >IV</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KvX9cLa"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Ilse Varga Design
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-amber-500/12 px-2 text-xs font-medium whitespace-nowrap text-amber-800 dark:bg-amber-400/10 dark:text-amber-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-pause"
+                        aria-hidden="true"
+                      >
+                        <rect x="14" y="3" width="5" height="18" rx="1"></rect>
+                        <rect x="5" y="3" width="5" height="18" rx="1"></rect></svg
+                      >On hold</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    <span aria-hidden="true">—</span><span class="sr-only">Held for review</span>
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 3391
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KvX9cLa
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $41,209.88
+                  </td>
+                </tr>
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >NO</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KvW4bFr"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Northpine Outfitters
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-emerald-500/10 px-2 text-xs font-medium whitespace-nowrap text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Paid</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    Oct 25
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 2208
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KvW4bFr
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $17,550.18
+                  </td>
+                </tr>
+                <tr
+                  class="relative transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5 dark:pointer-fine:hover:bg-(--iu-foreground)/4"
+                >
+                  <td class="px-4 py-[calc(8px*var(--iu-density))]">
+                    <span class="flex min-w-0 items-center gap-3"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex size-6 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >KC</span
+                      ><button
+                        type="button"
+                        data-tally-payout="po_8KvV7aJo"
+                        class="min-h-6 min-w-0 truncate text-left font-medium text-(--iu-foreground) outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                      >
+                        Kettle &amp; Crane Bakery
+                      </button></span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))]">
+                    <span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-emerald-500/10 px-2 text-xs font-medium whitespace-nowrap text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Paid</span
+                    >
+                  </td>
+                  <td class="px-3 py-[calc(8px*var(--iu-density))] whitespace-nowrap text-(--iu-muted) tabular-nums">
+                    Oct 24
+                  </td>
+                  <td
+                    class="hidden px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs whitespace-nowrap text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    •••• 6045
+                  </td>
+                  <td
+                    class="hidden truncate px-3 py-[calc(8px*var(--iu-density))] font-mono text-xs text-(--iu-muted) @4xl/main:table-cell"
+                  >
+                    po_8KvV7aJo
+                  </td>
+                  <td
+                    class="px-4 py-[calc(8px*var(--iu-density))] text-right font-mono whitespace-nowrap text-(--iu-foreground) tabular-nums"
+                  >
+                    $2,918.06
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <ul class="divide-y divide-(--iu-border) @2xl/main:hidden">
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >HC</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KwR2mTq"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Halvorsen Ceramics</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$12,486.40</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Arrives Oct 27 · <span class="font-mono">•••• 4821</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-(--iu-foreground)/6 px-2 text-xs font-medium whitespace-nowrap text-(--iu-foreground) dark:bg-(--iu-foreground)/10"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-right"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5 7 7-7 7"></path></svg
+                      >In transit</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >AL</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KwQ7nVd"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Adeyemi &amp; Lin Studio</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$8,912.75</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Arrives Oct 28 · <span class="font-mono">•••• 0937</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] px-2 text-xs font-medium whitespace-nowrap text-(--iu-muted) ring-1 ring-(--iu-border) ring-inset"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-calendar-clock"
+                        aria-hidden="true"
+                      >
+                        <path d="M16 14v2.2l1.6 1"></path>
+                        <path d="M16 2v3"></path>
+                        <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338"></path>
+                        <path d="M3 9h5.859"></path>
+                        <path d="M8 2v3"></path>
+                        <circle cx="16" cy="16" r="6"></circle></svg
+                      >Scheduled</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >BB</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KvZ6kDx"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Brightwater Bikes</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$24,107.32</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Arrived Oct 26 · <span class="font-mono">•••• 5520</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-emerald-500/10 px-2 text-xs font-medium whitespace-nowrap text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Paid</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >MT</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KvY2hSe"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Marisol Tea Co.</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$3,264.90</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Returned to balance · <span class="font-mono">•••• 7714</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-red-500/10 px-2 text-xs font-medium whitespace-nowrap text-red-700 dark:bg-red-400/10 dark:text-red-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-circle-alert lucide-alert-circle"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                        <line x1="12" x2="12.01" y1="16" y2="16"></line></svg
+                      >Failed</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >IV</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KvX9cLa"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Ilse Varga Design</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$41,209.88</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Held for review · <span class="font-mono">•••• 3391</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-amber-500/12 px-2 text-xs font-medium whitespace-nowrap text-amber-800 dark:bg-amber-400/10 dark:text-amber-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-pause"
+                        aria-hidden="true"
+                      >
+                        <rect x="14" y="3" width="5" height="18" rx="1"></rect>
+                        <rect x="5" y="3" width="5" height="18" rx="1"></rect></svg
+                      >On hold</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >NO</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KvW4bFr"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Northpine Outfitters</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$17,550.18</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Arrived Oct 25 · <span class="font-mono">•••• 2208</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-emerald-500/10 px-2 text-xs font-medium whitespace-nowrap text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Paid</span
+                    >
+                  </div>
+                </div>
+              </li>
+              <li
+                class="relative flex items-center gap-3 px-4 py-[calc(12px*var(--iu-density))] transition-colors duration-100 motion-reduce:transition-none pointer-fine:hover:bg-(--iu-foreground)/2.5"
+              >
+                <span
+                  aria-hidden="true"
+                  class="inline-flex size-8 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground)/7 text-[11px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                  >KC</span
+                >
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-baseline justify-between gap-3">
+                    <button
+                      type="button"
+                      data-tally-payout="po_8KvV7aJo"
+                      class="min-h-6 min-w-0 truncate text-left text-[13px] font-medium outline-none after:absolute after:inset-0 focus-visible:after:outline-2 focus-visible:after:-outline-offset-2 focus-visible:after:outline-(--iu-accent)"
+                    >
+                      Kettle &amp; Crane Bakery</button
+                    ><span class="shrink-0 font-mono text-[13px] tabular-nums">$2,918.06</span>
+                  </div>
+                  <div class="mt-1 flex items-center justify-between gap-3">
+                    <span class="min-w-0 truncate text-xs text-(--iu-muted) tabular-nums"
+                      >Arrived Oct 24 · <span class="font-mono">•••• 6045</span></span
+                    ><span
+                      class="inline-flex h-5 items-center gap-1 rounded-[min(var(--iu-radius),4px)] bg-emerald-500/10 px-2 text-xs font-medium whitespace-nowrap text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-300"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg
+                      >Paid</span
+                    >
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+    <!-- iloveui:component:end -->
+    <script>
+      (() => {
+        const root = document.querySelector("[data-tally-dashboard]");
+        if (!root) return;
+
+        // The same figures as component.tsx: one simulated ledger, aggregated per range.
+        const METRICS = [
+          { id: "gross", label: "Gross volume", format: "currency", better: "up" },
+          { id: "net", label: "Net revenue", format: "currency", better: "up" },
+          { id: "failed", label: "Failed charges", format: "count", better: "down" },
+          { id: "dispute", label: "Dispute rate", format: "percent", better: "down" },
+        ];
+        const RANGES = {
+          "7d": {
+            label: "Last 7 days",
+            period: "Oct 20 – 26, 2026",
+            previous: "Oct 13 – 19, 2026",
+            comparison: "prior 7 days",
+            bucket: "6 hours",
+            payoutCount: 41,
+            figures: {
+              gross: {
+                value: 316280.53,
+                delta: 4,
+                series: [
+                  3936, 12128, 18246, 13766, 3870, 12485, 16796, 12131, 3884, 12124, 17007, 11511, 3618, 13383, 17512,
+                  12225, 3404, 11537, 16634, 12046, 3587, 12716, 14456, 11312, 3814, 12169, 17898, 12086,
+                ],
+              },
+              net: {
+                value: 23493.49,
+                delta: 3,
+                series: [
+                  318, 979, 1473, 1111, 205, 662, 891, 644, 291, 910, 1276, 864, 285, 1055, 1381, 964, 264, 894, 1289,
+                  933, 291, 1032, 1173, 918, 281, 898, 1321, 892,
+                ],
+              },
+              failed: {
+                value: 92,
+                delta: 10.8,
+                series: [1, 4, 5, 4, 1, 3, 4, 3, 1, 4, 5, 4, 1, 4, 5, 3, 1, 3, 5, 3, 1, 4, 4, 3, 1, 4, 6, 5],
+              },
+              dispute: {
+                value: 0.42,
+                delta: -0.06,
+                series: [
+                  0.45, 0.55, 0.47, 0.52, 0.46, 0.54, 0.39, 0.44, 0.39, 0.39, 0.4, 0.43, 0.35, 0.33, 0.37, 0.37, 0.36,
+                  0.43, 0.4, 0.33, 0.35, 0.49, 0.38, 0.43, 0.52, 0.5, 0.42, 0.41,
+                ],
+              },
+            },
+          },
+          "30d": {
+            label: "Last 30 days",
+            period: "Sep 27 – Oct 26, 2026",
+            previous: "Aug 28 – Sep 26, 2026",
+            comparison: "prior 30 days",
+            bucket: "day",
+            payoutCount: 168,
+            figures: {
+              gross: {
+                value: 1309137.16,
+                delta: 9.3,
+                series: [
+                  37052, 43984, 40564, 42672, 48613, 42860, 40287, 37912, 46300, 45272, 48981, 46655, 44705, 38709,
+                  37388, 46792, 44549, 45641, 46675, 44804, 39073, 39299, 44071, 48076, 45282, 44525, 46738, 43622,
+                  42071, 45967,
+                ],
+              },
+              net: {
+                value: 97451.48,
+                delta: 8.8,
+                series: [
+                  2738, 3292, 2936, 3020, 3856, 3210, 2799, 2894, 3364, 3328, 3739, 3510, 3089, 2948, 2791, 3627, 3141,
+                  3433, 3271, 3477, 2897, 3127, 3470, 3880, 2402, 3340, 3685, 3380, 3413, 3392,
+                ],
+              },
+              failed: {
+                value: 341,
+                delta: -3.4,
+                series: [
+                  10, 11, 7, 8, 12, 8, 9, 10, 16, 12, 8, 9, 13, 13, 9, 11, 14, 11, 15, 11, 9, 9, 14, 14, 11, 14, 13, 12,
+                  12, 16,
+                ],
+              },
+              dispute: {
+                value: 0.44,
+                delta: 0.06,
+                series: [
+                  0.38, 0.4, 0.38, 0.35, 0.5, 0.49, 0.37, 0.44, 0.5, 0.43, 0.42, 0.37, 0.52, 0.39, 0.48, 0.42, 0.44,
+                  0.51, 0.39, 0.55, 0.51, 0.47, 0.49, 0.48, 0.47, 0.4, 0.35, 0.4, 0.4, 0.44,
+                ],
+              },
+            },
+          },
+          "90d": {
+            label: "Last 90 days",
+            period: "Jul 29 – Oct 26, 2026",
+            previous: "Apr 30 – Jul 28, 2026",
+            comparison: "prior 90 days",
+            bucket: "5 days",
+            payoutCount: 497,
+            figures: {
+              gross: {
+                value: 3667370.81,
+                delta: 10.1,
+                series: [
+                  191925, 204845, 187548, 188222, 191712, 195961, 187813, 195340, 205802, 203493, 200871, 204702,
+                  212885, 212631, 216438, 228460, 215802, 222923,
+                ],
+              },
+              net: {
+                value: 271850.01,
+                delta: 9.8,
+                series: [
+                  12656, 15808, 14056, 14135, 13811, 14386, 14061, 14711, 15521, 14997, 14986, 15270, 15842, 15595,
+                  16076, 16950, 15777, 17211,
+                ],
+              },
+              failed: {
+                value: 1069,
+                delta: 20,
+                series: [59, 57, 66, 63, 68, 62, 68, 58, 62, 54, 58, 53, 48, 55, 52, 62, 57, 67],
+              },
+              dispute: {
+                value: 0.42,
+                delta: -0.02,
+                series: [
+                  0.42, 0.44, 0.48, 0.41, 0.45, 0.47, 0.42, 0.35, 0.39, 0.35, 0.37, 0.38, 0.41, 0.44, 0.44, 0.46, 0.49,
+                  0.4,
+                ],
+              },
+            },
+          },
+          "12m": {
+            label: "Last 12 months",
+            period: "Oct 27, 2025 – Oct 26, 2026",
+            previous: "Oct 27, 2024 – Oct 26, 2025",
+            comparison: "prior 12 months",
+            bucket: "month",
+            payoutCount: 1862,
+            figures: {
+              gross: {
+                value: 13229446.33,
+                delta: 36.9,
+                series: [
+                  975348, 1098600, 917946, 1032195, 1042909, 1089026, 1108407, 1105438, 1151891, 1162340, 1236209,
+                  1309137,
+                ],
+              },
+              net: {
+                value: 971368.86,
+                delta: 37.5,
+                series: [71896, 79669, 61586, 74469, 77613, 81055, 82285, 81936, 86142, 85065, 92202, 97451],
+              },
+              failed: {
+                value: 3599,
+                delta: 20.9,
+                series: [249, 303, 246, 262, 275, 290, 284, 302, 309, 369, 369, 341],
+              },
+              dispute: {
+                value: 0.46,
+                delta: 0.08,
+                series: [0.44, 0.46, 0.55, 0.54, 0.48, 0.46, 0.46, 0.44, 0.43, 0.44, 0.38, 0.44],
+              },
+            },
+          },
+        };
+
+        const DRAW_MS = 400;
+        const SPARK_HEIGHT = 48;
+        const SPARK_TOP = 8;
+        const SPARK_BOTTOM = 6;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const ease = cubicBezier(0.2, 0.8, 0.2, 1);
+        const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 });
+        const wholeMoney = new Intl.NumberFormat("en-US", {
+          style: "currency",
+          currency: "USD",
+          maximumFractionDigits: 0,
+        });
+        const count = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+        const decimal = new Intl.NumberFormat("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const ICONS = {
+          up: '<path d="M7 7h10v10"></path><path d="M7 17 17 7"></path>',
+          down: '<path d="m7 7 10 10"></path><path d="M17 7v10H7"></path>',
+          flat: '<path d="M5 12h14"></path>',
+          collapse:
+            '<rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path><path d="m16 15-3-3 3-3"></path>',
+          expand:
+            '<rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path><path d="m14 9 3 3-3 3"></path>',
+        };
+
+        function cubicBezier(x1, y1, x2, y2) {
+          const at = (t, a, b) => 3 * a * t * (1 - t) * (1 - t) + 3 * b * t * t * (1 - t) + t * t * t;
+          return (x) => {
+            if (x <= 0) return 0;
+            if (x >= 1) return 1;
+            let low = 0;
+            let high = 1;
+            let t = x;
+            for (let i = 0; i < 24; i++) {
+              const guess = at(t, x1, x2);
+              if (Math.abs(guess - x) < 1e-6) break;
+              if (guess < x) low = t;
+              else high = t;
+              t = (low + high) / 2;
+            }
+            return at(t, y1, y2);
+          };
+        }
+
+        // A figure split into its loud part and its quiet tail: "$1,309,137" + ".16", "0.44" + "%".
+        function splitFigure(value, format) {
+          if (format === "count") return { main: count.format(value), tail: "" };
+          if (format === "percent") return { main: decimal.format(value), tail: "%" };
+          const parts = money.formatToParts(value);
+          const at = parts.findIndex((part) => part.type === "decimal");
+          if (at < 0) return { main: money.format(value), tail: "" };
+          const join = (list) => list.map((part) => part.value).join("");
+          return { main: join(parts.slice(0, at)), tail: join(parts.slice(at)) };
+        }
+
+        function formatPoint(value, format) {
+          if (format === "currency") return wholeMoney.format(value);
+          if (format === "count") return count.format(value);
+          return `${decimal.format(value)}%`;
+        }
+
+        function formatDelta(delta, format) {
+          const sign = delta > 0 ? "+" : delta < 0 ? "−" : "";
+          const size = Math.abs(delta);
+          return format === "percent" ? `${sign}${size.toFixed(2)} pts` : `${sign}${size.toFixed(1)}%`;
+        }
+
+        // Sparkline geometry: x runs from 0 to 100, y is in pixels with the highest value on top. Monotone tangents
+        // (Steffen) keep the curve through every point without overshooting between two of them.
+        function sparkGeometry(series) {
+          const values = series.length > 1 ? series : [series[0] || 0, series[0] || 0];
+          const max = Math.max(...values);
+          const min = Math.min(...values) - (max - Math.min(...values)) * 0.45;
+          const usable = SPARK_HEIGHT - SPARK_TOP - SPARK_BOTTOM;
+          const y = values.map((value) =>
+            max === min ? SPARK_HEIGHT - SPARK_BOTTOM : SPARK_TOP + (1 - (value - min) / (max - min)) * usable,
+          );
+          const step = 100 / (y.length - 1);
+          const slopes = y.slice(1).map((value, index) => (value - y[index]) / step);
+          const m = y.map((_, index) => {
+            const before = slopes[index - 1];
+            const after = slopes[index];
+            if (before === undefined) return after === undefined ? 0 : after;
+            if (after === undefined) return before;
+            if (before * after <= 0) return 0;
+            return Math.sign(before) * 2 * Math.min(Math.abs(before), Math.abs(after), Math.abs(before + after) / 4);
+          });
+          return { y, m, step };
+        }
+
+        function linePath({ y, m, step }) {
+          let path = `M0 ${y[0].toFixed(2)}`;
+          for (let index = 0; index < y.length - 1; index++) {
+            const x0 = index * step;
+            const c1 = `${(x0 + step / 3).toFixed(2)} ${(y[index] + (m[index] * step) / 3).toFixed(2)}`;
+            const c2 = `${(x0 + (2 * step) / 3).toFixed(2)} ${(y[index + 1] - (m[index + 1] * step) / 3).toFixed(2)}`;
+            path += `C${c1} ${c2} ${(x0 + step).toFixed(2)} ${y[index + 1].toFixed(2)}`;
+          }
+          return path;
+        }
+
+        // Height of the curve at a point along the range (0 to 1), so the marker rides the tip while it draws.
+        function heightAt({ y, m, step }, progress) {
+          const position = Math.min(1, Math.max(0, progress)) * (y.length - 1);
+          const index = Math.min(y.length - 2, Math.floor(position));
+          const t = position - index;
+          const t2 = t * t;
+          const t3 = t2 * t;
+          return (
+            (2 * t3 - 3 * t2 + 1) * y[index] +
+            (t3 - 2 * t2 + t) * m[index] * step +
+            (3 * t2 - 2 * t3) * y[index + 1] +
+            (t3 - t2) * m[index + 1] * step
+          );
+        }
+
+        function fadeIn(element) {
+          if (reduceMotion.matches) return;
+          element.animate([{ opacity: 0 }, { opacity: 1 }], {
+            duration: 150,
+            easing: "cubic-bezier(0.2, 0.8, 0.2, 1)",
+          });
+        }
+
+        function emit(name, detail) {
+          root.dispatchEvent(new CustomEvent(`tally:${name}`, { bubbles: true, detail }));
+        }
+
+        // Sidebar: full width or an icon rail. Every collapsed style keys off data-collapsed.
+        const sidebar = root.querySelector("#tally-sidebar");
+        const collapseButton = root.querySelector('[aria-controls="tally-sidebar"]');
+        collapseButton.addEventListener("click", () => {
+          const collapsed = sidebar.getAttribute("data-collapsed") !== "true";
+          sidebar.setAttribute("data-collapsed", String(collapsed));
+          collapseButton.setAttribute("aria-expanded", String(!collapsed));
+          collapseButton.querySelector("svg").innerHTML = collapsed ? ICONS.expand : ICONS.collapse;
+          emit("collapse", { collapsed });
+        });
+
+        // Small screens: a modal drawer with the same navigation. Escape and the backdrop close it.
+        const drawer = root.querySelector("#tally-drawer");
+        const menuButton = root.querySelector('[aria-controls="tally-drawer"]');
+        menuButton.addEventListener("click", () => {
+          drawer.showModal();
+          menuButton.setAttribute("aria-expanded", "true");
+          const current = drawer.querySelector('[aria-current="page"]');
+          if (current) current.focus();
+        });
+        drawer.addEventListener("close", () => {
+          menuButton.setAttribute("aria-expanded", "false");
+          menuButton.focus();
+        });
+        drawer.addEventListener("click", (event) => {
+          if (event.target === drawer || event.target.closest('[aria-label="Close navigation"], a')) drawer.close();
+        });
+        window.matchMedia("(min-width: 64rem)").addEventListener("change", (event) => {
+          if (event.matches && drawer.open) drawer.close();
+        });
+
+        root.querySelectorAll("[data-tally-account]").forEach((button) => {
+          button.addEventListener("click", () => emit("account", {}));
+        });
+
+        root.querySelectorAll("[data-tally-payout]").forEach((button) => {
+          button.addEventListener("click", () => emit("payout", { id: button.getAttribute("data-tally-payout") }));
+        });
+
+        // The date range redraws every sparkline and counts every figure to its new value, all landing together.
+        const radios = [...root.querySelectorAll('input[name="tally-range"]')];
+        const thumb = root.querySelector("[data-tally-thumb]");
+        const period = root.querySelector("[data-tally-period]");
+        const kpiTitle = root.querySelector("#tally-kpi-title");
+        const payoutCount = root.querySelector("[data-tally-payout-count]");
+        const announce = root.querySelector("[data-tally-announce]");
+        let currentId = (radios.find((radio) => radio.checked) || radios[0]).value;
+        let frame = 0;
+
+        const tiles = METRICS.map((metric) => {
+          const element = root.querySelector(`[data-tally-metric="${metric.id}"]`);
+          const figure = RANGES[currentId].figures[metric.id];
+          return {
+            metric,
+            shown: figure.value,
+            from: figure.value,
+            to: figure.value,
+            geometry: sparkGeometry(figure.series),
+            main: element.querySelector("[data-tally-main]"),
+            tail: element.querySelector("[data-tally-tail]"),
+            delta: element.querySelector("[data-tally-delta]"),
+            deltaIcon: element.querySelector("[data-tally-delta] svg"),
+            deltaValue: element.querySelector("[data-tally-delta-value]"),
+            compare: element.querySelector("[data-tally-compare]"),
+            verdict: element.querySelector("[data-tally-verdict]"),
+            spark: element.querySelector('[role="img"]'),
+            clip: element.querySelector("[data-tally-clip]"),
+            area: element.querySelector("[data-tally-area]"),
+            line: element.querySelector("[data-tally-line]"),
+            dot: element.querySelector("[data-tally-dot]"),
+          };
+        });
+
+        function render(progress) {
+          for (const tile of tiles) {
+            tile.shown = tile.from + (tile.to - tile.from) * progress;
+            const figure = splitFigure(tile.shown, tile.metric.format);
+            tile.main.textContent = figure.main;
+            tile.tail.textContent = figure.tail;
+            tile.clip.style.clipPath = `inset(0 ${(100 - progress * 100).toFixed(2)}% 0 0)`;
+            tile.dot.style.left = `${(progress * 100).toFixed(2)}%`;
+            tile.dot.style.top = `${heightAt(tile.geometry, progress).toFixed(2)}px`;
+          }
+        }
+
+        function draw() {
+          cancelAnimationFrame(frame);
+          if (reduceMotion.matches) {
+            render(1);
+            return;
+          }
+          let start = null;
+          const step = (now) => {
+            if (start === null) start = now;
+            const t = Math.min(1, (now - start) / DRAW_MS);
+            render(ease(t));
+            if (t < 1) frame = requestAnimationFrame(step);
+          };
+          render(0);
+          frame = requestAnimationFrame(step);
+        }
+
+        function select(id) {
+          const range = RANGES[id];
+          if (!range || id === currentId) return;
+          currentId = id;
+          const label = range.label.toLowerCase();
+          thumb.style.transform = `translateX(${radios.findIndex((radio) => radio.value === id) * 100}%)`;
+          period.children[0].textContent = range.period;
+          period.children[1].textContent = ` · compared with ${range.previous}`;
+          fadeIn(period);
+          kpiTitle.textContent = `Key metrics, ${label}`;
+          payoutCount.textContent = `${count.format(range.payoutCount)} in the ${label}`;
+          announce.textContent = `Showing ${label}`;
+          for (const tile of tiles) {
+            const { metric } = tile;
+            const figure = range.figures[metric.id];
+            const direction = figure.delta > 0 ? "up" : figure.delta < 0 ? "down" : "flat";
+            const tone = direction === "flat" ? "flat" : direction === metric.better ? "good" : "bad";
+            tile.from = tile.shown;
+            tile.to = figure.value;
+            tile.geometry = sparkGeometry(figure.series);
+            const line = linePath(tile.geometry);
+            tile.line.setAttribute("d", line);
+            tile.area.setAttribute("d", `${line}L100 ${SPARK_HEIGHT}L0 ${SPARK_HEIGHT}Z`);
+            tile.spark.setAttribute(
+              "aria-label",
+              `${metric.label} per ${range.bucket}, ${label}: low ${formatPoint(Math.min(...figure.series), metric.format)}, high ${formatPoint(Math.max(...figure.series), metric.format)}`,
+            );
+            tile.delta.setAttribute("data-tone", tone);
+            tile.deltaIcon.innerHTML = ICONS[direction];
+            tile.deltaValue.textContent = formatDelta(figure.delta, metric.format);
+            tile.compare.textContent = range.comparison;
+            tile.verdict.textContent = tone === "good" ? ", an improvement" : tone === "bad" ? ", a deterioration" : "";
+            fadeIn(tile.delta);
+          }
+          emit("range", { range: id });
+          draw();
+        }
+
+        // Native radios give the segmented control its keyboard support: Tab in, arrow keys move the selection.
+        for (const radio of radios) {
+          radio.addEventListener("change", () => {
+            if (radio.checked) select(radio.value);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

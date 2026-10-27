@@ -1,0 +1,1801 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gumdrop buttons · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- A stage for the demo: centers the set the way a page column would. -->
+    <main class="flex min-h-dvh w-full items-center justify-center px-4 py-10 sm:px-8 sm:py-16">
+      <div class="w-full">
+        <!-- iloveui:component:start -->
+        <section
+          aria-label="Gumdrop buttons"
+          data-gumdrop-buttons=""
+          class="@container w-full font-(family-name:--iu-font) text-(--iu-foreground) [--gd-tray:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] dark:[--gd-tray:color-mix(in_oklab,var(--iu-accent)_9%,var(--iu-background))]"
+        >
+          <div
+            class="relative mx-auto grid w-full max-w-270 @[44rem]:grid-cols-[minmax(0,1fr)_23rem] @[44rem]:items-center @5xl:grid-cols-[minmax(0,1fr)_23.5rem]"
+          >
+            <div
+              aria-hidden="true"
+              class="absolute inset-0 hidden rounded-[max(calc(var(--iu-radius)*3),32px)] bg-(--gd-tray) @[44rem]:block @5xl:top-14 @5xl:bottom-14"
+            ></div>
+            <div
+              class="relative flex flex-col items-start gap-[calc(28px*var(--iu-density))] rounded-[max(calc(var(--iu-radius)*2.4),24px)] bg-(--gd-tray) px-5 pt-7 pb-20 @md:px-8 @[44rem]:rounded-none @[44rem]:bg-transparent @[44rem]:py-10 @[44rem]:pr-6 @5xl:pr-8 @5xl:pl-14"
+            >
+              <div role="group" aria-label="Note actions" class="flex flex-wrap items-center gap-x-3 gap-y-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    data-gd-split=""
+                    class="relative inline-flex shrink-0 [--gd-line:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [--gd-tint:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] dark:[--gd-ring:var(--iu-accent)]"
+                  >
+                    <button
+                      data-gd-main=""
+                      type="button"
+                      data-gd=""
+                      data-status="idle"
+                      class="group/gd relative isolate inline-flex h-12 shrink-0 origin-[100%_100%] [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-l-full border-2 border-(--gd-edge) bg-(--gd-face) pr-[calc(16px*var(--iu-density))] pl-[calc(20px*var(--iu-density))] text-[15px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-right-0.5 after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-r-0 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                    >
+                      <span
+                        data-gd-label=""
+                        class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                        >Publish</span
+                      ><span
+                        aria-hidden="true"
+                        class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                        ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                        ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                        ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                      ><span
+                        aria-hidden="true"
+                        class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                        ><svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                        >
+                          <path
+                            d="M5.5 12.5 10 17l8.5-9.5"
+                            pathLength="1"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg
+                      ></span></button
+                    ><span role="status" class="sr-only"></span
+                    ><button
+                      id="gumdrop-publish-options"
+                      data-gd-trigger=""
+                      aria-label="More publish options"
+                      aria-haspopup="menu"
+                      aria-expanded="false"
+                      aria-controls="gumdrop-publish-menu"
+                      type="button"
+                      data-gd=""
+                      data-status="idle"
+                      class="group/gd relative isolate -ml-0.5 inline-flex h-12 w-11 shrink-0 origin-[0%_100%] [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-r-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:-left-0.5 after:rounded-[inherit] after:border-2 after:border-l-0 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                    >
+                      <span
+                        data-gd-label=""
+                        class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="18"
+                          height="18"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[rotate] duration-620 ease-(--gd-spring) group-aria-expanded/gd:rotate-180 motion-reduce:transition-none"
+                          aria-hidden="true"
+                        >
+                          <path d="m6 9 6 6 6-6"></path></svg
+                      ></span>
+                    </button>
+                    <div
+                      id="gumdrop-publish-menu"
+                      role="menu"
+                      aria-labelledby="gumdrop-publish-options"
+                      data-gd-menu=""
+                      class="pointer-events-none invisible absolute top-[calc(100%+16px)] left-0 z-30 w-68 max-w-[calc(100vw-2rem)] origin-top-left -translate-y-1.5 scale-95 rounded-[max(calc(var(--iu-radius)+8px),20px)] border-2 border-(--gd-line) bg-(--iu-surface) p-2 opacity-0 shadow-[0_4px_0_0_var(--gd-line)] [transition:opacity_150ms_ease-out,scale_420ms_var(--gd-spring),translate_420ms_var(--gd-spring),visibility_0s_linear_150ms] data-open:pointer-events-auto data-open:visible data-open:translate-y-0 data-open:scale-100 data-open:opacity-100 data-open:[transition-delay:0s] motion-reduce:[transition:none] dark:bg-[color-mix(in_oklab,var(--iu-foreground)_6%,var(--iu-surface))]"
+                    >
+                      <button
+                        type="button"
+                        role="menuitem"
+                        data-value="club"
+                        tabindex="-1"
+                        class="flex w-full items-center gap-3 rounded-[max(var(--iu-radius),10px)] px-2 py-2 text-left text-(--iu-foreground) transition-colors duration-150 focus-visible:bg-(--gd-tint) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gd-ring) motion-reduce:transition-none pointer-fine:hover:bg-(--gd-tint)"
+                      >
+                        <span
+                          class="flex size-9 shrink-0 items-center justify-center rounded-[max(var(--iu-radius),12px)] border-2 border-(--gd-line) bg-(--gd-tint) shadow-[0_2px_0_0_var(--gd-line)]"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <circle cx="9" cy="7" r="4"></circle></svg></span
+                        ><span class="flex min-w-0 flex-col"
+                          ><span class="text-sm font-bold">Publish to club only</span
+                          ><span class="text-xs text-(--iu-muted)">Thursday Readers · 14 members</span></span
+                        ></button
+                      ><button
+                        type="button"
+                        role="menuitem"
+                        data-value="schedule"
+                        tabindex="-1"
+                        class="flex w-full items-center gap-3 rounded-[max(var(--iu-radius),10px)] px-2 py-2 text-left text-(--iu-foreground) transition-colors duration-150 focus-visible:bg-(--gd-tint) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gd-ring) motion-reduce:transition-none pointer-fine:hover:bg-(--gd-tint)"
+                      >
+                        <span
+                          class="flex size-9 shrink-0 items-center justify-center rounded-[max(var(--iu-radius),12px)] border-2 border-(--gd-line) bg-(--gd-tint) shadow-[0_2px_0_0_var(--gd-line)]"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M16 14v2.2l1.6 1"></path>
+                            <path d="M16 2v3"></path>
+                            <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338"></path>
+                            <path d="M3 9h5.859"></path>
+                            <path d="M8 2v3"></path>
+                            <circle cx="16" cy="16" r="6"></circle></svg></span
+                        ><span class="flex min-w-0 flex-col"
+                          ><span class="text-sm font-bold">Schedule for tomorrow</span
+                          ><span class="text-xs text-(--iu-muted)">Sat, Oct 31 at 8:00 AM</span></span
+                        ></button
+                      ><button
+                        type="button"
+                        role="menuitem"
+                        data-value="unlisted"
+                        tabindex="-1"
+                        class="flex w-full items-center gap-3 rounded-[max(var(--iu-radius),10px)] px-2 py-2 text-left text-(--iu-foreground) transition-colors duration-150 focus-visible:bg-(--gd-tint) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gd-ring) motion-reduce:transition-none pointer-fine:hover:bg-(--gd-tint)"
+                      >
+                        <span
+                          class="flex size-9 shrink-0 items-center justify-center rounded-[max(var(--iu-radius),12px)] border-2 border-(--gd-line) bg-(--gd-tint) shadow-[0_2px_0_0_var(--gd-line)]"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
+                            <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
+                            <line x1="8" x2="16" y1="12" y2="12"></line></svg></span
+                        ><span class="flex min-w-0 flex-col"
+                          ><span class="text-sm font-bold">Publish as unlisted</span
+                          ><span class="text-xs text-(--iu-muted)">Only people with the link</span></span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    data-action="save-draft"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    class="group/gd relative isolate inline-flex h-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(20px*var(--iu-density))] text-[15px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--gd-face:var(--iu-surface)] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--iu-foreground)_7%,var(--iu-surface))] dark:[--gd-gloss:color-mix(in_oklab,white_7%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><span>Save draft</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <button
+                    data-action="preview"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    class="group/gd relative isolate inline-flex h-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(20px*var(--iu-density))] text-[15px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:transparent] [--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_8%,transparent)] [--gd-face:transparent] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-off-edge:transparent] [--gd-off-face:transparent] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:0px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                        ></path>
+                        <circle cx="12" cy="12" r="3"></circle></svg
+                      ><span>Preview</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    data-action="delete"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    class="group/gd relative isolate inline-flex h-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(20px*var(--iu-density))] text-[15px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:var(--color-red-300)] [--gd-face-up:var(--color-red-100)] [--gd-face:var(--color-red-50)] [--gd-gloss:transparent] [--gd-ink:var(--color-red-700)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-edge:color-mix(in_oklab,var(--color-red-400)_55%,var(--iu-surface))] dark:[--gd-face-up:color-mix(in_oklab,var(--color-red-500)_24%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--color-red-500)_15%,var(--iu-surface))] dark:[--gd-ink:var(--color-red-300)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                        <path d="M3 6h18"></path>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg
+                      ><span>Delete</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span>
+                </div>
+              </div>
+              <div role="group" aria-label="Note actions, compact" class="flex flex-wrap items-center gap-x-2 gap-y-3">
+                <div class="flex items-center gap-2">
+                  <div
+                    data-gd-split=""
+                    class="relative inline-flex shrink-0 [--gd-line:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [--gd-tint:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))] dark:[--gd-ring:var(--iu-accent)]"
+                  >
+                    <button
+                      data-gd-main=""
+                      type="button"
+                      data-gd=""
+                      data-status="idle"
+                      class="group/gd relative isolate inline-flex h-9 shrink-0 origin-[100%_100%] [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-l-full border-2 border-(--gd-edge) bg-(--gd-face) pr-[calc(12px*var(--iu-density))] pl-[calc(16px*var(--iu-density))] text-[13px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-right-0.5 after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-r-0 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                    >
+                      <span
+                        data-gd-label=""
+                        class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                        >Publish</span
+                      ><span
+                        aria-hidden="true"
+                        class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                        ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                        ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                        ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                      ><span
+                        aria-hidden="true"
+                        class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                        ><svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                        >
+                          <path
+                            d="M5.5 12.5 10 17l8.5-9.5"
+                            pathLength="1"
+                            stroke="currentColor"
+                            stroke-width="3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg
+                      ></span></button
+                    ><span role="status" class="sr-only"></span
+                    ><button
+                      id="gumdrop-publish-options-compact"
+                      data-gd-trigger=""
+                      aria-label="More publish options"
+                      aria-haspopup="menu"
+                      aria-expanded="false"
+                      aria-controls="gumdrop-publish-menu-compact"
+                      type="button"
+                      data-gd=""
+                      data-status="idle"
+                      class="group/gd relative isolate -ml-0.5 inline-flex h-9 w-9 shrink-0 origin-[0%_100%] [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-r-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:-left-0.5 after:rounded-[inherit] after:border-2 after:border-l-0 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                    >
+                      <span
+                        data-gd-label=""
+                        class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.25"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[rotate] duration-620 ease-(--gd-spring) group-aria-expanded/gd:rotate-180 motion-reduce:transition-none"
+                          aria-hidden="true"
+                        >
+                          <path d="m6 9 6 6 6-6"></path></svg
+                      ></span>
+                    </button>
+                    <div
+                      id="gumdrop-publish-menu-compact"
+                      role="menu"
+                      aria-labelledby="gumdrop-publish-options-compact"
+                      data-gd-menu=""
+                      class="pointer-events-none invisible absolute top-[calc(100%+16px)] left-0 z-30 w-68 max-w-[calc(100vw-2rem)] origin-top-left -translate-y-1.5 scale-95 rounded-[max(calc(var(--iu-radius)+8px),20px)] border-2 border-(--gd-line) bg-(--iu-surface) p-2 opacity-0 shadow-[0_4px_0_0_var(--gd-line)] [transition:opacity_150ms_ease-out,scale_420ms_var(--gd-spring),translate_420ms_var(--gd-spring),visibility_0s_linear_150ms] data-open:pointer-events-auto data-open:visible data-open:translate-y-0 data-open:scale-100 data-open:opacity-100 data-open:[transition-delay:0s] motion-reduce:[transition:none] dark:bg-[color-mix(in_oklab,var(--iu-foreground)_6%,var(--iu-surface))]"
+                    >
+                      <button
+                        type="button"
+                        role="menuitem"
+                        data-value="club"
+                        tabindex="-1"
+                        class="flex w-full items-center gap-3 rounded-[max(var(--iu-radius),10px)] px-2 py-2 text-left text-(--iu-foreground) transition-colors duration-150 focus-visible:bg-(--gd-tint) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gd-ring) motion-reduce:transition-none pointer-fine:hover:bg-(--gd-tint)"
+                      >
+                        <span
+                          class="flex size-9 shrink-0 items-center justify-center rounded-[max(var(--iu-radius),12px)] border-2 border-(--gd-line) bg-(--gd-tint) shadow-[0_2px_0_0_var(--gd-line)]"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <path d="M16 3.128a4 4 0 0 1 0 7.744"></path>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <circle cx="9" cy="7" r="4"></circle></svg></span
+                        ><span class="flex min-w-0 flex-col"
+                          ><span class="text-sm font-bold">Publish to club only</span
+                          ><span class="text-xs text-(--iu-muted)">Thursday Readers · 14 members</span></span
+                        ></button
+                      ><button
+                        type="button"
+                        role="menuitem"
+                        data-value="schedule"
+                        tabindex="-1"
+                        class="flex w-full items-center gap-3 rounded-[max(var(--iu-radius),10px)] px-2 py-2 text-left text-(--iu-foreground) transition-colors duration-150 focus-visible:bg-(--gd-tint) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gd-ring) motion-reduce:transition-none pointer-fine:hover:bg-(--gd-tint)"
+                      >
+                        <span
+                          class="flex size-9 shrink-0 items-center justify-center rounded-[max(var(--iu-radius),12px)] border-2 border-(--gd-line) bg-(--gd-tint) shadow-[0_2px_0_0_var(--gd-line)]"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M16 14v2.2l1.6 1"></path>
+                            <path d="M16 2v3"></path>
+                            <path d="M21 7.338V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h2.338"></path>
+                            <path d="M3 9h5.859"></path>
+                            <path d="M8 2v3"></path>
+                            <circle cx="16" cy="16" r="6"></circle></svg></span
+                        ><span class="flex min-w-0 flex-col"
+                          ><span class="text-sm font-bold">Schedule for tomorrow</span
+                          ><span class="text-xs text-(--iu-muted)">Sat, Oct 31 at 8:00 AM</span></span
+                        ></button
+                      ><button
+                        type="button"
+                        role="menuitem"
+                        data-value="unlisted"
+                        tabindex="-1"
+                        class="flex w-full items-center gap-3 rounded-[max(var(--iu-radius),10px)] px-2 py-2 text-left text-(--iu-foreground) transition-colors duration-150 focus-visible:bg-(--gd-tint) focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--gd-ring) motion-reduce:transition-none pointer-fine:hover:bg-(--gd-tint)"
+                      >
+                        <span
+                          class="flex size-9 shrink-0 items-center justify-center rounded-[max(var(--iu-radius),12px)] border-2 border-(--gd-line) bg-(--gd-tint) shadow-[0_2px_0_0_var(--gd-line)]"
+                          ><svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                          >
+                            <path d="M9 17H7A5 5 0 0 1 7 7h2"></path>
+                            <path d="M15 7h2a5 5 0 1 1 0 10h-2"></path>
+                            <line x1="8" x2="16" y1="12" y2="12"></line></svg></span
+                        ><span class="flex min-w-0 flex-col"
+                          ><span class="text-sm font-bold">Publish as unlisted</span
+                          ><span class="text-xs text-(--iu-muted)">Only people with the link</span></span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <button
+                    data-action="save-draft"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    class="group/gd relative isolate inline-flex h-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(16px*var(--iu-density))] text-[13px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--gd-face:var(--iu-surface)] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--iu-foreground)_7%,var(--iu-surface))] dark:[--gd-gloss:color-mix(in_oklab,white_7%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><span>Save draft</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button
+                    data-action="preview"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    class="group/gd relative isolate inline-flex h-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(16px*var(--iu-density))] text-[13px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:transparent] [--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_8%,transparent)] [--gd-face:transparent] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-off-edge:transparent] [--gd-off-face:transparent] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:0px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-ring:var(--iu-accent)] pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+                        ></path>
+                        <circle cx="12" cy="12" r="3"></circle></svg
+                      ><span>Preview</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    data-action="delete"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    class="group/gd relative isolate inline-flex h-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(16px*var(--iu-density))] text-[13px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:var(--color-red-300)] [--gd-face-up:var(--color-red-100)] [--gd-face:var(--color-red-50)] [--gd-gloss:transparent] [--gd-ink:var(--color-red-700)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-edge:color-mix(in_oklab,var(--color-red-400)_55%,var(--iu-surface))] dark:[--gd-face-up:color-mix(in_oklab,var(--color-red-500)_24%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--color-red-500)_15%,var(--iu-surface))] dark:[--gd-ink:var(--color-red-300)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:h-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                        <path d="M3 6h18"></path>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg
+                      ><span>Delete</span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span>
+                </div>
+              </div>
+              <div role="group" aria-label="Note shortcuts" class="flex flex-wrap items-center gap-x-4 gap-y-4">
+                <div class="flex items-center gap-3">
+                  <button
+                    aria-label="New note"
+                    data-action="new-note"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    aria-label="Save to reading list"
+                    aria-pressed="false"
+                    data-action="bookmark"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--gd-face:var(--iu-surface)] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--iu-foreground)_7%,var(--iu-surface))] dark:[--gd-gloss:color-mix(in_oklab,white_7%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-[fill] duration-200 group-aria-pressed/gd:fill-(--iu-accent) motion-reduce:transition-none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"
+                        ></path></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    aria-label="Share note"
+                    data-action="share"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--gd-face:var(--iu-surface)] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--iu-foreground)_7%,var(--iu-surface))] dark:[--gd-gloss:color-mix(in_oklab,white_7%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 2v13"></path>
+                        <path d="m16 6-4-4-4 4"></path>
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    aria-label="More actions"
+                    data-action="more"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-12 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:transparent] [--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_8%,transparent)] [--gd-face:transparent] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-off-edge:transparent] [--gd-off-face:transparent] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:0px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span>
+                </div>
+                <span
+                  aria-hidden="true"
+                  class="hidden h-6 w-0.5 rounded-full bg-(--iu-foreground)/12 @lg:block @[44rem]:hidden @5xl:block"
+                ></span>
+                <div class="flex items-center gap-2">
+                  <button
+                    aria-label="New note"
+                    data-action="new-note"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M5 12h14"></path>
+                        <path d="M12 5v14"></path></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    aria-label="Save to reading list"
+                    aria-pressed="false"
+                    data-action="bookmark"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--gd-face:var(--iu-surface)] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--iu-foreground)_7%,var(--iu-surface))] dark:[--gd-gloss:color-mix(in_oklab,white_7%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-[fill] duration-200 group-aria-pressed/gd:fill-(--iu-accent) motion-reduce:transition-none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z"
+                        ></path></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    aria-label="Share note"
+                    data-action="share"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_7%,var(--iu-surface))] [--gd-face:var(--iu-surface)] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_13%,var(--iu-surface))] dark:[--gd-face:color-mix(in_oklab,var(--iu-foreground)_7%,var(--iu-surface))] dark:[--gd-gloss:color-mix(in_oklab,white_7%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <path d="M12 2v13"></path>
+                        <path d="m16 6-4-4-4 4"></path>
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span
+                  ><button
+                    aria-label="More actions"
+                    data-action="more"
+                    type="button"
+                    data-gd=""
+                    data-status="idle"
+                    data-gd-wiggle=""
+                    class="group/gd relative isolate inline-flex size-9 shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:transparent] [--gd-face-up:color-mix(in_oklab,var(--iu-foreground)_8%,transparent)] [--gd-face:transparent] [--gd-gloss:transparent] [--gd-ink:var(--iu-foreground)] [--gd-lift:0] [--gd-lip:3px] [--gd-off-edge:transparent] [--gd-off-face:transparent] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:0px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-ring:var(--iu-accent)] pointer-coarse:size-10 pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                  >
+                    <span
+                      data-gd-label=""
+                      class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                      >
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle></svg></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                      ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                    ><span
+                      aria-hidden="true"
+                      class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                      ><svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                      >
+                        <path
+                          d="M5.5 12.5 10 17l8.5-9.5"
+                          pathLength="1"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                        ></path></svg
+                    ></span></button
+                  ><span role="status" class="sr-only"></span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="relative z-10 -mt-12 px-3 @[44rem]:mt-0 @[44rem]:mr-8 @[44rem]:px-0 @[44rem]:py-10 @5xl:mr-10 @5xl:py-0"
+            >
+              <article
+                aria-labelledby="gumdrop-streak-title"
+                data-streak=""
+                data-days="12"
+                data-best="16"
+                class="@container/card relative w-full rounded-[max(calc(var(--iu-radius)+14px),24px)] border-2 border-(--gd-line) bg-(--iu-surface) p-[calc(24px*var(--iu-density))] font-(family-name:--iu-font) text-(--iu-foreground) shadow-[0_6px_0_0_var(--gd-line)] [--gd-candy:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-core:color-mix(in_oklab,var(--iu-accent)_16%,white)] [--gd-line:color-mix(in_oklab,var(--iu-accent)_28%,color-mix(in_oklab,var(--iu-foreground)_18%,var(--iu-surface)))] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [--gd-tint:color-mix(in_oklab,var(--iu-accent)_14%,var(--iu-surface))]"
+              >
+                <header class="flex items-center gap-2">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="size-6 shrink-0" stroke-linejoin="round">
+                    <path
+                      d="M6 3h9l5 5v11.5a1.5 1.5 0 0 1-1.5 1.5h-12A1.5 1.5 0 0 1 5 19.5v-15A1.5 1.5 0 0 1 6.5 3Z"
+                      stroke-width="2"
+                      class="fill-(--iu-accent) stroke-(--gd-candy)"
+                    ></path>
+                    <path
+                      d="M15 3v3.5A1.5 1.5 0 0 0 16.5 8H20Z"
+                      stroke-width="2"
+                      class="fill-(--gd-tint) stroke-(--gd-candy)"
+                    ></path>
+                  </svg>
+                  <h2 id="gumdrop-streak-title" class="text-sm font-bold">Reading streak</h2>
+                </header>
+                <p
+                  class="absolute -top-4 right-6 rotate-[5deg] rounded-full border-2 border-(--gd-line) bg-(--gd-tint) px-3 py-1 text-xs leading-none font-extrabold shadow-[0_2px_0_0_var(--gd-line)] [word-spacing:0.12em]"
+                >
+                  <span aria-hidden="true" data-streak-badge="">Best 16</span
+                  ><span data-streak-best="" class="sr-only">Personal best: 16 days</span>
+                </p>
+                <div class="mt-6 flex items-center justify-between gap-3">
+                  <p class="flex min-w-0 flex-wrap items-baseline gap-x-2">
+                    <span data-streak-count="" class="sr-only">12 day streak</span
+                    ><span
+                      aria-hidden="true"
+                      class="mt-[-0.13em] mb-[-0.11em] ml-[-0.06em] text-[76px] leading-none font-extrabold tracking-tighter tabular-nums @[19rem]/card:text-[84px]"
+                      ><span
+                        aria-hidden="true"
+                        class="inline-flex h-[1em] [mask-image:linear-gradient(transparent,black_14%,black_86%,transparent)] leading-none [clip-path:inset(0_-0.1em)]"
+                        ><span class="block h-[1em]"
+                          ><span
+                            data-gd-digit=""
+                            class="flex flex-col transition-transform duration-620 ease-(--gd-spring) motion-reduce:transition-none"
+                            style="transform: translateY(-10%)"
+                            ><span class="block h-[1em]">0</span><span class="block h-[1em]">1</span
+                            ><span class="block h-[1em]">2</span><span class="block h-[1em]">3</span
+                            ><span class="block h-[1em]">4</span><span class="block h-[1em]">5</span
+                            ><span class="block h-[1em]">6</span><span class="block h-[1em]">7</span
+                            ><span class="block h-[1em]">8</span><span class="block h-[1em]">9</span></span
+                          ></span
+                        ><span class="block h-[1em]"
+                          ><span
+                            data-gd-digit=""
+                            class="flex flex-col transition-transform duration-620 ease-(--gd-spring) motion-reduce:transition-none"
+                            style="transform: translateY(-20%)"
+                            ><span class="block h-[1em]">0</span><span class="block h-[1em]">1</span
+                            ><span class="block h-[1em]">2</span><span class="block h-[1em]">3</span
+                            ><span class="block h-[1em]">4</span><span class="block h-[1em]">5</span
+                            ><span class="block h-[1em]">6</span><span class="block h-[1em]">7</span
+                            ><span class="block h-[1em]">8</span><span class="block h-[1em]">9</span></span
+                          ></span
+                        ></span
+                      ></span
+                    ><span aria-hidden="true" class="text-lg leading-none font-bold">day streak</span>
+                  </p>
+                  <span data-streak-flame="" aria-hidden="true" class="-my-1 block shrink-0 origin-bottom"
+                    ><svg viewBox="0 0 56 68" class="h-18 w-15 overflow-visible" stroke-linejoin="round">
+                      <path
+                        d="M30 4c5 10 18 18.5 18 35.5a20 20 0 0 1-40 0c0-7.5 3.4-12.6 7.6-16.4.5 4.3 2.3 7.4 5.2 8.6C19.6 20.5 22.6 10.6 30 4Z"
+                        transform="translate(0 4)"
+                        class="fill-(--gd-candy)"
+                      ></path>
+                      <path
+                        d="M30 4c5 10 18 18.5 18 35.5a20 20 0 0 1-40 0c0-7.5 3.4-12.6 7.6-16.4.5 4.3 2.3 7.4 5.2 8.6C19.6 20.5 22.6 10.6 30 4Z"
+                        stroke-width="2.5"
+                        class="fill-(--iu-accent) stroke-(--gd-candy)"
+                      ></path>
+                      <path
+                        d="M28 33c3.6 5 8.5 8 8.5 14a8.5 8.5 0 0 1-17 0c0-6 4.9-9 8.5-14Z"
+                        stroke-width="2"
+                        class="fill-(--gd-core) stroke-(--gd-candy)"
+                      ></path>
+                      <ellipse
+                        cx="20"
+                        cy="36"
+                        rx="2.6"
+                        ry="6"
+                        transform="rotate(18 20 36)"
+                        class="fill-white/45"
+                      ></ellipse></svg
+                  ></span>
+                </div>
+                <p data-streak-note="" class="mt-3 text-sm text-pretty text-(--iu-muted)">
+                  Read 20 pages today to make it 13.
+                </p>
+                <div class="mt-6">
+                  <div class="flex items-baseline justify-between gap-3 text-[13px]">
+                    <h3 class="font-bold">This week</h3>
+                    <p data-streak-week="" class="text-(--iu-muted) tabular-nums">4 of 7 days</p>
+                  </div>
+                  <ol class="mt-3 grid grid-cols-7 gap-2">
+                    <li data-state="done" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >M</span
+                      ><span data-streak-day="" class="sr-only">Monday: read</span>
+                    </li>
+                    <li data-state="done" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >T</span
+                      ><span data-streak-day="" class="sr-only">Tuesday: read</span>
+                    </li>
+                    <li data-state="done" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >W</span
+                      ><span data-streak-day="" class="sr-only">Wednesday: read</span>
+                    </li>
+                    <li data-state="done" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >T</span
+                      ><span data-streak-day="" class="sr-only">Thursday: read</span>
+                    </li>
+                    <li data-state="today" data-today="" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >F</span
+                      ><span data-streak-day="" class="sr-only">Friday: today, not logged yet</span>
+                    </li>
+                    <li data-state="upcoming" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >S</span
+                      ><span data-streak-day="" class="sr-only">Saturday: coming up</span>
+                    </li>
+                    <li data-state="upcoming" class="group/day flex flex-col items-center gap-2">
+                      <span data-streak-marker="" aria-hidden="true" class="block w-full max-w-9 origin-bottom"
+                        ><svg viewBox="0 4 36 36" class="block w-full overflow-visible" stroke-linejoin="round">
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            transform="translate(0 3)"
+                            class="fill-transparent transition-[fill] duration-300 group-data-[state=done]/day:fill-(--gd-candy) motion-reduce:transition-none"
+                          ></path>
+                          <path
+                            d="M7 35c-3.2 0-4.7-2.6-3.8-5.4L7 18.5C8.8 12 12.9 8 18 8s9.2 4 11 10.5l3.8 11.1c.9 2.8-.6 5.4-3.8 5.4Z"
+                            stroke-width="2"
+                            class="fill-(--iu-foreground)/7 stroke-transparent transition-[fill,stroke] duration-300 group-data-[state=done]/day:fill-(--iu-accent) group-data-[state=done]/day:stroke-(--gd-candy) group-data-[state=today]/day:fill-(--iu-surface) group-data-[state=today]/day:stroke-(--iu-accent) group-data-[state=today]/day:[stroke-dasharray:3.2_3] motion-reduce:transition-none"
+                          ></path>
+                          <ellipse
+                            cx="12.5"
+                            cy="16"
+                            rx="1.8"
+                            ry="3.6"
+                            transform="rotate(32 12.5 16)"
+                            class="fill-white/45 opacity-0 group-data-[state=done]/day:opacity-100"
+                          ></ellipse>
+                          <path
+                            d="M12.5 23.5 16.2 27.2 23.8 19.4"
+                            pathLength="1"
+                            fill="none"
+                            stroke-width="2.75"
+                            stroke-linecap="round"
+                            class="stroke-(--iu-accent-foreground) transition-[stroke-dashoffset] delay-150 duration-420 ease-out [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[state=done]/day:[stroke-dashoffset:0] motion-reduce:transition-none"
+                          ></path></svg></span
+                      ><span
+                        aria-hidden="true"
+                        class="text-xs font-bold text-(--iu-muted) group-data-today/day:text-(--iu-foreground)"
+                        >S</span
+                      ><span data-streak-day="" class="sr-only">Sunday: coming up</span>
+                    </li>
+                  </ol>
+                </div>
+                <button
+                  data-action="check-in"
+                  type="button"
+                  data-gd=""
+                  data-status="idle"
+                  class="group/gd relative isolate mt-6 inline-flex h-12 w-full shrink-0 origin-bottom [transform:translateY(calc(var(--gd-press)*var(--gd-lip)_-_(1_-_var(--gd-press))*var(--gd-lift)*var(--gd-rise)))_scale(calc(1_+_var(--gd-press)*0.045),calc(1_-_var(--gd-press)*0.085))] cursor-pointer touch-manipulation items-center justify-center rounded-full border-2 border-(--gd-edge) bg-(--gd-face) px-[calc(20px*var(--iu-density))] text-[15px] font-bold whitespace-nowrap text-(--gd-ink) [box-shadow:0_calc((1_-_var(--gd-press))*(var(--gd-lip)_+_var(--gd-lift)*var(--gd-rise)))_0_0_var(--gd-edge),inset_0_2px_0_0_var(--gd-gloss)] outline-hidden transition-[transform,box-shadow,background-color,border-color,color] duration-[calc(620ms_-_var(--gd-press)*530ms)] ease-(--gd-spring) select-none [--gd-edge:color-mix(in_oklab,var(--iu-accent)_60%,black)] [--gd-face-up:color-mix(in_oklab,var(--iu-accent)_86%,white)] [--gd-face:var(--iu-accent)] [--gd-gloss:color-mix(in_oklab,white_34%,transparent)] [--gd-ink:var(--iu-accent-foreground)] [--gd-lift:0] [--gd-lip:4px] [--gd-press:0] [--gd-ring:color-mix(in_oklab,var(--iu-accent)_76%,var(--iu-foreground))] [--gd-rise:2px] [--gd-spring:linear(0,.19,.57,.92,1.13,1.21,1.17,1.1,1.02,.98,.96,.96,.98,.99,1,1.01,1.01,1,1)] [-webkit-tap-highlight-color:transparent] [word-spacing:0.08em] after:pointer-events-none after:absolute after:-inset-[5px] after:-bottom-[calc(5px+var(--gd-lip))] after:rounded-[inherit] after:border-2 after:border-(--gd-ring) after:opacity-0 focus-visible:after:opacity-100 enabled:active:[--gd-press:1] disabled:cursor-not-allowed disabled:border-dashed disabled:[--gd-edge:var(--gd-off-edge,color-mix(in_oklab,var(--iu-foreground)_24%,transparent))] disabled:[--gd-face:var(--gd-off-face,color-mix(in_oklab,var(--iu-foreground)_5%,transparent))] disabled:[--gd-gloss:transparent] disabled:[--gd-ink:var(--iu-muted)] disabled:[--gd-lip:0px] data-done:cursor-default data-done:[--gd-edge:var(--gd-line)] data-done:[--gd-face-up:var(--gd-tint)] data-done:[--gd-face:var(--gd-tint)] data-done:[--gd-gloss:transparent] data-done:[--gd-ink:var(--iu-foreground)] data-done:[--gd-rise:0px] data-pressed:[--gd-press:1] data-[force-state=active]:[--gd-press:1] data-[force-state=focus]:after:opacity-100 data-[force-state=hover]:bg-(--gd-face-up) data-[force-state=hover]:[--gd-lift:1] motion-reduce:transition-none dark:[--gd-gloss:color-mix(in_oklab,white_22%,transparent)] dark:[--gd-ring:var(--iu-accent)] pointer-fine:enabled:hover:bg-(--gd-face-up) pointer-fine:enabled:hover:[--gd-lift:1]"
+                >
+                  <span
+                    data-gd-label=""
+                    class="inline-flex items-center gap-2 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-50 group-data-[status=loading]/gd:opacity-0 group-data-[status=success]/gd:scale-50 group-data-[status=success]/gd:opacity-0 motion-reduce:transition-none"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                      class="hidden group-data-done/gd:block"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg
+                    ><span>Log today&#x27;s pages</span></span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-0 flex scale-50 items-center justify-center gap-[0.3em] opacity-0 transition-[opacity,scale] duration-200 ease-out group-data-[status=loading]/gd:scale-100 group-data-[status=loading]/gd:opacity-100 motion-reduce:transition-none"
+                    ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                    ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span
+                    ><span data-gd-dot="" class="size-[0.42em] origin-bottom rounded-full bg-current"></span></span
+                  ><span
+                    aria-hidden="true"
+                    class="pointer-events-none absolute inset-0 flex items-center justify-center"
+                    ><svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      class="size-[1.5em] scale-50 opacity-0 [transition:opacity_150ms_ease-out,scale_620ms_var(--gd-spring)] group-data-[status=success]/gd:scale-100 group-data-[status=success]/gd:opacity-100 motion-reduce:[transition:none]"
+                    >
+                      <path
+                        d="M5.5 12.5 10 17l8.5-9.5"
+                        pathLength="1"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="transition-[stroke-dashoffset] delay-100 duration-420 ease-[cubic-bezier(.65,0,.35,1)] [stroke-dasharray:1] [stroke-dashoffset:1] group-data-[status=success]/gd:[stroke-dashoffset:0] motion-reduce:transition-none"
+                      ></path></svg
+                  ></span></button
+                ><span role="status" class="sr-only"></span>
+              </article>
+            </div>
+          </div>
+        </section>
+        <!-- iloveui:component:end -->
+      </div>
+    </main>
+    <script>
+      (() => {
+        const root = document.querySelector("[data-gumdrop-buttons]");
+        if (!root) return;
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        // Demo stand-in for a real request. Replace each settle(...) with your own call that returns a promise.
+        const settle = (ms) => () => new Promise((resolve) => setTimeout(resolve, ms));
+
+        // One-shot animations that explain a state change; skipped under reduced motion.
+        const play = (element, keyframes, duration) => {
+          if (!element || typeof element.animate !== "function" || reduceMotion.matches) return;
+          element.animate(keyframes, { duration, easing: "cubic-bezier(.2,.8,.2,1)" });
+        };
+
+        const WIGGLE = [
+          { rotate: "0deg" },
+          { rotate: "-14deg" },
+          { rotate: "10deg" },
+          { rotate: "-5deg" },
+          { rotate: "2deg" },
+          { rotate: "0deg" },
+        ];
+        const DOT_BOUNCE = [
+          { transform: "translateY(0) scale(1, 1)", easing: "cubic-bezier(.2,.6,.35,1)" },
+          { transform: "translateY(-0.45em) scale(.9, 1.1)", offset: 0.32, easing: "cubic-bezier(.6,0,.8,.4)" },
+          { transform: "translateY(0) scale(1, 1)", offset: 0.6 },
+          { transform: "translateY(0) scale(1.28, .72)", offset: 0.7 },
+          { transform: "translateY(0) scale(1, 1)", offset: 0.84 },
+          { transform: "translateY(0) scale(1, 1)" },
+        ];
+        const FLAME_HOP = [
+          { transform: "translateY(0) scale(1, 1)" },
+          { transform: "translateY(0) scale(1.12, .86)", offset: 0.16 },
+          { transform: "translateY(-14px) scale(.92, 1.1)", offset: 0.46 },
+          { transform: "translateY(0) scale(1.08, .92)", offset: 0.74 },
+          { transform: "translateY(0) scale(1, 1)" },
+        ];
+        const POP = [{ scale: "1" }, { scale: "1.22", offset: 0.35 }, { scale: "0.94", offset: 0.68 }, { scale: "1" }];
+
+        // The three loading dots bounce while the button is loading and on screen.
+        const stopBounce = new WeakMap();
+        function bounce(button) {
+          if (reduceMotion.matches || typeof button.animate !== "function") return;
+          const runs = [...button.querySelectorAll("[data-gd-dot]")].map((dot, index) =>
+            dot.animate(DOT_BOUNCE, { duration: 840, delay: index * 140, iterations: Infinity }),
+          );
+          const observer =
+            "IntersectionObserver" in window
+              ? new IntersectionObserver(([entry]) => {
+                  for (const run of runs) {
+                    if (entry && entry.isIntersecting) run.play();
+                    else run.pause();
+                  }
+                })
+              : null;
+          observer?.observe(button);
+          stopBounce.set(button, () => {
+            observer?.disconnect();
+            for (const run of runs) run.cancel();
+          });
+        }
+
+        // idle, loading or success. The label never leaves the layout, so the width holds while the dots or the check
+        // take its place; the live region right after the button announces the change.
+        function setStatus(button, status, message = "") {
+          button.dataset.status = status;
+          if (status === "idle") button.removeAttribute("aria-disabled");
+          else button.setAttribute("aria-disabled", "true");
+          const live = button.nextElementSibling;
+          if (live && live.getAttribute("role") === "status") live.textContent = message;
+          stopBounce.get(button)?.();
+          stopBounce.delete(button);
+          if (status === "loading") bounce(button);
+        }
+
+        // Dots while the task runs, then the check; back to idle after `hold` ms (0 keeps the check).
+        function run(button, task, { loading, success, hold = 1600, onChange } = {}) {
+          if (button.dataset.status !== "idle") return;
+          const change = (status, message) => {
+            setStatus(button, status, message);
+            onChange?.(status);
+          };
+          change("loading", loading);
+          task().then(
+            () => {
+              change("success", success);
+              if (hold > 0) setTimeout(() => change("idle"), hold);
+            },
+            () => change("idle"),
+          );
+        }
+
+        // Pointer presses squash through :active; keyboard presses (Enter and Space) squash too.
+        for (const button of root.querySelectorAll("[data-gd]")) {
+          button.addEventListener("keydown", (event) => {
+            if ((event.key === "Enter" || event.key === " ") && !event.repeat) button.setAttribute("data-pressed", "");
+          });
+          button.addEventListener("keyup", (event) => {
+            if (event.key === "Enter" || event.key === " ") button.removeAttribute("data-pressed");
+          });
+          button.addEventListener("blur", () => button.removeAttribute("data-pressed"));
+        }
+        // iOS Safari applies :active only when a touch listener exists.
+        root.addEventListener("touchstart", () => {}, { passive: true });
+
+        // Icon buttons wiggle once when a mouse arrives.
+        for (const button of root.querySelectorAll("[data-gd-wiggle]")) {
+          button.addEventListener("pointerenter", (event) => {
+            if (event.pointerType === "mouse") play(button.firstElementChild, WIGGLE, 520);
+          });
+        }
+
+        // Split buttons: the main action plus a WAI-ARIA menu button (arrows, Home/End, type-ahead, Escape, focus return).
+        for (const split of root.querySelectorAll("[data-gd-split]")) {
+          const main = split.querySelector("[data-gd-main]");
+          const trigger = split.querySelector("[data-gd-trigger]");
+          const menu = split.querySelector("[data-gd-menu]");
+          const items = [...menu.querySelectorAll('[role="menuitem"]')];
+          const busy = () => main.dataset.status !== "idle";
+          const isOpen = () => menu.hasAttribute("data-open");
+          const publish = () =>
+            run(main, settle(1100), {
+              loading: "Publishing",
+              success: "Published",
+              onChange: (status) => {
+                if (status === "idle") trigger.removeAttribute("aria-disabled");
+                else trigger.setAttribute("aria-disabled", "true");
+              },
+            });
+          const closeOutside = (event) => {
+            if (!split.contains(event.target)) close(false);
+          };
+          function open(index) {
+            menu.setAttribute("data-open", "");
+            trigger.setAttribute("aria-expanded", "true");
+            items[index]?.focus();
+            document.addEventListener("pointerdown", closeOutside);
+          }
+          function close(returnFocus) {
+            menu.removeAttribute("data-open");
+            trigger.setAttribute("aria-expanded", "false");
+            document.removeEventListener("pointerdown", closeOutside);
+            if (returnFocus) trigger.focus();
+          }
+
+          main.addEventListener("click", () => {
+            if (!busy()) publish();
+          });
+          trigger.addEventListener("click", () => {
+            if (busy()) return;
+            if (isOpen()) close(false);
+            else open(0);
+          });
+          trigger.addEventListener("keydown", (event) => {
+            if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+              event.preventDefault();
+              if (!busy()) open(event.key === "ArrowDown" ? 0 : items.length - 1);
+            } else if (event.key === "Escape" && isOpen()) {
+              event.preventDefault();
+              close(true);
+            }
+          });
+          menu.addEventListener("keydown", (event) => {
+            const current = items.indexOf(document.activeElement);
+            const focus = (index) => {
+              event.preventDefault();
+              items[(index + items.length) % items.length].focus();
+            };
+            if (event.key === "ArrowDown") focus(current + 1);
+            else if (event.key === "ArrowUp") focus(current - 1);
+            else if (event.key === "Home") focus(0);
+            else if (event.key === "End") focus(items.length - 1);
+            else if (event.key === "Escape") {
+              event.preventDefault();
+              close(true);
+            } else if (event.key === "Tab") close(false);
+            else if (event.key.length === 1 && event.key !== " ") {
+              // Type-ahead: jump to the next item whose label starts with the typed character.
+              const key = event.key.toLowerCase();
+              const order = [...items.slice(current + 1), ...items.slice(0, current + 1)];
+              order.find((item) => item.textContent.trim().toLowerCase().startsWith(key))?.focus();
+            }
+          });
+          for (const item of items) {
+            item.addEventListener("click", () => {
+              close(true);
+              // item.dataset.value says which choice: "club", "schedule" or "unlisted".
+              publish();
+            });
+          }
+        }
+
+        for (const button of root.querySelectorAll('[data-action="save-draft"]')) {
+          button.addEventListener("click", () =>
+            run(button, settle(800), { loading: "Saving draft", success: "Draft saved" }),
+          );
+        }
+        for (const button of root.querySelectorAll('[data-action="delete"]')) {
+          button.addEventListener("click", () =>
+            run(button, settle(900), { loading: "Deleting draft", success: "Draft deleted" }),
+          );
+        }
+        // Both bookmark toggles share one state.
+        const bookmarks = [...root.querySelectorAll('[data-action="bookmark"]')];
+        for (const button of bookmarks) {
+          button.addEventListener("click", () => {
+            const saved = button.getAttribute("aria-pressed") !== "true";
+            for (const each of bookmarks) each.setAttribute("aria-pressed", String(saved));
+          });
+        }
+
+        // The streak card: logging today rolls the count, fills today's gumdrop and hops the flame.
+        const card = root.querySelector("[data-streak]");
+        const checkIn = card?.querySelector('[data-action="check-in"]');
+        if (card && checkIn) {
+          const days = Number(card.dataset.days);
+          const best = Number(card.dataset.best);
+
+          const logToday = () => {
+            const count = days + 1;
+            const toBeat = best + 1 - count;
+            const today = card.querySelector("[data-today]");
+            today.dataset.state = "done";
+            const dayLabel = today.querySelector("[data-streak-day]");
+            dayLabel.textContent = `${dayLabel.textContent.split(":")[0]}: today, logged`;
+
+            const digits = String(count).split("");
+            let strips = [...card.querySelectorAll("[data-gd-digit]")];
+            if (strips.length !== digits.length) {
+              const column = strips[0].parentElement;
+              column.parentElement.replaceChildren(...digits.map(() => column.cloneNode(true)));
+              strips = [...card.querySelectorAll("[data-gd-digit]")];
+            }
+            strips.forEach((strip, index) => {
+              strip.style.transform = `translateY(-${Number(digits[index]) * 10}%)`;
+            });
+
+            card.querySelector("[data-streak-count]").textContent = `${count} day streak`;
+            card.querySelector("[data-streak-note]").textContent =
+              count > best
+                ? "That's a new personal best."
+                : `${toBeat} more ${toBeat === 1 ? "day" : "days"} to beat your best.`;
+            card.querySelector("[data-streak-week]").textContent =
+              `${card.querySelectorAll('li[data-state="done"]').length} of ${card.querySelectorAll("li[data-state]").length} days`;
+            card.querySelector("[data-streak-badge]").textContent = count > best ? "New best" : `Best ${best}`;
+            card.querySelector("[data-streak-best]").textContent = `Personal best: ${Math.max(best, count)} days`;
+
+            play(card.querySelector("[data-streak-flame]"), FLAME_HOP, 720);
+            play(today.querySelector("[data-streak-marker]"), POP, 560);
+          };
+
+          // After the check has drawn, the button settles into a quiet "Logged today" pill with nothing left to do.
+          const settleDone = () => {
+            checkIn.setAttribute("data-done", "");
+            checkIn.setAttribute("aria-disabled", "true");
+            checkIn.querySelector("[data-gd-label] > span:last-child").textContent = "Logged today";
+          };
+
+          checkIn.addEventListener("click", () => {
+            if (checkIn.hasAttribute("data-done")) return;
+            run(checkIn, settle(1000), {
+              loading: "Logging today's pages",
+              success: `Logged. ${days + 1} day streak.`,
+              hold: 1200,
+              onChange: (status) => {
+                if (status === "success") logToday();
+                if (status === "idle" && card.querySelector("[data-today]")?.dataset.state === "done") settleDone();
+              },
+            });
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

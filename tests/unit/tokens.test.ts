@@ -64,3 +64,28 @@ describe("spec values", () => {
     expect(hex(solid(dark, "accent"))).toBe("255,77,31");
   });
 });
+
+describe("code highlighting colors", () => {
+  function codeTokens(block: string): Record<string, string> {
+    const tokens: Record<string, string> = {};
+    for (const match of block.matchAll(/--code-([a-z]+):\s*(oklch\([^)]*\))/g)) {
+      if (match[1] && match[2]) tokens[match[1]] = match[2];
+    }
+    return tokens;
+  }
+  const lightBase = /@layer base \{\s*:root \{([\s\S]*?)\}/.exec(css)?.[1] ?? "";
+  const lightCode = codeTokens(lightBase);
+  const darkCode = codeTokens(darkBlock);
+
+  it.each([
+    ["light", lightCode, light],
+    ["dark", darkCode, dark],
+  ] as const)("every %s code color keeps 4.5:1 on the code surface", (_mode, code, tokens) => {
+    const surface = solid(tokens, "surface");
+    expect(Object.keys(code)).toEqual(["fg", "comment", "punct", "warm", "cool"]);
+    for (const [name, value] of Object.entries(code)) {
+      const color = oklchToRgb(parseOklch(value)!);
+      expect(contrastRatio(color, surface), name).toBeGreaterThanOrEqual(4.5);
+    }
+  });
+});

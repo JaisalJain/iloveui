@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Margin notes · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-margin-notes
+      aria-labelledby="margin-notes-heading"
+      class="@container/notes bg-(--iu-background) px-3 py-12 font-(family-name:--iu-font) text-(--iu-foreground) sm:px-6 sm:py-20"
+    >
+      <div
+        class="mx-auto max-w-[1200px] rounded-[min(var(--iu-radius),2px)] border border-(--iu-border) bg-(--iu-surface) px-5 pt-5 pb-10 @2xl/notes:px-10 @2xl/notes:pt-7 @2xl/notes:pb-14 @4xl/notes:px-14 @4xl/notes:pb-16"
+      >
+        <div
+          class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+        >
+          <span class="whitespace-nowrap">Readers’ notes</span>
+          <span class="ml-auto font-mono tracking-[0.04em] whitespace-nowrap tabular-nums">Vol. 3 · Autumn 2026</span>
+        </div>
+        <div
+          aria-hidden="true"
+          class="h-1.5 border-t-[3px] border-b border-(--iu-foreground) dark:border-(--iu-foreground)/85"
+        ></div>
+        <div class="mt-8 grid grid-cols-1 @4xl/notes:mt-12 @4xl/notes:grid-cols-12">
+          <div class="@4xl/notes:col-span-5 @4xl/notes:border-r @4xl/notes:border-(--iu-border) @6xl/notes:col-span-4">
+            <h2
+              id="margin-notes-heading"
+              class="font-serif text-[1.75rem] leading-[1.05] tracking-[-0.01em] text-balance @2xl/notes:text-[2rem] @4xl/notes:pr-10 @4xl/notes:text-[2.5rem]"
+            >
+              Notes from the margins
+            </h2>
+            <p class="mt-4 max-w-[30rem] text-[15px] leading-relaxed text-pretty text-(--iu-muted) @4xl/notes:pr-10">
+              Five researchers on what changed once their sources, drafts and second thoughts lived in Ibid.
+            </p>
+            <div
+              role="tablist"
+              aria-label="Readers’ notes"
+              aria-orientation="vertical"
+              data-overflow="none"
+              class="mt-8 flex snap-x snap-mandatory scroll-px-10 [scrollbar-width:thin] overflow-x-auto data-[overflow=both]:[mask-image:linear-gradient(to_right,transparent,black_2.5rem,black_calc(100%-2.5rem),transparent)] data-[overflow=end]:[mask-image:linear-gradient(to_right,black_calc(100%-2.5rem),transparent)] data-[overflow=start]:[mask-image:linear-gradient(to_right,transparent,black_2.5rem)] @4xl/notes:mt-12 @4xl/notes:flex-col @4xl/notes:overflow-visible @4xl/notes:border-t @4xl/notes:border-(--iu-border)"
+            >
+              <button
+                type="button"
+                role="tab"
+                id="margin-notes-tab-0"
+                aria-selected="true"
+                aria-controls="margin-notes-panel-0"
+                tabindex="0"
+                class="relative isolate flex h-11 min-w-max flex-1 snap-start items-center justify-center border-b border-(--iu-border) px-3 whitespace-nowrap text-(--iu-muted) transition-colors duration-150 after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-(--iu-foreground) after:opacity-0 after:transition-opacity after:duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:text-(--iu-foreground) aria-selected:after:opacity-100 motion-reduce:transition-none motion-reduce:after:transition-none @4xl/notes:grid @4xl/notes:h-auto @4xl/notes:min-w-0 @4xl/notes:grid-cols-[3.75rem_1fr] @4xl/notes:items-baseline @4xl/notes:justify-start @4xl/notes:py-[calc(16px*var(--iu-density))] @4xl/notes:pr-8 @4xl/notes:pl-0 @4xl/notes:text-left @4xl/notes:whitespace-normal @4xl/notes:before:absolute @4xl/notes:before:inset-y-0 @4xl/notes:before:right-0 @4xl/notes:before:-left-4 @4xl/notes:before:-z-10 @4xl/notes:before:bg-(--iu-foreground)/[0.03] @4xl/notes:before:opacity-0 @4xl/notes:after:inset-x-auto @4xl/notes:after:inset-y-0 @4xl/notes:after:-right-0.5 @4xl/notes:after:h-auto @4xl/notes:after:w-[3px] @4xl/notes:focus-visible:outline-offset-2 @4xl/notes:aria-selected:before:opacity-100 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span
+                  class="sr-only font-serif italic @4xl/notes:not-sr-only @4xl/notes:text-[17px] @4xl/notes:leading-none"
+                  >No. 01</span
+                >
+                <span class="text-[13px] font-medium @4xl/notes:text-[15px] @4xl/notes:leading-snug"
+                  >Anjali <span class="sr-only @3xl/notes:not-sr-only">Deshmukh</span></span
+                >
+                <span
+                  class="hidden text-[13px] leading-snug text-pretty text-(--iu-muted) @4xl/notes:col-start-2 @4xl/notes:mt-1 @4xl/notes:block"
+                  >Doctoral researcher, Eastmoor University</span
+                >
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="margin-notes-tab-1"
+                aria-selected="false"
+                aria-controls="margin-notes-panel-1"
+                tabindex="-1"
+                class="relative isolate flex h-11 min-w-max flex-1 snap-start items-center justify-center border-b border-(--iu-border) px-3 whitespace-nowrap text-(--iu-muted) transition-colors duration-150 after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-(--iu-foreground) after:opacity-0 after:transition-opacity after:duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:text-(--iu-foreground) aria-selected:after:opacity-100 motion-reduce:transition-none motion-reduce:after:transition-none @4xl/notes:grid @4xl/notes:h-auto @4xl/notes:min-w-0 @4xl/notes:grid-cols-[3.75rem_1fr] @4xl/notes:items-baseline @4xl/notes:justify-start @4xl/notes:py-[calc(16px*var(--iu-density))] @4xl/notes:pr-8 @4xl/notes:pl-0 @4xl/notes:text-left @4xl/notes:whitespace-normal @4xl/notes:before:absolute @4xl/notes:before:inset-y-0 @4xl/notes:before:right-0 @4xl/notes:before:-left-4 @4xl/notes:before:-z-10 @4xl/notes:before:bg-(--iu-foreground)/[0.03] @4xl/notes:before:opacity-0 @4xl/notes:after:inset-x-auto @4xl/notes:after:inset-y-0 @4xl/notes:after:-right-0.5 @4xl/notes:after:h-auto @4xl/notes:after:w-[3px] @4xl/notes:focus-visible:outline-offset-2 @4xl/notes:aria-selected:before:opacity-100 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span
+                  class="sr-only font-serif italic @4xl/notes:not-sr-only @4xl/notes:text-[17px] @4xl/notes:leading-none"
+                  >No. 02</span
+                >
+                <span class="text-[13px] font-medium @4xl/notes:text-[15px] @4xl/notes:leading-snug"
+                  >Mariela <span class="sr-only @3xl/notes:not-sr-only">Quiroga</span></span
+                >
+                <span
+                  class="hidden text-[13px] leading-snug text-pretty text-(--iu-muted) @4xl/notes:col-start-2 @4xl/notes:mt-1 @4xl/notes:block"
+                  >Investigations editor, The Saltmarsh Ledger</span
+                >
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="margin-notes-tab-2"
+                aria-selected="false"
+                aria-controls="margin-notes-panel-2"
+                tabindex="-1"
+                class="relative isolate flex h-11 min-w-max flex-1 snap-start items-center justify-center border-b border-(--iu-border) px-3 whitespace-nowrap text-(--iu-muted) transition-colors duration-150 after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-(--iu-foreground) after:opacity-0 after:transition-opacity after:duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:text-(--iu-foreground) aria-selected:after:opacity-100 motion-reduce:transition-none motion-reduce:after:transition-none @4xl/notes:grid @4xl/notes:h-auto @4xl/notes:min-w-0 @4xl/notes:grid-cols-[3.75rem_1fr] @4xl/notes:items-baseline @4xl/notes:justify-start @4xl/notes:py-[calc(16px*var(--iu-density))] @4xl/notes:pr-8 @4xl/notes:pl-0 @4xl/notes:text-left @4xl/notes:whitespace-normal @4xl/notes:before:absolute @4xl/notes:before:inset-y-0 @4xl/notes:before:right-0 @4xl/notes:before:-left-4 @4xl/notes:before:-z-10 @4xl/notes:before:bg-(--iu-foreground)/[0.03] @4xl/notes:before:opacity-0 @4xl/notes:after:inset-x-auto @4xl/notes:after:inset-y-0 @4xl/notes:after:-right-0.5 @4xl/notes:after:h-auto @4xl/notes:after:w-[3px] @4xl/notes:focus-visible:outline-offset-2 @4xl/notes:aria-selected:before:opacity-100 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span
+                  class="sr-only font-serif italic @4xl/notes:not-sr-only @4xl/notes:text-[17px] @4xl/notes:leading-none"
+                  >No. 03</span
+                >
+                <span class="text-[13px] font-medium @4xl/notes:text-[15px] @4xl/notes:leading-snug"
+                  >Kwame <span class="sr-only @3xl/notes:not-sr-only">Asante-Ofori</span></span
+                >
+                <span
+                  class="hidden text-[13px] leading-snug text-pretty text-(--iu-muted) @4xl/notes:col-start-2 @4xl/notes:mt-1 @4xl/notes:block"
+                  >Lab lead, Calder Plant Genomics</span
+                >
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="margin-notes-tab-3"
+                aria-selected="false"
+                aria-controls="margin-notes-panel-3"
+                tabindex="-1"
+                class="relative isolate flex h-11 min-w-max flex-1 snap-start items-center justify-center border-b border-(--iu-border) px-3 whitespace-nowrap text-(--iu-muted) transition-colors duration-150 after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-(--iu-foreground) after:opacity-0 after:transition-opacity after:duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:text-(--iu-foreground) aria-selected:after:opacity-100 motion-reduce:transition-none motion-reduce:after:transition-none @4xl/notes:grid @4xl/notes:h-auto @4xl/notes:min-w-0 @4xl/notes:grid-cols-[3.75rem_1fr] @4xl/notes:items-baseline @4xl/notes:justify-start @4xl/notes:py-[calc(16px*var(--iu-density))] @4xl/notes:pr-8 @4xl/notes:pl-0 @4xl/notes:text-left @4xl/notes:whitespace-normal @4xl/notes:before:absolute @4xl/notes:before:inset-y-0 @4xl/notes:before:right-0 @4xl/notes:before:-left-4 @4xl/notes:before:-z-10 @4xl/notes:before:bg-(--iu-foreground)/[0.03] @4xl/notes:before:opacity-0 @4xl/notes:after:inset-x-auto @4xl/notes:after:inset-y-0 @4xl/notes:after:-right-0.5 @4xl/notes:after:h-auto @4xl/notes:after:w-[3px] @4xl/notes:focus-visible:outline-offset-2 @4xl/notes:aria-selected:before:opacity-100 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span
+                  class="sr-only font-serif italic @4xl/notes:not-sr-only @4xl/notes:text-[17px] @4xl/notes:leading-none"
+                  >No. 04</span
+                >
+                <span class="text-[13px] font-medium @4xl/notes:text-[15px] @4xl/notes:leading-snug"
+                  >Ilse <span class="sr-only @3xl/notes:not-sr-only">Brandvold</span></span
+                >
+                <span
+                  class="hidden text-[13px] leading-snug text-pretty text-(--iu-muted) @4xl/notes:col-start-2 @4xl/notes:mt-1 @4xl/notes:block"
+                  >Senior archivist, Vestby Harbour Archive</span
+                >
+              </button>
+              <button
+                type="button"
+                role="tab"
+                id="margin-notes-tab-4"
+                aria-selected="false"
+                aria-controls="margin-notes-panel-4"
+                tabindex="-1"
+                class="relative isolate flex h-11 min-w-max flex-1 snap-start items-center justify-center border-b border-(--iu-border) px-3 whitespace-nowrap text-(--iu-muted) transition-colors duration-150 after:absolute after:inset-x-0 after:-bottom-px after:h-0.5 after:bg-(--iu-foreground) after:opacity-0 after:transition-opacity after:duration-150 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-(--iu-accent) aria-selected:text-(--iu-foreground) aria-selected:after:opacity-100 motion-reduce:transition-none motion-reduce:after:transition-none @4xl/notes:grid @4xl/notes:h-auto @4xl/notes:min-w-0 @4xl/notes:grid-cols-[3.75rem_1fr] @4xl/notes:items-baseline @4xl/notes:justify-start @4xl/notes:py-[calc(16px*var(--iu-density))] @4xl/notes:pr-8 @4xl/notes:pl-0 @4xl/notes:text-left @4xl/notes:whitespace-normal @4xl/notes:before:absolute @4xl/notes:before:inset-y-0 @4xl/notes:before:right-0 @4xl/notes:before:-left-4 @4xl/notes:before:-z-10 @4xl/notes:before:bg-(--iu-foreground)/[0.03] @4xl/notes:before:opacity-0 @4xl/notes:after:inset-x-auto @4xl/notes:after:inset-y-0 @4xl/notes:after:-right-0.5 @4xl/notes:after:h-auto @4xl/notes:after:w-[3px] @4xl/notes:focus-visible:outline-offset-2 @4xl/notes:aria-selected:before:opacity-100 pointer-fine:hover:text-(--iu-foreground)"
+              >
+                <span
+                  class="sr-only font-serif italic @4xl/notes:not-sr-only @4xl/notes:text-[17px] @4xl/notes:leading-none"
+                  >No. 05</span
+                >
+                <span class="text-[13px] font-medium @4xl/notes:text-[15px] @4xl/notes:leading-snug"
+                  >Rhys <span class="sr-only @3xl/notes:not-sr-only">Callaghan</span></span
+                >
+                <span
+                  class="hidden text-[13px] leading-snug text-pretty text-(--iu-muted) @4xl/notes:col-start-2 @4xl/notes:mt-1 @4xl/notes:block"
+                  >Head of research, Fernway Freight</span
+                >
+              </button>
+            </div>
+          </div>
+          <div
+            class="@container/quote mt-10 flex flex-col @4xl/notes:col-span-7 @4xl/notes:mt-3 @4xl/notes:pl-14 @6xl/notes:col-span-8"
+          >
+            <div aria-hidden="true" class="flex items-center gap-4">
+              <span class="inline-flex items-baseline font-serif text-[1.75rem] leading-none italic"
+                >No.&nbsp;<span class="inline-flex">
+                  <span class="inline-block h-[1.1em] overflow-hidden px-[0.04em]">
+                    <span
+                      data-digit
+                      class="flex flex-col transition-transform duration-[360ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+                      style="transform: translateY(-0%)"
+                    >
+                      <span class="h-[1.1em]">0</span>
+                      <span class="h-[1.1em]">1</span>
+                      <span class="h-[1.1em]">2</span>
+                      <span class="h-[1.1em]">3</span>
+                      <span class="h-[1.1em]">4</span>
+                      <span class="h-[1.1em]">5</span>
+                      <span class="h-[1.1em]">6</span>
+                      <span class="h-[1.1em]">7</span>
+                      <span class="h-[1.1em]">8</span>
+                      <span class="h-[1.1em]">9</span>
+                    </span>
+                  </span>
+                  <span class="inline-block h-[1.1em] overflow-hidden px-[0.04em]">
+                    <span
+                      data-digit
+                      class="flex flex-col transition-transform duration-[360ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] motion-reduce:transition-none"
+                      style="transform: translateY(-10%)"
+                    >
+                      <span class="h-[1.1em]">0</span>
+                      <span class="h-[1.1em]">1</span>
+                      <span class="h-[1.1em]">2</span>
+                      <span class="h-[1.1em]">3</span>
+                      <span class="h-[1.1em]">4</span>
+                      <span class="h-[1.1em]">5</span>
+                      <span class="h-[1.1em]">6</span>
+                      <span class="h-[1.1em]">7</span>
+                      <span class="h-[1.1em]">8</span>
+                      <span class="h-[1.1em]">9</span>
+                    </span>
+                  </span>
+                </span></span
+              >
+              <span class="h-px flex-1 bg-(--iu-border)"></span>
+              <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">of 05</span>
+            </div>
+            <div class="relative mt-10 grid flex-1 @4xl/notes:mt-12">
+              <!-- Hanging punctuation: the opening mark sits in the margin so the text keeps a clean left edge. -->
+              <span
+                aria-hidden="true"
+                class="pointer-events-none absolute top-0 right-full pr-[0.04em] font-serif text-[length:clamp(1.875rem,8.8cqi,3.75rem)] leading-[1.08] tracking-[-0.012em] text-(--iu-accent) italic select-none"
+                >“</span
+              >
+              <div
+                role="tabpanel"
+                id="margin-notes-panel-0"
+                data-note="deshmukh"
+                aria-labelledby="margin-notes-tab-0"
+                tabindex="0"
+                data-state="active"
+                class="invisible relative col-start-1 row-start-1 flex flex-col transition-[visibility] delay-[calc(260ms+var(--lines,6)*44ms)] duration-0 [--mn-delay:0ms] [--mn-duration:0ms] [--mn-ease:linear] [--mn-opacity:0] [--mn-shift:-0.5rem] [--mn-stagger:0ms] before:pointer-events-none before:absolute before:-inset-y-2 before:-right-2 before:left-[calc(-0.4*clamp(1.875rem,8.8cqi,3.75rem)_-_0.25rem)] before:rounded-[min(var(--iu-radius),2px)] before:border-2 before:border-(--iu-accent) before:opacity-0 focus-visible:outline-none focus-visible:before:opacity-100 data-[state=active]:visible data-[state=active]:delay-0 data-[state=active]:[--mn-delay:140ms] data-[state=active]:[--mn-duration:260ms,300ms] data-[state=active]:[--mn-ease:cubic-bezier(0.2,0.8,0.2,1)] data-[state=active]:[--mn-opacity:1] data-[state=active]:[--mn-shift:0px] data-[state=active]:[--mn-stagger:48ms] data-[state=leaving]:[--mn-duration:240ms,260ms] data-[state=leaving]:[--mn-ease:cubic-bezier(0.33,1,0.68,1),cubic-bezier(0.32,0,0.67,0)] data-[state=leaving]:[--mn-stagger:44ms] data-[state=ready]:[--mn-shift:0.5rem] motion-reduce:transition-none"
+              >
+                <figure class="flex flex-1 flex-col">
+                  <blockquote>
+                    <p class="sr-only">
+                      I annotated 312 papers across three years. Ibid turned those margins into a literature review I
+                      could defend, line by line, in front of my committee.
+                    </p>
+                    <p
+                      aria-hidden="true"
+                      data-quote
+                      class="font-serif text-[length:clamp(1.875rem,8.8cqi,3.75rem)] leading-[1.08] tracking-[-0.012em] text-balance italic dark:text-(--iu-foreground)/90"
+                    >
+                      I annotated 312 papers across three years. Ibid turned those margins into a literature review I
+                      could defend, line by line, in front of my committee.”
+                    </p>
+                  </blockquote>
+                  <figcaption
+                    data-byline
+                    class="flex translate-y-(--mn-shift) items-center gap-4 pt-10 opacity-(--mn-opacity) transition-[opacity,translate] delay-[calc(var(--mn-delay)+var(--line,0)*var(--mn-stagger))] duration-(--mn-duration) ease-(--mn-ease) motion-reduce:transition-none @lg/quote:pt-12 @4xl/notes:mt-auto"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="flex size-11 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/15 bg-(--iu-background) font-serif text-lg italic dark:bg-(--iu-foreground)/5"
+                      >AD</span
+                    >
+                    <span class="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span class="min-w-0">
+                        <span class="block text-[15px] leading-snug font-medium">Anjali Deshmukh</span>
+                        <span class="block text-sm leading-snug text-(--iu-muted)"
+                          >Doctoral researcher, Eastmoor University</span
+                        >
+                      </span>
+                      <time
+                        datetime="2026-03-03"
+                        class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted) tabular-nums"
+                        >3 Mar 2026</time
+                      >
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div
+                role="tabpanel"
+                id="margin-notes-panel-1"
+                data-note="quiroga"
+                aria-labelledby="margin-notes-tab-1"
+                aria-hidden="true"
+                data-state="waiting"
+                class="invisible relative col-start-1 row-start-1 flex flex-col transition-[visibility] delay-[calc(260ms+var(--lines,6)*44ms)] duration-0 [--mn-delay:0ms] [--mn-duration:0ms] [--mn-ease:linear] [--mn-opacity:0] [--mn-shift:-0.5rem] [--mn-stagger:0ms] before:pointer-events-none before:absolute before:-inset-y-2 before:-right-2 before:left-[calc(-0.4*clamp(1.875rem,8.8cqi,3.75rem)_-_0.25rem)] before:rounded-[min(var(--iu-radius),2px)] before:border-2 before:border-(--iu-accent) before:opacity-0 focus-visible:outline-none focus-visible:before:opacity-100 data-[state=active]:visible data-[state=active]:delay-0 data-[state=active]:[--mn-delay:140ms] data-[state=active]:[--mn-duration:260ms,300ms] data-[state=active]:[--mn-ease:cubic-bezier(0.2,0.8,0.2,1)] data-[state=active]:[--mn-opacity:1] data-[state=active]:[--mn-shift:0px] data-[state=active]:[--mn-stagger:48ms] data-[state=leaving]:[--mn-duration:240ms,260ms] data-[state=leaving]:[--mn-ease:cubic-bezier(0.33,1,0.68,1),cubic-bezier(0.32,0,0.67,0)] data-[state=leaving]:[--mn-stagger:44ms] data-[state=ready]:[--mn-shift:0.5rem] motion-reduce:transition-none"
+              >
+                <figure class="flex flex-1 flex-col">
+                  <blockquote>
+                    <p class="sr-only">
+                      Every claim in a draft links straight to its source document. Our lawyers read the margins before
+                      the story, and sign off a full day sooner.
+                    </p>
+                    <p
+                      aria-hidden="true"
+                      data-quote
+                      class="font-serif text-[length:clamp(1.875rem,8.8cqi,3.75rem)] leading-[1.08] tracking-[-0.012em] text-balance italic dark:text-(--iu-foreground)/90"
+                    >
+                      Every claim in a draft links straight to its source document. Our lawyers read the margins before
+                      the story, and sign off a full day sooner.”
+                    </p>
+                  </blockquote>
+                  <figcaption
+                    data-byline
+                    class="flex translate-y-(--mn-shift) items-center gap-4 pt-10 opacity-(--mn-opacity) transition-[opacity,translate] delay-[calc(var(--mn-delay)+var(--line,0)*var(--mn-stagger))] duration-(--mn-duration) ease-(--mn-ease) motion-reduce:transition-none @lg/quote:pt-12 @4xl/notes:mt-auto"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="flex size-11 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/15 bg-(--iu-background) font-serif text-lg italic dark:bg-(--iu-foreground)/5"
+                      >MQ</span
+                    >
+                    <span class="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span class="min-w-0">
+                        <span class="block text-[15px] leading-snug font-medium">Mariela Quiroga</span>
+                        <span class="block text-sm leading-snug text-(--iu-muted)"
+                          >Investigations editor, The Saltmarsh Ledger</span
+                        >
+                      </span>
+                      <time
+                        datetime="2026-05-22"
+                        class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted) tabular-nums"
+                        >22 May 2026</time
+                      >
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div
+                role="tabpanel"
+                id="margin-notes-panel-2"
+                data-note="asante-ofori"
+                aria-labelledby="margin-notes-tab-2"
+                aria-hidden="true"
+                data-state="waiting"
+                class="invisible relative col-start-1 row-start-1 flex flex-col transition-[visibility] delay-[calc(260ms+var(--lines,6)*44ms)] duration-0 [--mn-delay:0ms] [--mn-duration:0ms] [--mn-ease:linear] [--mn-opacity:0] [--mn-shift:-0.5rem] [--mn-stagger:0ms] before:pointer-events-none before:absolute before:-inset-y-2 before:-right-2 before:left-[calc(-0.4*clamp(1.875rem,8.8cqi,3.75rem)_-_0.25rem)] before:rounded-[min(var(--iu-radius),2px)] before:border-2 before:border-(--iu-accent) before:opacity-0 focus-visible:outline-none focus-visible:before:opacity-100 data-[state=active]:visible data-[state=active]:delay-0 data-[state=active]:[--mn-delay:140ms] data-[state=active]:[--mn-duration:260ms,300ms] data-[state=active]:[--mn-ease:cubic-bezier(0.2,0.8,0.2,1)] data-[state=active]:[--mn-opacity:1] data-[state=active]:[--mn-shift:0px] data-[state=active]:[--mn-stagger:48ms] data-[state=leaving]:[--mn-duration:240ms,260ms] data-[state=leaving]:[--mn-ease:cubic-bezier(0.33,1,0.68,1),cubic-bezier(0.32,0,0.67,0)] data-[state=leaving]:[--mn-stagger:44ms] data-[state=ready]:[--mn-shift:0.5rem] motion-reduce:transition-none"
+              >
+                <figure class="flex flex-1 flex-col">
+                  <blockquote>
+                    <p class="sr-only">
+                      The protocol, the plate-reader export and the reason we changed step four sit on one page.
+                      Reviewers stopped asking how we got our numbers.
+                    </p>
+                    <p
+                      aria-hidden="true"
+                      data-quote
+                      class="font-serif text-[length:clamp(1.875rem,8.8cqi,3.75rem)] leading-[1.08] tracking-[-0.012em] text-balance italic dark:text-(--iu-foreground)/90"
+                    >
+                      The protocol, the plate-reader export and the reason we changed step four sit on one page.
+                      Reviewers stopped asking how we got our numbers.”
+                    </p>
+                  </blockquote>
+                  <figcaption
+                    data-byline
+                    class="flex translate-y-(--mn-shift) items-center gap-4 pt-10 opacity-(--mn-opacity) transition-[opacity,translate] delay-[calc(var(--mn-delay)+var(--line,0)*var(--mn-stagger))] duration-(--mn-duration) ease-(--mn-ease) motion-reduce:transition-none @lg/quote:pt-12 @4xl/notes:mt-auto"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="flex size-11 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/15 bg-(--iu-background) font-serif text-lg italic dark:bg-(--iu-foreground)/5"
+                      >KA</span
+                    >
+                    <span class="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span class="min-w-0">
+                        <span class="block text-[15px] leading-snug font-medium">Kwame Asante-Ofori</span>
+                        <span class="block text-sm leading-snug text-(--iu-muted)"
+                          >Lab lead, Calder Plant Genomics</span
+                        >
+                      </span>
+                      <time
+                        datetime="2026-07-09"
+                        class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted) tabular-nums"
+                        >9 Jul 2026</time
+                      >
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div
+                role="tabpanel"
+                id="margin-notes-panel-3"
+                data-note="brandvold"
+                aria-labelledby="margin-notes-tab-3"
+                aria-hidden="true"
+                data-state="waiting"
+                class="invisible relative col-start-1 row-start-1 flex flex-col transition-[visibility] delay-[calc(260ms+var(--lines,6)*44ms)] duration-0 [--mn-delay:0ms] [--mn-duration:0ms] [--mn-ease:linear] [--mn-opacity:0] [--mn-shift:-0.5rem] [--mn-stagger:0ms] before:pointer-events-none before:absolute before:-inset-y-2 before:-right-2 before:left-[calc(-0.4*clamp(1.875rem,8.8cqi,3.75rem)_-_0.25rem)] before:rounded-[min(var(--iu-radius),2px)] before:border-2 before:border-(--iu-accent) before:opacity-0 focus-visible:outline-none focus-visible:before:opacity-100 data-[state=active]:visible data-[state=active]:delay-0 data-[state=active]:[--mn-delay:140ms] data-[state=active]:[--mn-duration:260ms,300ms] data-[state=active]:[--mn-ease:cubic-bezier(0.2,0.8,0.2,1)] data-[state=active]:[--mn-opacity:1] data-[state=active]:[--mn-shift:0px] data-[state=active]:[--mn-stagger:48ms] data-[state=leaving]:[--mn-duration:240ms,260ms] data-[state=leaving]:[--mn-ease:cubic-bezier(0.33,1,0.68,1),cubic-bezier(0.32,0,0.67,0)] data-[state=leaving]:[--mn-stagger:44ms] data-[state=ready]:[--mn-shift:0.5rem] motion-reduce:transition-none"
+              >
+                <figure class="flex flex-1 flex-col">
+                  <blockquote>
+                    <p class="sr-only">
+                      Each excerpt keeps its box, folder and page. When a visiting scholar asks where a line came from,
+                      I answer in one click instead of one afternoon.
+                    </p>
+                    <p
+                      aria-hidden="true"
+                      data-quote
+                      class="font-serif text-[length:clamp(1.875rem,8.8cqi,3.75rem)] leading-[1.08] tracking-[-0.012em] text-balance italic dark:text-(--iu-foreground)/90"
+                    >
+                      Each excerpt keeps its box, folder and page. When a visiting scholar asks where a line came from,
+                      I answer in one click instead of one afternoon.”
+                    </p>
+                  </blockquote>
+                  <figcaption
+                    data-byline
+                    class="flex translate-y-(--mn-shift) items-center gap-4 pt-10 opacity-(--mn-opacity) transition-[opacity,translate] delay-[calc(var(--mn-delay)+var(--line,0)*var(--mn-stagger))] duration-(--mn-duration) ease-(--mn-ease) motion-reduce:transition-none @lg/quote:pt-12 @4xl/notes:mt-auto"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="flex size-11 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/15 bg-(--iu-background) font-serif text-lg italic dark:bg-(--iu-foreground)/5"
+                      >IB</span
+                    >
+                    <span class="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span class="min-w-0">
+                        <span class="block text-[15px] leading-snug font-medium">Ilse Brandvold</span>
+                        <span class="block text-sm leading-snug text-(--iu-muted)"
+                          >Senior archivist, Vestby Harbour Archive</span
+                        >
+                      </span>
+                      <time
+                        datetime="2026-09-18"
+                        class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted) tabular-nums"
+                        >18 Sep 2026</time
+                      >
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+              <div
+                role="tabpanel"
+                id="margin-notes-panel-4"
+                data-note="callaghan"
+                aria-labelledby="margin-notes-tab-4"
+                aria-hidden="true"
+                data-state="waiting"
+                class="invisible relative col-start-1 row-start-1 flex flex-col transition-[visibility] delay-[calc(260ms+var(--lines,6)*44ms)] duration-0 [--mn-delay:0ms] [--mn-duration:0ms] [--mn-ease:linear] [--mn-opacity:0] [--mn-shift:-0.5rem] [--mn-stagger:0ms] before:pointer-events-none before:absolute before:-inset-y-2 before:-right-2 before:left-[calc(-0.4*clamp(1.875rem,8.8cqi,3.75rem)_-_0.25rem)] before:rounded-[min(var(--iu-radius),2px)] before:border-2 before:border-(--iu-accent) before:opacity-0 focus-visible:outline-none focus-visible:before:opacity-100 data-[state=active]:visible data-[state=active]:delay-0 data-[state=active]:[--mn-delay:140ms] data-[state=active]:[--mn-duration:260ms,300ms] data-[state=active]:[--mn-ease:cubic-bezier(0.2,0.8,0.2,1)] data-[state=active]:[--mn-opacity:1] data-[state=active]:[--mn-shift:0px] data-[state=active]:[--mn-stagger:48ms] data-[state=leaving]:[--mn-duration:240ms,260ms] data-[state=leaving]:[--mn-ease:cubic-bezier(0.33,1,0.68,1),cubic-bezier(0.32,0,0.67,0)] data-[state=leaving]:[--mn-stagger:44ms] data-[state=ready]:[--mn-shift:0.5rem] motion-reduce:transition-none"
+              >
+                <figure class="flex flex-1 flex-col">
+                  <blockquote>
+                    <p class="sr-only">
+                      Forty-one interviews, one notebook. Tagging a quote takes a keystroke, and our synthesis reads
+                      like a first draft instead of a wall of sticky notes.
+                    </p>
+                    <p
+                      aria-hidden="true"
+                      data-quote
+                      class="font-serif text-[length:clamp(1.875rem,8.8cqi,3.75rem)] leading-[1.08] tracking-[-0.012em] text-balance italic dark:text-(--iu-foreground)/90"
+                    >
+                      Forty-one interviews, one notebook. Tagging a quote takes a keystroke, and our synthesis reads
+                      like a first draft instead of a wall of sticky notes.”
+                    </p>
+                  </blockquote>
+                  <figcaption
+                    data-byline
+                    class="flex translate-y-(--mn-shift) items-center gap-4 pt-10 opacity-(--mn-opacity) transition-[opacity,translate] delay-[calc(var(--mn-delay)+var(--line,0)*var(--mn-stagger))] duration-(--mn-duration) ease-(--mn-ease) motion-reduce:transition-none @lg/quote:pt-12 @4xl/notes:mt-auto"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="flex size-11 shrink-0 items-center justify-center rounded-[min(var(--iu-radius),2px)] border border-(--iu-foreground)/15 bg-(--iu-background) font-serif text-lg italic dark:bg-(--iu-foreground)/5"
+                      >RC</span
+                    >
+                    <span class="flex min-w-0 flex-1 flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                      <span class="min-w-0">
+                        <span class="block text-[15px] leading-snug font-medium">Rhys Callaghan</span>
+                        <span class="block text-sm leading-snug text-(--iu-muted)"
+                          >Head of research, Fernway Freight</span
+                        >
+                      </span>
+                      <time
+                        datetime="2026-10-14"
+                        class="font-mono text-[11px] tracking-[0.04em] text-(--iu-muted) tabular-nums"
+                        >14 Oct 2026</time
+                      >
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-margin-notes]");
+        if (!root) return;
+        var tablist = root.querySelector('[role="tablist"]');
+        var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+        var panels = Array.prototype.slice.call(root.querySelectorAll('[role="tabpanel"]'));
+        var digits = Array.prototype.slice.call(root.querySelectorAll("[data-digit]"));
+        // Motion lives in CSS: each word reads its timing from its panel's data-state, and the motion-reduce
+        // classes make every change instant. The script only switches states.
+        var WORD_CLASS =
+          "inline-block translate-y-(--mn-shift) opacity-(--mn-opacity) transition-[opacity,translate] duration-(--mn-duration) delay-[calc(var(--mn-delay)+var(--line,0)*var(--mn-stagger))] ease-(--mn-ease) motion-reduce:transition-none";
+        var active = 0;
+        var previous = -1;
+
+        // Wrap every word of each quote in a span, so a rendered line can leave and arrive as one.
+        panels.forEach(function (panel) {
+          var quote = panel.querySelector("[data-quote]");
+          var words = quote.textContent.trim().split(/\s+/);
+          quote.textContent = "";
+          words.forEach(function (word, index) {
+            var span = document.createElement("span");
+            span.setAttribute("data-word", "");
+            span.className = WORD_CLASS;
+            span.textContent = word;
+            quote.appendChild(span);
+            if (index < words.length - 1) quote.appendChild(document.createTextNode(" "));
+          });
+        });
+
+        // Groups a panel's words into rendered lines; words on one line share a transition delay.
+        function measureLines(index) {
+          var panel = panels[index];
+          if (!panel) return;
+          var line = -1;
+          var top = -Infinity;
+          panel.querySelectorAll("[data-word]").forEach(function (word) {
+            if (word.offsetTop > top + 2) {
+              line += 1;
+              top = word.offsetTop;
+            }
+            word.style.setProperty("--line", String(line));
+          });
+          panel.style.setProperty("--lines", String(line + 1));
+          var byline = panel.querySelector("[data-byline]");
+          // The byline arrives with the first line, so the reader knows who is speaking as soon as the quote starts.
+          if (byline) byline.style.setProperty("--line", "0");
+        }
+
+        function render() {
+          tabs.forEach(function (tab, index) {
+            var selected = index === active;
+            tab.setAttribute("aria-selected", selected ? "true" : "false");
+            tab.tabIndex = selected ? 0 : -1;
+          });
+          panels.forEach(function (panel, index) {
+            var state = index === active ? "active" : index === previous ? "leaving" : "waiting";
+            panel.setAttribute("data-state", state);
+            if (state === "active") {
+              panel.removeAttribute("aria-hidden");
+              panel.tabIndex = 0;
+            } else {
+              panel.setAttribute("aria-hidden", "true");
+              panel.removeAttribute("tabindex");
+            }
+          });
+          var number = String(active + 1).padStart(digits.length, "0");
+          digits.forEach(function (column, index) {
+            column.style.transform = "translateY(-" + Number(number.charAt(index)) * 10 + "%)";
+          });
+        }
+
+        function select(index) {
+          if (index === active) return;
+          measureLines(active);
+          measureLines(index);
+          // A note that has fully left rests above its slot (so an exit still running is never cut short). Move
+          // it below without a transition first, so its lines rise into place.
+          // A note re-selected mid-exit reverses from where its lines are instead.
+          var incoming = panels[index];
+          var parts = Array.prototype.slice.call(incoming.querySelectorAll("[data-word], [data-byline]"));
+          var gone = parts.every(function (part) {
+            return getComputedStyle(part).opacity === "0";
+          });
+          if (parts.length > 0 && gone) {
+            incoming.setAttribute("data-state", "ready");
+            incoming.getBoundingClientRect();
+          }
+          previous = active;
+          active = index;
+          render();
+          // In the narrow layout the row of names can scroll; keep the chosen one fully in view.
+          tabs[index].scrollIntoView({ block: "nearest", inline: "nearest" });
+          // The counterpart of onSelectedChange in the React version.
+          root.dispatchEvent(
+            new CustomEvent("margin-notes:change", {
+              detail: { index: index, id: panels[index].getAttribute("data-note") },
+            }),
+          );
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener("click", function () {
+            select(index);
+          });
+          tab.addEventListener("keydown", function (event) {
+            var last = tabs.length - 1;
+            // Only the arrows along the index move the selection, so the others keep scrolling the page.
+            var vertical = tablist.getAttribute("aria-orientation") === "vertical";
+            var next = null;
+            if (event.key === (vertical ? "ArrowDown" : "ArrowRight")) next = index === last ? 0 : index + 1;
+            else if (event.key === (vertical ? "ArrowUp" : "ArrowLeft")) next = index === 0 ? last : index - 1;
+            else if (event.key === "Home") next = 0;
+            else if (event.key === "End") next = last;
+            if (next === null) return;
+            event.preventDefault();
+            select(next);
+            tabs[next].focus();
+          });
+        });
+
+        // The index is a vertical list beside the quote, and a row of names above it in narrow containers. In the row,
+        // edges that hide names fade out.
+        function updateLayout() {
+          var vertical = getComputedStyle(tablist).flexDirection === "column";
+          tablist.setAttribute("aria-orientation", vertical ? "vertical" : "horizontal");
+          var before = !vertical && tablist.scrollLeft > 1;
+          var after = !vertical && tablist.scrollLeft + tablist.clientWidth < tablist.scrollWidth - 1;
+          tablist.setAttribute("data-overflow", before && after ? "both" : before ? "start" : after ? "end" : "none");
+        }
+        updateLayout();
+        tablist.addEventListener("scroll", updateLayout, { passive: true });
+        if ("ResizeObserver" in window) {
+          var observer = new ResizeObserver(updateLayout);
+          observer.observe(tablist);
+          tabs.forEach(function (tab) {
+            observer.observe(tab);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

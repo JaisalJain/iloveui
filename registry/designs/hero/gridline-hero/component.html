@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gridline hero · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      data-gridline-hero
+      aria-labelledby="gridline-hero-title"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)"
+    >
+      <div class="mx-auto max-w-[1200px] px-6 pt-12 pb-16 sm:px-10 sm:pt-16 sm:pb-24">
+        <div
+          class="flex items-baseline justify-between border-b border-(--iu-border) pb-3 text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase"
+        >
+          <span>Halden release desk</span>
+          <span class="tabular-nums">01 / Release log</span>
+        </div>
+
+        <div class="mt-12 grid grid-cols-12 gap-x-6 gap-y-14 sm:mt-16">
+          <div class="col-span-12 lg:col-span-5">
+            <h1
+              id="gridline-hero-title"
+              class="text-[clamp(2.75rem,1.6rem+4.2vw,4.75rem)] leading-[0.98] font-semibold tracking-[-0.035em] text-balance"
+            >
+              Releases you can read at a glance.
+            </h1>
+            <p class="mt-6 max-w-[34rem] text-base leading-relaxed text-pretty text-(--iu-muted) sm:text-lg">
+              Every deploy, its diff, duration and owner on one quiet grid. Roll back from the same row in one
+              keystroke.
+            </p>
+            <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <a
+                href="#start"
+                class="group inline-flex h-11 items-center gap-2 rounded-[min(var(--iu-radius),6px)] bg-(--iu-foreground) px-5 text-sm font-medium text-(--iu-background) transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--iu-accent) motion-reduce:transition-none pointer-fine:hover:bg-[color-mix(in_oklab,var(--iu-foreground)_84%,var(--iu-background))]"
+              >
+                Start a free workspace
+                <svg
+                  aria-hidden="true"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="transition-transform duration-150 motion-reduce:transition-none pointer-fine:group-hover:translate-x-0.5"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </a>
+              <span class="text-sm text-(--iu-muted)">No card required. 14-day trial.</span>
+            </div>
+            <dl class="mt-14 grid grid-cols-3 border-t border-(--iu-border)">
+              <div class="flex flex-col pt-4 pr-4">
+                <dt class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Median build</dt>
+                <dd class="mt-auto pt-2 text-2xl font-semibold tracking-[-0.02em] tabular-nums">3m 12s</dd>
+              </div>
+              <div class="flex flex-col border-l border-(--iu-border) pt-4 pr-4 pl-4">
+                <dt class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">Deploys kept</dt>
+                <dd class="mt-auto pt-2 text-2xl font-semibold tracking-[-0.02em] tabular-nums">99.4%</dd>
+              </div>
+              <div class="flex flex-col border-l border-(--iu-border) pt-4 pl-4">
+                <dt class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+                  Releases this week
+                </dt>
+                <dd class="mt-auto pt-2 text-2xl font-semibold tracking-[-0.02em] tabular-nums">38</dd>
+              </div>
+            </dl>
+          </div>
+
+          <figure class="@container col-span-12 lg:col-span-7">
+            <div
+              class="overflow-hidden rounded-[min(var(--iu-radius),6px)] border border-(--iu-border) bg-(--iu-surface) dark:border-(--iu-foreground)/12"
+            >
+              <figcaption
+                class="flex items-center justify-between gap-4 border-b border-(--iu-border) px-4 py-3 dark:border-(--iu-foreground)/10"
+              >
+                <span class="text-sm font-medium">Production</span>
+                <span class="font-mono text-[11px] text-(--iu-muted) tabular-nums">4 releases · today</span>
+              </figcaption>
+              <table class="w-full table-fixed text-left">
+                <caption class="sr-only">
+                  Recent production releases
+                </caption>
+                <thead>
+                  <tr class="text-[11px] font-medium tracking-[0.08em] text-(--iu-muted) uppercase">
+                    <th scope="col" class="w-[42%] px-3 py-2 font-medium @md:w-[46%] @md:px-4">Release</th>
+                    <th scope="col" class="hidden w-[18%] px-3 py-2 font-medium @md:table-cell @md:px-4">Owner</th>
+                    <th scope="col" class="w-[26%] px-3 py-2 font-medium @md:w-[18%] @md:px-4">Duration</th>
+                    <th scope="col" class="w-[32%] px-3 py-2 font-medium @md:w-[18%] @md:px-4">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top @md:px-4">
+                      <span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums">v2.14.1</span>
+                      <span class="mt-1 block truncate text-sm text-(--iu-foreground)">Invoice PDF fonts</span>
+                    </td>
+                    <td class="hidden px-3 py-[calc(12px*var(--iu-density))] align-top @md:table-cell @md:px-4">
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-6 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >MO</span
+                      ><span class="sr-only">Mira Okafor</span>
+                    </td>
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top @md:px-4">
+                      <span
+                        data-elapsed
+                        class="block font-mono text-[13px] whitespace-nowrap text-(--iu-foreground) tabular-nums @md:text-sm"
+                        >1m 10s</span
+                      >
+                      <span
+                        aria-hidden="true"
+                        class="mt-2 block h-0.5 w-full overflow-hidden rounded-full bg-(--iu-foreground)/10"
+                      >
+                        <span
+                          data-progress
+                          class="block h-0.5 origin-left bg-(--iu-accent)"
+                          style="transform: scaleX(0.38)"
+                        ></span>
+                      </span>
+                    </td>
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top text-sm @md:px-4">
+                      <span
+                        data-status="building"
+                        class="inline-flex items-center gap-2 whitespace-nowrap text-(--iu-foreground)"
+                      >
+                        <span aria-hidden="true" class="size-2 rounded-full bg-(--iu-accent)"></span>
+                        Building
+                      </span>
+                      <span
+                        data-status="live"
+                        hidden
+                        class="inline-flex items-center gap-2 whitespace-nowrap text-(--iu-foreground)"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                        Live
+                      </span>
+                      <span data-live-region aria-live="polite" class="sr-only"></span>
+                    </td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top @md:px-4">
+                      <span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums">v2.14.0</span>
+                      <span class="mt-1 block truncate text-sm text-(--iu-foreground)">Retry failed card charges</span>
+                    </td>
+                    <td class="hidden px-3 py-[calc(12px*var(--iu-density))] align-top @md:table-cell @md:px-4">
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-6 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >TL</span
+                      ><span class="sr-only">Tomás Lindqvist</span>
+                    </td>
+                    <td
+                      class="px-3 py-[calc(12px*var(--iu-density))] align-top font-mono text-[13px] whitespace-nowrap text-(--iu-muted) tabular-nums @md:px-4 @md:text-sm"
+                    >
+                      3m 08s
+                    </td>
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top text-sm @md:px-4">
+                      <span class="inline-flex items-center gap-2 whitespace-nowrap text-(--iu-foreground)">
+                        <svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                        Live
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top @md:px-4">
+                      <span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums">v2.13.9</span>
+                      <span class="mt-1 block truncate text-sm text-(--iu-foreground)">Faster CSV export</span>
+                    </td>
+                    <td class="hidden px-3 py-[calc(12px*var(--iu-density))] align-top @md:table-cell @md:px-4">
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-6 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >PR</span
+                      ><span class="sr-only">Priya Raman</span>
+                    </td>
+                    <td
+                      class="px-3 py-[calc(12px*var(--iu-density))] align-top font-mono text-[13px] whitespace-nowrap text-(--iu-muted) tabular-nums @md:px-4 @md:text-sm"
+                    >
+                      2m 51s
+                    </td>
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top text-sm @md:px-4">
+                      <span class="inline-flex items-center gap-2 whitespace-nowrap text-(--iu-foreground)">
+                        <svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.75"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                        Live
+                      </span>
+                    </td>
+                  </tr>
+                  <tr class="border-t border-(--iu-border)">
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top @md:px-4">
+                      <span class="block font-mono text-[11px] text-(--iu-muted) tabular-nums">v2.13.8</span>
+                      <span class="mt-1 block truncate text-sm text-(--iu-foreground)">Regional tax rounding</span>
+                    </td>
+                    <td class="hidden px-3 py-[calc(12px*var(--iu-density))] align-top @md:table-cell @md:px-4">
+                      <span
+                        aria-hidden="true"
+                        class="inline-flex size-6 items-center justify-center rounded-full bg-(--iu-foreground)/8 text-[10px] font-semibold tracking-wide text-(--iu-foreground) dark:bg-(--iu-foreground)/12"
+                        >JW</span
+                      ><span class="sr-only">Jonah Weller</span>
+                    </td>
+                    <td
+                      class="px-3 py-[calc(12px*var(--iu-density))] align-top font-mono text-[13px] whitespace-nowrap text-(--iu-muted) tabular-nums @md:px-4 @md:text-sm"
+                    >
+                      4m 02s
+                    </td>
+                    <td class="px-3 py-[calc(12px*var(--iu-density))] align-top text-sm @md:px-4">
+                      <span class="inline-flex items-center gap-2 whitespace-nowrap text-(--iu-muted)">
+                        <svg
+                          aria-hidden="true"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                          <path d="M3 3v5h5" />
+                        </svg>
+                        Reverted
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector("[data-gridline-hero]");
+        if (!root) return;
+        var bar = root.querySelector("[data-progress]");
+        var elapsed = root.querySelector("[data-elapsed]");
+        var building = root.querySelector('[data-status="building"]');
+        var live = root.querySelector('[data-status="live"]');
+        var announcer = root.querySelector("[data-live-region]");
+        var totalSeconds = 184;
+        var from = 0.38;
+        var duration = (1 - from) * 6500;
+
+        function format(seconds) {
+          var whole = Math.max(0, Math.round(seconds));
+          return Math.floor(whole / 60) + "m " + String(whole % 60).padStart(2, "0") + "s";
+        }
+
+        function render(progress) {
+          bar.style.transform = "scaleX(" + progress + ")";
+          elapsed.textContent = format(progress * totalSeconds);
+        }
+
+        function finish() {
+          render(1);
+          building.hidden = true;
+          live.hidden = false;
+          announcer.textContent = "v2.14.1 is live";
+        }
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          finish();
+          return;
+        }
+
+        function run() {
+          var started = null;
+          function frame(now) {
+            if (started === null) started = now;
+            var t = Math.min(1, (now - started) / duration);
+            render(from + (1 - from) * t);
+            if (t < 1) requestAnimationFrame(frame);
+            else finish();
+          }
+          setTimeout(function () {
+            requestAnimationFrame(frame);
+          }, 600);
+        }
+
+        // Start once the release log is on screen.
+        var observer = new IntersectionObserver(function (entries) {
+          if (entries[0] && entries[0].isIntersecting) {
+            observer.disconnect();
+            run();
+          }
+        });
+        observer.observe(root);
+      })();
+    </script>
+  </body>
+</html>

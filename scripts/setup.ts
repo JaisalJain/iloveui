@@ -1,7 +1,9 @@
 // pnpm setup: prepares a fresh clone for local development with no accounts.
 // 1. .env.local from .env.example, with generated secrets
-// 2. D1 migrations applied to the local database
-// 3. the local database seeded with one demo account state
+// 2. Cloudflare binding types
+// 3. D1 migrations applied to the local database
+// 4. the registry built (catalog, previews, thumbnails; Pro payloads into local R2) and the download zips
+// 5. the local database seeded with one demo account state
 import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync } from "node:fs";
 import { randomBytes } from "node:crypto";
@@ -53,6 +55,12 @@ function applyMigrations() {
   run("pnpm", ["exec", "wrangler", "d1", "migrations", "apply", "iloveui-db", "--local"], { CI: "1" });
 }
 
+function buildRegistry() {
+  step("Registry and downloads");
+  run("pnpm", ["build-registry"]);
+  run("pnpm", ["build-zips"]);
+}
+
 async function seed() {
   step("Demo account");
   const { env, dispose } = await getPlatformProxy<CloudflareEnv>({ remoteBindings: false });
@@ -68,6 +76,7 @@ async function main() {
   ensureEnvFile();
   generateTypes();
   applyMigrations();
+  buildRegistry();
   await seed();
   console.log("\n✓ Setup complete. Start the site with: pnpm dev (http://localhost:3000)\n");
 }

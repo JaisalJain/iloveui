@@ -1,0 +1,2165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Slab pricing · iloveui</title>
+    <!-- Tailwind CSS v4 in the browser so this file works on its own; in a project, use your Tailwind build. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.3"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      /* iloveui:tokens:start */
+      :root {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #fafafa;
+        --iu-surface: #ffffff;
+        --iu-border: #e4e4e7;
+        --iu-foreground: #18181b;
+        --iu-muted: #52525b;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      .dark {
+        --iu-accent: #ff4d1f;
+        --iu-accent-foreground: #111111;
+        --iu-background: #09090b;
+        --iu-surface: #18181b;
+        --iu-border: #2e2e33;
+        --iu-foreground: #fafafa;
+        --iu-muted: #a1a1aa;
+        --iu-radius: 10px;
+        --iu-font: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+        --iu-density: 1;
+      }
+      /* iloveui:tokens:end */
+    </style>
+  </head>
+  <body class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground)">
+    <!-- iloveui:component:start -->
+    <section
+      aria-labelledby="slab-pricing-heading"
+      data-slot="slab-pricing"
+      class="bg-(--iu-background) font-(family-name:--iu-font) text-(--iu-foreground) [--slab-shade:var(--iu-foreground)] dark:[--slab-shade:color-mix(in_oklab,var(--iu-foreground)_40%,var(--iu-background))]"
+    >
+      <div class="mx-auto max-w-[1200px] px-6 py-16 sm:px-10 sm:py-24">
+        <header class="grid gap-x-8 gap-y-12 lg:grid-cols-12 lg:items-end">
+          <div class="lg:col-span-7">
+            <p class="flex items-center gap-2 font-mono text-xs font-bold tracking-[0.08em] uppercase">
+              <span aria-hidden="true" class="size-2.5 bg-(--iu-accent)"></span>Pipeyard pricing
+            </p>
+            <h2
+              id="slab-pricing-heading"
+              class="mt-5 text-[clamp(2.5rem,1.4rem+4vw,4.75rem)] leading-[0.95] font-extrabold tracking-[-0.045em] text-balance"
+            >
+              Pay for what you deliver.
+            </h2>
+            <p class="mt-6 max-w-[34rem] text-base leading-relaxed text-pretty text-(--iu-muted) sm:text-lg">
+              Every plan signs, retries and logs each webhook. Pick the volume you send today and move up when your
+              traffic does.
+            </p>
+          </div>
+          <div class="lg:col-span-5 lg:justify-self-end lg:pb-2">
+            <fieldset data-slot="billing-switch" class="relative w-72 max-w-full min-w-0 sm:w-80">
+              <legend class="sr-only">Billing period</legend>
+              <div
+                class="relative grid h-14 grid-cols-2 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[4px_4px_0_var(--slab-shade)] has-focus-visible:outline-2 has-focus-visible:outline-offset-4 has-focus-visible:outline-(--iu-accent)"
+              >
+                <span
+                  aria-hidden="true"
+                  data-slot="billing-thumb"
+                  class="absolute inset-y-0 left-0 w-1/2 bg-(--iu-foreground) transition-transform duration-100 ease-linear motion-reduce:transition-none"
+                ></span
+                ><label
+                  class="relative flex cursor-pointer items-center justify-center text-sm font-extrabold tracking-[0.08em] uppercase transition-colors duration-100 ease-linear select-none has-checked:text-(--iu-background) motion-reduce:transition-none pointer-fine:hover:not-has-checked:bg-[color-mix(in_oklab,var(--iu-foreground)_8%,var(--iu-surface))]"
+                  ><input
+                    type="radio"
+                    class="sr-only"
+                    name="slab-pricing-billing"
+                    checked=""
+                    value="monthly"
+                  />Monthly</label
+                ><label
+                  class="relative flex cursor-pointer items-center justify-center border-l-2 border-(--iu-foreground) text-sm font-extrabold tracking-[0.08em] uppercase transition-colors duration-100 ease-linear select-none has-checked:text-(--iu-background) motion-reduce:transition-none pointer-fine:hover:not-has-checked:bg-[color-mix(in_oklab,var(--iu-foreground)_8%,var(--iu-surface))]"
+                  ><input type="radio" class="sr-only" name="slab-pricing-billing" value="yearly" />Yearly<span
+                    class="sr-only"
+                    >, Save 20%</span
+                  ></label
+                >
+              </div>
+              <span
+                aria-hidden="true"
+                data-slot="saving-sticker"
+                class="pointer-events-none absolute -top-4 -right-3 rotate-[7deg] rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) px-3 py-2 font-mono text-xs leading-none font-bold tracking-[0.06em] text-(--iu-background) uppercase ring-2 ring-(--iu-background)"
+                >Save 20%</span
+              >
+            </fieldset>
+          </div>
+        </header>
+        <ul
+          role="list"
+          data-slot="plans"
+          class="mt-14 grid gap-y-10 md:mt-16 md:grid-cols-3 md:gap-x-6 md:gap-y-0 lg:gap-x-8"
+        >
+          <li
+            data-slot="plan"
+            data-plan="starter"
+            class="grid overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[8px_8px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear data-snap:translate-x-2 data-snap:translate-y-2 data-snap:shadow-none motion-reduce:transition-none md:row-span-5 md:grid-rows-subgrid"
+          >
+            <div
+              data-slot="plan-band"
+              class="border-b-2 border-(--iu-foreground) px-6 py-[calc(20px*var(--iu-density))] md:px-4 lg:px-6"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl leading-none font-extrabold tracking-[0.01em] uppercase">Starter</h3>
+              </div>
+              <p class="mt-3 text-sm leading-snug text-pretty text-(--iu-muted)">
+                For side projects and first integrations.
+              </p>
+            </div>
+            <div data-slot="plan-price" class="px-6 pt-6 md:px-4 lg:px-6">
+              <p
+                class="flex items-start text-7xl leading-none font-extrabold tracking-[-0.04em] tabular-nums md:text-5xl lg:text-[64px] xl:text-[88px]"
+              >
+                <span aria-hidden="true" class="mt-[0.08em] mr-[0.06em] text-[0.42em] leading-none tracking-normal"
+                  >$</span
+                ><span aria-hidden="true" data-slot="price-figure" class="flex"
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-20%); transition-duration: 90ms; transition-delay: 40ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-90%); transition-duration: 198ms; transition-delay: 90ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ></span
+                ><span
+                  aria-hidden="true"
+                  class="mt-auto mb-[0.1em] ml-2 font-mono text-sm leading-none font-medium tracking-normal text-(--iu-muted)"
+                  >/mo</span
+                ><span data-slot="price-spoken" class="sr-only">$29 per month, billed monthly</span>
+              </p>
+              <p
+                data-slot="price-note"
+                class="mt-3 font-mono text-[11px] font-medium tracking-[0.04em] text-(--iu-muted) uppercase"
+              >
+                Billed monthly, cancel anytime
+              </p>
+            </div>
+            <div
+              data-slot="plan-quota"
+              class="flex flex-wrap items-center gap-x-3 gap-y-2 px-6 pt-5 pb-6 md:px-4 lg:px-6"
+            >
+              <span
+                class="rounded-[min(var(--iu-radius),2px)] border-2 border-(--iu-foreground) px-2 py-1 font-mono text-xs leading-none font-bold uppercase"
+                >250K events / mo</span
+              ><span class="font-mono text-xs text-(--iu-muted)">then $1.20 per 100K</span>
+            </div>
+            <div data-slot="plan-features" class="border-t-2 border-(--iu-foreground) px-6 py-6 md:px-4 lg:px-6">
+              <p class="font-mono text-[11px] font-bold tracking-[0.06em] uppercase">Includes</p>
+              <ul role="list" class="mt-4 grid gap-3">
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >10 endpoints
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >3-day delivery log
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >Retries for 24 hours
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >HMAC-signed payloads
+                </li>
+              </ul>
+            </div>
+            <div data-slot="plan-action" class="flex flex-col justify-end px-6 pb-6 md:px-4 lg:px-6">
+              <button
+                type="button"
+                data-slot="checkout-button"
+                class="group/cta relative grid h-12 w-full grid-cols-1 place-items-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-4 text-[13px] font-extrabold tracking-[0.08em] text-(--iu-foreground) uppercase shadow-[4px_4px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) active:translate-x-1 active:translate-y-1 active:shadow-none aria-disabled:translate-x-1 aria-disabled:translate-y-1 aria-disabled:cursor-progress aria-disabled:shadow-none motion-reduce:transition-none md:px-3 lg:px-4 pointer-fine:hover:not-active:not-aria-disabled:-translate-x-0.5 pointer-fine:hover:not-active:not-aria-disabled:-translate-y-0.5 pointer-fine:hover:not-active:not-aria-disabled:shadow-[6px_6px_0_var(--slab-shade)]"
+              >
+                <span
+                  data-slot="checkout-label"
+                  class="col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap"
+                  >Choose Starter<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right transition-transform duration-80 ease-linear motion-reduce:transition-none md:hidden lg:block pointer-fine:group-hover/cta:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path></svg></span
+                ><span
+                  aria-hidden="true"
+                  data-slot="checkout-busy"
+                  class="invisible col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap"
+                  ><span aria-hidden="true" data-slot="busy-blocks" class="flex gap-1"
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span></span
+                  ><span>Opening<span class="md:hidden lg:inline"> checkout</span></span></span
+                >
+              </button>
+            </div>
+          </li>
+          <li
+            data-slot="plan"
+            data-plan="team"
+            class="grid overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[12px_12px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear data-snap:translate-x-3 data-snap:translate-y-3 data-snap:shadow-none motion-reduce:transition-none md:row-span-5 md:grid-rows-subgrid"
+          >
+            <div
+              data-slot="plan-band"
+              class="border-b-2 border-(--iu-foreground) bg-(--iu-accent) px-6 py-[calc(20px*var(--iu-density))] text-(--iu-accent-foreground) md:px-4 lg:px-6"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl leading-none font-extrabold tracking-[0.01em] uppercase">Team</h3>
+                <span
+                  class="shrink-0 rounded-[min(var(--iu-radius),2px)] border-2 border-current px-2 py-1 font-mono text-[11px] leading-none font-bold tracking-[0.06em] uppercase"
+                  >Recommended</span
+                >
+              </div>
+              <p class="mt-3 text-sm leading-snug text-pretty">For products running webhooks in production.</p>
+            </div>
+            <div data-slot="plan-price" class="px-6 pt-6 md:px-4 lg:px-6">
+              <p
+                class="flex items-start text-7xl leading-none font-extrabold tracking-[-0.04em] tabular-nums md:text-5xl lg:text-[64px] xl:text-[88px]"
+              >
+                <span aria-hidden="true" class="mt-[0.08em] mr-[0.06em] text-[0.42em] leading-none tracking-normal"
+                  >$</span
+                ><span aria-hidden="true" data-slot="price-figure" class="flex"
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-70%); transition-duration: 108ms; transition-delay: 100ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-90%); transition-duration: 198ms; transition-delay: 150ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ></span
+                ><span
+                  aria-hidden="true"
+                  class="mt-auto mb-[0.1em] ml-2 font-mono text-sm leading-none font-medium tracking-normal text-(--iu-muted)"
+                  >/mo</span
+                ><span data-slot="price-spoken" class="sr-only">$79 per month, billed monthly</span>
+              </p>
+              <p
+                data-slot="price-note"
+                class="mt-3 font-mono text-[11px] font-medium tracking-[0.04em] text-(--iu-muted) uppercase"
+              >
+                Billed monthly, cancel anytime
+              </p>
+            </div>
+            <div
+              data-slot="plan-quota"
+              class="flex flex-wrap items-center gap-x-3 gap-y-2 px-6 pt-5 pb-6 md:px-4 lg:px-6"
+            >
+              <span
+                class="rounded-[min(var(--iu-radius),2px)] border-2 border-(--iu-foreground) px-2 py-1 font-mono text-xs leading-none font-bold uppercase"
+                >2M events / mo</span
+              ><span class="font-mono text-xs text-(--iu-muted)">then $0.80 per 100K</span>
+            </div>
+            <div data-slot="plan-features" class="border-t-2 border-(--iu-foreground) px-6 py-6 md:px-4 lg:px-6">
+              <p class="font-mono text-[11px] font-bold tracking-[0.06em] uppercase">Everything in Starter, plus</p>
+              <ul role="list" class="mt-4 grid gap-3">
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >100 endpoints
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >30-day log with replay
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >Retries for 3 days
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >Static egress IPs
+                </li>
+              </ul>
+            </div>
+            <div data-slot="plan-action" class="flex flex-col justify-end px-6 pb-6 md:px-4 lg:px-6">
+              <button
+                type="button"
+                data-slot="checkout-button"
+                class="group/cta relative grid h-12 w-full grid-cols-1 place-items-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-accent) px-4 text-[13px] font-extrabold tracking-[0.08em] text-(--iu-accent-foreground) uppercase shadow-[4px_4px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) active:translate-x-1 active:translate-y-1 active:shadow-none aria-disabled:translate-x-1 aria-disabled:translate-y-1 aria-disabled:cursor-progress aria-disabled:shadow-none motion-reduce:transition-none md:px-3 lg:px-4 pointer-fine:hover:not-active:not-aria-disabled:-translate-x-0.5 pointer-fine:hover:not-active:not-aria-disabled:-translate-y-0.5 pointer-fine:hover:not-active:not-aria-disabled:shadow-[6px_6px_0_var(--slab-shade)]"
+              >
+                <span
+                  data-slot="checkout-label"
+                  class="col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap"
+                  >Choose Team<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right transition-transform duration-80 ease-linear motion-reduce:transition-none md:hidden lg:block pointer-fine:group-hover/cta:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path></svg></span
+                ><span
+                  aria-hidden="true"
+                  data-slot="checkout-busy"
+                  class="invisible col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap"
+                  ><span aria-hidden="true" data-slot="busy-blocks" class="flex gap-1"
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span></span
+                  ><span>Opening<span class="md:hidden lg:inline"> checkout</span></span></span
+                >
+              </button>
+            </div>
+          </li>
+          <li
+            data-slot="plan"
+            data-plan="scale"
+            class="grid overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[8px_8px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear data-snap:translate-x-2 data-snap:translate-y-2 data-snap:shadow-none motion-reduce:transition-none md:row-span-5 md:grid-rows-subgrid"
+          >
+            <div
+              data-slot="plan-band"
+              class="border-b-2 border-(--iu-foreground) px-6 py-[calc(20px*var(--iu-density))] md:px-4 lg:px-6"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="text-xl leading-none font-extrabold tracking-[0.01em] uppercase">Scale</h3>
+              </div>
+              <p class="mt-3 text-sm leading-snug text-pretty text-(--iu-muted)">
+                For platforms delivering to thousands of customers.
+              </p>
+            </div>
+            <div data-slot="plan-price" class="px-6 pt-6 md:px-4 lg:px-6">
+              <p
+                class="flex items-start text-7xl leading-none font-extrabold tracking-[-0.04em] tabular-nums md:text-5xl lg:text-[64px] xl:text-[88px]"
+              >
+                <span aria-hidden="true" class="mt-[0.08em] mr-[0.06em] text-[0.42em] leading-none tracking-normal"
+                  >$</span
+                ><span aria-hidden="true" data-slot="price-figure" class="flex"
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-20%); transition-duration: 108ms; transition-delay: 160ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-40%); transition-duration: 180ms; transition-delay: 210ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ><span class="block h-[1em] overflow-hidden"
+                    ><span
+                      class="flex flex-col transition-transform ease-linear motion-reduce:transition-none"
+                      style="transform: translateY(-90%); transition-duration: 90ms; transition-delay: 260ms"
+                      ><span class="block h-[1em] leading-none">0</span><span class="block h-[1em] leading-none">1</span
+                      ><span class="block h-[1em] leading-none">2</span><span class="block h-[1em] leading-none">3</span
+                      ><span class="block h-[1em] leading-none">4</span><span class="block h-[1em] leading-none">5</span
+                      ><span class="block h-[1em] leading-none">6</span><span class="block h-[1em] leading-none">7</span
+                      ><span class="block h-[1em] leading-none">8</span
+                      ><span class="block h-[1em] leading-none">9</span></span
+                    ></span
+                  ></span
+                ><span
+                  aria-hidden="true"
+                  class="mt-auto mb-[0.1em] ml-2 font-mono text-sm leading-none font-medium tracking-normal text-(--iu-muted)"
+                  >/mo</span
+                ><span data-slot="price-spoken" class="sr-only">$249 per month, billed monthly</span>
+              </p>
+              <p
+                data-slot="price-note"
+                class="mt-3 font-mono text-[11px] font-medium tracking-[0.04em] text-(--iu-muted) uppercase"
+              >
+                Billed monthly, cancel anytime
+              </p>
+            </div>
+            <div
+              data-slot="plan-quota"
+              class="flex flex-wrap items-center gap-x-3 gap-y-2 px-6 pt-5 pb-6 md:px-4 lg:px-6"
+            >
+              <span
+                class="rounded-[min(var(--iu-radius),2px)] border-2 border-(--iu-foreground) px-2 py-1 font-mono text-xs leading-none font-bold uppercase"
+                >12M events / mo</span
+              ><span class="font-mono text-xs text-(--iu-muted)">then $0.45 per 100K</span>
+            </div>
+            <div data-slot="plan-features" class="border-t-2 border-(--iu-foreground) px-6 py-6 md:px-4 lg:px-6">
+              <p class="font-mono text-[11px] font-bold tracking-[0.06em] uppercase">Everything in Team, plus</p>
+              <ul role="list" class="mt-4 grid gap-3">
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >Unlimited endpoints
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >90-day log with replay
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >SAML SSO and audit log
+                </li>
+                <li class="flex items-start gap-3 text-[15px] leading-5">
+                  <span
+                    aria-hidden="true"
+                    class="grid size-5 shrink-0 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-check"
+                      aria-hidden="true"
+                    >
+                      <path d="M20 6 9 17l-5-5"></path></svg></span
+                  >99.99% uptime SLA
+                </li>
+              </ul>
+            </div>
+            <div data-slot="plan-action" class="flex flex-col justify-end px-6 pb-6 md:px-4 lg:px-6">
+              <button
+                type="button"
+                data-slot="checkout-button"
+                class="group/cta relative grid h-12 w-full grid-cols-1 place-items-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) px-4 text-[13px] font-extrabold tracking-[0.08em] text-(--iu-foreground) uppercase shadow-[4px_4px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) active:translate-x-1 active:translate-y-1 active:shadow-none aria-disabled:translate-x-1 aria-disabled:translate-y-1 aria-disabled:cursor-progress aria-disabled:shadow-none motion-reduce:transition-none md:px-3 lg:px-4 pointer-fine:hover:not-active:not-aria-disabled:-translate-x-0.5 pointer-fine:hover:not-active:not-aria-disabled:-translate-y-0.5 pointer-fine:hover:not-active:not-aria-disabled:shadow-[6px_6px_0_var(--slab-shade)]"
+              >
+                <span
+                  data-slot="checkout-label"
+                  class="col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap"
+                  >Choose Scale<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right transition-transform duration-80 ease-linear motion-reduce:transition-none md:hidden lg:block pointer-fine:group-hover/cta:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path></svg></span
+                ><span
+                  aria-hidden="true"
+                  data-slot="checkout-busy"
+                  class="invisible col-start-1 row-start-1 inline-flex items-center gap-2 whitespace-nowrap"
+                  ><span aria-hidden="true" data-slot="busy-blocks" class="flex gap-1"
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span
+                    ><span class="size-2 rounded-[1px] border-2 border-current"></span></span
+                  ><span>Opening<span class="md:hidden lg:inline"> checkout</span></span></span
+                >
+              </button>
+            </div>
+          </li>
+        </ul>
+        <dl
+          data-slot="terms"
+          class="mt-14 grid gap-0.5 overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-foreground) sm:grid-cols-2 lg:grid-cols-4"
+        >
+          <div class="bg-(--iu-background) px-5 py-[calc(16px*var(--iu-density))]">
+            <dt class="font-mono text-[11px] font-bold tracking-[0.08em] uppercase">Currency</dt>
+            <dd class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted)">Prices are in US dollars.</dd>
+          </div>
+          <div class="bg-(--iu-background) px-5 py-[calc(16px*var(--iu-density))]">
+            <dt class="font-mono text-[11px] font-bold tracking-[0.08em] uppercase">Tax</dt>
+            <dd class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted)">
+              Sales tax or VAT is added at checkout from your billing address.
+            </dd>
+          </div>
+          <div class="bg-(--iu-background) px-5 py-[calc(16px*var(--iu-density))]">
+            <dt class="font-mono text-[11px] font-bold tracking-[0.08em] uppercase">Cancel</dt>
+            <dd class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted)">
+              Cancel anytime in Settings. Access runs to the end of the paid period.
+            </dd>
+          </div>
+          <div class="bg-(--iu-background) px-5 py-[calc(16px*var(--iu-density))]">
+            <dt class="font-mono text-[11px] font-bold tracking-[0.08em] uppercase">Refunds</dt>
+            <dd class="mt-2 text-sm leading-snug text-pretty text-(--iu-muted)">
+              Full refund within 14 days of any charge, no questions asked.
+            </dd>
+          </div>
+        </dl>
+        <div class="mt-20 sm:mt-24">
+          <h3 class="text-[28px] leading-none font-extrabold tracking-[-0.03em] text-balance sm:text-[40px]">
+            Compare every limit
+          </h3>
+          <div
+            data-slot="comparison"
+            class="mt-8 hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[8px_8px_0_var(--slab-shade)] md:block"
+          >
+            <table class="w-full table-fixed border-separate border-spacing-0 text-left">
+              <caption data-slot="comparison-caption" class="sr-only">
+                Plan comparison, prices per month billed monthly
+              </caption>
+              <colgroup>
+                <col class="w-[34%]" />
+                <col />
+                <col />
+                <col />
+              </colgroup>
+              <thead class="sticky top-[var(--slab-sticky-top,0px)] z-10">
+                <tr>
+                  <th
+                    scope="col"
+                    data-slot="comparison-billing"
+                    class="border-b-2 border-(--iu-foreground) bg-(--iu-surface) px-5 py-4 align-bottom font-mono text-[11px] font-bold tracking-[0.06em] text-(--iu-muted) uppercase"
+                  >
+                    Per month, billed monthly
+                  </th>
+                  <th
+                    scope="col"
+                    class="relative border-b-2 border-l-2 border-(--iu-foreground) bg-(--iu-surface) px-5 py-4 align-bottom"
+                  >
+                    <span class="block text-base leading-none font-extrabold uppercase">Starter</span
+                    ><span
+                      data-slot="column-price"
+                      data-plan="starter"
+                      class="mt-2 block font-mono text-sm font-medium tabular-nums"
+                      >$29<span class="text-(--iu-muted)">/mo</span></span
+                    >
+                  </th>
+                  <th
+                    scope="col"
+                    class="relative border-b-2 border-l-2 border-(--iu-foreground) bg-(--iu-surface) px-5 py-4 align-bottom"
+                  >
+                    <span aria-hidden="true" class="absolute inset-x-0 top-0 h-2 bg-(--iu-accent)"></span
+                    ><span class="block text-base leading-none font-extrabold uppercase">Team</span
+                    ><span
+                      data-slot="column-price"
+                      data-plan="team"
+                      class="mt-2 block font-mono text-sm font-medium tabular-nums"
+                      >$79<span class="text-(--iu-muted)">/mo</span></span
+                    >
+                  </th>
+                  <th
+                    scope="col"
+                    class="relative border-b-2 border-l-2 border-(--iu-foreground) bg-(--iu-surface) px-5 py-4 align-bottom"
+                  >
+                    <span class="block text-base leading-none font-extrabold uppercase">Scale</span
+                    ><span
+                      data-slot="column-price"
+                      data-plan="scale"
+                      class="mt-2 block font-mono text-sm font-medium tabular-nums"
+                      >$249<span class="text-(--iu-muted)">/mo</span></span
+                    >
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th
+                    scope="rowgroup"
+                    colspan="4"
+                    class="border-b-2 border-(--iu-foreground) bg-(--iu-background) px-5 py-3 font-mono text-[11px] font-bold tracking-[0.08em] uppercase"
+                  >
+                    Usage
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Events per month
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">250K</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">2M</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">12M</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Extra 100K events
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">$1.20</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">$0.80</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">$0.45</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Endpoints
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">10</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">100</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">Unlimited</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Delivery log
+                  </th>
+                  <td class="border-b-2 border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">3 days</span>
+                  </td>
+                  <td class="border-b-2 border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">30 days</span>
+                  </td>
+                  <td class="border-b-2 border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">90 days</span>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th
+                    scope="rowgroup"
+                    colspan="4"
+                    class="border-b-2 border-(--iu-foreground) bg-(--iu-background) px-5 py-3 font-mono text-[11px] font-bold tracking-[0.08em] uppercase"
+                  >
+                    Delivery
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    HMAC-signed payloads
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Automatic retries
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">24 hours</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">3 days</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">7 days</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Replay from the log
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                    ><span class="sr-only">Not included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Static egress IPs
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                    ><span class="sr-only">Not included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Delivery regions
+                  </th>
+                  <td class="border-b-2 border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">1</span>
+                  </td>
+                  <td class="border-b-2 border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">3</span>
+                  </td>
+                  <td class="border-b-2 border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">6</span>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr>
+                  <th
+                    scope="rowgroup"
+                    colspan="4"
+                    class="border-b-2 border-(--iu-foreground) bg-(--iu-background) px-5 py-3 font-mono text-[11px] font-bold tracking-[0.08em] uppercase"
+                  >
+                    Security and support
+                  </th>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    SAML SSO and audit log
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                    ><span class="sr-only">Not included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                    ><span class="sr-only">Not included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-check"
+                        aria-hidden="true"
+                      >
+                        <path d="M20 6 9 17l-5-5"></path></svg></span
+                    ><span class="sr-only">Included</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-b [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Uptime SLA
+                  </th>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                    ><span class="sr-only">Not included</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">99.9%</span>
+                  </td>
+                  <td
+                    class="border-b border-l-2 [border-bottom-style:dashed] border-(--iu-foreground) border-b-(--slab-shade) px-5 py-[calc(12px*var(--iu-density))]"
+                  >
+                    <span class="font-mono text-[13px] font-medium">99.99%</span>
+                  </td>
+                </tr>
+                <tr>
+                  <th
+                    scope="row"
+                    class="border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))] text-sm font-medium"
+                  >
+                    Support
+                  </th>
+                  <td class="border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">Forum</span>
+                  </td>
+                  <td class="border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">Email, 1 day</span>
+                  </td>
+                  <td class="border-l-2 border-(--iu-foreground) px-5 py-[calc(12px*var(--iu-density))]">
+                    <span class="font-mono text-[13px] font-medium">Engineer, 1 hour</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Below 768px: the same rows, each label over its three values, under a sticky row of plan columns. -->
+          <div
+            data-slot="comparison-stack"
+            class="mt-8 rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) shadow-[6px_6px_0_var(--slab-shade)] md:hidden"
+          >
+            <div
+              aria-hidden="true"
+              data-slot="stack-head"
+              class="sticky top-[var(--slab-sticky-top,0px)] z-10 grid border-b-2 border-(--iu-foreground) bg-(--iu-surface)"
+              style="grid-template-columns: repeat(3, minmax(0, 1fr))"
+            >
+              <div class="relative px-3 pt-4 pb-3">
+                <span class="block truncate text-sm leading-none font-extrabold uppercase">Starter</span
+                ><span
+                  data-slot="list-price"
+                  data-plan="starter"
+                  class="mt-1.5 block font-mono text-xs font-medium tabular-nums"
+                  >$29<span class="text-(--iu-muted)">/mo</span></span
+                >
+              </div>
+              <div class="relative border-l-2 border-(--iu-foreground) px-3 pt-4 pb-3">
+                <span class="absolute inset-x-0 top-0 h-1.5 bg-(--iu-accent)"></span
+                ><span class="block truncate text-sm leading-none font-extrabold uppercase">Team</span
+                ><span
+                  data-slot="list-price"
+                  data-plan="team"
+                  class="mt-1.5 block font-mono text-xs font-medium tabular-nums"
+                  >$79<span class="text-(--iu-muted)">/mo</span></span
+                >
+              </div>
+              <div class="relative border-l-2 border-(--iu-foreground) px-3 pt-4 pb-3">
+                <span class="block truncate text-sm leading-none font-extrabold uppercase">Scale</span
+                ><span
+                  data-slot="list-price"
+                  data-plan="scale"
+                  class="mt-1.5 block font-mono text-xs font-medium tabular-nums"
+                  >$249<span class="text-(--iu-muted)">/mo</span></span
+                >
+              </div>
+            </div>
+            <div>
+              <p
+                class="border-b-2 border-(--iu-foreground) bg-(--iu-background) px-3 py-2 font-mono text-[11px] font-bold tracking-[0.08em] uppercase"
+              >
+                Usage
+              </p>
+              <dl>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Events per month</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">250K</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">2M</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">12M</span></span
+                    >
+                  </dd>
+                </div>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Extra 100K events</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">$1.20</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">$0.80</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">$0.45</span></span
+                    >
+                  </dd>
+                </div>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Endpoints</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">10</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">100</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">Unlimited</span></span
+                    >
+                  </dd>
+                </div>
+                <div class="pt-[calc(12px*var(--iu-density))]">
+                  <dt class="px-3 text-sm leading-tight font-medium">Delivery log</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">3 days</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">30 days</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">90 days</span></span
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div>
+              <p
+                class="border-t-2 border-b-2 border-(--iu-foreground) bg-(--iu-background) px-3 py-2 font-mono text-[11px] font-bold tracking-[0.08em] uppercase"
+              >
+                Delivery
+              </p>
+              <dl>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">HMAC-signed payloads</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    >
+                  </dd>
+                </div>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Automatic retries</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">24 hours</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">3 days</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">7 days</span></span
+                    >
+                  </dd>
+                </div>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Replay from the log</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                      ><span class="sr-only">Not included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    >
+                  </dd>
+                </div>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Static egress IPs</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                      ><span class="sr-only">Not included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    >
+                  </dd>
+                </div>
+                <div class="pt-[calc(12px*var(--iu-density))]">
+                  <dt class="px-3 text-sm leading-tight font-medium">Delivery regions</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">1</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span><span class="font-mono text-[13px] font-medium">3</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">6</span></span
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div>
+              <p
+                class="border-t-2 border-b-2 border-(--iu-foreground) bg-(--iu-background) px-3 py-2 font-mono text-[11px] font-bold tracking-[0.08em] uppercase"
+              >
+                Security and support
+              </p>
+              <dl>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">SAML SSO and audit log</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                      ><span class="sr-only">Not included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                      ><span class="sr-only">Not included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span
+                        aria-hidden="true"
+                        class="grid size-5 place-items-center rounded-[min(var(--iu-radius),2px)] bg-(--iu-foreground) text-(--iu-surface)"
+                        ><svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="3"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide lucide-check"
+                          aria-hidden="true"
+                        >
+                          <path d="M20 6 9 17l-5-5"></path></svg></span
+                      ><span class="sr-only">Included</span></span
+                    >
+                  </dd>
+                </div>
+                <div
+                  class="border-b [border-bottom-style:dashed] border-(--slab-shade) pt-[calc(12px*var(--iu-density))]"
+                >
+                  <dt class="px-3 text-sm leading-tight font-medium">Uptime SLA</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span aria-hidden="true" class="block h-0.5 w-3.5 bg-(--iu-muted)"></span
+                      ><span class="sr-only">Not included</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">99.9%</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">99.99%</span></span
+                    >
+                  </dd>
+                </div>
+                <div class="pt-[calc(12px*var(--iu-density))]">
+                  <dt class="px-3 text-sm leading-tight font-medium">Support</dt>
+                  <dd class="mt-1 grid tabular-nums" style="grid-template-columns: repeat(3, minmax(0, 1fr))">
+                    <span class="flex min-h-9 items-center px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Starter: </span
+                      ><span class="font-mono text-[13px] font-medium">Forum</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Team: </span
+                      ><span class="font-mono text-[13px] font-medium">Email, 1 day</span></span
+                    ><span
+                      class="flex min-h-9 items-center border-l-2 border-(--iu-foreground) px-3 pb-[calc(8px*var(--iu-density))] break-words"
+                      ><span class="sr-only">Scale: </span
+                      ><span class="font-mono text-[13px] font-medium">Engineer, 1 hour</span></span
+                    >
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <p aria-live="polite" data-slot="billing-status" class="sr-only"></p>
+        <p aria-live="polite" data-slot="checkout-status" class="sr-only"></p>
+        <!-- Cloned by the script below: the checkout error box, the retry label and the confirmation slab. --><template
+          data-slot="checkout-error-template"
+          ><div
+            role="alert"
+            data-slot="checkout-error"
+            class="mb-4 flex overflow-hidden rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-surface) text-left"
+          >
+            <span
+              aria-hidden="true"
+              class="flex w-10 shrink-0 justify-center border-r-2 border-(--iu-foreground) bg-red-600 pt-3 text-white dark:bg-red-500"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-triangle-alert lucide-alert-triangle"
+                aria-hidden="true"
+              >
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path>
+                <path d="M12 9v4"></path>
+                <path d="M12 17h.01"></path></svg
+            ></span>
+            <div class="min-w-0 px-3 py-3">
+              <p class="text-sm leading-tight font-extrabold">Checkout didn’t open</p>
+              <p class="mt-1 text-[13px] leading-snug text-pretty text-(--iu-muted)">
+                The payment page timed out after 10 seconds. Nothing was charged.
+              </p>
+              <p class="mt-2 font-mono text-[11px] tracking-[0.04em] text-(--iu-muted) uppercase">
+                Error 504 · ref 7KQ2-M9X4
+              </p>
+            </div>
+          </div></template
+        ><template data-slot="retry-label-template"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-rotate-ccw md:hidden lg:block"
+            aria-hidden="true"
+          >
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path></svg
+          >Retry checkout</template
+        ><template data-slot="confirmation-template"
+          ><div data-slot="confirmation" class="flex flex-col px-6 py-6 md:row-span-4 md:px-4 lg:px-6">
+            <div class="flex items-start justify-between gap-4">
+              <p class="font-mono text-[11px] leading-snug font-bold tracking-[0.06em] text-(--iu-muted) uppercase">
+                Order <span data-field="reference">PY-20817</span
+                ><span data-field="placed-on" class="block">Oct 26, 2026</span>
+              </p>
+              <span
+                aria-hidden="true"
+                class="shrink-0 rotate-[-8deg] rounded-[min(var(--iu-radius),2px)] border-2 border-(--iu-foreground) px-2 py-1 font-mono text-xs leading-none font-bold tracking-[0.12em] uppercase"
+                >Paid</span
+              >
+            </div>
+            <h4
+              tabindex="-1"
+              data-slot="confirmation-heading"
+              class="mt-4 text-[32px] leading-none font-extrabold tracking-[-0.04em] text-balance outline-none"
+            >
+              You’re on <span data-field="plan-name">Team</span>.
+            </h4>
+            <dl class="mt-6 border-t-2 border-(--iu-foreground) font-mono text-[13px] tabular-nums">
+              <div class="flex items-start justify-between gap-4 border-b border-dashed border-(--slab-shade) py-3">
+                <dt>
+                  <span data-field="line-label">Team, yearly</span
+                  ><span data-field="line-detail" class="mt-1 block text-(--iu-muted)">12 × $63.00</span>
+                </dt>
+                <dd data-field="subtotal">$756.00</dd>
+              </div>
+              <div class="flex items-start justify-between gap-4 border-b border-dashed border-(--slab-shade) py-3">
+                <dt data-field="tax-label">Sales tax 8.875%</dt>
+                <dd data-field="tax">$67.10</dd>
+              </div>
+              <div
+                class="flex items-start justify-between gap-4 border-b-2 border-(--iu-foreground) py-3 text-sm font-bold"
+              >
+                <dt>Total charged</dt>
+                <dd data-field="total">$823.10</dd>
+              </div>
+            </dl>
+            <p data-field="payment-note" class="mt-4 text-sm leading-snug text-pretty text-(--iu-muted)">
+              Card ending 4417. Renews Oct 26, 2027. The receipt is on its way to your billing email.
+            </p>
+            <div class="mt-auto pt-6">
+              <a
+                href="#dashboard"
+                data-field="continue"
+                class="group/cta relative grid h-12 w-full grid-cols-1 place-items-center rounded-[min(var(--iu-radius),4px)] border-2 border-(--iu-foreground) bg-(--iu-accent) px-4 text-[13px] font-extrabold tracking-[0.08em] text-(--iu-accent-foreground) uppercase shadow-[4px_4px_0_var(--slab-shade)] transition-[translate,box-shadow] duration-80 ease-linear select-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-(--iu-accent) active:translate-x-1 active:translate-y-1 active:shadow-none aria-disabled:translate-x-1 aria-disabled:translate-y-1 aria-disabled:cursor-progress aria-disabled:shadow-none motion-reduce:transition-none md:px-3 lg:px-4 pointer-fine:hover:not-active:not-aria-disabled:-translate-x-0.5 pointer-fine:hover:not-active:not-aria-disabled:-translate-y-0.5 pointer-fine:hover:not-active:not-aria-disabled:shadow-[6px_6px_0_var(--slab-shade)]"
+                ><span class="inline-flex items-center gap-2 whitespace-nowrap"
+                  >Open dashboard<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-arrow-right transition-transform duration-80 ease-linear motion-reduce:transition-none md:hidden lg:block pointer-fine:group-hover/cta:translate-x-0.5"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path></svg></span
+              ></a>
+            </div></div
+        ></template>
+      </div>
+    </section>
+    <!-- iloveui:component:end -->
+    <script>
+      (function () {
+        var root = document.querySelector('[data-slot="slab-pricing"]');
+        if (!root) return;
+
+        // The plans as printed above: prices are per month, in whole US dollars. An optional
+        // note: { monthly, yearly } replaces the line under a price ("Free forever").
+        var PLANS = {
+          starter: { name: "Starter", monthly: 29, yearly: 23 },
+          team: { name: "Team", monthly: 79, yearly: 63, highlighted: true },
+          scale: { name: "Scale", monthly: 249, yearly: 199 },
+        };
+        var LOCALE = "en-US";
+        var CURRENCY = "USD";
+        var SAVING_LABEL = "Save 20%";
+        var ORDER = {
+          reference: "PY-20817",
+          placedOn: "Oct 26, 2026",
+          paymentMethod: "Card ending 4417",
+          taxLabel: "Sales tax 8.875%",
+          taxRate: 0.08875,
+          renewsOn: { monthly: "Nov 26, 2026", yearly: "Oct 26, 2027" },
+        };
+        var SLAB_STAGGER = 60; // ms between slabs stamping into their shadows, left to right
+        var SNAP_HOLD = 170; // ms a slab stays pressed
+        var DIGIT_STAGGER = 50; // ms between neighbouring digits starting to roll
+        var DIGITS = "0123456789";
+
+        // Opens checkout for a plan. Resolve to show the confirmation; reject to show the error box with a retry.
+        // This stand-in resolves after 900ms: swap in the request to your payment provider.
+        function startCheckout(planId, billing) {
+          return new Promise(function (resolve) {
+            window.setTimeout(resolve, 900);
+          });
+        }
+
+        var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        var slabs = Array.prototype.slice.call(root.querySelectorAll('[data-slot="plan"]'));
+        var thumb = root.querySelector('[data-slot="billing-thumb"]');
+        var billingStatus = root.querySelector('[data-slot="billing-status"]');
+        var checkoutStatus = root.querySelector('[data-slot="checkout-status"]');
+        var errorTemplate = root.querySelector('[data-slot="checkout-error-template"]');
+        var retryTemplate = root.querySelector('[data-slot="retry-label-template"]');
+        var confirmationTemplate = root.querySelector('[data-slot="confirmation-template"]');
+        var checked = root.querySelector('input[name="slab-pricing-billing"]:checked');
+        var billing = checked ? checked.value : "monthly";
+        var status = "idle";
+        var activeSlab = null;
+        var stampTimers = [];
+        var stopBlocks = function () {};
+        var labels = new WeakMap();
+
+        function money(amount, fractionDigits) {
+          var digits = fractionDigits || 0;
+          return new Intl.NumberFormat(LOCALE, {
+            style: "currency",
+            currency: CURRENCY,
+            minimumFractionDigits: digits,
+            maximumFractionDigits: digits,
+          }).format(amount);
+        }
+
+        // The figure of a whole price without its currency symbol ("1,249"), the part that rolls.
+        function figure(amount) {
+          return new Intl.NumberFormat(LOCALE, {
+            style: "currency",
+            currency: CURRENCY,
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+          })
+            .formatToParts(amount)
+            .filter(function (part) {
+              return part.type === "integer" || part.type === "group";
+            })
+            .map(function (part) {
+              return part.value;
+            })
+            .join("");
+        }
+
+        function part(scope, slot) {
+          return scope.querySelector('[data-slot="' + slot + '"]');
+        }
+
+        function setText(node, text) {
+          if (node) node.textContent = text;
+        }
+
+        // Billing --------------------------------------------------------------------------------------------------
+
+        // Each digit sits in a vertical strip of 0-9. Rolling moves every strip to its new digit, left to right, at a
+        // constant speed, so a digit that travels further rolls for longer.
+        function rollFigure(node, value, from, delay) {
+          var slots = node.children;
+          if (slots.length !== value.length) {
+            rebuildFigure(node, value);
+            return;
+          }
+          var offset = from.length - value.length;
+          for (var index = 0; index < value.length; index++) {
+            var strip = slots[index].firstElementChild;
+            var digit = DIGITS.indexOf(value.charAt(index));
+            if (!strip || digit < 0) {
+              slots[index].textContent = value.charAt(index);
+              continue;
+            }
+            var previousChar = from.charAt(index + offset);
+            var previous = previousChar ? DIGITS.indexOf(previousChar) : -1;
+            var distance = previous < 0 ? 0 : Math.abs(previous - digit);
+            strip.style.transitionDuration = 90 + distance * 18 + "ms";
+            strip.style.transitionDelay = delay + index * DIGIT_STAGGER + "ms";
+            strip.style.transform = "translateY(" + digit * -10 + "%)";
+          }
+        }
+
+        // A figure that changes length (999 to 1,249) is redrawn without rolling.
+        function rebuildFigure(node, value) {
+          var sample = node.querySelector("span > span");
+          node.textContent = "";
+          value.split("").forEach(function (char) {
+            var digit = DIGITS.indexOf(char);
+            if (digit < 0 || !sample) {
+              var separator = document.createElement("span");
+              separator.className = "block h-[1em] leading-none";
+              separator.textContent = char;
+              node.appendChild(separator);
+              return;
+            }
+            var slot = document.createElement("span");
+            slot.className = "block h-[1em] overflow-hidden";
+            var strip = sample.cloneNode(true);
+            strip.style.transitionDuration = "0ms";
+            strip.style.transitionDelay = "0ms";
+            strip.style.transform = "translateY(" + digit * -10 + "%)";
+            slot.appendChild(strip);
+            node.appendChild(slot);
+          });
+        }
+
+        // The switch presses every slab into its shadow for a moment, one after another.
+        function stampSlabs() {
+          stampTimers.splice(0).forEach(function (timer) {
+            window.clearTimeout(timer);
+          });
+          slabs.forEach(function (slab) {
+            slab.removeAttribute("data-snap");
+          });
+          if (reducedMotion.matches) return;
+          slabs.forEach(function (slab, index) {
+            var start = index * SLAB_STAGGER;
+            stampTimers.push(
+              window.setTimeout(function () {
+                slab.setAttribute("data-snap", "");
+              }, start),
+              window.setTimeout(function () {
+                slab.removeAttribute("data-snap");
+              }, start + SNAP_HOLD),
+            );
+          });
+        }
+
+        function setBilling(next) {
+          if (next === billing) return;
+          var from = billing;
+          billing = next;
+          if (thumb) thumb.classList.toggle("translate-x-full", next === "yearly");
+
+          slabs.forEach(function (slab, index) {
+            var plan = PLANS[slab.getAttribute("data-plan")];
+            if (!plan) return;
+            var figureNode = part(slab, "price-figure");
+            if (figureNode) rollFigure(figureNode, figure(plan[next]), figure(plan[from]), index * SLAB_STAGGER + 40);
+            var yearlyTotal = plan.yearly * 12;
+            var saving = (plan.monthly - plan.yearly) * 12;
+            var note = plan.note && plan.note[next];
+            setText(
+              part(slab, "price-note"),
+              note ||
+                (next === "yearly"
+                  ? money(yearlyTotal) + " billed yearly" + (saving > 0 ? ", save " + money(saving) : "")
+                  : "Billed monthly, cancel anytime"),
+            );
+            setText(
+              part(slab, "price-spoken"),
+              next === "yearly"
+                ? money(plan.yearly) + " per month, billed yearly at " + money(yearlyTotal)
+                : money(plan.monthly) + " per month, billed monthly",
+            );
+          });
+
+          // Column heads and list summaries print "$79/mo": replace the price text and keep the "/mo" span.
+          root.querySelectorAll('[data-slot="column-price"], [data-slot="list-price"]').forEach(function (node) {
+            var plan = PLANS[node.getAttribute("data-plan")];
+            var text = Array.prototype.find.call(node.childNodes, function (child) {
+              return child.nodeType === Node.TEXT_NODE && child.nodeValue.trim() !== "";
+            });
+            if (plan && text) text.nodeValue = money(plan[next]);
+          });
+          setText(part(root, "comparison-billing"), "Per month, billed " + next);
+          setText(part(root, "comparison-caption"), "Plan comparison, prices per month billed " + next);
+          setText(
+            billingStatus,
+            next === "yearly"
+              ? "Yearly billing selected. " + SAVING_LABEL + ". Prices are per month, billed once a year."
+              : "Monthly billing selected.",
+          );
+          if (activeSlab && status === "success") fillConfirmation(activeSlab);
+          stampSlabs();
+        }
+
+        root.addEventListener("change", function (event) {
+          var input = event.target;
+          if (input && input.name === "slab-pricing-billing") setBilling(input.value);
+        });
+
+        // Checkout -------------------------------------------------------------------------------------------------
+
+        // Three blocks step while checkout opens: an honest busy signal, paused offscreen and still under reduced motion.
+        function runBlocks(container) {
+          var blocks = Array.prototype.slice.call(container.children);
+          var frame = 0;
+          var timer = null;
+          function paint() {
+            blocks.forEach(function (block, index) {
+              block.classList.toggle("bg-current", index === frame);
+            });
+          }
+          function stop() {
+            window.clearInterval(timer);
+            timer = null;
+          }
+          paint();
+          if (reducedMotion.matches) {
+            return function () {
+              frame = -1;
+              paint();
+            };
+          }
+          var observer = new IntersectionObserver(function (entries) {
+            if (!entries[0] || !entries[0].isIntersecting) stop();
+            else if (timer === null)
+              timer = window.setInterval(function () {
+                frame = (frame + 1) % blocks.length;
+                paint();
+              }, 180);
+          });
+          observer.observe(container);
+          return function () {
+            observer.disconnect();
+            stop();
+            frame = -1;
+            paint();
+          };
+        }
+
+        function setBusy(slab, busy) {
+          var button = part(slab, "checkout-button");
+          if (!button) return;
+          var label = part(button, "checkout-label");
+          var busyLayer = part(button, "checkout-busy");
+          if (label) label.classList.toggle("invisible", busy);
+          if (busyLayer) {
+            busyLayer.classList.toggle("invisible", !busy);
+            busyLayer.setAttribute("aria-hidden", busy ? "false" : "true");
+          }
+          stopBlocks();
+          stopBlocks = function () {};
+          if (busy) {
+            button.setAttribute("aria-disabled", "true");
+            var blocks = part(button, "busy-blocks");
+            if (blocks) stopBlocks = runBlocks(blocks);
+          } else {
+            button.removeAttribute("aria-disabled");
+          }
+        }
+
+        // Puts a slab back to its idle markup: no error box, its own button label, its price rows.
+        function restore(slab) {
+          var button = part(slab, "checkout-button");
+          var label = button && part(button, "checkout-label");
+          var error = part(slab, "checkout-error");
+          if (error) error.remove();
+          if (button) button.removeAttribute("aria-describedby");
+          if (label && labels.has(label)) label.innerHTML = labels.get(label);
+          var confirmation = part(slab, "confirmation");
+          if (confirmation) confirmation.remove();
+          slab.querySelectorAll("[data-slab-row]").forEach(function (row) {
+            row.hidden = false;
+            row.removeAttribute("data-slab-row");
+          });
+        }
+
+        function showError(slab) {
+          var button = part(slab, "checkout-button");
+          if (!button || !errorTemplate) return;
+          var box = errorTemplate.content.firstElementChild.cloneNode(true);
+          box.id = "slab-pricing-" + slab.getAttribute("data-plan") + "-error";
+          button.parentNode.insertBefore(box, button);
+          button.setAttribute("aria-describedby", box.id);
+          var label = part(button, "checkout-label");
+          if (label && retryTemplate) {
+            if (!labels.has(label)) labels.set(label, label.innerHTML);
+            label.innerHTML = retryTemplate.innerHTML;
+          }
+        }
+
+        function fillConfirmation(slab) {
+          var plan = PLANS[slab.getAttribute("data-plan")];
+          var node = part(slab, "confirmation");
+          if (!plan || !node) return;
+          var months = billing === "yearly" ? 12 : 1;
+          var perMonth = plan[billing];
+          var subtotal = perMonth * months;
+          var tax = Math.round(subtotal * ORDER.taxRate * 100) / 100;
+          var total = Math.round((subtotal + tax) * 100) / 100;
+          var fields = {
+            reference: ORDER.reference,
+            "placed-on": ORDER.placedOn,
+            "plan-name": plan.name,
+            "line-label": plan.name + ", " + billing,
+            "line-detail": months + " × " + money(perMonth, 2),
+            subtotal: money(subtotal, 2),
+            "tax-label": ORDER.taxLabel,
+            tax: money(tax, 2),
+            total: money(total, 2),
+            "payment-note":
+              ORDER.paymentMethod +
+              ". Renews " +
+              ORDER.renewsOn[billing] +
+              ". The receipt is on its way to your billing email.",
+          };
+          Object.keys(fields).forEach(function (name) {
+            setText(node.querySelector('[data-field="' + name + '"]'), fields[name]);
+          });
+        }
+
+        function showConfirmation(slab) {
+          var plan = PLANS[slab.getAttribute("data-plan")];
+          if (!plan || !confirmationTemplate) return;
+          ["plan-price", "plan-quota", "plan-features", "plan-action"].forEach(function (slot) {
+            var row = part(slab, slot);
+            if (!row) return;
+            row.hidden = true;
+            row.setAttribute("data-slab-row", "");
+          });
+          var node = confirmationTemplate.content.firstElementChild.cloneNode(true);
+          if (!plan.highlighted) {
+            var link = node.querySelector('[data-field="continue"]');
+            if (link) {
+              link.classList.replace("bg-(--iu-accent)", "bg-(--iu-surface)");
+              link.classList.replace("text-(--iu-accent-foreground)", "text-(--iu-foreground)");
+            }
+          }
+          slab.appendChild(node);
+          fillConfirmation(slab);
+          var heading = part(node, "confirmation-heading");
+          if (heading) heading.focus();
+        }
+
+        function checkout(slab) {
+          if (!slab || status === "loading") return;
+          var planId = slab.getAttribute("data-plan");
+          var plan = PLANS[planId];
+          if (!plan) return;
+          if (activeSlab && activeSlab !== slab) restore(activeSlab);
+          restore(slab);
+          activeSlab = slab;
+          status = "loading";
+          setBusy(slab, true);
+          setText(checkoutStatus, "Opening checkout for " + plan.name + ".");
+          startCheckout(planId, billing).then(
+            function () {
+              status = "success";
+              setBusy(slab, false);
+              showConfirmation(slab);
+              setText(checkoutStatus, "Payment confirmed. You’re on " + plan.name + ".");
+            },
+            function () {
+              status = "error";
+              setBusy(slab, false);
+              showError(slab);
+              setText(checkoutStatus, "");
+            },
+          );
+        }
+
+        root.addEventListener("click", function (event) {
+          var button = event.target.closest('[data-slot="checkout-button"]');
+          if (button && root.contains(button)) checkout(button.closest('[data-slot="plan"]'));
+        });
+      })();
+    </script>
+  </body>
+</html>

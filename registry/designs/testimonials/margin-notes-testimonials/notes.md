@@ -1,0 +1,20 @@
+# Margin notes
+
+## Usage notes
+
+- Use it for social proof on products whose buyers read for a living: research tools, publishing, documentation, legal or finance software. It suits five to seven specific, quotable notes better than a wall of short praise.
+- Each note needs a quote of roughly 20 to 30 words (no quotation marks), a name, a role, a company and an ISO date. Monograms are drawn from the name, so there are no photos to source.
+- The index is a WAI-ARIA tablist with automatic activation: Tab reaches the selected entry, the arrow keys along the index move and select (Up and Down in the vertical list, Left and Right in the row, wrapping at the ends; the others keep scrolling the page), Home and End jump to the first and last note, and Tab again moves into the featured quote, whose panel is focusable. `aria-orientation` follows the layout.
+- Screen readers hear each entry as "No. 03 Kwame Asante-Ofori, Lab lead, Calder Plant Genomics, tab, 3 of 5" (the narrow layout drops the role and company, which it does not show) and then the quote as one `blockquote` with its byline. The visual quote is split into words for the animation and hidden from assistive tech; an unsplit copy is read instead. The folio number and the hanging mark are decorative.
+- Layout follows its own width through container queries: below 56rem the index becomes a row of first names above the quote, family names join from 48rem (where the full row fits in Inter Tight, Geist and IBM Plex Sans), and from 56rem it is a two-column spread with the index as a vertical list whose selected entry is marked on the column rule and tinted out into the margin. If long names make the row scroll, it snaps to whole names and fades the edge that hides more. The index takes 5 of 12 columns up to 72rem and 4 above, so roles wrap in two clean lines. In the spread the quote column stretches to the index, so the byline sits on the index's last rule; in the narrow layout the byline follows the quote directly. The quote's size scales with its column, from 30px to 60px.
+- The signature moment runs only when the note changes: outgoing lines fade and lift 8px from top to bottom, incoming lines rise 8px with a 48ms stagger and the byline arrives with the first line, so a five-line swap settles in about 0.7s while the issue number rolls. A note picked again mid-exit reverses from where its lines are. The swap is interruptible, nothing moves on first render, and under reduced motion every change is instant.
+- The quote area keeps the height of the longest quote, so the byline, the page and everything below stay still while notes change.
+- States: `default`. An empty `notes` array renders nothing, so a section never shows an empty index.
+
+## Taste self-review
+
+- One clear focal point: Yes. The pull quote, set in serif italic at up to 60px, is the largest element on the page, and the only accent color is its hanging opening mark.
+- Spacing on the 4px scale: Yes. Every margin, gap and padding is a 4px multiple (mostly 12, 16, 20, 32, 40 and 56px), index rows scale from 16px with the density token, and the only fractional values are optical em offsets for the hanging mark and the rolling digits.
+- Belongs in a Linear, Stripe or Vercel product: Yes. It has the restraint of the long-form pages those teams publish: a confident serif against a quiet sans, hairline and double rules, one accent mark, and motion that only explains which note you are reading.
+- Meets its category brief: Yes. Five invented but plausible people, each with a role and company (Eastmoor University, The Saltmarsh Ledger, Calder Plant Genomics, Vestby Harbour Archive, Fernway Freight), square monogram avatars with serif initials, and no stars, ratings or customer counts: the proof is in specifics such as 312 papers, step four and forty-one interviews.
+- Distinct from every other design in its category: Yes. It is the catalog's only testimonial design built as an editorial spread with an issue index as tabs and a pull quote that swaps line by line; there are no cards, no marquee and no carousel arrows.

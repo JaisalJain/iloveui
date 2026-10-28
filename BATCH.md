@@ -1,6 +1,6 @@
-# Execute BATCH.md: add the next 30 Pro designs
+# Execute BATCH.md: add the next 30 designs
 
-Follow these steps in order when asked to "Execute BATCH.md". The batch adds 30 Pro designs; the 24 free designs are complete and stay as they are.
+Follow these steps in order when asked to "Execute BATCH.md". The batch adds 30 designs. The catalog is free and open source under the MIT License, so every new design is free too.
 
 ## 1. Read before writing anything
 
@@ -17,7 +17,7 @@ Phase 6 of the specification delivered batch 1 (its commit starts with `phase 6:
 1. Count the designs per category (`registry/designs/<category>/`) and compare with each category's target in section 9.1 (also `CATEGORIES` in `registry/definitions.ts`).
 2. Fill the slots one at a time: each slot goes to the category with the largest remaining shortfall (target minus current count, counting slots already chosen in this batch). Break ties by the lower share of the target already built. Micro-interactions follow the same rule as every other category.
 3. Give each slot a style family: prefer the families with the fewest designs in the whole catalog, and within a category prefer families it does not use yet, so every category moves toward at least four families (section 9.2).
-4. Every slot is tier `pro`. Never change an existing design's tier: the free count in each category is fixed by section 9.1.
+4. Every slot is tier `free`, like every existing design. `MONETIZATION_ENABLED` (off by default) keeps the paid architecture as a reference only; do not create Pro designs.
 
 ## 4. Design each slot
 
@@ -31,7 +31,7 @@ Phase 6 of the specification delivered batch 1 (its commit starts with `phase 6:
 ## 5. Record the batch
 
 1. If a new design genuinely belongs in a curated set, add its slug to that set in `config/collections.ts`.
-2. The home page's hero wall in `config/home.ts` is curated too, with two designs per style family. Replace a wall design only with a new design that shows the same family clearly better. Free picks stay as they are, because every new design is Pro.
+2. The home page's hero wall in `config/home.ts` is curated too, with two designs per style family. Replace a wall design only with a new design that shows the same family clearly better. The eight picks below the categories (`FREE_PICKS`) stay as they are unless a new design shows its category clearly better.
 3. Add a changelog entry `content/changelog/<YYYY-MM-DD>-catalog-batch-<N>.mdx` that exports `metadata` with `date`, `title` and `summary` (see the existing entries) and lists every new design with its category and a link to its page.
 
 ## 6. Gates and commit

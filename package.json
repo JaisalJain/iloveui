@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "description": "A marketplace of production-ready UI designs for React and HTML, re-themeable to your brand.",
+  "description": "Hand-built React and HTML UI designs you re-theme to your brand, then copy, install or download.",
   "packageManager": "pnpm@12.15.0",
   "engines": {
     "node": ">=22.13"
@@ -26,7 +26,8 @@
     "db:generate": "drizzle-kit generate",
     "cf-typegen": "CLOUDFLARE_LOAD_DEV_VARS_FROM_DOT_ENV=false wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts > /dev/null",
     "gates": "tsx scripts/gates.ts",
-    "lighthouse": "tsx scripts/lighthouse.ts"
+    "lighthouse": "tsx scripts/lighthouse.ts",
+    "screenshots": "tsx scripts/screenshots.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "7.9.20",

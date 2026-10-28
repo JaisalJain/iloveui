@@ -16,7 +16,7 @@ export default async function globalSetup() {
 /** A unique Clerk test address for a spec that creates its own user. */
 export function clerkTestEmail(name: string): string {
   const suffix = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
-  return `${name}-${suffix}+clerk_test@iloveui.dev`;
+  return `${name}-${suffix}+clerk_test@example.com`;
 }
 
 function assertTestEmail(email: string) {

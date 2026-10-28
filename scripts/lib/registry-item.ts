@@ -1,11 +1,12 @@
 import { registryItemSchema, registrySchema } from "shadcn/schema";
+import { site } from "../../lib/site";
 import { DEFAULT_THEME, IU_TOKEN_NAMES, themeTokens } from "../../lib/theme";
 import { TOKENS_ITEM, type DesignMeta } from "../../registry/schema";
 
 // shadcn registry items (https://ui.shadcn.com/schema/registry-item.json) for the @iloveui namespace.
 
 export const REGISTRY_ITEM_SCHEMA = "https://ui.shadcn.com/schema/registry-item.json";
-const AUTHOR = "iloveui <https://iloveui.dev>";
+const AUTHOR = `iloveui <${site.repository}>`;
 
 /** The free theme item every design depends on: all ten --iu-* variables for light and dark. */
 export function tokensItem() {

@@ -161,7 +161,7 @@ Choices the specification leaves open, places where current tool documentation o
 - **`users.updated_at` added to the section 12 model.** Clerk delivers webhooks at least once and out of order, so updates are applied only when newer than the stored row.
 - **`webhook_events.provider` also accepts `clerk`.** Clerk webhook deliveries are de-duplicated through the same table as payment webhooks.
 - **Foreign keys use NO ACTION, never CASCADE.** D1 always enforces foreign keys, and a cascade can silently delete child rows when a migration rebuilds a table.
-- **The seed creates a Team license with one pending seat for `demo+clerk_test@iloveui.dev`.** Signing up locally with that Clerk test address (code 424242) activates the seat, which demonstrates Pro access and Team seats without a payment.
+- **The seed creates a Team license with one pending seat for `demo+clerk_test@example.com`.** Signing up locally with that Clerk test address (code 424242) activates the seat, which demonstrates Pro access and Team seats without a payment.
 
 ## Testing
 

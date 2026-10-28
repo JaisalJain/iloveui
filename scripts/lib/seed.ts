@@ -6,8 +6,8 @@ import { licenses, seats, users } from "../../lib/db/schema";
  * Sign up locally as DEMO_SEAT_EMAIL (verification code 424242) and the invite turns into an active Pro seat.
  */
 export const DEMO_OWNER_ID = "user_demo_team_owner";
-export const DEMO_OWNER_EMAIL = "team-owner+clerk_test@iloveui.dev";
-export const DEMO_SEAT_EMAIL = "demo+clerk_test@iloveui.dev";
+export const DEMO_OWNER_EMAIL = "team-owner+clerk_test@example.com";
+export const DEMO_SEAT_EMAIL = "demo+clerk_test@example.com";
 export const DEMO_LICENSE_ID = "lic_demo_team";
 export const DEMO_PAYMENT_ID = "local_pay_demo_team";
 

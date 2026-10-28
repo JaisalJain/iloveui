@@ -5,7 +5,7 @@ import { expectNoAxeViolations, expectNoHorizontalOverflow } from "./helpers";
 
 // Runs against `pnpm dev` with the accountless Clerk development keys from .env.local.
 
-const MEMBER = "auth-e2e+clerk_test@iloveui.dev";
+const MEMBER = "auth-e2e+clerk_test@example.com";
 
 /** Our own /sign-in page, not Clerk's hosted Account Portal. */
 const onSignInPage = (url: URL) => url.origin === "http://localhost:3000" && url.pathname.startsWith("/sign-in");

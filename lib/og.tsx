@@ -14,6 +14,7 @@ import {
   WORDMARK_HEART_TRANSFORM,
   WORDMARK_VIEWBOX,
 } from "@/lib/brand";
+import { site } from "@/lib/site";
 
 export const OG_SIZE = { width: 1200, height: 630 };
 export const OG_CONTENT_TYPE = "image/png";
@@ -136,7 +137,7 @@ export function renderOgImage({ eyebrow, title, emphasis, titleEnd, description,
           color: MUTED,
         }}
       >
-        <span>iloveui.dev</span>
+        <span>{site.repository.replace(/^https:\/\//, "")}</span>
         <span>{meta ?? "React + HTML · Tailwind v4 · Re-themeable"}</span>
       </div>
     </div>,

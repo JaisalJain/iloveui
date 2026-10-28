@@ -29,18 +29,18 @@ describe("registry items", () => {
   });
 
   it("builds a design item that installs into components/iloveui", () => {
-    const item = designItem(meta, "export default function X() {}\n", "https://iloveui.dev");
+    const item = designItem(meta, "export default function X() {}\n", "https://example.com");
     expect(item.type).toBe("registry:block");
     expect(item.registryDependencies).toEqual(["@iloveui/tokens"]);
     expect(item.files?.[0]).toMatchObject({
       target: "@components/iloveui/ledger-pricing.tsx",
       content: "export default function X() {}\n",
     });
-    expect(item.meta).toMatchObject({ tier: "pro", url: "https://iloveui.dev/designs/pricing/ledger-pricing" });
+    expect(item.meta).toMatchObject({ tier: "pro", url: "https://example.com/designs/pricing/ledger-pricing" });
   });
 
   it("lists designs in the index without any file content", () => {
-    const index = registryIndex([meta], "https://iloveui.dev");
+    const index = registryIndex([meta], "https://example.com");
     expect(index.items.map((item) => item.name)).toEqual(["tokens", "ledger-pricing"]);
     expect(JSON.stringify(index)).not.toContain("content");
   });

@@ -60,7 +60,7 @@ It is also a full-stack reference: a design registry with build-time receipts, a
 - **Theme Lab.** A dock on every browse and design page: accent (8 presets or any hex), neutral family, radius, font and density. Values reach every preview iframe by `postMessage` as `--iu-*` variables, persist in `localStorage`, and are written into the code you copy and the zip you download.
 - **Preview stage.** 375, 768, 1440 and Full presets, a drag handle with the live width, light and dark, a state switcher (default, hover, focus, loading, empty, error, success and more) and a Replay button.
 - **Receipts.** Every design shows its gzipped size, runtime dependencies, axe result and reduced-motion support, all measured at build time.
-- **Agent-native.** `npx shadcn@latest add @iloveui/<slug>`, a Copy AI prompt button with your tokens appended, and an [llms.txt](https://iloveui.dev/llms.txt) index of the catalog.
+- **Agent-native.** `npx shadcn@latest add @iloveui/<slug>`, a Copy AI prompt button with your tokens appended, and an [llms.txt](app/llms.txt/route.ts) index of the catalog, served at `/llms.txt`.
 - **Real states, both themes, every width.** Each design is rendered at 375, 768 and 1440 px in light and dark, in every state it declares, and must pass axe with zero violations and no horizontal overflow.
 - **Fast to browse.** Static design pages, sandboxed iframe thumbnails that load near the viewport and pause offscreen, client-side Fuse.js search, and keyboard shortcuts (Cmd/Ctrl+K, `/`, `T`, `C`, `?`).
 

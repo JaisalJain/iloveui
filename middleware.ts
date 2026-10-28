@@ -2,6 +2,7 @@ import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { SIGNED_IN_HINT_COOKIE } from "@/components/auth/signed-in-hint";
 import { monetizationEnabled } from "@/lib/monetization";
+import { site } from "@/lib/site";
 
 // Clerk runs only where it is needed: the auth pages, /account, /checkout and the API routes that call auth().
 // Public pages (/, /designs, design pages, /r/, and /pricing when monetization is on) are not matched, so they stay static and never load
@@ -39,7 +40,7 @@ const withClerk = clerkMiddleware(
     return response;
   },
   {
-    authorizedParties: ["http://localhost:3000", "https://iloveui.dev"],
+    authorizedParties: [site.url],
     // Our own pages, not Clerk's hosted ones, for the redirects above.
     signInUrl: "/sign-in",
     signUpUrl: "/sign-up",

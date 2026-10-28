@@ -21,7 +21,7 @@ OPEN-SOURCE STATUS (binding; overrides every other section where they differ)
 
 1. OWNER INPUTS (use these values everywhere; never invent others)
 • Product name: iloveui (always lowercase).
-• Production domain for metadata, canonical URLs and legal pages: iloveui.dev. During local development NEXT_PUBLIC_SITE_URL is http://localhost:3000.
+• There is no production domain. Absolute URLs come from NEXT_PUBLIC_SITE_URL (http://localhost:3000 locally and by default); whoever deploys sets it to their own origin. Repository: https://github.com/JaisalJain/iloveui.
 • License: the project is open source under the MIT License (see LICENSE) and has no seller, support email or refund policy.
 • Prices: defined in section 11.
 

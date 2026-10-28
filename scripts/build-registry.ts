@@ -37,7 +37,7 @@ const remote = args.has("--remote");
 const skipR2 = args.has("--no-r2");
 
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://iloveui.dev").replace(/\/$/, "");
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
 
 // Anything that changes generated output for an unchanged design invalidates the cache.
 const PIPELINE_HASH = sha256(

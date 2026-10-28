@@ -122,7 +122,7 @@ export default function PrivacyPage() {
       ]}
       updated={LEGAL_UPDATED}
       sections={sections}
-      related={[RELATED.license, RELATED.docs, RELATED.contact]}
+      related={[RELATED.license, RELATED.docs]}
     />
   );
 }

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { buttonClasses } from "@/components/ui/button-classes";
-import { site } from "@/lib/site";
 import { callApi } from "./api";
 import { ConfirmDialog } from "./confirm-dialog";
 import { useRefreshUntil } from "./use-refresh-until";
@@ -61,7 +60,7 @@ export function RefundButton({
         {phase === "waiting" ? (
           <span className="text-muted">
             {slow
-              ? `The refund is on its way. Pro access ends when the payment provider confirms it, which can take a few minutes. Questions go to ${site.supportEmail}.`
+              ? `The refund is on its way. Pro access ends when the payment provider confirms it, which can take a few minutes.`
               : "Waiting for the payment provider to confirm the refund."}
           </span>
         ) : phase === "error" ? (

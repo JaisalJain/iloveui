@@ -16,10 +16,7 @@ This specification is the single source of truth for the iloveui project. Read i
 1. OWNER INPUTS (use these values everywhere; never invent others)
 • Product name: iloveui (always lowercase).
 • Production domain for metadata, canonical URLs and legal pages: iloveui.dev. During local development NEXT_PUBLIC_SITE_URL is http://localhost:3000.
-• Owner and seller on legal pages: Jaisal K Jain, sole proprietor, India. Payments processed by Dodo Payments as Merchant of Record.
-• Support email: hello@iloveui.dev
-• Refunds: full refund within 14 days of purchase, no questions asked.
-• Governing law: India.
+• License: the project is open source under the MIT License (see LICENSE) and has no seller, support email or refund policy.
 • Prices: defined in section 11.
 
 2. ROLE

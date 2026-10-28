@@ -39,7 +39,6 @@ export const clerkAppearance: Appearance = {
     // Our card draws the frame; Clerk's raised card would add a second border and a stronger shadow.
     elevation: "flush",
     privacyPageUrl: "/privacy",
-    helpPageUrl: "/contact",
   },
   elements: {
     // Fill our card instead of Clerk's fixed 25rem, so nothing overflows at 375px.

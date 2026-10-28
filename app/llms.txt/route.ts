@@ -117,7 +117,7 @@ function body(): string {
     "## Optional",
     "",
     link("Privacy", "/privacy"),
-    link("Contact", "/contact", site.supportEmail),
+    link("Source code", site.repository, "The site and every design, under the MIT License."),
     "",
   );
   return lines.join("\n");

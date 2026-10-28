@@ -29,9 +29,7 @@ export default function GlobalError({ retry }: { error: unknown; retry: () => vo
         <main>
           <p className="label">Something went wrong</p>
           <h1>iloveui failed to load.</h1>
-          <p className="body">
-            The page hit an unexpected error. Reload to try again, or email hello@iloveui.dev if it persists.
-          </p>
+          <p className="body">The page hit an unexpected error. Reload to try again.</p>
           <button type="button" onClick={() => retry()}>
             Try again
           </button>

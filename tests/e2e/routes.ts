@@ -22,5 +22,4 @@ export const SITE_ROUTES = [
   "/changelog",
   "/license",
   "/privacy",
-  "/contact",
 ] as const;

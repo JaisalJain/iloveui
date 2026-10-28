@@ -128,7 +128,7 @@ Choices the specification leaves open, places where current tool documentation o
 - **/terms and /refunds are removed rather than kept behind the monetization flag.** MIT-licensed designs leave no terms of sale or refund policy to publish; an operator who enables payments writes their own.
 - **Self-serve refunds keep a 14-day window as `REFUND_WINDOW_DAYS` in `lib/licenses.ts`.** The refund route and /account still need a window when payments are enabled, but it is a setting of the payments reference implementation, not a published policy.
 - **/privacy describes the site with monetization off and names Clerk and Dodo Payments in one sentence for operators who turn it on.** Its claims follow the code: local-storage keys, per-design totals in `design_metrics`, and IP-keyed rate-limit windows for copies and downloads.
-- **The contact and privacy pages promise no response times.** Section 1 sets none, so the pages say every email is answered without a deadline the owner never set.
+- **/contact is removed and the footer links to the GitHub repository in its place.** The page existed only to show a support email, and the open-source project takes questions and bug reports as GitHub issues; the error page opens a new issue with the error reference in its title.
 - **llms.txt shows the plain URL registry form for free installs.** The header form makes the shadcn CLI refuse to run while `ILOVEUI_TOKEN` is empty.
 - **Collections only list designs that genuinely fit.** With eight designs, the product page belongs to no set yet; a set with fewer than six designs says so honestly.
 

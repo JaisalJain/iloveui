@@ -76,7 +76,7 @@ export default function LicensePage() {
       ]}
       updated={LEGAL_UPDATED}
       sections={sections}
-      related={[RELATED.privacy, RELATED.docs, RELATED.contact]}
+      related={[RELATED.privacy, RELATED.docs]}
     />
   );
 }

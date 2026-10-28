@@ -1,7 +1,6 @@
 "use client";
 
 import { CircleCheck, Clock } from "lucide-react";
-import { site } from "@/lib/site";
 import { useRefreshUntil } from "./use-refresh-until";
 
 /**
@@ -32,11 +31,8 @@ export function CheckoutStatus({ pro }: { pro: boolean }) {
             "Every design is unlocked. Create a CLI token below to install Pro designs with the shadcn CLI."
           ) : timedOut ? (
             <>
-              Confirmation can take a minute. Reload this page shortly; if Pro is still missing, write to{" "}
-              <a href={`mailto:${site.supportEmail}`} className="text-fg underline underline-offset-4">
-                {site.supportEmail}
-              </a>{" "}
-              with the email on your receipt.
+              Confirmation can take a minute. Reload this page shortly; Pro unlocks as soon as the payment provider
+              confirms the payment.
             </>
           ) : (
             "Confirming your license with the payment provider. This page updates by itself."

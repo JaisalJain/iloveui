@@ -60,7 +60,8 @@ export default async function DesignPage({ params }: PageProps<"/designs/[catego
     dateCreated: design.createdAt,
     keywords: design.tags.join(", "),
     isAccessibleForFree: !pro,
-    author: { "@type": "Person", name: site.owner.name },
+    author: { "@type": "Organization", name: site.name, url: site.productionUrl },
+    codeRepository: site.repository,
   };
 
   return (

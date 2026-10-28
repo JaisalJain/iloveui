@@ -129,19 +129,7 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
         <BookmarkList designs={bookmarked} />
       </AccountSection>
 
-      <AccountSection
-        id="profile"
-        title="Account"
-        description={
-          <>
-            Sign-in is handled by Clerk. For anything else, write to{" "}
-            <a href={`mailto:${site.supportEmail}`} className="text-fg underline underline-offset-4">
-              {site.supportEmail}
-            </a>
-            .
-          </>
-        }
-      >
+      <AccountSection id="profile" title="Account" description="Sign-in is handled by Clerk.">
         <Panel>
           <dl className="divide-y divide-hairline">
             <DetailRow label="Email">

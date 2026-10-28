@@ -10,7 +10,9 @@ import { ShortcutsButton } from "./shortcuts-button";
 // Evaluated when the module loads (build time for static pages), not during render.
 const YEAR = new Date().getFullYear();
 
-const COLUMNS: { title: string; links: { href: Route; label: string; plain?: boolean }[] }[] = [
+type FooterLink = { href: Route; label: string; plain?: boolean; external?: boolean };
+
+const COLUMNS: { title: string; links: FooterLink[] }[] = [
   {
     title: "Product",
     links: [
@@ -36,7 +38,7 @@ const COLUMNS: { title: string; links: { href: Route; label: string; plain?: boo
     links: [
       { href: "/license", label: "License" },
       { href: "/privacy", label: "Privacy" },
-      { href: "/contact", label: "Contact" },
+      { href: site.repository as Route, label: "GitHub", external: true },
     ],
   },
 ];
@@ -53,12 +55,6 @@ export function SiteFooter() {
             <Logo aria-hidden className="h-5 w-auto text-fg" />
           </Link>
           <p className="mt-4 max-w-sm text-14 text-muted">{site.description}</p>
-          <a
-            href={`mailto:${site.supportEmail}`}
-            className="mt-6 inline-flex min-h-10 items-center rounded-control font-mono text-14 text-fg underline decoration-control underline-offset-4 transition-colors hover:decoration-fg pointer-fine:min-h-6"
-          >
-            {site.supportEmail}
-          </a>
         </div>
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-6 lg:col-start-7">
           {COLUMNS.map((column) => (
@@ -69,7 +65,11 @@ export function SiteFooter() {
               <ul className="mt-3">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    {link.plain ? (
+                    {link.external ? (
+                      <a href={link.href} rel="noopener" className={LINK}>
+                        {link.label}
+                      </a>
+                    ) : link.plain ? (
                       <a href={link.href} className={`${LINK} font-mono`}>
                         {link.label}
                       </a>

@@ -1,4 +1,4 @@
-// Owner inputs (spec section 1). Every page, legal text and metadata reads these values from here.
+// Site identity. Every page, legal text and metadata reads these values from here.
 export const site = {
   name: "iloveui",
   domain: "iloveui.dev",
@@ -7,12 +7,6 @@ export const site = {
   tagline: "UI you'll actually ship.",
   description: "Hand-built React and HTML designs. Re-theme them to your brand, then copy, install, or download.",
   repository: "https://github.com/jaisaljain/iloveui",
-  supportEmail: "hello@iloveui.dev",
-  owner: {
-    name: "Jaisal K Jain",
-    status: "sole proprietor",
-    country: "India",
-  },
 } as const;
 
 export function absoluteUrl(path: string): string {

@@ -52,8 +52,8 @@ const PROSE =
   "[&_ol>li]:marker:text-14 [&_ol>li]:marker:text-muted " +
   "[&_code]:rounded-[4px] [&_code]:bg-raised [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-14";
 
-/** Section body text, also usable outside LegalPage (the contact page). */
-export function Prose({ children, className }: { children: ReactNode; className?: string }) {
+/** Section body text. */
+function Prose({ children, className }: { children: ReactNode; className?: string }) {
   return <div className={className ? `${PROSE} ${className}` : PROSE}>{children}</div>;
 }
 
@@ -158,7 +158,7 @@ export function FactList({ items }: { items: { term: string; detail: ReactNode; 
   );
 }
 
-export function RelatedPages({ links }: { links: LegalPageProps["related"] }) {
+function RelatedPages({ links }: { links: LegalPageProps["related"] }) {
   return (
     <nav aria-label="Related pages" className="mt-24 border-t border-hairline pt-8">
       <p className="label-mono text-muted">Related</p>

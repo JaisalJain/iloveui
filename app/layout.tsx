@@ -9,7 +9,6 @@ export const metadata: Metadata = {
   title: { default: `${site.name} · ${site.tagline}`, template: `%s · ${site.name}` },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.owner.name }],
   openGraph: { siteName: site.name, type: "website", locale: "en_US" },
   twitter: { card: "summary_large_image" },
 };

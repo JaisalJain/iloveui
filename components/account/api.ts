@@ -1,10 +1,8 @@
 "use client";
 
-import { site } from "@/lib/site";
-
 export type ApiResult<T> = { ok: true; status: number; data: T } | { ok: false; status: number; message: string };
 
-const OFFLINE = `The request did not reach iloveui. Check your connection and try again, or write to ${site.supportEmail}.`;
+const OFFLINE = `The request did not reach iloveui. Check your connection and try again.`;
 
 /** JSON calls to our own /api routes with same-origin cookies; errors carry the route's human message. */
 export async function callApi<T>(url: string, init?: RequestInit): Promise<ApiResult<T>> {
@@ -26,6 +24,6 @@ export async function callApi<T>(url: string, init?: RequestInit): Promise<ApiRe
   const message =
     typeof body === "object" && body !== null && typeof (body as { message?: unknown }).message === "string"
       ? (body as { message: string }).message
-      : `Something went wrong (HTTP ${response.status}). Try again, or write to ${site.supportEmail}.`;
+      : `Something went wrong (HTTP ${response.status}). Try again.`;
   return { ok: false, status: response.status, message };
 }

@@ -1,19 +1,18 @@
 import { expect, test } from "@playwright/test";
 import { expectNoAxeViolations, expectNoHorizontalOverflow, setColorScheme, watchConsole } from "./helpers";
 
-// Phase 5 pages owned outside the home and docs work: legal pages, contact, collections, SEO files and JSON-LD.
+// Phase 5 pages owned outside the home and docs work: legal pages, collections, SEO files and JSON-LD.
 
 const PAGES = [
   "/license",
   "/privacy",
-  "/contact",
   "/collections",
   "/collections/saas-landing",
   "/collections/ai-app",
   "/collections/dashboard",
 ] as const;
 
-test.describe("legal, contact and collection pages", () => {
+test.describe("legal and collection pages", () => {
   for (const route of PAGES) {
     for (const scheme of ["dark", "light"] as const) {
       test(`${route} renders cleanly in ${scheme}`, async ({ page }) => {
@@ -116,7 +115,6 @@ test.describe("SEO files", () => {
       "/changelog",
       "/license",
       "/privacy",
-      "/contact",
     ]) {
       expect(urls, path).toContain(path);
     }

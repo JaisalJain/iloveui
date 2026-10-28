@@ -1,7 +1,6 @@
 import type { OgContent } from "@/lib/og";
-import { site } from "@/lib/site";
 
-// Open Graph image text for the legal and contact pages, drawn by renderOgImage in lib/og.tsx.
+// Open Graph image text for the legal pages, drawn by renderOgImage in lib/og.tsx.
 
 export const LEGAL_OG = {
   license: {
@@ -19,12 +18,5 @@ export const LEGAL_OG = {
     titleEnd: "about you.",
     description: "No accounts, no analytics, no tracking cookies. Your theme settings stay in your browser.",
     meta: "No personal data",
-  },
-  contact: {
-    eyebrow: "Contact",
-    title: "Write to a",
-    emphasis: "person.",
-    description: `Licenses, refunds, invoices and bugs all go to ${site.supportEmail}.`,
-    meta: site.supportEmail,
   },
 } satisfies Record<string, OgContent>;

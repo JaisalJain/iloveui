@@ -8,7 +8,7 @@ import { getPaymentProvider } from "@/lib/payments/provider";
 import { json } from "@/lib/payments/request";
 import { site } from "@/lib/site";
 
-// GET /api/invoice/<licenseId>: the owner's invoice. Dodo Payments, as Merchant of Record, issues the real invoice
+// GET /api/invoice/<licenseId>: the owner's invoice. Dodo Payments issues the real invoice
 // and we stream its PDF. Local test purchases get a plainly labelled test receipt, in development only.
 
 const escape = (value: string) => value.replace(/[&<>"']/g, (char) => `&#${char.charCodeAt(0)};`);

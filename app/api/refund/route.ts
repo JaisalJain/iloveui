@@ -6,9 +6,8 @@ import { licenses } from "@/lib/db/schema";
 import { isRefundable, REFUND_WINDOW_DAYS } from "@/lib/licenses";
 import { getPaymentProvider } from "@/lib/payments/provider";
 import { json, readJsonObject } from "@/lib/payments/request";
-import { site } from "@/lib/site";
 
-// POST /api/refund { licenseId }: the owner's self-serve refund within the refund window (spec sections 1 and 11).
+// POST /api/refund { licenseId }: the owner's self-serve refund within the refund window (spec section 11).
 // This only asks the provider; access ends when the provider's refund webhook reaches fulfilment.
 export async function POST(request: Request) {
   if (!monetizationEnabled()) return monetizationOff();
@@ -28,7 +27,7 @@ export async function POST(request: Request) {
     return json(
       {
         error: "window_closed",
-        message: `Refunds are available for ${REFUND_WINDOW_DAYS} days after purchase, and that window has closed. Write to ${site.supportEmail} if something went wrong.`,
+        message: `Refunds are available for ${REFUND_WINDOW_DAYS} days after purchase, and that window has closed.`,
       },
       409,
     );
@@ -38,7 +37,7 @@ export async function POST(request: Request) {
     return json(
       {
         error: "provider_unavailable",
-        message: `This purchase was made through a payment setup that is not active here. Write to ${site.supportEmail} for a refund.`,
+        message: "This purchase was made through a payment setup that is not active here.",
       },
       503,
     );
@@ -55,7 +54,7 @@ export async function POST(request: Request) {
     return json(
       {
         error: "refund_failed",
-        message: `The refund could not be requested. Try again, or write to ${site.supportEmail}.`,
+        message: "The refund could not be requested. Try again.",
       },
       502,
     );

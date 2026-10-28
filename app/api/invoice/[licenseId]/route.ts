@@ -59,7 +59,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 <div class="card">
 <p class="banner">Local test receipt, not a tax invoice</p>
 <h1>${escape(site.name)} ${escape(plan.name)}</h1>
-<p>This purchase went through the local test checkout on a development server. No money moved. In production, ${escape(site.merchantOfRecord)} issues the invoice as Merchant of Record.</p>
+<p>This purchase went through the local test checkout on a development server. No money moved. In production, the payment provider issues the invoice.</p>
 <dl>${rows.map(([term, value]) => `<dt>${escape(term)}</dt><dd>${escape(value)}</dd>`).join("")}</dl>
 <table>
 <thead><tr><th scope="col">Item</th><th scope="col" class="num">Amount</th></tr></thead>

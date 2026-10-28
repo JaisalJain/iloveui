@@ -1,57 +1,32 @@
-import { site } from "./site";
+// The MIT License that covers the site and every design. Rendered on /license and shipped as LICENSE.txt in every
+// download; tests/unit/license.test.ts keeps it identical to the LICENSE file at the repository root.
+export const LICENSE_TITLE = "MIT License";
 
-// The iloveui license (spec section 11). Rendered on /license and shipped as LICENSE.txt in every download.
-export const LICENSE_TITLE = "iloveui License";
+export const COPYRIGHT_LINE = "Copyright (c) 2026 Jaisal K Jain";
 
-export const LICENSE_SECTIONS: { heading: string; body: string[] }[] = [
-  {
-    heading: "Who this license is from",
-    body: [
-      `The designs on ${site.domain} are made and sold by ${site.owner.name}, ${site.owner.status}, ${site.owner.country}. Payments are processed by ${site.merchantOfRecord}, the Merchant of Record.`,
-    ],
-  },
-  {
-    heading: "What you may do",
-    body: [
-      "Use the designs you have access to in an unlimited number of personal and commercial end products, for yourself and for your clients.",
-      "Modify the designs as much as you like, combine them with other work, and ship them in websites, web apps, desktop and mobile apps, internal tools and client deliverables.",
-    ],
-  },
-  {
-    heading: "What you may not do",
-    body: [
-      "Resell, sublicense or redistribute the designs, original or modified, as a UI kit, template, component library or design asset.",
-    ],
-  },
-  {
-    heading: "Free designs",
-    body: ["Free designs follow the same terms at no cost."],
-  },
-  {
-    heading: "Pro and Team",
-    body: [
-      "A Pro license is for one person. A Team license covers up to 10 people, each with their own seat.",
-      "Both are lifetime licenses: they include every current design and every design added later.",
-    ],
-  },
-  {
-    heading: "No warranty",
-    body: [
-      'The designs are provided "as is", without warranty of any kind. The seller is not liable for any claim, damages or other liability arising from their use.',
-    ],
-  },
-  {
-    heading: "Governing law",
-    body: [`This license is governed by the laws of ${site.governingLaw}. Questions: ${site.supportEmail}.`],
-  },
+/** The license body as wrapped in the LICENSE file, one string per paragraph. */
+const PARAGRAPHS = [
+  `Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:`,
+  `The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.`,
+  `THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.`,
 ];
 
-/** Plain-text version for LICENSE.txt in downloads. */
+/** The paragraphs unwrapped, for reflowing text on /license. */
+export const LICENSE_PARAGRAPHS: readonly string[] = PARAGRAPHS.map((paragraph) => paragraph.replace(/\n/g, " "));
+
+/** Plain-text version for LICENSE.txt in downloads, identical to the repository's LICENSE file. */
 export function licenseText(): string {
-  const lines = [LICENSE_TITLE, "=".repeat(LICENSE_TITLE.length), ""];
-  for (const section of LICENSE_SECTIONS) {
-    lines.push(section.heading, "-".repeat(section.heading.length));
-    for (const paragraph of section.body) lines.push(paragraph, "");
-  }
-  return `${lines.join("\n").trim()}\n`;
+  return `${[LICENSE_TITLE, COPYRIGHT_LINE, ...PARAGRAPHS].join("\n\n")}\n`;
 }

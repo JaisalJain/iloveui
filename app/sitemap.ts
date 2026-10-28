@@ -15,7 +15,7 @@ import { CATEGORIES } from "@/registry/definitions";
 
 type Entry = MetadataRoute.Sitemap[number];
 
-const LEGAL_PAGES = ["/license", "/terms", "/privacy", "/refunds", "/contact"];
+const LEGAL_PAGES = ["/license", "/privacy", "/contact"];
 
 /** The newest createdAt among designs, so listing pages change their lastModified when the catalog grows. */
 function newest(designs: readonly CatalogDesign[]): string | undefined {

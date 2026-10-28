@@ -35,9 +35,7 @@ const COLUMNS: { title: string; links: { href: Route; label: string; plain?: boo
     title: "Legal",
     links: [
       { href: "/license", label: "License" },
-      { href: "/terms", label: "Terms" },
       { href: "/privacy", label: "Privacy" },
-      { href: "/refunds", label: "Refunds" },
       { href: "/contact", label: "Contact" },
     ],
   },
@@ -89,8 +87,7 @@ export function SiteFooter() {
       </div>
       <div className="page-frame flex flex-wrap items-center justify-between gap-4 border-t border-hairline py-6">
         <p className="text-12 text-muted">
-          © {YEAR} {site.owner.name}, {site.owner.country}. Payments processed by {site.merchantOfRecord}, Merchant of
-          Record.
+          © {YEAR} {site.name}. Open source under the MIT License.
         </p>
         <div className="flex flex-wrap items-center gap-4">
           {process.env.NODE_ENV === "development" && monetizationEnabled() ? <DevRegionSwitcher /> : null}

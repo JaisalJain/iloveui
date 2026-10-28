@@ -38,7 +38,6 @@ export const clerkAppearance: Appearance = {
     socialButtonsVariant: "blockButton",
     // Our card draws the frame; Clerk's raised card would add a second border and a stronger shadow.
     elevation: "flush",
-    termsPageUrl: "/terms",
     privacyPageUrl: "/privacy",
     helpPageUrl: "/contact",
   },

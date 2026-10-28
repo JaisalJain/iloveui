@@ -3,12 +3,13 @@ import { PAID_PLANS, type Currency } from "@/config/pricing";
 import type { Db } from "./db/create";
 import { licenses, seats, users } from "./db/schema";
 import { getAccess, type Access } from "./entitlements";
-import { site } from "./site";
 
 // What /account shows about purchases and seats, plus the rules for refunds and Team seats (spec sections 8, 11).
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-export const REFUND_WINDOW_MS = site.refundWindowDays * DAY_MS;
+/** How long after purchase /account offers a self-serve refund. */
+export const REFUND_WINDOW_DAYS = 14;
+export const REFUND_WINDOW_MS = REFUND_WINDOW_DAYS * DAY_MS;
 /** Seats on a Team license, the owner's included. */
 export const TEAM_SEAT_LIMIT = PAID_PLANS.team.seats;
 

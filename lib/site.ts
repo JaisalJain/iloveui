@@ -13,9 +13,6 @@ export const site = {
     status: "sole proprietor",
     country: "India",
   },
-  merchantOfRecord: "Dodo Payments",
-  refundWindowDays: 14,
-  governingLaw: "India",
 } as const;
 
 export function absoluteUrl(path: string): string {

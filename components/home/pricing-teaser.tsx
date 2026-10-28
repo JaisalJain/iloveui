@@ -3,7 +3,6 @@ import Link from "next/link";
 import { TierTag } from "@/components/designs/tier-tag";
 import { buttonClasses } from "@/components/ui/button-classes";
 import { FREE_PLAN, PAID_PLANS, formatPrice } from "@/config/pricing";
-import { site } from "@/lib/site";
 import { SectionHeading } from "./section-heading";
 
 // The home page is static, so it cannot read the visitor's country: prices show in USD with the India prices stated
@@ -33,7 +32,7 @@ export function PricingTeaser() {
       <div className="page-frame grid gap-12 py-24 sm:py-32 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-4">
           <SectionHeading id="home-pricing" index="04" eyebrow="Pricing" title="Pay once. Keep every design.">
-            One lifetime payment, no subscription. Full refund within {site.refundWindowDays} days, no questions asked.
+            One lifetime payment, no subscription.
           </SectionHeading>
           <p className="mt-6 max-w-md text-14 text-muted">
             Prices in USD. In India, Pro is{" "}

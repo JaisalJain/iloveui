@@ -3,8 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { FREE_PLAN, PAID_PLANS, formatPrice } from "@/config/pricing";
 import { buttonClasses } from "@/components/ui/button-classes";
-import type { AccountSummary } from "@/lib/licenses";
-import { site } from "@/lib/site";
+import { REFUND_WINDOW_DAYS, type AccountSummary } from "@/lib/licenses";
 import { DetailRow, Panel } from "./account-section";
 import { formatDate } from "./format";
 import { RefundButton } from "./refund-button";
@@ -90,7 +89,7 @@ export function LicensePanel({ summary }: { summary: AccountSummary }) {
                 ? "Refunded"
                 : license.refundable
                   ? `Available until ${formatDate(license.refundDeadline)}`
-                  : `The ${site.refundWindowDays}-day window closed on ${formatDate(license.refundDeadline)}`}
+                  : `The ${REFUND_WINDOW_DAYS}-day window closed on ${formatDate(license.refundDeadline)}`}
             </DetailRow>
           </dl>
           {license.invoiceAvailable || (ownsActive && license.refundable) ? (

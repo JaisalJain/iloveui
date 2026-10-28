@@ -58,7 +58,7 @@ export function Prose({ children, className }: { children: ReactNode; className?
 }
 
 /**
- * The reading layout shared by /license, /terms, /privacy and /refunds: a title block with the last-updated date,
+ * The reading layout shared by /license and /privacy: a title block with the last-updated date,
  * a plain-language summary, a sticky table of contents beside a 65ch reading column, and links to related pages.
  * Server-rendered with no client JavaScript: the table of contents is plain anchor links.
  */

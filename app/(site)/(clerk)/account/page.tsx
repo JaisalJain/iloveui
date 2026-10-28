@@ -12,7 +12,7 @@ import { getViewer } from "@/lib/auth";
 import { listBookmarks } from "@/lib/bookmarks";
 import { getAllDesigns, getDesign } from "@/lib/catalog";
 import { getDb } from "@/lib/db";
-import { getAccountSummary } from "@/lib/licenses";
+import { getAccountSummary, REFUND_WINDOW_DAYS } from "@/lib/licenses";
 import { site } from "@/lib/site";
 import { getTokenInfo } from "@/lib/tokens";
 
@@ -76,7 +76,7 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
       <AccountSection
         id="license"
         title="License"
-        description={`Your plan, receipt and refund. Refunds are open for ${site.refundWindowDays} days after purchase, no questions asked.`}
+        description={`Your plan, receipt and refund. Self-serve refunds are open for ${REFUND_WINDOW_DAYS} days after purchase.`}
       >
         <LicensePanel summary={summary} />
       </AccountSection>

@@ -97,7 +97,7 @@ Choices the specification leaves open, places where current tool documentation o
 
 ## Payments and access
 
-- **`PaymentProvider` also has `getInvoice`.** Dodo Payments issues the invoices as Merchant of Record, so the account page's invoice link asks the provider instead of rendering our own.
+- **`PaymentProvider` also has `getInvoice`.** Dodo Payments issues the invoices, so the account page's invoice link asks the provider instead of rendering our own.
 - **The local test checkout and its webhook route exist only in development builds.** A compile-time `NODE_ENV` check around their dynamic imports removes them from production output, where those URLs return the site's 404 and `scripts/check-build.ts` confirms no LocalProvider code shipped.
 - **LocalProvider's checkout link carries an HMAC-signed session that expires after 24 hours.** The local checkout page then needs no storage and no sign-in of its own, and a tampered link is rejected.
 - **Webhooks are processed before they are acknowledged.** The event row, license and seats are written in one D1 batch and the route answers 200 only after it commits, so a failure is retried with the same webhook id and de-duplicated through `webhook_events`.
@@ -124,8 +124,10 @@ Choices the specification leaves open, places where current tool documentation o
 
 ## Legal and SEO
 
-- **The legal pages keep the owner's full refund within 14 days.** Dodo Payments' merchant terms describe refunds as enabled for 7 days by default; the promise follows section 1, and the refund route asks Dodo for each refund within the 14 days.
-- **The terms cap liability at the amount paid for the license.** It is the usual limit for a one-time digital purchase; the owner should confirm it before launch.
+- **The site and every design are released under the MIT License, and each zip's LICENSE.txt is the repository's LICENSE file.** One standard permissive license replaces the commercial terms for the open-source release, and `tests/unit/license.test.ts` keeps `lib/license.ts` and `LICENSE` identical.
+- **/terms and /refunds are removed rather than kept behind the monetization flag.** MIT-licensed designs leave no terms of sale or refund policy to publish; an operator who enables payments writes their own.
+- **Self-serve refunds keep a 14-day window as `REFUND_WINDOW_DAYS` in `lib/licenses.ts`.** The refund route and /account still need a window when payments are enabled, but it is a setting of the payments reference implementation, not a published policy.
+- **/privacy describes the site with monetization off and names Clerk and Dodo Payments in one sentence for operators who turn it on.** Its claims follow the code: local-storage keys, per-design totals in `design_metrics`, and IP-keyed rate-limit windows for copies and downloads.
 - **The contact and privacy pages promise no response times.** Section 1 sets none, so the pages say every email is answered without a deadline the owner never set.
 - **llms.txt shows the plain URL registry form for free installs.** The header form makes the shadcn CLI refuse to run while `ILOVEUI_TOKEN` is empty.
 - **Collections only list designs that genuinely fit.** With eight designs, the product page belongs to no set yet; a set with fewer than six designs says so honestly.

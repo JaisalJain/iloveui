@@ -2,6 +2,7 @@
   "name": "iloveui",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "A marketplace of production-ready UI designs for React and HTML, re-themeable to your brand.",
   "packageManager": "pnpm@12.15.0",
   "engines": {

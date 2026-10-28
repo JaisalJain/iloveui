@@ -46,7 +46,7 @@ export const DOC_PAGES: DocPage[] = [
     href: "/docs/license",
     title: "License",
     description:
-      "The iloveui license in plain words: what you can build with the designs, what you cannot do with them, and refunds.",
+      "The MIT License in plain words: what you can do with the designs, the one condition, and what no warranty means.",
   },
 ];
 

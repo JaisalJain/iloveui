@@ -5,9 +5,7 @@ import { expectNoAxeViolations, expectNoHorizontalOverflow, setColorScheme, watc
 
 const PAGES = [
   "/license",
-  "/terms",
   "/privacy",
-  "/refunds",
   "/contact",
   "/collections",
   "/collections/saas-landing",
@@ -56,14 +54,13 @@ test.describe("legal, contact and collection pages", () => {
     });
   }
 
-  test("legal pages carry the owner's terms", async ({ page }) => {
-    await page.goto("/refunds");
-    await expect(page.getByText("Full refund within 14 days of purchase. No reason needed.")).toBeVisible();
-    await page.goto("/terms");
-    await expect(page.getByText(/Merchant of Record and authorized reseller/).first()).toBeVisible();
-    await expect(page.getByText("Governed by the laws of India.", { exact: true })).toBeVisible();
+  test("the license page carries the MIT License and privacy states what is collected", async ({ page }) => {
     await page.goto("/license");
-    await expect(page.getByText(/Resell, sublicense or redistribute the designs/).first()).toBeVisible();
+    await expect(page.getByText("MIT License", { exact: true }).first()).toBeVisible();
+    await expect(page.getByText(/^Permission is hereby granted, free of charge, to any person/)).toBeVisible();
+    await page.goto("/privacy");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("We collect nothing about you.");
+    await expect(page.getByText(/rate limited by IP address/)).toBeVisible();
   });
 
   test("the table of contents jumps to its section", async ({ page }) => {
@@ -118,9 +115,7 @@ test.describe("SEO files", () => {
       "/docs/cli",
       "/changelog",
       "/license",
-      "/terms",
       "/privacy",
-      "/refunds",
       "/contact",
     ]) {
       expect(urls, path).toContain(path);

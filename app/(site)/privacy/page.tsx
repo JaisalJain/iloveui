@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Emphasis, FactList, LegalPage, type LegalSection } from "@/components/legal/legal-page";
-import { DODO_PRIVACY_POLICY, LEGAL_UPDATED, RELATED } from "@/components/legal/legal-links";
+import { LEGAL_UPDATED, RELATED } from "@/components/legal/legal-links";
 import { site } from "@/lib/site";
 
-const description = `What iloveui stores and why, the processors involved (Clerk, Cloudflare, ${site.merchantOfRecord}), cookies and local storage, retention, and how to get or delete your data.`;
+const description = `${site.name} collects no personal data: no accounts, no analytics and no tracking cookies. Theme settings stay in your browser, and usage is counted as anonymous totals per design.`;
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -13,136 +12,23 @@ export const metadata: Metadata = {
   openGraph: { title: `Privacy · ${site.name}`, description, url: "/privacy" },
 };
 
-const email = <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>;
-const mor = site.merchantOfRecord;
-
+// Every claim here describes the site with MONETIZATION_ENABLED false. The storage keys are the ones the site code
+// writes; the counters are lib/metrics.ts and the IP-keyed windows in app/api/metrics and app/api/download.
 const sections: LegalSection[] = [
   {
-    id: "who-is-responsible",
-    title: "Who is responsible",
-    content: (
-      <p>
-        {site.owner.name}, a {site.owner.status} in {site.owner.country}, runs {site.name} and decides what happens to
-        the data described here. Write to {email} about anything on this page.
-      </p>
-    ),
-  },
-  {
-    id: "what-we-store",
-    title: "What we store and why",
+    id: "what-we-collect",
+    title: "What we collect",
     content: (
       <>
         <p>
-          Browsing, previewing and copying free designs needs no account and stores nothing about you on our side. Once
-          you sign in or buy, our database holds the following, and nothing else about you.
+          Nothing that identifies you. {site.name} has no accounts, no sign-in and no payments, so there is no name,
+          email address or payment detail to store. There are no analytics, no advertising and no tracking cookies, and
+          no data is sold or shared.
         </p>
-        <FactList
-          items={[
-            {
-              term: "Account",
-              detail: "Your Clerk user id and email address, to sign you in, tie purchases to you and answer support.",
-              meta: "Kept until you delete your account",
-            },
-            {
-              term: "Purchases",
-              detail: `Plan, currency, amount, date, status and the ${mor} payment id, to grant access, process refunds and link invoices.`,
-              meta: "Kept for tax and accounting records, also after account deletion",
-            },
-            {
-              term: "Team seats",
-              detail:
-                "The email addresses a Team owner invites and whether each seat is invited, active or removed, so an invite can turn into a seat when that person signs in.",
-              meta: "Kept for the life of the Team license",
-            },
-            {
-              term: "CLI token",
-              detail:
-                "A hash of your token, never the token itself, with when it was created and last used, to check installs from the shadcn CLI.",
-              meta: "Replaced when you rotate it; deleted with your account",
-            },
-            {
-              term: "Bookmarks",
-              detail: "The designs you bookmark, so they follow you between devices.",
-              meta: "Until you remove them or delete your account",
-            },
-            {
-              term: "Usage counts",
-              detail:
-                "How many times each design was copied, installed or downloaded, as totals per design that are not linked to anyone, to sort by most copied.",
-              meta: "Totals only, kept indefinitely",
-            },
-            {
-              term: "Rate limits",
-              detail:
-                "A counter per account, token or IP address for one minute or one hour, to stop abuse of the registry, downloads and checkout.",
-              meta: "Old windows are deleted the next time the same key is counted",
-            },
-          ]}
-        />
-      </>
-    ),
-  },
-  {
-    id: "what-we-never-store",
-    title: "What we never collect",
-    content: (
-      <ul>
-        <li>Card or bank details. Those go straight to {mor} and never reach us.</li>
-        <li>Your password. Clerk handles sign-in; with GitHub or Google there is no password at all.</li>
-        <li>Advertising or analytics trackers. The site has none, and we do not sell or rent data to anyone.</li>
-      </ul>
-    ),
-  },
-  {
-    id: "processors",
-    title: "Who processes data for us",
-    content: (
-      <>
-        <p>Three companies process data so the site can work. Each sees only what its job needs.</p>
-        <FactList
-          items={[
-            {
-              term: "Clerk",
-              detail: (
-                <>
-                  Sign-in and sessions: your email address, the sign-in method you chose and session details. Clerk only
-                  runs on the sign-in, sign-up, account and checkout pages.{" "}
-                  <a href="https://clerk.com/legal/privacy" rel="noopener">
-                    Clerk’s privacy policy
-                  </a>
-                </>
-              ),
-            },
-            {
-              term: "Cloudflare",
-              detail: (
-                <>
-                  Hosting, the database and file storage. Like any web host it processes IP addresses and request
-                  details to serve and protect the site, and tells us the country of your connection so we can show
-                  prices in rupees or dollars. We do not store that country.{" "}
-                  <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener">
-                    Cloudflare’s privacy policy
-                  </a>
-                </>
-              ),
-            },
-            {
-              term: mor,
-              detail: (
-                <>
-                  Checkout, payment, tax and invoices, as Merchant of Record. {mor} collects your payment and billing
-                  details as an independent controller under its own policy, and sends us the payment id, amount,
-                  currency and status, plus the name, email and country you entered at checkout. We keep only what is
-                  listed above.{" "}
-                  <a href={DODO_PRIVACY_POLICY} rel="noopener">
-                    {mor}’ privacy policy
-                  </a>
-                </>
-              ),
-            },
-          ]}
-        />
-        <p>These companies may process data outside {site.owner.country}.</p>
+        <p>
+          Cloudflare, which hosts the site, processes IP addresses and request details to serve and protect it, as any
+          web host does.
+        </p>
       </>
     ),
   },
@@ -152,27 +38,12 @@ const sections: LegalSection[] = [
     content: (
       <>
         <p>
-          There are no advertising or tracking cookies. Browsing the catalog signed out sets none at all. This is
-          everything the site keeps in your browser:
+          The site sets no tracking cookies. Your preferences stay in your browser’s local storage, which never leaves
+          your device:
         </p>
         <FactList
           items={[
-            {
-              term: "Clerk session cookies",
-              detail: "Keep you signed in. Clerk sets them on the sign-in, sign-up, account and checkout pages.",
-              meta: "Cookies · until you sign out or they expire",
-            },
-            {
-              term: "iu_signed_in",
-              detail:
-                "Holds the value 1 while you are signed in, so static pages know to fetch your bookmarks and Pro code. It grants nothing by itself.",
-              meta: "Cookie · up to 30 days",
-            },
-            {
-              term: "iloveui.mode",
-              detail: "Your light or dark theme choice.",
-              meta: "Local storage",
-            },
+            { term: "iloveui.mode", detail: "Your light or dark theme choice.", meta: "Local storage" },
             {
               term: "iloveui.theme",
               detail: "Your Theme Lab settings: accent, neutral, radius, font and density.",
@@ -189,86 +60,69 @@ const sections: LegalSection[] = [
               meta: "Local storage",
             },
             {
-              term: "iloveui.bookmarks",
-              detail: "Bookmarked designs, so bookmarks work before you sign in.",
-              meta: "Local storage",
-            },
-            {
-              term: "iloveui.bookmarks.merged",
-              detail: "Marks that this browser’s bookmarks were added to your account, so they merge only once.",
-              meta: "Local storage",
-            },
-            {
               term: "iloveui.recent",
               detail: "The last few designs and pages you opened from search.",
               meta: "Local storage",
             },
-            {
-              term: "iloveui.session-refresh",
-              detail: "Stops the site from refreshing an expired sign-in more than once in a row.",
-              meta: "Session storage · cleared when the tab closes",
-            },
           ]}
         />
-        <p>Local storage never leaves your browser. Clearing your site data removes all of it.</p>
+        <p>Clearing your site data removes all of it.</p>
       </>
     ),
   },
   {
-    id: "your-rights",
-    title: "Access, correction and deletion",
+    id: "usage-counts",
+    title: "Usage counts and rate limits",
     content: (
       <>
         <p>
-          Email {email} from your account’s address to get a copy of your data, correct it, or delete your account, and
-          you will get an answer from the same address.
+          How many times each design is copied, installed or downloaded is kept as a running total per design. The
+          totals are not linked to any person, device or address, and they power the “most copied” sort.
         </p>
         <p>
-          Deleting your account removes your email address, CLI token, bookmarks and Team seats. Purchase records stay,
-          without your email, because tax law requires them and so a refund or invoice can still be processed. Your
-          bookmarks and theme in this browser stay until you clear your site data.
+          To stop abuse, copy counting and downloads are rate limited by IP address: a counter holds the address and a
+          number for one minute (copies) or one hour (downloads). An expired window is deleted the next time the same
+          address is counted.
         </p>
       </>
+    ),
+  },
+  {
+    id: "accounts-and-payments",
+    title: "Accounts and payments",
+    content: (
+      <p>
+        If whoever runs this site switches on accounts and payments, sign-in is handled by Clerk and payments by Dodo
+        Payments, and both process account and payment data under their own privacy policies.
+      </p>
     ),
   },
   {
     id: "changes",
     title: "Changes",
-    content: (
-      <p>When this policy changes, the date at the top changes with it. Earlier versions are available on request.</p>
-    ),
-  },
-  {
-    id: "contact",
-    title: "Contact",
-    content: (
-      <p>
-        Questions or requests go to {email}. The <Link href="/contact">contact page</Link> has more ways we can help.
-      </p>
-    ),
+    content: <p>When this statement changes, the date at the top changes with it.</p>,
   },
 ];
 
 export default function PrivacyPage() {
   return (
     <LegalPage
-      eyebrow="Privacy policy"
+      eyebrow="Privacy"
       title={
         <>
-          We keep <Emphasis>very</Emphasis> little.
+          We collect <Emphasis>nothing</Emphasis> about you.
         </>
       }
-      intro={<p>What {site.name} stores, why it needs it, who helps run the service, and how to have it removed.</p>}
+      intro={<p>{site.name} works without accounts, so it has no personal data to collect, keep or share.</p>}
       summary={[
-        "Browsing signed out stores nothing about you and sets no cookies.",
-        "Signed in, we store your email, your purchases, a hash of your CLI token and your bookmarks.",
-        `Card details go to ${mor}, our Merchant of Record, and never reach us.`,
-        "No advertising, no analytics trackers, no selling data.",
-        `Email ${site.supportEmail} to get a copy of your data or delete your account.`,
+        "No accounts, no analytics, no advertising and no tracking cookies.",
+        "Theme and other preferences stay in your browser’s local storage.",
+        "Copies, installs and downloads are counted as anonymous totals per design.",
+        "IP addresses appear only in rate-limit counters.",
       ]}
       updated={LEGAL_UPDATED}
       sections={sections}
-      related={[RELATED.terms, RELATED.license, RELATED.contact]}
+      related={[RELATED.license, RELATED.docs, RELATED.contact]}
     />
   );
 }

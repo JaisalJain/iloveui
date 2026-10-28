@@ -26,7 +26,7 @@ function archive() {
     { name: "iloveui-slab-pricing/component.tsx", data: encoder.encode("export default function SlabPricing() {}\n") },
     { name: "iloveui-slab-pricing/component.html", data: encoder.encode(HTML) },
     { name: "iloveui-slab-pricing/ai-prompt.md", data: encoder.encode("# Slab pricing\n") },
-    { name: "iloveui-slab-pricing/LICENSE.txt", data: encoder.encode("iloveui License\n") },
+    { name: "iloveui-slab-pricing/LICENSE.txt", data: encoder.encode("MIT License\n") },
   ]);
 }
 

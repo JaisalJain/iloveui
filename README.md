@@ -101,5 +101,9 @@ Nothing here has been run. When you are ready:
 2. **Database and private files.** Apply the migrations with `pnpm exec wrangler d1 migrations apply iloveui-db --remote`, then upload the Pro payloads and zips with `pnpm build-registry --remote` and `pnpm build-zips --remote`.
 3. **Secrets.** Run `pnpm exec wrangler secret put <NAME>` for `TOKEN_PEPPER` (a new random value), `CLERK_SECRET_KEY`, `CLERK_WEBHOOK_SIGNING_SECRET`, `DODO_PAYMENTS_API_KEY`, `DODO_PAYMENTS_WEBHOOK_KEY`, `DODO_PAYMENTS_ENVIRONMENT` (`live_mode`) and the four live `DODO_PRODUCT_*` ids. `LOCAL_WEBHOOK_SECRET` and `DEV_REGION` are development only. `NEXT_PUBLIC_SITE_URL` (`https://iloveui.dev`) and the live `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` are read at build time, so set them in the environment of the machine that deploys (for example in `.env.production.local`).
 4. **Clerk.** Create the production instance for iloveui.dev, add its DNS records in Cloudflare as DNS only (grey cloud), enable GitHub and Google, and add a webhook endpoint at `https://iloveui.dev/api/webhooks/clerk` for `user.created`, `user.updated` and `user.deleted`; its signing secret is `CLERK_WEBHOOK_SIGNING_SECRET`.
-5. **Dodo Payments.** Create the four products in live mode, add a webhook endpoint at `https://iloveui.dev/api/webhooks/dodo` for payment, refund and dispute events (its secret is `DODO_PAYMENTS_WEBHOOK_KEY`), switch `DODO_PAYMENTS_ENVIRONMENT` to `live_mode`, and set the refund window to 14 days so it matches the refund policy on /refunds.
+5. **Dodo Payments.** Create the four products in live mode, add a webhook endpoint at `https://iloveui.dev/api/webhooks/dodo` for payment, refund and dispute events (its secret is `DODO_PAYMENTS_WEBHOOK_KEY`), switch `DODO_PAYMENTS_ENVIRONMENT` to `live_mode`, and set its refund window to match `REFUND_WINDOW_DAYS` in `lib/licenses.ts` (14 days).
 6. **Deploy.** Run `pnpm run deploy`, then attach iloveui.dev to the Worker as a custom domain in the Cloudflare dashboard.
+
+## License
+
+The site and every design are released under the [MIT License](LICENSE).

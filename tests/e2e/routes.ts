@@ -21,8 +21,6 @@ export const SITE_ROUTES = [
   "/docs/license",
   "/changelog",
   "/license",
-  "/terms",
   "/privacy",
-  "/refunds",
   "/contact",
 ] as const;

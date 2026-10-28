@@ -40,15 +40,11 @@ function faq(currency: Currency): { question: string; answer: ReactNode }[] {
     {
       question: "What can I build with the designs?",
       answer:
-        "Unlimited personal and commercial end products, for yourself and for clients. You may not resell, sublicense or redistribute the designs as a UI kit, template, component library or design asset, whether original or modified. Free designs come under the same terms at no cost.",
+        "Anything. Every design is released under the MIT License: use it in personal and commercial work, change it and share it, as long as the copyright notice stays with it. Free and Pro designs come under the same terms.",
     },
     {
       question: "Do I get new designs after I buy?",
       answer: `Yes. Pro and Team include every design in the catalog today and every one added later, with no renewal. The catalog is growing toward ${CATALOG_TARGET} designs.`,
-    },
-    {
-      question: "What if it is not for me?",
-      answer: `You get a full refund within ${site.refundWindowDays} days of purchase, no questions asked. Access ends when the refund goes through.`,
     },
     {
       question: "How do Team seats work?",
@@ -72,7 +68,8 @@ function faq(currency: Currency): { question: string; answer: ReactNode }[] {
     },
     {
       question: "Will I get an invoice?",
-      answer: `${site.merchantOfRecord} processes payments as Merchant of Record. It adds sales tax or VAT where it applies and emails you an invoice; the invoice link also stays on your account page.`,
+      answer:
+        "Yes. The payment provider adds sales tax or VAT where it applies and emails you an invoice; the invoice link also stays on your account page.",
     },
     {
       question: "Is there India pricing?",
@@ -250,8 +247,7 @@ export default async function PricingPage({
         {currency === "USD"
           ? `Buyers in India pay ${formatPrice(PAID_PLANS.pro.prices.INR.amountMinor, "INR")} for Pro and ${formatPrice(PAID_PLANS.team.prices.INR.amountMinor, "INR")} for Team.`
           : `Outside India, Pro is ${formatPrice(PAID_PLANS.pro.prices[other].amountMinor, other)} and Team ${formatPrice(PAID_PLANS.team.prices[other].amountMinor, other)}.`}{" "}
-        {site.merchantOfRecord}, our Merchant of Record, adds sales tax or VAT at checkout where it applies. Full refund
-        within {site.refundWindowDays} days.
+        Sales tax or VAT is added at checkout where it applies.
       </p>
 
       <section aria-labelledby="compare" className="mt-24">

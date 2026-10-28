@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Logo } from "@/components/site/logo";
 import { buttonClasses } from "@/components/ui/button-classes";
 import { PAID_PLANS, formatPrice } from "@/config/pricing";
+import { REFUND_WINDOW_DAYS } from "@/lib/licenses";
 import { createLocalProvider } from "@/lib/payments/local";
-import { site } from "@/lib/site";
 import { LocalCheckoutForm } from "./local-checkout";
 
 // The local stand-in for Dodo's hosted checkout: an order summary on the left, the payment panel on the right, and
@@ -20,7 +20,7 @@ function Banner() {
         </span>
         <span className="text-pretty text-muted">
           No money moves. Pay and Fail send signed webhooks to{" "}
-          <code className="font-mono text-12">/api/webhooks/local</code>, the way {site.merchantOfRecord} would.
+          <code className="font-mono text-12">/api/webhooks/local</code>, the way Dodo Payments would.
         </span>
       </div>
     </header>
@@ -109,7 +109,7 @@ export async function LocalCheckoutPage({ token }: { token: string | null }) {
             </div>
           </dl>
           <p className="mt-6 max-w-md text-14 text-pretty text-muted">
-            One payment, no renewal. Full refund within {site.refundWindowDays} days of purchase, no questions asked.
+            One payment, no renewal. Refundable from your account for {REFUND_WINDOW_DAYS} days after purchase.
           </p>
         </section>
 

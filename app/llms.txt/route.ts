@@ -28,7 +28,7 @@ function body(): string {
       paid
         ? `The catalog has ${designs.length} designs today, ${free} of them free. Free designs install without an account. Pro designs need a personal token from ${absoluteUrl("/account")}, created after buying Pro (${formatPrice(pro.USD.amountMinor, "USD")}, or ${formatPrice(pro.INR.amountMinor, "INR")} in India) or Team.`
         : `The catalog has ${designs.length} designs today, all free. Every design installs, copies and downloads without an account.`
-    } All designs follow the license at ${absoluteUrl("/license")}: use them in any end product; do not resell or redistribute them as a UI kit, template or library.`,
+    } All designs are released under the MIT License (${absoluteUrl("/license")}): use, change and share them in any project, keeping the copyright notice.`,
     "",
     "## Install",
     "",
@@ -110,15 +110,13 @@ function body(): string {
           ),
         ]
       : []),
-    link("License", "/license", "What you may build with the designs."),
+    link("License", "/license", "The MIT License, which covers every design."),
     link("Changelog", "/changelog", "New designs and changes, newest first."),
     link("Catalog index (JSON)", "/catalog.json", "Every design's slug, name, category, tier, tags and size."),
     "",
     "## Optional",
     "",
-    link("Terms", "/terms"),
     link("Privacy", "/privacy"),
-    link("Refunds", "/refunds", `Full refund within ${site.refundWindowDays} days of purchase, no questions asked.`),
     link("Contact", "/contact", site.supportEmail),
     "",
   );

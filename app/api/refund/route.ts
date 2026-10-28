@@ -3,7 +3,7 @@ import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
 import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { licenses } from "@/lib/db/schema";
-import { isRefundable } from "@/lib/licenses";
+import { isRefundable, REFUND_WINDOW_DAYS } from "@/lib/licenses";
 import { getPaymentProvider } from "@/lib/payments/provider";
 import { json, readJsonObject } from "@/lib/payments/request";
 import { site } from "@/lib/site";
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     return json(
       {
         error: "window_closed",
-        message: `Refunds are available for ${site.refundWindowDays} days after purchase, and that window has closed. Write to ${site.supportEmail} if something went wrong.`,
+        message: `Refunds are available for ${REFUND_WINDOW_DAYS} days after purchase, and that window has closed. Write to ${site.supportEmail} if something went wrong.`,
       },
       409,
     );
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   try {
     const refund = await provider.refund(
       license.providerPaymentId,
-      `Self-serve refund within the ${site.refundWindowDays}-day window`,
+      `Self-serve refund within the ${REFUND_WINDOW_DAYS}-day window`,
     );
     if (refund.status === "failed") throw new Error(`Refund ${refund.refundId} failed.`);
     return json({ refundId: refund.refundId, status: refund.status }, 202);

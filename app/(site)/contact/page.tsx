@@ -99,14 +99,6 @@ export default function ContactPage() {
               One address for everything. There is no contact form and no ticket queue; a plain email with the details
               below gets the fastest answer.
             </p>
-            <dl className="mt-6 grid grid-cols-[auto_minmax(0,1fr)] gap-x-6 gap-y-2 border-t border-hairline pt-6 text-14">
-              <dt className="font-mono text-12 leading-[1.55rem] text-muted">Seller</dt>
-              <dd>
-                {site.owner.name}, {site.owner.status}, {site.owner.country}
-              </dd>
-              <dt className="font-mono text-12 leading-[1.55rem] text-muted">Payments</dt>
-              <dd>{site.merchantOfRecord}, Merchant of Record</dd>
-            </dl>
           </div>
         </div>
 
@@ -145,12 +137,7 @@ export default function ContactPage() {
       <RelatedPages
         links={[
           { href: "/docs", label: "Docs", description: "Installation, the CLI, theming and AI prompts." },
-          {
-            href: "/refunds",
-            label: "Refunds",
-            description: `Full refund within ${site.refundWindowDays} days, from your account page.`,
-          },
-          { href: "/license", label: "License", description: "What you may build with the designs." },
+          { href: "/license", label: "License", description: "MIT: use, change and share the designs." },
         ]}
       />
     </div>

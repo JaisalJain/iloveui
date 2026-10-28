@@ -35,7 +35,7 @@ registry/designs/<category>/<slug>/
   "name": "Ledger pricing",
   "category": "pricing",
   "styleFamily": "swiss-minimal",
-  "tier": "pro",
+  "tier": "free",
   "description": "Three plans on a strict grid with a yearly toggle that rolls the prices and states the saving.",
   "tags": ["pricing", "billing-toggle", "comparison"],
   "states": ["default", "loading", "error", "success"],

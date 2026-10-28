@@ -1,5 +1,7 @@
 # Decisions
 
+Entries before "Open-source release" were made for the paid build; where they describe pricing, accounts, checkout or Pro designs, they apply only with `MONETIZATION_ENABLED` on.
+
 Choices the specification leaves open, places where current tool documentation or tool compatibility overrides a detail of the specification, and every dependency that is not named in the stack (section 6). One sentence of reasoning each.
 
 ## Toolchain

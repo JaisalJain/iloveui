@@ -4,7 +4,7 @@ import { SIGNED_IN_HINT_COOKIE } from "@/components/auth/signed-in-hint";
 import { monetizationEnabled } from "@/lib/monetization";
 
 // Clerk runs only where it is needed: the auth pages, /account, /checkout and the API routes that call auth().
-// Public pages (/, /designs, design pages, /pricing, /r/) are not matched, so they stay static and never load
+// Public pages (/, /designs, design pages, /r/, and /pricing when monetization is on) are not matched, so they stay static and never load
 // Clerk. Every page and route still checks auth itself; the redirect below only saves a round trip.
 
 // SIGNED_IN_HINT_COOKIE is set while the visitor is signed in, so static pages know when to ask the API for owner-only

@@ -3,6 +3,12 @@ ILOVEUI SPECIFICATION
 HOW TO USE THIS SPECIFICATION
 This specification is the single source of truth for the iloveui project. Read it fully before writing any code. If a frontend-design skill is available to you, load it; where it conflicts with this specification, this specification wins. Execute PHASES 1 to 6 in order without stopping. At the end of each phase run every quality gate in section 16, fix every failure, then commit with the message "phase N: <summary>" and continue. Never leave TODO comments, placeholder text, lorem ipsum, unfinished functions, dead links, or commented-out code. If this specification is silent on a decision, choose the simplest, most accessible option that fits the design system and record it in DECISIONS.md with one sentence of reasoning. Before writing integration code for Next.js, @opennextjs/cloudflare, Cloudflare D1, Cloudflare R2, Wrangler, Clerk, Dodo Payments, the shadcn registry, or Tailwind CSS v4, read that tool's current official documentation with your web tools and follow it; where the docs and this specification disagree on an API detail, follow the docs and note it in DECISIONS.md.
 
+OPEN-SOURCE STATUS (binding; overrides every other section where they differ)
+• The project is open source under the MIT License (LICENSE). All designs are free: every meta.json has tier "free", and every design copies, installs and downloads anonymously.
+• Monetization is off by default behind MONETIZATION_ENABLED (lib/monetization.ts). Off, /pricing, /sign-in, /sign-up, /account, /checkout, /dev/checkout and the account, checkout, token, code and webhook API routes answer 404, Clerk never runs, and the site shows no tier tags, tier filters, bookmarks, pricing teaser or sign-in link.
+• The paid architecture (Clerk, licenses, Team seats, PaymentProvider with LocalProvider and DodoProvider, CLI tokens, entitlements, Pro-only registry items) stays in the code as a working reference. Sections 0, 8, 10, 11, 12 and 16 describe it; it applies only with MONETIZATION_ENABLED=true. MONETIZATION_PRO_SLUGS marks designs Pro for one build when the flag is on (the e2e dev run uses it).
+• /terms, /refunds and /contact were removed and must not be rebuilt. /pricing, /sign-in, /sign-up and /account must not be linked or rebuilt as public pages unless the flag is on. Never add Pro designs or change a design's tier.
+
 0. SCOPE OF THIS BUILD
 • Everything runs on the owner's machine at http://localhost:3000. Do not deploy anything. Do not require any external account, API key, or paid service to run, test, or demo the full product.
 • The architecture is production-ready for Cloudflare Workers, so going live later means adding secrets and running one deploy command, with no code changes.
@@ -23,7 +29,7 @@ This specification is the single source of truth for the iloveui project. Read i
 You are a principal design engineer and staff full-stack architect with the craft of Rauno Freiberg, Emil Kowalski and Paco Coursey and the engineering rigor of the teams behind Linear, Vercel, Raycast and shadcn/ui. You build the product and the catalog yourself, end to end.
 
 3. MISSION
-iloveui is a marketplace of production-ready UI designs that developers paste into real apps. Target catalog: 365 designs. 24 are free forever. The rest unlock with one lifetime payment. The marketplace site is the product's best showcase: if it looks generic, the product fails.
+iloveui is an open-source catalog of production-ready UI designs that developers paste into real apps. Target catalog: 365 designs, all free under the MIT License. (It launched as a marketplace with 24 free designs and one lifetime payment for the rest; that model now exists only behind MONETIZATION_ENABLED.) The site is the product's best showcase: if it looks generic, the product fails.
 
 4. COMPETITIVE DESIGN BENCHMARK (what we learn from each, and how we beat it)
 • Aceternity UI: famous for dramatic motion (beams, spotlights, 3D cards) on landing pages. Weakness: effects often overpower content, heavy dependencies, many designs share one look. We match its motion craft but use motion only to explain state and draw attention to one thing, and every design works with motion turned off.
@@ -94,21 +100,21 @@ The result must feel like this: Tailwind Plus discipline, Aceternity-level motio
 • Receipt bar in JetBrains Mono: gzipped size ("2.4 kB gzip"), runtime dependencies ("motion, lucide-react" or "0 deps"), "axe: 0 violations", "reduced motion: yes".
 
 8. INFORMATION ARCHITECTURE (every route has a unique title, description and OG image)
-• / : hero wall; value strip (Re-themeable, Two formats, Audited) with one sentence each; category index with live counts; Free picks row of 8; how it works (Pick, Theme, Ship); pricing teaser; latest changelog entries; footer.
-• /designs : sidebar with categories and counts, Free/Pro toggle, style family, has-motion, and format filters; sort by newest or most copied; URL-synced filters; cards with live iframe thumbnail, name, category, tag and gzipped size; 24 per page with Load more and real paginated URLs.
+• / : hero wall; value strip (Re-themeable, Two formats, Audited) with one sentence each; category index with live counts; picks row of 8; how it works (Pick, Theme, Ship); open-source section (pricing teaser only with MONETIZATION_ENABLED on); latest changelog entries; footer.
+• /designs : sidebar with categories and counts, style family (plus a Free/Pro toggle only with monetization on), has-motion, and format filters; sort by newest or most copied; URL-synced filters; cards with live iframe thumbnail, name, category, tag and gzipped size; 24 per page with Load more and real paginated URLs.
 • /designs/[category] : same view pre-filtered.
-• /designs/[category]/[slug] : preview stage, title, description, tags, style family, receipt bar, React and HTML tabs with multi-file shiki viewer and copy, CLI install bar, Copy AI Prompt, Download zip, bookmark, 4 related designs (same category first, then same style family).
+• /designs/[category]/[slug] : preview stage, title, description, tags, style family, receipt bar, React and HTML tabs with multi-file shiki viewer and copy, CLI install bar, Copy AI Prompt, Download zip, bookmark (monetization on only), 4 related designs (same category first, then same style family).
 • /collections and /collections/[slug] : three curated sets: saas-landing, ai-app, dashboard.
-• /pricing : Free, Pro, Team table; regional price note; 8-question FAQ (license, updates, refunds, team seats, CLI, formats, invoices, India pricing); checkout buttons.
-• /sign-in, /sign-up : Clerk components styled to site tokens.
-• /account : license status, plan, purchase date, invoice link, CLI token panel, components.json snippet, bookmarks, Team seat management for Team owners.
+• /pricing (MONETIZATION_ENABLED on only; 404 otherwise): Free, Pro, Team table; regional price note; FAQ (license, updates, team seats, CLI, formats, invoices, India pricing); checkout buttons.
+• /sign-in, /sign-up (monetization on only): Clerk components styled to site tokens.
+• /account (monetization on only): license status, plan, purchase date, invoice link, CLI token panel, components.json snippet, bookmarks, Team seat management for Team owners.
 • /docs, /docs/installation, /docs/cli, /docs/theming, /docs/ai-prompts, /docs/license : MDX.
 • /changelog : MDX entries from content/changelog/, newest first.
-• /license, /terms, /privacy, /refunds, /contact : complete pages using section 1 values.
-• Custom 404 and error pages. /sitemap.xml, /robots.txt, /llms.txt, /r/[name].json, /api/checkout, /api/webhooks/dodo, /api/webhooks/local (development only), /api/webhooks/clerk, /api/download/[slug], /api/token/rotate, /dev/checkout (development only).
+• /license (the MIT License text) and /privacy (a short statement that the site collects no personal data while MONETIZATION_ENABLED is false). There is no /terms, /refunds or /contact page; the footer links to the GitHub repository.
+• Custom 404 and error pages. /sitemap.xml, /robots.txt, /llms.txt, /r/[name].json, /api/download/[slug]. With monetization on only: /api/checkout, /api/webhooks/dodo, /api/webhooks/local (development only), /api/webhooks/clerk, /api/token/rotate, /dev/checkout (development only).
 
 9. CATALOG
-9.1 Categories, target counts and exact free counts (total free = 24):
+9.1 Categories and target counts. Every design is free; the free counts in parentheses describe the original paid model and apply only if the owner turns monetization back on (total free = 24):
 Hero sections 25 (2 free); Bento grids and feature showcases 25 (2); Navigation, mega menus and command palettes 20 (2); Pricing and checkout 20 (2); Testimonials and social proof 15 (1); Call to action and footers 20 (1); Auth and onboarding 20 (2); Dashboard shells and KPI cards 25 (2); Data tables and lists 15 (1); Forms and inputs 20 (2); Cards and buttons 20 (2); Modals, sheets and toasts 15 (1); AI chat and agent interfaces 25 (1); Text and background effects 20 (1); Micro-interactions and motion components 35 (2); Settings and account 10 (0); Empty, error and loading states 10 (0); E-commerce 15 (0); Full-page templates 10 (0).
 9.2 Style families (every category uses at least four): Swiss minimal, Editorial, Neo-brutalist, Soft tactile, Dark technical, Playful, Luxury, Data-dense. Each family has a written definition in registry/style-families.md covering type pairing, radius range, border and shadow use, color behavior and motion personality; every design follows its family's definition.
 9.3 Per-category craft briefs (every design in a category must meet its brief):
@@ -132,7 +138,7 @@ Hero sections 25 (2 free); Bento grids and feature showcases 25 (2); Navigation,
 • E-commerce: product card, product page, cart drawer, checkout summary, with stock, variant and discount states.
 • Full-page templates: complete pages assembled from catalog designs plus new connective sections, consistent in one style family.
 9.4 Folder per design: registry/designs/[category]/[slug]/ with meta.json, component.tsx, component.html, preview.tsx, ai-prompt.md, notes.md.
-9.5 meta.json (Zod-validated in registry/schema.ts): slug (kebab-case, unique), name, category, styleFamily, tier ("free" or "pro"), description (max 160 characters), tags (3 to 8), states (subset of: default, hover, focus, active, disabled, loading, empty, error, success), hasMotion, dependencies (subset of: motion, lucide-react), registryDependencies, version (semver), createdAt (ISO date).
+9.5 meta.json (Zod-validated in registry/schema.ts): slug (kebab-case, unique), name, category, styleFamily, tier ("free" or "pro"; always "free" in this repository), description (max 160 characters), tags (3 to 8), states (subset of: default, hover, focus, active, disabled, loading, empty, error, success), hasMotion, dependencies (subset of: motion, lucide-react), registryDependencies, version (semver), createdAt (ISO date).
 9.6 Rules for every design:
 • Theming only through CSS variables: --iu-accent, --iu-accent-foreground, --iu-background, --iu-surface, --iu-border, --iu-foreground, --iu-muted, --iu-radius, --iu-font, --iu-density. No hard-coded brand colors.
 • Light and dark both designed deliberately, never a simple inversion.
@@ -147,7 +153,7 @@ Hero sections 25 (2 free); Bento grids and feature showcases 25 (2); Navigation,
 • ai-prompt.md: sections Component, Props, Tokens, Dependencies, Integration steps, Customization ideas.
 • notes.md: usage notes plus a taste self-review answering yes to: one clear focal point; spacing on the 4px scale; belongs in a Linear, Stripe or Vercel product; meets its category brief; distinct from every other design in its category. Any no means redesign before continuing.
 
-10. REGISTRY, CLI AND ACCESS CONTROL
+10. REGISTRY, CLI AND ACCESS CONTROL (Pro items, tokens and entitlement checks apply only with MONETIZATION_ENABLED on; off, every item is a static free file)
 • scripts/build-registry.ts validates every meta.json, bundles component.tsx with esbuild (react and react-dom external) to compute gzipped size with zlib.gzipSync, and emits the search index, receipt data, and registry item JSON matching https://ui.shadcn.com/schema/registry-item.json.
 • Free registry items are static files. Pro items exist only in server-side code paths, never in public/, static JSON, or client bundles.
 • /r/[name].json serves free items to everyone. Pro items require header Authorization: Bearer <token>; empty or missing token means anonymous; invalid token returns 401 JSON pointing to /account; valid token without an active license returns 403.
@@ -159,14 +165,14 @@ Hero sections 25 (2 free); Bento grids and feature showcases 25 (2); Navigation,
 • Downloads: per-design zips (component.tsx, component.html, ai-prompt.md, LICENSE.txt) built into R2 by scripts/build-zips.ts; /api/download/[slug] checks entitlement and streams from R2; 60 downloads per user per hour.
 • Rate limits via a D1 fixed-window counter: /r/ 120 requests per token per minute; checkout 10 per user per hour.
 
-11. PRICING, CHECKOUT AND LICENSE
+11. PRICING, CHECKOUT AND LICENSE (reference architecture; active only with MONETIZATION_ENABLED on)
 • config/pricing.ts: Free (24 designs, commercial use); Pro lifetime launch USD 99, regular USD 149, single user, all current and future designs; Team lifetime USD 299, up to 10 seats; India pricing INR 4,999 Pro and INR 14,999 Team. Each plan maps to a Dodo product id from env vars; LocalProvider uses the same plan definitions.
 • Region: read the CF-IPCountry header; IN gets INR, others USD. When the header is absent (local development), use DEV_REGION from .env.local (default IN). A small region switcher appears in the footer only in development for testing both.
 • /api/checkout requires sign-in, creates a one-time checkout with the Clerk user id and email in metadata, returns the checkout URL; return URL is <SITE_URL>/account?checkout=success.
 • Fulfilment lives in one function, lib/payments/fulfil.ts, called by both webhook routes: verify signature, store event id in webhook_events and ignore duplicates, on success create the license (Pro or Team) and seats, on refund mark it refunded and revoke tokens. Never grant access from the return URL alone.
 • /api/webhooks/clerk verifies the signature and upserts or deletes users; in keyless mode, users are upserted on first authenticated request.
 • Team: owner invites up to 9 more emails from /account; an invite becomes an active seat when that email signs in.
-• License (in /license and LICENSE.txt): use in unlimited personal and commercial end products for yourself and clients; do not resell, sublicense, or redistribute the designs as a UI kit, template, component library or design asset, original or modified. Free designs follow the same terms at no cost.
+• License (in LICENSE, /license and each zip's LICENSE.txt): the MIT License, Copyright (c) 2026 Jaisal K Jain.
 
 12. DATA MODEL (Drizzle on D1)
 users (id = Clerk user id, email, createdAt); licenses (id, ownerUserId, plan: pro or team, currency, amountMinor, providerPaymentId unique, provider: dodo or local, status: active or refunded, createdAt); seats (id, licenseId, email, userId nullable, status: invited, active or removed, createdAt); api_tokens (id, userId unique, tokenHash, lastUsedAt, createdAt); bookmarks (userId, slug, createdAt, primary key userId+slug); design_metrics (slug primary key, copies, installs, downloads); webhook_events (id, provider, eventId unique, receivedAt); rate_limits (key, windowStart, count, primary key key+windowStart).
@@ -191,7 +197,7 @@ Scripts in package.json: setup, dev, build, preview (OpenNext Workers runtime lo
 • Playwright renders every design preview at 375, 768 and 1440 in light and dark, saves snapshots, and asserts no horizontal overflow.
 • axe-core reports zero violations on every site route and every design snapshot.
 • A search of the codebase for the forbidden words and patterns in 7.1, plus "TODO", "lorem", "Acme" and "John Doe", finds nothing outside CLAUDE.md.
-• Tests prove that signed-out and signed-in non-owner requests to a Pro registry item, download, and code panel receive zero lines of Pro source.
+• Tests prove that, with MONETIZATION_ENABLED on, signed-out and signed-in non-owner requests to a Pro registry item, download, and code panel receive zero lines of Pro source; and that with it off every design is served anonymously and every account, payment and Pro route is a 404.
 • A test proves LocalProvider routes return 404 in a production build.
 
 17. PHASES
@@ -206,10 +212,10 @@ Phase 6. Catalog batch one: bring the catalog to 60 designs, exactly the 24 free
 Local setup on Windows with WSL2 (Ubuntu): Node 22 LTS, pnpm, pnpm install, pnpm setup, pnpm dev, open http://localhost:3000. How to test a purchase locally. How to add real Clerk keys and real Dodo test keys to .env.local (and that LocalProvider switches off automatically). A separate "Going live" section listing, without executing: creating D1 and R2 in Cloudflare, applying migrations remotely, setting secrets with wrangler, configuring Clerk and Dodo webhooks to the production domain, switching DODO_PAYMENTS_ENVIRONMENT to live_mode, and deploying.
 
 19. BATCH.md CONTENT (write in Phase 6)
-A self-contained instruction that, when run with "Execute BATCH.md", adds the next 30 Pro designs: re-read CLAUDE.md first, pick categories furthest below their targets in 9.1 (micro-interactions follow the same rule as every other category), keep style families balanced, never duplicate the layout or interaction of an existing design, follow every rule in section 9 including the category brief, run every gate in section 16, add a changelog entry listing the new designs, and commit as "catalog: batch N" with N incrementing.
+A self-contained instruction that, when run with "Execute BATCH.md", adds the next 30 designs (tier free, like every design): re-read CLAUDE.md first, pick categories furthest below their targets in 9.1 (micro-interactions follow the same rule as every other category), keep style families balanced, never duplicate the layout or interaction of an existing design, follow every rule in section 9 including the category brief, run every gate in section 16, add a changelog entry listing the new designs, and commit as "catalog: batch N" with N incrementing.
 
 make ui designs that will give a "wow" factor when people see it
 (do not commit with claude as coauthor)
 
 20. DEFINITION OF DONE
-/goal all six phases committed; every gate passes; 60 designs live at http://localhost:3000; pnpm setup then pnpm dev works on a fresh clone with no accounts; a local test purchase unlocks Pro and a refund revokes it; adding real Clerk and Dodo keys switches providers with no code changes; no Pro source reaches any non-entitled request; nothing from the forbidden list appears anywhere.
+/goal all six phases committed; every gate passes; 60 designs live at http://localhost:3000, all free under the MIT License; pnpm setup then pnpm dev works on a fresh clone with no accounts; with MONETIZATION_ENABLED on, a local test purchase unlocks Pro and a refund revokes it, and adding real Clerk and Dodo keys switches providers with no code changes; no Pro source reaches any non-entitled request; nothing from the forbidden list appears anywhere.

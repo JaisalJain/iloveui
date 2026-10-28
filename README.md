@@ -10,6 +10,7 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/JaisalJain/iloveui/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/JaisalJain/iloveui/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-FF4D1F?style=flat-square"></a>
   <img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-111111?style=flat-square&logo=nextdotjs&logoColor=white">
   <img alt="React 19" src="https://img.shields.io/badge/React-19-111111?style=flat-square&logo=react&logoColor=white">
@@ -136,7 +137,7 @@ Setting `DODO_PAYMENTS_API_KEY` switches checkout to Dodo Payments and turns the
 You need Node.js 22.13 or newer and pnpm (the version is pinned in `package.json`; `corepack enable` installs it).
 
 ```bash
-git clone https://github.com/jaisaljain/iloveui.git
+git clone https://github.com/JaisalJain/iloveui.git
 cd iloveui
 pnpm install
 pnpm setup   # .env.local with generated secrets, local D1 migrations, registry build, download zips

@@ -13,10 +13,8 @@ next-env.d.ts
 .wrangler/
 .dev.vars*
 
-# environment
-.env
-.env.local
-.env.*.local
+# environment: every .env file except the committed template
+.env*
 !.env.example
 
 # Clerk accountless app breadcrumb (holds the claim token)

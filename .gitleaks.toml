@@ -1,0 +1,7 @@
+# gitleaks configuration: default rules plus an allowlist for demo data.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Fictional API key shown in the quorum-workspace-settings design's key-created state"
+regexes = ['''qk_live_Hq3vN8xT2mLs9RcW4yJb6KeP0aZd''']

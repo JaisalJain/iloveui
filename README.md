@@ -21,8 +21,8 @@
 
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/home-dark.png">
-    <img src="docs/screenshots/home-light.png" alt="The iloveui home page: a headline on the left and four columns of live designs scrolling on the right">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/home-dark.webp">
+    <img src="docs/screenshots/home-light.webp" alt="The iloveui home page: a headline on the left and four columns of live designs scrolling on the right">
   </picture>
 </p>
 
@@ -36,15 +36,15 @@ It is also a full-stack reference: a design registry with build-time receipts, a
   <tr>
     <td width="50%">
       <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/designs-dark.png">
-        <img src="docs/screenshots/designs-light.png" alt="The /designs page: category sidebar, filters and a grid of live design thumbnails">
+        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/designs-dark.webp">
+        <img src="docs/screenshots/designs-light.webp" alt="The /designs page: category sidebar, filters and a grid of live design thumbnails">
       </picture>
       <p align="center"><sub><b>/designs</b>: live thumbnails, URL-synced filters, Cmd+K search</sub></p>
     </td>
     <td width="50%">
       <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/theme-lab-dark.png">
-        <img src="docs/screenshots/theme-lab-light.png" alt="A design page with the Theme Lab accent picker open and the preview re-themed in emerald">
+        <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/theme-lab-dark.webp">
+        <img src="docs/screenshots/theme-lab-light.webp" alt="A design page with the Theme Lab accent picker open and the preview re-themed in emerald">
       </picture>
       <p align="center"><sub><b>Theme Lab</b>: re-skin every preview, then copy code that carries your tokens</sub></p>
     </td>

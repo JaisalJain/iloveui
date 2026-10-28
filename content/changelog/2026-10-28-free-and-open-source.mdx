@@ -1,0 +1,19 @@
+export const metadata = {
+  date: "2026-10-28",
+  title: "Every design is free, and the code is open source",
+  summary:
+    "All 60 designs are free to copy, install and download without an account, and the whole repository is public.",
+};
+
+Every design in the catalog is now free. The 36 designs that were Pro copy, install and download the same way as the rest, with no account and no token.
+
+### What changed
+
+- Code tabs, the AI prompt and the zip download work for every design.
+- `npx shadcn@latest add @iloveui/<slug>` installs any design with the plain registry entry. The [CLI docs](/docs/cli) cover the setup.
+- Sign-in, accounts, bookmarks and checkout are switched off, so the site sets no account cookies.
+- The site, the catalog and the quality gates are public in one repository.
+
+### For the curious
+
+The paid architecture stays in the code behind one flag, `MONETIZATION_ENABLED`, off by default: Clerk sign-in, Pro and Team licenses, Dodo Payments with a local test checkout, CLI tokens and Pro registry items that never reach a public file. Turn it on to see how it all fits together.

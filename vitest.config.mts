@@ -23,6 +23,8 @@ export default defineConfig({
     include: ["tests/unit/**/*.test.ts"],
     reporters: ["default"],
     setupFiles: ["tests/unit/setup.ts"],
+    // Tests flip MONETIZATION_ENABLED with vi.stubEnv; every test starts from the real environment again.
+    unstubEnvs: true,
     // wrangler (used for the local D1 test database) imports the deprecated punycode module on Node 24.
     execArgv: ["--disable-warning=DEP0040"],
     testTimeout: 20_000,

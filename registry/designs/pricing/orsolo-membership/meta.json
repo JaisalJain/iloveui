@@ -3,7 +3,7 @@
   "name": "Orsolo membership",
   "category": "pricing",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A quiet membership selection for a travel concierge: a fine double frame glides to the chosen tier, through its benefits, and ends in a member card.",
   "tags": ["pricing", "membership", "plan-selection", "comparison", "luxury", "serif", "checkout"],
   "states": ["default", "loading", "error", "success"],

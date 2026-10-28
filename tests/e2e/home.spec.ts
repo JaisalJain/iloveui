@@ -18,7 +18,10 @@ test.describe("home page", () => {
     await expect(heading).toHaveText("UI you'll actually ship.");
     await expect(heading.locator("em")).toHaveText("actually");
     await expect(page.getByRole("link", { name: "Browse designs" })).toHaveAttribute("href", "/designs");
-    await expect(page.getByRole("link", { name: "See pricing" })).toHaveAttribute("href", "/pricing");
+    await expect(page.getByRole("link", { name: "View on GitHub" }).first()).toHaveAttribute(
+      "href",
+      /^https:\/\/github\.com\//,
+    );
   });
 
   test("wall tiles are links to design pages with name, category and tag", async ({ page }) => {
@@ -27,7 +30,8 @@ test.describe("home page", () => {
     expect(await tiles.count()).toBeGreaterThan(0);
     const first = tiles.first();
     await expect(first).toHaveAttribute("href", /^\/designs\/[a-z0-9-]+\/[a-z0-9-]+$/);
-    await expect(first).toHaveAccessibleName(/(Free|Pro)$/i);
+    // Every design is free, so tiles carry no tier tag: the name ends with the category.
+    await expect(first).not.toHaveAccessibleName(/(Free|Pro)$/i);
     const frame = first.locator("iframe");
     await expect(frame).toHaveAttribute("aria-hidden", "true");
     await expect(frame).toHaveAttribute("tabindex", "-1");
@@ -105,9 +109,9 @@ test.describe("home page", () => {
       "Two formats",
       "Audited",
       "Every category, built to a brief.",
-      "Free forever, same license.",
+      "Eight to start with.",
       "Pick, theme, ship.",
-      "Pay once. Keep every design.",
+      "Read it, fork it, ship it.",
       "Latest changes.",
     ]) {
       await expect(page.getByRole("heading", { name, exact: false }).first()).toBeVisible();

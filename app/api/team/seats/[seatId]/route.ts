@@ -1,10 +1,12 @@
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { SEAT_ERROR_MESSAGES, SEAT_ERROR_STATUS, removeSeat } from "@/lib/licenses";
 import { json } from "@/lib/payments/request";
 
 // DELETE /api/team/seats/<seatId>: a Team owner removes a seat; that person loses Pro at once.
 export async function DELETE(_request: Request, { params }: { params: Promise<{ seatId: string }> }) {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   const { seatId } = await params;

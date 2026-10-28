@@ -1,5 +1,6 @@
 import { eq } from "drizzle-orm";
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { licenses } from "@/lib/db/schema";
 import { isRefundable } from "@/lib/licenses";
@@ -10,6 +11,7 @@ import { site } from "@/lib/site";
 // POST /api/refund { licenseId }: the owner's self-serve refund within the refund window (spec sections 1 and 11).
 // This only asks the provider; access ends when the provider's refund webhook reaches fulfilment.
 export async function POST(request: Request) {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   const body = await readJsonObject(request);

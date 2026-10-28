@@ -3,7 +3,7 @@
   "name": "Relay agent console",
   "category": "ai-chat",
   "styleFamily": "dark-technical",
-  "tier": "pro",
+  "tier": "free",
   "description": "An ops agent console: the answer streams behind a steady caret while each tool call ticks its milliseconds, resolves and lands its result rows.",
   "tags": ["ai-chat", "agent", "tool-calls", "streaming", "composer", "model-selector", "context-meter", "sql"],
   "states": ["default", "loading", "error", "empty"],

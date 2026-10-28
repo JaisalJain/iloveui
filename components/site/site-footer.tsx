@@ -1,6 +1,7 @@
 import { Keyboard } from "lucide-react";
 import type { Route } from "next";
 import Link from "next/link";
+import { monetizationEnabled } from "@/lib/monetization";
 import { site } from "@/lib/site";
 import { DevRegionSwitcher } from "./dev-region-switcher";
 import { Logo } from "./logo";
@@ -15,7 +16,7 @@ const COLUMNS: { title: string; links: { href: Route; label: string; plain?: boo
     links: [
       { href: "/designs", label: "Designs" },
       { href: "/collections", label: "Collections" },
-      { href: "/pricing", label: "Pricing" },
+      ...(monetizationEnabled() ? [{ href: "/pricing" as Route, label: "Pricing" }] : []),
       { href: "/changelog", label: "Changelog" },
     ],
   },
@@ -92,7 +93,7 @@ export function SiteFooter() {
           Record.
         </p>
         <div className="flex flex-wrap items-center gap-4">
-          {process.env.NODE_ENV === "development" ? <DevRegionSwitcher /> : null}
+          {process.env.NODE_ENV === "development" && monetizationEnabled() ? <DevRegionSwitcher /> : null}
           <ShortcutsButton icon={<Keyboard size={16} strokeWidth={1.5} aria-hidden />} />
         </div>
       </div>

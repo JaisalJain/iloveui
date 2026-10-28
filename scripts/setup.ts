@@ -1,10 +1,11 @@
 // pnpm setup: prepares a fresh clone for local development with no accounts.
 // 1. .env.local from .env.example, with generated secrets
-// 2. Clerk development keys from an accountless Clerk app, when no keys are set (needs network, no account)
+// 2. with MONETIZATION_ENABLED=true only: Clerk development keys from an accountless Clerk app, when no keys are set
+//    (needs network, no account)
 // 3. Cloudflare binding types
 // 4. D1 migrations applied to the local database
 // 5. the registry built (catalog, previews, thumbnails; Pro payloads into local R2) and the download zips
-// 6. the local database seeded with one demo account state
+// 6. the local database seeded with one demo account state (used when MONETIZATION_ENABLED is true)
 import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync } from "node:fs";
 import { randomBytes } from "node:crypto";
@@ -49,6 +50,10 @@ function ensureEnvFile() {
 async function ensureClerkKeys() {
   step("Clerk");
   const env = readEnvFile(ENV_FILE);
+  if ((process.env.MONETIZATION_ENABLED ?? env.MONETIZATION_ENABLED) !== "true") {
+    console.log("  skipped: MONETIZATION_ENABLED is off, so the site has no accounts");
+    return;
+  }
   if (env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || env.CLERK_SECRET_KEY) {
     console.log("  keys found in .env.local, keeping them");
     return;

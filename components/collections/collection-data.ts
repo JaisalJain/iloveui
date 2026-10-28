@@ -2,6 +2,7 @@ import { COLLECTIONS, getCollection, type Collection } from "@/config/collection
 import { getDesign } from "@/lib/catalog";
 import type { CatalogDesign } from "@/lib/catalog-types";
 import type { Route } from "next";
+import { monetizationEnabled } from "@/lib/monetization";
 import type { OgContent } from "@/lib/og";
 
 // Server-side helpers for the collection pages: resolve a set's slugs against the catalog, and describe each set
@@ -18,7 +19,8 @@ export function collectionDesigns(collection: Collection): CatalogDesign[] {
 /** "4 designs · 2 free" */
 export function collectionMeta(designs: readonly CatalogDesign[]): string {
   const free = designs.filter((design) => design.tier === "free").length;
-  return `${designs.length} ${designs.length === 1 ? "design" : "designs"} · ${free} free`;
+  const count = `${designs.length} ${designs.length === 1 ? "design" : "designs"}`;
+  return monetizationEnabled() ? `${count} · ${free} free` : count;
 }
 
 export const collectionPath = (slug: string): Route => `/collections/${slug}` as Route;

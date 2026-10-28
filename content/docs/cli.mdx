@@ -1,6 +1,6 @@
 Every design installs with the official shadcn CLI under the `@iloveui` namespace. The CLI writes the component into your project, installs its dependencies with your package manager and adds the tokens if they are missing. You need a `components.json`; `npx shadcn@latest init` creates one.
 
-## Free designs
+## Set up
 
 Register the namespace once. This command adds it to your `components.json`:
 
@@ -18,7 +18,7 @@ It writes this entry, which you can also add by hand:
 }
 ```
 
-Then install any free design by its slug, the last part of its URL:
+Then install any design by its slug, the last part of its URL:
 
 ```bash
 npx shadcn@latest add @iloveui/gridline-hero
@@ -30,78 +30,9 @@ That one command:
 - installs the design's dependencies, here `motion` and `lucide-react`;
 - installs `@iloveui/tokens`, adding any `--iu-*` variable your stylesheet does not have yet and keeping the ones it has.
 
-## Pro designs
-
-Pro installs authenticate with a personal access token. Free designs keep working with the same setup.
-
-1. Get [Pro or Team](/pricing). Team members need an active seat: the owner invites your email, and the seat activates when you sign in with it.
-2. On your [account](/account), create a token. It starts with `ilui_live_` and is shown once, so copy it straight away.
-3. Add it to `.env.local` (or `.env`) in the folder that holds `components.json`:
-
-```env title=".env.local"
-ILOVEUI_TOKEN=ilui_live_...
-```
-
-4. Replace the `@iloveui` entry in `components.json` with this addition, which sends the token with every request:
-
-```json title="components.json"
-"registries": {
-  "@iloveui": {
-    "url": "%SITE_URL%/r/{name}.json",
-    "headers": {
-      "Authorization": "Bearer ${ILOVEUI_TOKEN}"
-    }
-  }
-}
-```
-
-5. Install as before:
-
-```bash
-npx shadcn@latest add @iloveui/slab-pricing
-```
-
-The CLI reads `ILOVEUI_TOKEN` from your shell first, then from `.env.local`, `.env.development.local`, `.env.development` and `.env`. With the header form it refuses to run until the variable has a value, for free designs too.
-
-<Callout tone="caution" title="Keep the token out of git">
-  The token unlocks every Pro design for your account. Keep `.env.local` in `.gitignore`, and in CI store
-  `ILOVEUI_TOKEN` as a secret environment variable.
-</Callout>
-
-## Rotating the token
-
-Each account has one token. **Rotate token** on your account replaces it: the old token stops working at that moment and the new one is shown once. Rotate whenever a token may have leaked or you lose it, then update `ILOVEUI_TOKEN` on your machine and in CI. Tokens are stored only as a keyed hash, so nobody can show you an old one again.
-
-Your account shows when the token was created and last used. A refund that ends your Pro access also deletes your token.
-
 ## When something fails
 
-The CLI prints the registry's message under `Message:`, so every error says what to do next.
-
-<DataTable
-  caption="Registry errors"
-  head={["Status", "Meaning", "What to do"]}
-  rows={[
-    [
-      "401",
-      "A Pro design was requested without a token, or the token is invalid, rotated or revoked.",
-      "Create a token on your account and check ILOVEUI_TOKEN and the Authorization header.",
-    ],
-    [
-      "403",
-      "The token is valid, but its account has no active Pro license or Team seat.",
-      "Get Pro, or ask your Team owner for a seat.",
-    ],
-    ["404", "No design has that slug.", "Copy the slug from the design page's install bar."],
-    [
-      "429",
-      "More than 120 requests in a minute with one token. One add makes about three.",
-      "Wait a minute and run the command again.",
-    ],
-  ]}
-/>
-
-For a 429 the CLI prints only `Failed to fetch from registry (429)`; the registry's own response also carries a `Retry-After` header with the seconds to wait. If the CLI says `Registry "@iloveui" requires the following environment variables`, `ILOVEUI_TOKEN` is empty: an exported empty variable in your shell hides the value in `.env.local`.
+Registry items are static JSON files, so the only error you are likely to see is a 404: no design has that slug. Copy the slug from the design page's install bar, or list every design with the search command below.
 
 ## More commands
 

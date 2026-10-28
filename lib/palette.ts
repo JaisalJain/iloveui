@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import type { CatalogIndexEntry } from "@/lib/catalog-types";
+import { monetizationEnabled } from "@/lib/monetization";
 import { CATEGORIES, STYLE_FAMILIES } from "@/registry/definitions";
 
 // Entries of the Cmd+K palette. Pages and actions are fixed; designs and categories come from /catalog.json, which
@@ -28,14 +29,18 @@ export const PAGE_ENTRIES: PaletteEntry[] = [
     href: "/designs",
     keywords: ["browse", "catalog", "gallery", "components"],
   },
-  {
-    id: "page:/pricing",
-    group: "Pages",
-    label: "Pricing",
-    hint: "/pricing",
-    href: "/pricing",
-    keywords: ["pro", "team", "license", "buy", "lifetime", "price"],
-  },
+  ...(monetizationEnabled()
+    ? [
+        {
+          id: "page:/pricing",
+          group: "Pages",
+          label: "Pricing",
+          hint: "/pricing",
+          href: "/pricing",
+          keywords: ["pro", "team", "license", "buy", "lifetime", "price"],
+        } satisfies PaletteEntry,
+      ]
+    : []),
 ];
 
 export const ACTION_ENTRIES: PaletteEntry[] = [

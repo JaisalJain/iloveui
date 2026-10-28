@@ -6,6 +6,7 @@ import { designPath, getAllDesigns, getDesignsInCategory } from "@/lib/catalog";
 import type { CatalogDesign } from "@/lib/catalog-types";
 import { getChangelogEntries } from "@/lib/changelog";
 import { DOC_PAGES } from "@/lib/docs";
+import { monetizationEnabled } from "@/lib/monetization";
 import { absoluteUrl } from "@/lib/site";
 import { CATEGORIES } from "@/registry/definitions";
 
@@ -61,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.6,
       }),
     ),
-    entry("/pricing", { changeFrequency: "monthly", priority: 0.8 }),
+    ...(monetizationEnabled() ? [entry("/pricing", { changeFrequency: "monthly", priority: 0.8 })] : []),
     ...DOC_PAGES.map((page) => entry(page.href, { changeFrequency: "monthly", priority: 0.6 })),
     entry("/changelog", { lastModified: changelog[0]?.date, changeFrequency: "weekly", priority: 0.5 }),
     ...LEGAL_PAGES.map((path) => entry(path, { changeFrequency: "yearly", priority: 0.3 })),

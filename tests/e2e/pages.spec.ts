@@ -114,7 +114,6 @@ test.describe("SEO files", () => {
       "/designs/forms/pillow-workspace-form",
       "/collections",
       "/collections/dashboard",
-      "/pricing",
       "/docs",
       "/docs/cli",
       "/changelog",
@@ -126,7 +125,7 @@ test.describe("SEO files", () => {
     ]) {
       expect(urls, path).toContain(path);
     }
-    expect(urls.some((path) => /^\/(api|account|preview|r|dev)\b/.test(path))).toBe(false);
+    expect(urls.some((path) => /^\/(api|account|preview|r|dev|pricing|sign-in|sign-up)\b/.test(path))).toBe(false);
     expect(new Set(urls).size).toBe(urls.length);
   });
 
@@ -150,36 +149,6 @@ test.describe("JSON-LD", () => {
     expect(blocks.length).toBeGreaterThan(0);
     return blocks.map((block) => JSON.parse(block) as Record<string, unknown>);
   }
-
-  test("/pricing describes Pro and Team as Products with USD and INR offers", async ({ page }) => {
-    await page.goto("/pricing");
-    const [data] = await jsonLd(page);
-    const products = (data?.["@graph"] ?? []) as {
-      "@type": string;
-      name: string;
-      offers: { price: string; priceCurrency: string }[];
-      aggregateRating?: unknown;
-      review?: unknown;
-    }[];
-    expect(products.map((product) => product["@type"])).toEqual(["Product", "Product"]);
-    expect(products.map((product) => product.name)).toEqual(["iloveui Pro", "iloveui Team"]);
-    expect(products[0]?.offers).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ price: "99.00", priceCurrency: "USD" }),
-        expect.objectContaining({ price: "4999.00", priceCurrency: "INR" }),
-      ]),
-    );
-    expect(products[1]?.offers).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ price: "299.00", priceCurrency: "USD" }),
-        expect.objectContaining({ price: "14999.00", priceCurrency: "INR" }),
-      ]),
-    );
-    for (const product of products) {
-      expect(product.aggregateRating).toBeUndefined();
-      expect(product.review).toBeUndefined();
-    }
-  });
 
   test("design pages describe themselves as SoftwareSourceCode", async ({ page }) => {
     await page.goto("/designs/hero/gridline-hero");

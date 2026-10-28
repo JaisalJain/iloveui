@@ -1,5 +1,7 @@
 // pnpm build-registry: validates the catalog and generates everything the site serves from it.
 //
+// Every design is free unless MONETIZATION_ENABLED is true; then meta.json tiers (and MONETIZATION_PRO_SLUGS) apply,
+// see lib/monetization.ts.
 // Public outputs (no Pro source): registry/generated/catalog.json, registry/generated/preview-loaders.ts,
 // public/code/<free-slug>.<hash>.json, public/r/<free-slug>.json, public/r/tokens.json, public/r/registry.json,
 // public/catalog.json (search index), public/thumbs/*.
@@ -10,6 +12,7 @@
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { toIndexEntry, type CatalogDesign, type DesignCode } from "../lib/catalog-types";
+import { effectiveTier, monetizationEnabled } from "../lib/monetization";
 import type { DesignMeta } from "../registry/schema";
 import { readAudits } from "./lib/audits";
 import { compilePreviewCss } from "./lib/css";
@@ -40,7 +43,10 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://iloveui.dev").rep
 const PIPELINE_HASH = sha256(
   ["scripts/lib/highlight.ts", "scripts/lib/thumbnail.ts", "scripts/lib/registry-item.ts", "registry/preview-kit.tsx"]
     .map((file) => readFileSync(file, "utf8"))
-    .join("\n") + SITE_URL,
+    .join("\n") +
+    SITE_URL +
+    String(monetizationEnabled()) +
+    (process.env.MONETIZATION_PRO_SLUGS ?? ""),
 ).slice(0, 12);
 
 type Built = {
@@ -111,7 +117,9 @@ async function main() {
   for (const folder of folders) {
     const result = validateFolder(folder);
     problems.push(...result.problems);
-    if (result.meta) entries.push({ folder, meta: result.meta });
+    // Without monetization every design is free, whatever its meta.json says, so no source is held back.
+    if (result.meta)
+      entries.push({ folder, meta: { ...result.meta, tier: effectiveTier(result.meta.tier, result.meta.slug) } });
   }
   problems.push(...validateCatalog(entries.map((entry) => entry.meta)));
   if (problems.length > 0) {

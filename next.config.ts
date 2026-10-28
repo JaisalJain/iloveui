@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   agentRules: false,
   images: { unoptimized: true },
+  // Inlined at build time so server, client and middleware bundles read the same value (lib/monetization.ts).
+  env: { MONETIZATION_ENABLED: process.env.MONETIZATION_ENABLED === "true" ? "true" : "false" },
   // Sandboxed thumbnails have an opaque origin, so their font requests are cross-origin (public/_headers does the
   // same for the deployed static assets).
   async headers() {

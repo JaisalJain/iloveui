@@ -60,12 +60,11 @@ test.describe("docs", () => {
   test("code blocks copy their exact source", async ({ page, context }) => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.goto("/docs/cli");
-    const block = page.locator("figure", { hasText: "Authorization" });
+    const block = page.locator("figure", { hasText: '"registries"' });
     await block.locator("[data-copy-code]").click();
     await expect(block.locator("[data-copy-code]")).toContainText("Copied");
     const copied = await page.evaluate(() => navigator.clipboard.readText());
-    expect(copied).toContain('"url": "http://localhost:3000/r/{name}.json"');
-    expect(copied).toContain('"Authorization": "Bearer ${ILOVEUI_TOKEN}"');
+    expect(copied).toContain('"@iloveui": "http://localhost:3000/r/{name}.json"');
     expect(copied).not.toContain("%SITE_URL%");
   });
 

@@ -3,7 +3,7 @@
   "name": "Tally ops dashboard",
   "category": "dashboards",
   "styleFamily": "data-dense",
-  "tier": "pro",
+  "tier": "free",
   "description": "A payments ops shell with a collapsible rail. Change the date range and every sparkline redraws while its KPI counts to the new figure.",
   "tags": ["dashboard", "kpi", "sparkline", "payments", "sidebar", "date-range", "table", "fintech"],
   "states": ["default", "loading", "empty"],

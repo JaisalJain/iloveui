@@ -166,13 +166,10 @@ describe("validateCatalog", () => {
     ...overrides,
   });
 
-  it("keeps each category within its free allowance from section 9.1", () => {
+  it("accepts any mix of tiers: the catalog is free unless monetization is on, and then meta.json decides", () => {
     const free = (slug: string) => design(slug, { category: "micro-interactions", tier: "free" });
-    expect(validateCatalog([free("slide-to-pay"), free("morphing-submit")])).toEqual([]);
-    expect(validateCatalog([free("slide-to-pay"), free("morphing-submit"), free("hold-to-confirm")])).toEqual([
-      { where: "micro-interactions", message: "3 free designs; this category has 2" },
-    ]);
-    expect(validateCatalog([design("settings-panel", { category: "settings", tier: "free" })])).toHaveLength(1);
+    expect(validateCatalog([free("slide-to-pay"), free("morphing-submit"), free("hold-to-confirm")])).toEqual([]);
+    expect(validateCatalog([design("settings-panel", { category: "settings", tier: "pro" })])).toEqual([]);
   });
 
   it("rejects repeated slugs and names", () => {

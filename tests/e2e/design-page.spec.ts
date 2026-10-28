@@ -4,7 +4,8 @@ import { expect, test, type Page } from "@playwright/test";
 import { expectNoAxeViolations, expectNoHorizontalOverflow, setColorScheme } from "./helpers";
 
 // The design page (/designs/[category]/[slug]): preview stage controls reach the frame, code copies carry Theme Lab
-// tokens, bookmarks persist, Pro pages never carry Pro source, and the page passes axe in both themes.
+// tokens, account-only controls stay hidden, Pro pages (with MONETIZATION_ENABLED on) never carry Pro source, and the
+// page passes axe in both themes.
 
 type Meta = { slug: string; category: string; tier: "free" | "pro" };
 const ROOT = "registry/designs";
@@ -15,7 +16,10 @@ const designs = readdirSync(ROOT).flatMap((category) =>
   }),
 );
 const FREE = designs.find((design) => design.meta.slug === "pillow-workspace-form") ?? designs[0]!;
-const PRO = designs.find((design) => design.meta.slug === "atelier-product-page") ?? designs[1]!;
+const SECOND = designs.find((design) => design.meta.slug === "atelier-product-page") ?? designs[1]!;
+// Pro tiers apply only with monetization on; by default every design is served free.
+const proDesigns =
+  process.env.MONETIZATION_ENABLED === "true" ? designs.filter((design) => design.meta.tier === "pro") : [];
 /** Every source file of the site itself: a line that also appears there is generic code, not a design's. */
 function siteSource(dir: string): string {
   return readdirSync(dir, { withFileTypes: true, recursive: true })
@@ -152,7 +156,7 @@ test.describe("design page", () => {
     expect(await page.evaluate(() => window.localStorage.getItem("iloveui.format"))).toBe("html");
   });
 
-  for (const { dir, meta } of designs.filter((design) => design.meta.tier === "pro")) {
+  for (const { dir, meta } of proDesigns) {
     test(`Pro design ${meta.slug} sends no Pro source`, async ({ page }) => {
       const freeLines = new Set(
         designs.filter((design) => design.meta.tier === "free").flatMap((design) => distinctiveLines(design.dir)),
@@ -188,15 +192,12 @@ test.describe("design page", () => {
     });
   }
 
-  test("a bookmark survives a reload", async ({ page }) => {
-    await page.goto(urlOf(FREE.meta));
-    const bookmark = page.getByRole("button", { name: /^Bookmark/ });
-    await expect(bookmark).toHaveAttribute("aria-pressed", "false");
-    await bookmark.click();
-    await expect(bookmark).toHaveAttribute("aria-pressed", "true");
-    await page.reload();
-    await expect(page.getByRole("button", { name: /^Bookmark/ })).toHaveAttribute("aria-pressed", "true");
-    expect(await page.evaluate(() => window.localStorage.getItem("iloveui.bookmarks"))).toContain(FREE.meta.slug);
+  test("has no bookmark or tier tag without accounts", async ({ page }) => {
+    await page.goto(urlOf(SECOND.meta));
+    await page.locator("section[aria-labelledby=code-heading]").scrollIntoViewIfNeeded();
+    await expect(page.locator("[data-code-viewer]")).toBeVisible();
+    await expect(page.getByRole("button", { name: /^Bookmark/ })).toHaveCount(0);
+    await expect(page.locator("header").getByText(/^(Free|Pro)$/)).toHaveCount(0);
   });
 
   test("a slug under the wrong category is a 404", async ({ page }) => {
@@ -204,9 +205,9 @@ test.describe("design page", () => {
     expect(response?.status()).toBe(404);
   });
 
-  for (const { meta } of [FREE, PRO]) {
+  for (const { meta } of [FREE, SECOND]) {
     for (const scheme of ["light", "dark"] as const) {
-      test(`axe: ${meta.tier} design page in ${scheme}`, async ({ page }) => {
+      test(`axe: ${meta.slug} design page in ${scheme}`, async ({ page }) => {
         await setColorScheme(page, scheme);
         await page.goto(urlOf(meta), { waitUntil: "networkidle" });
         await page.locator("section[aria-labelledby=code-heading]").scrollIntoViewIfNeeded();

@@ -1,4 +1,5 @@
-import { getViewer } from "@/lib/auth";
+import { getViewer, monetizationOff } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { startCheckout } from "@/lib/payments/checkout";
 import { requestCurrency } from "@/lib/payments/request";
@@ -14,6 +15,7 @@ function redirect(location: string | URL): Response {
 }
 
 export async function GET(request: Request) {
+  if (!monetizationEnabled()) return monetizationOff();
   const url = new URL(request.url);
   const viewer = await getViewer();
   if (!viewer) {

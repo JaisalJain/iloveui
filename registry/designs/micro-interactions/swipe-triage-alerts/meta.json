@@ -3,7 +3,7 @@
   "name": "Swipe triage alerts",
   "category": "micro-interactions",
   "styleFamily": "dark-technical",
-  "tier": "pro",
+  "tier": "free",
   "description": "An on-call alert list whose rows swipe to archive or delete, with a threshold gauge, velocity-aware commit, spring snap-back and a timed undo.",
   "tags": ["swipe-to-delete", "swipe-actions", "gesture", "undo", "alerts", "inbox", "on-call"],
   "states": ["default", "active", "loading", "error", "success", "empty", "disabled"],

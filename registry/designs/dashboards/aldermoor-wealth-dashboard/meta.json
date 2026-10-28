@@ -3,7 +3,7 @@
   "name": "Aldermoor wealth dashboard",
   "category": "dashboards",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A quiet private-wealth overview. Scrub the hairline chart and the serif net worth, its change and the allocation all rewind to that week.",
   "tags": ["dashboard", "wealth", "portfolio", "fintech", "chart", "allocation", "sidebar", "scrubbing"],
   "states": ["default", "loading", "empty"],

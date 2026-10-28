@@ -3,7 +3,7 @@
   "name": "Casefile evidence",
   "category": "testimonials",
   "styleFamily": "data-dense",
-  "tier": "pro",
+  "tier": "free",
   "description": "Customer stories as evidence: before-and-after charts per team, filters by industry and size, and median KPIs that step to each new selection.",
   "tags": ["testimonials", "case-studies", "social-proof", "sparkline", "filters", "kpi", "data-dense"],
   "states": ["default", "loading", "empty"],

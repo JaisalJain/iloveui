@@ -1,12 +1,31 @@
 // pnpm test:e2e: runs the Playwright suite against the production build in the local Workers runtime, then the
 // development-only specs (local test checkout) against `next dev`. Extra arguments go to Playwright.
+// The preview run uses the default MONETIZATION_ENABLED=false (everything free, no accounts). The dev run turns
+// monetization on and marks PRO_SLUGS Pro, so sign-in, checkout, Pro unlocks, tokens and refunds are tested too.
 // After the preview run, the per-design accessibility results are merged into registry/audits.json.
 import { spawnSync } from "node:child_process";
 import { existsSync, readdirSync, readFileSync, rmSync } from "node:fs";
 import { readAudits, writeAudits } from "./lib/audits";
+import { provisionAccountlessClerk } from "./lib/clerk-accountless";
+import { readEnvFile, setEnvValue } from "./lib/env-file";
 
 const args = process.argv.slice(2);
 const AUDITS_DIR = "test-results/audits";
+const PRO_SLUGS = "atelier-product-page,slab-pricing";
+const TARGET_ENV = {
+  preview: { MONETIZATION_ENABLED: "false", MONETIZATION_PRO_SLUGS: "" },
+  dev: { MONETIZATION_ENABLED: "true", MONETIZATION_PRO_SLUGS: PRO_SLUGS },
+} as const;
+
+/** The dev run signs in with Clerk. pnpm setup skips Clerk while monetization is off, so provision keys here. */
+async function ensureClerkKeys() {
+  const env = readEnvFile(".env.local");
+  if (env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY || env.CLERK_SECRET_KEY) return;
+  const { publishableKey, secretKey } = await provisionAccountlessClerk();
+  setEnvValue(".env.local", "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY", publishableKey);
+  setEnvValue(".env.local", "CLERK_SECRET_KEY", secretKey);
+  console.log("✓ created an accountless Clerk development app for the dev run and wrote its keys to .env.local");
+}
 
 function run(command: string, commandArgs: string[], env: Record<string, string> = {}) {
   return spawnSync(command, commandArgs, { stdio: "inherit", env: { ...process.env, ...env } }).status ?? 1;
@@ -51,9 +70,17 @@ rmSync(AUDITS_DIR, { recursive: true, force: true });
 const hasDevSpecs = readdirSync("tests/e2e", { recursive: true }).some((file) => String(file).endsWith(".dev.spec.ts"));
 const targets = (["preview", "dev"] as const).filter((target) => target === "preview" || hasDevSpecs);
 
-for (const target of targets) {
-  console.log(`\n▶ e2e against ${target === "preview" ? "pnpm preview (Workers runtime)" : "pnpm dev"}\n`);
-  const status = run("pnpm", ["exec", "playwright", "test", ...args], { E2E_TARGET: target });
-  if (target === "preview") mergeAudits();
-  if (status !== 0) process.exit(status);
+async function main() {
+  for (const target of targets) {
+    console.log(`\n▶ e2e against ${target === "preview" ? "pnpm preview (Workers runtime)" : "pnpm dev"}\n`);
+    if (target === "dev") await ensureClerkKeys();
+    const status = run("pnpm", ["exec", "playwright", "test", ...args], { E2E_TARGET: target, ...TARGET_ENV[target] });
+    if (target === "preview") mergeAudits();
+    if (status !== 0) process.exit(status);
+  }
 }
+
+main().catch((error: unknown) => {
+  console.error(`✗ test:e2e: ${error instanceof Error ? error.message : String(error)}`);
+  process.exit(1);
+});

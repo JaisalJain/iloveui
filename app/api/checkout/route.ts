@@ -1,10 +1,12 @@
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { CHECKOUT_ERROR_MESSAGES, CHECKOUT_ERROR_STATUS, startCheckout } from "@/lib/payments/checkout";
 import { json, readJsonObject, requestCurrency } from "@/lib/payments/request";
 
 // POST /api/checkout { plan } → { url }: the JSON form of GET /checkout (spec section 11).
 export async function POST(request: Request) {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   const body = await readJsonObject(request);

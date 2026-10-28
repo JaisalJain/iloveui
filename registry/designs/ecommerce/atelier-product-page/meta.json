@@ -3,7 +3,7 @@
   "name": "Atelier product page",
   "category": "ecommerce",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A maison watch page drawn in fine SVG lines: choosing a finish re-tints the drawing and cross-fades the price, and Add to bag slides in the cart.",
   "tags": ["product-page", "cart-drawer", "variants", "checkout-summary", "discount-code", "stock", "luxury", "svg"],
   "states": ["default", "loading", "empty", "error", "success"],

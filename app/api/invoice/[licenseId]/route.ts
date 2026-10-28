@@ -1,6 +1,7 @@
 import { eq } from "drizzle-orm";
 import { PAID_PLANS, formatPrice } from "@/config/pricing";
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { licenses } from "@/lib/db/schema";
 import { getPaymentProvider } from "@/lib/payments/provider";
@@ -73,6 +74,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 }
 
 export async function GET(_request: Request, { params }: { params: Promise<{ licenseId: string }> }) {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   const { licenseId } = await params;

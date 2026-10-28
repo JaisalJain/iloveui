@@ -3,7 +3,7 @@
   "name": "Index account settings",
   "category": "settings",
   "styleFamily": "swiss-minimal",
-  "tier": "pro",
+  "tier": "free",
   "description": "Account settings on a numbered Swiss grid: each edit leaves a hairline in the margin, the index counts edits per section, and Save cross-fades to Saved.",
   "tags": ["settings", "account", "profile", "notifications", "sessions", "danger-zone", "save-state", "form"],
   "states": ["default", "loading", "error", "success"],

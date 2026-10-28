@@ -195,6 +195,8 @@ async function signedHeaders(body: string, id: string, ts = Math.floor(Date.now(
 describe("POST /api/webhooks/clerk", () => {
   async function post(body: string, headers: Record<string, string>) {
     vi.stubEnv("CLERK_WEBHOOK_SIGNING_SECRET", SECRET);
+    // The webhook exists only with accounts, that is with monetization on.
+    vi.stubEnv("MONETIZATION_ENABLED", "true");
     const { POST } = await import("@/app/api/webhooks/clerk/route");
     const { NextRequest } = await import("next/server");
     const response = await POST(

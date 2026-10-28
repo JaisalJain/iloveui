@@ -1,7 +1,7 @@
 import { existsSync } from "node:fs";
 import path from "node:path";
 import * as z from "zod";
-import { CATEGORIES, DesignMetaSchema, type DesignMeta } from "../../registry/schema";
+import { DesignMetaSchema, type DesignMeta } from "../../registry/schema";
 import { DESIGN_FILES, readDesignFile, type DesignFolder } from "./registry-files";
 
 export type Problem = { where: string; message: string };
@@ -280,12 +280,6 @@ export function validateCatalog(metas: DesignMeta[]): Problem[] {
   }
   for (const [name, n] of count(metas.map((meta) => meta.name.toLowerCase()))) {
     if (n > 1) problems.push({ where: name, message: `name is used ${n} times; names are unique` });
-  }
-  for (const category of CATEGORIES) {
-    const free = metas.filter((meta) => meta.category === category.slug && meta.tier === "free").length;
-    if (free > category.free) {
-      problems.push({ where: category.slug, message: `${free} free designs; this category has ${category.free}` });
-    }
   }
   return problems;
 }

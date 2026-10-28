@@ -3,7 +3,7 @@
   "name": "Shelfie library states",
   "category": "states",
   "styleFamily": "playful",
-  "tier": "pro",
+  "tier": "free",
   "description": "No-results, empty, error and loading states for a reading app, each with an SVG shelf. Add your first book drops one onto the shelf with a bounce.",
   "tags": ["empty-state", "error-state", "loading", "skeleton", "illustration", "no-results", "playful"],
   "states": ["default", "empty", "error", "loading"],

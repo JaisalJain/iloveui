@@ -3,7 +3,7 @@
   "name": "Shunt landing page",
   "category": "templates",
   "styleFamily": "neo-brutalist",
-  "tier": "pro",
+  "tier": "free",
   "description": "A full neo-brutalist landing page for a job queue. Press Retry on the failed job in the hero and watch it stamp its way down the rail to Done.",
   "tags": ["landing-page", "template", "devtools", "pricing", "faq", "job-queue", "neo-brutalist"],
   "states": ["default", "loading", "error", "success"],

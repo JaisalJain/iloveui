@@ -1,9 +1,11 @@
 import { CircleAlert, Check, Minus } from "lucide-react";
 import type { Metadata } from "next";
 import { cookies, headers } from "next/headers";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { buttonClasses } from "@/components/ui/button-classes";
 import { FREE_PLAN, PAID_PLANS, formatPrice, type Currency } from "@/config/pricing";
+import { monetizationEnabled } from "@/lib/monetization";
 import { CHECKOUT_ERROR_MESSAGES, isCheckoutError } from "@/lib/payments/checkout-errors";
 import { DEV_REGION_COOKIE, resolveCurrency } from "@/lib/region";
 import { absoluteUrl, site } from "@/lib/site";
@@ -134,6 +136,8 @@ export default async function PricingPage({
 }: {
   searchParams: Promise<{ checkout_error?: string | string[] }>;
 }) {
+  // Pricing exists only with monetization on; the open-source catalog is free.
+  if (!monetizationEnabled()) notFound();
   const [headerList, cookieStore, query] = await Promise.all([headers(), cookies(), searchParams]);
   const checkoutError = isCheckoutError(query.checkout_error) ? query.checkout_error : null;
   const currency = resolveCurrency({

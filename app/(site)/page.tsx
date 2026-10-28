@@ -5,9 +5,12 @@ import { Hero } from "@/components/home/hero";
 import { catalogStats, categoryIndex, freePicks, interleavedDesigns, wallColumns } from "@/components/home/home-data";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { LatestChanges } from "@/components/home/latest-changes";
+import { OpenSource } from "@/components/home/open-source";
 import { PricingTeaser } from "@/components/home/pricing-teaser";
 import { ValueStrip } from "@/components/home/value-strip";
+import { categoryName } from "@/lib/catalog";
 import { getChangelogEntries } from "@/lib/changelog";
+import { monetizationEnabled } from "@/lib/monetization";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -24,20 +27,22 @@ export default function HomePage() {
   const designs = interleavedDesigns();
   // The receipt and CLI examples use a real free design, so every number shown is one a visitor can check.
   const sample = picks[0] ?? designs[0];
+  const paid = monetizationEnabled();
+  // The search illustration types a query its results really match: "free" with tiers, a category without them.
+  const pickQuery = paid || !sample ? "free" : categoryName(sample.category).toLowerCase();
+  const pickResults = paid
+    ? picks.length > 0
+      ? picks
+      : designs
+    : designs.filter((d) => d.category === sample?.category);
   return (
     <>
       <Hero columns={wallColumns()} total={stats.total} free={stats.free} />
       <ValueStrip sample={sample} />
       <CategoryIndex categories={categoryIndex()} total={stats.total} target={stats.target} />
       {picks.length > 0 ? <FreePicks designs={picks} freeTotal={stats.free} /> : null}
-      {sample ? (
-        <HowItWorks
-          query={picks.length > 0 ? "free" : sample.category}
-          results={(picks.length > 0 ? picks : designs).slice(0, 3)}
-          installSlug={sample.slug}
-        />
-      ) : null}
-      <PricingTeaser />
+      {sample ? <HowItWorks query={pickQuery} results={pickResults.slice(0, 3)} installSlug={sample.slug} /> : null}
+      {paid ? <PricingTeaser /> : <OpenSource total={stats.total} />}
       <LatestChanges entries={getChangelogEntries().slice(0, 3)} />
     </>
   );

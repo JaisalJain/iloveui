@@ -1,4 +1,5 @@
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { rateLimit, rateLimitHeaders } from "@/lib/rate-limit";
 import { issueToken } from "@/lib/tokens";
@@ -14,6 +15,7 @@ const ROTATE_LIMIT = 10;
 const ROTATE_WINDOW_MS = 60 * 60_000;
 
 export async function POST() {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   const db = getDb();

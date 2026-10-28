@@ -1,5 +1,6 @@
 // Every public site route. Each must have a unique title and description, pass axe in both themes and never
-// overflow horizontally. Later phases add their routes here.
+// overflow horizontally. Later phases add their routes here. /pricing, /sign-in, /sign-up and /account exist only
+// with MONETIZATION_ENABLED on (access.spec.ts checks they are 404 by default).
 export const SITE_ROUTES = [
   "/",
   "/designs",
@@ -8,7 +9,6 @@ export const SITE_ROUTES = [
   "/designs/settings",
   "/designs/forms/pillow-workspace-form",
   "/designs/ecommerce/atelier-product-page",
-  "/pricing",
   "/collections",
   "/collections/saas-landing",
   "/collections/ai-app",
@@ -25,6 +25,4 @@ export const SITE_ROUTES = [
   "/privacy",
   "/refunds",
   "/contact",
-  "/sign-in",
-  "/sign-up",
 ] as const;

@@ -3,7 +3,7 @@
   "name": "Commonplace editorial bento",
   "category": "bento",
   "styleFamily": "editorial",
-  "tier": "pro",
+  "tier": "free",
   "description": "A magazine features spread for a reading app. Mark a passage and an accent underline draws through it as it files into a notebook, cited.",
   "tags": ["bento", "features", "editorial", "reading", "notes", "research", "magazine"],
   "states": ["default", "empty"],

@@ -1,3 +1,4 @@
+import { effectiveTier } from "@/lib/monetization";
 import { listDesignFolders, readDesignFile, type DesignFolder } from "@/scripts/lib/registry-files";
 
 // Spec section 16: no Pro source line reaches a non-entitled request. The same distinctive-line approach as
@@ -23,8 +24,9 @@ function distinctiveLines(source: string): string[] {
     .filter((line) => !PUBLIC_MARKUP.test(line) && !CLASS_LIST.test(line) && !CLASS_MARKUP.test(line));
 }
 
+/** The tier the build serves: free unless MONETIZATION_ENABLED is on (the dev target turns it on, see scripts/e2e.ts). */
 function tierOf(folder: DesignFolder): string {
-  return (JSON.parse(readDesignFile(folder, "meta.json")) as { tier: string }).tier;
+  return effectiveTier((JSON.parse(readDesignFile(folder, "meta.json")) as { tier: "free" | "pro" }).tier, folder.slug);
 }
 
 function sourceLines(folder: DesignFolder): string[] {

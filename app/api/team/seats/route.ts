@@ -1,10 +1,12 @@
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDb } from "@/lib/db";
 import { SEAT_ERROR_MESSAGES, SEAT_ERROR_STATUS, inviteSeat } from "@/lib/licenses";
 import { json, readJsonObject } from "@/lib/payments/request";
 
 // POST /api/team/seats { email }: a Team owner invites someone (spec section 11).
 export async function POST(request: Request) {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   const body = await readJsonObject(request);

@@ -14,6 +14,7 @@ import {
   RESULT_PARAMS,
   selectDesigns,
 } from "@/lib/browse";
+import { monetizationEnabled } from "@/lib/monetization";
 import { CATEGORIES, getCategory, STYLE_FAMILIES } from "@/registry/definitions";
 import { BrowseIsland } from "./browse-island";
 import { CATEGORY_INTROS } from "./category-copy";
@@ -55,7 +56,7 @@ export function browseMetadata(categorySlug: string | null, page: number): Metad
   const title = `${category ? category.name : "Designs"}${suffix}`;
   const description = category
     ? `${CATEGORY_INTROS[category.slug]} ${total === 1 ? "1 design" : `${total} designs`} in React and HTML.`
-    : `${total} hand-built designs in React and plain HTML across ${CATEGORIES.length} categories. Filter by style family, tier and motion, then copy, install or download.`;
+    : `${total} hand-built designs in React and plain HTML across ${CATEGORIES.length} categories. Filter by style family${monetizationEnabled() ? ", tier" : ""} and motion, then copy, install or download.`;
   return {
     title,
     description: page > 1 ? `${description} Page ${page} of ${pageCount(total)}.` : description,
@@ -88,13 +89,21 @@ export function BrowsePage({ categorySlug, page }: { categorySlug: string | null
   const stats = category
     ? [
         { label: "Designs", value: scope.length },
-        { label: "Free", value: free },
-        { label: "Pro", value: scope.length - free },
+        ...(monetizationEnabled()
+          ? [
+              { label: "Free", value: free },
+              { label: "Pro", value: scope.length - free },
+            ]
+          : []),
         { label: "Planned", value: category.target },
       ]
     : [
-        { label: "Free", value: free },
-        { label: "Pro", value: scope.length - free },
+        ...(monetizationEnabled()
+          ? [
+              { label: "Free", value: free },
+              { label: "Pro", value: scope.length - free },
+            ]
+          : [{ label: "Designs", value: scope.length }]),
         { label: "Categories", value: CATEGORIES.length },
         { label: "Families", value: STYLE_FAMILIES.length },
       ];

@@ -3,7 +3,7 @@
   "name": "Diff inspector sheet",
   "category": "overlays",
   "styleFamily": "swiss-minimal",
-  "tier": "pro",
+  "tier": "free",
   "description": "A record inspector side sheet that marks every edited field in its gutter with the old value, and asks inline before discarding unsaved changes.",
   "tags": ["side-sheet", "inspector", "drawer", "unsaved-changes", "focus-trap", "bottom-sheet", "form"],
   "states": ["default", "loading", "error", "success"],

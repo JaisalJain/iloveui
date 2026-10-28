@@ -3,7 +3,7 @@
   "name": "Quire research assistant",
   "category": "ai-chat",
   "styleFamily": "editorial",
-  "tier": "pro",
+  "tier": "free",
   "description": "An editorial research answer with inline citations: choosing one draws a rule under its sentence and opens the quoted passage in the sources column.",
   "tags": ["ai-chat", "research", "citations", "sources", "streaming", "editorial", "serif", "model-selector"],
   "states": ["default", "loading", "error"],

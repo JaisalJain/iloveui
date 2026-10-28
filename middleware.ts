@@ -1,6 +1,7 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { SIGNED_IN_HINT_COOKIE } from "@/components/auth/signed-in-hint";
+import { monetizationEnabled } from "@/lib/monetization";
 
 // Clerk runs only where it is needed: the auth pages, /account, /checkout and the API routes that call auth().
 // Public pages (/, /designs, design pages, /pricing, /r/) are not matched, so they stay static and never load
@@ -15,7 +16,7 @@ const PROTECTED_PAGES = ["/account", "/checkout"];
  * not sent to sign-in: the hint cookie is cleared below and the route returns them to the page they came from. */
 const SESSION_REFRESH_PATH = "/account/refresh";
 
-export default clerkMiddleware(
+const withClerk = clerkMiddleware(
   async (auth, request) => {
     const { pathname } = request.nextUrl;
     const { isAuthenticated, redirectToSignIn } = await auth();
@@ -44,6 +45,9 @@ export default clerkMiddleware(
     signUpUrl: "/sign-up",
   },
 );
+
+// Without monetization there are no accounts: Clerk never runs and needs no keys.
+export default monetizationEnabled() ? withClerk : () => NextResponse.next();
 
 export const config = {
   matcher: ["/account/:path*", "/sign-in/:path*", "/sign-up/:path*", "/checkout/:path*", "/api/:path*"],

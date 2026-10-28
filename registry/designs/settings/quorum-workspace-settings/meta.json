@@ -3,7 +3,7 @@
   "name": "Quorum workspace settings",
   "category": "settings",
   "styleFamily": "data-dense",
-  "tier": "pro",
+  "tier": "free",
   "description": "Dense workspace admin: role edits queue in a diff tray that prices each change and the next invoice; API keys revoke only after an inline confirm.",
   "tags": ["settings", "workspace", "members", "roles", "billing", "usage", "api-keys", "admin"],
   "states": ["default", "loading", "error", "success", "empty"],

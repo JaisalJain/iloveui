@@ -3,7 +3,7 @@
   "name": "Ondine OTP input",
   "category": "micro-interactions",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A six-digit verification code in serif numerals with auto-advance and paste; on success the six hairlines join into one accent rule.",
   "tags": ["otp", "verification-code", "2fa", "one-time-code", "pin-input", "auth"],
   "states": ["default", "active", "loading", "error", "success", "disabled"],

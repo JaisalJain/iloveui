@@ -3,7 +3,7 @@
   "name": "Forgeline button system",
   "category": "cards-buttons",
   "styleFamily": "dark-technical",
-  "tier": "pro",
+  "tier": "free",
   "description": "A deploy toolbar and button specimen for a developer platform: a split Deploy button that fills with real progress at a fixed width, plus shortcuts.",
   "tags": ["buttons", "split-button", "toolbar", "icon-button", "keyboard-shortcuts", "loading-button", "devtools"],
   "states": ["default", "hover", "focus", "active", "disabled", "loading", "success"],

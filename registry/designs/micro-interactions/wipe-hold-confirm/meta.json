@@ -3,7 +3,7 @@
   "name": "Wipe hold to confirm",
   "category": "micro-interactions",
   "styleFamily": "neo-brutalist",
-  "tier": "pro",
+  "tier": "free",
   "description": "A brutalist wipe-device panel: hold the slab and an accent block slides in under a countdown; let go early and it springs back empty.",
   "tags": ["hold-to-confirm", "destructive-action", "danger-zone", "long-press", "device-management", "confirmation"],
   "states": ["default", "active", "disabled", "loading", "error", "success"],

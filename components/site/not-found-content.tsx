@@ -3,11 +3,14 @@ import type { Route } from "next";
 import Link from "next/link";
 import { buttonClasses } from "@/components/ui/button-classes";
 import { Kbd } from "@/components/ui/kbd";
+import { monetizationEnabled } from "@/lib/monetization";
 
 const DESTINATIONS: { href: Route; label: string; description: string }[] = [
   { href: "/designs", label: "All designs", description: "Browse and filter the whole catalog." },
   { href: "/collections", label: "Collections", description: "Sets for a landing page, an AI app, a dashboard." },
-  { href: "/pricing", label: "Pricing", description: "Free, Pro and Team." },
+  monetizationEnabled()
+    ? { href: "/pricing", label: "Pricing", description: "Free, Pro and Team." }
+    : { href: "/changelog", label: "Changelog", description: "New designs and changes, newest first." },
   { href: "/docs", label: "Docs", description: "Install, theme and use the CLI." },
 ];
 

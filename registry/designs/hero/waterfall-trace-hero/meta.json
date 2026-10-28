@@ -3,7 +3,7 @@
   "name": "Waterfall trace hero",
   "category": "hero",
   "styleFamily": "dark-technical",
-  "tier": "pro",
+  "tier": "free",
   "description": "A tracing-platform hero over a live request waterfall: a playhead sweeps the spans in, then the slowest one lights up with its fix.",
   "tags": ["hero", "observability", "tracing", "waterfall", "devtools", "landing"],
   "states": ["default"],

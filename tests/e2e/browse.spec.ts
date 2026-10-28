@@ -9,7 +9,7 @@ import { expectNoAxeViolations, expectNoHorizontalOverflow, setColorScheme, watc
 // Load more, the mobile filter sheet, and the empty and skeleton states.
 const catalog = JSON.parse(readFileSync("registry/generated/catalog.json", "utf8")) as Catalog;
 const designs = catalog.designs;
-const free = designs.filter((design) => design.tier === "free");
+const withMotion = designs.filter((design) => design.hasMotion);
 const emptyCategory = CATEGORIES.find((category) => !designs.some((design) => design.category === category.slug));
 const fullCategory = CATEGORIES.find((category) => designs.some((design) => design.category === category.slug))!;
 
@@ -86,7 +86,6 @@ test.describe("filters", () => {
       await page.setViewportSize({ width, height });
       await page.goto("/designs");
       for (const control of [
-        page.getByRole("radiogroup", { name: "Tier" }),
         page.getByRole("button", { name: /^Style family/ }),
         page.getByRole("button", { name: "Has motion", exact: true }),
         page.getByRole("radiogroup", { name: "Preferred code format" }),
@@ -97,16 +96,14 @@ test.describe("filters", () => {
     }
   });
 
-  test("tier, family and motion filters update results, counts and the URL", async ({ page }) => {
+  test("family and motion filters update results, counts and the URL", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto("/designs");
     await expect(count(page)).toHaveText(`${designs.length} designs`);
+    // Every design is free, so there is no tier filter.
+    await expect(page.getByRole("radiogroup", { name: "Tier" })).toHaveCount(0);
 
-    await page.getByRole("radiogroup", { name: "Tier" }).getByRole("radio", { name: "Free" }).click();
-    await expect(page).toHaveURL(/\/designs\?tier=free$/);
-    await expect(results(page)).toHaveCount(free.length);
-
-    const family = free[0]!.styleFamily;
+    const family = designs[0]!.styleFamily;
     const familyName = STYLE_FAMILIES.find((candidate) => candidate.slug === family)!.name;
     await page.getByRole("button", { name: /^Style family/ }).click();
     const menu = page.getByRole("menu");
@@ -120,18 +117,18 @@ test.describe("filters", () => {
     await page.keyboard.press("Escape");
     await expect(menu).toBeHidden();
     await expect(page.getByRole("button", { name: /^Style family\s*1\s*selected/ })).toBeFocused();
-    const expected = free.filter((design) => design.styleFamily === family);
+    const expected = designs.filter((design) => design.styleFamily === family);
     await expect(results(page)).toHaveCount(expected.length);
 
     await page.getByRole("button", { name: "Has motion", exact: true }).click();
     await expect(page).toHaveURL(/motion=1/);
     await expect(page.getByRole("button", { name: "Has motion", exact: true })).toHaveAttribute("aria-pressed", "true");
-    const withMotion = expected.filter((design) => design.hasMotion);
-    if (withMotion.length === 0) {
+    const familyWithMotion = expected.filter((design) => design.hasMotion);
+    if (familyWithMotion.length === 0) {
       await expect(page.getByRole("heading", { name: "Nothing matches these filters." })).toBeVisible();
       await page.getByRole("button", { name: "Clear filters" }).click();
     } else {
-      await expect(results(page)).toHaveCount(withMotion.length);
+      await expect(results(page)).toHaveCount(familyWithMotion.length);
       await page.getByRole("button", { name: "Clear all" }).click();
     }
     await expect(page).toHaveURL(/\/designs$/);
@@ -139,13 +136,9 @@ test.describe("filters", () => {
   });
 
   test("a filtered URL renders filtered results on load", async ({ page }) => {
-    await page.goto("/designs?tier=pro");
-    const pro = designs.filter((design) => design.tier === "pro");
-    await expect(results(page)).toHaveCount(Math.min(PAGE_SIZE, pro.length));
-    await expect(page.getByRole("radiogroup", { name: "Tier" }).getByRole("radio", { name: "Pro" })).toHaveAttribute(
-      "aria-checked",
-      "true",
-    );
+    await page.goto("/designs?motion=1");
+    await expect(results(page)).toHaveCount(Math.min(PAGE_SIZE, withMotion.length));
+    await expect(page.getByRole("button", { name: "Has motion", exact: true })).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator("html")).not.toHaveAttribute("data-browse-pending", /.*/);
   });
 
@@ -188,13 +181,13 @@ test.describe("filters", () => {
 
   test("category links keep the filters and show category counts", async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
-    await page.goto("/designs?tier=free");
+    await page.goto("/designs?motion=1");
     const nav = page.getByRole("navigation", { name: "Categories" });
     const link = nav.getByRole("link", { name: new RegExp(`^${fullCategory.name}`) });
     // The static links carry no query; the explorer adds the URL's filters to them as soon as it has applied them.
-    await expect(link).toHaveAttribute("href", /\?tier=free$/);
+    await expect(link).toHaveAttribute("href", /\?motion=1$/);
     await link.click();
-    await expect(page).toHaveURL(new RegExp(`/designs/${fullCategory.slug}\\?tier=free$`));
+    await expect(page).toHaveURL(new RegExp(`/designs/${fullCategory.slug}\\?motion=1$`));
     await expect(page.locator("h1")).toHaveText(fullCategory.name);
     await expect(nav.getByRole("link", { name: new RegExp(`^${fullCategory.name}`) })).toHaveAttribute(
       "aria-current",
@@ -213,7 +206,8 @@ test.describe("mobile", () => {
     const sheet = page.getByRole("dialog", { name: "Filters" });
     await expect(sheet).toBeVisible();
     await expectNoAxeViolations(page);
-    await sheet.getByRole("radiogroup", { name: "Tier" }).getByRole("radio", { name: "Pro" }).click();
+    await expect(sheet.getByRole("radiogroup", { name: "Tier" })).toHaveCount(0);
+    await sheet.getByRole("switch", { name: "Has motion" }).click();
     await sheet.getByRole("button", { name: /^Show \d+ designs?$/ }).click();
     await expect(sheet).toBeHidden();
     await expect(page.getByRole("button", { name: /^Filters\s*1\s*active$/ })).toBeVisible();

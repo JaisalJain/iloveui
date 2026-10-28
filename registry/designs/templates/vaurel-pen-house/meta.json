@@ -3,7 +3,7 @@
   "name": "Vaurel pen house",
   "category": "templates",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A complete home page for a fountain-pen atelier: choosing a nib grade rewrites the tuner's test loops at that line width, live in the hero.",
   "tags": ["template", "landing-page", "storefront", "ecommerce", "luxury", "newsletter", "mega-menu", "serif"],
   "states": ["default", "loading", "error", "success"],

@@ -3,7 +3,7 @@
   "name": "Longhand reading questionnaire",
   "category": "auth",
   "styleFamily": "editorial",
-  "tier": "pro",
+  "tier": "free",
   "description": "A reading-app questionnaire set like a magazine: serif answers underline as chosen, a contents rail tracks chapters, the plan ends in a drop cap.",
   "tags": ["onboarding", "questionnaire", "personalization", "sign-up", "multi-step", "editorial"],
   "states": ["default", "empty", "loading", "error", "success"],

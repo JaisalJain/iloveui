@@ -3,7 +3,7 @@
   "name": "Private office hero",
   "category": "hero",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A private-banking hero beside a framed client statement: choosing a period rolls the gain and redraws a single fine line.",
   "tags": ["hero", "luxury", "finance", "banking", "statement", "serif", "landing"],
   "states": ["default"],

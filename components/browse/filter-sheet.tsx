@@ -6,6 +6,7 @@ import { Dialog as DialogPrimitive, ToggleGroup } from "radix-ui";
 import { useId, type RefObject } from "react";
 import { buttonClasses } from "@/components/ui/button-classes";
 import type { BrowseFilters, Format } from "@/lib/browse";
+import { monetizationEnabled } from "@/lib/monetization";
 import {
   CategoryNav,
   COUNT,
@@ -48,14 +49,16 @@ function SheetFilters({
   const motionHintId = useId();
   return (
     <div className="flex flex-col gap-6">
-      <Section title="Tier">
-        <Segmented
-          label="Tier"
-          value={filters.tier}
-          options={TIER_OPTIONS}
-          onValueChange={(tier) => onChange({ tier })}
-        />
-      </Section>
+      {monetizationEnabled() ? (
+        <Section title="Tier">
+          <Segmented
+            label="Tier"
+            value={filters.tier}
+            options={TIER_OPTIONS}
+            onValueChange={(tier) => onChange({ tier })}
+          />
+        </Section>
+      ) : null}
 
       <Section title="Style family">
         <ToggleGroup.Root

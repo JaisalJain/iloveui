@@ -10,6 +10,7 @@ import { refreshSession } from "@/lib/client/session";
 import { getTheme } from "@/lib/client/theme-lab";
 import { aiPromptWithTokens } from "@/lib/code";
 import { downloadFileName, themeSearchParams } from "@/lib/download";
+import { monetizationEnabled } from "@/lib/monetization";
 import { themeCss } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 import { loadDesignCode } from "./design-code-store";
@@ -102,7 +103,13 @@ function loadDesignCodeText(codeUrl: string) {
   return () => loadDesignCode(codeUrl).then((code) => aiPromptWithTokens(code.aiPrompt, themeCss(getTheme())));
 }
 
+/** Bookmarks live on the account page, so the button exists only with monetization (and accounts) on. */
 export function BookmarkButton({ slug, name }: { slug: string; name: string }) {
+  if (!monetizationEnabled()) return null;
+  return <BookmarkToggle slug={slug} name={name} />;
+}
+
+function BookmarkToggle({ slug, name }: { slug: string; name: string }) {
   const bookmarked = useBookmarked(slug);
   return (
     <Button

@@ -1,5 +1,6 @@
 import { Moon, Search, Sun } from "lucide-react";
 import Link from "next/link";
+import { monetizationEnabled } from "@/lib/monetization";
 import { AccountLink } from "./account-link";
 import { Logo } from "./logo";
 import { SearchTrigger } from "./search-trigger";
@@ -18,7 +19,7 @@ export function SiteHeader() {
             sunIcon={<Sun size={16} strokeWidth={1.5} aria-hidden />}
             moonIcon={<Moon size={16} strokeWidth={1.5} aria-hidden />}
           />
-          <AccountLink />
+          {monetizationEnabled() ? <AccountLink /> : null}
         </div>
       </div>
     </header>

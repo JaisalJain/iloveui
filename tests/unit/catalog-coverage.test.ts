@@ -7,13 +7,8 @@ const metas = listDesignFolders().map((folder) => JSON.parse(readDesignFile(fold
 
 describe("catalog coverage", () => {
   // Phase 6 (catalog batch one) and every batch after it.
-  it("has exactly the free designs section 9.1 sets for every category, 24 in all", () => {
-    const counts = CATEGORIES.map((category) => [
-      category.slug,
-      metas.filter((meta) => meta.category === category.slug && meta.tier === "free").length,
-    ]);
-    expect(counts).toEqual(CATEGORIES.map((category) => [category.slug, category.free]));
-    expect(metas.filter((meta) => meta.tier === "free")).toHaveLength(24);
+  it("marks every design free (the open-source catalog; MONETIZATION_ENABLED is off by default)", () => {
+    expect(metas.filter((meta) => meta.tier !== "free").map((meta) => meta.slug)).toEqual([]);
   });
 
   it("has at least 60 designs and at least one in every category", () => {
@@ -22,28 +17,17 @@ describe("catalog coverage", () => {
     expect(CATEGORIES.map((category) => category.slug).filter((slug) => !categories.has(slug))).toEqual([]);
   });
 
-  it("has at least six micro-interactions, with slide to pay and the morphing submit button as the free pair", () => {
+  it("has at least six micro-interactions, including slide to pay and the morphing submit button", () => {
     const micro = metas.filter((meta) => meta.category === "micro-interactions");
     expect(micro.length).toBeGreaterThanOrEqual(6);
-    expect(
-      micro
-        .filter((meta) => meta.tier === "free")
-        .map((meta) => meta.slug)
-        .sort(),
-    ).toEqual(["fare-slide-to-pay", "invoice-morph-submit"]);
+    expect(micro.map((meta) => meta.slug)).toEqual(
+      expect.arrayContaining(["fare-slide-to-pay", "invoice-morph-submit"]),
+    );
   });
 
   it("keeps the style families balanced", () => {
     const sizes = STYLE_FAMILIES.map((family) => metas.filter((meta) => meta.styleFamily === family.slug).length);
     expect(Math.max(...sizes)).toBeLessThanOrEqual(Math.min(...sizes) * 2);
-  });
-
-  it("keeps every category within its free allowance from section 9.1", () => {
-    const over = CATEGORIES.filter(
-      (category) =>
-        metas.filter((meta) => meta.category === category.slug && meta.tier === "free").length > category.free,
-    );
-    expect(over.map((category) => category.slug)).toEqual([]);
   });
 
   it("has at least one design in every style family", () => {

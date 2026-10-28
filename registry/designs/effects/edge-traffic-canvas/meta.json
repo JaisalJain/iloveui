@@ -3,7 +3,7 @@
   "name": "Edge traffic canvas",
   "category": "effects",
   "styleFamily": "dark-technical",
-  "tier": "pro",
+  "tier": "free",
   "description": "A canvas background that draws sampled production requests arcing from clients to the nearest edge region, paused offscreen, with a live readout.",
   "tags": ["canvas", "background", "network", "edge", "map", "realtime", "devtools"],
   "states": ["default"],

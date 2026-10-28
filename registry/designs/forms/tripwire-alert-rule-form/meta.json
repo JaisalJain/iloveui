@@ -3,7 +3,7 @@
   "name": "Tripwire alert rule form",
   "category": "forms",
   "styleFamily": "data-dense",
-  "tier": "pro",
+  "tier": "free",
   "description": "A dense alert-rule editor with a live 24-hour backtest: drag the threshold or change the window and see every time the rule would have fired.",
   "tags": [
     "form",

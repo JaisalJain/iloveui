@@ -2,6 +2,7 @@ import "server-only";
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
 import { getDb, type Db } from "./db";
+import { monetizationEnabled } from "./monetization";
 import { seats, users } from "./db/schema";
 
 // Who is asking. Clerk owns identity only (spec section 6); D1 holds the users row every license, seat, token and
@@ -11,6 +12,8 @@ export type Viewer = { id: string; email: string };
 
 /** The signed-in user with a users row guaranteed, or null when signed out. */
 export async function getViewer(): Promise<Viewer | null> {
+  // Without monetization there are no accounts, and the middleware does not run Clerk.
+  if (!monetizationEnabled()) return null;
   const { isAuthenticated, userId } = await auth();
   if (!isAuthenticated || !userId) return null;
   const db = getDb();
@@ -46,6 +49,14 @@ export async function activateInvitedSeats(db: Db, viewer: Viewer) {
     .update(seats)
     .set({ userId: viewer.id, status: "active" })
     .where(and(eq(seats.email, viewer.email), eq(seats.status, "invited")));
+}
+
+/** The 404 every account, payment and Pro route returns while monetization is off. */
+export function monetizationOff(): Response {
+  return Response.json(
+    { error: "not_found", message: "Not found." },
+    { status: 404, headers: { "cache-control": "no-store" } },
+  );
 }
 
 /** The JSON 401 every API route returns to signed-out callers. */

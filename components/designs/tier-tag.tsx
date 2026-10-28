@@ -1,7 +1,12 @@
 import { clsx } from "clsx";
+import { monetizationEnabled } from "@/lib/monetization";
 
-/** The only two tag styles on the site: Free is a neutral outline pill, Pro an accent outline pill. */
+/**
+ * The only two tag styles on the site: Free is a neutral outline pill, Pro an accent outline pill. Without
+ * monetization every design is free, so no tag is shown.
+ */
 export function TierTag({ tier }: { tier: "free" | "pro" }) {
+  if (!monetizationEnabled()) return null;
   return (
     <span
       className={clsx(

@@ -3,7 +3,7 @@
   "name": "Slab pricing",
   "category": "pricing",
   "styleFamily": "neo-brutalist",
-  "tier": "pro",
+  "tier": "free",
   "description": "Three outlined plan slabs with hard shadows. Switching to yearly rolls every price digit by digit while the slabs stamp into their shadows.",
   "tags": ["pricing", "billing-toggle", "comparison-table", "checkout", "neo-brutalist", "developer-tools"],
   "states": ["default", "loading", "error", "success"],

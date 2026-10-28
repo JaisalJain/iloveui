@@ -3,7 +3,7 @@
   "name": "Kestrel signal bento",
   "category": "bento",
   "styleFamily": "data-dense",
-  "tier": "pro",
+  "tier": "free",
   "description": "Dense observability panels on one time cursor. Scrub the latency chart and the KPIs, log tail, endpoints and error budget all re-read that minute.",
   "tags": ["bento", "observability", "charts", "logs", "monitoring", "devtools", "kpi"],
   "states": ["default", "loading"],

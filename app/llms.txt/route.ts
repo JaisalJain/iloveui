@@ -3,6 +3,7 @@ import { COLLECTIONS } from "@/config/collections";
 import { FREE_PLAN, PAID_PLANS, formatPrice } from "@/config/pricing";
 import { categoryName, designPath, formatGzip, getAllDesigns, getDesignsInCategory } from "@/lib/catalog";
 import { DOC_PAGES } from "@/lib/docs";
+import { monetizationEnabled } from "@/lib/monetization";
 import { absoluteUrl, site } from "@/lib/site";
 import { CATEGORIES } from "@/registry/definitions";
 
@@ -14,6 +15,7 @@ const link = (title: string, path: string, note?: string) =>
   `- [${title}](${absoluteUrl(path)})${note ? `: ${note}` : ""}`;
 
 function body(): string {
+  const paid = monetizationEnabled();
   const designs = getAllDesigns();
   const free = designs.filter((design) => design.tier === "free").length;
   const pro = PAID_PLANS.pro.prices;
@@ -22,27 +24,37 @@ function body(): string {
     "",
     `> ${site.description} Every design ships as a React + Tailwind CSS v4 component and as plain HTML + Tailwind CSS v4 with vanilla JavaScript, themed through --iu-* CSS variables.`,
     "",
-    `The catalog has ${designs.length} designs today, ${free} of them free. Free designs install without an account. Pro designs need a personal token from ${absoluteUrl("/account")}, created after buying Pro (${formatPrice(pro.USD.amountMinor, "USD")}, or ${formatPrice(pro.INR.amountMinor, "INR")} in India) or Team. All designs follow the license at ${absoluteUrl("/license")}: use them in any end product; do not resell or redistribute them as a UI kit, template or library.`,
+    `${
+      paid
+        ? `The catalog has ${designs.length} designs today, ${free} of them free. Free designs install without an account. Pro designs need a personal token from ${absoluteUrl("/account")}, created after buying Pro (${formatPrice(pro.USD.amountMinor, "USD")}, or ${formatPrice(pro.INR.amountMinor, "INR")} in India) or Team.`
+        : `The catalog has ${designs.length} designs today, all free. Every design installs, copies and downloads without an account.`
+    } All designs follow the license at ${absoluteUrl("/license")}: use them in any end product; do not resell or redistribute them as a UI kit, template or library.`,
     "",
     "## Install",
     "",
-    "Add the registry to components.json once. For free designs, the string form needs no token:",
+    paid
+      ? "Add the registry to components.json once. For free designs, the string form needs no token:"
+      : "Add the registry to components.json once:",
     "",
     "```json",
     `"registries": { "@iloveui": "${site.url}/r/{name}.json" }`,
     "```",
     "",
-    "For Pro designs, use the object form and put ILOVEUI_TOKEN=ilui_live_... in .env.local (the CLI refuses to run while that variable is empty):",
-    "",
-    "```json",
-    `"registries": {`,
-    `  "@iloveui": {`,
-    `    "url": "${site.url}/r/{name}.json",`,
-    `    "headers": { "Authorization": "Bearer \${ILOVEUI_TOKEN}" }`,
-    `  }`,
-    `}`,
-    "```",
-    "",
+    ...(paid
+      ? [
+          "For Pro designs, use the object form and put ILOVEUI_TOKEN=ilui_live_... in .env.local (the CLI refuses to run while that variable is empty):",
+          "",
+          "```json",
+          `"registries": {`,
+          `  "@iloveui": {`,
+          `    "url": "${site.url}/r/{name}.json",`,
+          `    "headers": { "Authorization": "Bearer \${ILOVEUI_TOKEN}" }`,
+          `  }`,
+          `}`,
+          "```",
+          "",
+        ]
+      : []),
     "Then install any design by its slug, for example:",
     "",
     "```sh",
@@ -63,7 +75,7 @@ function body(): string {
         link(
           design.name,
           designPath(design),
-          `${design.description} ${design.tier === "pro" ? "Pro" : "Free"}, ${formatGzip(design.receipt.gzipBytes)}. Install: \`npx shadcn@latest add @iloveui/${design.slug}\``,
+          `${design.description} ${paid ? `${design.tier === "pro" ? "Pro" : "Free"}, ` : ""}${formatGzip(design.receipt.gzipBytes)}. Install: \`npx shadcn@latest add @iloveui/${design.slug}\``,
         ),
       );
     }
@@ -84,12 +96,20 @@ function body(): string {
     "",
     "## Key links",
     "",
-    link("All designs", "/designs", "Browse and filter by category, style family, tier, motion and format."),
     link(
-      "Pricing",
-      "/pricing",
-      `${FREE_PLAN.designs} designs free. Pro and Team are one lifetime payment for every current and future design.`,
+      "All designs",
+      "/designs",
+      `Browse and filter by category, style family, ${paid ? "tier, " : ""}motion and format.`,
     ),
+    ...(paid
+      ? [
+          link(
+            "Pricing",
+            "/pricing",
+            `${FREE_PLAN.designs} designs free. Pro and Team are one lifetime payment for every current and future design.`,
+          ),
+        ]
+      : []),
     link("License", "/license", "What you may build with the designs."),
     link("Changelog", "/changelog", "New designs and changes, newest first."),
     link("Catalog index (JSON)", "/catalog.json", "Every design's slug, name, category, tier, tags and size."),

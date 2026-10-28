@@ -2,6 +2,7 @@ import Link from "next/link";
 import { buttonClasses } from "@/components/ui/button-classes";
 import { HomeShortcutHints } from "@/components/site/home-shortcut-hints";
 import type { CatalogDesign } from "@/lib/catalog-types";
+import { monetizationEnabled } from "@/lib/monetization";
 import { site } from "@/lib/site";
 import { HeroWall } from "./hero-wall";
 
@@ -22,7 +23,15 @@ export function Hero({ columns, total, free }: { columns: CatalogDesign[][]; tot
             <span aria-hidden className="mx-2">
               /
             </span>
-            <span className="text-fg tabular-nums">{free}</span> free forever
+            {monetizationEnabled() ? (
+              <>
+                <span className="text-fg tabular-nums">{free}</span> free forever
+              </>
+            ) : (
+              <>
+                <span className="text-fg">MIT</span> licensed
+              </>
+            )}
           </p>
           <h1 id="home-title" className="mt-6 text-64 font-semibold xl:text-96">
             {"UI you'll "}
@@ -34,9 +43,15 @@ export function Hero({ columns, total, free }: { columns: CatalogDesign[][]; tot
             <Link href="/designs" className={buttonClasses({ variant: "primary", size: "lg" })}>
               Browse designs
             </Link>
-            <Link href="/pricing" className={buttonClasses({ variant: "outline", size: "lg" })}>
-              See pricing
-            </Link>
+            {monetizationEnabled() ? (
+              <Link href="/pricing" className={buttonClasses({ variant: "outline", size: "lg" })}>
+                See pricing
+              </Link>
+            ) : (
+              <a href={site.repository} className={buttonClasses({ variant: "outline", size: "lg" })}>
+                View on GitHub
+              </a>
+            )}
           </div>
           <HomeShortcutHints />
         </div>

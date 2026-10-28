@@ -2,6 +2,7 @@ import { CATEGORY_INTROS } from "@/components/browse/category-copy";
 import { FREE_PLAN } from "@/config/pricing";
 import { categoryName, formatGzip, getAllDesigns, getDesign, getDesignsInCategory } from "@/lib/catalog";
 import { extraPageNumbers } from "@/lib/browse";
+import { monetizationEnabled } from "@/lib/monetization";
 import type { OgContent } from "@/lib/og";
 import { CATEGORIES, getCategory, type CategorySlug } from "@/registry/definitions";
 
@@ -40,7 +41,7 @@ export function designOg(slug: string): OgContent {
     eyebrow: categoryName(design.category),
     title: design.name,
     description: design.description,
-    meta: `${design.tier === "pro" ? "Pro" : "Free"} · ${formatGzip(design.receipt.gzipBytes)}`,
+    meta: `${monetizationEnabled() ? (design.tier === "pro" ? "Pro" : "Free") : "MIT"} · ${formatGzip(design.receipt.gzipBytes)}`,
   };
 }
 

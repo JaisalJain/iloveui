@@ -3,7 +3,7 @@
   "name": "Layer peel card",
   "category": "effects",
   "styleFamily": "playful",
-  "tier": "pro",
+  "tier": "free",
   "description": "An app screen that tilts under the pointer and pulls apart into its four labelled layers, each mapped to the component it exports as.",
   "tags": ["tilt", "3d", "layers", "explainer", "interaction", "playful", "feature"],
   "states": ["default"],

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Tooltip } from "@/components/ui/tooltip";
 import type { BrowseFilters, Format } from "@/lib/browse";
 import { focusKeyProps, lazyModule } from "@/lib/client/lazy";
+import { monetizationEnabled } from "@/lib/monetization";
 import { FORMAT_HINT, FORMAT_OPTIONS, Segmented, TIER_OPTIONS, type Option } from "./filter-panel";
 
 // Desktop filters, in a row under the search field, so every filter is visible without scrolling. The mobile sheet
@@ -63,13 +64,15 @@ export function FilterToolbar({
 
   return (
     <div role="group" aria-label="Filters" className="flex flex-wrap items-center gap-x-3 gap-y-3">
-      <Segmented
-        label="Tier"
-        value={filters.tier}
-        options={TIER_OPTIONS}
-        onValueChange={(tier) => onChange({ tier })}
-        className="w-48"
-      />
+      {monetizationEnabled() ? (
+        <Segmented
+          label="Tier"
+          value={filters.tier}
+          options={TIER_OPTIONS}
+          onValueChange={(tier) => onChange({ tier })}
+          className="w-48"
+        />
+      ) : null}
 
       {Menu ? (
         <Menu.FamilyMenu

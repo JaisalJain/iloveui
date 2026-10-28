@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { collectionDesigns, collectionMeta, collectionPath } from "@/components/collections/collection-data";
 import { COLLECTIONS, getCollection } from "@/config/collections";
 import { getDesign } from "@/lib/catalog";
@@ -25,7 +25,10 @@ describe("collections (spec section 8)", () => {
     expect(getCollection("missing")).toBeUndefined();
     expect(collectionPath("ai-app")).toBe("/collections/ai-app");
     const designs = collectionDesigns(COLLECTIONS[0]!);
+    expect(collectionMeta(designs)).toBe(`${designs.length} designs`);
+    vi.stubEnv("MONETIZATION_ENABLED", "true");
     const free = designs.filter((design) => design.tier === "free").length;
     expect(collectionMeta(designs)).toBe(`${designs.length} designs · ${free} free`);
+    vi.unstubAllEnvs();
   });
 });

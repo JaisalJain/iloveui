@@ -1,4 +1,5 @@
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { addBookmarks, listBookmarks, parseBookmarkSlugs } from "@/lib/bookmarks";
 import { getDesign } from "@/lib/catalog";
 import { getDb } from "@/lib/db";
@@ -12,12 +13,14 @@ const NO_STORE = { "cache-control": "private, no-store" };
 const MAX_BODY_BYTES = 64 * 1024;
 
 export async function GET() {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   return Response.json({ slugs: await listBookmarks(getDb(), viewer.id) }, { headers: NO_STORE });
 }
 
 export async function PUT(request: Request) {
+  if (!monetizationEnabled()) return monetizationOff();
   const viewer = await getViewer();
   if (!viewer) return signInRequired();
   let body: unknown;

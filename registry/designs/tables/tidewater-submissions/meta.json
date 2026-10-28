@@ -3,7 +3,7 @@
   "name": "Tidewater submissions",
   "category": "tables",
   "styleFamily": "editorial",
-  "tier": "pro",
+  "tier": "free",
   "description": "A literary review queue set like a magazine page: numerals become checkboxes, entries glide into a new order, and the selection is summed in prose.",
   "tags": ["list", "review-queue", "editorial", "sorting", "bulk-actions", "publishing", "pagination"],
   "states": ["default", "loading", "empty", "success"],

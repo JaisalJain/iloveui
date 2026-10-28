@@ -3,7 +3,7 @@
   "name": "Loadstar app navigation",
   "category": "navigation",
   "styleFamily": "data-dense",
-  "tier": "pro",
+  "tier": "free",
   "description": "A freight ops shell: dense sidebar with live counts that collapses and peeks back, switchable breadcrumbs, and a quick switcher that rebuilds the trail.",
   "tags": ["sidebar", "app-shell", "breadcrumbs", "quick-switcher", "collapsible", "navigation"],
   "states": ["default", "loading", "empty"],

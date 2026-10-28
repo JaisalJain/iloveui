@@ -3,7 +3,7 @@
   "name": "Sockpop shop grid",
   "category": "ecommerce",
   "styleFamily": "playful",
-  "tier": "pro",
+  "tier": "free",
   "description": "A chunky product grid of SVG-drawn socks: pick a pattern and size, and Add to cart flings the pair into the cart, which opens to codes, stock caps and totals.",
   "tags": [
     "product-grid",

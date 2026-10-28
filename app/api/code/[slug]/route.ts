@@ -1,4 +1,5 @@
-import { getViewer, signInRequired } from "@/lib/auth";
+import { getViewer, monetizationOff, signInRequired } from "@/lib/auth";
+import { monetizationEnabled } from "@/lib/monetization";
 import { getDesign } from "@/lib/catalog";
 import { getDb } from "@/lib/db";
 import { getAccess } from "@/lib/entitlements";
@@ -16,6 +17,7 @@ function fail(status: 403 | 404, error: string, message: string) {
 }
 
 export async function GET(_request: Request, { params }: RouteContext<"/api/code/[slug]">) {
+  if (!monetizationEnabled()) return monetizationOff();
   const { slug } = await params;
   const design = getDesign(slug);
   if (!design) return fail(404, "not_found", "No design with that name.");

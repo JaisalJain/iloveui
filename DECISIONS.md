@@ -169,3 +169,12 @@ Choices the specification leaves open, places where current tool documentation o
 - **The forbidden-words gate reads its lists from CLAUDE.md.** `scripts/check-forbidden.ts` (part of `pnpm lint`) derives the hype words, placeholder words and visual-pattern names from sections 7.1 and 16 at runtime, so no file outside CLAUDE.md has to spell them out.
 - **Vitest never caches a module that calls `import.meta.glob`.** Vitest 5 caches transformed modules on disk, keyed by their source, so a new changelog entry left `lib/changelog.ts` with a stale file list; a plugin in `vitest.config.mts` opts those modules out through Vitest's `defineCacheKeyGenerator`.
 - **Site accessibility checks add axe's best-practice rules to WCAG 2.2 AA.** They are closer to Lighthouse's accessibility audit; preview iframes are excluded there and audited on their own preview URLs.
+
+## Open-source release
+
+- **One flag, `MONETIZATION_ENABLED`, off by default, keeps the paid architecture as a reference.** `lib/monetization.ts` reads it and `next.config.ts` inlines it at build time, so server, client and middleware bundles agree. Off, every account, payment and Pro route answers 404, the middleware never runs Clerk (no keys needed) and `getViewer()` returns null.
+- **The registry build decides the served tier, once.** `scripts/build-registry.ts` writes `effectiveTier()` into the catalog: free without monetization, the meta.json tier with it. Every runtime check (`design.tier === "pro"`) stays unchanged and simply never fires while everything is free.
+- **The 9.1 free-count rule left the validator.** With every design free it can no longer hold, and with monetization on the owner picks tiers in meta.json.
+- **`MONETIZATION_PRO_SLUGS` marks designs Pro for one build.** It is read only by the registry build and the e2e helpers, never in a request path; the e2e dev run uses it so sign-in, checkout, Pro unlocks, tokens and refunds stay tested end to end while every meta.json says free.
+- **Bookmarks, tier tags and the tier filter hide without monetization.** Bookmarks are listed only on the account page, and a Free tag on every card carries no information.
+- **The home page's pricing teaser becomes an open-source section without monetization,** and the hero's second action links to the repository.

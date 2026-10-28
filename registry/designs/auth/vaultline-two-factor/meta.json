@@ -3,7 +3,7 @@
   "name": "Vaultline two-factor setup",
   "category": "auth",
   "styleFamily": "dark-technical",
-  "tier": "pro",
+  "tier": "free",
   "description": "Developer sign-up with TOTP setup: an SVG QR in corner ticks, six code cells beside a stepped 30-second window, recovery codes and a live session log.",
   "tags": ["2fa", "totp", "sign-up", "security", "otp-input", "recovery-codes", "devtools"],
   "states": ["default", "loading", "error", "success"],

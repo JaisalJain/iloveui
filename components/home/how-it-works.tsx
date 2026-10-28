@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { TierTag } from "@/components/designs/tier-tag";
 import { categoryName } from "@/lib/catalog";
 import type { CatalogDesign } from "@/lib/catalog-types";
+import { monetizationEnabled } from "@/lib/monetization";
 import { ACCENT_PRESETS, NEUTRALS } from "@/lib/theme";
 import { SectionHeading } from "./section-heading";
 
@@ -147,7 +148,7 @@ export function HowItWorks({
   const steps = [
     {
       title: "Pick",
-      body: "Filter by category, style family, tier and motion, or open search with Cmd+K or Ctrl+K and type what you need.",
+      body: `Filter by category, style family, ${monetizationEnabled() ? "tier " : ""}and motion, or open search with Cmd+K or Ctrl+K and type what you need.`,
       art: <PickIllustration query={query} designs={results} />,
     },
     {

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   activeFilterCount,
   browsePath,
@@ -73,6 +73,7 @@ const filters = (patch: Partial<BrowseFilters>): BrowseFilters => ({ ...DEFAULT_
 
 describe("filters in the URL", () => {
   it("parses every parameter and ignores unknown values", () => {
+    vi.stubEnv("MONETIZATION_ENABLED", "true");
     expect(
       parseFilters("?tier=pro&family=luxury,editorial,nope&motion=1&format=html&sort=copied&q=chat", FAMILIES),
     ).toEqual({
@@ -86,12 +87,17 @@ describe("filters in the URL", () => {
     expect(parseFilters("?tier=gold&motion=yes&format=vue&sort=random", FAMILIES)).toEqual(DEFAULT_FILTERS);
   });
 
+  it("ignores the tier while monetization is off, when every design is free", () => {
+    expect(parseFilters("?tier=pro&motion=1", FAMILIES)).toEqual({ ...DEFAULT_FILTERS, motion: true });
+  });
+
   it("caps the query length and keeps a typed trailing space", () => {
     expect(parseFilters(`?q=${"x".repeat(200)}`).q).toHaveLength(80);
     expect(parseFilters("?q=luxury+").q).toBe("luxury ");
   });
 
   it("serializes in a stable order, omits defaults and round-trips", () => {
+    vi.stubEnv("MONETIZATION_ENABLED", "true");
     expect(serializeFilters(DEFAULT_FILTERS)).toBe("");
     const value = filters({
       tier: "free",

@@ -3,22 +3,31 @@ import Link from "next/link";
 import { DesignCard } from "@/components/designs/design-card";
 import { categoryName } from "@/lib/catalog";
 import type { CatalogDesign } from "@/lib/catalog-types";
+import { monetizationEnabled } from "@/lib/monetization";
 import { SectionHeading } from "./section-heading";
 
-/** Up to eight free designs as browse cards. */
+/** Up to eight curated designs as browse cards: the free ones with monetization on, a starting set without it. */
 export function FreePicks({ designs, freeTotal }: { designs: CatalogDesign[]; freeTotal: number }) {
+  const paid = monetizationEnabled();
   return (
     <section aria-labelledby="home-free" className="border-t border-hairline">
       <div className="page-frame py-24 sm:py-32">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
-          <SectionHeading id="home-free" index="02" eyebrow="Free picks" title="Free forever, same license.">
-            Commercial use, both formats and CLI installs, with no account needed to copy the code.
-          </SectionHeading>
+          {paid ? (
+            <SectionHeading id="home-free" index="02" eyebrow="Free picks" title="Free forever, same license.">
+              Commercial use, both formats and CLI installs, with no account needed to copy the code.
+            </SectionHeading>
+          ) : (
+            <SectionHeading id="home-free" index="02" eyebrow="Picks" title="Eight to start with.">
+              One from each of eight categories. Copy the code, install with the CLI or download a zip, no account
+              needed.
+            </SectionHeading>
+          )}
           <Link
-            href="/designs?tier=free"
+            href={paid ? "/designs?tier=free" : "/designs"}
             className="inline-flex h-10 shrink-0 items-center gap-2 rounded-control text-14 font-medium text-fg underline decoration-control underline-offset-4 transition-colors hover:decoration-fg"
           >
-            All {freeTotal} free designs
+            {paid ? `All ${freeTotal} free designs` : `All ${freeTotal} designs`}
             <ArrowRight size={16} strokeWidth={1.5} aria-hidden />
           </Link>
         </div>

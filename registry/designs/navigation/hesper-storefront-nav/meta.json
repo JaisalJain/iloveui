@@ -3,7 +3,7 @@
   "name": "Hesper storefront navigation",
   "category": "navigation",
   "styleFamily": "luxury",
-  "tier": "pro",
+  "tier": "free",
   "description": "A maison storefront header: the mega menu draws the piece under your cursor as its subject, a quiet search suggests pieces, and the mobile drawer drills in.",
   "tags": ["storefront", "mega-menu", "ecommerce", "search", "mobile-drawer", "header"],
   "states": ["default"],

@@ -1,5 +1,6 @@
 import type { Route } from "next";
 import type { CatalogIndexEntry } from "./catalog-types";
+import { monetizationEnabled } from "./monetization";
 
 // Pure browse logic shared by the statically generated /designs pages and the client filter island: filters and
 // their URL form, sorting, category counts and pagination. No imports with runtime weight, so the island stays small.
@@ -55,7 +56,8 @@ export function parseFilters(params: URLSearchParams | string, knownFamilies: re
   const families =
     knownFamilies.length > 0 ? knownFamilies.filter((family) => requested.includes(family)) : [...new Set(requested)];
   return {
-    tier: oneOf(TIERS, search.get("tier")) ?? "all",
+    // Without monetization every design is free, so a tier in the URL narrows nothing.
+    tier: (monetizationEnabled() && oneOf(TIERS, search.get("tier"))) || "all",
     families,
     motion: search.get("motion") === "1",
     format: oneOf(FORMATS, search.get("format")) ?? null,
